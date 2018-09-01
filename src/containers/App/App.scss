@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'pokename';
+    src: url(../../assets/fonts/GillSansStd-BoldCondensed.otf);
+}
+@font-face {
+    font-family: 'pokevolution';
+    src: url(../../assets/fonts/GillSansStd-BoldItalic.otf);
+}
+@font-face {
+    font-family: 'poke';
+    src: url(../../assets/fonts/gill-sans-bold-extra-condensed.ttf);
+}
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+#test { font-family: pokename; }
+.select select, .select { width: 100%; }
+.konvajs-content { margin: 0 auto; }
