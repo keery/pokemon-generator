@@ -7,16 +7,36 @@ class Generator extends Component {
         super(props)
         this.state = {
             type: 'fire',
-            stage: 'stage1',
+            stage: 'basic',
             name: '',
             nameEvolution: '',
             mainPicture: null,
-            evolvePicture: null
+            evolvePicture: null,
+            hp: 30,
+            attack1 : {
+                attack1Name: '',
+                attack1Dammage: '',
+                attack1Info: '',
+                attack1Type: '',
+                attack1Amount: '',
+            },
+            attack2 : {
+                attack2Name: '',
+                attack2Dammage: '',
+                attack2Info: '',
+                attack2Type: '',
+                attack2Amount: '',
+            },
         }
     }
 
     handleChange = (event) => {
-        this.setState( { [event.target.name]  : event.target.value } )
+        const nested = event.target.getAttribute('nested')
+        
+        if (nested) {
+            this.setState({ [nested] : { ...this.state[nested], [event.target.name] : event.target.value }})
+        }
+        else this.setState( { [event.target.name]  : event.target.value } )
     }
 
     fileHandler = (event) => {
@@ -75,7 +95,7 @@ class Generator extends Component {
     }
 
     render() {
-        const { type, stage, name, nameEvolution, mainPicture, evolvePicture } = this.state
+        const { type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2 } = this.state
         
         return (
             <div className="columns is-centered">
@@ -122,20 +142,38 @@ class Generator extends Component {
                                     </div>
                                 </div>
                             </div>
+                            <div className="field">
+                                <label className="label">HP</label>
+                                <div className="select">
+                                    <select name="hp" onChange={this.handleChange}>
+                                        <option value="30">30 HP</option>
+                                        <option value="40">40 HP</option>
+                                        <option value="50">50 HP</option>
+                                        <option value="60">60 HP</option>
+                                        <option value="70">70 HP</option>
+                                        <option value="80">80 HP</option>
+                                        <option value="90">90 HP</option>
+                                        <option value="100">100 HP</option>
+                                        <option value="110">110 HP</option>
+                                        <option value="120">120 HP</option>
+                                        <option value="130">130 HP</option>
+                                        <option value="140">140 HP</option>
+                                        <option value="150">150 HP</option>
+                                        <option value="160">160 HP</option>
+                                        <option value="170">170 HP</option>
+                                        <option value="180">180 HP</option>
+                                        <option value="190">190 HP</option>
+                                        <option value="200">200 HP</option>
+                                        <option value="210">210 HP</option>
+                                        <option value="220">220 HP</option>
+                                        <option value="230">230 HP</option>
+                                        <option value="240">240 HP</option>
+                                        <option value="250">250 HP</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="column is-half has-text-centered">
-                    <CardRenderer 
-                        type={type} 
-                        name={name} 
-                        stage={stage}
-                        nameEvolution={nameEvolution}
-                        mainPicture={mainPicture}
-                        evolvePicture={evolvePicture}
-                    />
-                </div>
-                <div className="column is-one-quarter">
                     <div className="gfields box">
                         <div className="gfields-header">
                             <div></div>
@@ -172,6 +210,171 @@ class Generator extends Component {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="column is-half has-text-centered">
+                    <CardRenderer 
+                        type={type} 
+                        name={name} 
+                        stage={stage}
+                        nameEvolution={nameEvolution}
+                        mainPicture={mainPicture}
+                        evolvePicture={evolvePicture}
+                        hp={hp}
+                        attack1={attack1}
+                        attack2={attack2}
+                    />
+                </div>
+                <div className="column is-one-quarter">
+                    <div className="gfields box">
+                        <div className="gfields-header">
+                            <div></div>
+                            <div>Attack 1</div>
+                        </div>
+                        <div className="gfields-content">
+                            <div className="field">
+                                <label className="label">Name</label>
+                                <input type="text" name="attack1Name" nested="attack1" className="input" onChange={this.handleChange} />
+                            </div>   
+                            <div className="field">
+                                <label className="label">Dammage</label>
+                                <div className="select">
+                                    <select name="attack1Dammage" onChange={this.handleChange} nested="attack1">
+                                        <option value=" "></option>
+                                        <option value="10">10</option>
+                                        <option value="10+">10+</option>
+                                        <option value="10x">10x</option>
+                                        <option value="20">20</option>
+                                        <option value="20+">20+</option>
+                                        <option value="20x">20x</option>
+                                        <option value="30">30</option>
+                                        <option value="30+">30+</option>
+                                        <option value="30x">30x</option>
+                                        <option value="40">40</option>
+                                        <option value="50">50</option>
+                                        <option value="60">60</option>
+                                        <option value="70">70</option>
+                                        <option value="80">80</option>
+                                        <option value="90">90</option>
+                                        <option value="100">100</option>
+                                        <option value="120">120</option>
+                                        <option value="150">150</option>
+                                        <option value="200">200</option>
+                                    </select>
+                                </div>
+                            </div>    
+                            <div className="field">
+                                <label className="label">Info</label>
+                                <textarea type="text" name="attack1Info" nested="attack1" className="input" onChange={this.handleChange}></textarea>
+                            </div>   
+                            <div className="field">
+                                <label className="label">Type</label>
+                                <div className="columns">
+                                    <div className="column is-two-fifths"> 
+                                        <div className="select">
+                                            <select name="attack1Amount" nested="attack1" onChange={this.handleChange}>
+                                                <option value=""></option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="column is-three-fifths"> 
+                                        <div className="select">                                    
+                                            <select name="attack1Type" nested="attack1" onChange={this.handleChange}>
+                                                <option value=""></option>
+                                                <option value="fire">Fire</option>
+                                                <option value="grass">Grass</option>
+                                                <option value="water">Water</option>
+                                                <option value="electric">Electric</option>
+                                                <option value="psychic">Psychic</option>
+                                                <option value="fighting">Fighting</option>
+                                                <option value="normal">Normal</option>
+                                                <option value="steel">Steel</option>
+                                                <option value="dark">Dark</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                                                        
+                        </div>
+                    </div>
+                    <div className="gfields box">
+                        <div className="gfields-header">
+                            <div></div>
+                            <div>Attack 2</div>
+                        </div>
+                        <div className="gfields-content">
+                            <div className="field">
+                                <label className="label">Name</label>
+                                <input type="text" name="attack2Name" className="input" onChange={this.handleChange} nested="attack2" />
+                            </div>   
+                            <div className="field">
+                                <label className="label">Dammage</label>
+                                <div className="select">
+                                    <select name="attack2Dammage" onChange={this.handleChange} nested="attack2">
+                                        <option value=" "></option>
+                                        <option value="10">10</option>
+                                        <option value="10+">10+</option>
+                                        <option value="10x">10x</option>
+                                        <option value="20">20</option>
+                                        <option value="20+">20+</option>
+                                        <option value="20x">20x</option>
+                                        <option value="30">30</option>
+                                        <option value="30+">30+</option>
+                                        <option value="30x">30x</option>
+                                        <option value="40">40</option>
+                                        <option value="50">50</option>
+                                        <option value="60">60</option>
+                                        <option value="70">70</option>
+                                        <option value="80">80</option>
+                                        <option value="90">90</option>
+                                        <option value="100">100</option>
+                                        <option value="120">120</option>
+                                        <option value="150">150</option>
+                                        <option value="200">200</option>
+                                    </select>
+                                </div>
+                            </div>    
+                            <div className="field">
+                                <label className="label">Info</label>
+                                <textarea type="text" name="attack2Info" className="input" onChange={this.handleChange} nested="attack2"></textarea>
+                            </div>   
+                            <div className="field">
+                                <label className="label">Type</label>
+                                <div className="columns">
+                                    <div className="column is-two-fifths"> 
+                                        <div className="select">
+                                            <select name="attack2Amount" onChange={this.handleChange} nested="attack2">
+                                                <option value=""></option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="column is-three-fifths"> 
+                                        <div className="select">                                    
+                                            <select name="attack2Type" onChange={this.handleChange} nested="attack2">
+                                                <option value=""></option>
+                                                <option value="fire">Fire</option>
+                                                <option value="grass">Grass</option>
+                                                <option value="water">Water</option>
+                                                <option value="electric">Electric</option>
+                                                <option value="psychic">Psychic</option>
+                                                <option value="fighting">Fighting</option>
+                                                <option value="normal">Normal</option>
+                                                <option value="steel">Steel</option>
+                                                <option value="dark">Dark</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                                                        
                         </div>
                     </div>
                 </div>
