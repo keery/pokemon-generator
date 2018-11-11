@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Stage, Layer, Text, Group, Image as ImageCanvas, Rect } from 'react-konva';
 import Attack from '../Attack/Attack';
 import TypeAmount from '../TypeAmount/TypeAmount';
@@ -163,6 +163,15 @@ class CardRenderer extends Component {
         this.setState({[attrs.name+"X"]: attrs.x, [attrs.name+"Y"]: attrs.y })
     }
     
+    exportCard = () => {
+        const link = document.createElement("a");
+        link.download = 'card.png';
+        link.href = this.stageRef.getStage().toDataURL();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+    
     render() {
         const {
             attack1,
@@ -220,120 +229,123 @@ class CardRenderer extends Component {
         if (weight != '') pokemonInfo += `Weight: ${weight}`
 
         return (
-            <Stage width={360} height={506} ref={ref => { this.stageRef = ref; }}>
-                <Layer>
-                    <ImageCanvas image={bg} width={360} height={506} />
-                    <Text text={name} fontFamily="pokename" fontSize={23}  y={nameY} x={nameX} />
+            <Fragment>
+                <Stage width={360} height={506} ref={ref => { this.stageRef = ref; }}>
+                    <Layer>
+                        <ImageCanvas image={bg} width={360} height={506} />
+                        <Text text={name} fontFamily="pokename" fontSize={23}  y={nameY} x={nameX} />
 
-                    {
-                        mainPicture && (
-                            <Group width={275} height={194} y={63} x={44} clipWidth={275} clipHeight={197} clipY={0} clipX={-2}>
-                                <ImageCanvas image={mainPicture} y={mainPictureY} x={mainPictureX} draggable={true} name="mainPicture" onDragEnd={this.updateImgPos} />
-                            </Group>
-                        )
-                    }
-                    {
-                        stage !== "basic" && 
-                            <Group>
-                                <ImageCanvas image={sliceStage} x={36} y={57} width={56} height={37} draggable={true}  />                
-                                <Group width={44} height={40} y={40} x={31} clipWidth={44} clipHeight={38} clipY={0} clipX={0}>
-                                    <ImageCanvas image={evolvePicture} y={evolvePictureY} x={evolvePictureX} name="evolvePicture" onDragEnd={this.updateImgPos} draggable={true} />
+                        {
+                            mainPicture && (
+                                <Group width={275} height={194} y={63} x={44} clipWidth={275} clipHeight={197} clipY={0} clipX={-2}>
+                                    <ImageCanvas image={mainPicture} y={mainPictureY} x={mainPictureX} draggable={true} name="mainPicture" onDragEnd={this.updateImgPos} />
                                 </Group>
-                                { nameEvolution !== "" && <Text text={"Evolves from "+nameEvolution} fontFamily="pokevolution" fontSize={9} y={21} x={77} /> }
-                            </Group>
+                            )
+                        }
+                        {
+                            stage !== "basic" && 
+                                <Group>
+                                    <ImageCanvas image={sliceStage} x={36} y={57} width={56} height={37} draggable={true}  />                
+                                    <Group width={44} height={40} y={40} x={31} clipWidth={44} clipHeight={38} clipY={0} clipX={0}>
+                                        <ImageCanvas image={evolvePicture} y={evolvePictureY} x={evolvePictureX} name="evolvePicture" onDragEnd={this.updateImgPos} draggable={true} />
+                                    </Group>
+                                    { nameEvolution !== "" && <Text text={"Evolves from "+nameEvolution} fontFamily="pokevolution" fontSize={9} y={21} x={77} /> }
+                                </Group>
+                            
+                        }
+                        { hp !== "" && (
+                                <Text text={hp+" HP"} fontFamily="pokehp" width={100} height={100} fontSize={19} y={36} x={196} align="right" fill="#ff1f00" />                
+                            )
+                        }
+                        { pokemonInfo !== "" && (
+                                <Text text={`${pokemonInfo}.`} fontFamily="pokevolution" width={245} fontSize={11} y={274} x={55} wrap="none" align="center" />
+                            )
+                        }
                         
-                    }
-                    { hp !== "" && (
-                            <Text text={hp+" HP"} fontFamily="pokehp" width={100} height={100} fontSize={19} y={36} x={196} align="right" fill="#ff1f00" />                
-                        )
-                    }
-                    { pokemonInfo !== "" && (
-                            <Text text={`${pokemonInfo}.`} fontFamily="pokevolution" width={245} fontSize={11} y={274} x={55} wrap="none" align="center" />
-                        )
-                    }
-                    
-                    <Attack 
-                        x={26}
-                        y={295}
-                        tiny={tiny}
-                        name={attack1Name}
-                        damage={attack1Dammage}
-                        type={attack1Type}
-                        amount={attack1Amount}
-                        desc={attack1Info}
-                        imgTypeAmount={attack1Img}
-                    />
-                    <Rect
-                        visible={tiny}
-                        x={24.5}
-                        y={350}
-                        width={309}
-                        height={1.5}
-                        fill="#000000"
-                    />
-                    <Attack 
-                        x={26}
-                        y={attack2Y || 295}
-                        tiny={tiny}
-                        name={attack2Name}
-                        damage={attack2Dammage}
-                        type={attack2Type}
-                        amount={attack2Amount}
-                        desc={attack2Info}
-                        imgTypeAmount={attack2Img}
-                    />
-                    <Group x={10} y={418} width={380}>
-                        <TypeAmount type={weaknessImg} amount={weaknessAmount} />
-                        <TypeAmount type={resistanceImg} amount={resistanceAmount} x={120} />
-                        { retreatImg && <ImageCanvas x={246} y={10} image={retreatImg} /> }
-                    </Group>
-                    { description !== "" && (
-                            <Group x={38} y={451} width={282}>
+                        <Attack 
+                            x={26}
+                            y={295}
+                            tiny={tiny}
+                            name={attack1Name}
+                            damage={attack1Dammage}
+                            type={attack1Type}
+                            amount={attack1Amount}
+                            desc={attack1Info}
+                            imgTypeAmount={attack1Img}
+                        />
+                        <Rect
+                            visible={tiny}
+                            x={24.5}
+                            y={350}
+                            width={309}
+                            height={1.5}
+                            fill="#000000"
+                        />
+                        <Attack 
+                            x={26}
+                            y={attack2Y || 295}
+                            tiny={tiny}
+                            name={attack2Name}
+                            damage={attack2Dammage}
+                            type={attack2Type}
+                            amount={attack2Amount}
+                            desc={attack2Info}
+                            imgTypeAmount={attack2Img}
+                        />
+                        <Group x={10} y={418} width={380}>
+                            <TypeAmount type={weaknessImg} amount={weaknessAmount} />
+                            <TypeAmount type={resistanceImg} amount={resistanceAmount} x={120} />
+                            { retreatImg && <ImageCanvas x={246} y={10} image={retreatImg} /> }
+                        </Group>
+                        { description !== "" && (
+                                <Group x={38} y={451} width={282}>
+                                    <Text
+                                        text={description}
+                                        fontFamily="pokevolution"
+                                        width={280}
+                                        height={25}
+                                        fontSize={10}
+                                        lineHeight={1.1}
+                                        verticalAlign="middle"
+                                    />                
+                                </Group>
+                            )
+                        }
+                        { illustrator !== "" && (
                                 <Text
-                                    text={description}
-                                    fontFamily="pokevolution"
-                                    width={280}
-                                    height={25}
-                                    fontSize={10}
-                                    lineHeight={1.1}
-                                    verticalAlign="middle"
+                                    text={`Illus. ${illustrator}`}
+                                    fontFamily="pokename"
+                                    width={75}
+                                    height={8}
+                                    wrap='none'
+                                    fontSize={7}
+                                    y={479.5}
+                                    x={20}
                                 />                
-                            </Group>
-                        )
-                    }
-                    { illustrator !== "" && (
-                            <Text
-                                text={`Illus. ${illustrator}`}
-                                fontFamily="pokename"
-                                width={75}
-                                height={8}
-                                wrap='none'
-                                fontSize={7}
-                                y={479.5}
-                                x={20}
-                            />                
-                        )
-                    }
-                    { setNumber !== "" && (
-                            <Text
-                                text={setNumber}
-                                fontFamily="pokename"
-                                width={35}
-                                height={8}
-                                wrap='none'
-                                fontSize={8}
-                                align='right'
-                                y={479.5}
-                                x={292}
-                            />                
-                        )
-                    }
-                    { rarityLogo && (
-                            <ImageCanvas image={rarityLogo} y={479} x={330} width={7} height={7} />
-                        )
-                    }
-                </Layer>
-            </Stage>
+                            )
+                        }
+                        { setNumber !== "" && (
+                                <Text
+                                    text={setNumber}
+                                    fontFamily="pokename"
+                                    width={35}
+                                    height={8}
+                                    wrap='none'
+                                    fontSize={8}
+                                    align='right'
+                                    y={479.5}
+                                    x={292}
+                                />                
+                            )
+                        }
+                        { rarityLogo && (
+                                <ImageCanvas image={rarityLogo} y={479} x={330} width={7} height={7} />
+                            )
+                        }
+                    </Layer>
+                </Stage>
+                <button onClick={this.exportCard}>Export card</button>
+            </Fragment>
         )
     }
 }

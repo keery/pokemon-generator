@@ -120,7 +120,7 @@ class Generator extends Component {
         img.height = ratio.height
         return img
     }
-
+    
     render() {
         const { type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2, weaknessAmount, weaknessType, resistanceAmount, resistanceType, retreat, description, illustrator, cardNumber, totalCollection, rarity, species, length, weight } = this.state
         
