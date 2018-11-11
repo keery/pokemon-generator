@@ -37,6 +37,9 @@ class Generator extends Component {
             cardNumber : '',
             totalCollection : '',
             rarity : '',
+            species : '',
+            length : '',
+            weight : '',
             attack1 : {
                 attack1Name: '',
                 attack1Dammage: '',
@@ -119,7 +122,7 @@ class Generator extends Component {
     }
 
     render() {
-        const { type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2, weaknessAmount, weaknessType, resistanceAmount, resistanceType, retreat, description, illustrator, cardNumber, totalCollection, rarity } = this.state
+        const { type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2, weaknessAmount, weaknessType, resistanceAmount, resistanceType, retreat, description, illustrator, cardNumber, totalCollection, rarity, species, length, weight } = this.state
         
         return (
             <div className="columns is-centered">
@@ -188,6 +191,18 @@ class Generator extends Component {
                                     </select>
                                 </div>
                             </div>
+                            <div className="field">
+                                <label className="label">Species</label>
+                                <input type="text" name="species" className="input" onChange={this.handleChange} />
+                            </div>
+                            <div className="field">
+                                <label className="label">Length</label>
+                                <input type="text" name="length" className="input" placeholder={`0' 0"`} onChange={this.handleChange} />
+                            </div>
+                            <div className="field">
+                                <label className="label">Weight</label>
+                                <input type="text" name="weight" className="input" placeholder="0 lbs" onChange={this.handleChange} />
+                            </div>
                         </div>
                     </div>
                     <div className="gfields box">
@@ -250,6 +265,9 @@ class Generator extends Component {
                         cardNumber={cardNumber}
                         totalCollection={totalCollection}
                         rarity={rarity}
+                        species={species}
+                        length={length}
+                        weight={weight}
                     />
                 </div>
                 <div className="column is-one-quarter">

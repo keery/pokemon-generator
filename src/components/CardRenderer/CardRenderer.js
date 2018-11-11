@@ -11,7 +11,7 @@ class CardRenderer extends Component {
     constructor(props) {
         super(props)
         const { 
-            type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2, weaknessAmount, weaknessType, resistanceAmount, resistanceType, retreat, description, illustrator, cardNumber, totalCollection, rarity,
+            type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2, weaknessAmount, weaknessType, resistanceAmount, resistanceType, retreat, description, illustrator, cardNumber, totalCollection, rarity, species, length, weight,
         } = props
 
         this.state = {
@@ -44,6 +44,9 @@ class CardRenderer extends Component {
             totalCollection,
             rarity,
             rarityLogo : null,
+            species,
+            length,
+            weight,
         }
     }
 
@@ -188,6 +191,9 @@ class CardRenderer extends Component {
             cardNumber,
             totalCollection,
             rarityLogo,
+            species,
+            length,
+            weight,
         } = this.state
 
         const { attack1Name, attack1Dammage, attack1Info, attack1Type, attack1Amount, attack1Img } = attack1;
@@ -205,6 +211,13 @@ class CardRenderer extends Component {
             tiny = true;
             attack2Y = 360;
         }
+
+        let pokemonInfo = '';
+        if (species != '') pokemonInfo += `${species} Pokémon`
+        if (species != '' && (length != '' || weight != '')) pokemonInfo += `. `
+        if (length != '') pokemonInfo += `Length: ${length}`
+        if ((length != '' && weight != '')) pokemonInfo += `, `
+        if (weight != '') pokemonInfo += `Weight: ${weight}`
 
         return (
             <Stage width={360} height={506} ref={ref => { this.stageRef = ref; }}>
@@ -232,6 +245,10 @@ class CardRenderer extends Component {
                     }
                     { hp !== "" && (
                             <Text text={hp+" HP"} fontFamily="pokehp" width={100} height={100} fontSize={19} y={36} x={196} align="right" fill="#ff1f00" />                
+                        )
+                    }
+                    { pokemonInfo !== "" && (
+                            <Text text={`${pokemonInfo}.`} fontFamily="pokevolution" width={245} fontSize={11} y={274} x={55} wrap="none" align="center" />
                         )
                     }
                     
