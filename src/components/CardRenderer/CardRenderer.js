@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Stage, Layer, Text, Group, Image as ImageCanvas } from 'react-konva';
+import { Stage, Layer, Text, Group, Image as ImageCanvas, Rect } from 'react-konva';
 import Attack from '../Attack/Attack';
+import TypeAmount from '../TypeAmount/TypeAmount';
 import '../../containers/App/App.scss';
 import sliceStageImg from '../../assets/1-gen/slice-stage.png'
 
@@ -10,8 +11,7 @@ class CardRenderer extends Component {
     constructor(props) {
         super(props)
         const { 
-            type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2,
-            // type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1Amount, attack1Dammage, attack1Name, attack1Info, attack1Type, attack2Amount, attack2Dammage, attack2Name, attack2Info, attack2Type
+            type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2, weaknessAmount, weaknessType, resistanceAmount, resistanceType, retreat, description, illustrator, cardNumber, totalCollection, rarity,
         } = props
 
         this.state = {
@@ -33,11 +33,22 @@ class CardRenderer extends Component {
             sliceStage: this.generateImg(sliceStageImg),
             attack1,
             attack2,
+            weaknessAmount,
+            weaknessType,
+            resistanceAmount,
+            resistanceType,
+            retreat,
+            description,
+            illustrator,
+            cardNumber,
+            totalCollection,
+            rarity,
+            rarityLogo : null,
         }
     }
 
     componentWillReceiveProps(nextProps) { 
-        const { type, stage, attack1 : { attack1Type, attack1Amount }, attack2 : { attack2Type, attack2Amount }} = nextProps        
+        const { type, stage, weaknessType, resistanceType, retreat, rarity, attack1 : { attack1Type, attack1Amount }, attack2 : { attack2Type, attack2Amount }} = nextProps        
         const newState = {...nextProps}
 
         //Je décale le nom si c'est une évolution
@@ -60,6 +71,7 @@ class CardRenderer extends Component {
                 this.setState(newState)            
             }
         }
+        else newState.attack1.attack1Img = null 
 
         if(attack2Type !== "" && attack2Amount !== "") {
             const img = new Image()
@@ -69,6 +81,47 @@ class CardRenderer extends Component {
                 this.setState(newState)            
             }
         }
+        else newState.attack2.attack2Img = null 
+
+        if(weaknessType !== "") {
+            const img = new Image()
+            img.src = require("../../assets/1-gen/1-"+weaknessType+".png")
+            img.onload = () => {
+                newState.weaknessImg = img
+                this.setState(newState)            
+            }
+        }
+        else newState.weaknessImg = null 
+
+        if(resistanceType !== "") {
+            const img = new Image()
+            img.src = require("../../assets/1-gen/1-"+resistanceType+".png")
+            img.onload = () => {
+                newState.resistanceImg = img
+                this.setState(newState)            
+            }
+        }
+        else newState.resistanceImg = null 
+
+        if(retreat > 0 && retreat <= 4) {
+            const img = new Image()
+            img.src = require("../../assets/1-gen/retreat-"+retreat+".png")
+            img.onload = () => {
+                newState.retreatImg = img
+                this.setState(newState)            
+            }
+        }
+        else newState.retreatImg = null
+
+        if(rarity != '') {
+            const img = new Image()
+            img.src = require("../../assets/1-gen/rarity-"+rarity+".png")
+            img.onload = () => {
+                newState.rarityLogo = img
+                this.setState(newState)            
+            }
+        }
+        else newState.rarityLogo = null 
     }
 
     componentDidMount() {
@@ -125,13 +178,33 @@ class CardRenderer extends Component {
             mainPicture,
             mainPictureX,
             mainPictureY,
+            weaknessImg,
+            weaknessAmount,
+            resistanceImg,
+            resistanceAmount,
+            retreatImg,
+            description,
+            illustrator,
+            cardNumber,
+            totalCollection,
+            rarityLogo,
         } = this.state
 
         const { attack1Name, attack1Dammage, attack1Info, attack1Type, attack1Amount, attack1Img } = attack1;
         const { attack2Name, attack2Dammage, attack2Info, attack2Type, attack2Amount, attack2Img } = attack2;
 
-        let tiny = false;
-        if(!isEmpty(attack1) && !isEmpty(attack2)) tiny = true;
+        let tiny = false
+        let attack2Y = false
+        let setNumber = cardNumber
+        if (totalCollection !== '') {
+            if (cardNumber !== '') setNumber += '/'
+            setNumber += totalCollection
+        }
+
+        if((attack1Name !== '' || attack1Dammage !== '' || attack1Info !== '' || attack1Img) && (attack2Name !== '' || attack2Dammage !== '' || attack2Info !== '' || attack2Img)) {
+            tiny = true;
+            attack2Y = 360;
+        }
 
         return (
             <Stage width={360} height={506} ref={ref => { this.stageRef = ref; }}>
@@ -172,10 +245,18 @@ class CardRenderer extends Component {
                         amount={attack1Amount}
                         desc={attack1Info}
                         imgTypeAmount={attack1Img}
-                    /> 
+                    />
+                    <Rect
+                        visible={tiny}
+                        x={24.5}
+                        y={350}
+                        width={309}
+                        height={1.5}
+                        fill="#000000"
+                    />
                     <Attack 
                         x={26}
-                        y={295}
+                        y={attack2Y || 295}
                         tiny={tiny}
                         name={attack2Name}
                         damage={attack2Dammage}
@@ -183,7 +264,57 @@ class CardRenderer extends Component {
                         amount={attack2Amount}
                         desc={attack2Info}
                         imgTypeAmount={attack2Img}
-                    />                    
+                    />
+                    <Group x={10} y={418} width={380}>
+                        <TypeAmount type={weaknessImg} amount={weaknessAmount} />
+                        <TypeAmount type={resistanceImg} amount={resistanceAmount} x={120} />
+                        { retreatImg && <ImageCanvas x={246} y={10} image={retreatImg} /> }
+                    </Group>
+                    { description !== "" && (
+                            <Group x={38} y={451} width={282}>
+                                <Text
+                                    text={description}
+                                    fontFamily="pokevolution"
+                                    width={280}
+                                    height={25}
+                                    fontSize={10}
+                                    lineHeight={1.1}
+                                    verticalAlign="middle"
+                                />                
+                            </Group>
+                        )
+                    }
+                    { illustrator !== "" && (
+                            <Text
+                                text={`Illus. ${illustrator}`}
+                                fontFamily="pokename"
+                                width={75}
+                                height={8}
+                                wrap='none'
+                                fontSize={7}
+                                y={479.5}
+                                x={20}
+                            />                
+                        )
+                    }
+                    { setNumber !== "" && (
+                            <Text
+                                text={setNumber}
+                                fontFamily="pokename"
+                                width={35}
+                                height={8}
+                                wrap='none'
+                                fontSize={8}
+                                align='right'
+                                y={479.5}
+                                x={292}
+                            />                
+                        )
+                    }
+                    { rarityLogo && (
+                            <ImageCanvas image={rarityLogo} y={479} x={330} width={7} height={7} />
+                        )
+                    }
                 </Layer>
             </Stage>
         )

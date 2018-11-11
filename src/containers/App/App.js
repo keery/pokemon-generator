@@ -11,7 +11,6 @@ class App extends Component {
 
     return (
         <section className="App container is-fluid">
-          {/* <div id="test">test</div> */}
           <Generator />
         </section>
     );

@@ -2,7 +2,15 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Text, Group, Image as ImageCanvas } from 'react-konva';
 
-const Attack = ({damage, desc, name, amount, type, width, height, x, y, imgTypeAmount }) => {
+const Attack = ({damage, desc, name, amount, type, width, height, x, y, imgTypeAmount, tiny }) => {
+    let imgTypeAmountY = 30;
+    let damageY = 40;
+
+    if(tiny) {
+        height = 50
+        imgTypeAmountY = 0;
+        damageY = 10;
+    }
     const global = {
         textAttackX : 15,
         textWidth : 278
@@ -37,9 +45,9 @@ const Attack = ({damage, desc, name, amount, type, width, height, x, y, imgTypeA
     }
 
     if(imgTypeAmount) {
-        imgTypeAmount = <ImageCanvas image={imgTypeAmount} x={0} y={30} />
+        imgTypeAmount = <ImageCanvas image={imgTypeAmount} x={0} y={imgTypeAmountY} />
     }
-    
+
     return (
         <Group width={width} height={height} x={x} y={y} clipWidth={width} clipHeight={height}  clipY={0} clipX={0}>
             { imgTypeAmount }
@@ -58,7 +66,7 @@ const Attack = ({damage, desc, name, amount, type, width, height, x, y, imgTypeA
                 />
                 <Text text={desc} fontFamily="gstd" fontSize={attackDescData.fontSize}  y={attackDescData.y} x={0} width={global.textWidth} wrap="char" />
             </Group>
-            <Text text={damage} fontFamily="gstd" fontSize={27} y={40} x={196} width={100} align="right"/>
+            <Text text={damage} fontFamily="gstd" fontSize={27} y={damageY} x={196} width={100} align="right"/>
         </Group>
     )
 }

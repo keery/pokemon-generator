@@ -1,6 +1,20 @@
 import React, { Component } from 'react';
 import CardRenderer from '../../components/CardRenderer/CardRenderer'
 
+const ELEMENTS = [
+    'Fire',
+    'Grass',
+    'Water',
+    'Electric',
+    'Psychic',
+    'Fighting',
+    'Normal',
+    'Steel',
+    'Dark',
+];
+
+const ElementsOptions = ELEMENTS.map(element => <option key={element} value={element.toLowerCase()}>{element}</option>);
+
 class Generator extends Component {
 
     constructor(props) {
@@ -13,6 +27,16 @@ class Generator extends Component {
             mainPicture: null,
             evolvePicture: null,
             hp: 30,
+            weaknessType : '',
+            weaknessAmount : '',
+            resistanceType : '',
+            resistanceAmount : '',
+            retreat : '',
+            description : '',
+            illustrator : '',
+            cardNumber : '',
+            totalCollection : '',
+            rarity : '',
             attack1 : {
                 attack1Name: '',
                 attack1Dammage: '',
@@ -95,7 +119,7 @@ class Generator extends Component {
     }
 
     render() {
-        const { type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2 } = this.state
+        const { type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2, weaknessAmount, weaknessType, resistanceAmount, resistanceType, retreat, description, illustrator, cardNumber, totalCollection, rarity } = this.state
         
         return (
             <div className="columns is-centered">
@@ -114,15 +138,7 @@ class Generator extends Component {
                                 <label className="label">Type</label>
                                 <div className="select">
                                     <select name="type" onChange={this.handleChange}>
-                                        <option value="fire">Fire</option>
-                                        <option value="grass">Grass</option>
-                                        <option value="water">Water</option>
-                                        <option value="electric">Electric</option>
-                                        <option value="psychic">Psychic</option>
-                                        <option value="fighting">Fighting</option>
-                                        <option value="normal">Normal</option>
-                                        <option value="steel">Steel</option>
-                                        <option value="dark">Dark</option>
+                                        { ElementsOptions }
                                     </select>
                                 </div>
                             </div>
@@ -224,9 +240,115 @@ class Generator extends Component {
                         hp={hp}
                         attack1={attack1}
                         attack2={attack2}
+                        weaknessType={weaknessType}
+                        weaknessAmount={weaknessAmount}
+                        resistanceType={resistanceType}
+                        resistanceAmount={resistanceAmount}
+                        retreat={retreat}
+                        description={description}
+                        illustrator={illustrator}
+                        cardNumber={cardNumber}
+                        totalCollection={totalCollection}
+                        rarity={rarity}
                     />
                 </div>
                 <div className="column is-one-quarter">
+                <div className="gfields box">
+                        <div className="gfields-header">
+                            <div></div>
+                            <div>Additional information</div>
+                        </div>
+                        <div className="gfields-content">
+                            <div className="field">
+                                <label className="label">Description</label>
+                                <textarea type="text" name="description" className="input" onChange={this.handleChange} />
+                            </div>
+                            <div className="field">
+                                <label className="label">Illustrator</label>
+                                <input type="text" name="illustrator" className="input" onChange={this.handleChange} />
+                            </div>
+                            <div className="field">
+                                <label className="label">Collection number</label>
+                                <input type="text" name="cardNumber" className="input small" onChange={this.handleChange} maxLength={3} /> / 
+                                <input type="text" name="totalCollection" className="input small" onChange={this.handleChange} maxLength={3} />
+                            </div>
+                            <div className="field">
+                                <label className="label">Rarity</label>
+                                <div className="select">
+                                    <select name="rarity" onChange={this.handleChange}>
+                                        <option value=""></option>
+                                        <option value="common">Common</option>
+                                        <option value="uncommon">Uncommon</option>
+                                        <option value="rare">Rare</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="gfields box">
+                        <div className="gfields-header">
+                            <div></div>
+                            <div>Weakness, resistance and retreat cost</div>
+                        </div>
+                        <div className="gfields-content">
+                            <div className="field">
+                                <label className="label">Weakness type</label>
+                                <div className="select">
+                                    <select name="weaknessType" onChange={this.handleChange}>
+                                        <option value=""></option>
+                                        { ElementsOptions }
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="field">
+                                <label className="label">Weakness amount</label>
+                                <div className="select">
+                                    <select name="weaknessAmount" onChange={this.handleChange}>
+                                        <option value=""> </option>
+                                        <option value="+10">+10</option>
+                                        <option value="+20">+20</option>
+                                        <option value="+30">+30</option>
+                                        <option value="+40">+40</option>
+                                        <option value="x2">x2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="field">
+                                <label className="label">Resistance type</label>
+                                <div className="select">
+                                    <select name="resistanceType" onChange={this.handleChange}>
+                                        <option value=""></option>
+                                        { ElementsOptions }
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="field">
+                                <label className="label">Resistance amount</label>
+                                <div className="select">
+                                    <select name="resistanceAmount" onChange={this.handleChange}>
+                                        <option value=""> </option>
+                                        <option value="+10">+10</option>
+                                        <option value="+20">+20</option>
+                                        <option value="+30">+30</option>
+                                        <option value="+40">+40</option>
+                                        <option value="x2">x2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="field">
+                                <label className="label">Retreat</label>
+                                <div className="select">
+                                    <select name="retreat" onChange={this.handleChange}>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div className="gfields box">
                         <div className="gfields-header">
                             <div></div>
@@ -286,15 +408,7 @@ class Generator extends Component {
                                         <div className="select">                                    
                                             <select name="attack1Type" nested="attack1" onChange={this.handleChange}>
                                                 <option value=""></option>
-                                                <option value="fire">Fire</option>
-                                                <option value="grass">Grass</option>
-                                                <option value="water">Water</option>
-                                                <option value="electric">Electric</option>
-                                                <option value="psychic">Psychic</option>
-                                                <option value="fighting">Fighting</option>
-                                                <option value="normal">Normal</option>
-                                                <option value="steel">Steel</option>
-                                                <option value="dark">Dark</option>
+                                                { ElementsOptions }
                                             </select>
                                         </div>
                                     </div>
@@ -361,15 +475,7 @@ class Generator extends Component {
                                         <div className="select">                                    
                                             <select name="attack2Type" onChange={this.handleChange} nested="attack2">
                                                 <option value=""></option>
-                                                <option value="fire">Fire</option>
-                                                <option value="grass">Grass</option>
-                                                <option value="water">Water</option>
-                                                <option value="electric">Electric</option>
-                                                <option value="psychic">Psychic</option>
-                                                <option value="fighting">Fighting</option>
-                                                <option value="normal">Normal</option>
-                                                <option value="steel">Steel</option>
-                                                <option value="dark">Dark</option>
+                                                { ElementsOptions }
                                             </select>
                                         </div>
                                     </div>
