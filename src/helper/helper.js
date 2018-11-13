@@ -4,3 +4,10 @@ export const isEmpty = (obj) => {
   }
   return true
 }
+
+export const remove = (array, val) => {
+  const index = array.indexOf(val);
+  if (index > -1) {
+    array.splice(index, 1);
+  }
+}

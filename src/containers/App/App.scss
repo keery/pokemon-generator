@@ -25,3 +25,27 @@
 .input.small {
     width: 40%;
 }
+
+.gfields-box {
+    border-radius: 4px;
+    box-shadow: 1px 1px 4px #ccc;
+    
+    .gfields-header { 
+        padding: 2.15rem 1.85rem; 
+        cursor: pointer;
+        font-size: 1.8rem;
+    }
+    
+    .gfields-content-wrapper { 
+        height: 0;
+        overflow: hidden;
+    }
+
+    .gfields-content { 
+        padding: 1.250rem;
+    }
+    
+    + .gfields-box {
+        margin-top: 20px;
+    }
+}
