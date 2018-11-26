@@ -124,10 +124,10 @@ class Generator extends Component {
 
     handleFieldBox(event) {
         const _this = event.currentTarget
-        const classList = _this.classList
-
-        if(classList.includes('test')) classList.add('test')
-        else classList.remove("test");
+        const parent = _this.parentNode
+        const height = parent.classList.toggle('open') ? parent.querySelector('.gfields-content').clientHeight : 0
+        
+        _this.nextSibling.style.maxHeight = `${height}px`
     }
     
     render() {

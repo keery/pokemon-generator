@@ -29,6 +29,13 @@
 .gfields-box {
     border-radius: 4px;
     box-shadow: 1px 1px 4px #ccc;
+
+    &.open
+    {
+        .gfields-content-wrapper {
+            // max-height: 300px;
+        }
+    }
     
     .gfields-header { 
         padding: 2.15rem 1.85rem; 
@@ -37,8 +44,9 @@
     }
     
     .gfields-content-wrapper { 
-        height: 0;
+        max-height: 0;
         overflow: hidden;
+        transition: max-height ease-in-out 0.4s;
     }
 
     .gfields-content { 
