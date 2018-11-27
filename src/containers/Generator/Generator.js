@@ -125,8 +125,20 @@ class Generator extends Component {
     handleFieldBox(event) {
         const _this = event.currentTarget
         const parent = _this.parentNode
+
+        if (!parent.classList.contains('open')) {
+            const boxes = document.getElementsByClassName('gfields-box');
+            
+            if (boxes.length > 0) {
+                for (let i = 0; i < boxes.length; i++) {
+                    boxes[i].classList.remove('open')
+                    boxes[i].querySelector('.gfields-content-wrapper').style.maxHeight = "0px"
+                }
+            }
+        }
+
         const height = parent.classList.toggle('open') ? parent.querySelector('.gfields-content').clientHeight : 0
-        
+
         _this.nextSibling.style.maxHeight = `${height}px`
     }
     
