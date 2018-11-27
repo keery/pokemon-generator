@@ -29,12 +29,17 @@
 .gfields-box {
     border-radius: 4px;
     box-shadow: 1px 1px 4px #ccc;
+    background-color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    transition: ease-in-out margin-top 0.3s 0.1s, ease-in-out margin-bottom 0.3s;
 
     &.open
     {
-        .gfields-content-wrapper {
-            // max-height: 300px;
-        }
+        position: relative;
+        z-index: 5;
+        margin-top: -40px!important;
+        margin-bottom: -60px!important;
     }
     
     .gfields-header { 
