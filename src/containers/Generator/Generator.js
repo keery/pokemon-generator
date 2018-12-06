@@ -150,7 +150,7 @@ class Generator extends Component {
                 <div className="column is-one-quarter">
                     <div className="gfields-box">
                         <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div></div>
+                            <div className="gfields-step">01</div>
                             <div>Pokémon info</div>
                         </div>
                         <div className="gfields-content-wrapper">
@@ -230,7 +230,7 @@ class Generator extends Component {
                     </div>
                     <div className="gfields-box">
                         <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div></div>
+                            <div className="gfields-step">02</div>
                             <div>Evolution</div>
                         </div>
                         <div className="gfields-content-wrapper">
@@ -270,7 +270,7 @@ class Generator extends Component {
                     </div>
                     <div className="gfields-box">
                         <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div></div>
+                            <div className="gfields-step">03</div>
                             <div>Weakness, resistance and retreat cost</div>
                         </div>
                         <div className="gfields-content-wrapper">
@@ -364,7 +364,7 @@ class Generator extends Component {
                 <div className="column is-one-quarter">
                     <div className="gfields-box">
                         <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div></div>
+                            <div className="gfields-step">04</div>
                             <div>Attack 1</div>
                         </div>
                         <div className="gfields-content-wrapper">
@@ -433,7 +433,7 @@ class Generator extends Component {
                     </div>
                     <div className="gfields-box">
                         <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div></div>
+                            <div className="gfields-step">05</div>
                             <div>Attack 2</div>
                         </div>
                         <div className="gfields-content-wrapper">
@@ -502,7 +502,7 @@ class Generator extends Component {
                     </div>
                     <div className="gfields-box">
                         <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div></div>
+                            <div className="gfields-step">06</div>
                             <div>Additional information</div>
                         </div>
                         <div className="gfields-content-wrapper">

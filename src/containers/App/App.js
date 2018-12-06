@@ -10,8 +10,10 @@ class App extends Component {
   render() {
 
     return (
-        <section className="App container is-fluid">
-          <Generator />
+        <section className="App">
+          <div className="container is-fluid">
+            <Generator />
+          </div>
         </section>
     );
   }

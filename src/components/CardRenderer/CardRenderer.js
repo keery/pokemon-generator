@@ -344,7 +344,7 @@ class CardRenderer extends Component {
                         }
                     </Layer>
                 </Stage>
-                <button onClick={this.exportCard}>Export card</button>
+                <button onClick={this.exportCard} className="gradient-btn">Export card</button>
             </Fragment>
         )
     }
