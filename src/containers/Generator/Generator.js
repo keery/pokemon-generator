@@ -141,7 +141,7 @@ class Generator extends Component {
 
         _this.nextSibling.style.maxHeight = `${height}px`
     }
-    
+
     render() {
         const { type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2, weaknessAmount, weaknessType, resistanceAmount, resistanceType, retreat, description, illustrator, cardNumber, totalCollection, rarity, species, length, weight } = this.state
         
@@ -257,7 +257,7 @@ class Generator extends Component {
                                                 <label className="file-label">
                                                     <input className="file-input" type="file" name="evolvePicture" onChange={this.fileHandler} />
                                                     <span className="file-cta">
-                                                        <span className="file-icon"><i className="fas fa-cloud-upload-alt"></i></span>
+                                                        <span className="file-icon"><i className="fas fa-cloud-upload-alt" /></span>
                                                         <span className="file-label">Upload picture</span>
                                                     </span>
                                                 </label>

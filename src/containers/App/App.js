@@ -11,7 +11,7 @@ class App extends Component {
 
     return (
         <section className="App">
-          <div className="container is-fluid">
+          <div className="container is-fluid">            
             <Generator />
           </div>
         </section>

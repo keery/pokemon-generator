@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react'
 import { Stage, Layer, Text, Group, Image as ImageCanvas, Rect } from 'react-konva';
 import Attack from '../Attack/Attack';
 import TypeAmount from '../TypeAmount/TypeAmount';
-import '../../containers/App/App.scss';
 import sliceStageImg from '../../assets/1-gen/slice-stage.png'
+import '../../containers/App/App.scss';
 
 import { isEmpty } from '../../helper/helper';
 
@@ -344,7 +344,9 @@ class CardRenderer extends Component {
                         }
                     </Layer>
                 </Stage>
-                <button onClick={this.exportCard} className="gradient-btn">Export card</button>
+                <button onClick={this.exportCard} className="gradient-btn">
+                    <i className="fas fa-download" />Export card
+                </button>
             </Fragment>
         )
     }
