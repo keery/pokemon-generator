@@ -23,16 +23,14 @@
 .konvajs-content { margin: 0 auto; }
 
 .App {
-    &:before {
-        content: '';
-        display: block;
-        background-color: #faf8f5;
-        height: 70vh;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0; 
-    }
+    padding-top: 8rem;
+    display: block;
+    background-color: #faf8f5;
+    height: 70vh;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0; 
 }
 .input.small {
     width: 40%;
@@ -81,7 +79,7 @@
     }
     
     + .gfields-box {
-        margin-top: 20px;
+        margin-top: 10px;
     }
 }
 
@@ -149,24 +147,78 @@
     border: none;
     padding: 15px 20px;
     font-weight: 500;
-    line-height: 0px;
+    line-height: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 20px;
     display: inline-flex;
     align-items: center;
-    background: -webkit-linear-gradient(right, #ff9349 0%, #ffc27b 100%);
-    background: -o-linear-gradient(right, #ff9349 0%, #ffc27b 100%);
     background: linear-gradient(to left, #ff9349 0%, #ffc27b 100%);
     transition: ease-in-out 0.2s box-shadow;
 
+    &.tiny {
+        padding: 9px 16px;
+    }
+
     &:hover {
         box-shadow: 0px 0px 12px #949090;
+        color: white;
     }
 
     svg.svg-inline--fa {
         width: 1.25em;
         height: 1.25em;
         margin-right: 10px;
+    }
+}
+
+header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 4;
+}
+
+nav {
+
+    #logo {
+        > img {
+            width: 40px;
+        }
+    }
+
+    #logo-title {
+        padding-left: 15px;
+        font-size: 2.5rem;
+        max-width: 195px;
+        line-height: 1;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .container {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .menu-left {
+        display: flex;
+        align-items: center;
+    
+        a:not(.gradient-btn) {
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #ff9349;
+            padding: 15px 10px;
+            margin-right: 14px;
+        }
     }
 }

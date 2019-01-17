@@ -3,6 +3,7 @@ import '../../assets/style/index.scss';
 import './App.scss'; 
 import 'bulma/css/bulma.css'
 import Generator from '../Generator/Generator';
+import Header from '../../components/Header'
 
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
 
     return (
         <section className="App">
+          <Header />
           <div className="container is-fluid">            
             <Generator />
           </div>

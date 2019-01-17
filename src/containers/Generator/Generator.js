@@ -334,34 +334,6 @@ class Generator extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="column is-half has-text-centered">
-                    <CardRenderer 
-                        type={type} 
-                        name={name} 
-                        stage={stage}
-                        nameEvolution={nameEvolution}
-                        mainPicture={mainPicture}
-                        evolvePicture={evolvePicture}
-                        hp={hp}
-                        attack1={attack1}
-                        attack2={attack2}
-                        weaknessType={weaknessType}
-                        weaknessAmount={weaknessAmount}
-                        resistanceType={resistanceType}
-                        resistanceAmount={resistanceAmount}
-                        retreat={retreat}
-                        description={description}
-                        illustrator={illustrator}
-                        cardNumber={cardNumber}
-                        totalCollection={totalCollection}
-                        rarity={rarity}
-                        species={species}
-                        length={length}
-                        weight={weight}
-                    />
-                </div>
-                <div className="column is-one-quarter">
                     <div className="gfields-box">
                         <div className="gfields-header" onClick={this.handleFieldBox}>
                             <div className="gfields-step">04</div>
@@ -431,6 +403,34 @@ class Generator extends Component {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="column is-half has-text-centered">
+                    <CardRenderer 
+                        type={type} 
+                        name={name} 
+                        stage={stage}
+                        nameEvolution={nameEvolution}
+                        mainPicture={mainPicture}
+                        evolvePicture={evolvePicture}
+                        hp={hp}
+                        attack1={attack1}
+                        attack2={attack2}
+                        weaknessType={weaknessType}
+                        weaknessAmount={weaknessAmount}
+                        resistanceType={resistanceType}
+                        resistanceAmount={resistanceAmount}
+                        retreat={retreat}
+                        description={description}
+                        illustrator={illustrator}
+                        cardNumber={cardNumber}
+                        totalCollection={totalCollection}
+                        rarity={rarity}
+                        species={species}
+                        length={length}
+                        weight={weight}
+                    />
+                </div>
+                <div className="column is-one-quarter">
                     <div className="gfields-box">
                         <div className="gfields-header" onClick={this.handleFieldBox}>
                             <div className="gfields-step">05</div>
