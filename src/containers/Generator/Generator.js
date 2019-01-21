@@ -533,7 +533,33 @@ class Generator extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>                        
+                    </div>
+                    <div className='panel-actions'>
+                        <button onClick={this.exportCard} className="gradient-btn" title="Download your creation">
+                            <i className="fas fa-download" />
+                        </button>
+                        <button className="gradient-btn" title="Print your creation">
+                            <i className="fas fa-print" />
+                        </button>
+                        <button className="gradient-btn" title="Save it">
+                            <i className="fas fa-hdd" />
+                        </button>
+                        <button className="gradient-btn" title="Try again">
+                            <i className="fas fa-sync-alt" />
+                        </button>
+                        <button className="gradient-btn" title="Share to your friends">
+                            <i className="fas fa-share-alt" />
+                        </button>
+                    </div>
+                    <div className="signature">
+                        <div className="version">
+                            <b>Version 1.0</b>
+                            <div>Pokemon Generator © { (new Date()).getFullYear() }</div>
+                        </div>
+                        <div className="signature-desc">
+                        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page
+                        </div>
+                    </div>
                 </div>
             </div>
         );

@@ -222,3 +222,34 @@ nav {
         }
     }
 }
+
+.panel-actions {
+    padding-top: 25px;
+    text-align: center;
+
+    .gradient-btn {
+        padding: 1.3rem;
+        
+        + .gradient-btn {
+            margin-left : .8rem;
+        }
+        > svg {
+            margin-right: 0;
+        }
+    }
+}
+
+.signature {
+    padding-left: 2.3rem;
+    padding-top: 2.3rem;
+
+    .signature-desc {
+        padding-top: 10px;
+        color: #9b9b9b;
+    }
+}
+.version {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+}

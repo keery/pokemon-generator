@@ -344,23 +344,6 @@ class CardRenderer extends Component {
                         }
                     </Layer>
                 </Stage>
-                <div className='panel-actions'>
-                    <button onClick={this.exportCard} className="gradient-btn" title="Download your creation">
-                        <i className="fas fa-download" />Export card
-                    </button>
-                    <button className="gradient-btn" title="Print your creation">
-                        <i className="fas fa-print" />Print
-                    </button>
-                    <button className="gradient-btn" title="Save it">
-                        <i className="fas fa-hdd" />Save
-                    </button>
-                    <button className="gradient-btn" title="Try again">
-                        <i className="fas fa-sync-alt" />Clean
-                    </button>
-                    <button className="gradient-btn" title="Share to your friends">
-                        <i className="fas fa-share-alt" />Share
-                    </button>
-                </div>
             </Fragment>
         )
     }
