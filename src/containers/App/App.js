@@ -13,8 +13,10 @@ class App extends Component {
     return (
         <section className="App">
           <Header />
-          <div className="container is-fluid">            
-            <Generator />
+          <div className="container is-fluid">
+            <div className="global-wrapper">
+              <Generator />
+            </div>
           </div>
         </section>
     );
