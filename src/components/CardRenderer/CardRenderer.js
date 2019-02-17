@@ -15,8 +15,8 @@ class CardRenderer extends Component {
         } = props
 
         this.state = {
-            type: type || 'fire',
-            stage: stage || 'basic',
+            type: type,
+            stage: stage,
             name,
             nameEvolution,
             mainPicture,
@@ -174,8 +174,8 @@ class CardRenderer extends Component {
     
     render() {
         const {
-            attack1,
-            attack2,
+            attack1 : { attack1Name, attack1Dammage, attack1Info, attack1Type, attack1Amount, attack1Img },
+            attack2 : { attack2Name, attack2Dammage, attack2Info, attack2Type, attack2Amount, attack2Img },
             sliceStage,
             hp,
             name,
@@ -204,9 +204,6 @@ class CardRenderer extends Component {
             length,
             weight,
         } = this.state
-
-        const { attack1Name, attack1Dammage, attack1Info, attack1Type, attack1Amount, attack1Img } = attack1;
-        const { attack2Name, attack2Dammage, attack2Info, attack2Type, attack2Amount, attack2Img } = attack2;
 
         let tiny = false
         let attack2Y = false
@@ -348,5 +345,10 @@ class CardRenderer extends Component {
         )
     }
 }
+
+CardRenderer.defaultProps = {
+    type  : 'fire',
+    stage : 'basic'
+};
 
 export default CardRenderer

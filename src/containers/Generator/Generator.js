@@ -10,8 +10,9 @@ const ELEMENTS = [
     'Psychic',
     'Fighting',
     'Normal',
-    'Steel',
-    'Dark',
+    // TODO: Find background
+    // 'Steel',
+    // 'Dark',
 ];
 
 const ElementsOptions = ELEMENTS.map(element => <option key={element} value={element.toLowerCase()}>{element}</option>);
@@ -61,9 +62,7 @@ class Generator extends Component {
     handleChange = (event) => {
         const nested = event.target.getAttribute('nested')
         
-        if (nested) {
-            this.setState({ [nested] : { ...this.state[nested], [event.target.name] : event.target.value }})
-        }
+        if (nested) this.setState({ [nested] : { ...this.state[nested], [event.target.name] : event.target.value }})
         else this.setState( { [event.target.name]  : event.target.value } )
     }
 
@@ -108,7 +107,6 @@ class Generator extends Component {
             }
 
             return { width: width, height: height };
-
         }
         
         return { width: srcWidth, height: srcHeight };
@@ -142,11 +140,9 @@ class Generator extends Component {
         _this.nextSibling.style.maxHeight = `${height}px`
     }
 
-    render() {
-        const { type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2, weaknessAmount, weaknessType, resistanceAmount, resistanceType, retreat, description, illustrator, cardNumber, totalCollection, rarity, species, length, weight } = this.state
-        
+    render() {      
         return (
-            <div className="Generator columns is-centered">
+            <div className="Generator columns">
                 <div className="column is-one-quarter">
                     <div className="gfields-box">
                         <div className="gfields-header" onClick={this.handleFieldBox}>
@@ -288,7 +284,7 @@ class Generator extends Component {
                                     <label className="label">Weakness amount</label>
                                     <div className="select">
                                         <select name="weaknessAmount" onChange={this.handleChange}>
-                                            <option value=""> </option>
+                                            <option value=""></option>
                                             <option value="+10">+10</option>
                                             <option value="+20">+20</option>
                                             <option value="+30">+30</option>
@@ -310,7 +306,7 @@ class Generator extends Component {
                                     <label className="label">Resistance amount</label>
                                     <div className="select">
                                         <select name="resistanceAmount" onChange={this.handleChange}>
-                                            <option value=""> </option>
+                                            <option value=""></option>
                                             <option value="+10">+10</option>
                                             <option value="+20">+20</option>
                                             <option value="+30">+30</option>
@@ -405,30 +401,7 @@ class Generator extends Component {
                     </div>
                 </div>
                 <div className="column is-half has-text-centered">
-                    <CardRenderer 
-                        type={type} 
-                        name={name} 
-                        stage={stage}
-                        nameEvolution={nameEvolution}
-                        mainPicture={mainPicture}
-                        evolvePicture={evolvePicture}
-                        hp={hp}
-                        attack1={attack1}
-                        attack2={attack2}
-                        weaknessType={weaknessType}
-                        weaknessAmount={weaknessAmount}
-                        resistanceType={resistanceType}
-                        resistanceAmount={resistanceAmount}
-                        retreat={retreat}
-                        description={description}
-                        illustrator={illustrator}
-                        cardNumber={cardNumber}
-                        totalCollection={totalCollection}
-                        rarity={rarity}
-                        species={species}
-                        length={length}
-                        weight={weight}
-                    />
+                    <CardRenderer {...this.state } />
                 </div>
                 <div className="column is-one-quarter">
                     <div className="gfields-box">
