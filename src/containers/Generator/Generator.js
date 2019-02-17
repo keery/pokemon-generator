@@ -146,7 +146,7 @@ class Generator extends Component {
         const { type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2, weaknessAmount, weaknessType, resistanceAmount, resistanceType, retreat, description, illustrator, cardNumber, totalCollection, rarity, species, length, weight } = this.state
         
         return (
-            <div className="columns is-centered">
+            <div className="Generator columns is-centered">
                 <div className="column is-one-quarter">
                     <div className="gfields-box">
                         <div className="gfields-header" onClick={this.handleFieldBox}>

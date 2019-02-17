@@ -260,3 +260,55 @@ nav {
     justify-content: space-between;
     font-size: 1.1rem;
 }
+
+
+.Generator {
+    position: relative;
+    z-index: 5;
+}
+.shape-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.shape-1 {
+    position: absolute;
+    width: 40%;
+    left: 50%;
+    top: -45%;
+    max-width: 440px;
+    fill: #fbba97;
+    transform: translateX(-50%);
+}
+.shape-2 {
+    fill: #b58fe3;
+    position: absolute;
+    width: 27%;
+    max-width: 380px;
+    left: 60%;
+    transform: translateX(-50%);
+    top: -10%;
+}
+
+.shape-3 {
+    position: absolute;
+    width: 40%;
+    left: 46%;
+    top: 6%;
+    max-width: 420px;
+    fill: #fde59d;
+    transform: translate(-50%);
+}
+
+.shape {
+    fill-rule: evenodd;
+}
+
+.konvajs-content {
+    border-radius: 23px;
+    background-color: #faf8f5;
+}
