@@ -24,7 +24,6 @@
 .konvajs-content { margin: 0 auto; }
 
 .App {
-    padding-top: 8rem;
     display: block;
     background-color: #faf8f5;
     height: 70vh;
@@ -279,10 +278,9 @@ nav {
     position: absolute;
     width: 40%;
     left: 50%;
-    top: -45%;
+    top: 39%;
     max-width: 440px;
     fill: #fbba97;
-    transform: translateX(-50%);
 }
 .shape-2 {
     fill: #b58fe3;
@@ -290,25 +288,32 @@ nav {
     width: 27%;
     max-width: 380px;
     left: 60%;
-    transform: translateX(-50%);
-    top: -10%;
+    top: 50%;
 }
 
 .shape-3 {
     position: absolute;
     width: 40%;
     left: 46%;
-    top: 6%;
+    top: 67%;
     max-width: 420px;
     fill: #fde59d;
-    transform: translate(-50%);
 }
 
 .shape {
+    transform: translateX(-50%) translateY(-50%);
     fill-rule: evenodd;
 }
 
 .konvajs-content {
     border-radius: 23px;
     background-color: #faf8f5;
+}
+
+.full-height {
+    height: 100vh;
+}
+
+.full-width {
+    width: 100vw;
 }

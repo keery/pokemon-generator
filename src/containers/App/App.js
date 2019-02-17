@@ -15,7 +15,7 @@ class App extends Component {
         <section className="App">
           <Header />
           <div className="container is-fluid">
-            <div className="global-wrapper">
+            <div className="columns is-centered is-vcentered full-height">
               <Generator />
               <div className="shape-wrapper">
                 <svg xmlns="http://www.w3.org/2000/svg" width="839" height="783" viewBox="0 0 839 783" className="shape shape-1">
