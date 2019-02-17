@@ -26,7 +26,7 @@ class CardRenderer extends Component {
             evolvePictureX: 0,
             evolvePictureY: 0,
             nameX: 35,
-            nameY: 34,
+            nameY: 38,
             canvas: null,
             hp,
             bg: this.getBackground("bg", type, stage),
@@ -230,7 +230,7 @@ class CardRenderer extends Component {
                 <Stage width={360} height={506} ref={ref => { this.stageRef = ref; }}>
                     <Layer>
                         <ImageCanvas image={bg} width={360} height={506} />
-                        <Text text={name} fontFamily="pokename" fontSize={23}  y={nameY} x={nameX} />
+                        <Text text={name} fontFamily="pokename" fontSize={21}  y={nameY} x={nameX} />
 
                         {
                             mainPicture && (
