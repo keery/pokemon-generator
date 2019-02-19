@@ -92,7 +92,7 @@
 
 .gradient-btn {
     cursor: pointer;
-    font-size: 1rem;
+    font-size: .9rem;
     color: white;
     border: none;
     padding: 15px 20px;
@@ -219,25 +219,22 @@ nav {
     z-index: 1;
 }
 
-.shape-1 {
-    position: absolute;
+#shape-1 {
     width: 40%;
     left: 50%;
     top: 39%;
     max-width: 440px;
     fill: #fbba97;
 }
-.shape-2 {
+#shape-2 {
     fill: #b58fe3;
-    position: absolute;
     width: 27%;
     max-width: 380px;
     left: 60%;
     top: 50%;
 }
 
-.shape-3 {
-    position: absolute;
+#shape-3 {
     width: 40%;
     left: 46%;
     top: 67%;
@@ -246,6 +243,7 @@ nav {
 }
 
 .shape {
+    position: absolute;
     transform: translateX(-50%) translateY(-50%);
     fill-rule: evenodd;
 }
@@ -261,4 +259,54 @@ nav {
 
 .full-width {
     width: 100vw;
+}
+
+.circle {
+    border-radius: 100%;
+    display: inline-block;
+    background-color: #000;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#circle-1 {
+    left: 10%;
+    top: 26%;
+    width: 130px;
+    height: 130px;
+    background-color: #fde59d;
+}
+
+#circle-2 {
+    left: 80%;
+    top: 16%;
+    background-color: #b58fe3;
+    height: 30px;
+    width: 30px;
+}
+
+#circle-3 {
+    left: 92%;
+    top: 34%;
+    background-color: #fbba97;
+    height: 80px;
+    width: 80px;
+}
+
+#circle-4 {
+    left: 10%;
+    top: 26%;
+    background-color: #fde59d;
+    height: 80px;
+    width: 80px;
+}
+
+#shadow-card {
+    position: absolute;
+    left: 50%;
+    top: 520px;
+    transform: translateX(-50%);
+    box-shadow: 0 20px 46px -6px #cacaca;
+    width: 310px;
+    height: 190px;
 }
