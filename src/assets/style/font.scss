@@ -1,0 +1,28 @@
+@import 'const.scss';
+
+@font-face {
+    font-family: 'pokename';
+    src: url('#{$FONT_PATH}/GillSansStd-BoldCondensed.otf');
+}
+@font-face {
+    font-family: 'pokevolution';
+    src: url('#{$FONT_PATH}/GillSansStd-BoldItalic.otf');
+}
+@font-face {
+    font-family: 'pokehp';
+    src: url('#{$FONT_PATH}/FuturaStd-Heavy.otf');
+}
+@font-face {
+    font-family: 'poke';
+    src: url('#{$FONT_PATH}/gill-sans-bold-extra-condensed.ttf');
+}
+@font-face {
+    font-family: 'gstd';
+    src: url('#{$FONT_PATH}/GillSansStd.otf');
+}
+@font-face {
+    font-family: 'radio';
+    src: url('#{$FONT_PATH}/RadioGrotesk/RadioGrotesk-Regular.otf');
+}
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
