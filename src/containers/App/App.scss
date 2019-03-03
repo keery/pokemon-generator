@@ -1,3 +1,5 @@
+@import "../../assets/style/const.scss";
+
 @font-face {
     font-family: 'pokename';
     src: url(../../assets/fonts/GillSansStd-BoldCondensed.otf);
@@ -45,8 +47,39 @@
     max-width: 1160px;
     margin: 0 auto;
 }
-.input.small {
-    width: 40%;
+.input, .select select {
+    background-color: #f8f8f8;
+    border: 1px solid #ededed;
+    box-shadow: none;
+    border-radius: 15px;
+    
+    &:hover {
+        border-color: #b5b5b5;
+    }
+}
+.input {
+    padding: 15px 10px;
+    &.small {
+        width: 40%;
+    }
+}
+.select:not(.is-multiple) {
+    height: auto;
+}
+.select select {
+    padding: 4px 15px;
+    height: 3.2em;
+}
+.input:focus, .input.is-focused, .input:active, .input.is-active, .textarea:focus, .textarea.is-focused, .textarea:active, .textarea.is-active {
+    border-color: #b5b5b5;
+    box-shadow: none;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after, .navbar-link::after {
+    height: 0.725em;
+    width: 0.725em;
+    border-color: $orange;
+    border-width: 2px;
 }
 
 .gfields-box {
@@ -112,7 +145,7 @@
     border-radius: 20px;
     display: inline-flex;
     align-items: center;
-    background: linear-gradient(to left, #ff9349 0%, #ffc27b 100%);
+    background: linear-gradient(to left, $orange 0%, #ffc27b 100%);
     transition: ease-in-out 0.2s box-shadow;
 
     &.tiny {
@@ -175,7 +208,7 @@ nav {
             font-size: 1rem;
             font-weight: 500;
             letter-spacing: 1px;
-            color: #ff9349;
+            color: $orange;
             padding: 15px 10px;
             margin-right: 14px;
         }

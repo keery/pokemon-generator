@@ -77,6 +77,6 @@ Attack.defaultProps = {
     imgTypeAmount : null,
 };
 
-Attack.PropTypes = {}
+Attack.propTypes = {}
 
 export default Attack
