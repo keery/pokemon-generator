@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { Component } from 'react'
 import { Text, Group, Image as ImageCanvas } from 'react-konva';
 
 const Attack = ({damage, desc, name, amount, type, width, height, x, y, imgTypeAmount, tiny }) => {
@@ -20,7 +20,7 @@ const Attack = ({damage, desc, name, amount, type, width, height, x, y, imgTypeA
         fontSize: 19,
         y: 0,
         align: 'center',
-        wrap : 'word',
+        wrap : 'char',
         verticalAlign : 'middle'
     }
 
@@ -64,7 +64,7 @@ const Attack = ({damage, desc, name, amount, type, width, height, x, y, imgTypeA
                     wrap={attackNameData.wrap}
                     verticalAlign={attackNameData.verticalAlign}
                 />
-                <Text text={desc} fontFamily="gstd" fontSize={attackDescData.fontSize}  y={attackDescData.y} x={0} width={global.textWidth} wrap="char" />
+                <Text text={desc} fontFamily="gstd" fontSize={attackDescData.fontSize}  y={attackDescData.y} x={0} width={global.textWidth} wrap="word" />
             </Group>
             <Text text={damage} fontFamily="gstd" fontSize={27} y={damageY} x={196} width={100} align="right"/>
         </Group>
