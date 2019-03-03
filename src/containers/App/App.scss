@@ -18,7 +18,16 @@
     font-family: 'gstd';
     src: url(../../assets/fonts/GillSansStd.otf);
 }
+@font-face {
+    font-family: 'cunia';
+    src: url(../../assets/fonts/Cunia.ttf);
+}
+@font-face {
+    font-family: 'radio';
+    src: url(../../assets/fonts/RadioGrotesk/RadioGrotesk-Regular.otf);
+}
 @import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 #test { font-family: pokename; }
 .select select, .select { width: 100%; }
 .konvajs-content { margin: 0 auto; }
@@ -58,12 +67,12 @@
     }
     
     .gfields-header { 
-        padding: .85rem 3.15rem .85rem 2.45rem; 
+        padding: 1.25rem 3.15rem 1.25rem 2.45rem; 
         cursor: pointer;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         display: flex;
         align-items: center;
-        font-family: 'Poppins';
+        font-family: 'Noto Sans Jp';
     }
 
     .gfields-step {

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { Component } from 'react'
+import React from 'react'
 import { Text, Group, Image as ImageCanvas } from 'react-konva';
 
 const Attack = ({damage, desc, name, amount, type, width, height, x, y, imgTypeAmount, tiny }) => {
@@ -20,7 +20,7 @@ const Attack = ({damage, desc, name, amount, type, width, height, x, y, imgTypeA
         fontSize: 19,
         y: 0,
         align: 'center',
-        wrap : 'char',
+        wrap : 'word',
         verticalAlign : 'middle'
     }
 
@@ -77,6 +77,6 @@ Attack.defaultProps = {
     imgTypeAmount : null,
 };
 
-Attack.propTypes = {}
+Attack.PropTypes = {}
 
 export default Attack
