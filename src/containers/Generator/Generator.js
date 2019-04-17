@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import CardRenderer from '../../components/CardRenderer'
 import { Stage } from 'react-konva';
+import isEqual from 'lodash.isequal';
+import CardRenderer from '../../components/CardRenderer'
 import FileInput from '../../components/FileInput'
 import { remove } from '../../helper/helper';
 
@@ -63,10 +64,10 @@ class Generator extends Component {
         this.state = DEFAULT_STATE;
     }
 
-    componentDidMount() {
-        //Je récupère mon stage (ensemble de mon canvas)
-        this.setState({canvas: this.stageRef.getStage()})
-    }
+    // componentDidMount() {
+    //     //Je récupère mon stage (ensemble de mon canvas)
+    //     this.setState({canvas: this.stageRef.getStage()})
+    // }
 
     handleChange = (event) => {
         const nested = event.target.getAttribute('nested')
@@ -85,7 +86,7 @@ class Generator extends Component {
     }
 
     resetCard = () => {
-        this.setState(DEFAULT_STATE);
+        if (!isEqual(this.state, DEFAULT_STATE) && confirm('Are you sure to want to reset your card ?')) this.setState(DEFAULT_STATE);
     }
 
     fileHandler = (event) => {
