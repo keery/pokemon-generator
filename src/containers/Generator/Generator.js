@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CardRenderer from '../../components/CardRenderer/CardRenderer'
+import { Stage } from 'react-konva';
 import { remove } from '../../helper/helper';
 
 const ELEMENTS = [
@@ -17,46 +18,53 @@ const ELEMENTS = [
 
 const ElementsOptions = ELEMENTS.map(element => <option key={element} value={element.toLowerCase()}>{element}</option>);
 
+const DEFAULT_STATE = {
+    type: 'fire',
+    stage: 'basic',
+    name: '',
+    nameEvolution: '',
+    mainPicture: null,
+    evolvePicture: null,
+    hp: 30,
+    weaknessType : '',
+    weaknessAmount : '',
+    resistanceType : '',
+    resistanceAmount : '',
+    retreat : '',
+    description : '',
+    illustrator : '',
+    cardNumber : '',
+    totalCollection : '',
+    rarity : '',
+    species : '',
+    length : '',
+    weight : '',
+    attack1 : {
+        attack1Name: '',
+        attack1Dammage: '',
+        attack1Info: '',
+        attack1Type: '',
+        attack1Amount: '',
+    },
+    attack2 : {
+        attack2Name: '',
+        attack2Dammage: '',
+        attack2Info: '',
+        attack2Type: '',
+        attack2Amount: '',
+    },
+};
+
 class Generator extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            type: 'fire',
-            stage: 'basic',
-            name: '',
-            nameEvolution: '',
-            mainPicture: null,
-            evolvePicture: null,
-            hp: 30,
-            weaknessType : '',
-            weaknessAmount : '',
-            resistanceType : '',
-            resistanceAmount : '',
-            retreat : '',
-            description : '',
-            illustrator : '',
-            cardNumber : '',
-            totalCollection : '',
-            rarity : '',
-            species : '',
-            length : '',
-            weight : '',
-            attack1 : {
-                attack1Name: '',
-                attack1Dammage: '',
-                attack1Info: '',
-                attack1Type: '',
-                attack1Amount: '',
-            },
-            attack2 : {
-                attack2Name: '',
-                attack2Dammage: '',
-                attack2Info: '',
-                attack2Type: '',
-                attack2Amount: '',
-            },
-        }
+        this.state = DEFAULT_STATE;
+    }
+
+    componentDidMount() {
+        //Je récupère mon stage (ensemble de mon canvas)
+        this.setState({canvas: this.stageRef.getStage()})
     }
 
     handleChange = (event) => {
@@ -64,6 +72,15 @@ class Generator extends Component {
         
         if (nested) this.setState({ [nested] : { ...this.state[nested], [event.target.name] : event.target.value }})
         else this.setState( { [event.target.name]  : event.target.value } )
+    }
+
+    exportCard = () => {
+        const link = document.createElement("a");
+        link.download = 'card.png';
+        link.href = this.stageRef.getStage().toDataURL();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 
     fileHandler = (event) => {
@@ -183,29 +200,11 @@ class Generator extends Component {
                                     <label className="label">HP</label>
                                     <div className="select">
                                         <select name="hp" onChange={this.handleChange}>
-                                            <option value="30">30 HP</option>
-                                            <option value="40">40 HP</option>
-                                            <option value="50">50 HP</option>
-                                            <option value="60">60 HP</option>
-                                            <option value="70">70 HP</option>
-                                            <option value="80">80 HP</option>
-                                            <option value="90">90 HP</option>
-                                            <option value="100">100 HP</option>
-                                            <option value="110">110 HP</option>
-                                            <option value="120">120 HP</option>
-                                            <option value="130">130 HP</option>
-                                            <option value="140">140 HP</option>
-                                            <option value="150">150 HP</option>
-                                            <option value="160">160 HP</option>
-                                            <option value="170">170 HP</option>
-                                            <option value="180">180 HP</option>
-                                            <option value="190">190 HP</option>
-                                            <option value="200">200 HP</option>
-                                            <option value="210">210 HP</option>
-                                            <option value="220">220 HP</option>
-                                            <option value="230">230 HP</option>
-                                            <option value="240">240 HP</option>
-                                            <option value="250">250 HP</option>
+                                        {
+                                            ['30','40','50','60','70','80','90','100','110','120','130','140','150','160','170','180','190','200','210','220','230','240','250'].map((hp) => (
+                                                <option value={hp}>{hp} HP</option>
+                                            ))
+                                        }
                                         </select>
                                     </div>
                                 </div>
@@ -418,7 +417,9 @@ class Generator extends Component {
                         <div id='circle-5' className='circle' />
                         <div id='shadow-card' />
                     </div>
-                    <CardRenderer {...this.state } />
+                    <Stage width={360} height={506} ref={ref => { this.stageRef = ref; }}>
+                        <CardRenderer {...this.state } />
+                    </Stage>
                 </div>
                 <div className="column is-one-quarter">
                     <div className="gfields-box">
@@ -534,7 +535,7 @@ class Generator extends Component {
                         <button className="gradient-btn" title="Save it">
                             <i className="fas fa-hdd" />
                         </button>
-                        <button className="gradient-btn" title="Try again">
+                        <button onClick={this.resetCard} className="gradient-btn" title="Try again">
                             <i className="fas fa-sync-alt" />
                         </button>
                         <button className="gradient-btn" title="Share to your friends">
