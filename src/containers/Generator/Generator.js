@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import CardRenderer from '../../components/CardRenderer/CardRenderer'
+import CardRenderer from '../../components/CardRenderer'
 import { Stage } from 'react-konva';
+import FileInput from '../../components/FileInput'
 import { remove } from '../../helper/helper';
 
 const ELEMENTS = [
@@ -83,6 +84,10 @@ class Generator extends Component {
         document.body.removeChild(link);
     }
 
+    resetCard = () => {
+        this.setState(DEFAULT_STATE);
+    }
+
     fileHandler = (event) => {
         const files = event.target.files
         
@@ -157,7 +162,9 @@ class Generator extends Component {
         _this.nextSibling.style.maxHeight = `${height}px`
     }
 
-    render() {      
+    render() {
+        const { name, type } = this.state;
+
         return (
             <div className="Generator columns">
                 <div className="column is-one-quarter">
@@ -170,31 +177,19 @@ class Generator extends Component {
                             <div className="gfields-content">
                                 <div className="field">
                                     <label className="label">Name</label>
-                                    <input type="text" name="name" className="input" onChange={this.handleChange} />
+                                    <input type="text" name="name" className="input" onChange={this.handleChange} value={name} />
                                 </div>
                                 <div className="field">
                                     <label className="label">Type</label>
                                     <div className="select">
-                                        <select name="type" onChange={this.handleChange}>
+                                        <select name="type" onChange={this.handleChange} value={type}>
                                             { ElementsOptions }
                                         </select>
                                     </div>
                                 </div>
                                 <div className="field">
                                     <label className="label">Picture</label>
-                                    <div>
-                                        <div className="field">
-                                            <div className="file is-primary is-boxed">
-                                                <label className="file-label">
-                                                    <input className="file-input" type="file" name="mainPicture" onChange={this.fileHandler} />
-                                                    <span className="file-cta">
-                                                        <span className="file-icon"><i className="fas fa-cloud-upload-alt"></i></span>
-                                                        <span className="file-label">Upload picture</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <FileInput name="mainPicture" onChange={this.fileHandler} />
                                 </div>
                                 <div className="field">
                                     <label className="label">HP</label>
@@ -202,7 +197,12 @@ class Generator extends Component {
                                         <select name="hp" onChange={this.handleChange}>
                                         {
                                             ['30','40','50','60','70','80','90','100','110','120','130','140','150','160','170','180','190','200','210','220','230','240','250'].map((hp) => (
-                                                <option value={hp}>{hp} HP</option>
+                                                <option
+                                                    value={hp}
+                                                    key={hp}
+                                                >
+                                                    {hp} HP
+                                                </option>
                                             ))
                                         }
                                         </select>
