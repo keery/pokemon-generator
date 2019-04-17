@@ -10,6 +10,10 @@ class FileInput extends Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.value !== prevProps.value && !this.props.value) this.setState({ uploadLabel : 'Upload picture' })
+    }
+
     handleFile = (event) => {
         const { onChange } = this.props;
 
@@ -46,6 +50,7 @@ FileInput.defaultProps = {
 FileInput.propTypes = {
     onChange : PropTypes.func,
     name     : PropTypes.string,
+    value    : PropTypes.object,
 }
 
 export default FileInput

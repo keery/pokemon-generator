@@ -163,7 +163,6 @@ class Generator extends Component {
     }
 
     render() {
-        const { name, type } = this.state;
 
         return (
             <div className="Generator columns">
@@ -177,28 +176,32 @@ class Generator extends Component {
                             <div className="gfields-content">
                                 <div className="field">
                                     <label className="label">Name</label>
-                                    <input type="text" name="name" className="input" onChange={this.handleChange} value={name} />
+                                    <input type="text" name="name" className="input" onChange={this.handleChange} value={this.state.name} />
                                 </div>
                                 <div className="field">
                                     <label className="label">Type</label>
                                     <div className="select">
-                                        <select name="type" onChange={this.handleChange} value={type}>
+                                        <select name="type" onChange={this.handleChange} value={this.state.type}>
                                             { ElementsOptions }
                                         </select>
                                     </div>
                                 </div>
                                 <div className="field">
                                     <label className="label">Picture</label>
-                                    <FileInput name="mainPicture" onChange={this.fileHandler} />
+                                    <FileInput
+                                        name="mainPicture"
+                                        onChange={this.fileHandler}
+                                        value={this.state.mainPicture}
+                                    />
                                 </div>
                                 <div className="field">
                                     <label className="label">HP</label>
                                     <div className="select">
-                                        <select name="hp" onChange={this.handleChange}>
+                                        <select name="hp" onChange={this.handleChange} value={this.state.hp}>
                                         {
                                             ['30','40','50','60','70','80','90','100','110','120','130','140','150','160','170','180','190','200','210','220','230','240','250'].map((hp) => (
                                                 <option
-                                                    value={hp}
+                                                    value={this.state.hp}
                                                     key={hp}
                                                 >
                                                     {hp} HP
@@ -210,15 +213,15 @@ class Generator extends Component {
                                 </div>
                                 <div className="field">
                                     <label className="label">Species</label>
-                                    <input type="text" name="species" className="input" onChange={this.handleChange} />
+                                    <input type="text" name="species" className="input" onChange={this.handleChange} value={this.state.species} />
                                 </div>
                                 <div className="field">
                                     <label className="label">Length</label>
-                                    <input type="text" name="length" className="input" placeholder={`0' 0"`} onChange={this.handleChange} />
+                                    <input type="text" name="length" className="input" placeholder={`0' 0"`} onChange={this.handleChange} value={this.state.length} />
                                 </div>
                                 <div className="field">
                                     <label className="label">Weight</label>
-                                    <input type="text" name="weight" className="input" placeholder="0 lbs" onChange={this.handleChange} />
+                                    <input type="text" name="weight" className="input" placeholder="0 lbs" onChange={this.handleChange} value={this.state.weight} />
                                 </div>
                             </div>
                         </div>
@@ -233,7 +236,7 @@ class Generator extends Component {
                                 <div className="field">
                                     <label className="label">Stage</label>
                                     <div className="select">
-                                        <select name="stage" onChange={this.handleChange}>
+                                        <select name="stage" onChange={this.handleChange} value={this.state.stage}>
                                             <option value="basic">Basic</option>
                                             <option value="stage1">Stage 1</option>
                                             <option value="stage2">Stage 2</option>
@@ -242,23 +245,15 @@ class Generator extends Component {
                                 </div>
                                 <div className="field">
                                     <label className="label">Name</label>
-                                    <input type="text" name="nameEvolution" className="input" onChange={this.handleChange} />
+                                    <input type="text" name="nameEvolution" className="input" onChange={this.handleChange} value={this.state.nameEvolution} />
                                 </div>
                                 <div className="field">
                                     <label className="label">Picture</label>
-                                    <div>
-                                        <div className="field">
-                                            <div className="file is-primary is-boxed">
-                                                <label className="file-label">
-                                                    <input className="file-input" type="file" name="evolvePicture" onChange={this.fileHandler} />
-                                                    <span className="file-cta">
-                                                        <span className="file-icon"><i className="fas fa-cloud-upload-alt" /></span>
-                                                        <span className="file-label">Upload picture</span>
-                                                    </span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <FileInput
+                                        name="evolvePicture"
+                                        onChange={this.fileHandler}
+                                        value={this.state.evolvePicture}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -273,7 +268,7 @@ class Generator extends Component {
                                 <div className="field">
                                     <label className="label">Weakness type</label>
                                     <div className="select">
-                                        <select name="weaknessType" onChange={this.handleChange}>
+                                        <select name="weaknessType" onChange={this.handleChange} value={this.state.weaknessType}>
                                             <option value=""></option>
                                             { ElementsOptions }
                                         </select>
@@ -282,7 +277,7 @@ class Generator extends Component {
                                 <div className="field">
                                     <label className="label">Weakness amount</label>
                                     <div className="select">
-                                        <select name="weaknessAmount" onChange={this.handleChange}>
+                                        <select name="weaknessAmount" onChange={this.handleChange} value={this.state.weaknessAmount}>
                                             <option value=""></option>
                                             <option value="+10">+10</option>
                                             <option value="+20">+20</option>
@@ -295,7 +290,7 @@ class Generator extends Component {
                                 <div className="field">
                                     <label className="label">Resistance type</label>
                                     <div className="select">
-                                        <select name="resistanceType" onChange={this.handleChange}>
+                                        <select name="resistanceType" onChange={this.handleChange} value={this.state.resistanceType}>
                                             <option value=""></option>
                                             { ElementsOptions }
                                         </select>
@@ -304,7 +299,7 @@ class Generator extends Component {
                                 <div className="field">
                                     <label className="label">Resistance amount</label>
                                     <div className="select">
-                                        <select name="resistanceAmount" onChange={this.handleChange}>
+                                        <select name="resistanceAmount" onChange={this.handleChange} value={this.state.resistanceAmount}>
                                             <option value=""></option>
                                             <option value="+10">+10</option>
                                             <option value="+20">+20</option>
@@ -317,7 +312,7 @@ class Generator extends Component {
                                 <div className="field">
                                     <label className="label">Retreat</label>
                                     <div className="select">
-                                        <select name="retreat" onChange={this.handleChange}>
+                                        <select name="retreat" onChange={this.handleChange} value={this.state.retreat}>
                                             <option value="0">0</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -338,12 +333,12 @@ class Generator extends Component {
                             <div className="gfields-content">
                                 <div className="field">
                                     <label className="label">Name</label>
-                                    <input type="text" name="attack1Name" nested="attack1" className="input" onChange={this.handleChange} />
+                                    <input type="text" name="attack1Name" nested="attack1" className="input" onChange={this.handleChange} value={this.state.attack1.attack1Name} />
                                 </div>   
                                 <div className="field">
                                     <label className="label">Dammage</label>
                                     <div className="select">
-                                        <select name="attack1Dammage" onChange={this.handleChange} nested="attack1">
+                                        <select name="attack1Dammage" onChange={this.handleChange} nested="attack1" value={this.state.attack1.attack1Dammage}>
                                             <option value=" "></option>
                                             <option value="10">10</option>
                                             <option value="10+">10+</option>
@@ -369,14 +364,14 @@ class Generator extends Component {
                                 </div>    
                                 <div className="field">
                                     <label className="label">Info</label>
-                                    <textarea type="text" name="attack1Info" nested="attack1" className="input" onChange={this.handleChange}></textarea>
+                                    <textarea type="text" name="attack1Info" nested="attack1" className="input" onChange={this.handleChange} value={this.state.attack1.attack1Info} />
                                 </div>   
                                 <div className="field">
                                     <label className="label">Type</label>
                                     <div className="columns">
                                         <div className="column is-two-fifths"> 
                                             <div className="select">
-                                                <select name="attack1Amount" nested="attack1" onChange={this.handleChange}>
+                                                <select name="attack1Amount" nested="attack1" onChange={this.handleChange} value={this.state.attack1.attack1Amount}>
                                                     <option value=""></option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -387,7 +382,7 @@ class Generator extends Component {
                                         </div>
                                         <div className="column is-three-fifths"> 
                                             <div className="select">                                    
-                                                <select name="attack1Type" nested="attack1" onChange={this.handleChange}>
+                                                <select name="attack1Type" nested="attack1" onChange={this.handleChange} value={this.state.attack1.attack1Type}>
                                                     <option value=""></option>
                                                     { ElementsOptions }
                                                 </select>
@@ -431,12 +426,12 @@ class Generator extends Component {
                             <div className="gfields-content">
                                 <div className="field">
                                     <label className="label">Name</label>
-                                    <input type="text" name="attack2Name" className="input" onChange={this.handleChange} nested="attack2" />
+                                    <input type="text" name="attack2Name" className="input" onChange={this.handleChange} nested="attack2" value={this.state.attack2.attack2Name} />
                                 </div>   
                                 <div className="field">
                                     <label className="label">Dammage</label>
                                     <div className="select">
-                                        <select name="attack2Dammage" onChange={this.handleChange} nested="attack2">
+                                        <select name="attack2Dammage" onChange={this.handleChange} nested="attack2" value={this.state.attack2.attack2Dammage}>
                                             <option value=" "></option>
                                             <option value="10">10</option>
                                             <option value="10+">10+</option>
@@ -462,14 +457,14 @@ class Generator extends Component {
                                 </div>    
                                 <div className="field">
                                     <label className="label">Info</label>
-                                    <textarea type="text" name="attack2Info" className="input" onChange={this.handleChange} nested="attack2"></textarea>
+                                    <textarea type="text" name="attack2Info" className="input" onChange={this.handleChange} nested="attack2" value={this.state.attack2.attack2Info} />
                                 </div>   
                                 <div className="field">
                                     <label className="label">Type</label>
                                     <div className="columns">
                                         <div className="column is-two-fifths"> 
                                             <div className="select">
-                                                <select name="attack2Amount" onChange={this.handleChange} nested="attack2">
+                                                <select name="attack2Amount" onChange={this.handleChange} nested="attack2" value={this.state.attack2.attack2Amount} >
                                                     <option value=""></option>
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
@@ -480,7 +475,7 @@ class Generator extends Component {
                                         </div>
                                         <div className="column is-three-fifths"> 
                                             <div className="select">                                    
-                                                <select name="attack2Type" onChange={this.handleChange} nested="attack2">
+                                                <select name="attack2Type" onChange={this.handleChange} nested="attack2" value={this.state.attack2.attack2Type}>
                                                     <option value=""></option>
                                                     { ElementsOptions }
                                                 </select>
@@ -500,21 +495,21 @@ class Generator extends Component {
                             <div className="gfields-content">
                                 <div className="field">
                                     <label className="label">Description</label>
-                                    <textarea type="text" name="description" className="input" onChange={this.handleChange} />
+                                    <textarea type="text" name="description" className="input" onChange={this.handleChange} value={this.state.description} />
                                 </div>
                                 <div className="field">
                                     <label className="label">Illustrator</label>
-                                    <input type="text" name="illustrator" className="input" onChange={this.handleChange} />
+                                    <input type="text" name="illustrator" className="input" onChange={this.handleChange} value={this.state.illustrator} />
                                 </div>
                                 <div className="field">
                                     <label className="label">Collection number</label>
-                                    <input type="text" name="cardNumber" className="input small" onChange={this.handleChange} maxLength={3} /> / 
-                                    <input type="text" name="totalCollection" className="input small" onChange={this.handleChange} maxLength={3} />
+                                    <input type="text" name="cardNumber" className="input small" onChange={this.handleChange} maxLength={3} value={this.state.cardNumber} /> / 
+                                    <input type="text" name="totalCollection" className="input small" onChange={this.handleChange} maxLength={3} value={this.state.totalCollection} />
                                 </div>
                                 <div className="field">
                                     <label className="label">Rarity</label>
                                     <div className="select">
-                                        <select name="rarity" onChange={this.handleChange}>
+                                        <select name="rarity" onChange={this.handleChange} value={this.state.rarity}>
                                             <option value=""></option>
                                             <option value="common">Common</option>
                                             <option value="uncommon">Uncommon</option>
