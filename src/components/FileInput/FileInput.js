@@ -49,7 +49,7 @@ FileInput.defaultProps = {
 
 FileInput.propTypes = {
     onChange : PropTypes.func,
-    name     : PropTypes.string,
+    name     : PropTypes.string.isRequired,
     value    : PropTypes.object,
 }
 
