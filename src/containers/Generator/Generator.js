@@ -50,7 +50,7 @@ class Generator extends Component {
         this.state = DEFAULT_STATE;
     }
 
-    // componentDidMount() {
+    // componentDidMount() {*
     //     //Je récupère mon stage (ensemble de mon canvas)
     //     this.setState({canvas: this.stageRef.getStage()})
     // }
@@ -69,6 +69,10 @@ class Generator extends Component {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
+    }
+
+    printCard() {
+        window.print();
     }
 
     resetCard = () => {
@@ -237,6 +241,7 @@ class Generator extends Component {
                                         onChange={this.fileHandler}
                                         value={this.state.evolvePicture}
                                     />
+                                    
                                 </div>
                             </div>
                         </div>
@@ -462,7 +467,7 @@ class Generator extends Component {
                         <button onClick={this.exportCard} className="gradient-btn" title="Download your creation">
                             <i className="fas fa-download" />
                         </button>
-                        <button className="gradient-btn" title="Print your creation">
+                        <button onClick={this.printCard} className="gradient-btn" title="Print your creation">
                             <i className="fas fa-print" />
                         </button>
                         <button className="gradient-btn" title="Save it">

@@ -325,3 +325,24 @@ nav {
     width: 310px;
     height: 190px;
 }
+
+@media print {
+    header, .column.is-one-quarter, .shape-wrapper {
+        display:none;
+    }
+    .App {
+        background-color: transparent;
+    }
+    .konvajs-content {
+      display: block;
+    }
+    .konvajs-content > canvas {
+        width: 6.3cm!important;
+        height: auto!important;
+        // height: auto!important;
+        position: fixed!important;
+        top: 50%!important;
+        left:50%!important;
+        transform: translateX(-50%) translateY(-50%)!important;
+    }
+}
