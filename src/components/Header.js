@@ -7,8 +7,7 @@ const Header = () => (
             <div className="container is-fluid">
                 <div className="logo-container">
                 <div>
-                    
-                    <a id='logo'>
+                    <a id='logo' href>
                         <img src={LogoPokeball} alt="Logo Pokemon Generator" />
                     </a>
                 </div>

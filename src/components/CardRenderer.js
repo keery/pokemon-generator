@@ -116,7 +116,7 @@ class CardRenderer extends Component {
         }
         else newState.retreatImg = null
 
-        if(rarity != '') {
+        if(rarity !== '') {
             const img = new Image()
             img.src = require("../assets/1-gen/rarity-"+rarity+".png")
             img.onload = () => {
