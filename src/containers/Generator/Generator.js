@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Stage } from 'react-konva';
 import isEqual from 'lodash.isequal';
-import { CardRenderer, FileInput, SelectInput, Field } from '../../components';
+import { CardRenderer, FileInput, SelectInput, Field, GroupTitle } from '../../components';
 import { ELEMENTS } from '../../const';
 
 const DEFAULT_STATE = {
@@ -155,10 +155,11 @@ class Generator extends Component {
             <div className="Generator columns">
                 <div className="column is-one-quarter">
                     <div className="gfields-box">
-                        <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div className="gfields-step">01</div>
-                            <div>Pokémon info</div>
-                        </div>
+                        <GroupTitle
+                            onClick={this.handleFieldBox}
+                            stepNumber='01'
+                            title='Pokémon info'
+                        />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
                                 <Field label="Name">
@@ -203,10 +204,11 @@ class Generator extends Component {
                         </div>
                     </div>
                     <div className="gfields-box">
-                        <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div className="gfields-step">02</div>
-                            <div>Evolution</div>
-                        </div>
+                        <GroupTitle
+                            onClick={this.handleFieldBox}
+                            stepNumber='02'
+                            title='Evolution'
+                        />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
                                 <Field label="Stage">
@@ -232,10 +234,11 @@ class Generator extends Component {
                         </div>
                     </div>
                     <div className="gfields-box">
-                        <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div className="gfields-step">03</div>
-                            <div>Weakness, resistance and retreat cost</div>
-                        </div>
+                        <GroupTitle
+                            onClick={this.handleFieldBox}
+                            stepNumber='03'
+                            title='Weakness, resistance and retreat cost'
+                        />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
                                 <Field label="Weakness type">
@@ -283,10 +286,11 @@ class Generator extends Component {
                         </div>
                     </div>
                     <div className="gfields-box">
-                        <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div className="gfields-step">04</div>
-                            <div>Attack 1</div>
-                        </div>
+                        <GroupTitle
+                            onClick={this.handleFieldBox}
+                            stepNumber='04'
+                            title='Attack 1'
+                        />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
                                 <Field label="Name">
@@ -355,10 +359,11 @@ class Generator extends Component {
                 </div>
                 <div className="column is-one-quarter">
                     <div className="gfields-box">
-                        <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div className="gfields-step">05</div>
-                            <div>Attack 2</div>
-                        </div>
+                        <GroupTitle
+                            onClick={this.handleFieldBox}
+                            stepNumber='05'
+                            title='Attack 2'
+                        />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
                                 <Field label="Name">
@@ -403,10 +408,11 @@ class Generator extends Component {
                         </div>
                     </div>
                     <div className="gfields-box">
-                        <div className="gfields-header" onClick={this.handleFieldBox}>
-                            <div className="gfields-step">06</div>
-                            <div>Additional information</div>
-                        </div>
+                        <GroupTitle
+                            onClick={this.handleFieldBox}
+                            stepNumber='06'
+                            title='Additional information'
+                        />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
                                 <Field label="Description">
