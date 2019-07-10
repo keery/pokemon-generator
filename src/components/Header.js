@@ -7,11 +7,11 @@ const Header = () => (
             <div className="container is-fluid">
                 <div className="logo-container">
                 <div>
-                    <a id='logo' href>
-                        <img src={LogoPokeball} alt="Logo Pokemon Generator" />
+                    <a id='logo'>
+                        <img src={LogoPokeball} alt={`Logo ${process.env.REACT_APP_TITLE}`} />
                     </a>
                 </div>
-                    <div id="logo-title">POKEMON GENERATOR</div>
+                    <div id="logo-title">{process.env.REACT_APP_TITLE.toUpperCase()}</div>
                 </div>
                 <div className="menu-left">
                     <a title="Sign up">Sign up</a>

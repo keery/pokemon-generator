@@ -49,6 +49,8 @@ const DEFAULT_STATE = {
     },
 };
 
+const { REACT_APP_VERSION, REACT_APP_TITLE } = process.env;
+
 class Generator extends Component {
     constructor(props) {
         super(props)
@@ -459,8 +461,8 @@ class Generator extends Component {
                     </div>
                     <div className="signature">
                         <div className="version">
-                            <b>Version 1.0</b>
-                            <div>Pokemon Generator © { (new Date()).getFullYear() }</div>
+                            <b>Version {REACT_APP_VERSION}</b>
+                            <div>{REACT_APP_TITLE} © { (new Date()).getFullYear() }</div>
                         </div>
                         <div className="signature-desc">
                         Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page
