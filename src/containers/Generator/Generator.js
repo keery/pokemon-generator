@@ -2,42 +2,50 @@ import React, { Component } from 'react';
 import { Stage } from 'react-konva';
 import isEqual from 'lodash.isequal';
 import { CardRenderer, FileInput, SelectInput, Field, GroupTitle } from '../../components';
-import { ELEMENTS } from '../../const';
+import {
+    ELEMENTS,
+    HP_CHOICES,
+    AMOUNT_CHOICES,
+    DAMMAGE_CHOICES,
+    ATTACK_AMOUNT_CHOICES,
+    RARITY_CHOICES,
+    RETREAT_CHOICES,
+} from '../../const';
 
 const DEFAULT_STATE = {
-    type: 'fire',
-    stage: 'basic',
-    name: '',
-    nameEvolution: '',
-    mainPicture: null,
-    evolvePicture: null,
-    hp: 30,
-    weaknessType : '',
-    weaknessAmount : '',
-    resistanceType : '',
+    type             : 'fire',
+    stage            : 'basic',
+    name             : '',
+    nameEvolution    : '',
+    mainPicture      : null,
+    evolvePicture    : null,
+    hp               : 30,
+    weaknessType     : '',
+    weaknessAmount   : '',
+    resistanceType   : '',
     resistanceAmount : '',
-    retreat : '',
-    description : '',
-    illustrator : '',
-    cardNumber : '',
-    totalCollection : '',
-    rarity : '',
-    species : '',
-    length : '',
-    weight : '',
-    attack1 : {
-        attack1Name: '',
-        attack1Dammage: '',
-        attack1Info: '',
-        attack1Type: '',
-        attack1Amount: '1',
+    retreat          : '',
+    description      : '',
+    illustrator      : '',
+    cardNumber       : '',
+    totalCollection  : '',
+    rarity           : '',
+    species          : '',
+    length           : '',
+    weight           : '',
+    attack1          : {
+        attack1Name    : '',
+        attack1Dammage : '',
+        attack1Info    : '',
+        attack1Type    : '',
+        attack1Amount  : '1',
     },
     attack2 : {
-        attack2Name: '',
-        attack2Dammage: '',
-        attack2Info: '',
-        attack2Type: '',
-        attack2Amount: '1',
+        attack2Name    : '',
+        attack2Dammage : '',
+        attack2Info    : '',
+        attack2Type    : '',
+        attack2Amount  : '1',
     },
 };
 
@@ -46,11 +54,6 @@ class Generator extends Component {
         super(props)
         this.state = DEFAULT_STATE;
     }
-
-    // componentDidMount() {*
-    //     //Je récupère mon stage (ensemble de mon canvas)
-    //     this.setState({canvas: this.stageRef.getStage()})
-    // }
 
     handleChange = (event) => {
         const nested = event.target.getAttribute('nested')
@@ -186,7 +189,7 @@ class Generator extends Component {
                                         name="hp"
                                         onChange={this.handleChange}
                                         value={this.state.hp}
-                                        choices={['30','40','50','60','70','80','90','100','110','120','130','140','150','160','170','180','190','200','210','220','230','240','250']}
+                                        choices={HP_CHOICES}
                                         suffix=" HP"
                                         blankLine={false}
                                     />
@@ -254,7 +257,7 @@ class Generator extends Component {
                                         name="weaknessAmount"
                                         onChange={this.handleChange}
                                         value={this.state.weaknessAmount}
-                                        choices={['+10', '+20', '+30', '+40', 'x2']}
+                                        choices={AMOUNT_CHOICES}
                                     />
                                 </Field>
                                 <Field label="Resistance type">
@@ -270,7 +273,7 @@ class Generator extends Component {
                                         name="resistanceAmount"
                                         onChange={this.handleChange}
                                         value={this.state.resistanceAmount}
-                                        choices={['+10', '+20', '+30', '+40', 'x2']}
+                                        choices={AMOUNT_CHOICES}
                                     />
                                 </Field>
                                 <Field label="Retreat">
@@ -279,7 +282,7 @@ class Generator extends Component {
                                         name="retreat"
                                         onChange={this.handleChange}
                                         value={this.state.retreat}
-                                        choices={['0', '1', '2', '3', '4']}
+                                        choices={RETREAT_CHOICES}
                                     />
                                 </Field>
                             </div>
@@ -302,7 +305,7 @@ class Generator extends Component {
                                         onChange={this.handleChange}
                                         value={this.state.attack1.attack1Dammage}
                                         nested="attack1"
-                                        choices={['10','10+','10x','20','20+','20x','30','30+','30x','40','50','60','70','80','90','100','120','150','200']}
+                                        choices={DAMMAGE_CHOICES}
                                     />
                                 </Field>
                                 <Field label="Info">
@@ -316,7 +319,7 @@ class Generator extends Component {
                                                 onChange={this.handleChange}
                                                 value={this.state.attack1.attack1Amount}
                                                 nested="attack1"
-                                                choices={['1', '2', '3', '4']}
+                                                choices={ATTACK_AMOUNT_CHOICES}
                                                 blankLine={false}
                                             />
                                         </div>
@@ -375,7 +378,7 @@ class Generator extends Component {
                                         onChange={this.handleChange}
                                         value={this.state.attack2.attack2Dammage}
                                         nested="attack2"
-                                        choices={['10','10+','10x','20','20+','20x','30','30+','30x','40','50','60','70','80','90','100','120','150','200']}
+                                        choices={DAMMAGE_CHOICES}
                                     />
                                 </Field>    
                                 <Field label="Info">
@@ -389,7 +392,7 @@ class Generator extends Component {
                                                 onChange={this.handleChange}
                                                 value={this.state.attack2.attack2Amount}
                                                 nested="attack2"
-                                                choices={['1', '2', '3', '4']}
+                                                choices={ATTACK_AMOUNT_CHOICES}
                                                 blankLine={false}
                                             /> 
                                         </div>
@@ -430,7 +433,7 @@ class Generator extends Component {
                                         name="rarity"
                                         onChange={this.handleChange}
                                         value={this.state.rarity}
-                                        choices={['Common', 'Uncommon', 'Rare']}
+                                        choices={RARITY_CHOICES}
                                         blankLine={false}
                                     />
                                 </Field>

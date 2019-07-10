@@ -5,8 +5,6 @@ import TypeAmount from './TypeAmount';
 import sliceStageImg from '../assets/1-gen/slice-stage.png'
 import '../containers/App/App.scss';
 
-// import { isEmpty } from '../helper/helper';
-
 class CardRenderer extends Component {
     constructor(props) {
         super(props)
