@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bulma/css/bulma.css' 
 import Generator from '../Generator/Generator';
-import Header from '../../components/Header'
+import { Header } from '../../components'
 import './App.scss'; 
 import '../../assets/style/index.scss';
 

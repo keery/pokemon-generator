@@ -3,7 +3,7 @@ import { Stage } from 'react-konva';
 import isEqual from 'lodash.isequal';
 import CardRenderer from '../../components/CardRenderer';
 import FileInput from '../../components/FileInput';
-import SelectInput from '../../components/SelectInput/SelectInput';
+import SelectInput from '../../components/SelectInput';
 import { ELEMENTS } from '../../const';
 
 const DEFAULT_STATE = {
@@ -76,13 +76,13 @@ class Generator extends Component {
     }
 
     resetCard = () => {
-        if (!isEqual(this.state, DEFAULT_STATE) && confirm('Are you sure to want to reset your card ?')) this.setState(DEFAULT_STATE);
+        if (!isEqual(this.state, DEFAULT_STATE) && window.confirm('Are you sure to want to reset your card ?')) this.setState(DEFAULT_STATE);
     }
 
     fileHandler = (event) => {
         const files = event.target.files
         
-        if(files.length > 0) {
+        if (files.length > 0) {
             const file = files[0]
             const reader = new FileReader()
             const eventName = event.currentTarget.name
@@ -93,8 +93,8 @@ class Generator extends Component {
                 
                 img.onload = () => {
                     let imgResized = null
-                    if(eventName === 'mainPicture') imgResized = this.resizeImg(img, 275, 196)
-                    else if(eventName === 'evolvePicture') imgResized = this.resizeImg(img, 44, 40)
+                    if (eventName === 'mainPicture') imgResized = this.resizeImg(img, 275, 196)
+                    else if (eventName === 'evolvePicture') imgResized = this.resizeImg(img, 44, 40)
 
                     this.setState( { [eventName]  : imgResized } )
                 }
@@ -106,11 +106,11 @@ class Generator extends Component {
 
     calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
 
-        if(srcWidth > maxWidth || srcHeight > maxHeight) {
+        if (srcWidth > maxWidth || srcHeight > maxHeight) {
             let height = 0
             let width = 0
 
-            if(srcWidth > srcHeight) {
+            if (srcWidth > srcHeight) {
                 height = maxHeight + 4
                 width = (srcWidth / srcHeight) * height
             }
@@ -373,7 +373,7 @@ class Generator extends Component {
                         <div id='circle-5' className='circle' />
                         <div id='shadow-card' />
                     </div>
-                    <Stage width={360} height={506} ref={ref => { this.stageRef = ref; }}>
+                    <Stage width={360} height={506}>
                         <CardRenderer {...this.state } />
                     </Stage>
                 </div>

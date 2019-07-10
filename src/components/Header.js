@@ -1,5 +1,5 @@
 import React from 'react'
-import LogoPokeball from '../../assets/img/pokeball.png'
+import LogoPokeball from '../assets/img/pokeball.png'
 
 const Header = () => (
     <header>

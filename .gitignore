@@ -1,3 +1,5 @@
 node_modules/
 _sources/
+coverage/
+build/
 package-lock.json
