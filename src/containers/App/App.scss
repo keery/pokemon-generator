@@ -18,7 +18,10 @@
     max-width: 1160px;
     margin: 0 auto;
 }
-.input, .select select {
+.textarea {
+    width: 100%;    
+}
+.input, .select select, .textarea {
     background-color: #f8f8f8;
     border: 1px solid #ededed;
     box-shadow: none;
@@ -98,6 +101,12 @@
     
     + .gfields-box {
         margin-top: 10px;
+    }
+
+    .textarea
+    {
+        min-height: 60px;
+        max-height: 90px;
     }
 }
 

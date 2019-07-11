@@ -55,7 +55,7 @@ class CardRenderer extends Component {
         const {
             type, stage, weaknessType, resistanceType, retreat, rarity, attack1 : { attack1Type, attack1Amount }, attack2 : { attack2Type, attack2Amount },
         } = nextProps;
-        const newState = nextProps;
+        const newState = { ...nextProps };
 
         // Je décale le nom si c'est une évolution
         newState.nameX = (stage !== 'basic' ? 95 : 35);

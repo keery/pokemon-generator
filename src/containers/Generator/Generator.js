@@ -382,7 +382,7 @@ class Generator extends Component {
                                         type="text"
                                         name="attack1Info"
                                         nested="attack1"
-                                        className="input"
+                                        className="textarea"
                                         onChange={this.handleChange}
                                         value={attack1.attack1Info}
                                     />
@@ -495,7 +495,7 @@ class Generator extends Component {
                                     <textarea
                                         type="text"
                                         name="attack2Info"
-                                        className="input"
+                                        className="textarea"
                                         onChange={this.handleChange}
                                         nested="attack2"
                                         value={attack2.attack2Info}
@@ -539,7 +539,7 @@ class Generator extends Component {
                                     <textarea
                                         type="text"
                                         name="description"
-                                        className="input"
+                                        className="textarea"
                                         onChange={this.handleChange}
                                         value={description}
                                     />
