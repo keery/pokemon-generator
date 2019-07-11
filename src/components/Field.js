@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import React from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Field = ({ label, children }) => (
     <div className="field">
@@ -10,6 +10,6 @@ const Field = ({ label, children }) => (
 
 Field.propTypes = {
     label : PropTypes.string.isRequired,
-}
+};
 
-export default Field
+export default Field;

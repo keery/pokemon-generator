@@ -1,14 +1,16 @@
-import PropTypes from 'prop-types'
-import React from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 import { Text, Group, Image as ImageCanvas } from 'react-konva';
 
-const TypeAmount = ({ type, amount, x , y}) => {
-    let imageType = null
-    let textAmount = null
+const TypeAmount = ({
+    type, amount, x, y,
+}) => {
+    let imageType = null;
+    let textAmount = null;
 
-    if(type) {
-        imageType = <ImageCanvas image={type} x={27} y={0} width={39} height={39} />
-        if(amount !== '') textAmount = <Text text={amount} fontFamily="pokename" fontSize={10} y={15} x={58} />
+    if (type) {
+        imageType = <ImageCanvas image={type} x={27} y={0} width={39} height={39} />;
+        if (amount !== '') textAmount = <Text text={amount} fontFamily="pokename" fontSize={10} y={15} x={58} />;
     }
 
     return (
@@ -16,8 +18,8 @@ const TypeAmount = ({ type, amount, x , y}) => {
             {imageType}
             {textAmount}
         </Group>
-    )
-}
+    );
+};
 
 TypeAmount.defaultProps = {
     amount : '',
@@ -27,10 +29,10 @@ TypeAmount.defaultProps = {
 };
 
 TypeAmount.propTypes = {
-    type: PropTypes.object,
-    amount: PropTypes.string,
-    y : PropTypes.number,
-    x : PropTypes.number,
-}
+    type   : PropTypes.object,
+    amount : PropTypes.string,
+    y      : PropTypes.number,
+    x      : PropTypes.number,
+};
 
-export default TypeAmount
+export default TypeAmount;

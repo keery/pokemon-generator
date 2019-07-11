@@ -3,4 +3,18 @@ env:
   jest : true
 
 extends:
-    - "react-app"
+  - airbnb
+  - "react-app"
+
+rules :
+  "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+
+  "react/jsx-indent" : ["error", 4]
+  
+  "indent": ["error", 4]
+
+  "react/jsx-indent-props": ["error", 4]
+
+  "key-spacing": ["error", { "beforeColon": true, "align" : 'colon' }]
+
+  react/jsx-one-expression-per-line : "off"
