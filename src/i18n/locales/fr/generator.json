@@ -1,4 +1,18 @@
 {
+    "ELEMENTS" : {
+        "fire" : "Feu",
+        "grass" : "Herbe",
+        "water" : "Eau",
+        "electric" : "Électrique",
+        "psychic" : "Psy",
+        "fighting" : "Combat",
+        "normal" : "Normal",
+        "steel" : "Acier",
+        "dark" : "Ténebre"
+    },
+    "common" : "Commun",
+    "uncommon" : "Peu commun",
+    "rare" : "Rare",
     "name" : "Nom",
     "type" : "Type",
     "picture" : "Photo",

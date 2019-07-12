@@ -1,4 +1,18 @@
 {
+    "ELEMENTS" : {
+        "fire" : "Fire",
+        "grass" : "Grass",
+        "water" : "Water",
+        "electric" : "Electric",
+        "psychic" : "Psychic",
+        "fighting" : "Fighting",
+        "normal" : "Normal",
+        "steel" : "Steel",
+        "dark" : "Dark"
+    },
+    "common" : "Common",
+    "uncommon" : "Uncommon",
+    "rare" : "Rare",
     "name" : "Name",
     "type" : "Type",
     "picture" : "Picture",
