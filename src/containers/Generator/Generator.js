@@ -82,7 +82,7 @@ class Generator extends Component {
     resetCard = () => {
         if (
             !isEqual(this.state, DEFAULT_STATE)
-            && window.confirm('Are you sure to want to reset your card ?')
+            && window.confirm(this.props.t('generator:confirmReset'))
         ) this.setState(DEFAULT_STATE);
     };
 
@@ -588,19 +588,19 @@ class Generator extends Component {
                         </div>
                     </div>
                     <div className="panel-actions">
-                        <button onClick={this.exportCard} className="gradient-btn" title="Download your creation">
+                        <button onClick={this.exportCard} className="gradient-btn" title={t('generator:downloadCard')}>
                             <i className="fas fa-download" />
                         </button>
-                        <button onClick={this.printCard} className="gradient-btn" title="Print your creation">
+                        <button onClick={this.printCard} className="gradient-btn" title={t('generator:printCard')}>
                             <i className="fas fa-print" />
                         </button>
-                        <button className="gradient-btn" title="Save it">
+                        <button className="gradient-btn" title={t('generator:saveCard')}>
                             <i className="fas fa-hdd" />
                         </button>
-                        <button onClick={this.resetCard} className="gradient-btn" title="Try again">
+                        <button onClick={this.resetCard} className="gradient-btn" title={t('generator:resetCard')}>
                             <i className="fas fa-sync-alt" />
                         </button>
-                        <button className="gradient-btn" title="Share to your friends">
+                        <button className="gradient-btn" title={t('generator:shareCard')}>
                             <i className="fas fa-share-alt" />
                         </button>
                     </div>

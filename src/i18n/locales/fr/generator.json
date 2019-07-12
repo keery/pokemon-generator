@@ -21,5 +21,11 @@
     "retreat" : "Retraite",
     "attack1" : "Attaque 1",
     "attack2" : "Attaque 2",
-    "additionalInformation" : "Informations supplémentaires"
+    "additionalInformation" : "Informations supplémentaires",
+    "confirmReset" : "Voulez vous vraiment réinitialiser votre carte ?",
+    "downloadCard" : "Télécharger la carte",
+    "printCard" : "Imprimer la carte",
+    "saveCard" : "Enregistrer la carte",
+    "resetCard" : "Recommencer",
+    "shareCard" : "Partagez à vos amis"
 }

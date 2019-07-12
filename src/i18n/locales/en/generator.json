@@ -21,5 +21,11 @@
     "retreat" : "Retreat",
     "attack1" : "Attack 1",
     "attack2" : "Attack 2",
-    "additionalInformation" : "Additional information"
+    "additionalInformation" : "Additional information",
+    "confirmReset" : "Are you sure to want to reset your card ?",
+    "downloadCard" : "Download your creation",
+    "printCard" : "Print your creation",
+    "saveCard" : "Save it",
+    "resetCard" : "Try again",
+    "shareCard" : "Share to your friends"
 }
