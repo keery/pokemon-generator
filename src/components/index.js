@@ -6,3 +6,4 @@ export { default as SelectInput } from './SelectInput';
 export { default as TypeAmount } from './TypeAmount';
 export { default as Field } from './Field';
 export { default as GroupTitle } from './GroupTitle';
+export { default as Loader } from './Loader';
