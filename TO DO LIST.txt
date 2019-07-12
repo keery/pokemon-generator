@@ -1,0 +1,2 @@
+Mettre une date d'expiration sur les cookies
+Rendre le site RGPD friendly

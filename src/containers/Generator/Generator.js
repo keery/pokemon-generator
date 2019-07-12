@@ -57,18 +57,27 @@ const { REACT_APP_VERSION, REACT_APP_TITLE } = process.env;
 class Generator extends Component {
     constructor(props) {
         super(props);
-        this.state = DEFAULT_STATE;
+
+        const cachedCard = localStorage.getItem('pokecard');
+        this.state = cachedCard ? JSON.parse(cachedCard) : DEFAULT_STATE;
     }
 
     handleChange = (event) => {
         const nested = event.target.getAttribute('nested');
-
+        let newState;
         if (nested) {
-            this.setState({
+            newState = {
                 [nested] : { ...this.state[nested], [event.target.name] : event.target.value },
-            });
-        } else this.setState({ [event.target.name] : event.target.value });
+            };
+        } else {
+            newState = { [event.target.name] : event.target.value };
+        }
+        this.setState(newState, this.cacheCard);
     };
+
+    cacheCard = () => {
+        localStorage.setItem('pokecard', JSON.stringify(this.state));
+    }
 
     exportCard = () => {
         const link = document.createElement('a');
@@ -83,7 +92,10 @@ class Generator extends Component {
         if (
             !isEqual(this.state, DEFAULT_STATE)
             && window.confirm(this.props.t('generator:confirmReset'))
-        ) this.setState(DEFAULT_STATE);
+        ) {
+            this.setState(DEFAULT_STATE);
+            localStorage.removeItem('pokecard');
+        }
     };
 
     fileHandler = (event) => {
