@@ -16,8 +16,8 @@ class LanguageSelector extends Component {
         };
     }
 
-    removeChoice(lng) {
-        return this.props.choices.filter(choice => lng !== choice);
+    handleList = (visible) => {
+        this.setState({ isOpen : visible, trigger : false });
     }
 
     selectLanguage(lng) {
@@ -32,17 +32,19 @@ class LanguageSelector extends Component {
         });
     }
 
-    handleList = (visible) => {
-        this.setState({ isOpen : visible, trigger : false });
+    removeChoice(lng) {
+        return this.props.choices.filter(choice => lng !== choice);
     }
 
     render() {
-        const { current, choices, isOpen, trigger } = this.state;
+        const {
+            current, choices, isOpen, trigger,
+        } = this.state;
 
         return (
             <div
                 className={`LanguageSelector ${trigger ? '' : 'open'}`}
-                tabIndex="0"
+                tabIndex={0}
                 onBlur={() => this.handleList(false)}
             >
                 { isOpen && (
@@ -51,6 +53,7 @@ class LanguageSelector extends Component {
                             {
                                 choices.map(choice => (
                                     <li
+                                        role="menuitem"
                                         title={this.props.t(`index:${choice}`)}
                                         key={choice}
                                         className={`lng-ico ${choice}`}
@@ -78,6 +81,7 @@ LanguageSelector.defaultProps = {
 
 LanguageSelector.propTypes = {
     choices : PropTypes.arrayOf(PropTypes.string),
+    t       : PropTypes.func.isRequired,
 };
 
 export default withTranslation()(LanguageSelector);
