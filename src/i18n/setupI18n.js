@@ -24,7 +24,7 @@ i18n
         },
         defaultNS     : ['index'],
         ns            : ['generator'],
-        lng           : 'fr',
+        lng           : 'en',
         fallbackLng   : ['en', 'fr'],
         interpolation : {
             escapeValue : false, // not needed for react as it escapes by default

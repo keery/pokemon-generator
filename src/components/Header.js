@@ -1,8 +1,9 @@
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import LanguageSelector from './LanguageSelector/LanguageSelector';
 import LogoPokeball from '../assets/img/pokeball.png';
 
-const Header = () => (
+const Header = ({ t }) => (
     <header>
         <nav>
             <div className="container is-fluid">
@@ -15,10 +16,10 @@ const Header = () => (
                     {/* <div id="logo-title">{process.env.REACT_APP_TITLE.toUpperCase()}</div> */}
                 </div>
                 <div className="menu-left">
-                    <a title="Sign up">Sign up</a>
-                    <a className="gradient-btn tiny" title="Sign in">
+                    <a title={t('index:signUp')}>{t('index:signUp')}</a>
+                    <a className="gradient-btn tiny" title={t('index:signIn')}>
                         <i className="fas fa-user" />
-                        Sign in
+                        {t('index:signIn')}
                     </a>
                     <LanguageSelector />
                 </div>
@@ -27,4 +28,4 @@ const Header = () => (
     </header>
 );
 
-export default Header;
+export default withTranslation()(Header);

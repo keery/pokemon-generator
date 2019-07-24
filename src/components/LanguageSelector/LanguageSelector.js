@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import i18n from '../../i18n/setupI18n';
 import { DEFAULT_LANGUAGES, LANGUAGES } from '../../const';
 import './LanguageSelector.scss';
 
@@ -25,6 +26,8 @@ class LanguageSelector extends Component {
             current : lng,
             choices : this.removeChoice(lng),
             trigger : true,
+        }, () => {
+            i18n.changeLanguage(lng);
         });
     }
 
