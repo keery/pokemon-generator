@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n/setupI18n';
-import { DEFAULT_LANGUAGES, LANGUAGES } from '../../const';
+import { LANGUAGES } from '../../const';
 import './LanguageSelector.scss';
 
 class LanguageSelector extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            current : props.current,
-            choices : this.removeChoice(props.current),
+            current : i18n.language,
+            choices : this.removeChoice(i18n.language),
             isOpen  : false,
             trigger : false,
         };
@@ -28,6 +27,7 @@ class LanguageSelector extends Component {
             choices : this.removeChoice(lng),
             trigger : true,
         }, () => {
+            localStorage.setItem('lngPG', lng);
             i18n.changeLanguage(lng);
         });
     }
@@ -73,12 +73,10 @@ class LanguageSelector extends Component {
 }
 
 LanguageSelector.defaultProps = {
-    current : DEFAULT_LANGUAGES,
     choices : LANGUAGES,
 };
 
 LanguageSelector.propTypes = {
-    current : PropTypes.oneOf(LANGUAGES),
     choices : PropTypes.arrayOf(PropTypes.string),
 };
 

@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-xhr-backend';
+import { DEFAULT_LANGUAGES, LANGUAGES } from '../const';
 
 const localeLoader = (url, options, callback) => {
     try {
@@ -24,13 +25,13 @@ i18n
         },
         defaultNS     : ['index'],
         ns            : ['generator'],
-        lng           : 'en',
-        fallbackLng   : ['en', 'fr'],
+        lng           : localStorage.getItem('lngPG') || DEFAULT_LANGUAGES,
+        fallbackLng   : LANGUAGES,
         interpolation : {
             escapeValue : false, // not needed for react as it escapes by default
         },
         react : {
-            useSuspense : false,
+            useSuspense : true,
         },
     });
 
