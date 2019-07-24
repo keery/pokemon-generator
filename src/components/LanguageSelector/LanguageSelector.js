@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n/setupI18n';
 import { DEFAULT_LANGUAGES, LANGUAGES } from '../../const';
 import './LanguageSelector.scss';
@@ -50,6 +51,7 @@ class LanguageSelector extends Component {
                             {
                                 choices.map(choice => (
                                     <li
+                                        title={this.props.t(`index:${choice}`)}
                                         key={choice}
                                         className={`lng-ico ${choice}`}
                                         onClick={() => this.selectLanguage(choice)}
@@ -80,4 +82,4 @@ LanguageSelector.propTypes = {
     choices : PropTypes.arrayOf(PropTypes.string),
 };
 
-export default LanguageSelector;
+export default withTranslation()(LanguageSelector);

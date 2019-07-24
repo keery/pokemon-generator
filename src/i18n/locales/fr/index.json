@@ -1,4 +1,7 @@
 {
     "signUp" : "S'inscrire",
-    "signIn" : "Connexion"
+    "signIn" : "Connexion",
+    "en" : "Anglais",
+    "fr" : "Français",
+    "es" : "Espagnol"
 }
