@@ -11,7 +11,7 @@ const App = () => (
             <Header />
             <div className="container is-fluid">
                 <div className="columns is-centered is-vcentered full-height">
-                    <Generator />
+                    {/* <Generator /> */}
                 </div>
             </div>
         </section>

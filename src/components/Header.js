@@ -1,4 +1,5 @@
 import React from 'react';
+import LanguageSelector from './LanguageSelector/LanguageSelector';
 import LogoPokeball from '../assets/img/pokeball.png';
 
 const Header = () => (
@@ -6,12 +7,12 @@ const Header = () => (
         <nav>
             <div className="container is-fluid">
                 <div className="logo-container">
-                    <div>
+                    {/* <div>
                         <a id='logo'>
                             <img src={LogoPokeball} alt={`Logo ${process.env.REACT_APP_TITLE}`} />
                         </a>
-                    </div>
-                    <div id="logo-title">{process.env.REACT_APP_TITLE.toUpperCase()}</div>
+                    </div> */}
+                    {/* <div id="logo-title">{process.env.REACT_APP_TITLE.toUpperCase()}</div> */}
                 </div>
                 <div className="menu-left">
                     <a title="Sign up">Sign up</a>
@@ -19,6 +20,7 @@ const Header = () => (
                         <i className="fas fa-user" />
                         Sign in
                     </a>
+                    <LanguageSelector />
                 </div>
             </div>
         </nav>

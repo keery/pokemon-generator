@@ -1,3 +1,6 @@
+/**
+ * Pokemon information
+ */
 const ELEMENTS = [
     'Fire',
     'Grass',
@@ -67,7 +70,17 @@ const RARITY_CHOICES = ['Common', 'Uncommon', 'Rare'];
 
 const RETREAT_CHOICES = ['0', '1', '2', '3', '4'];
 
+
+/**
+ * Languages
+ */
+const LANGUAGES = ['en', 'fr', 'es'];
+
+const DEFAULT_LANGUAGES = 'en';
+
 export {
+    LANGUAGES,
+    DEFAULT_LANGUAGES,
     ELEMENTS,
     HP_CHOICES,
     AMOUNT_CHOICES,
