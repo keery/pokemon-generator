@@ -74,11 +74,14 @@ const RETREAT_CHOICES = ['0', '1', '2', '3', '4'];
 /**
  * Languages
  */
+const KEY_LNG = 'lngPG';
+
 const LANGUAGES = ['en', 'fr', 'es'];
 
 const DEFAULT_LANGUAGES = 'en';
 
 export {
+    KEY_LNG,
     LANGUAGES,
     DEFAULT_LANGUAGES,
     ELEMENTS,

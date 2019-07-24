@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import i18n from '../../i18n/setupI18n';
-import { LANGUAGES } from '../../const';
+import { LANGUAGES, KEY_LNG } from '../../const';
 import './LanguageSelector.scss';
 
 class LanguageSelector extends Component {
@@ -27,7 +27,7 @@ class LanguageSelector extends Component {
             choices : this.removeChoice(lng),
             trigger : true,
         }, () => {
-            localStorage.setItem('lngPG', lng);
+            localStorage.setItem(KEY_LNG, lng);
             i18n.changeLanguage(lng);
         });
     }
