@@ -124,6 +124,11 @@ class CardRenderer extends Component {
         } else newState.rarityLogo = null;
     }
 
+    updateImgPos = (event) => {
+        const { attrs } = event.target;
+        this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y });
+    }
+
     getBackground = (field, bgPrefix, bgSuffix) => {
         if (bgPrefix !== '' && bgSuffix !== '') {
             const img = new Image();
@@ -132,11 +137,6 @@ class CardRenderer extends Component {
                 this.setState({ [field] : img });
             };
         }
-    }
-
-    updateImgPos = (event) => {
-        const { attrs } = event.target;
-        this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y });
     }
 
     render() {

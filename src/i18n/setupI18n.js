@@ -15,8 +15,8 @@ const localeLoader = (url, options, callback) => {
 i18n
     // load translation using xhr -> see /public/locales
     // learn more: https://github.com/i18next/i18next-xhr-backend
-    .use(Backend)
     .use(initReactI18next)
+    .use(Backend)
     .init({
         backend : {
             loadPath : '{{lng}}/{{ns}}.json',

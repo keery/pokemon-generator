@@ -64,15 +64,11 @@ class Generator extends Component {
 
     handleChange = (event) => {
         const nested = event.target.getAttribute('nested');
-        let newState;
         if (nested) {
-            newState = {
+            this.setState({
                 [nested] : { ...this.state[nested], [event.target.name] : event.target.value },
-            };
-        } else {
-            newState = { [event.target.name] : event.target.value };
-        }
-        this.setState(newState, this.cacheCard);
+            }, this.cacheCard);
+        } else this.setState({ [event.target.name] : event.target.value }, this.cacheCard);
     };
 
     cacheCard = () => {
