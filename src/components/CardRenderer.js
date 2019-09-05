@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import {
-    Layer, Text, Group, Image as ImageCanvas, Rect,
+    Layer, Text, Group, Rect,
 } from 'react-konva';
+import PropTypes from 'prop-types';
 import Attack from './Attack';
+import ImageCanvas from './ImageCanvas';
 import TypeAmount from './TypeAmount';
 import sliceStageImg from '../assets/1-gen/slice-stage.png';
 import { generateImg } from '../helper';
@@ -12,14 +14,10 @@ class CardRenderer extends Component {
     constructor(props) {
         super(props);
         const { 
-            type, stage, name, nameEvolution, mainPicture, evolvePicture, hp, attack1, attack2, weaknessAmount, weaknessType, resistanceAmount, resistanceType, retreat, description, illustrator, cardNumber, totalCollection, rarity, species, length, weight,
+            mainPicture, evolvePicture,
         } = props;
 
         this.state = {
-            type,
-            stage,
-            name,
-            nameEvolution,
             mainPicture,
             mainPictureX   : -2,
             mainPictureY   : 0,
@@ -29,72 +27,54 @@ class CardRenderer extends Component {
             nameX          : 35,
             nameY          : 38,
             canvas         : null,
-            hp,
-            bg             : this.getDynamicImg(true, `${type}-${stage}.png`),
-            sliceStage     : generateImg(sliceStageImg),
-            attack1,
-            attack2,
-            weaknessAmount,
-            weaknessType,
-            resistanceAmount,
-            resistanceType,
-            retreat,
-            description,
-            illustrator,
-            cardNumber,
-            totalCollection,
-            rarity,
             rarityLogo     : null,
-            species,
-            length,
-            weight,
+            attack1Img     : null,
+            attack2Img     : null,
+            sliceStage     : generateImg(sliceStageImg),
         };
     }
 
     async componentDidUpdate(prevProps, prevState) {
         const {
             type, stage, weaknessType, resistanceType, retreat, rarity, attack1 : { attack1Type, attack1Amount }, attack2 : { attack2Type, attack2Amount },
-        } = this.state;
+        } = this.props;
         const nextState = {};
 
-        if (prevState.stage !== stage) {
+        if (prevProps.stage !== stage) {
             // Move name to the left if is an evolution
             nextState.nameX = (stage !== 'basic' ? 95 : 35);
         }
-        if (prevState.stage !== stage || prevState.type !== type) {
-            nextState.bg = await this.getDynamicImg(stage !== '' && type !== '', `${type}-${stage}.png`);
+        if ((prevProps.stage !== stage || prevProps.type !== type) && (stage !== '' && type !== '')) {
+            nextState.bg = await this.getDynamicImg(`${type}-${stage}.png`);
         }
-        if (prevState.attack1Type !== attack1Type) {
-            nextState.attack1.attack1Img = await this.getDynamicImg(attack1Type !== '' && attack1Amount !== '', `${attack1Amount}-${attack1Type}.png`);
+        if (prevProps.attack1.attack1Type !== attack1Type && (attack1Type !== '' && attack1Amount !== '')) {
+            nextState.attack1Img = await this.getDynamicImg(`${attack1Amount}-${attack1Type}.png`);
         }
-        if (prevState.attack2Type !== attack2Type) {
-            nextState.attack2.attack2Img = await this.getDynamicImg(attack2Type !== '' && attack2Amount !== '', `${attack2Amount}-${attack2Type}.png`);
+        if (prevProps.attack2.attack2Type !== attack2Type && (attack2Type !== '' && attack2Amount !== '')) {
+            nextState.attack2Img = await this.getDynamicImg(`${attack2Amount}-${attack2Type}.png`);
         }
-        if (prevState.weaknessType !== weaknessType) {
-            nextState.weaknessImg = await this.getDynamicImg(weaknessType, `1-${weaknessType}.png`);
+        if (prevProps.weaknessType !== weaknessType && weaknessType) {
+            nextState.weaknessImg = await this.getDynamicImg(`1-${weaknessType}.png`);
         }
-        if (prevState.resistanceType !== resistanceType) {
-            nextState.resistanceImg = await this.getDynamicImg(resistanceType, `1-${resistanceType}.png`);
+        if (prevProps.resistanceType !== resistanceType && resistanceType) {
+            nextState.resistanceImg = await this.getDynamicImg(`1-${resistanceType}.png`);
         }
-        if (prevState.retreat !== retreat) {
-            nextState.retreatImg = await this.getDynamicImg(retreat > 0 && retreat <= 4, `retreat-${retreat}.png`);
+        if (prevProps.retreat !== retreat && retreat > 0 && retreat <= 4) {
+            nextState.retreatImg = await this.getDynamicImg(`retreat-${retreat}.png`);
         }
-        if (prevState.rarity !== rarity) {
-            nextState.rarityLogo = await this.getDynamicImg(rarity, `rarity-${rarity}.png`);
+        if (prevProps.rarity !== rarity && rarity) {
+            nextState.rarityLogo = await this.getDynamicImg(`rarity-${rarity}.png`);
         }
 
-        if (Object.keys.length > 0) this.setState(nextState);
+        if (Object.keys(nextState).length > 0) this.setState(nextState);
     }
 
-    getDynamicImg = (condition, file) => {
+    getDynamicImg = (file) => {
         return new Promise((resolve, reject) => {
-            if (condition) {
-                const img = new Image();
-                img.src = require(`../assets/1-gen/${file}`);
-                img.onload = () => (resolve(img));
-                return img;
-            }
-            resolve(false);
+            const img = new Image();
+            img.src = require(`../assets/1-gen/${file}`);
+            img.onload = () => (resolve(img));
+            return img;
         });
     };
 
@@ -115,20 +95,12 @@ class CardRenderer extends Component {
 
     render() {
         const {
-            attack1 : {
-                attack1Name, attack1Dammage, attack1Info, attack1Type, attack1Amount, attack1Img,
-            },
-            attack2 : {
-                attack2Name, attack2Dammage, attack2Info, attack2Type, attack2Amount, attack2Img,
-            },
+            attack1Img,
+            attack2Img,
             sliceStage,
-            hp,
-            name,
             nameY,
             nameX,
-            bg,
             nameEvolution,
-            stage,
             evolvePicture,
             evolvePictureX,
             evolvePictureY,
@@ -136,19 +108,32 @@ class CardRenderer extends Component {
             mainPictureX,
             mainPictureY,
             weaknessImg,
-            weaknessAmount,
             resistanceImg,
-            resistanceAmount,
             retreatImg,
+            rarityLogo,
+        } = this.state;
+
+        const {
+            hp,
+            name,
+            stage,
+            resistanceAmount,
             description,
             illustrator,
             cardNumber,
             totalCollection,
-            rarityLogo,
             species,
             length,
             weight,
-        } = this.state;
+            type,
+            weaknessAmount,
+            attack1 : {
+                attack1Name, attack1Dammage, attack1Info, attack1Type, attack1Amount, attack1Img,
+            },
+            attack2 : {
+                attack2Name, attack2Dammage, attack2Info, attack2Type, attack2Amount, attack2Img,
+            },
+        } = this.props;
 
         let tiny = false;
         let attack2Y = false;
@@ -173,7 +158,7 @@ class CardRenderer extends Component {
         return (
             <Fragment>
                 <Layer>
-                    <ImageCanvas image={bg} width={360} height={506} />
+                    <ImageCanvas src={`${type}-${stage}.png`} width={360} height={506} />
                     <Text text={name} fontFamily="pokename" fontSize={21} y={nameY} x={nameX} />
                     {
                         mainPicture && (
@@ -282,8 +267,75 @@ class CardRenderer extends Component {
 }
 
 CardRenderer.defaultProps = {
-    type  : 'fire',
-    stage : 'basic',
+    type             : 'fire',
+    stage            : 'basic',
+    hp               : '',
+    name             : '',
+    resistanceAmount : '',
+    description      : '',
+    illustrator      : '',
+    cardNumber       : '',
+    totalCollection  : '',
+    species          : '',
+    length           : '',
+    weight           : '',
+    weaknessAmount   : '',
+    weaknessType     : '',
+    resistanceType   : '',
+    retreat          : '',
+    rarity           : '',
+    mainPicture      : '',
+    evolvePicture    : '',
+    attack1          : {
+        attack2Name    : '',
+        attack2Dammage : '',
+        attack2Info    : '',
+        attack2Type    : '',
+        attack2Amount  : '',
+    },
+    attack2 : {
+        attack2Name    : '',
+        attack2Dammage : '',
+        attack2Info    : '',
+        attack2Type    : '',
+        attack2Amount  : '',
+    },
+};
+
+CardRenderer.propTypes = {
+    type             : PropTypes.string,
+    stage            : PropTypes.string,
+    hp               : PropTypes.number,
+    name             : PropTypes.string,
+    resistanceAmount : PropTypes.number,
+    description      : PropTypes.string,
+    illustrator      : PropTypes.string,
+    cardNumber       : PropTypes.string,
+    totalCollection  : PropTypes.string,
+    species          : PropTypes.string,
+    length           : PropTypes.string,
+    weight           : PropTypes.string,
+    weaknessAmount   : PropTypes.string,
+    weaknessType     : PropTypes.string,
+    resistanceType   : PropTypes.string,
+    retreat          : PropTypes.string,
+    rarity           : PropTypes.string,
+    mainPicture      : PropTypes.string,
+    evolvePicture    : PropTypes.string,
+    attack1          : PropTypes.shape({
+        attack1Name    : PropTypes.string,
+        attack1Dammage : PropTypes.string,
+        attack1Info    : PropTypes.string,
+        attack1Type    : PropTypes.string,
+        attack1Amount  : PropTypes.string,
+    }),
+    attack2 : PropTypes.shape({
+        attack2Name    : PropTypes.string,
+        attack2Dammage : PropTypes.string,
+        attack2Info    : PropTypes.string,
+        attack2Type    : PropTypes.string,
+        attack2Amount  : PropTypes.string,
+    }),
 };
 
 export default CardRenderer;
