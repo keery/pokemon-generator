@@ -30,7 +30,7 @@ class CardRenderer extends Component {
             nameY          : 38,
             canvas         : null,
             hp,
-            bg             : this.getBackground('bg', type, stage),
+            bg             : this.getDynamicImg(true, `${type}-${stage}.png`),
             sliceStage     : generateImg(sliceStageImg),
             attack1,
             attack2,
@@ -51,78 +51,52 @@ class CardRenderer extends Component {
         };
     }
 
-    componentWillReceiveProps(nextProps) { 
+    async componentDidUpdate(prevProps, prevState) {
         const {
             type, stage, weaknessType, resistanceType, retreat, rarity, attack1 : { attack1Type, attack1Amount }, attack2 : { attack2Type, attack2Amount },
-        } = nextProps;
-        const newState = { ...nextProps };
+        } = this.state;
+        const nextState = {};
 
-        // Je décale le nom si c'est une évolution
-        newState.nameX = (stage !== 'basic' ? 95 : 35);
-
-        if (stage !== '' && type !== '') {
-            const bg = new Image();
-            bg.src = require(`../assets/1-gen/${type}-${stage}.png`);
-            bg.onload = () => {
-                newState.bg = bg;
-                this.setState(newState);
-            };
+        if (prevState.stage !== stage) {
+            // Move name to the left if is an evolution
+            nextState.nameX = (stage !== 'basic' ? 95 : 35);
+        }
+        if (prevState.stage !== stage || prevState.type !== type) {
+            nextState.bg = await this.getDynamicImg(stage !== '' && type !== '', `${type}-${stage}.png`);
+        }
+        if (prevState.attack1Type !== attack1Type) {
+            nextState.attack1.attack1Img = await this.getDynamicImg(attack1Type !== '' && attack1Amount !== '', `${attack1Amount}-${attack1Type}.png`);
+        }
+        if (prevState.attack2Type !== attack2Type) {
+            nextState.attack2.attack2Img = await this.getDynamicImg(attack2Type !== '' && attack2Amount !== '', `${attack2Amount}-${attack2Type}.png`);
+        }
+        if (prevState.weaknessType !== weaknessType) {
+            nextState.weaknessImg = await this.getDynamicImg(weaknessType, `1-${weaknessType}.png`);
+        }
+        if (prevState.resistanceType !== resistanceType) {
+            nextState.resistanceImg = await this.getDynamicImg(resistanceType, `1-${resistanceType}.png`);
+        }
+        if (prevState.retreat !== retreat) {
+            nextState.retreatImg = await this.getDynamicImg(retreat > 0 && retreat <= 4, `retreat-${retreat}.png`);
+        }
+        if (prevState.rarity !== rarity) {
+            nextState.rarityLogo = await this.getDynamicImg(rarity, `rarity-${rarity}.png`);
         }
 
-        if (attack1Type !== '' && attack1Amount !== '') {
-            const img = new Image();
-            img.src = require(`../assets/1-gen/${attack1Amount}-${attack1Type}.png`);
-            img.onload = () => {
-                newState.attack1.attack1Img = img;
-                this.setState(newState);
-            };
-        } else newState.attack1.attack1Img = null;
-
-        if (attack2Type !== '' && attack2Amount !== '') {
-            const img = new Image();
-            img.src = require(`../assets/1-gen/${attack2Amount}-${attack2Type}.png`);
-            img.onload = () => {
-                newState.attack2.attack2Img = img;
-                this.setState(newState);
-            };
-        } else newState.attack2.attack2Img = null;
-
-        if (weaknessType !== '') {
-            const img = new Image();
-            img.src = require(`../assets/1-gen/1-${weaknessType}.png`);
-            img.onload = () => {
-                newState.weaknessImg = img;
-                this.setState(newState);
-            };
-        } else newState.weaknessImg = null;
-
-        if (resistanceType !== '') {
-            const img = new Image();
-            img.src = require(`../assets/1-gen/1-${resistanceType}.png`);
-            img.onload = () => {
-                newState.resistanceImg = img;
-                this.setState(newState);
-            };
-        } else newState.resistanceImg = null;
-
-        if (retreat > 0 && retreat <= 4) {
-            const img = new Image();
-            img.src = require(`../assets/1-gen/retreat-${retreat}.png`);
-            img.onload = () => {
-                newState.retreatImg = img;
-                this.setState(newState);
-            };
-        } else newState.retreatImg = null;
-
-        if (rarity !== '') {
-            const img = new Image();
-            img.src = require(`../assets/1-gen/rarity-${rarity}.png`);
-            img.onload = () => {
-                newState.rarityLogo = img;
-                this.setState(newState);
-            };
-        } else newState.rarityLogo = null;
+        if (Object.keys.length > 0) this.setState(nextState);
     }
+
+    getDynamicImg = (condition, file) => {
+        return new Promise((resolve, reject) => {
+            if (condition) {
+                const img = new Image();
+                img.src = require(`../assets/1-gen/${file}`);
+                img.onload = () => (resolve(img));
+                return img;
+            }
+            resolve(false);
+        });
+    };
 
     updateImgPos = (event) => {
         const { attrs } = event.target;
