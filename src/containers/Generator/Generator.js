@@ -22,7 +22,7 @@ const DEFAULT_STATE = {
     nameEvolution    : '',
     mainPicture      : null,
     evolvePicture    : null,
-    hp               : 30,
+    hp               : '30',
     weaknessType     : '',
     weaknessAmount   : '',
     resistanceType   : '',

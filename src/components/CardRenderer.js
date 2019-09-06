@@ -26,9 +26,38 @@ class CardRenderer extends Component {
             attack2Img     : null,
             sliceStage     : generateImg(sliceStageImg),
         };
+
+        this.test = this.test.bind(this);
+    }
+
+    async componentDidMount() {
+        const nextState = await this.test({
+            attack1 : {},
+            attack2 : {},
+        });
+        this.setState(nextState);
     }
 
     async componentDidUpdate(prevProps, prevState) {
+        const nextState = await this.test(prevProps);
+        if (Object.keys(nextState).length > 0) this.setState(nextState);
+    }
+
+    getDynamicImg = (file) => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = require(`../assets/1-gen/${file}`);
+            img.onload = () => (resolve(img));
+            return img;
+        });
+    };
+
+    updateImgPos = (event) => {
+        const { attrs } = event.target;
+        this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y });
+    }
+
+    async test(prevProps) {
         const {
             type, stage, weaknessType, resistanceType, retreat, rarity, attack1 : { attack1Type, attack1Amount }, attack2 : { attack2Type, attack2Amount },
         } = this.props;
@@ -60,21 +89,7 @@ class CardRenderer extends Component {
             nextState.rarityLogo = await this.getDynamicImg(`rarity-${rarity}.png`);
         }
 
-        if (Object.keys(nextState).length > 0) this.setState(nextState);
-    }
-
-    getDynamicImg = (file) => {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.src = require(`../assets/1-gen/${file}`);
-            img.onload = () => (resolve(img));
-            return img;
-        });
-    };
-
-    updateImgPos = (event) => {
-        const { attrs } = event.target;
-        this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y });
+        return nextState;
     }
 
     render() {
@@ -142,7 +157,7 @@ class CardRenderer extends Component {
         return (
             <Fragment>
                 <Layer>
-                    {/* <ImageCanvas src={`${type}-${stage}.png`} width={360} height={506} /> */}
+                    <ImageCanvas src={`${type}-${stage}.png`} width={360} height={506} />
                     <Text text={name} fontFamily="pokename" fontSize={21} y={nameY} x={nameX} />
                     {
                         mainPicture && (
@@ -154,7 +169,7 @@ class CardRenderer extends Component {
                     {
                         stage !== 'basic' && (
                             <Group>
-                                <KonvaImage image={sliceStage} x={36} y={57} width={56} height={37} draggable />
+                                <KonvaImage image={sliceStage} x={36} y={57} width={56} height={37} />
                                 <Group width={44} height={40} y={40} x={31} clipWidth={44} clipHeight={38} clipY={0} clipX={0}>
                                     <KonvaImage image={evolvePicture} y={evolvePictureY} x={evolvePictureX} name="evolvePicture" onDragEnd={this.updateImgPos} draggable />
                                 </Group>
@@ -290,7 +305,7 @@ CardRenderer.defaultProps = {
 CardRenderer.propTypes = {
     type             : PropTypes.string,
     stage            : PropTypes.string,
-    hp               : PropTypes.number,
+    hp               : PropTypes.string,
     name             : PropTypes.string,
     resistanceAmount : PropTypes.string,
     description      : PropTypes.string,
