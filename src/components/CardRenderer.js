@@ -19,7 +19,6 @@ class CardRenderer extends Component {
             mainPictureY   : 0,
             evolvePictureX : 0,
             evolvePictureY : 0,
-            nameX          : 35,
             nameY          : 38,
             rarityLogo     : null,
             attack1Img     : null,
@@ -27,11 +26,11 @@ class CardRenderer extends Component {
             sliceStage     : generateImg(sliceStageImg),
         };
 
-        this.test = this.test.bind(this);
+        this.getStateFromProps = this.getStateFromProps.bind(this);
     }
 
     async componentDidMount() {
-        const nextState = await this.test({
+        const nextState = await this.getStateFromProps({
             attack1 : {},
             attack2 : {},
         });
@@ -39,7 +38,7 @@ class CardRenderer extends Component {
     }
 
     async componentDidUpdate(prevProps, prevState) {
-        const nextState = await this.test(prevProps);
+        const nextState = await this.getStateFromProps(prevProps);
         if (Object.keys(nextState).length > 0) this.setState(nextState);
     }
 
@@ -52,12 +51,7 @@ class CardRenderer extends Component {
         });
     };
 
-    updateImgPos = (event) => {
-        const { attrs } = event.target;
-        this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y });
-    }
-
-    async test(prevProps) {
+    async getStateFromProps(prevProps) {
         const {
             type, stage, weaknessType, resistanceType, retreat, rarity, attack1 : { attack1Type, attack1Amount }, attack2 : { attack2Type, attack2Amount },
         } = this.props;
@@ -90,6 +84,11 @@ class CardRenderer extends Component {
         }
 
         return nextState;
+    }
+
+    updateImgPos = (event) => {
+        const { attrs } = event.target;
+        this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y });
     }
 
     render() {
@@ -268,7 +267,7 @@ class CardRenderer extends Component {
 CardRenderer.defaultProps = {
     type             : 'fire',
     stage            : 'basic',
-    hp               : false,
+    hp               : '',
     name             : '',
     resistanceAmount : '',
     description      : '',
