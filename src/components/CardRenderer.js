@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import {
-    Layer, Text, Group, Rect,
+    Layer, Text, Group, Rect, Image as KonvaImage,
 } from 'react-konva';
 import PropTypes from 'prop-types';
 import Attack from './Attack';
@@ -13,20 +13,14 @@ import '../containers/App/App.scss';
 class CardRenderer extends Component {
     constructor(props) {
         super(props);
-        const { 
-            mainPicture, evolvePicture,
-        } = props;
 
         this.state = {
-            mainPicture,
             mainPictureX   : -2,
             mainPictureY   : 0,
-            evolvePicture,
             evolvePictureX : 0,
             evolvePictureY : 0,
             nameX          : 35,
             nameY          : 38,
-            canvas         : null,
             rarityLogo     : null,
             attack1Img     : null,
             attack2Img     : null,
@@ -83,16 +77,6 @@ class CardRenderer extends Component {
         this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y });
     }
 
-    getBackground = (field, bgPrefix, bgSuffix) => {
-        if (bgPrefix !== '' && bgSuffix !== '') {
-            const img = new Image();
-            img.src = require(`../assets/1-gen/${bgPrefix}-${bgSuffix}.png`);
-            img.onload = () => {
-                this.setState({ [field] : img });
-            };
-        }
-    }
-
     render() {
         const {
             attack1Img,
@@ -100,11 +84,8 @@ class CardRenderer extends Component {
             sliceStage,
             nameY,
             nameX,
-            nameEvolution,
-            evolvePicture,
             evolvePictureX,
             evolvePictureY,
-            mainPicture,
             mainPictureX,
             mainPictureY,
             weaknessImg,
@@ -112,8 +93,9 @@ class CardRenderer extends Component {
             retreatImg,
             rarityLogo,
         } = this.state;
-
+        
         const {
+            nameEvolution,
             hp,
             name,
             stage,
@@ -127,11 +109,13 @@ class CardRenderer extends Component {
             weight,
             type,
             weaknessAmount,
+            mainPicture,
+            evolvePicture,
             attack1 : {
-                attack1Name, attack1Dammage, attack1Info, attack1Type, attack1Amount, attack1Img,
+                attack1Name, attack1Dammage, attack1Info, attack1Type, attack1Amount,
             },
             attack2 : {
-                attack2Name, attack2Dammage, attack2Info, attack2Type, attack2Amount, attack2Img,
+                attack2Name, attack2Dammage, attack2Info, attack2Type, attack2Amount,
             },
         } = this.props;
 
@@ -158,21 +142,21 @@ class CardRenderer extends Component {
         return (
             <Fragment>
                 <Layer>
-                    <ImageCanvas src={`${type}-${stage}.png`} width={360} height={506} />
+                    {/* <ImageCanvas src={`${type}-${stage}.png`} width={360} height={506} /> */}
                     <Text text={name} fontFamily="pokename" fontSize={21} y={nameY} x={nameX} />
                     {
                         mainPicture && (
                             <Group width={275} height={194} y={63} x={44} clipWidth={275} clipHeight={197} clipY={0} clipX={-2}>
-                                <ImageCanvas image={mainPicture} y={mainPictureY} x={mainPictureX} draggable name="mainPicture" onDragEnd={this.updateImgPos} />
+                                <KonvaImage image={mainPicture} y={mainPictureY} x={mainPictureX} draggable name="mainPicture" onDragEnd={this.updateImgPos} />
                             </Group>
                         )
                     }
                     {
                         stage !== 'basic' && (
                             <Group>
-                                <ImageCanvas image={sliceStage} x={36} y={57} width={56} height={37} draggable />
+                                <KonvaImage image={sliceStage} x={36} y={57} width={56} height={37} draggable />
                                 <Group width={44} height={40} y={40} x={31} clipWidth={44} clipHeight={38} clipY={0} clipX={0}>
-                                    <ImageCanvas image={evolvePicture} y={evolvePictureY} x={evolvePictureX} name="evolvePicture" onDragEnd={this.updateImgPos} draggable />
+                                    <KonvaImage image={evolvePicture} y={evolvePictureY} x={evolvePictureX} name="evolvePicture" onDragEnd={this.updateImgPos} draggable />
                                 </Group>
                                 { nameEvolution !== '' && <Text text={`Evolves from ${nameEvolution}`} fontFamily="pokevolution" fontSize={9} y={21} x={77} /> }
                             </Group>
@@ -217,7 +201,7 @@ class CardRenderer extends Component {
                     <Group x={10} y={418} width={380}>
                         <TypeAmount type={weaknessImg} amount={weaknessAmount} />
                         <TypeAmount type={resistanceImg} amount={resistanceAmount} x={120} />
-                        { retreatImg && <ImageCanvas x={246} y={10} image={retreatImg} /> }
+                        { retreatImg && <KonvaImage x={246} y={10} image={retreatImg} /> }
                     </Group>
                     { description !== '' && (
                         <Group x={38} y={451} width={282}>
@@ -258,7 +242,7 @@ class CardRenderer extends Component {
                         />
                     )}
                     { rarityLogo && (
-                        <ImageCanvas image={rarityLogo} y={479} x={330} width={7} height={7} />
+                        <KonvaImage image={rarityLogo} y={479} x={330} width={7} height={7} />
                     )}
                 </Layer>
             </Fragment>
@@ -269,7 +253,7 @@ class CardRenderer extends Component {
 CardRenderer.defaultProps = {
     type             : 'fire',
     stage            : 'basic',
-    hp               : '',
+    hp               : false,
     name             : '',
     resistanceAmount : '',
     description      : '',
@@ -286,6 +270,7 @@ CardRenderer.defaultProps = {
     rarity           : '',
     mainPicture      : '',
     evolvePicture    : '',
+    nameEvolution    : '',
     attack1          : {
         attack2Name    : '',
         attack2Dammage : '',
@@ -307,7 +292,7 @@ CardRenderer.propTypes = {
     stage            : PropTypes.string,
     hp               : PropTypes.number,
     name             : PropTypes.string,
-    resistanceAmount : PropTypes.number,
+    resistanceAmount : PropTypes.string,
     description      : PropTypes.string,
     illustrator      : PropTypes.string,
     cardNumber       : PropTypes.string,
@@ -320,8 +305,9 @@ CardRenderer.propTypes = {
     resistanceType   : PropTypes.string,
     retreat          : PropTypes.string,
     rarity           : PropTypes.string,
-    mainPicture      : PropTypes.string,
-    evolvePicture    : PropTypes.string,
+    mainPicture      : PropTypes.object,
+    evolvePicture    : PropTypes.object,
+    nameEvolution    : PropTypes.string,
     attack1          : PropTypes.shape({
         attack1Name    : PropTypes.string,
         attack1Dammage : PropTypes.string,

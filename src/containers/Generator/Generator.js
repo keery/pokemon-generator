@@ -110,7 +110,6 @@ class Generator extends Component {
                     let imgResized = null;
                     if (eventName === 'mainPicture') imgResized = this.resizeImg(img, 275, 196);
                     else if (eventName === 'evolvePicture') imgResized = this.resizeImg(img, 44, 40);
-
                     this.setState({ [eventName] : imgResized });
                 };
             };

@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Image } from 'react-konva';
 import useImage from 'use-image';
-// import img from './fire-basic.png'
 
 const ImageCanvas = ({ src, width, height }) => {
     const [image] = useImage(require(`../assets/1-gen/${src}`), 'Anonymous');
