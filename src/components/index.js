@@ -7,3 +7,4 @@ export { default as TypeAmount } from './TypeAmount';
 export { default as Field } from './Field';
 export { default as GroupTitle } from './GroupTitle';
 export { default as Loader } from './Loader';
+export { default as ErrorBoundary } from './ErrorBoundary';

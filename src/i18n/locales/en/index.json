@@ -3,5 +3,7 @@
     "signIn" : "Sign in",
     "en" : "English",
     "fr" : "French",
-    "es" : "Spanish"
+    "es" : "Spanish",
+    "somethingWrong" : "Oops something went wrong",
+    "reportFeedback" : "Report feedback"
 }

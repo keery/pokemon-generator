@@ -3,5 +3,7 @@
     "signIn" : "Connexion",
     "en" : "Anglais",
     "fr" : "Français",
-    "es" : "Espagnol"
+    "es" : "Espagnol",
+    "somethingWrong" : "Oups une erreur s'est produite",
+    "reportFeedback" : "Signaler un incident"
 }
