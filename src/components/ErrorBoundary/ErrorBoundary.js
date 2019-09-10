@@ -32,7 +32,7 @@ class ErrorBoundary extends Component {
             return (
                 <div id="ErrorBoundary">
                     <div className="errorHeader">
-                        <img src={LogoPokeball} alt="Logo Qats" className="logo" />
+                        <img src={LogoPokeball} alt={`Logo ${process.env.REACT_APP_TITLE}`} className="logo" />
                         <div>
                             <h1>{ t('somethingWrong') }</h1>
                             <button
