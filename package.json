@@ -40,6 +40,13 @@
     "eslint-plugin-react": "^7.14.2",
     "eslint-plugin-standard": "^4.0.0"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.js",
+      "!<rootDir>/src/**/index.js",
+      "!./**/registerServiceWorker.js"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
