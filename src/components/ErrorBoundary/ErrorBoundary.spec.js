@@ -3,10 +3,6 @@ import { mount } from 'enzyme';
 import * as Sentry from '@sentry/browser';
 import ErrorBoundary from './ErrorBoundary';
 
-jest.mock('react-i18next', () => ({
-    withTranslation : () => Component => props => <Component t={jest.fn(t => t)} {...props} />,
-}));
-
 Sentry.showReportDialog = jest.fn();
 
 const TestComponent = () => (
