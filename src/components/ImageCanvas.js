@@ -3,7 +3,9 @@ import React from 'react';
 import { Image } from 'react-konva';
 import useImage from 'use-image';
 
-const ImageCanvas = ({ src, width, height, x, y }) => {
+const ImageCanvas = ({
+    src, width, height, x, y,
+}) => {
     const [image] = useImage(require(`../assets/1-gen/${src}`), 'Anonymous');
     return (
         <Image
@@ -14,6 +16,11 @@ const ImageCanvas = ({ src, width, height, x, y }) => {
             y={y}
         />
     );
+};
+
+ImageCanvas.defaultProps = {
+    x : 0,
+    y : 0,
 };
 
 ImageCanvas.propTypes = {

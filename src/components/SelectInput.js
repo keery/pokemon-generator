@@ -34,9 +34,12 @@ SelectInput.propTypes = {
     onChange  : PropTypes.func,
     nested    : PropTypes.string,
     name      : PropTypes.string.isRequired,
-    choices   : PropTypes.array,
-    value     : PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    suffix    : PropTypes.string,
+    choices   : PropTypes.arrayOf(PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ])),
+    value  : PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    suffix : PropTypes.string,
 };
 
 export default SelectInput;

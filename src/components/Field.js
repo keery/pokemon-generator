@@ -9,7 +9,8 @@ const Field = ({ label, children }) => (
 );
 
 Field.propTypes = {
-    label : PropTypes.string.isRequired,
+    label    : PropTypes.string.isRequired,
+    children : PropTypes.node.isRequired,
 };
 
 export default Field;

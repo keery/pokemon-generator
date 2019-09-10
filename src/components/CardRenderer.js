@@ -107,7 +107,7 @@ class CardRenderer extends Component {
             retreatImg,
             rarityLogo,
         } = this.state;
-        
+
         const {
             nameEvolution,
             hp,
@@ -126,10 +126,10 @@ class CardRenderer extends Component {
             mainPicture,
             evolvePicture,
             attack1 : {
-                attack1Name, attack1Dammage, attack1Info, attack1Type, attack1Amount,
+                attack1Name, attack1Dammage, attack1Info,
             },
             attack2 : {
-                attack2Name, attack2Dammage, attack2Info, attack2Type, attack2Amount,
+                attack2Name, attack2Dammage, attack2Info,
             },
         } = this.props;
 
@@ -188,8 +188,6 @@ class CardRenderer extends Component {
                         tiny={tiny}
                         name={attack1Name}
                         damage={attack1Dammage}
-                        type={attack1Type}
-                        amount={attack1Amount}
                         desc={attack1Info}
                         imgTypeAmount={attack1Img}
                     />
@@ -207,8 +205,6 @@ class CardRenderer extends Component {
                         tiny={tiny}
                         name={attack2Name}
                         damage={attack2Dammage}
-                        type={attack2Type}
-                        amount={attack2Amount}
                         desc={attack2Info}
                         imgTypeAmount={attack2Img}
                     />

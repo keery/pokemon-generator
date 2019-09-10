@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Text, Group, Image as ImageCanvas } from 'react-konva';
 
 const Attack = ({
-    damage, desc, name, amount, type, width, height, x, y, imgTypeAmount, tiny,
+    damage, desc, name, width, height, x, y, imgTypeAmount, tiny,
 }) => {
     let imgTypeAmountY = 30;
     let damageY = 40;
@@ -99,14 +99,26 @@ const Attack = ({
 };
 
 Attack.defaultProps = {
+    damage        : '',
+    name          : '',
+    desc          : '',
     width         : 380,
     height        : 107,
     imgTypeAmount : null,
+    tiny          : false,
 };
 
 Attack.propTypes = {
-    width  : PropTypes.number.isRequired,
-    height : PropTypes.number.isRequired,
+    damage        : PropTypes.string,
+    name          : PropTypes.string,
+    desc          : PropTypes.string,
+    width         : PropTypes.number,
+    height        : PropTypes.number,
+    tiny          : PropTypes.bool,
+    // eslint-disable-next-line react/forbid-prop-types
+    imgTypeAmount : PropTypes.object,
+    x             : PropTypes.number.isRequired,
+    y             : PropTypes.number.isRequired,
 };
 
 export default Attack;

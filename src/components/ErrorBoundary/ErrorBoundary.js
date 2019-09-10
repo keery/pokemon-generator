@@ -38,6 +38,7 @@ class ErrorBoundary extends Component {
                             <button
                                 onClick={() => Sentry.showReportDialog({ eventId : this.state.eventId })}
                                 className="gradient-btn"
+                                type="button"
                             >
                                 { t('reportFeedback') }
                             </button>
