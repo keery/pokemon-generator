@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import 'bulma/css/bulma.css';
-import Generator from '../Generator/Generator';
+import { Generator } from '..';
 import { Header, Loader, ErrorBoundary } from '../../components';
 import './App.scss';
 import '../../assets/style/index.scss';
