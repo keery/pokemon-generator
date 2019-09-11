@@ -1,8 +1,8 @@
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
-import LanguageSelector from './LanguageSelector/LanguageSelector';
-import LogoPokeball from '../assets/img/pokeball.png';
+import LanguageSelector from '../LanguageSelector/LanguageSelector';
+import LogoPokeball from '../../assets/img/pokeball.png';
 
 const Header = ({ t }) => (
     <header>
