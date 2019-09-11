@@ -22,7 +22,6 @@ const SelectInput = ({
 };
 
 SelectInput.defaultProps = {
-    onChange  : () => null,
     choices   : [],
     suffix    : '',
     blankLine : true,
@@ -31,7 +30,7 @@ SelectInput.defaultProps = {
 
 SelectInput.propTypes = {
     blankLine : PropTypes.bool,
-    onChange  : PropTypes.func,
+    onChange  : PropTypes.func.isRequired,
     nested    : PropTypes.string,
     name      : PropTypes.string.isRequired,
     choices   : PropTypes.arrayOf(PropTypes.oneOfType([
