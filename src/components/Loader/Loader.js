@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoPokeball from '../assets/img/pokeball.gif';
+import LogoPokeball from '../../assets/img/pokeball.gif';
 
 const Loader = () => (
     <div className="Loader">
