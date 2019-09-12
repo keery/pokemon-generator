@@ -160,7 +160,7 @@ class CardRenderer extends Component {
                     <Text text={name} fontFamily="pokename" fontSize={21} y={nameY} x={nameX} />
                     {
                         mainPicture && (
-                            <Group width={275} height={194} y={63} x={44} clipWidth={275} clipHeight={197} clipY={0} clipX={-2}>
+                            <Group width={275} height={193} y={63} x={44} clipWidth={275} clipHeight={197} clipY={0} clipX={-2}>
                                 <KonvaImage image={mainPicture} y={mainPictureY} x={mainPictureX} draggable name="mainPicture" onDragEnd={this.updateImgPos} />
                             </Group>
                         )
