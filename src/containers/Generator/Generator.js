@@ -72,7 +72,11 @@ class Generator extends Component {
     };
 
     cacheCard = () => {
-        localStorage.setItem('pokecard', JSON.stringify(this.state));
+        localStorage.setItem('pokecard', JSON.stringify({
+            ...this.state,
+            mainPicture   : null,
+            evolvePicture : null,
+        }));
     }
 
     exportCard = () => {
