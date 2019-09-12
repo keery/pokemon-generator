@@ -1,2 +1,3 @@
-Mettre une date d'expiration sur les cookies
-Rendre le site RGPD friendly
+Set cookie expiration delay
+GPDR friendly
+Draw on card with pen
