@@ -624,8 +624,7 @@ class Generator extends Component {
                             </div>
                         </div>
                         <div className="signature-desc">
-                            Le Lorem Ipsum est simplement du faux texte employé dans la composition
-                            et la mise en page
+                            <span>📢</span> {t('news')}
                         </div>
                     </div>
                 </div>
@@ -634,4 +633,4 @@ class Generator extends Component {
     }
 }
 
-export default withTranslation()(Generator);
+export default withTranslation('generator')(Generator);

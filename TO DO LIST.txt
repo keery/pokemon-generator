@@ -2,3 +2,4 @@ Set cookie expiration delay
 GPDR friendly
 Draw on card with pen
 Card galery to see old created cards into a pokedex
+Play sound effect on actions ?

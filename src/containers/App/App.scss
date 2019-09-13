@@ -224,7 +224,12 @@ nav {
 
     .signature-desc {
         padding-top: 10px;
+        text-align: justify;
         color: #9b9b9b;
+
+        > span {
+            font-size: 1.4rem;
+        }
     }
 }
 .version {

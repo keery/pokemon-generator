@@ -41,5 +41,6 @@
     "printCard" : "Imprimer la carte",
     "saveCard" : "Enregistrer la carte",
     "resetCard" : "Recommencer",
-    "shareCard" : "Partagez à vos amis"
+    "shareCard" : "Partagez à vos amis",
+    "news" : "De nombreuses fonctionnalités arrivent bientôt ! La possibilité de dessiner vos cartes à l'aide d'outils, enregistrer vos cartes directement sur votre compte, une application mobile afin de pouvoir créer vos propres cartes où vous le souhaitez, et bien plus, restez à l'écoute."
 }
