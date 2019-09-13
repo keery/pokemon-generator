@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Stage } from 'react-konva';
 import { withTranslation } from 'react-i18next';
 import isEqual from 'lodash.isequal';
+import { LoaderContext } from '../../context'
 import {
     CardRenderer, FileInput, SelectInput, Field, GroupTitle,
 } from '../../components';
