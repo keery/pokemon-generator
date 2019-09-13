@@ -64,23 +64,23 @@ class CardRenderer extends Component {
         if ((prevProps.stage !== stage || prevProps.type !== type) && (stage !== '' && type !== '')) {
             nextState.bg = await this.getDynamicImg(`${type}-${stage}.png`);
         }
-        if (prevProps.attack1.attack1Type !== attack1Type && (attack1Type !== '' && attack1Amount !== '')) {
-            nextState.attack1Img = await this.getDynamicImg(`${attack1Amount}-${attack1Type}.png`);
+        if (prevProps.attack1.attack1Type !== attack1Type) {
+            nextState.attack1Img = (attack1Type !== '' && attack1Amount !== '') ? await this.getDynamicImg(`${attack1Amount}-${attack1Type}.png`) : null;
         }
-        if (prevProps.attack2.attack2Type !== attack2Type && (attack2Type !== '' && attack2Amount !== '')) {
-            nextState.attack2Img = await this.getDynamicImg(`${attack2Amount}-${attack2Type}.png`);
+        if (prevProps.attack2.attack2Type !== attack2Type) {
+            nextState.attack2Img = (attack2Type !== '' && attack2Amount !== '') ? await this.getDynamicImg(`${attack2Amount}-${attack2Type}.png`) : null;
         }
-        if (prevProps.weaknessType !== weaknessType && weaknessType) {
-            nextState.weaknessImg = await this.getDynamicImg(`1-${weaknessType}.png`);
+        if (prevProps.weaknessType !== weaknessType) {
+            nextState.weaknessImg = weaknessType ? await this.getDynamicImg(`1-${weaknessType}.png`) : null;
         }
-        if (prevProps.resistanceType !== resistanceType && resistanceType) {
-            nextState.resistanceImg = await this.getDynamicImg(`1-${resistanceType}.png`);
+        if (prevProps.resistanceType !== resistanceType) {
+            nextState.resistanceImg = resistanceType ? await this.getDynamicImg(`1-${resistanceType}.png`) : null;
         }
-        if (prevProps.retreat !== retreat && retreat > 0 && retreat <= 4) {
-            nextState.retreatImg = await this.getDynamicImg(`retreat-${retreat}.png`);
+        if (prevProps.retreat !== retreat) {
+            nextState.retreatImg = retreat > 0 && retreat <= 4 ? await this.getDynamicImg(`retreat-${retreat}.png`) : null;
         }
-        if (prevProps.rarity !== rarity && rarity) {
-            nextState.rarityLogo = await this.getDynamicImg(`rarity-${rarity}.png`);
+        if (prevProps.rarity !== rarity) {
+            nextState.rarityLogo = rarity ? await this.getDynamicImg(`rarity-${rarity}.png`) : null;
         }
 
         return nextState;
