@@ -251,6 +251,14 @@ nav {
     bottom: 0;
     z-index: -1;
 }
+@keyframes appendShape {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
 #shape-1 {
     width: 40%;
@@ -265,6 +273,7 @@ nav {
     max-width: 380px;
     left: 60%;
     top: 50%;
+    animation-delay: .3s;
 }
 
 #shape-3 {
@@ -273,12 +282,15 @@ nav {
     top: 67%;
     max-width: 420px;
     fill: $jaune;
+    animation-delay: .6s;
 }
 
 .shape {
     position: absolute;
+    opacity: 0;
     transform: translateX(-50%) translateY(-50%);
     fill-rule: evenodd;
+    animation: appendShape .5s forwards;
 }
 
 .konvajs-content {

@@ -1,7 +1,9 @@
 import React, { Suspense } from 'react';
 import 'bulma/css/bulma.css';
 import { Generator } from '..';
-import { Header, Loader, ErrorBoundary, LoaderProvider, LoaderConsumer } from '../../components';
+import {
+    Header, Loader, ErrorBoundary, LoaderProvider, LoaderConsumer,
+} from '../../components';
 import './App.scss';
 import '../../assets/style/index.scss';
 
