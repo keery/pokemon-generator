@@ -3,5 +3,8 @@
     "signIn" : "Registrarse",
     "en" : "Inglés",
     "fr" : "Francés",
-    "es" : "Español"
+    "es" : "Español",
+    "somethingWrong" : "¡Vaya! Se ha producido un error.",
+    "reportFeedback" : "Informar un incidente",
+    "caressMe" : "Acariciame por favor"
 }

@@ -193,6 +193,7 @@ class Generator extends Component {
         } = this.state;
 
         const { t } = this.props;
+        throw new Error('dfsdf')
 
         return (
             <div className="Generator columns">

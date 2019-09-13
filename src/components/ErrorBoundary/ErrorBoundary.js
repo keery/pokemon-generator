@@ -44,7 +44,7 @@ class ErrorBoundary extends Component {
                             </button>
                         </div>
                     </div>
-                    <div className="pikachuMeme" />
+                    <div className="pikachuMeme" title={t('caressMe')} />
                 </div>
             );
         }
