@@ -91,7 +91,7 @@ class Generator extends Component {
     resetCard = () => {
         if (
             !isEqual(this.state, DEFAULT_STATE)
-            && window.confirm(this.props.t('generator:confirmReset'))
+            && window.confirm(this.props.t('confirmReset'))
         ) {
             this.setState(DEFAULT_STATE);
             localStorage.removeItem('pokecard');
@@ -193,7 +193,6 @@ class Generator extends Component {
         } = this.state;
 
         const { t } = this.props;
-        throw new Error('dfsdf')
 
         return (
             <div className="Generator columns">
@@ -206,7 +205,7 @@ class Generator extends Component {
                         />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
-                                <Field label={t('generator:name')}>
+                                <Field label={t('name')}>
                                     <input
                                         type="text"
                                         name="name"
@@ -215,7 +214,7 @@ class Generator extends Component {
                                         value={name}
                                     />
                                 </Field>
-                                <Field label={t('generator:type')}>
+                                <Field label={t('type')}>
                                     <SelectInput
                                         name="type"
                                         onChange={this.handleChange}
@@ -224,7 +223,7 @@ class Generator extends Component {
                                         blankLine={false}
                                     />
                                 </Field>
-                                <Field label={t('generator:picture')}>
+                                <Field label={t('picture')}>
                                     <FileInput
                                         name="mainPicture"
                                         onChange={this.fileHandler}
@@ -241,7 +240,7 @@ class Generator extends Component {
                                         blankLine={false}
                                     />
                                 </Field>
-                                <Field label={t('generator:species')}>
+                                <Field label={t('species')}>
                                     <input
                                         type="text"
                                         name="species"
@@ -250,7 +249,7 @@ class Generator extends Component {
                                         value={species}
                                     />
                                 </Field>
-                                <Field label={t('generator:length')}>
+                                <Field label={t('length')}>
                                     <input
                                         type="text"
                                         name="length"
@@ -260,7 +259,7 @@ class Generator extends Component {
                                         value={length}
                                     />
                                 </Field>
-                                <Field label={t('generator:weight')}>
+                                <Field label={t('weight')}>
                                     <input
                                         type="text"
                                         name="weight"
@@ -277,11 +276,11 @@ class Generator extends Component {
                         <GroupTitle
                             onClick={this.handleFieldBox}
                             stepNumber="02"
-                            title={t('generator:evolution')}
+                            title={t('evolution')}
                         />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
-                                <Field label={t('generator:stage')}>
+                                <Field label={t('stage')}>
                                     <div className="select">
                                         <select
                                             name="stage"
@@ -294,7 +293,7 @@ class Generator extends Component {
                                         </select>
                                     </div>
                                 </Field>
-                                <Field label={t('generator:name')}>
+                                <Field label={t('name')}>
                                     <input
                                         type="text"
                                         name="nameEvolution"
@@ -303,7 +302,7 @@ class Generator extends Component {
                                         value={nameEvolution}
                                     />
                                 </Field>
-                                <Field label={t('generator:picture')}>
+                                <Field label={t('picture')}>
                                     <FileInput
                                         name="evolvePicture"
                                         onChange={this.fileHandler}
@@ -317,11 +316,11 @@ class Generator extends Component {
                         <GroupTitle
                             onClick={this.handleFieldBox}
                             stepNumber="03"
-                            title={t('generator:weaknessResistanceRetreat')}
+                            title={t('weaknessResistanceRetreat')}
                         />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
-                                <Field label={t('generator:weaknessType')}>
+                                <Field label={t('weaknessType')}>
                                     <SelectInput
                                         name="weaknessType"
                                         onChange={this.handleChange}
@@ -329,7 +328,7 @@ class Generator extends Component {
                                         choices={ELEMENTS}
                                     />
                                 </Field>
-                                <Field label={t('generator:weaknessAmount')}>
+                                <Field label={t('weaknessAmount')}>
                                     <SelectInput
                                         name="weaknessAmount"
                                         onChange={this.handleChange}
@@ -337,7 +336,7 @@ class Generator extends Component {
                                         choices={AMOUNT_CHOICES}
                                     />
                                 </Field>
-                                <Field label={t('generator:resistanceType')}>
+                                <Field label={t('resistanceType')}>
                                     <SelectInput
                                         name="resistanceType"
                                         onChange={this.handleChange}
@@ -345,7 +344,7 @@ class Generator extends Component {
                                         choices={ELEMENTS}
                                     />
                                 </Field>
-                                <Field label={t('generator:resistanceAmount')}>
+                                <Field label={t('resistanceAmount')}>
                                     <SelectInput
                                         name="resistanceAmount"
                                         onChange={this.handleChange}
@@ -353,7 +352,7 @@ class Generator extends Component {
                                         choices={AMOUNT_CHOICES}
                                     />
                                 </Field>
-                                <Field label={t('generator:retreat')}>
+                                <Field label={t('retreat')}>
                                     <SelectInput
                                         blankLine={false}
                                         name="retreat"
@@ -369,11 +368,11 @@ class Generator extends Component {
                         <GroupTitle
                             onClick={this.handleFieldBox}
                             stepNumber="04"
-                            title={t('generator:attack1')}
+                            title={t('attack1')}
                         />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
-                                <Field label={t('generator:name')}>
+                                <Field label={t('name')}>
                                     <input
                                         type="text"
                                         name="attack1Name"
@@ -383,7 +382,7 @@ class Generator extends Component {
                                         value={attack1.attack1Name}
                                     />
                                 </Field>
-                                <Field label={t('generator:dammage')}>
+                                <Field label={t('dammage')}>
                                     <SelectInput
                                         name="attack1Dammage"
                                         onChange={this.handleChange}
@@ -392,7 +391,7 @@ class Generator extends Component {
                                         choices={DAMMAGE_CHOICES}
                                     />
                                 </Field>
-                                <Field label={t('generator:info')}>
+                                <Field label={t('info')}>
                                     <textarea
                                         type="text"
                                         name="attack1Info"
@@ -483,11 +482,11 @@ class Generator extends Component {
                         <GroupTitle
                             onClick={this.handleFieldBox}
                             stepNumber="05"
-                            title={t('generator:attack2')}
+                            title={t('attack2')}
                         />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
-                                <Field label={t('generator:name')}>
+                                <Field label={t('name')}>
                                     <input
                                         type="text"
                                         name="attack2Name"
@@ -497,7 +496,7 @@ class Generator extends Component {
                                         value={attack2.attack2Name}
                                     />
                                 </Field>
-                                <Field label={t('generator:dammage')}>
+                                <Field label={t('dammage')}>
                                     <SelectInput
                                         name="attack2Dammage"
                                         onChange={this.handleChange}
@@ -506,7 +505,7 @@ class Generator extends Component {
                                         choices={DAMMAGE_CHOICES}
                                     />
                                 </Field>
-                                <Field label={t('generator:info')}>
+                                <Field label={t('info')}>
                                     <textarea
                                         type="text"
                                         name="attack2Info"
@@ -546,11 +545,11 @@ class Generator extends Component {
                         <GroupTitle
                             onClick={this.handleFieldBox}
                             stepNumber="06"
-                            title={t('generator:additionalInformation')}
+                            title={t('additionalInformation')}
                         />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
-                                <Field label={t('generator:description')}>
+                                <Field label={t('description')}>
                                     <textarea
                                         type="text"
                                         name="description"
@@ -559,7 +558,7 @@ class Generator extends Component {
                                         value={description}
                                     />
                                 </Field>
-                                <Field label={t('generator:illustrator')}>
+                                <Field label={t('illustrator')}>
                                     <input
                                         type="text"
                                         name="illustrator"
@@ -568,7 +567,7 @@ class Generator extends Component {
                                         value={illustrator}
                                     />
                                 </Field>
-                                <Field label={t('generator:collectionNumber')}>
+                                <Field label={t('collectionNumber')}>
                                     <input
                                         type="text"
                                         name="cardNumber"
@@ -587,7 +586,7 @@ class Generator extends Component {
                                         value={totalCollection}
                                     />
                                 </Field>
-                                <Field label={t('generator:rarity')}>
+                                <Field label={t('rarity')}>
                                     <SelectInput
                                         name="rarity"
                                         onChange={this.handleChange}
@@ -600,19 +599,19 @@ class Generator extends Component {
                         </div>
                     </div>
                     <div className="panel-actions">
-                        <button onClick={this.exportCard} className="gradient-btn" title={t('generator:downloadCard')}>
+                        <button onClick={this.exportCard} className="gradient-btn" title={t('downloadCard')}>
                             <i className="fas fa-download" />
                         </button>
-                        <button onClick={this.printCard} className="gradient-btn" title={t('generator:printCard')}>
+                        <button onClick={this.printCard} className="gradient-btn" title={t('printCard')}>
                             <i className="fas fa-print" />
                         </button>
-                        <button className="gradient-btn" title={t('generator:saveCard')}>
+                        <button className="gradient-btn" title={t('saveCard')}>
                             <i className="fas fa-hdd" />
                         </button>
-                        <button onClick={this.resetCard} className="gradient-btn" title={t('generator:resetCard')}>
+                        <button onClick={this.resetCard} className="gradient-btn" title={t('resetCard')}>
                             <i className="fas fa-sync-alt" />
                         </button>
-                        <button className="gradient-btn" title={t('generator:shareCard')}>
+                        <button className="gradient-btn" title={t('shareCard')}>
                             <i className="fas fa-share-alt" />
                         </button>
                     </div>
