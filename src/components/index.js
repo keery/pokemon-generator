@@ -1,6 +1,5 @@
 export { default as Attack } from './Attack';
 export { default as CardRenderer } from './CardRenderer';
-export { default as FileInput } from './FileInput';
 export { default as Header } from './Header';
 export { default as SelectInput } from './SelectInput';
 export { default as TypeAmount } from './TypeAmount';
@@ -10,3 +9,4 @@ export { default as Loader } from './Loader';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as LoaderProvider } from './LoaderProvider';
 export { default as LoaderConsumer } from './LoaderConsumer';
+export { default as FileInput } from './FileInput';

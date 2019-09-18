@@ -1,20 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import './FileInput.scss';
 
 class FileInput extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            uploadLabel : 'osodsqjodsqpjdq',
+            uploadLabel : '',
             isUploaded  : false,
         };
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.value !== prevProps.value && !this.props.value) {
-            this.setState({ uploadLabel : 'Upload picture' });
-        }
     }
 
     handleFile = (event) => {
@@ -68,7 +63,6 @@ FileInput.defaultProps = {
 FileInput.propTypes = {
     onChange : PropTypes.func,
     name     : PropTypes.string.isRequired,
-    value    : PropTypes.object,
 };
 
 export default FileInput;
