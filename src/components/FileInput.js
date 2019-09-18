@@ -6,7 +6,8 @@ class FileInput extends Component {
         super(props);
 
         this.state = {
-            uploadLabel : 'Upload picture',
+            uploadLabel : 'osodsqjodsqpjdq',
+            isUploaded  : false,
         };
     }
 
@@ -20,19 +21,22 @@ class FileInput extends Component {
         const { onChange } = this.props;
 
         if (event.target.files.length > 0) {
-            this.setState({ uploadLabel : event.target.files[0].name });
+            this.setState({
+                uploadLabel : event.target.files[0].name,
+                isUploaded  : true,
+            });
         }
         onChange(event);
     };
 
     render() {
         const { name } = this.props;
-        const { uploadLabel } = this.state;
+        const { uploadLabel, isUploaded } = this.state;
 
         return (
             <div>
                 <div className="field">
-                    <div className="file is-primary is-boxed">
+                    <div className={`file ${isUploaded ? 'uploaded' : ''}`}>
                         <label className="file-label">
                             <input
                                 className="file-input"
@@ -41,10 +45,13 @@ class FileInput extends Component {
                                 onChange={this.handleFile}
                             />
                             <span className="file-cta">
+                                <span className="file-label">Upload picture</span>
                                 <span className="file-icon">
                                     <i className="fas fa-cloud-upload-alt" />
                                 </span>
-                                <span className="file-label">{uploadLabel}</span>
+                                <div className="file-label-uploaded">
+                                    <span>{uploadLabel}</span>
+                                </div>
                             </span>
                         </label>
                     </div>
