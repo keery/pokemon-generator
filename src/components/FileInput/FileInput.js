@@ -1,5 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Uppy from '@uppy/core';
+import Tus from '@uppy/tus';
+import Webcam from '@uppy/webcam';
+import Instagram from '@uppy/instagram';
+import GoogleDrive from '@uppy/google-drive';
+import { Dashboard } from '@uppy/react';
 import './FileInput.scss';
 
 class FileInput extends Component {
@@ -10,6 +16,25 @@ class FileInput extends Component {
             uploadLabel : '',
             isUploaded  : false,
         };
+
+        this.uppy = new Uppy({
+            id           : 'uppy-input',
+            autoProceed  : true,
+            debug        : true,
+            restrictions : {
+                maxFileSize      : 1000000,
+                maxNumberOfFiles : 1,
+                allowedFileTypes : ['image/*'],
+            },
+        })
+            .use(Webcam)
+            .use(GoogleDrive, { companionUrl : 'https://companion.uppy.io' })
+            .use(Instagram, { companionUrl : 'https://companion.uppy.io' })
+            .use(Tus, { endpoint : 'https://master.tus.io/files/' });
+    }
+
+    componentWillUnmount() {
+        this.uppy.close();
     }
 
     handleFile = (event) => {
@@ -31,6 +56,13 @@ class FileInput extends Component {
         return (
             <div>
                 <div className="field">
+                    <Dashboard
+                        uppy={this.uppy}
+                        plugins={['Instagram', 'GoogleDrive', 'Webcam']}
+                        metaFields={[
+                            { id : 'name', name : 'Name', placeholder : 'File name' },
+                        ]}
+                    />
                     <div className={`file ${isUploaded ? 'uploaded' : ''}`}>
                         <label className="file-label">
                             <input
