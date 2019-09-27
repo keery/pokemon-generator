@@ -11,7 +11,7 @@ class LanguageSelector extends Component {
         this.state = {
             current : i18n.language,
             choices : this.removeChoice(i18n.language),
-            isOpen  : false,
+            isOpen  : props.isOpen,
             trigger : false,
         };
     }
@@ -77,11 +77,13 @@ class LanguageSelector extends Component {
 
 LanguageSelector.defaultProps = {
     choices : LANGUAGES,
+    isOpen  : false,
 };
 
 LanguageSelector.propTypes = {
     choices : PropTypes.arrayOf(PropTypes.string),
     t       : PropTypes.func.isRequired,
+    isOpen  : PropTypes.bool,
 };
 
 export default withTranslation()(LanguageSelector);

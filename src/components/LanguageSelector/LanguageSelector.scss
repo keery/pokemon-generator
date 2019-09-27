@@ -1,5 +1,6 @@
 .LanguageSelector {
-    display: flex;
+    outline: none;
+    display: inline-flex;
     align-content: center;
     position: relative;
 
@@ -82,6 +83,7 @@
             border-radius: 4px;
             position: relative;
             box-shadow: 1px 1px 8px #aaa;
+            list-style: none;
 
             &.hidden > li  {
                 display: none;
