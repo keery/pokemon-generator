@@ -1,7 +1,9 @@
 import React, { Suspense } from 'react';
 import { configure, addDecorator, setAddon } from '@storybook/react';
-import { I18nextProvider } from 'react-i18next';
+import { withInfo } from '@storybook/addon-info';
 import JSONAddon from 'storybook-addon-jsx'
+import { I18nextProvider } from 'react-i18next';
+
 import i18n from '../src/i18n/setupI18n';
 
 
@@ -10,6 +12,7 @@ export default function SuspenseWrapper({ children }) {
 }
 
 setAddon(JSONAddon);
+addDecorator(withInfo);
 addDecorator(story => <SuspenseWrapper>{story()}</SuspenseWrapper>)
 addDecorator((storyFn) => (
     <I18nextProvider i18n={i18n}>

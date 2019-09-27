@@ -30,6 +30,7 @@
     "storybook": "start-storybook -p 6006 -c .storybook"
   },
   "devDependencies": {
+    "@storybook/addon-info": "^5.2.1",
     "@storybook/addons": "^5.2.1",
     "@storybook/react": "^5.2.1",
     "enzyme": "^3.10.0",
