@@ -30,6 +30,7 @@
     "storybook": "start-storybook -p 6006 -c .storybook"
   },
   "devDependencies": {
+    "@storybook/addons": "^5.2.1",
     "@storybook/react": "^5.2.1",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -41,7 +42,8 @@
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.14.2",
-    "eslint-plugin-standard": "^4.0.0"
+    "eslint-plugin-standard": "^4.0.0",
+    "storybook-addon-jsx": "^7.1.6"
   },
   "jest": {
     "collectCoverageFrom": [
