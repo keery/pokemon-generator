@@ -28,9 +28,9 @@ class FileInput extends Component {
             },
         })
             .use(Webcam)
-            .use(GoogleDrive, { companionUrl : 'https://companion.uppy.io' })
-            .use(Instagram, { companionUrl : 'https://companion.uppy.io' })
-            .use(Tus, { endpoint : 'https://master.tus.io/files/' });
+            .use(Instagram, {
+                companionUrl : process.env.REACT_APP_SERVER_URL,
+            });
     }
 
     componentWillUnmount() {
@@ -58,7 +58,7 @@ class FileInput extends Component {
                 <div className="field">
                     <Dashboard
                         uppy={this.uppy}
-                        plugins={['Instagram', 'GoogleDrive', 'Webcam']}
+                        plugins={['Instagram', 'Webcam']}
                         metaFields={[
                             { id : 'name', name : 'Name', placeholder : 'File name' },
                         ]}
