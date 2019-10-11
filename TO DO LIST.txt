@@ -5,3 +5,4 @@ Card galery to see old created cards into a pokedex
 Play sound effect on actions ?
 Style file input
 Theme retro
+Checker uppy pull request about setting of dynamic local
