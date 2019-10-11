@@ -8,6 +8,7 @@
     "@uppy/core": "^1.4.0",
     "@uppy/google-drive": "^1.3.0",
     "@uppy/instagram": "^1.3.0",
+    "@uppy/locales": "^1.7.0",
     "@uppy/react": "^1.3.0",
     "@uppy/webcam": "^1.3.0",
     "bulma": "^0.7.1",

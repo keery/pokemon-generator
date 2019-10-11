@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Uppy from '@uppy/core';
-import Tus from '@uppy/tus';
 import Webcam from '@uppy/webcam';
 import Instagram from '@uppy/instagram';
-import GoogleDrive from '@uppy/google-drive';
 import { Dashboard } from '@uppy/react';
+import { withTranslation } from 'react-i18next';
+import French from '@uppy/locales/lib/fr_FR';
+import Spanish from '@uppy/locales/lib/es_ES';
 import './FileInput.scss';
 
 class FileInput extends Component {
@@ -20,6 +21,7 @@ class FileInput extends Component {
         this.uppy = new Uppy({
             id           : 'uppy-input',
             autoProceed  : true,
+            locale       : this.getUppyTranslations(props.i18n.language),
             debug        : true,
             restrictions : {
                 maxFileSize      : 1000000,
@@ -35,6 +37,18 @@ class FileInput extends Component {
 
     componentWillUnmount() {
         this.uppy.close();
+    }
+
+    // eslint-disable-next-line class-methods-use-this
+    getUppyTranslations(locale) {
+        switch (locale) {
+        case 'fr':
+            return French;
+        case 'es':
+            return Spanish;
+        default:
+            return false;
+        }
     }
 
     handleFile = (event) => {
@@ -59,6 +73,7 @@ class FileInput extends Component {
                     <Dashboard
                         uppy={this.uppy}
                         plugins={['Instagram', 'Webcam']}
+                        proudlyDisplayPoweredByUppy={false}
                         metaFields={[
                             { id : 'name', name : 'Name', placeholder : 'File name' },
                         ]}
@@ -97,4 +112,4 @@ FileInput.propTypes = {
     name     : PropTypes.string.isRequired,
 };
 
-export default FileInput;
+export default withTranslation('fileInput')(FileInput);
