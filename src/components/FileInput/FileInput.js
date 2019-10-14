@@ -7,9 +7,12 @@ import { Dashboard } from '@uppy/react';
 import { withTranslation } from 'react-i18next';
 import French from '@uppy/locales/lib/fr_FR';
 import Spanish from '@uppy/locales/lib/es_ES';
+import { ModalContext } from '../../context';
 import './FileInput.scss';
 
 class FileInput extends Component {
+    static contextType = ModalContext;
+
     constructor(props) {
         super(props);
 
@@ -51,16 +54,29 @@ class FileInput extends Component {
         }
     }
 
-    handleFile = (event) => {
-        const { onChange } = this.props;
+    // handleFile = (event) => {
+    //     const { onChange } = this.props;
 
-        if (event.target.files.length > 0) {
-            this.setState({
-                uploadLabel : event.target.files[0].name,
-                isUploaded  : true,
-            });
-        }
-        onChange(event);
+    //     if (event.target.files.length > 0) {
+    //         this.setState({
+    //             uploadLabel : event.target.files[0].name,
+    //             isUploaded  : true,
+    //         });
+    //     }
+    //     onChange(event);
+    // };
+
+    handleFile = (event) => {
+        this.context.openModalWith(
+            <Dashboard
+                uppy={this.uppy}
+                plugins={['Instagram', 'Webcam']}
+                proudlyDisplayPoweredByUppy={false}
+                metaFields={[
+                    { id : 'name', name : 'Name', placeholder : 'File name' },
+                ]}
+            />
+        );
     };
 
     render() {
@@ -70,21 +86,21 @@ class FileInput extends Component {
         return (
             <div>
                 <div className="field">
-                    <Dashboard
+                    {/* <Dashboard
                         uppy={this.uppy}
                         plugins={['Instagram', 'Webcam']}
                         proudlyDisplayPoweredByUppy={false}
                         metaFields={[
                             { id : 'name', name : 'Name', placeholder : 'File name' },
                         ]}
-                    />
+                    /> */}
                     <div className={`file ${isUploaded ? 'uploaded' : ''}`}>
                         <label className="file-label">
                             <input
                                 className="file-input"
                                 type="file"
                                 name={name}
-                                onChange={this.handleFile}
+                                onClick={this.handleFile}
                             />
                             <span className="file-cta">
                                 <span className="file-label">Upload picture</span>

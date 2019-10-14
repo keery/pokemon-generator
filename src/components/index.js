@@ -9,4 +9,7 @@ export { default as Loader } from './Loader';
 export { default as ErrorBoundary } from './ErrorBoundary';
 export { default as LoaderProvider } from './LoaderProvider';
 export { default as LoaderConsumer } from './LoaderConsumer';
+export { default as ModalProvider } from './ModalProvider';
+export { default as ModalConsumer } from './ModalConsumer';
+export { default as Modal } from './Modal';
 export { default as FileInput } from './FileInput';
