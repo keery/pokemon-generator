@@ -41,6 +41,7 @@ class FileInput extends Component {
                 endpoint                   : `${process.env.REACT_APP_SERVER_URL}/file/upload`,
                 resume                     : true,
                 removeFingerprintOnSuccess : true,
+                limit                      : 1,
             });
     }
 
