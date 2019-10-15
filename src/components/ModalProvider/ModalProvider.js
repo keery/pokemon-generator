@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { ModalContext } from '../../context';
 
+const MODAL_CLASS = 'modal-open';
+const ID_HTML_TAG = 'app';
+
 class ModalProvider extends Component {
     constructor(props) {
         super(props);
@@ -12,10 +15,12 @@ class ModalProvider extends Component {
     }
 
     openModalWith = (Content) => {
+        document.getElementById(ID_HTML_TAG).classList.add(MODAL_CLASS);
         this.setState({ isOpen : true, Content });
     }
 
     closeModal = () => {
+        document.getElementById(ID_HTML_TAG).classList.remove(MODAL_CLASS);
         this.setState({ isOpen : false, Content : false });
     }
 
