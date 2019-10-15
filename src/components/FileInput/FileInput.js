@@ -98,7 +98,7 @@ class FileInput extends Component {
                         <label className="file-label">
                             <input
                                 className="file-input"
-                                type="file"
+                                type="text"
                                 name={name}
                                 onClick={this.handleFile}
                             />

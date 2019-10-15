@@ -1,3 +1,16 @@
+@keyframes appendModal {
+    to {
+        transform: translateX(-50%) translateY(-50%) scale(2);
+    }
+}
+
+@keyframes appendModalContent {
+    to {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+
 .Modal {
     position: fixed;
     left: 0;
@@ -5,15 +18,17 @@
     top: 0;
     bottom: 0;
     z-index: 999;
-    background-color: rgba(0, 0, 0, 0.68);
     
-
     .modal-closing-area {
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
+        left: 50%;
+        top: 50%;
+        width: 100vw;
+        height: 100vh;
         position: absolute;
+        background-color: rgba(0, 0, 0, 0.68);
+        animation: appendModal forwards 0.6s;
+        transform: translateX(-50%) translateY(-50%) scale(0);
+        border-radius: 100%;
     }
 
     .modal-container {
@@ -28,6 +43,9 @@
         overflow: hidden;
         padding: 40px 30px;
         box-shadow: 0 0 4px #424242;
+        opacity: 0;
+        margin-top: 50px;
+        animation: appendModalContent forwards .6s .3s;
     }
 
     #modal-close {
