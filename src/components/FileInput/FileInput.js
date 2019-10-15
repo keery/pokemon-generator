@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Uppy from '@uppy/core';
 import Webcam from '@uppy/webcam';
 import Instagram from '@uppy/instagram';
+import Tus from '@uppy/tus';
 import { Dashboard } from '@uppy/react';
 import { withTranslation } from 'react-i18next';
 import French from '@uppy/locales/lib/fr_FR';
@@ -35,6 +36,11 @@ class FileInput extends Component {
             .use(Webcam)
             .use(Instagram, {
                 companionUrl : process.env.REACT_APP_SERVER_URL,
+            })
+            .use(Tus, {
+                endpoint                   : `${process.env.REACT_APP_SERVER_URL}/file/upload`,
+                resume                     : true,
+                removeFingerprintOnSuccess : true,
             });
     }
 
