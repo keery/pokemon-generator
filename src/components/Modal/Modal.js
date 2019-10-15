@@ -5,7 +5,10 @@ import './Modal.scss';
 
 const Modal = ({ content, closeModal, t }) => (
     <div className="Modal">
-        <div className="modal-closing-area" />
+        <div
+            className="modal-closing-area"
+            onClick={closeModal}
+        />
         <div className="modal-container">
             <button
                 id="modal-close"

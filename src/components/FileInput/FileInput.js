@@ -86,21 +86,14 @@ class FileInput extends Component {
         return (
             <div>
                 <div className="field">
-                    {/* <Dashboard
-                        uppy={this.uppy}
-                        plugins={['Instagram', 'Webcam']}
-                        proudlyDisplayPoweredByUppy={false}
-                        metaFields={[
-                            { id : 'name', name : 'Name', placeholder : 'File name' },
-                        ]}
-                    /> */}
-                    <div className={`file ${isUploaded ? 'uploaded' : ''}`}>
+                    <div
+                        className={`file ${isUploaded ? 'uploaded' : ''}`}
+                        onClick={this.handleFile}
+                    >
                         <label className="file-label">
-                            <input
+                            <div
                                 className="file-input"
-                                type="text"
                                 name={name}
-                                onClick={this.handleFile}
                             />
                             <span className="file-cta">
                                 <span className="file-label">Upload picture</span>
