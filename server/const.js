@@ -1,5 +1,9 @@
-const ASSETS_DIRECTORY = '..'
+const ROOT = __dirname;
+const FILES_FOLDER = '/files'
+const FILES_PATH = ROOT + FILES_FOLDER;
 
 export {
-    ASSETS_DIRECTORY
+    ROOT,
+    FILES_FOLDER,
+    FILES_PATH,
 }

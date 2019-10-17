@@ -10,8 +10,8 @@ export default () => {
     const whitelist = process.env.WHITE_LIST_ORIGIN ? process.env.WHITE_LIST_ORIGIN.split(',') : [];
     const corsOptions = {
         origin : (origin, callback) => {
+            callback(null, true);
             if (whitelist.indexOf(origin) !== -1) {
-                callback(null, true);
             }
             else {
                 callback(new Error('Not allowed by CORS'));
