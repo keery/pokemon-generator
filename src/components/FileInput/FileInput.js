@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Uppy from '@uppy/core';
 import Webcam from '@uppy/webcam';
 import Instagram from '@uppy/instagram';
-import Tus from '@uppy/tus';
+import XHRUpload from '@uppy/xhr-upload';
 import { Dashboard } from '@uppy/react';
 import { withTranslation } from 'react-i18next';
 import French from '@uppy/locales/lib/fr_FR';
@@ -37,12 +37,27 @@ class FileInput extends Component {
             .use(Instagram, {
                 companionUrl : process.env.REACT_APP_SERVER_URL,
             })
-            .use(Tus, {
-                endpoint                   : `${process.env.REACT_APP_SERVER_URL}/file/upload`,
-                resume                     : true,
-                removeFingerprintOnSuccess : true,
-                limit                      : 1,
+            .use(XHRUpload, {
+                endpoint  : `${process.env.REACT_APP_SERVER_URL}/api/file/upload/images`,
+                fieldName : 'file',
+                limit     : 1,
+                // formData: false,
+                // resume                     : true,
+                // removeFingerprintOnSuccess : true,
             });
+    }
+
+    componentDidMount() {
+        this.uppy.on('upload-success', (file, response) => {
+            const { onChange, name } = this.props;
+
+            this.setState({
+                uploadLabel : file.name,
+                isUploaded  : true,
+            });
+
+            onChange(name, file.data);
+        });
     }
 
     componentWillUnmount() {
@@ -82,6 +97,7 @@ class FileInput extends Component {
                 metaFields={[
                     { id : 'name', name : 'Name', placeholder : 'File name' },
                 ]}
+                browserBackButtonClose
             />
         );
     };
