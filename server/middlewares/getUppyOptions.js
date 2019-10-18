@@ -12,7 +12,7 @@ export default () => {
             },
         },
         server : {
-            host     : `${HOST}:${PORT}`,
+            host     : `${HOST}:${PORT}/api/file/upload/images`,
             protocol : PROTOCOL,
         },
         filePath : IMAGES_PATH,

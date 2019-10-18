@@ -98,22 +98,16 @@ class Generator extends Component {
         }
     };
 
-    fileHandler = (eventName, file) => {
-        const reader = new FileReader();
+    fileHandler = (eventName, src) => {
+        const img = new Image();
+        img.src = src;
 
-        reader.onloadend = () => {
-            const img = new Image();
-            img.src = reader.result;
-
-            img.onload = () => {
-                let imgResized = null;
-                if (eventName === 'mainPicture') imgResized = this.resizeImg(img, 275, 196);
-                else if (eventName === 'evolvePicture') imgResized = this.resizeImg(img, 44, 40);
-                this.setState({ [eventName] : imgResized });
-            };
+        img.onload = () => {
+            let imgResized = null;
+            if (eventName === 'mainPicture') imgResized = this.resizeImg(img, 275, 196);
+            else if (eventName === 'evolvePicture') imgResized = this.resizeImg(img, 44, 40);
+            this.setState({ [eventName] : imgResized });
         };
-
-        reader.readAsDataURL(file);
     };
 
     printCard() {

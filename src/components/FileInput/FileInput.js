@@ -23,11 +23,12 @@ class FileInput extends Component {
         };
 
         this.uppy = new Uppy({
-            id           : 'uppy-input',
-            autoProceed  : true,
-            locale       : this.getUppyTranslations(props.i18n.language),
-            debug        : true,
-            restrictions : {
+            id                   : 'uppy-input',
+            autoProceed          : true,
+            locale               : this.getUppyTranslations(props.i18n.language),
+            debug                : true,
+            allowMultipleUploads : false,
+            restrictions         : {
                 maxFileSize      : 1000000,
                 maxNumberOfFiles : 1,
                 allowedFileTypes : ['image/*'],
@@ -56,9 +57,9 @@ class FileInput extends Component {
                 isUploaded  : true,
             });
 
-            onChange(name, file.data);
-            this.context.closeModal();
+            onChange(name, response.body.uploadURL);
             this.uppy.reset();
+            this.context.closeModal();
         });
     }
 
