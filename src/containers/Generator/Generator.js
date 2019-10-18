@@ -72,11 +72,7 @@ class Generator extends Component {
     };
 
     cacheCard = () => {
-        localStorage.setItem('pokecard', JSON.stringify({
-            ...this.state,
-            mainPicture   : null,
-            evolvePicture : null,
-        }));
+        localStorage.setItem('pokecard', JSON.stringify(this.state));
     }
 
     exportCard = () => {
@@ -98,47 +94,8 @@ class Generator extends Component {
         }
     };
 
-    fileHandler = (eventName, src) => {
-        const img = new Image();
-        img.src = src;
-
-        img.onload = () => {
-            let imgResized = null;
-            if (eventName === 'mainPicture') imgResized = this.resizeImg(img, 275, 196);
-            else if (eventName === 'evolvePicture') imgResized = this.resizeImg(img, 44, 40);
-            this.setState({ [eventName] : imgResized });
-        };
-    };
-
     printCard() {
         window.print();
-    }
-
-    calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
-        if (srcWidth > maxWidth || srcHeight > maxHeight) {
-            let height = 0;
-            let width = 0;
-
-            if (srcWidth > srcHeight) {
-                height = maxHeight + 4;
-                width = (srcWidth / srcHeight) * height;
-            } else {
-                width = maxWidth + 4;
-                height = (srcHeight / srcWidth) * width;
-            }
-
-            return { width, height };
-        }
-
-        return { width : srcWidth, height : srcHeight };
-    }
-
-    resizeImg(img, maxWidth, maxHeight) {
-        const ratio = this.calculateAspectRatioFit(img.width, img.height, maxWidth, maxHeight);
-
-        img.width = ratio.width;
-        img.height = ratio.height;
-        return img;
     }
 
     handleFieldBox(event) {
@@ -214,7 +171,7 @@ class Generator extends Component {
                                 <Field label={t('picture')}>
                                     <FileInput
                                         name="mainPicture"
-                                        onChange={this.fileHandler}
+                                        onChange={this.handleChange}
                                         value={mainPicture}
                                     />
                                 </Field>
@@ -293,7 +250,7 @@ class Generator extends Component {
                                 <Field label={t('picture')}>
                                     <FileInput
                                         name="evolvePicture"
-                                        onChange={this.fileHandler}
+                                        onChange={this.handleChange}
                                         value={evolvePicture}
                                     />
                                 </Field>
@@ -455,7 +412,7 @@ class Generator extends Component {
                         <div id="circle-5" className="circle" />
                         <div id="shadow-card" />
                     </div>
-                    {/* <Stage
+                    <Stage
                         width={360}
                         height={506}
                         ref={(ref) => {
@@ -463,7 +420,7 @@ class Generator extends Component {
                         }}
                     >
                         <CardRenderer {...this.state} />
-                    </Stage> */}
+                    </Stage>
                 </div>
                 {/* <div className="column is-one-quarter">
                     <div className="gfields-box">

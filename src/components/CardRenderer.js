@@ -15,8 +15,10 @@ class CardRenderer extends Component {
         super(props);
 
         this.state = {
+            mainPicture    : null,
             mainPictureX   : -2,
             mainPictureY   : 0,
+            evolvePicture  : null,
             evolvePictureX : 0,
             evolvePictureY : 0,
             nameY          : 38,
@@ -43,17 +45,30 @@ class CardRenderer extends Component {
     }
 
     getDynamicImg = (file) => {
+        this.createImg(require(`../assets/1-gen/${file}`));
+    };
+
+    createImg = (src, maxWidth = false, maxHeight = false) => {
         return new Promise((resolve, reject) => {
             const img = new Image();
-            img.src = require(`../assets/1-gen/${file}`);
-            img.onload = () => (resolve(img));
+            img.src = src;
+
+            img.onload = () => {
+                if (maxHeight || maxWidth) {
+                    const ratio = this.calculateAspectRatioFit(img.width, img.height, maxWidth, maxHeight);
+                    img.width = ratio.width;
+                    img.height = ratio.height;
+                }
+                resolve(img);
+            };
+
             return img;
         });
     };
 
     async getStateFromProps(prevProps) {
         const {
-            type, stage, weaknessType, resistanceType, retreat, rarity, attack1 : { attack1Type, attack1Amount }, attack2 : { attack2Type, attack2Amount },
+            type, stage, weaknessType, resistanceType, retreat, rarity, attack1 : { attack1Type, attack1Amount }, attack2 : { attack2Type, attack2Amount }, mainPicture, evolvePicture,
         } = this.props;
         const nextState = {};
 
@@ -82,6 +97,12 @@ class CardRenderer extends Component {
         if (prevProps.rarity !== rarity) {
             nextState.rarityLogo = rarity ? await this.getDynamicImg(`rarity-${rarity}.png`) : null;
         }
+        if (prevProps.mainPicture !== mainPicture) {
+            nextState.mainPicture = mainPicture ? await this.createImg(mainPicture, 275, 196) : null;
+        }
+        if (prevProps.evolvePicture !== evolvePicture) {
+            nextState.evolvePicture = evolvePicture ? await this.createImg(evolvePicture, 44, 40) : null;
+        }
 
         return nextState;
     }
@@ -89,6 +110,25 @@ class CardRenderer extends Component {
     updateImgPos = (event) => {
         const { attrs } = event.target;
         this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y });
+    }
+
+    calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
+        if (srcWidth > maxWidth || srcHeight > maxHeight) {
+            let height = 0;
+            let width = 0;
+
+            if (srcWidth > srcHeight) {
+                height = maxHeight + 4;
+                width = (srcWidth / srcHeight) * height;
+            } else {
+                width = maxWidth + 4;
+                height = (srcHeight / srcWidth) * width;
+            }
+
+            return { width, height };
+        }
+
+        return { width : srcWidth, height : srcHeight };
     }
 
     render() {
@@ -100,8 +140,10 @@ class CardRenderer extends Component {
             nameX,
             evolvePictureX,
             evolvePictureY,
+            evolvePicture,
             mainPictureX,
             mainPictureY,
+            mainPicture,
             weaknessImg,
             resistanceImg,
             retreatImg,
@@ -123,8 +165,6 @@ class CardRenderer extends Component {
             weight,
             type,
             weaknessAmount,
-            mainPicture,
-            evolvePicture,
             attack1 : {
                 attack1Name, attack1Dammage, attack1Info,
             },
@@ -315,8 +355,8 @@ CardRenderer.propTypes = {
     resistanceType   : PropTypes.string,
     retreat          : PropTypes.string,
     rarity           : PropTypes.string,
-    mainPicture      : PropTypes.object,
-    evolvePicture    : PropTypes.object,
+    mainPicture      : PropTypes.string,
+    evolvePicture    : PropTypes.string,
     nameEvolution    : PropTypes.string,
     attack1          : PropTypes.shape({
         attack1Name    : PropTypes.string,

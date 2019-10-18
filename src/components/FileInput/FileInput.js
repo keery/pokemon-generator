@@ -57,7 +57,13 @@ class FileInput extends Component {
                 isUploaded  : true,
             });
 
-            onChange(name, response.body.uploadURL);
+            onChange({
+                target : {
+                    name,
+                    value        : response.body.uploadURL,
+                    getAttribute : () => false,
+                },
+            });
             this.uppy.reset();
             this.context.closeModal();
         });

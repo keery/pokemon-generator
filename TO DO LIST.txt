@@ -8,3 +8,6 @@ Checker uppy pull request about setting of dynamic local
 Try AWS, to handle upload files
 Actually files are uploaded directly, so handle them, and find a solution to remove useless files (different system, or expiration time, or ***ENTER A SOLUTION HERE***)
 Animation on close modal ?
+Set in local storage imgs positions
+Search about express-session and availabilities
+Remove local storage if application throw error
