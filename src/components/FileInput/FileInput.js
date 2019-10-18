@@ -57,10 +57,13 @@ class FileInput extends Component {
             });
 
             onChange(name, file.data);
+            this.context.closeModal();
+            this.uppy.reset();
         });
     }
 
     componentWillUnmount() {
+        this.uppy.off('upload-success');
         this.uppy.close();
     }
 
@@ -75,18 +78,6 @@ class FileInput extends Component {
             return false;
         }
     }
-
-    // handleFile = (event) => {
-    //     const { onChange } = this.props;
-
-    //     if (event.target.files.length > 0) {
-    //         this.setState({
-    //             uploadLabel : event.target.files[0].name,
-    //             isUploaded  : true,
-    //         });
-    //     }
-    //     onChange(event);
-    // };
 
     handleFile = (event) => {
         this.context.openModalWith(
