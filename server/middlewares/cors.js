@@ -10,7 +10,6 @@ export default () => {
     const whitelist = process.env.WHITE_LIST_ORIGIN ? process.env.WHITE_LIST_ORIGIN.split(',') : [];
     const corsOptions = {
         origin : (origin, callback) => {
-            console.log(origin);
             callback(null, true);
             // if (whitelist.indexOf(origin) !== -1) {
             // }
@@ -19,6 +18,7 @@ export default () => {
             // }
         },
         credentials : true,
+        methods     : 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     };
 
     return cors(corsOptions);
