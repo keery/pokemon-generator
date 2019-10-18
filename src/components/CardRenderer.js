@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import Attack from './Attack';
 import ImageCanvas from './ImageCanvas';
 import TypeAmount from './TypeAmount';
-import { LoaderContext } from '../context';
 import sliceStageImg from '../assets/1-gen/slice-stage.png';
 import { generateImg } from '../helper';
 import '../containers/App/App.scss';

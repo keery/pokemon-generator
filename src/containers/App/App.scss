@@ -400,7 +400,26 @@ nav {
         padding: 30px;
         box-shadow : 0 0 4px #424242;
     }
+}
 
-    .gif-loader {
-    }
+.modal-open {
+        /* disable scrollbar on both x and y axis */
+        overflow: hidden;
+
+        /* disable scrollbar on x-axis only */
+        overflow-x: hidden;
+    
+        /* disable scrollbar on y-axis only */
+        overflow-y: hidden;
+    
+        /* disable scroll */
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+}
+
+.uppy-Webcam-button--video {
+    display: none;
 }
