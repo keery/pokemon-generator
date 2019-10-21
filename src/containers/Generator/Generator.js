@@ -12,6 +12,7 @@ import {
     DAMMAGE_CHOICES,
     ATTACK_AMOUNT_CHOICES,
     RARITY_CHOICES,
+    KEY_CACHE_POKECARD,
     RETREAT_CHOICES,
 } from '../../const';
 
@@ -58,7 +59,7 @@ class Generator extends Component {
     constructor(props) {
         super(props);
 
-        const cachedCard = localStorage.getItem('pokecard');
+        const cachedCard = localStorage.getItem(KEY_CACHE_POKECARD);
         this.state = cachedCard ? JSON.parse(cachedCard) : DEFAULT_STATE;
     }
 
@@ -72,7 +73,7 @@ class Generator extends Component {
     };
 
     cacheCard = () => {
-        localStorage.setItem('pokecard', JSON.stringify(this.state));
+        localStorage.setItem(KEY_CACHE_POKECARD, JSON.stringify(this.state));
     }
 
     exportCard = () => {
@@ -90,7 +91,7 @@ class Generator extends Component {
             && window.confirm(this.props.t('confirmReset'))
         ) {
             this.setState(DEFAULT_STATE);
-            localStorage.removeItem('pokecard');
+            localStorage.removeItem(KEY_CACHE_POKECARD);
         }
     };
 
