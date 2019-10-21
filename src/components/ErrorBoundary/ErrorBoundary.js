@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withTranslation } from 'react-i18next';
 import LogoPokeball from '../../assets/img/pokeball.png';
 import './ErrorBoundary.scss';
+import { KEY_CACHE_POKECARD } from '../../const';
 
 class ErrorBoundary extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class ErrorBoundary extends Component {
     }
 
     componentDidCatch(error, errorInfo) {
+        localStorage.removeItem(KEY_CACHE_POKECARD);
         Sentry.withScope((scope) => {
             scope.setExtras(errorInfo);
             const eventId = Sentry.captureException(error);
