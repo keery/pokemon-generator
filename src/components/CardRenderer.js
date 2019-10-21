@@ -15,17 +15,13 @@ class CardRenderer extends Component {
         super(props);
 
         this.state = {
-            mainPicture    : null,
-            mainPictureX   : -2,
-            mainPictureY   : 0,
-            evolvePicture  : null,
-            evolvePictureX : 0,
-            evolvePictureY : 0,
-            nameY          : 38,
-            rarityLogo     : null,
-            attack1Img     : null,
-            attack2Img     : null,
-            sliceStage     : generateImg(sliceStageImg),
+            mainPicture   : null,
+            evolvePicture : null,
+            nameY         : 38,
+            rarityLogo    : null,
+            attack1Img    : null,
+            attack2Img    : null,
+            sliceStage    : generateImg(sliceStageImg),
         };
 
         this.getStateFromProps = this.getStateFromProps.bind(this);
@@ -46,24 +42,6 @@ class CardRenderer extends Component {
 
     getDynamicImg = (file) => {
         this.createImg(require(`../assets/1-gen/${file}`));
-    };
-
-    createImg = (src, maxWidth = false, maxHeight = false) => {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.src = src;
-
-            img.onload = () => {
-                if (maxHeight || maxWidth) {
-                    const ratio = this.calculateAspectRatioFit(img.width, img.height, maxWidth, maxHeight);
-                    img.width = ratio.width;
-                    img.height = ratio.height;
-                }
-                resolve(img);
-            };
-
-            return img;
-        });
     };
 
     async getStateFromProps(prevProps) {
@@ -107,6 +85,24 @@ class CardRenderer extends Component {
         return nextState;
     }
 
+    createImg = (src, maxWidth = false, maxHeight = false) => {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.src = src;
+
+            img.onload = () => {
+                if (maxHeight || maxWidth) {
+                    const ratio = this.calculateAspectRatioFit(img.width, img.height, maxWidth, maxHeight);
+                    img.width = ratio.width;
+                    img.height = ratio.height;
+                }
+                resolve(img);
+            };
+
+            return img;
+        });
+    };
+
     updateImgPos = (event) => {
         const { attrs } = event.target;
         this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y });
@@ -138,11 +134,7 @@ class CardRenderer extends Component {
             sliceStage,
             nameY,
             nameX,
-            evolvePictureX,
-            evolvePictureY,
             evolvePicture,
-            mainPictureX,
-            mainPictureY,
             mainPicture,
             weaknessImg,
             resistanceImg,
@@ -165,6 +157,11 @@ class CardRenderer extends Component {
             weight,
             type,
             weaknessAmount,
+            evolvePictureX,
+            evolvePictureY,
+            mainPictureX,
+            mainPictureY,
+            updateImgPos,
             attack1 : {
                 attack1Name, attack1Dammage, attack1Info,
             },
@@ -201,7 +198,7 @@ class CardRenderer extends Component {
                     {
                         mainPicture && (
                             <Group width={275} height={193} y={63} x={44} clipWidth={275} clipHeight={197} clipY={0} clipX={-2}>
-                                <KonvaImage image={mainPicture} y={mainPictureY} x={mainPictureX} draggable name="mainPicture" onDragEnd={this.updateImgPos} />
+                                <KonvaImage image={mainPicture} y={mainPictureY} x={mainPictureX} draggable name="mainPicture" onDragEnd={updateImgPos} />
                             </Group>
                         )
                     }
@@ -210,7 +207,7 @@ class CardRenderer extends Component {
                             <Group>
                                 <KonvaImage image={sliceStage} x={36} y={57} width={56} height={37} />
                                 <Group width={44} height={40} y={40} x={31} clipWidth={44} clipHeight={38} clipY={0} clipX={0}>
-                                    <KonvaImage image={evolvePicture} y={evolvePictureY} x={evolvePictureX} name="evolvePicture" onDragEnd={this.updateImgPos} draggable />
+                                    <KonvaImage image={evolvePicture} y={evolvePictureY} x={evolvePictureX} name="evolvePicture" onDragEnd={updateImgPos} draggable />
                                 </Group>
                                 { nameEvolution !== '' && <Text text={`Evolves from ${nameEvolution}`} fontFamily="pokevolution" fontSize={9} y={21} x={77} /> }
                             </Group>
@@ -358,6 +355,11 @@ CardRenderer.propTypes = {
     mainPicture      : PropTypes.string,
     evolvePicture    : PropTypes.string,
     nameEvolution    : PropTypes.string,
+    evolvePictureX   : PropTypes.number.isRequired,
+    evolvePictureY   : PropTypes.number.isRequired,
+    mainPictureX     : PropTypes.number.isRequired,
+    mainPictureY     : PropTypes.number.isRequired,
+    updateImgPos     : PropTypes.func.isRequired,
     attack1          : PropTypes.shape({
         attack1Name    : PropTypes.string,
         attack1Dammage : PropTypes.string,

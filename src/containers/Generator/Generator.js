@@ -22,7 +22,11 @@ const DEFAULT_STATE = {
     name             : '',
     nameEvolution    : '',
     mainPicture      : null,
+    mainPictureX     : -2,
+    mainPictureY     : 0,
     evolvePicture    : null,
+    evolvePictureX   : 0,
+    evolvePictureY   : 0,
     hp               : '30',
     weaknessType     : '',
     weaknessAmount   : '',
@@ -94,6 +98,11 @@ class Generator extends Component {
             localStorage.removeItem(KEY_CACHE_POKECARD);
         }
     };
+
+    updateImgPos = (event) => {
+        const { attrs } = event.target;
+        this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y }, this.cacheCard);
+    }
 
     printCard() {
         window.print();
@@ -420,7 +429,10 @@ class Generator extends Component {
                             this.stageRef = ref;
                         }}
                     >
-                        <CardRenderer {...this.state} />
+                        <CardRenderer
+                            {...this.state}
+                            updateImgPos={this.updateImgPos}
+                        />
                     </Stage>
                 </div>
                 {/* <div className="column is-one-quarter">
