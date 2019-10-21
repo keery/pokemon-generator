@@ -4,6 +4,7 @@ import compression from 'compression';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import companion from '@uppy/companion';
+import helmet from 'helmet';
 
 import logger from './logger';
 import setupRoutes from './routes';
@@ -17,8 +18,8 @@ const app = express();
 
 app.set('port', PORT || 8080);
 
+app.use(helmet())
 app.use(cors());
-
 app.use(compression());
 app.use(session({
     name              : CACHE_ID,
