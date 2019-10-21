@@ -42,9 +42,6 @@ class FileInput extends Component {
                 endpoint  : `${process.env.REACT_APP_SERVER_URL}/api/file/upload/images`,
                 fieldName : 'file',
                 limit     : 1,
-                // formData: false,
-                // resume                     : true,
-                // removeFingerprintOnSuccess : true,
             });
     }
 

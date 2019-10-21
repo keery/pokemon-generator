@@ -4,7 +4,6 @@ import compression from 'compression';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import companion from '@uppy/companion';
-// import tus from 'tus-node-server';
 
 import logger from './logger';
 import setupRoutes from './routes';
@@ -14,28 +13,11 @@ dotenv.config();
 const { PORT, HOST, PROTOCOL, SESSION_SECRET } = process.env;
 const uppyOptions = getUppyOptions();
 
-// const server = new tus.Server();
-// server.datastore = new tus.FileStore({
-//     path : '/files',
-// });
-
-// server.on(tus.EVENTS.EVENT_UPLOAD_COMPLETE, (event) => {
-//     console.log(`Upload complete for file ${event.file.id}`);
-// });
-// server.on(tus.EVENTS.EVENT_ENDPOINT_CREATED, (event) => {
-//     console.log('New endpoint', event);
-// });
-
-
 const app = express();
 
 app.set('port', PORT || 8080);
 
 app.use(cors());
-
-// const uploadApp = express();
-// uploadApp.all('*', server.handle.bind(server));
-// app.use('/uploads', uploadApp);
 
 app.use(compression());
 app.use(session({

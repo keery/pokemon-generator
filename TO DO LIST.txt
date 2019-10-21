@@ -10,4 +10,3 @@ Actually files are uploaded directly, so handle them, and find a solution to rem
 Animation on close modal ?
 Set in local storage imgs positions
 Search about express-session and availabilities
-Remove local storage if application throw error
