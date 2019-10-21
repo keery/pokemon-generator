@@ -10,7 +10,7 @@ import setupRoutes from './routes';
 import { cors, getUppyOptions } from './middlewares';
 
 dotenv.config();
-const { PORT, HOST, PROTOCOL, SESSION_SECRET } = process.env;
+const { PORT, HOST, PROTOCOL, SESSION_SECRET, CACHE_ID } = process.env;
 const uppyOptions = getUppyOptions();
 
 const app = express();
@@ -21,6 +21,7 @@ app.use(cors());
 
 app.use(compression());
 app.use(session({
+    name              : CACHE_ID,
     secret            : SESSION_SECRET,
     resave            : true,
     saveUninitialized : true
