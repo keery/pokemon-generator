@@ -435,7 +435,7 @@ class Generator extends Component {
                         />
                     </Stage>
                 </div>
-                {/* <div className="column is-one-quarter">
+                <div className="column is-one-quarter">
                     <div className="gfields-box">
                         <GroupTitle
                             onClick={this.handleFieldBox}
@@ -584,7 +584,7 @@ class Generator extends Component {
                             <span>📢</span> {t('news')}
                         </div>
                     </div>
-                </div> */}
+                </div>
             </div>
         );
     }

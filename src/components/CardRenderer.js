@@ -40,10 +40,6 @@ class CardRenderer extends Component {
         if (Object.keys(nextState).length > 0) this.setState(nextState);
     }
 
-    getDynamicImg = (file) => {
-        this.createImg(require(`../assets/1-gen/${file}`));
-    };
-
     async getStateFromProps(prevProps) {
         const {
             type, stage, weaknessType, resistanceType, retreat, rarity, attack1 : { attack1Type, attack1Amount }, attack2 : { attack2Type, attack2Amount }, mainPicture, evolvePicture,
@@ -102,6 +98,10 @@ class CardRenderer extends Component {
             return img;
         });
     };
+
+    getDynamicImg = (file) => {
+        return this.createImg(require(`../assets/1-gen/${file}`));
+    }
 
     updateImgPos = (event) => {
         const { attrs } = event.target;
