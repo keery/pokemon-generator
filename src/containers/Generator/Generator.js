@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Stage } from 'react-konva';
 import { withTranslation } from 'react-i18next';
 import isEqual from 'lodash.isequal';
+import { encrypt, decrypt } from '../../helper';
 import {
     CardRenderer, FileInput, SelectInput, Field, GroupTitle,
 } from '../../components';
@@ -57,14 +58,14 @@ const DEFAULT_STATE = {
     },
 };
 
-const { REACT_APP_VERSION, REACT_APP_TITLE } = process.env;
+const { REACT_APP_VERSION, REACT_APP_TITLE, REACT_APP_ENCRYPT_KEY } = process.env;
 
 class Generator extends Component {
     constructor(props) {
         super(props);
 
         const cachedCard = localStorage.getItem(KEY_CACHE_POKECARD);
-        this.state = cachedCard ? JSON.parse(cachedCard) : DEFAULT_STATE;
+        this.state = cachedCard ? decrypt(cachedCard, REACT_APP_ENCRYPT_KEY) : DEFAULT_STATE;
     }
 
     handleChange = (event) => {
@@ -77,7 +78,7 @@ class Generator extends Component {
     };
 
     cacheCard = () => {
-        localStorage.setItem(KEY_CACHE_POKECARD, JSON.stringify(this.state));
+        localStorage.setItem(KEY_CACHE_POKECARD, encrypt(this.state, REACT_APP_ENCRYPT_KEY));
     }
 
     exportCard = () => {
@@ -422,7 +423,7 @@ class Generator extends Component {
                         <div id="circle-5" className="circle" />
                         <div id="shadow-card" />
                     </div>
-                    <Stage
+                    {/* <Stage
                         width={360}
                         height={506}
                         ref={(ref) => {
@@ -433,7 +434,7 @@ class Generator extends Component {
                             {...this.state}
                             updateImgPos={this.updateImgPos}
                         />
-                    </Stage>
+                    </Stage> */}
                 </div>
                 <div className="column is-one-quarter">
                     <div className="gfields-box">

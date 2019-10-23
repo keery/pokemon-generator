@@ -1,3 +1,6 @@
+import AES from 'crypto-js/aes';
+import EncUTF8 from 'crypto-js/enc-utf8';
+
 const isEmpty = (obj) => {
     for (const key in obj) {
         if (obj[key] !== null && obj[key] !== '') return false;
@@ -18,4 +21,14 @@ const generateImg = (src) => {
     return img;
 };
 
-export { generateImg, isEmpty, remove };
+const encrypt = (data, key) => AES.encrypt(JSON.stringify(data), key).toString();
+
+const decrypt = (encryptedData, key) => JSON.parse(AES.decrypt(encryptedData, key).toString(EncUTF8));
+
+export {
+    generateImg,
+    isEmpty,
+    remove,
+    encrypt,
+    decrypt,
+};

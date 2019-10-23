@@ -9,6 +9,5 @@ Try AWS, to handle upload files
 Actually files are uploaded directly, so handle them, and find a solution to remove useless files (different system, or expiration time, or ***ENTER A SOLUTION HERE***)
 Animation on close modal ?
 Use Typescript or Flow
-Fix forgotten image on reload
-Hash value in local storage
+Fix forgotten image on reload in field
 Implement SSR
