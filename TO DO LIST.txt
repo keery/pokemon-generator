@@ -10,3 +10,5 @@ Actually files are uploaded directly, so handle them, and find a solution to rem
 Animation on close modal ?
 Use Typescript or Flow
 Fix forgotten image on reload
+Hash value in local storage
+Implement SSR
