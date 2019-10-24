@@ -72,10 +72,10 @@ class CardRenderer extends Component {
             nextState.rarityLogo = rarity ? await this.getDynamicImg(`rarity-${rarity}.png`) : null;
         }
         if (prevProps.mainPicture !== mainPicture) {
-            nextState.mainPicture = mainPicture ? await this.createImg(mainPicture, 275, 196) : null;
+            nextState.mainPicture = mainPicture ? await this.createImg(mainPicture.src, 275, 196) : null;
         }
         if (prevProps.evolvePicture !== evolvePicture) {
-            nextState.evolvePicture = evolvePicture ? await this.createImg(evolvePicture, 44, 40) : null;
+            nextState.evolvePicture = evolvePicture ? await this.createImg(evolvePicture.src, 44, 40) : null;
         }
 
         return nextState;
@@ -353,15 +353,21 @@ CardRenderer.propTypes = {
     resistanceType   : PropTypes.string,
     retreat          : PropTypes.string,
     rarity           : PropTypes.string,
-    mainPicture      : PropTypes.string,
-    evolvePicture    : PropTypes.string,
     nameEvolution    : PropTypes.string,
-    evolvePictureX   : PropTypes.number.isRequired,
-    evolvePictureY   : PropTypes.number.isRequired,
-    mainPictureX     : PropTypes.number.isRequired,
-    mainPictureY     : PropTypes.number.isRequired,
-    updateImgPos     : PropTypes.func.isRequired,
-    attack1          : PropTypes.shape({
+    evolvePicture    : PropTypes.shape({
+        src  : PropTypes.string,
+        name : PropTypes.string,
+    }),
+    evolvePictureX : PropTypes.number.isRequired,
+    evolvePictureY : PropTypes.number.isRequired,
+    mainPicture    : PropTypes.shape({
+        src  : PropTypes.string,
+        name : PropTypes.string,
+    }),
+    mainPictureX : PropTypes.number.isRequired,
+    mainPictureY : PropTypes.number.isRequired,
+    updateImgPos : PropTypes.func.isRequired,
+    attack1      : PropTypes.shape({
         attack1Name    : PropTypes.string,
         attack1Dammage : PropTypes.string,
         attack1Info    : PropTypes.string,

@@ -11,3 +11,4 @@ Animation on close modal ?
 Use Typescript or Flow
 Fix forgotten image on reload in field
 Implement SSR
+Share on social networks

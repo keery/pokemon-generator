@@ -16,7 +16,7 @@ const uppyOptions = getUppyOptions();
 
 const app = express();
 
-app.set('port', PORT || 8080);
+app.set('port', PORT || 8000);
 
 app.use(helmet())
 app.use(cors());

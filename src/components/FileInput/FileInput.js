@@ -17,10 +17,18 @@ class FileInput extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            uploadLabel : '',
-            isUploaded  : false,
-        };
+        if (props.value) {
+            this.state = {
+                isUploaded  : true,
+                uploadLabel : props.value.name,
+            };
+        }
+        else {
+            this.state = {
+                isUploaded  : false,
+                uploadLabel : '',
+            };
+        }
 
         this.uppy = new Uppy({
             id                   : 'uppy-input',
@@ -57,7 +65,10 @@ class FileInput extends Component {
             onChange({
                 target : {
                     name,
-                    value        : response.body.uploadURL,
+                    value : {
+                        src  : response.body.uploadURL,
+                        name : file.name,
+                    },
                     getAttribute : () => false,
                 },
             });
@@ -132,11 +143,16 @@ class FileInput extends Component {
 
 FileInput.defaultProps = {
     onChange : () => null,
+    value    : false,
 };
 
 FileInput.propTypes = {
     onChange : PropTypes.func,
     name     : PropTypes.string.isRequired,
+    value    : PropTypes.shape({
+        src  : PropTypes.string,
+        name : PropTypes.string,
+    }),
 };
 
 export default withTranslation('fileInput')(FileInput);
