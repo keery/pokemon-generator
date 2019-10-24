@@ -16,8 +16,8 @@ Like the example below, you will be able to create a card of your favorite hero.
 
 ``` bash
 # Install dependencies
-npm i
+npm run i
 
 # Start application
-npm start
+npm run dev
 ```
