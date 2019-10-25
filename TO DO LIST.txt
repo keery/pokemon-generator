@@ -5,8 +5,8 @@ Actually files are uploaded directly, so handle them, and find a solution to rem
 Implement SSR
 GPDR friendly
 
-Theme retro 
 -----EVOLUTION-----:
+Theme retro 
 Share on social networks
 Animation on close modal ?
 Use Typescript or Flow

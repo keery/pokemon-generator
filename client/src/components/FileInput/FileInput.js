@@ -11,6 +11,11 @@ import Spanish from '@uppy/locales/lib/es_ES';
 import { ModalContext } from '../../context';
 import './FileInput.scss';
 
+const EMPTY_STATE = {
+    isUploaded  : false,
+    uploadLabel : '',
+};
+
 class FileInput extends Component {
     static contextType = ModalContext;
 
@@ -24,10 +29,7 @@ class FileInput extends Component {
             };
         }
         else {
-            this.state = {
-                isUploaded  : false,
-                uploadLabel : '',
-            };
+            this.state = EMPTY_STATE;
         }
 
         this.uppy = new Uppy({
@@ -75,6 +77,12 @@ class FileInput extends Component {
             this.uppy.reset();
             this.context.closeModal();
         });
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.value !== this.props.value && !this.props.value) {
+            this.setState(EMPTY_STATE)
+        }
     }
 
     componentWillUnmount() {
