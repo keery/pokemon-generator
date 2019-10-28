@@ -260,6 +260,30 @@ nav {
     }
 }
 
+.konvajs-content {
+    position: relative;
+    transform-style: preserve-3d;
+}
+.konvajs-content:after {
+    content: '';
+    background-image: url(../../assets/img/pokemon-card-back.png);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    backface-visibility: hidden;
+    transform: rotateY(-180deg);
+    transition: transform ease-in-out .8s;
+}
+.konvajs-content > canvas {
+    backface-visibility: hidden;
+    transition: transform ease-in-out .8s;
+}
+
 #shape-1 {
     width: 40%;
     left: 50%;
