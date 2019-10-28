@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Stage } from 'react-konva';
 import { withTranslation } from 'react-i18next';
 import isEqual from 'lodash.isequal';
+import { TweenLite } from 'gsap/all';
 import { encrypt, decrypt } from '../../helper';
 import {
     CardRenderer, FileInput, SelectInput, Field, GroupTitle,
@@ -66,6 +67,7 @@ class Generator extends Component {
 
         const cachedCard = localStorage.getItem(KEY_CACHE_POKECARD);
         this.state = cachedCard ? decrypt(cachedCard, REACT_APP_ENCRYPT_KEY) : DEFAULT_STATE;
+        this.stageRef = React.createRef();
     }
 
     handleChange = (event) => {
@@ -94,9 +96,15 @@ class Generator extends Component {
         if (
             !isEqual(this.state, DEFAULT_STATE)
             && window.confirm(this.props.t('confirmReset'))
-        ) {
-            this.setState(DEFAULT_STATE);
-            localStorage.removeItem(KEY_CACHE_POKECARD);
+            ) {
+                const tween = TweenLite.to(this.stageRef.current.content, .8, {
+                    rotationY : 180,
+                    onComplete : () => {
+                        this.setState(DEFAULT_STATE, () => {
+                            localStorage.removeItem(KEY_CACHE_POKECARD);
+                            tween.reverse();
+                        });
+                    }});
         }
     };
 
@@ -421,14 +429,11 @@ class Generator extends Component {
                         <div id="circle-3" className="circle" />
                         <div id="circle-4" className="circle" />
                         <div id="circle-5" className="circle" />
-                        <div id="shadow-card" />
                     </div>
                     <Stage
                         width={360}
                         height={506}
-                        ref={(ref) => {
-                            this.stageRef = ref;
-                        }}
+                        ref={this.stageRef}
                     >
                         <CardRenderer
                             {...this.state}
@@ -437,7 +442,7 @@ class Generator extends Component {
                     </Stage>
                 </div>
                 <div className="column is-one-quarter">
-                    <div className="gfields-box">
+                    {/* <div className="gfields-box">
                         <GroupTitle
                             onClick={this.handleFieldBox}
                             stepNumber="05"
@@ -556,7 +561,7 @@ class Generator extends Component {
                                 </Field>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="panel-actions">
                         <button onClick={this.exportCard} className="gradient-btn" title={t('downloadCard')}>
                             <i className="fas fa-download" />
