@@ -429,7 +429,6 @@ class Generator extends Component {
                         <div id="circle-3" className="circle" />
                         <div id="circle-4" className="circle" />
                         <div id="circle-5" className="circle" />
-                        <div id="shadow-card" />
                     </div>
                     <Stage
                         width={360}
