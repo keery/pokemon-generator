@@ -1,5 +1,5 @@
 import companion from '@uppy/companion';
-import { IMAGES_PATH } from '../const'
+import { IMAGES_PATH } from '../const';
 
 export default () => {
     const { HOST, PROTOCOL, PORT, INSTA_SECRET, INSTA_KEY, SESSION_SECRET } = process.env;
@@ -8,7 +8,7 @@ export default () => {
         providerOptions : {
             instagram : {
                 key    : INSTA_KEY,
-                secret : INSTA_SECRET
+                secret : INSTA_SECRET,
             },
         },
         server : {

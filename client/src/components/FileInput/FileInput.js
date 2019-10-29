@@ -34,7 +34,7 @@ class FileInput extends Component {
 
         this.uppy = new Uppy({
             id                   : 'uppy-input',
-            autoProceed          : true,
+            autoProceed          : true, 
             locale               : this.getUppyTranslations(props.i18n.language),
             debug                : true,
             allowMultipleUploads : false,

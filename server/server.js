@@ -18,14 +18,14 @@ const app = express();
 
 app.set('port', PORT || 8000);
 
-app.use(helmet())
+app.use(helmet());
 app.use(cors());
 app.use(compression());
 app.use(session({
     name              : CACHE_ID,
     secret            : SESSION_SECRET,
     resave            : true,
-    saveUninitialized : true
+    saveUninitialized : true,
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : false }));
