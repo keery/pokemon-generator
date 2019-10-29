@@ -4,7 +4,7 @@ import Uppy from '@uppy/core';
 import Webcam from '@uppy/webcam';
 import Instagram from '@uppy/instagram';
 import AwsS3 from '@uppy/aws-s3';
-// import Url from '@uppy/url';
+import Url from '@uppy/url';
 import Transloadit from '@uppy/transloadit';
 import { Dashboard } from '@uppy/react';
 import { withTranslation } from 'react-i18next';
@@ -46,41 +46,33 @@ class FileInput extends Component {
                 allowedFileTypes : ['image/*'],
             },
         })
+            .use(Transloadit, {
+                // signature,
+                // params,
+            })
             .use(Webcam)
             .use(Instagram, {
                 companionUrl : process.env.REACT_APP_SERVER_URL,
             })
-            // .use(Url, {
-            //     companionUrl : process.env.REACT_APP_SERVER_URL,
-            // })
-            .use(Transloadit, {
-                params : {
-                    auth  : { key : 'be3e863775b14553a504aaa98ca3c32c' },
-                    steps : {
-                        ':original' : {
-                            robot : '/upload/handle',
-                        },
-                        compress_image : {
-                            use         : ':original',
-                            robot       : '/image/optimize',
-                            progressive : false,
-                        },
-                        store : {
-                            // use           : ':original',
-                            use           : ['compress_image'],
-                            robot         : '/s3/store',
-                            bucket        : 'files-pokemon',
-                            key           : 'AKIA6EQI76BV4DJ2AX5X',
-                            secret        : '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',
-                            bucket_region : 'eu-west-3',
-                        },
-                    },
-                },
-            })
-            .use(AwsS3, {
+            .use(Url, {
                 companionUrl : process.env.REACT_APP_SERVER_URL,
-                limit        : 1,
-            });
+            })
+            .on('transloadit:result', (stepName, result) => {
+                console.log(stepName);
+                console.log(result);
+                // const file = uppy.getFile(result.localId)
+                // var resultContainer = document.createElement('div')
+                // resultContainer.innerHTML = `
+                //   <div>
+                //     <h3>Name: ${file.name}</h3>
+                //     <img src="${result.ssl_url}" /> <br />
+                //     <a href="${result.ssl_url}">View</a>
+                //   </div>
+                // `
+                // document
+                //   .getElementById('uppy-transloadit-result')
+                //   .appendChild(resultContainer)
+              })
     }
 
     componentDidMount() {
@@ -102,8 +94,8 @@ class FileInput extends Component {
                     getAttribute : () => false,
                 },
             });
-            this.uppy.reset();
-            this.context.closeModal();
+            // this.uppy.reset();
+            // this.context.closeModal();
         });
     }
 
