@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Uppy from '@uppy/core';
 import Webcam from '@uppy/webcam';
 import Instagram from '@uppy/instagram';
-import XHRUpload from '@uppy/xhr-upload';
+import AwsS3 from '@uppy/aws-s3';
 import { Dashboard } from '@uppy/react';
 import { withTranslation } from 'react-i18next';
 import French from '@uppy/locales/lib/fr_FR';
@@ -48,9 +48,8 @@ class FileInput extends Component {
             .use(Instagram, {
                 companionUrl : process.env.REACT_APP_SERVER_URL,
             })
-            .use(XHRUpload, {
-                endpoint  : `${process.env.REACT_APP_SERVER_URL}/api/file/upload/images`,
-                fieldName : 'file',
+            .use(AwsS3, {
+                companionUrl  : process.env.REACT_APP_SERVER_URL,
                 limit     : 1,
             });
     }
@@ -68,7 +67,7 @@ class FileInput extends Component {
                 target : {
                     name,
                     value : {
-                        src  : response.body.uploadURL,
+                        src  : response.uploadURL,
                         name : file.name,
                     },
                     getAttribute : () => false,
