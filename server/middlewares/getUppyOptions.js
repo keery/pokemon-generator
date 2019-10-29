@@ -1,17 +1,16 @@
 import fs from 'fs';
 import companion from '@uppy/companion';
-import { TMP_FOLDER } from '../const'
+import { TMP_PATH } from '../const'
 
 export default () => {
     const {
-        HOST, PROTOCOL, PORT, INSTA_SECRET, INSTA_KEY, SESSION_SECRET, WHITE_LIST_ORIGIN,
+        HOST, PROTOCOL, PORT, SESSION_SECRET,
+        INSTA_SECRET, INSTA_KEY,
         S3_KEY, S3_SECRET, S3_BUCKET, S3_REGION,
     } = process.env;
 
-    try {
-        fs.accessSync(TMP_FOLDER)
-    } catch (err) {
-        fs.mkdirSync(TMP_FOLDER)
+    if (!fs.existsSync(TMP_PATH)){
+        fs.mkdirSync(TMP_PATH);
     }
 
     return {
@@ -32,9 +31,8 @@ export default () => {
             host     : `${HOST}:${PORT}`,
             protocol : PROTOCOL,
         },
-        filePath   : TMP_FOLDER,
+        filePath   : TMP_PATH,
         secret     : SESSION_SECRET,
         debug      : true,
-        uploadUrls : WHITE_LIST_ORIGIN.split(','),
     };
 }
