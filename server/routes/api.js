@@ -3,6 +3,6 @@ import { files } from '../logic';
 
 const router = new Router();
 
-router.post('/file/upload/:type(images)', files.uploadFile);
+router.get('/file/upload/:type(images)', files.uploadFile);
 
 export default router;
