@@ -4,6 +4,7 @@ import Uppy from '@uppy/core';
 import Webcam from '@uppy/webcam';
 import Instagram from '@uppy/instagram';
 import AwsS3 from '@uppy/aws-s3';
+import Url from '@uppy/url';
 import { Dashboard } from '@uppy/react';
 import { withTranslation } from 'react-i18next';
 import French from '@uppy/locales/lib/fr_FR';
@@ -34,7 +35,7 @@ class FileInput extends Component {
 
         this.uppy = new Uppy({
             id                   : 'uppy-input',
-            autoProceed          : true, 
+            autoProceed          : true,
             locale               : this.getUppyTranslations(props.i18n.language),
             debug                : true,
             allowMultipleUploads : false,
@@ -48,9 +49,12 @@ class FileInput extends Component {
             .use(Instagram, {
                 companionUrl : process.env.REACT_APP_SERVER_URL,
             })
+            .use(Url, {
+                companionUrl : process.env.REACT_APP_SERVER_URL,
+            })
             .use(AwsS3, {
-                companionUrl  : process.env.REACT_APP_SERVER_URL,
-                limit     : 1,
+                companionUrl : process.env.REACT_APP_SERVER_URL,
+                limit        : 1,
             });
     }
 
@@ -80,7 +84,7 @@ class FileInput extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.value !== this.props.value && !this.props.value) {
-            this.setState(EMPTY_STATE)
+            this.setState(EMPTY_STATE);
         }
     }
 
@@ -105,7 +109,7 @@ class FileInput extends Component {
         this.context.openModalWith(
             <Dashboard
                 uppy={this.uppy}
-                plugins={['Instagram', 'Webcam']}
+                plugins={['Instagram', 'Webcam', 'Url']}
                 proudlyDisplayPoweredByUppy={false}
                 metaFields={[
                     { id : 'name', name : 'Name', placeholder : 'File name' },
