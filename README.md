@@ -21,4 +21,4 @@ npm run i
 # Start application
 npm run dev
 ```
-**NOTE:** The app uses environment vars, you have to create files .env in both folders server and client
+**NOTE:** The app uses environment vars, you have to rename files .env.sample to .env in both folders server and client, then complete empty vars.
