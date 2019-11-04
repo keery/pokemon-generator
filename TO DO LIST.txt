@@ -15,3 +15,4 @@ Use Typescript or Flow
 Play sound effect on actions ?
 Draw on card with pen
 Card galery to see old created cards into a pokedex
+Optimize rendering with shouldComponentUpdate
