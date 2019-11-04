@@ -56,7 +56,8 @@ class FileInput extends Component {
     }
 
     componentDidMount() {
-        this.uppy.on('upload-success', (file, response) => {
+        this.uppy.on('transloadit:result', (stepName, result) => {
+            const file = this.uppy.getFile(result.localId);
             const { onChange, name } = this.props;
 
             this.setState({
@@ -68,7 +69,7 @@ class FileInput extends Component {
                 target : {
                     name,
                     value : {
-                        src  : response.uploadURL,
+                        src  : file.response.uploadURL,
                         name : file.name,
                     },
                     getAttribute : () => false,
@@ -145,7 +146,7 @@ FileInput.defaultProps = {
 FileInput.propTypes = {
     transloaditParams : PropTypes.shape({
         signature : PropTypes.string,
-        params    : PropTypes.object,
+        params    : PropTypes.string,
     }).isRequired,
     onChange : PropTypes.func,
     name     : PropTypes.string.isRequired,

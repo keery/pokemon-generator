@@ -16,5 +16,9 @@ export const getUppyTranslations = (locale) => {
 export default async () => {
     const { data : { params, signature } } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/transloadit/signature`);
 
-    return { params, signature };
+    return {
+        params,
+        signature,
+        waitForEncoding : true,
+    };
 };
