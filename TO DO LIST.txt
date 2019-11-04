@@ -7,6 +7,7 @@ GPDR friendly
 Compress default used imgs and uploaded img too
 
 -----EVOLUTION-----:
+Use only one instance of uppy
 Theme retro 
 Share on social networks
 Animation on close modal ?
@@ -14,3 +15,4 @@ Use Typescript or Flow
 Play sound effect on actions ?
 Draw on card with pen
 Card galery to see old created cards into a pokedex
+Optimize rendering with shouldComponentUpdate

@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Dashboard } from '@uppy/react';
+import { withTranslation } from 'react-i18next';
+import Url from '@uppy/url';
 import Uppy from '@uppy/core';
 import Webcam from '@uppy/webcam';
 import Instagram from '@uppy/instagram';
-import AwsS3 from '@uppy/aws-s3';
-import Url from '@uppy/url';
-import { Dashboard } from '@uppy/react';
-import { withTranslation } from 'react-i18next';
-import French from '@uppy/locales/lib/fr_FR';
-import Spanish from '@uppy/locales/lib/es_ES';
+import Transloadit from '@uppy/transloadit';
+import { getUppyTranslations } from '../../setupTransloadit';
 import { ModalContext } from '../../context';
+import { withStore } from '../../hoc';
 import './FileInput.scss';
 
 const EMPTY_STATE = {
@@ -36,7 +36,7 @@ class FileInput extends Component {
         this.uppy = new Uppy({
             id                   : 'uppy-input',
             autoProceed          : true,
-            locale               : this.getUppyTranslations(props.i18n.language),
+            locale               : getUppyTranslations(props.i18n.language),
             debug                : true,
             allowMultipleUploads : false,
             restrictions         : {
@@ -52,10 +52,7 @@ class FileInput extends Component {
             .use(Url, {
                 companionUrl : process.env.REACT_APP_SERVER_URL,
             })
-            .use(AwsS3, {
-                companionUrl : process.env.REACT_APP_SERVER_URL,
-                limit        : 1,
-            });
+            .use(Transloadit, props.transloaditParams);
     }
 
     componentDidMount() {
@@ -93,18 +90,6 @@ class FileInput extends Component {
         this.uppy.close();
     }
 
-    // eslint-disable-next-line class-methods-use-this
-    getUppyTranslations(locale) {
-        switch (locale) {
-        case 'fr':
-            return French;
-        case 'es':
-            return Spanish;
-        default:
-            return false;
-        }
-    }
-
     handleFile = (event) => {
         this.context.openModalWith(
             <Dashboard
@@ -117,7 +102,7 @@ class FileInput extends Component {
                 browserBackButtonClose
             />
         );
-    };
+    }
 
     render() {
         const { name } = this.props;
@@ -158,6 +143,10 @@ FileInput.defaultProps = {
 };
 
 FileInput.propTypes = {
+    transloaditParams : PropTypes.shape({
+        signature : PropTypes.string,
+        params    : PropTypes.object,
+    }).isRequired,
     onChange : PropTypes.func,
     name     : PropTypes.string.isRequired,
     value    : PropTypes.shape({
@@ -166,4 +155,4 @@ FileInput.propTypes = {
     }),
 };
 
-export default withTranslation('fileInput')(FileInput);
+export default withStore(['transloaditParams'])(withTranslation('fileInput')(FileInput));
