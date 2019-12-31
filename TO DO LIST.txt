@@ -1,10 +1,10 @@
 -----MUST DO-----:
 Design
-Actually files are uploaded directly, so handle them, and find a solution to remove useless files (different system, or expiration time, or ***ENTER A SOLUTION HERE***)
 Implement SSR
 GPDR friendly
 
 -----EVOLUTION-----:
+Actually files are uploaded directly, so handle them, and find a solution to remove useless files (different system, or expiration time, or ***ENTER A SOLUTION HERE***)
 Checker uppy pull request about setting of dynamic local
 Use only one instance of uppy
 Theme retro 
@@ -15,3 +15,4 @@ Play sound effect on actions ?
 Draw on card with pen
 Card galery to see old created cards into a pokedex
 Optimize rendering with shouldComponentUpdate
+Create a pipeline on Github
