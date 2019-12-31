@@ -1,4 +1,4 @@
-s<h1 align="center">POKEMON GENERATOR</h1>  
+<h1 align="center">POKEMON GENERATOR</h1>  
 
 <p align='center'>
   <img src="client/src/assets/img/pokeball.png" />
