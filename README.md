@@ -23,7 +23,7 @@ npm run dev
 ```
 **NOTE:** The app uses environment vars, you have to rename files .env.sample to .env in both folders server and client, then complete empty vars.
 
-## Services
+## External services 🌎
 Pokemon Generator use some external services, and can't works without them.
 
 ### Instagram 
