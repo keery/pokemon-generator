@@ -430,16 +430,16 @@ class Generator extends Component {
                         <div id="circle-4" className="circle" />
                         <div id="circle-5" className="circle" />
                     </div>
-                    {/* <Stage
-                        width={360}
-                        height={506}
+                    <Stage
+                        width={540}
+                        height={759}
                         ref={this.stageRef}
                     >
                         <CardRenderer
                             {...this.state}
                             updateImgPos={this.updateImgPos}
                         />
-                    </Stage> */}
+                    </Stage>
                 </div>
                 <div className="column is-one-quarter">
                     {/* <div className="gfields-box">

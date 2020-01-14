@@ -17,7 +17,8 @@ class CardRenderer extends Component {
         this.state = {
             mainPicture   : null,
             evolvePicture : null,
-            nameY         : 38,
+            nameX         : 53,
+            nameY         : 57,
             rarityLogo    : null,
             attack1Img    : null,
             attack2Img    : null,
@@ -48,7 +49,7 @@ class CardRenderer extends Component {
 
         if (prevProps.stage !== stage) {
             // Move name to the left if is an evolution
-            nextState.nameX = (stage !== 'basic' ? 95 : 35);
+            nextState.nameX = (stage !== 'basic' ? 142 : 53);
         }
         if ((prevProps.stage !== stage || prevProps.type !== type) && (stage !== '' && type !== '')) {
             nextState.bg = await this.getDynamicImg(`${type}-${stage}.png`);
@@ -72,10 +73,10 @@ class CardRenderer extends Component {
             nextState.rarityLogo = rarity ? await this.getDynamicImg(`rarity-${rarity}.png`) : null;
         }
         if (prevProps.mainPicture !== mainPicture) {
-            nextState.mainPicture = mainPicture ? await this.createImg(mainPicture.src, 275, 196) : null;
+            nextState.mainPicture = mainPicture ? await this.createImg(mainPicture.src, 412, 294) : null;
         }
         if (prevProps.evolvePicture !== evolvePicture) {
-            nextState.evolvePicture = evolvePicture ? await this.createImg(evolvePicture.src, 44, 40) : null;
+            nextState.evolvePicture = evolvePicture ? await this.createImg(evolvePicture.src, 66, 60) : null;
         }
 
         return nextState;
@@ -181,7 +182,7 @@ class CardRenderer extends Component {
 
         if ((attack1Name !== '' || attack1Dammage !== '' || attack1Info !== '' || attack1Img) && (attack2Name !== '' || attack2Dammage !== '' || attack2Info !== '' || attack2Img)) {
             tiny = true;
-            attack2Y = 360;
+            attack2Y = 540;
         }
 
         let pokemonInfo = '';
@@ -194,11 +195,11 @@ class CardRenderer extends Component {
         return (
             <Fragment>
                 <Layer>
-                    <ImageCanvas src={`${type}-${stage}.png`} width={360} height={506} />
-                    <Text text={name} fontFamily="pokename" fontSize={21} y={nameY} x={nameX} />
+                    <ImageCanvas src={`${type}-${stage}.png`} width={540} height={759} />
+                    <Text text={name} fontFamily="pokename" fontSize={31} y={nameY} x={nameX} />
                     {
                         mainPicture && (
-                            <Group width={275} height={193} y={63} x={44} clipWidth={275} clipHeight={197} clipY={0} clipX={-2}>
+                            <Group width={412} height={289} y={94} x={66} clipWidth={412} clipHeight={295} clipY={0} clipX={-2}>
                                 <KonvaImage image={mainPicture} y={mainPictureY} x={mainPictureX} draggable name="mainPicture" onDragEnd={updateImgPos} />
                             </Group>
                         )
@@ -206,23 +207,23 @@ class CardRenderer extends Component {
                     {
                         stage !== 'basic' && (
                             <Group>
-                                <KonvaImage image={sliceStage} x={36} y={57} width={56} height={37} />
-                                <Group width={44} height={40} y={40} x={31} clipWidth={44} clipHeight={38} clipY={0} clipX={0}>
+                                <KonvaImage image={sliceStage} x={54} y={85} width={84} height={55} />
+                                <Group width={66} height={60} y={60} x={46} clipWidth={66} clipHeight={57} clipY={0} clipX={0}>
                                     <KonvaImage image={evolvePicture} y={evolvePictureY} x={evolvePictureX} name="evolvePicture" onDragEnd={updateImgPos} draggable />
                                 </Group>
-                                { nameEvolution !== '' && <Text text={`Evolves from ${nameEvolution}`} fontFamily="pokevolution" fontSize={9} y={21} x={77} /> }
+                                { nameEvolution !== '' && <Text text={`Evolves from ${nameEvolution}`} fontFamily="pokevolution" fontSize={13} y={31} x={115} /> }
                             </Group>
                         )}
                     { hp !== '' && (
-                        <Text text={`${hp} HP`} fontFamily="pokehp" width={100} height={100} fontSize={19} y={36} x={196} align="right" fill="#ff1f00" />
+                        <Text text={`${hp} HP`} fontFamily="pokehp" width={150} height={150} fontSize={28} y={54} x={294} align="right" fill="#ff1f00" />
                     )}
                     { pokemonInfo !== '' && (
-                        <Text text={`${pokemonInfo}.`} fontFamily="pokevolution" width={245} fontSize={11} y={274} x={55} wrap="none" align="center" />
+                        <Text text={`${pokemonInfo}.`} fontFamily="pokevolution" width={367} fontSize={16} y={411} x={82} wrap="none" align="center" />
                     )}
 
                     <Attack
-                        x={26}
-                        y={295}
+                        x={39}
+                        y={442}
                         tiny={tiny}
                         name={attack1Name}
                         damage={attack1Dammage}
@@ -231,34 +232,34 @@ class CardRenderer extends Component {
                     />
                     <Rect
                         visible={tiny}
-                        x={24.5}
-                        y={350}
-                        width={309}
-                        height={1.5}
+                        x={37}
+                        y={525}
+                        width={469}
+                        height={2.25}
                         fill="#000000"
                     />
                     <Attack
-                        x={26}
-                        y={attack2Y || 295}
+                        x={39}
+                        y={attack2Y || 442}
                         tiny={tiny}
                         name={attack2Name}
                         damage={attack2Dammage}
                         desc={attack2Info}
                         imgTypeAmount={attack2Img}
                     />
-                    <Group x={10} y={418} width={380}>
+                    <Group x={15} y={627} width={570}>
                         <TypeAmount type={weaknessImg} amount={weaknessAmount} />
-                        <TypeAmount type={resistanceImg} amount={resistanceAmount} x={120} />
-                        { retreatImg && <KonvaImage x={246} y={10} image={retreatImg} /> }
+                        <TypeAmount type={resistanceImg} amount={resistanceAmount} x={180} />
+                        { retreatImg && <KonvaImage x={369} y={15} image={retreatImg} /> }
                     </Group>
                     { description !== '' && (
-                        <Group x={38} y={451} width={282}>
+                        <Group x={57} y={676} width={423}>
                             <Text
                                 text={description}
                                 fontFamily="pokevolution"
-                                width={280}
-                                height={25}
-                                fontSize={10}
+                                width={420}
+                                height={37.5}
+                                fontSize={15}
                                 lineHeight={1.1}
                                 verticalAlign="middle"
                             />
@@ -268,29 +269,29 @@ class CardRenderer extends Component {
                         <Text
                             text={`Illus. ${illustrator}`}
                             fontFamily="pokename"
-                            width={75}
-                            height={8}
+                            width={112}
+                            height={12}
                             wrap="none"
-                            fontSize={7}
-                            y={479.5}
-                            x={20}
+                            fontSize={10.5}
+                            y={719}
+                            x={30}
                         />
                     )}
                     { setNumber !== '' && (
                         <Text
                             text={setNumber}
                             fontFamily="pokename"
-                            width={35}
-                            height={8}
+                            width={52}
+                            height={12}
                             wrap="none"
-                            fontSize={8}
+                            fontSize={12}
                             align="right"
-                            y={479.5}
-                            x={292}
+                            y={719}
+                            x={438}
                         />
                     )}
                     { rarityLogo && (
-                        <KonvaImage image={rarityLogo} y={479} x={330} width={7} height={7} />
+                        <KonvaImage image={rarityLogo} y={718} x={495} width={10.5} height={10.5} />
                     )}
                 </Layer>
             </Fragment>
