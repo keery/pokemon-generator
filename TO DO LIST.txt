@@ -3,11 +3,12 @@ Design
 Actually files are uploaded directly, so handle them, and find a solution to remove useless files (different system, or expiration time, or ***ENTER A SOLUTION HERE***)
 Implement SSR
 GPDR friendly
+Fix print feature
 
 -----EVOLUTION-----:
 Checker uppy pull request about setting of dynamic local
 Use only one instance of uppy
-Theme retro 
+Theme retro
 Share on social networks
 Animation on close modal ?
 Use Typescript or Flow
@@ -15,3 +16,4 @@ Play sound effect on actions ?
 Draw on card with pen
 Card galery to see old created cards into a pokedex
 Optimize rendering with shouldComponentUpdate
+Create sprite with all elements

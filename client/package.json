@@ -30,6 +30,7 @@
     "react-i18next": "^10.11.4",
     "react-konva": "^16.8.6",
     "react-scripts": "3.0.1",
+    "react-spring": "^8.0.27",
     "use-image": "^1.0.4"
   },
   "scripts": {

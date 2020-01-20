@@ -1,0 +1,85 @@
+.ButtonList {
+    position: relative;
+    display: inline-block;
+
+    .preview {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 100%;
+        background-color: #eff0f1;
+        display: block;
+
+        &:hover + .list-items {
+            display: inline-flex;
+        }
+    }
+
+    .list-items {
+        padding-left: 0;
+        list-style: none;
+        display: none;
+        background-color: #eff0f1;
+        padding: 10px 20px;
+        border-radius: 8px;
+        position: absolute;
+        left: 50%;
+        bottom: 90%;
+        bottom: calc(100% + 15px);
+        transform: translateX(-50%);
+        margin: 0;
+        box-shadow: 0px 0px 11px #d5d5d5;
+
+        &:hover {
+            display: inline-flex;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 30px;
+            top: 100%;
+        }
+
+        > li {
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 100%;
+            background-size: 228%;
+            background-repeat: no-repeat;
+            background-position: 50%;
+            cursor: pointer;
+            transition: transform linear .2s;
+            position: relative;
+
+            &:hover {
+                transform: translateY(-5px);
+
+                &:before {
+                    content: '';
+                    height: 15px;
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: calc(100% - 7.5px);
+                }
+            }
+
+            + li {
+                margin-left: .6rem;
+            }
+        }
+    }
+
+    .Fire { background-image: url(../../assets/1-gen/1-fire.png); }
+    .Grass { background-image: url(../../assets/1-gen/1-grass.png); }
+    .Water { background-image: url(../../assets/1-gen/1-water.png); }
+    .Electric { background-image: url(../../assets/1-gen/1-electric.png); }
+    .Psychic { background-image: url(../../assets/1-gen/1-psychic.png); }
+    .Fighting { background-image: url(../../assets/1-gen/1-fighting.png); }
+    .Normal { background-image: url(../../assets/1-gen/1-normal.png); }
+    .Steel { background-image: url(../../assets/1-gen/1-steel.png); }
+    .Dark { background-image: url(../../assets/1-gen/1-dark.png); }
+}
