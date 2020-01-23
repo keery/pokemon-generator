@@ -14,3 +14,6 @@ export { default as ModalConsumer } from './ModalConsumer';
 export { default as StoreProvider } from './StoreProvider';
 export { default as Modal } from './Modal';
 export { default as FileInput } from './FileInput';
+export { default as InteractiveInput } from './InteractiveInput';
+export { default as InteractiveFile } from './InteractiveFile';
+export { default as InteractiveSelectHover } from './InteractiveSelectHover';
