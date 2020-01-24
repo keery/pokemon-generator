@@ -1,0 +1,37 @@
+.InteractiveSelect {
+    position: absolute;
+    overflow: hidden;
+    border: 2px dashed transparent;
+
+    .border {
+        display: block;
+        height: 100%;
+        width: 100%;
+        border: 2px dashed transparent;
+    }
+
+    > select {
+        position: absolute;
+        color: transparent;
+        width: 125%;
+        height: 100%;
+        right: -25%;
+        background-color: transparent;
+        border: none;
+        text-align: justify;
+
+        > option {
+            color: black;
+        }
+
+        &:focus + .border {
+            border: 2px solid #fdd705;
+        }
+    }
+
+    &:hover {
+        .border {
+            border: 2px dashed #fdd705;
+        }
+    }
+}

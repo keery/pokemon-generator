@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './InteractiveSelectHover.scss';
-import retreatLogo from '../../assets/1-gen/retreat.png';
+import retreatLogo from '../../../assets/1-gen/retreat.png';
 
 const InteractiveSelectHover = ({ max, defaultValue, handleClick }) => {
     const [count, setCount] = useState(defaultValue);
@@ -17,8 +17,7 @@ const InteractiveSelectHover = ({ max, defaultValue, handleClick }) => {
                 <img src={retreatLogo} alt="" />
             </span>
         );
-    }
-    else {
+    } else {
         ico.pop();
         ico.push(<span className="more-icon"><img src={retreatLogo} alt="" /></span>);
     }

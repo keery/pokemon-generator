@@ -442,7 +442,7 @@ class Generator extends Component {
                     </Stage>
                 </div>
                 <div className="column is-one-quarter">
-                    {/* <div className="gfields-box">
+                    <div className="gfields-box">
                         <GroupTitle
                             onClick={this.handleFieldBox}
                             stepNumber="05"
@@ -561,7 +561,7 @@ class Generator extends Component {
                                 </Field>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                     <div className="panel-actions">
                         <button onClick={this.exportCard} className="gradient-btn" title={t('downloadCard')}>
                             <i className="fas fa-download" />

@@ -1,0 +1,10 @@
+.InteractiveArea {
+    position: absolute;
+    border: 2px transparent;
+    cursor: pointer;
+
+    &:hover {
+        border: 2px dashed #fdd705;
+        background-color: rgba(0, 0, 0, 0.54);
+    }
+}
