@@ -12,21 +12,21 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 0; 
+    top: 0;
 }
 .global-wrapper {
     max-width: 1160px;
     margin: 0 auto;
 }
 .textarea {
-    width: 100%;    
+    width: 100%;
 }
 .input, .select select, .textarea {
     background-color: #f8f8f8;
     border: 1px solid #ededed;
     box-shadow: none;
     border-radius: 15px;
-    
+
     &:hover {
         border-color: #b5b5b5;
     }
@@ -72,9 +72,9 @@
         margin-top: -40px!important;
         margin-bottom: -60px!important;
     }
-    
-    .gfields-header { 
-        padding: 1.25rem 3.15rem 1.25rem 2.45rem; 
+
+    .gfields-header {
+        padding: 1.25rem 3.15rem 1.25rem 2.45rem;
         cursor: pointer;
         font-size: 1.5rem;
         display: flex;
@@ -88,17 +88,17 @@
         font-weight: 700;
         color: #ffc919;
     }
-    
-    .gfields-content-wrapper { 
+
+    .gfields-content-wrapper {
         max-height: 0;
         overflow: hidden;
         transition: max-height ease-in-out 0.4s;
     }
 
-    .gfields-content { 
+    .gfields-content {
         padding: 1.250rem;
     }
-    
+
     + .gfields-box {
         margin-top: 10px;
     }
@@ -187,7 +187,7 @@ nav {
     .menu-left {
         display: flex;
         align-items: center;
-    
+
         a:not(.gradient-btn) {
             font-size: 1rem;
             font-weight: 500;
@@ -205,7 +205,7 @@ nav {
 
     .gradient-btn {
         padding: 1.3rem;
-        
+
         + .gradient-btn {
             margin-left : .8rem;
         }
@@ -264,7 +264,7 @@ nav {
     position: relative;
     transform-style: preserve-3d;
     border-radius: 23px;
-    
+
     &:before {
         content: '';
         position: absolute;
@@ -432,10 +432,10 @@ nav {
 
         /* disable scrollbar on x-axis only */
         overflow-x: hidden;
-    
+
         /* disable scrollbar on y-axis only */
         overflow-y: hidden;
-    
+
         /* disable scroll */
         position: fixed;
         top: 0;
@@ -446,4 +446,10 @@ nav {
 
 .uppy-Webcam-button--video {
     display: none;
+}
+
+.card-container {
+    width: 540px;
+    height: 755px;
+    position: relative;
 }

@@ -1,10 +1,9 @@
 .InteractiveTextarea {
     position: absolute;
-    border: 2px transparent;
 
     > textarea {
         width: 100%;
-        border: 2px solid transparent;
+        border: 3px solid transparent;
         margin: 0;
         padding: .1rem .5rem;
         height: 100%;
@@ -16,11 +15,11 @@
         line-height: 1;
 
         &:hover {
-            border: 2px solid #000;
+            border: 3px solid #000;
         }
 
         &:focus {
-            border: 2px solid #000;
+            border: 3px solid #000;
         }
     }
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './InteractiveSelectHover.scss';
 import retreatLogo from '../../../assets/1-gen/retreat.png';
 
-const InteractiveSelectHover = ({ max, defaultValue, handleClick }) => {
+const InteractiveSelectHover = ({ max, defaultValue, handleClick, x, y, height, width }) => {
     const [count, setCount] = useState(defaultValue);
     const [isDown, setDown] = useState(false);
 
@@ -29,6 +29,12 @@ const InteractiveSelectHover = ({ max, defaultValue, handleClick }) => {
             onClick={() => handleClick(count)}
             onMouseDown={() => setDown(true)}
             onMouseUp={() => setDown(false)}
+            style={{
+                left   : `${x}%`,
+                top    : `${y}%`,
+                height : `${height}%`,
+                width  : `${width}%`,
+            }}
         >
             { ico }
         </div>
@@ -39,11 +45,19 @@ InteractiveSelectHover.propTypes = {
     max          : PropTypes.number,
     defaultValue : PropTypes.number,
     handleClick  : PropTypes.func.isRequired,
+    x            : PropTypes.number,
+    y            : PropTypes.number,
+    height       : PropTypes.number,
+    width        : PropTypes.number,
 };
 
 InteractiveSelectHover.defaultProps = {
     max          : 4,
     defaultValue : 0,
+    x            : 0,
+    y            : 0,
+    height       : 5,
+    width        : 100,
 };
 
 

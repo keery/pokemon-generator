@@ -19,9 +19,11 @@
         background-color: transparent;
         border: none;
         text-align: justify;
+        font-family: pokehp;
+        font-size: 18px;
 
         > option {
-            color: black;
+            color: #ff1f00;
         }
 
         &:focus + .border {

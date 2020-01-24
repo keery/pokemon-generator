@@ -5,7 +5,7 @@ import isEqual from 'lodash.isequal';
 import { TweenLite } from 'gsap/all';
 import { encrypt, decrypt } from '../../helper';
 import {
-    CardRenderer, FileInput, SelectInput, Field, GroupTitle,
+    CardRenderer, FileInput, SelectInput, Field, GroupTitle, LayerCard,
 } from '../../components';
 import {
     ELEMENTS,
@@ -430,16 +430,19 @@ class Generator extends Component {
                         <div id="circle-4" className="circle" />
                         <div id="circle-5" className="circle" />
                     </div>
-                    <Stage
-                        width={540}
-                        height={755}
-                        ref={this.stageRef}
-                    >
-                        <CardRenderer
-                            {...this.state}
-                            updateImgPos={this.updateImgPos}
-                        />
-                    </Stage>
+                    <div className="card-container">
+                        <Stage
+                            width={540}
+                            height={755}
+                            ref={this.stageRef}
+                        >
+                            <CardRenderer
+                                {...this.state}
+                                updateImgPos={this.updateImgPos}
+                            />
+                        </Stage>
+                        <LayerCard hasBg={true}/>
+                    </div>
                 </div>
                 <div className="column is-one-quarter">
                     <div className="gfields-box">

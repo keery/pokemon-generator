@@ -191,7 +191,7 @@ class CardRenderer extends Component {
         if (length !== '') pokemonInfo += `Length: ${length}`;
         if (length !== '' && weight !== '') pokemonInfo += ', ';
         if (weight !== '') pokemonInfo += `Weight: ${weight}`;
-
+console.log(hp);
         return (
             <Fragment>
                 <Layer>
@@ -215,7 +215,7 @@ class CardRenderer extends Component {
                             </Group>
                         )}
                     { hp !== '' && (
-                        <Text text={`${hp} HP`} fontFamily="pokehp" width={150} height={150} fontSize={28} y={54} x={294} align="right" fill="#ff1f00" />
+                        <Text text={`${hp} HP`} fontFamily="pokehp" width={150} height={150} fontSize={28} y={54} x={292} align="right" fill="#ff1f00" />
                     )}
                     { pokemonInfo !== '' && (
                         <Text text={`${pokemonInfo}.`} fontFamily="pokevolution" width={367} fontSize={16} y={411} x={82} wrap="none" align="center" />

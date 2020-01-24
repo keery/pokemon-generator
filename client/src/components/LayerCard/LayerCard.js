@@ -7,6 +7,11 @@ import {
     InteractiveTextarea,
     InteractiveArea,
 } from '../Interactive';
+
+import {
+    HP_CHOICES,
+} from '../../const';
+
 import './LayerCard.scss';
 
 const LayerCard = () => (
@@ -23,12 +28,11 @@ const LayerCard = () => (
 
         {/* HP */}
         <InteractiveSelect
-            x={67}
+            x={64.5}
             y={6.2}
-            height={4}
-            width={15}
-            fontSize={10.5}
-            fontFamily="pokename"
+            height={5.1}
+            width={19.3}
+            choices={HP_CHOICES}
         />
 
         {/* MAIN PICTURE */}
@@ -36,57 +40,62 @@ const LayerCard = () => (
 
         {/* SPECIES SIZE WEIGHT */}
         <InteractiveArea
-            x={13.7}
-            y={53.7}
-            height={2.3}
-            width={71.4}
+            x={14}
+            y={54}
+            height={3}
+            width={71.9}
         />
 
         {/* WEAKNESS */}
         <InteractiveArea
             x={8.5}
-            y={84.7}
-            height={3}
-            width={14}
+            y={85}
+            height={4}
+            width={15}
         />
 
         {/* RESISTANCE */}
         <InteractiveArea
-            x={41.3}
-            y={84.7}
-            height={3}
-            width={14}
+            x={41.2}
+            y={85}
+            height={4}
+            width={15}
         />
 
         {/* RETREAT */}
-        <InteractiveSelectHover />
+        <InteractiveSelectHover
+            x={74.5}
+            y={85}
+            height={4}
+            width={15}
+        />
 
         {/* DESCRIPTION */}
         <InteractiveTextarea
-            x={8.6}
-            y={88.7}
-            height={4.7}
-            width={77.8}
+            x={8.5}
+            y={89.2}
+            height={5.7}
+            width={81.7}
             fontSize={16}
             fontFamily="pokevolution"
         />
 
         {/* ILLUSTRATOR */}
         <InteractiveInput
-            x={5.1}
-            y={94}
-            height={1.5}
-            width={18.7}
+            x={4.7}
+            y={94.9}
+            height={2.2}
+            width={22.3}
             fontSize={10.5}
             fontFamily="pokename"
         />
 
-        {/* RESISTANCE */}
+        {/* COLLECTION RARITY */}
         <InteractiveArea
-            x={80.4}
-            y={94.5}
-            height={1.5}
-            width={14}
+            x={81}
+            y={94.9}
+            height={2.2}
+            width={14.2}
         />
     </div>
 );

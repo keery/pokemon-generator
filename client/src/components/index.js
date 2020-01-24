@@ -14,3 +14,4 @@ export { default as ModalConsumer } from './ModalConsumer';
 export { default as StoreProvider } from './StoreProvider';
 export { default as Modal } from './Modal';
 export { default as FileInput } from './FileInput';
+export { default as LayerCard } from './LayerCard';
