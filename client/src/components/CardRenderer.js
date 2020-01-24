@@ -191,7 +191,7 @@ class CardRenderer extends Component {
         if (length !== '') pokemonInfo += `Length: ${length}`;
         if (length !== '' && weight !== '') pokemonInfo += ', ';
         if (weight !== '') pokemonInfo += `Weight: ${weight}`;
-console.log(hp);
+
         return (
             <Fragment>
                 <Layer>

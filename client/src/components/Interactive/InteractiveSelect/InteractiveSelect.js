@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './InteractiveSelect.scss';
 
-const InteractiveSelect = ({ x, y, height, width, choices }) => {
+const InteractiveSelect = ({ name, x, y, height, width, choices, onChange }) => {
     return (
         <div
             style={{
@@ -13,7 +13,10 @@ const InteractiveSelect = ({ x, y, height, width, choices }) => {
             }}
             className="InteractiveSelect"
         >
-            <select>
+            <select
+                name={name}
+                onChange={onChange}
+            >
                 { choices.map(choice => <option>{choice}</option>) }
             </select>
             <span className="border" />
@@ -22,11 +25,13 @@ const InteractiveSelect = ({ x, y, height, width, choices }) => {
 };
 
 InteractiveSelect.propTypes = {
-    x       : PropTypes.number,
-    y       : PropTypes.number,
-    height  : PropTypes.number,
-    width   : PropTypes.number,
-    choices : PropTypes.arrayOf(PropTypes.string),
+    name     : PropTypes.string.isRequired,
+    x        : PropTypes.number,
+    y        : PropTypes.number,
+    height   : PropTypes.number,
+    width    : PropTypes.number,
+    choices  : PropTypes.arrayOf(PropTypes.string),
+    onChange : PropTypes.number.isRequired,
 };
 
 InteractiveSelect.defaultProps = {

@@ -14,25 +14,29 @@ import {
 
 import './LayerCard.scss';
 
-const LayerCard = () => (
+const LayerCard = ({ handleChange }) => (
     <div className="LayerCard">
         {/* NAME */}
         <InteractiveInput
-            x={8.2}
-            y={6.2}
-            height={4.9}
+            name="name"
+            x={8.7}
+            y={7}
+            height={4.3}
             width={55}
             fontSize={31}
             fontFamily="pokename"
+            onChange={handleChange}
         />
 
         {/* HP */}
         <InteractiveSelect
+            name="hp"
             x={64.5}
-            y={6.2}
-            height={5.1}
+            y={7}
+            height={4.3}
             width={19.3}
             choices={HP_CHOICES}
+            onChange={handleChange}
         />
 
         {/* MAIN PICTURE */}
@@ -68,6 +72,7 @@ const LayerCard = () => (
             y={85}
             height={4}
             width={15}
+            onChange={handleChange}
         />
 
         {/* DESCRIPTION */}
@@ -78,6 +83,7 @@ const LayerCard = () => (
             width={81.7}
             fontSize={16}
             fontFamily="pokevolution"
+            onChange={handleChange}
         />
 
         {/* ILLUSTRATOR */}
@@ -88,6 +94,7 @@ const LayerCard = () => (
             width={22.3}
             fontSize={10.5}
             fontFamily="pokename"
+            onChange={handleChange}
         />
 
         {/* COLLECTION RARITY */}

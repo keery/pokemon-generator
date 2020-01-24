@@ -71,6 +71,7 @@ class Generator extends Component {
     }
 
     handleChange = (event) => {
+        console.log(event);
         const nested = event.target.getAttribute('nested');
         if (nested) {
             this.setState({
@@ -441,7 +442,7 @@ class Generator extends Component {
                                 updateImgPos={this.updateImgPos}
                             />
                         </Stage>
-                        <LayerCard hasBg={true}/>
+                        <LayerCard handleChange={this.handleChange} />
                     </div>
                 </div>
                 <div className="column is-one-quarter">
