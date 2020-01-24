@@ -5,6 +5,7 @@ import retreatLogo from '../../../assets/1-gen/retreat.png';
 
 const InteractiveSelectHover = ({ max, defaultValue, handleClick }) => {
     const [count, setCount] = useState(defaultValue);
+    const [isDown, setDown] = useState(false);
 
     const ico = [];
     for (let index = 0; index < count; index++) {
@@ -23,7 +24,12 @@ const InteractiveSelectHover = ({ max, defaultValue, handleClick }) => {
     }
 
     return (
-        <div className="InteractiveSelectHover" onClick={() => handleClick(count)}>
+        <div
+            className={`InteractiveSelectHover ${isDown ? 'down' : ''}`}
+            onClick={() => handleClick(count)}
+            onMouseDown={() => setDown(true)}
+            onMouseUp={() => setDown(false)}
+        >
             { ico }
         </div>
     );
