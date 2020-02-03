@@ -446,6 +446,11 @@ class Generator extends Component {
                                 updateImgPos={this.updateImgPos}
                             />
                         </Stage>
+                        <LayerCard
+                            {...this.state}
+                            handleChange={this.handleChange}
+                            setRetreatVisible={this.setRetreatVisible}
+                        />
                     </div>
                 </div>
                 <div className="column is-one-quarter">
