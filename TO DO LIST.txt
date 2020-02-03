@@ -3,7 +3,9 @@ Design
 Actually files are uploaded directly, so handle them, and find a solution to remove useless files (different system, or expiration time, or ***ENTER A SOLUTION HERE***)
 Implement SSR
 GPDR friendly
-Fix print feature
+Fix print feat
+Resize logo reatreat, weakness, resistance (too small)
+Remove lib gsap
 
 -----EVOLUTION-----:
 Checker uppy pull request about setting of dynamic local

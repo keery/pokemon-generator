@@ -87,7 +87,7 @@ class Generator extends Component {
     exportCard = () => {
         const link = document.createElement('a');
         link.download = 'card.png';
-        link.href = this.stageRef.getStage().toDataURL();
+        link.href = this.stageRef.current.getStage().toDataURL();
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
