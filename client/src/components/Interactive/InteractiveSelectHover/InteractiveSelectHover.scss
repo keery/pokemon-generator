@@ -6,6 +6,16 @@
     align-items: center;
     border: 2px dashed transparent;
 
+    > input {
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+
     > span, > i {
         display: none;
     }
@@ -26,7 +36,7 @@
             display: flex;
             position: relative;
 
-            &:nth-child(2):before {
+            &:nth-child(3):before {
                 content: '';
                 position: absolute;
                 top: 0;

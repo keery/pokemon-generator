@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './InteractiveSelectHover.scss';
 import retreatLogo from '../../../assets/1-gen/retreat.png';
 
-const InteractiveSelectHover = ({ max, defaultValue, handleClick, x, y, height, width }) => {
+const InteractiveSelectHover = ({ name, max, defaultValue, handleClick, x, y, height, width }) => {
     const [count, setCount] = useState(defaultValue);
     const [isDown, setDown] = useState(false);
+    const inputRef = useRef(null);
 
     const ico = [];
     for (let index = 0; index < count; index++) {
@@ -26,22 +27,30 @@ const InteractiveSelectHover = ({ max, defaultValue, handleClick, x, y, height, 
     return (
         <div
             className={`InteractiveSelectHover ${isDown ? 'down' : ''}`}
-            onClick={() => handleClick(count)}
-            onMouseDown={() => setDown(true)}
-            onMouseUp={() => setDown(false)}
             style={{
                 left   : `${x}%`,
                 top    : `${y}%`,
                 height : `${height}%`,
                 width  : `${width}%`,
             }}
+            onMouseDown={() => setDown(true)}
+            onMouseUp={() => setDown(false)}
+            onClick={() => inputRef.current.click()}
         >
+            <input
+                type="hidden"
+                name={name}
+                ref={inputRef}
+                value={count}
+                onClick={handleClick}
+            />
             { ico }
         </div>
     );
 };
 
 InteractiveSelectHover.propTypes = {
+    name         : PropTypes.string.isRequired,
     max          : PropTypes.number,
     defaultValue : PropTypes.number,
     handleClick  : PropTypes.func.isRequired,

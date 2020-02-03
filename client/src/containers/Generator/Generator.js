@@ -71,7 +71,6 @@ class Generator extends Component {
     }
 
     handleChange = (event) => {
-        console.log(event);
         const nested = event.target.getAttribute('nested');
         if (nested) {
             this.setState({
