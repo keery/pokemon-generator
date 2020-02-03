@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './InteractiveInput.scss';
 
-const InteractiveInput = ({ name, x, y, height, width, fontSize, fontFamily, onChange }) => {
+const InteractiveInput = ({ name, x, y, height, width, fontSize, fontFamily, onChange, value }) => {
     return (
         <div
             style={{
@@ -22,6 +22,7 @@ const InteractiveInput = ({ name, x, y, height, width, fontSize, fontFamily, onC
                 onChange={onChange}
                 name={name}
                 autoComplete="off"
+                value={value}
             />
         </div>
     );
@@ -35,10 +36,12 @@ InteractiveInput.propTypes = {
     width      : PropTypes.number,
     fontSize   : PropTypes.number,
     fontFamily : PropTypes.string,
+    value      : PropTypes.string,
     onChange   : PropTypes.func.isRequired,
 };
 
 InteractiveInput.defaultProps = {
+    value      : '',
     x          : 0,
     y          : 0,
     height     : 5,

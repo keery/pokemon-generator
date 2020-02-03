@@ -37,7 +37,7 @@ const DEFAULT_STATE = {
     retreat          : '',
     retreatVisible   : true,
     description      : '',
-    illustrator      : '',
+    illustrator      : 'Illus. ',
     cardNumber       : '',
     totalCollection  : '',
     rarity           : '',
@@ -447,6 +447,7 @@ class Generator extends Component {
                             />
                         </Stage>
                         <LayerCard
+                            {...this.state}
                             handleChange={this.handleChange}
                             setRetreatVisible={this.setRetreatVisible}
                         />
@@ -526,7 +527,6 @@ class Generator extends Component {
                             <div className="gfields-content">
                                 <Field label={t('description')}>
                                     <textarea
-                                        type="text"
                                         name="description"
                                         className="textarea"
                                         onChange={this.handleChange}

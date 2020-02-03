@@ -14,7 +14,7 @@ import {
 
 import './LayerCard.scss';
 
-const LayerCard = ({ handleChange, setRetreatVisible }) => (
+const LayerCard = ({ handleChange, setRetreatVisible, illustrator, name, description }) => (
     <div className="LayerCard">
         {/* NAME */}
         <InteractiveInput
@@ -26,6 +26,7 @@ const LayerCard = ({ handleChange, setRetreatVisible }) => (
             fontSize={31}
             fontFamily="pokename"
             onChange={handleChange}
+            value={name}
         />
 
         {/* HP */}
@@ -79,13 +80,15 @@ const LayerCard = ({ handleChange, setRetreatVisible }) => (
 
         {/* DESCRIPTION */}
         <InteractiveTextarea
+            name="description"
             x={8.5}
             y={89.2}
             height={5.7}
             width={81.7}
-            fontSize={16}
+            fontSize={15}
             fontFamily="pokevolution"
             onChange={handleChange}
+            value={description}
         />
 
         {/* ILLUSTRATOR */}
@@ -97,6 +100,7 @@ const LayerCard = ({ handleChange, setRetreatVisible }) => (
             width={22.3}
             fontSize={10.5}
             fontFamily="pokename"
+            value={illustrator}
             onChange={handleChange}
         />
 

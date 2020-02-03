@@ -17,8 +17,8 @@ class CardRenderer extends Component {
         this.state = {
             mainPicture   : null,
             evolvePicture : null,
-            nameX         : 53,
-            nameY         : 57,
+            nameX         : 54,
+            nameY         : 58,
             rarityLogo    : null,
             attack1Img    : null,
             attack2Img    : null,
@@ -49,7 +49,7 @@ class CardRenderer extends Component {
 
         if (prevProps.stage !== stage) {
             // Move name to the left if is an evolution
-            nextState.nameX = (stage !== 'basic' ? 142 : 53);
+            nextState.nameX = (stage !== 'basic' ? 142 : 54);
         }
         if ((prevProps.stage !== stage || prevProps.type !== type) && (stage !== '' && type !== '')) {
             nextState.bg = await this.getDynamicImg(`${type}-${stage}.png`);
@@ -254,7 +254,7 @@ class CardRenderer extends Component {
                         { retreatVisible && retreatImg && <KonvaImage x={390} y={20} image={retreatImg} /> }
                     </Group>
                     { description !== '' && (
-                        <Group x={57} y={676} width={423}>
+                        <Group x={57} y={680} width={423}>
                             <Text
                                 text={description}
                                 fontFamily="pokevolution"
@@ -262,13 +262,12 @@ class CardRenderer extends Component {
                                 height={37.5}
                                 fontSize={15}
                                 lineHeight={1.1}
-                                verticalAlign="middle"
                             />
                         </Group>
                     )}
                     { illustrator !== '' && (
                         <Text
-                            text={`Illus. ${illustrator}`}
+                            text={illustrator}
                             fontFamily="pokename"
                             width={112}
                             height={12}
