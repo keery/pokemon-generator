@@ -35,6 +35,7 @@ const DEFAULT_STATE = {
     resistanceType   : '',
     resistanceAmount : '',
     retreat          : '',
+    retreatVisible   : true,
     description      : '',
     illustrator      : '',
     cardNumber       : '',
@@ -115,6 +116,10 @@ class Generator extends Component {
 
     printCard() {
         window.print();
+    }
+
+    setRetreatVisible = (visible) => {
+        this.setState({ retreatVisible : visible });
     }
 
     handleFieldBox(event) {
@@ -441,7 +446,10 @@ class Generator extends Component {
                                 updateImgPos={this.updateImgPos}
                             />
                         </Stage>
-                        <LayerCard handleChange={this.handleChange} />
+                        <LayerCard
+                            handleChange={this.handleChange}
+                            setRetreatVisible={this.setRetreatVisible}
+                        />
                     </div>
                 </div>
                 <div className="column is-one-quarter">

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './InteractiveSelectHover.scss';
 import retreatLogo from '../../../assets/1-gen/retreat.png';
 
-const InteractiveSelectHover = ({ name, max, defaultValue, handleClick, x, y, height, width }) => {
+const InteractiveSelectHover = ({ name, max, defaultValue, handleClick, x, y, height, width, setRetreatVisible }) => {
     const [count, setCount] = useState(defaultValue);
     const [isDown, setDown] = useState(false);
     const inputRef = useRef(null);
@@ -33,6 +33,8 @@ const InteractiveSelectHover = ({ name, max, defaultValue, handleClick, x, y, he
                 height : `${height}%`,
                 width  : `${width}%`,
             }}
+            onMouseEnter={() => setRetreatVisible(false)}
+            onMouseLeave={() => setRetreatVisible(true)}
             onMouseDown={() => setDown(true)}
             onMouseUp={() => setDown(false)}
             onClick={() => inputRef.current.click()}
@@ -50,14 +52,15 @@ const InteractiveSelectHover = ({ name, max, defaultValue, handleClick, x, y, he
 };
 
 InteractiveSelectHover.propTypes = {
-    name         : PropTypes.string.isRequired,
-    max          : PropTypes.number,
-    defaultValue : PropTypes.number,
-    handleClick  : PropTypes.func.isRequired,
-    x            : PropTypes.number,
-    y            : PropTypes.number,
-    height       : PropTypes.number,
-    width        : PropTypes.number,
+    name              : PropTypes.string.isRequired,
+    max               : PropTypes.number,
+    defaultValue      : PropTypes.number,
+    handleClick       : PropTypes.func.isRequired,
+    setRetreatVisible : PropTypes.func.isRequired,
+    x                 : PropTypes.number,
+    y                 : PropTypes.number,
+    height            : PropTypes.number,
+    width             : PropTypes.number,
 };
 
 InteractiveSelectHover.defaultProps = {

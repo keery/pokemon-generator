@@ -158,6 +158,7 @@ class CardRenderer extends Component {
             length,
             weight,
             type,
+            retreatVisible,
             weaknessAmount,
             evolvePictureX,
             evolvePictureY,
@@ -171,6 +172,7 @@ class CardRenderer extends Component {
                 attack2Name, attack2Dammage, attack2Info,
             },
         } = this.props;
+        console.log(retreatVisible);
 
         let tiny = false;
         let attack2Y = false;
@@ -250,7 +252,7 @@ class CardRenderer extends Component {
                     <Group x={15} y={627} width={570}>
                         <TypeAmount type={weaknessImg} amount={weaknessAmount} />
                         <TypeAmount type={resistanceImg} amount={resistanceAmount} x={180} />
-                        { retreatImg && <KonvaImage x={369} y={15} image={retreatImg} /> }
+                        { retreatVisible && retreatImg && <KonvaImage x={390} y={20} image={retreatImg} /> }
                     </Group>
                     { description !== '' && (
                         <Group x={57} y={676} width={423}>
@@ -353,6 +355,7 @@ CardRenderer.propTypes = {
     weaknessType     : PropTypes.string,
     resistanceType   : PropTypes.string,
     retreat          : PropTypes.string,
+    retreatVisible   : PropTypes.string.isRequired,
     rarity           : PropTypes.string,
     nameEvolution    : PropTypes.string,
     evolvePicture    : PropTypes.shape({

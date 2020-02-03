@@ -14,7 +14,7 @@ import {
 
 import './LayerCard.scss';
 
-const LayerCard = ({ handleChange }) => (
+const LayerCard = ({ handleChange, setRetreatVisible }) => (
     <div className="LayerCard">
         {/* NAME */}
         <InteractiveInput
@@ -69,11 +69,12 @@ const LayerCard = ({ handleChange }) => (
         {/* RETREAT */}
         <InteractiveSelectHover
             name="retreat"
-            x={74.5}
+            x={74.4}
             y={85}
             height={4}
-            width={15}
+            width={16}
             handleClick={handleChange}
+            setRetreatVisible={setRetreatVisible}
         />
 
         {/* DESCRIPTION */}
