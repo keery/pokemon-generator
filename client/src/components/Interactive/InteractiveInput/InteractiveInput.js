@@ -34,8 +34,8 @@ InteractiveInput.propTypes = {
     height     : PropTypes.number,
     width      : PropTypes.number,
     fontSize   : PropTypes.number,
-    fontFamily : PropTypes.number,
-    onChange   : PropTypes.number.isRequired,
+    fontFamily : PropTypes.string,
+    onChange   : PropTypes.func.isRequired,
 };
 
 InteractiveInput.defaultProps = {

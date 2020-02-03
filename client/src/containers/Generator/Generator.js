@@ -598,7 +598,7 @@ class Generator extends Component {
                             </div>
                         </div>
                         <div className="signature-desc">
-                            <span>📢</span> {t('news')}
+                            <span role="img" aria-label="megaphone">📢</span> {t('news')}
                         </div>
                     </div>
                 </div>

@@ -172,7 +172,6 @@ class CardRenderer extends Component {
                 attack2Name, attack2Dammage, attack2Info,
             },
         } = this.props;
-        console.log(retreatVisible);
 
         let tiny = false;
         let attack2Y = false;
@@ -355,7 +354,7 @@ CardRenderer.propTypes = {
     weaknessType     : PropTypes.string,
     resistanceType   : PropTypes.string,
     retreat          : PropTypes.string,
-    retreatVisible   : PropTypes.string.isRequired,
+    retreatVisible   : PropTypes.bool.isRequired,
     rarity           : PropTypes.string,
     nameEvolution    : PropTypes.string,
     evolvePicture    : PropTypes.shape({

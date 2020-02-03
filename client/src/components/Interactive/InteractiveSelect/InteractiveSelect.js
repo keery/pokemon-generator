@@ -17,7 +17,7 @@ const InteractiveSelect = ({ name, x, y, height, width, choices, onChange }) => 
                 name={name}
                 onChange={onChange}
             >
-                { choices.map(choice => <option>{choice}</option>) }
+                { choices.map(choice => <option key={`is-${choice}`}>{choice}</option>) }
             </select>
             <span className="border" />
         </div>
@@ -31,7 +31,7 @@ InteractiveSelect.propTypes = {
     height   : PropTypes.number,
     width    : PropTypes.number,
     choices  : PropTypes.arrayOf(PropTypes.string),
-    onChange : PropTypes.number.isRequired,
+    onChange : PropTypes.func.isRequired,
 };
 
 InteractiveSelect.defaultProps = {

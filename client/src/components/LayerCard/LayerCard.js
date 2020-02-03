@@ -90,6 +90,7 @@ const LayerCard = ({ handleChange, setRetreatVisible }) => (
 
         {/* ILLUSTRATOR */}
         <InteractiveInput
+            name="illustrator"
             x={4.7}
             y={94.9}
             height={2.2}

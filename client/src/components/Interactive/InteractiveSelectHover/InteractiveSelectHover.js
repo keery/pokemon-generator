@@ -15,7 +15,7 @@ const InteractiveSelectHover = ({ name, max, defaultValue, handleClick, x, y, he
 
     if (count < max) {
         ico.push(
-            <span className="more-icon fade" onMouseEnter={() => setCount(count + 1)}>
+            <span className="more-icon fade" onMouseEnter={() => setCount(count + 1)} key={`retreat-${count}`}>
                 <img src={retreatLogo} alt="" />
             </span>
         );

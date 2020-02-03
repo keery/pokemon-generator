@@ -30,7 +30,7 @@ InteractiveTextarea.propTypes = {
     height     : PropTypes.number,
     width      : PropTypes.number,
     fontSize   : PropTypes.number,
-    fontFamily : PropTypes.number,
+    fontFamily : PropTypes.string,
 };
 
 InteractiveTextarea.defaultProps = {
