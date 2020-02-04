@@ -5,12 +5,17 @@
     left: 46%;
     top: 85%;
 
+    &:hover > .preview {
+        border: 2px dashed #fdd705;
+    }
+
     .preview {
         border-radius: 100%;
         display: block;
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+        border: 2px dashed transparent;
 
         &:hover + .list-items {
             display: inline-flex;

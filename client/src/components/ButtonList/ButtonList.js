@@ -3,8 +3,8 @@ import { useSpring, animated } from 'react-spring';
 import PropTypes from 'prop-types';
 import './ButtonList.scss';
 
-const ButtonList = ({ name, x, y, size, items, handleClick }) => {
-    const [selected, selectItem] = useState(items[0]);
+const ButtonList = ({ name, x, y, size, items, handleClick, value }) => {
+    const [selected, selectItem] = useState(value);
     const didMountRef = useRef(false);
     const inputRef = useRef(null);
     const [props, set] = useSpring(() => ({
@@ -19,14 +19,16 @@ const ButtonList = ({ name, x, y, size, items, handleClick }) => {
 
     useEffect(() => {
         if (didMountRef.current) {
-            set({
-                to : [
-                    { transform : 'scale(1.3)' },
-                    { transform : 'scale(1)' },
-                ],
-                from : { transform : 'scale(1)' },
-            });
-            inputRef.current.click()
+            if (selected !== '') {
+                set({
+                    to : [
+                        { transform : 'scale(1.3)' },
+                        { transform : 'scale(1)' },
+                    ],
+                    from : { transform : 'scale(1)' },
+                });
+            }
+            inputRef.current.click();
         } else {
             didMountRef.current = true;
         }
@@ -40,7 +42,7 @@ const ButtonList = ({ name, x, y, size, items, handleClick }) => {
                 top  : `${y}%`,
             }}
         >
-            <animated.div className={`preview ${selected}`} style={props} />
+            <animated.div className={`preview ${value}`} style={props} />
             <ul className="list-items">
                 <li
                     key="default"
@@ -75,6 +77,7 @@ ButtonList.propTypes = {
     size        : PropTypes.number,
     items       : PropTypes.arrayOf(PropTypes.string),
     handleClick : PropTypes.func.isRequired,
+    value       : PropTypes.string,
 };
 
 ButtonList.defaultProps = {
@@ -82,6 +85,7 @@ ButtonList.defaultProps = {
     x     : 0,
     y     : 0,
     size  : 3,
+    value : '',
 };
 
 export default ButtonList;

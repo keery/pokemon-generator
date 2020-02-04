@@ -13,12 +13,13 @@ import { ButtonList } from '..';
 import {
     HP_CHOICES,
     RESISTANCE_CHOICES,
+    WEAKNESS_CHOICES,
     ELEMENTS,
 } from '../../const';
 
 import './LayerCard.scss';
 
-const LayerCard = ({ handleChange, setRetreatVisible, illustrator, name, description }) => (
+const LayerCard = ({ handleChange, setRetreatVisible, illustrator, name, description, hp, resistanceType, resistanceAmount, weaknessAmount, weaknessType }) => (
     <div className="LayerCard">
         {/* NAME */}
         <InteractiveInput
@@ -43,6 +44,7 @@ const LayerCard = ({ handleChange, setRetreatVisible, illustrator, name, descrip
             choices={HP_CHOICES}
             onChange={handleChange}
             addClass="hp"
+            value={hp}
         />
 
         {/* MAIN PICTURE */}
@@ -56,22 +58,38 @@ const LayerCard = ({ handleChange, setRetreatVisible, illustrator, name, descrip
             width={71.9}
         />
 
-        {/* WEAKNESS */}
-        <InteractiveArea
-            x={8.5}
+        {/* WEAKNESS TYPE */}
+        <ButtonList
+            name="weaknessType"
+            x={12.7}
+            y={84.8}
+            size={3.2}
+            items={ELEMENTS}
+            handleClick={handleChange}
+            value={weaknessType}
+        />
+
+        {/* WEAKNESS AMOUNT */}
+        <InteractiveSelect
+            name="weaknessAmount"
+            x={18.5}
             y={85}
-            height={4}
-            width={15}
+            height={4.2}
+            width={7}
+            choices={WEAKNESS_CHOICES}
+            onChange={handleChange}
+            value={weaknessAmount}
         />
 
         {/* RESISTANCE TYPE */}
         <ButtonList
             name="resistanceType"
-            x={46}
-            y={85}
-            size={3}
+            x={45.7}
+            y={84.8}
+            size={3.2}
             items={ELEMENTS}
             handleClick={handleChange}
+            value={resistanceType}
         />
 
         {/* RESISTANCE AMOUNT */}
@@ -83,6 +101,7 @@ const LayerCard = ({ handleChange, setRetreatVisible, illustrator, name, descrip
             width={7}
             choices={RESISTANCE_CHOICES}
             onChange={handleChange}
+            value={resistanceAmount}
         />
 
         {/* RETREAT */}

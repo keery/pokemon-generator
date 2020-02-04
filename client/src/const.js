@@ -40,7 +40,7 @@ const HP_CHOICES = [
     '250',
 ];
 
-const AMOUNT_CHOICES = ['', '+10', '+20', '+30', '+40', 'x2'];
+const WEAKNESS_CHOICES = ['', '+10', '+20', '+30', '+40', 'x2'];
 
 const RESISTANCE_CHOICES = ['', '-10', '-20', '-30', '-40'];
 
@@ -94,7 +94,7 @@ export {
     DEFAULT_LANGUAGES,
     ELEMENTS,
     HP_CHOICES,
-    AMOUNT_CHOICES,
+    WEAKNESS_CHOICES,
     DAMMAGE_CHOICES,
     ATTACK_AMOUNT_CHOICES,
     RARITY_CHOICES,

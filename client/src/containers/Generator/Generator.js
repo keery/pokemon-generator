@@ -10,7 +10,7 @@ import {
 import {
     ELEMENTS,
     HP_CHOICES,
-    AMOUNT_CHOICES,
+    WEAKNESS_CHOICES,
     DAMMAGE_CHOICES,
     ATTACK_AMOUNT_CHOICES,
     RARITY_CHOICES,
@@ -304,7 +304,7 @@ class Generator extends Component {
                                         name="weaknessAmount"
                                         onChange={this.handleChange}
                                         value={weaknessAmount}
-                                        choices={AMOUNT_CHOICES}
+                                        choices={WEAKNESS_CHOICES}
                                     />
                                 </Field>
                                 <Field label={t('resistanceType')}>
