@@ -42,6 +42,7 @@ const LayerCard = ({ handleChange, setRetreatVisible, illustrator, name, descrip
             width={19.3}
             choices={HP_CHOICES}
             onChange={handleChange}
+            addClass="hp"
         />
 
         {/* MAIN PICTURE */}

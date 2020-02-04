@@ -22,7 +22,7 @@
         font-size: 18px;
 
         > option {
-            color: #ff1f00;
+            color: black;
         }
 
         &:focus + .border {
@@ -33,6 +33,12 @@
     &:hover {
         .border {
             border: 2px dashed #fdd705;
+        }
+    }
+
+    &.hp {
+        option {
+            color: #ff1f00;
         }
     }
 }
