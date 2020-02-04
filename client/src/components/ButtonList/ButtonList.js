@@ -42,6 +42,11 @@ const ButtonList = ({ name, x, y, size, items, handleClick }) => {
         >
             <animated.div className={`preview ${selected}`} style={props} />
             <ul className="list-items">
+                <li
+                    key="default"
+                    className="default"
+                    onClick={() => selectItem('')}
+                />
                 {
                     items.map(item => (
                         <li
