@@ -10,18 +10,18 @@ const InteractiveSelectHover = ({ name, max, defaultValue, handleClick, x, y, he
 
     const ico = [];
     for (let index = 0; index < count; index++) {
-        ico.push(<i><img src={retreatLogo} onMouseEnter={() => setCount(index + 1)} alt="" /></i>);
+        ico.push(<i key={`retreat-${index}`}><img src={retreatLogo} onMouseEnter={() => setCount(index + 1)} alt="" /></i>);
     }
 
     if (count < max) {
         ico.push(
-            <span className="more-icon fade" onMouseEnter={() => setCount(count + 1)} key={`retreat-${count}`}>
+            <span className="more-icon fade" onMouseEnter={() => setCount(count + 1)} key="retreat-lf">
                 <img src={retreatLogo} alt="" />
             </span>
         );
     } else {
         ico.pop();
-        ico.push(<span className="more-icon"><img src={retreatLogo} alt="" /></span>);
+        ico.push(<span className="more-icon" key="retreat-l"><img src={retreatLogo} alt="" /></span>);
     }
 
     return (

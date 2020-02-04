@@ -2,16 +2,16 @@
  * Pokemon information
  */
 const ELEMENTS = [
-    'Fire',
-    'Grass',
-    'Water',
-    'Electric',
-    'Psychic',
-    'Fighting',
-    'Normal',
+    'fire',
+    'grass',
+    'water',
+    'electric',
+    'psychic',
+    'fighting',
+    'normal',
     // TODO: Find background
-    // 'Steel',
-    // 'Dark',
+    // 'steel',
+    // 'dark',
 ];
 
 const HP_CHOICES = [
@@ -40,7 +40,9 @@ const HP_CHOICES = [
     '250',
 ];
 
-const AMOUNT_CHOICES = ['+10', '+20', '+30', '+40', 'x2'];
+const AMOUNT_CHOICES = ['', '+10', '+20', '+30', '+40', 'x2'];
+
+const RESISTANCE_CHOICES = ['', '-10', '-20', '-30', '-40'];
 
 const DAMMAGE_CHOICES = [
     '10',
@@ -66,7 +68,7 @@ const DAMMAGE_CHOICES = [
 
 const ATTACK_AMOUNT_CHOICES = ['1', '2', '3', '4'];
 
-const RARITY_CHOICES = ['Common', 'Uncommon', 'Rare'];
+const RARITY_CHOICES = ['common', 'uncommon', 'rare'];
 
 const RETREAT_CHOICES = ['0', '1', '2', '3', '4'];
 
@@ -97,4 +99,5 @@ export {
     ATTACK_AMOUNT_CHOICES,
     RARITY_CHOICES,
     RETREAT_CHOICES,
+    RESISTANCE_CHOICES,
 };

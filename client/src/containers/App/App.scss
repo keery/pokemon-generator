@@ -43,7 +43,9 @@
 .select select {
     padding: 4px 15px;
     height: 3.2em;
+    text-transform: capitalize;
 }
+
 .input:focus, .input.is-focused, .input:active, .input.is-active, .textarea:focus, .textarea.is-focused, .textarea:active, .textarea.is-active {
     border-color: #b5b5b5;
     box-shadow: none;

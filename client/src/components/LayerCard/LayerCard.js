@@ -8,8 +8,12 @@ import {
     InteractiveArea,
 } from '../Interactive';
 
+import { ButtonList } from '..';
+
 import {
     HP_CHOICES,
+    RESISTANCE_CHOICES,
+    ELEMENTS,
 } from '../../const';
 
 import './LayerCard.scss';
@@ -59,12 +63,25 @@ const LayerCard = ({ handleChange, setRetreatVisible, illustrator, name, descrip
             width={15}
         />
 
-        {/* RESISTANCE */}
-        <InteractiveArea
-            x={41.2}
+        {/* RESISTANCE TYPE */}
+        <ButtonList
+            name="resistanceType"
+            x={46}
             y={85}
-            height={4}
-            width={15}
+            size={3}
+            items={ELEMENTS}
+            handleClick={handleChange}
+        />
+
+        {/* RESISTANCE AMOUNT */}
+        <InteractiveSelect
+            name="resistanceAmount"
+            x={51.5}
+            y={85}
+            height={4.2}
+            width={7}
+            choices={RESISTANCE_CHOICES}
+            onChange={handleChange}
         />
 
         {/* RETREAT */}

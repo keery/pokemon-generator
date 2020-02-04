@@ -1,13 +1,17 @@
 .ButtonList {
     position: relative;
     display: inline-block;
+    position: absolute;
+    left: 46%;
+    top: 85%;
 
     .preview {
-        width: 3rem;
-        height: 3rem;
         border-radius: 100%;
         background-color: #eff0f1;
         display: block;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
 
         &:hover + .list-items {
             display: inline-flex;
@@ -44,8 +48,8 @@
         }
 
         > li {
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 3rem;
+            height: 3rem;
             border-radius: 100%;
             background-size: 228%;
             background-repeat: no-repeat;
@@ -53,6 +57,7 @@
             cursor: pointer;
             transition: transform linear .2s;
             position: relative;
+            background-size: contain;
 
             &:hover {
                 transform: translateY(-5px);
@@ -73,13 +78,13 @@
         }
     }
 
-    .Fire { background-image: url(../../assets/1-gen/1-fire.png); }
-    .Grass { background-image: url(../../assets/1-gen/1-grass.png); }
-    .Water { background-image: url(../../assets/1-gen/1-water.png); }
-    .Electric { background-image: url(../../assets/1-gen/1-electric.png); }
-    .Psychic { background-image: url(../../assets/1-gen/1-psychic.png); }
-    .Fighting { background-image: url(../../assets/1-gen/1-fighting.png); }
-    .Normal { background-image: url(../../assets/1-gen/1-normal.png); }
-    .Steel { background-image: url(../../assets/1-gen/1-steel.png); }
-    .Dark { background-image: url(../../assets/1-gen/1-dark.png); }
+    .fire { background-image: url(../../assets/1-gen/fire.png); }
+    .grass { background-image: url(../../assets/1-gen/grass.png); }
+    .water { background-image: url(../../assets/1-gen/water.png); }
+    .electric { background-image: url(../../assets/1-gen/electric.png); }
+    .psychic { background-image: url(../../assets/1-gen/psychic.png); }
+    .fighting { background-image: url(../../assets/1-gen/fighting.png); }
+    .normal { background-image: url(../../assets/1-gen/normal.png); }
+    .steel { background-image: url(../../assets/1-gen/steel.png); }
+    .dark { background-image: url(../../assets/1-gen/dark.png); }
 }

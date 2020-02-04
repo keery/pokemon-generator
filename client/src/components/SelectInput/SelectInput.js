@@ -12,7 +12,7 @@ const SelectInput = ({
             <select name={name} onChange={onChange} value={value} nested={nested}>
                 {list.length > 0
                     && list.map(el => (
-                        <option value={el.toLowerCase().replace(/ /g, '')} key={el}>
+                        <option value={el.replace(/ /g, '')} key={el}>
                             {el + suffix}
                         </option>
                     ))}

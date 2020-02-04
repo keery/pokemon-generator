@@ -16,6 +16,7 @@ import {
     RARITY_CHOICES,
     KEY_CACHE_POKECARD,
     RETREAT_CHOICES,
+    RESISTANCE_CHOICES,
 } from '../../const';
 
 const DEFAULT_STATE = {
@@ -299,6 +300,7 @@ class Generator extends Component {
                                 </Field>
                                 <Field label={t('weaknessAmount')}>
                                     <SelectInput
+                                        blankLine={false}
                                         name="weaknessAmount"
                                         onChange={this.handleChange}
                                         value={weaknessAmount}
@@ -315,10 +317,11 @@ class Generator extends Component {
                                 </Field>
                                 <Field label={t('resistanceAmount')}>
                                     <SelectInput
+                                        blankLine={false}
                                         name="resistanceAmount"
                                         onChange={this.handleChange}
                                         value={resistanceAmount}
-                                        choices={AMOUNT_CHOICES}
+                                        choices={RESISTANCE_CHOICES}
                                     />
                                 </Field>
                                 <Field label={t('retreat')}>

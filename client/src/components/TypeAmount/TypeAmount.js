@@ -9,8 +9,8 @@ const TypeAmount = ({
     let textAmount = null;
 
     if (type) {
-        imageType = <ImageCanvas image={type} x={27} y={0} width={39} height={39} />;
-        if (amount !== '') textAmount = <Text text={amount} fontFamily="pokename" fontSize={10} y={15} x={58} />;
+        imageType = <ImageCanvas image={type} x={27} y={0} width={58} height={58} />;
+        if (amount !== '') textAmount = <Text text={amount} fontFamily="pokename" fontSize={15} y={25} x={73} />;
     }
 
     return (

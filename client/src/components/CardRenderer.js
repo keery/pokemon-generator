@@ -248,9 +248,9 @@ class CardRenderer extends Component {
                         desc={attack2Info}
                         imgTypeAmount={attack2Img}
                     />
-                    <Group x={15} y={627} width={570}>
+                    <Group x={29} y={627} width={570}>
                         <TypeAmount type={weaknessImg} amount={weaknessAmount} />
-                        <TypeAmount type={resistanceImg} amount={resistanceAmount} x={180} />
+                        <TypeAmount type={resistanceImg} amount={resistanceAmount} x={178} />
                         { retreatVisible && retreatImg && <KonvaImage x={390} y={20} image={retreatImg} /> }
                     </Group>
                     { description !== '' && (
