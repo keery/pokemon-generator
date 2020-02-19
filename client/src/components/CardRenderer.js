@@ -273,7 +273,7 @@ class CardRenderer extends Component {
                             height={12}
                             wrap="none"
                             fontSize={10.5}
-                            y={719}
+                            y={721}
                             x={30}
                         />
                     )}
