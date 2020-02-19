@@ -251,7 +251,7 @@ class CardRenderer extends Component {
                     <Group x={29} y={627} width={570}>
                         <TypeAmount type={weaknessImg} amount={weaknessAmount} />
                         <TypeAmount type={resistanceImg} amount={resistanceAmount} x={178} />
-                        { retreatVisible && retreatImg && <KonvaImage x={390} y={20} image={retreatImg} /> }
+                        { retreatVisible && retreatImg && <KonvaImage x={376} y={20} image={retreatImg} /> }
                     </Group>
                     { description !== '' && (
                         <Group x={57} y={680} width={423}>
