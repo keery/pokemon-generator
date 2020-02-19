@@ -18,3 +18,4 @@ Card galery to see old created cards into a pokedex
 Optimize rendering with shouldComponentUpdate
 Create sprite with all elements
 Information when user select amount without type
+Select picture from galery already created

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Stage } from 'react-konva';
 import { withTranslation } from 'react-i18next';
 import isEqual from 'lodash.isequal';
 import { TweenLite } from 'gsap/all';
 import { encrypt, decrypt } from '../../helper';
+import { withStore } from '../../hoc';
+import getUppy from './getUppy';
 import {
     CardRenderer, FileInput, SelectInput, Field, GroupTitle, LayerCard,
 } from '../../components';
@@ -70,6 +73,8 @@ class Generator extends Component {
         const cachedCard = localStorage.getItem(KEY_CACHE_POKECARD);
         this.state = cachedCard ? decrypt(cachedCard, REACT_APP_ENCRYPT_KEY) : DEFAULT_STATE;
         this.stageRef = React.createRef();
+        this.mainPictureUppy = getUppy('uppy-main-picture', props.transloaditParams, props.i18n.language);
+        this.evolvePictureUppy = getUppy('uppy-evolve-picture', props.transloaditParams, props.i18n.language);
     }
 
     handleChange = (event) => {
@@ -198,6 +203,7 @@ class Generator extends Component {
                                         name="mainPicture"
                                         onChange={this.handleChange}
                                         value={mainPicture}
+                                        uppy={this.mainPictureUppy}
                                     />
                                 </Field>
                                 <Field label="HP">
@@ -277,6 +283,7 @@ class Generator extends Component {
                                         name="evolvePicture"
                                         onChange={this.handleChange}
                                         value={evolvePicture}
+                                        uppy={this.evolvePictureUppy}
                                     />
                                 </Field>
                             </div>
@@ -453,6 +460,8 @@ class Generator extends Component {
                             {...this.state}
                             handleChange={this.handleChange}
                             setRetreatVisible={this.setRetreatVisible}
+                            mainPictureUppy={this.mainPictureUppy}
+                            evolvePictureUppy={this.evolvePictureUppy}
                         />
                     </div>
                 </div>
@@ -610,4 +619,11 @@ class Generator extends Component {
     }
 }
 
-export default withTranslation('generator')(Generator);
+Generator.propTypes = {
+    transloaditParams : PropTypes.shape({
+        signature : PropTypes.string,
+        params    : PropTypes.string,
+    }).isRequired,
+};
+
+export default withTranslation('generator')(withStore(['transloaditParams'])(Generator));

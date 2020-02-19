@@ -19,7 +19,9 @@ import {
 
 import './LayerCard.scss';
 
-const LayerCard = ({ handleChange, setRetreatVisible, illustrator, name, description, hp, resistanceType, resistanceAmount, weaknessAmount, weaknessType }) => (
+const LayerCard = ({
+    handleChange, setRetreatVisible, illustrator, name, description, hp, resistanceType, resistanceAmount, weaknessAmount, weaknessType, mainPictureUppy, evolvePictureUppy,
+}) => (
     <div className="LayerCard">
         {/* NAME */}
         <InteractiveInput
@@ -48,7 +50,7 @@ const LayerCard = ({ handleChange, setRetreatVisible, illustrator, name, descrip
         />
 
         {/* MAIN PICTURE */}
-        <InteractiveFile />
+        <InteractiveFile uppy={mainPictureUppy} />
 
         {/* SPECIES SIZE WEIGHT */}
         <InteractiveArea

@@ -2,7 +2,7 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
-import LogoPokeball from '../../assets/img/pokeball.png';
+// import LogoPokeball from '../../assets/img/pokeball.png';
 
 const Header = ({ t }) => (
     <header>
@@ -17,8 +17,8 @@ const Header = ({ t }) => (
                     {/* <div id="logo-title">{process.env.REACT_APP_TITLE.toUpperCase()}</div> */}
                 </div>
                 <div className="menu-left">
-                    <a title={t('index:signUp')}>{t('index:signUp')}</a>
-                    <a className="gradient-btn tiny" title={t('index:signIn')}>
+                    <a title={t('index:signUp')} href="/tmp">{t('index:signUp')}</a>
+                    <a className="gradient-btn tiny" title={t('index:signIn')} href="/tmp">
                         <i className="fas fa-user" />
                         {t('index:signIn')}
                     </a>
