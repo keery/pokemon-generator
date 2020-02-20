@@ -125,7 +125,12 @@ class Generator extends Component {
     }
 
     setRetreatVisible = (visible) => {
-        this.setState({ retreatVisible : visible });
+        this.setState({ retreatVisible : visible }, this.cacheCard);
+    }
+
+    removePicture = (pictureName) => {
+        console.log("sdqsd");
+        this.setState({ [pictureName] : null }, this.cacheCard);
     }
 
     handleFieldBox(event) {
@@ -460,6 +465,7 @@ class Generator extends Component {
                             {...this.state}
                             handleChange={this.handleChange}
                             setRetreatVisible={this.setRetreatVisible}
+                            removePicture={this.removePicture}
                             mainPictureUppy={this.mainPictureUppy}
                             evolvePictureUppy={this.evolvePictureUppy}
                         />
