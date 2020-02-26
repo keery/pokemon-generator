@@ -129,7 +129,6 @@ class Generator extends Component {
     }
 
     removePicture = (pictureName) => {
-        console.log("sdqsd");
         this.setState({ [pictureName] : null }, this.cacheCard);
     }
 
@@ -414,6 +413,14 @@ class Generator extends Component {
                 </div>
                 <div className="column is-half has-text-centered">
                     <div className="shape-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px">
+                            <defs>
+                                <linearGradient id="rg" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0" stop-color="rgb(255,147,73)" />
+                                    <stop offset="1" stop-color="rgb(255,194,123)" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="839"
