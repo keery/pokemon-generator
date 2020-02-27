@@ -407,13 +407,11 @@ class Generator extends Component {
                         <div id="circle-4" className="circle" />
                         <div id="circle-5" className="circle" />
                     </div>
-                    <div
-                        className="card-container"
-                        ref={this.stageRef}
-                    >
+                    <div className="card-container">
                         <Stage
                             width={540}
                             height={755}
+                            ref={this.stageRef}
                         >
                             <CardRenderer
                                 {...this.state}
