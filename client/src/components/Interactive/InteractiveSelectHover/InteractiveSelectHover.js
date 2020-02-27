@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './InteractiveSelectHover.scss';
-import retreatLogo from '../../../assets/1-gen/retreat.png';
+import retreatLogo from '../../../assets/1-gen/normal.png';
 
 const InteractiveSelectHover = ({ name, max, defaultValue, handleClick, x, y, height, width, setRetreatVisible }) => {
     const [count, setCount] = useState(defaultValue);

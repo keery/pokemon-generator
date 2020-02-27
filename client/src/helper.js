@@ -25,10 +25,15 @@ const encrypt = (data, key) => AES.encrypt(JSON.stringify(data), key).toString()
 
 const decrypt = (encryptedData, key) => JSON.parse(AES.decrypt(encryptedData, key).toString(EncUTF8));
 
+const printCard = () => {
+    window.print();
+}
+
 export {
     generateImg,
     isEmpty,
     remove,
     encrypt,
     decrypt,
+    printCard,
 };

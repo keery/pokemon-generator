@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Stage } from 'react-konva';
 import { withTranslation } from 'react-i18next';
 import isEqual from 'lodash.isequal';
-import { TweenLite } from 'gsap/all';
-import { encrypt, decrypt } from '../../helper';
+import DEFAULT_STATE from './Generator.d';
+import { encrypt, decrypt, printCard } from '../../helper';
 import { withStore } from '../../hoc';
 import getUppy from './getUppy';
 import {
@@ -21,48 +21,6 @@ import {
     RETREAT_CHOICES,
     RESISTANCE_CHOICES,
 } from '../../const';
-
-const DEFAULT_STATE = {
-    type             : 'fire',
-    stage            : 'basic',
-    name             : '',
-    nameEvolution    : '',
-    mainPicture      : null,
-    mainPictureX     : -2,
-    mainPictureY     : 0,
-    evolvePicture    : null,
-    evolvePictureX   : 0,
-    evolvePictureY   : 0,
-    hp               : '30',
-    weaknessType     : '',
-    weaknessAmount   : '',
-    resistanceType   : '',
-    resistanceAmount : '',
-    retreat          : '',
-    retreatVisible   : true,
-    description      : '',
-    illustrator      : 'Illus. ',
-    cardNumber       : '',
-    totalCollection  : '',
-    rarity           : '',
-    species          : '',
-    length           : '',
-    weight           : '',
-    attack1          : {
-        attack1Name    : '',
-        attack1Dammage : '',
-        attack1Info    : '',
-        attack1Type    : '',
-        attack1Amount  : '1',
-    },
-    attack2 : {
-        attack2Name    : '',
-        attack2Dammage : '',
-        attack2Info    : '',
-        attack2Type    : '',
-        attack2Amount  : '1',
-    },
-};
 
 const { REACT_APP_VERSION, REACT_APP_TITLE, REACT_APP_ENCRYPT_KEY } = process.env;
 
@@ -103,15 +61,10 @@ class Generator extends Component {
         if (
             !isEqual(this.state, DEFAULT_STATE)
             && window.confirm(this.props.t('confirmReset'))
-            ) {
-                const tween = TweenLite.to(this.stageRef.current.content, .8, {
-                    rotationY : 180,
-                    onComplete : () => {
-                        this.setState(DEFAULT_STATE, () => {
-                            localStorage.removeItem(KEY_CACHE_POKECARD);
-                            tween.reverse();
-                        });
-                    }});
+        ) {
+            this.setState(DEFAULT_STATE);
+            this.flip = true;
+            localStorage.removeItem(KEY_CACHE_POKECARD);
         }
     };
 
@@ -120,16 +73,11 @@ class Generator extends Component {
         this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y }, this.cacheCard);
     }
 
-    printCard() {
-        window.print();
-    }
-
     setRetreatVisible = (visible) => {
         this.setState({ retreatVisible : visible }, this.cacheCard);
     }
 
     removePicture = (pictureName) => {
-        console.log("sdqsd");
         this.setState({ [pictureName] : null }, this.cacheCard);
     }
 
@@ -170,6 +118,7 @@ class Generator extends Component {
             weaknessType, weaknessAmount, resistanceType, resistanceAmount, retreat, description, illustrator, cardNumber, totalCollection, rarity,
             attack1,
             attack2,
+            flip,
         } = this.state;
 
         const { t } = this.props;
@@ -414,6 +363,14 @@ class Generator extends Component {
                 </div>
                 <div className="column is-half has-text-centered">
                     <div className="shape-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px">
+                            <defs>
+                                <linearGradient id="rg" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0" stop-color="rgb(255,147,73)" />
+                                    <stop offset="1" stop-color="rgb(255,194,123)" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="839"
@@ -450,11 +407,13 @@ class Generator extends Component {
                         <div id="circle-4" className="circle" />
                         <div id="circle-5" className="circle" />
                     </div>
-                    <div className="card-container">
+                    <div
+                        className={`card-container ${flip}`}
+                        ref={this.stageRef}
+                    >
                         <Stage
                             width={540}
                             height={755}
-                            ref={this.stageRef}
                         >
                             <CardRenderer
                                 {...this.state}
@@ -477,7 +436,7 @@ class Generator extends Component {
                             onClick={this.handleFieldBox}
                             stepNumber="05"
                             title={t('attack2')}
-                        />
+                            />
                         <div className="gfields-content-wrapper">
                             <div className="gfields-content">
                                 <Field label={t('name')}>
@@ -595,7 +554,7 @@ class Generator extends Component {
                         <button onClick={this.exportCard} className="gradient-btn" title={t('downloadCard')}>
                             <i className="fas fa-download" />
                         </button>
-                        <button onClick={this.printCard} className="gradient-btn" title={t('printCard')}>
+                        <button onClick={printCard} className="gradient-btn" title={t('printCard')}>
                             <i className="fas fa-print" />
                         </button>
                         <button className="gradient-btn" title={t('saveCard')}>

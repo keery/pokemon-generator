@@ -114,10 +114,10 @@ const LayerCard = ({
         {/* RETREAT */}
         <InteractiveSelectHover
             name="retreat"
-            x={74.4}
-            y={85}
-            height={4}
-            width={16}
+            x={71}
+            y={85.2}
+            height={3.6}
+            width={22}
             handleClick={handleChange}
             setRetreatVisible={setRetreatVisible}
         />

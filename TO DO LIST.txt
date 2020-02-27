@@ -3,7 +3,6 @@ Design
 Actually files are uploaded directly, so handle them, and find a solution to remove useless files (different system, or expiration time, or ***ENTER A SOLUTION HERE***)
 GPDR friendly
 Resize logo reatreat, weakness, resistance (too small)
-Remove lib gsap
 
 -----EVOLUTION-----:
 Checker uppy pull request about setting of dynamic local
@@ -19,3 +18,4 @@ Optimize rendering with shouldComponentUpdate
 Create sprite with all elements
 Information when user select amount without type
 Select picture from galery already created
+Drag and drop attacks

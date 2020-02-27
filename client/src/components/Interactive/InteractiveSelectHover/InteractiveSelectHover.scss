@@ -18,8 +18,12 @@
 
     > span, > i {
         display: none;
-        margin-left: 1px;
+        margin-left: -1px;
         cursor: pointer;
+    }
+
+    img {
+        width: 2.8rem;
     }
 
     .more-icon {

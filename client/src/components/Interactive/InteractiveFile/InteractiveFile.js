@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { Dashboard } from '@uppy/react';
 import PropTypes from 'prop-types';
 import { useSpring, animated } from 'react-spring';
+import { withTranslation } from 'react-i18next';
 import { ModalContext } from '../../../context';
 import './InteractiveFile.scss';
 
-const InteractiveFile = ({ name, picture, uppy, removePicture }) => {
+const InteractiveFile = ({ name, picture, uppy, removePicture, t }) => {
     let content;
     const context = useContext(ModalContext);
     const [props, set] = useSpring(() => ({
@@ -32,7 +33,7 @@ const InteractiveFile = ({ name, picture, uppy, removePicture }) => {
                     });
                     setTimeout(() => {
                         removePicture(name);
-                    }, 300);
+                    }, 220);
                 }}
             >
                 <i className="far fa-trash-alt" />
@@ -56,12 +57,18 @@ const InteractiveFile = ({ name, picture, uppy, removePicture }) => {
                         />
                     );
                 }}
-            />
+            >
+                <div className="bg" />
+                <span className="picture">
+                    <i className="fas fa-camera-retro" />
+                    <i className="fas fa-camera-retro" />
+                </span>
+            </div>
         )
     }
 
     return (
-        <div className="InteractiveFile">
+        <div className="InteractiveFile" title={t('importPicture')}>
             <animated.div className="overlay-remove" style={props} />
             { content}
         </div>
@@ -85,4 +92,4 @@ InteractiveFile.propTypes = {
     removePicture : PropTypes.func.isRequired,
 };
 
-export default InteractiveFile;
+export default withTranslation('generator')(InteractiveFile);

@@ -42,5 +42,6 @@
     "saveCard" : "Save it",
     "resetCard" : "Try again",
     "shareCard" : "Share to your friends",
-    "news" : "A lot of features coming soon ! Such the possibility to draw cards with tools, to save your cards directly on your account, a mobile application to create custom cards everywhere you want, and many more, stay tuned."
+    "news" : "A lot of features coming soon ! Such the possibility to draw cards with tools, to save your cards directly on your account, a mobile application to create custom cards everywhere you want, and many more, stay tuned.",
+    "importPicture" : "Import a picture"
 }
