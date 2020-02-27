@@ -408,7 +408,7 @@ class Generator extends Component {
                         <div id="circle-5" className="circle" />
                     </div>
                     <div
-                        className={`card-container ${flip}`}
+                        className="card-container"
                         ref={this.stageRef}
                     >
                         <Stage
