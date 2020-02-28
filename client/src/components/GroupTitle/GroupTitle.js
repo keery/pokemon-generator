@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const GroupTitle = ({ title, stepNumber, onClick }) => (
-    <div className="gfields-header" onClick={onClick}>
+const GroupTitle = ({ title, stepNumber, onClick, open }) => (
+    <div
+        className="gfields-header"
+        onClick={() => onClick(stepNumber)}
+    >
         <div className="gfields-step">{stepNumber}</div>
         <div>{title}</div>
     </div>

@@ -16,3 +16,4 @@ export { default as Modal } from './Modal';
 export { default as FileInput } from './FileInput';
 export { default as LayerCard } from './LayerCard';
 export { default as ButtonList } from './ButtonList';
+export { default as GroupBox } from './GroupBox';

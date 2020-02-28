@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './InteractiveArea.scss';
 
-const InteractiveArea = ({ x, y, height, width, children, handleClick }) => {
+const InteractiveArea = ({ x, y, height, width, children, handleClick, linkedGroup }) => {
     return (
         <div
             style={{
@@ -12,7 +12,7 @@ const InteractiveArea = ({ x, y, height, width, children, handleClick }) => {
                 width  : `${width}%`,
             }}
             className="InteractiveArea"
-            onClick={handleClick}
+            onClick={() => handleClick(linkedGroup)}
         >
             { children }
         </div>
@@ -25,6 +25,7 @@ InteractiveArea.propTypes = {
     height      : PropTypes.number,
     width       : PropTypes.number,
     handleClick : PropTypes.func.isRequired,
+    linkedGroup : PropTypes.string.isRequired,
 };
 
 InteractiveArea.defaultProps = {

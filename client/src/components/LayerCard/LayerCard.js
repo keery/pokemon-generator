@@ -20,7 +20,7 @@ import {
 import './LayerCard.scss';
 
 const LayerCard = ({
-    handleChange, setRetreatVisible, illustrator, name, description, hp, resistanceType, resistanceAmount, weaknessAmount, weaknessType, mainPicture, mainPictureUppy, evolvePictureUppy, removePicture,
+    handleChange, setRetreatVisible, illustrator, name, description, hp, resistanceType, resistanceAmount, weaknessAmount, weaknessType, mainPicture, mainPictureUppy, evolvePictureUppy, removePicture, handleBox,
 }) => (
     <div className="LayerCard">
         {/* NAME */}
@@ -63,6 +63,8 @@ const LayerCard = ({
             y={54}
             height={3}
             width={71.9}
+            handleClick={handleBox}
+            linkedGroup="03"
         />
 
         {/* WEAKNESS TYPE */}
@@ -154,6 +156,8 @@ const LayerCard = ({
             y={94.9}
             height={2.2}
             width={14.2}
+            handleClick={handleBox}
+            linkedGroup="06"
         />
     </div>
 );

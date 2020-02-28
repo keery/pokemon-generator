@@ -38,4 +38,6 @@ export default {
         attack2Type    : '',
         attack2Amount  : '1',
     },
+
+    openedGroup : '',
 };

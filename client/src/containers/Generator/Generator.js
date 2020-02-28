@@ -8,7 +8,7 @@ import { encrypt, decrypt, printCard } from '../../helper';
 import { withStore } from '../../hoc';
 import getUppy from './getUppy';
 import {
-    CardRenderer, FileInput, SelectInput, Field, GroupTitle, LayerCard,
+    CardRenderer, FileInput, SelectInput, Field, LayerCard, GroupBox,
 } from '../../components';
 import {
     ELEMENTS,
@@ -81,26 +81,9 @@ class Generator extends Component {
         this.setState({ [pictureName] : null }, this.cacheCard);
     }
 
-    handleFieldBox(event) {
-        const _this = event.currentTarget;
-        const parent = _this.parentNode;
-
-        if (!parent.classList.contains('open')) {
-            const boxes = document.getElementsByClassName('gfields-box');
-
-            if (boxes.length > 0) {
-                for (let i = 0; i < boxes.length; i++) {
-                    boxes[i].classList.remove('open');
-                    boxes[i].querySelector('.gfields-content-wrapper').style.maxHeight = '0px';
-                }
-            }
-        }
-
-        const height = parent.classList.toggle('open')
-            ? parent.querySelector('.gfields-content').clientHeight
-            : 0;
-
-        _this.nextSibling.style.maxHeight = `${height}px`;
+    handleBox = (number) => {
+        const { openedGroup } = this.state;
+        this.setState({ openedGroup : openedGroup === number ? '' : number });
     }
 
     render() {
@@ -118,7 +101,7 @@ class Generator extends Component {
             weaknessType, weaknessAmount, resistanceType, resistanceAmount, retreat, description, illustrator, cardNumber, totalCollection, rarity,
             attack1,
             attack2,
-            flip,
+            openedGroup,
         } = this.state;
 
         const { t } = this.props;
@@ -126,251 +109,227 @@ class Generator extends Component {
         return (
             <div className="Generator columns">
                 <div className="column is-one-quarter">
-                    <div className="gfields-box">
-                        <GroupTitle
-                            onClick={this.handleFieldBox}
-                            stepNumber="01"
-                            title="Pokemon info"
-                        />
-                        <div className="gfields-content-wrapper">
-                            <div className="gfields-content">
-                                <Field label={t('name')}>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        className="input"
-                                        onChange={this.handleChange}
-                                        value={name}
-                                    />
-                                </Field>
-                                <Field label={t('type')}>
-                                    <SelectInput
-                                        name="type"
-                                        onChange={this.handleChange}
-                                        value={type}
-                                        choices={ELEMENTS}
-                                        blankLine={false}
-                                    />
-                                </Field>
-                                <Field label={t('picture')}>
-                                    <FileInput
-                                        name="mainPicture"
-                                        onChange={this.handleChange}
-                                        value={mainPicture}
-                                        uppy={this.mainPictureUppy}
-                                    />
-                                </Field>
-                                <Field label="HP">
-                                    <SelectInput
-                                        name="hp"
-                                        onChange={this.handleChange}
-                                        value={hp}
-                                        choices={HP_CHOICES}
-                                        suffix=" HP"
-                                        blankLine={false}
-                                    />
-                                </Field>
-                                <Field label={t('species')}>
-                                    <input
-                                        type="text"
-                                        name="species"
-                                        className="input"
-                                        onChange={this.handleChange}
-                                        value={species}
-                                    />
-                                </Field>
-                                <Field label={t('length')}>
-                                    <input
-                                        type="text"
-                                        name="length"
-                                        className="input"
-                                        placeholder={'0\' 0"'}
-                                        onChange={this.handleChange}
-                                        value={length}
-                                    />
-                                </Field>
-                                <Field label={t('weight')}>
-                                    <input
-                                        type="text"
-                                        name="weight"
-                                        className="input"
-                                        placeholder="0 lbs"
-                                        onChange={this.handleChange}
-                                        value={weight}
-                                    />
-                                </Field>
+                    <GroupBox
+                        open={openedGroup === '01'}
+                        onClick={this.handleBox}
+                        stepNumber="01"
+                        title="Pokemon info"
+                    >
+                        <Field label={t('name')}>
+                            <input
+                                type="text"
+                                name="name"
+                                className="input"
+                                onChange={this.handleChange}
+                                value={name}
+                            />
+                        </Field>
+                        <Field label={t('type')}>
+                            <SelectInput
+                                name="type"
+                                onChange={this.handleChange}
+                                value={type}
+                                choices={ELEMENTS}
+                                blankLine={false}
+                            />
+                        </Field>
+                        <Field label={t('picture')}>
+                            <FileInput
+                                name="mainPicture"
+                                onChange={this.handleChange}
+                                value={mainPicture}
+                                uppy={this.mainPictureUppy}
+                            />
+                        </Field>
+                        <Field label="HP">
+                            <SelectInput
+                                name="hp"
+                                onChange={this.handleChange}
+                                value={hp}
+                                choices={HP_CHOICES}
+                                suffix=" HP"
+                                blankLine={false}
+                            />
+                        </Field>
+                        <Field label={t('species')}>
+                            <input
+                                type="text"
+                                name="species"
+                                className="input"
+                                onChange={this.handleChange}
+                                value={species}
+                            />
+                        </Field>
+                        <Field label={t('length')}>
+                            <input
+                                type="text"
+                                name="length"
+                                className="input"
+                                placeholder={'0\' 0"'}
+                                onChange={this.handleChange}
+                                value={length}
+                            />
+                        </Field>
+                        <Field label={t('weight')}>
+                            <input
+                                type="text"
+                                name="weight"
+                                className="input"
+                                placeholder="0 lbs"
+                                onChange={this.handleChange}
+                                value={weight}
+                            />
+                        </Field>
+                    </GroupBox>
+                    <GroupBox
+                        open={openedGroup === '02'}
+                        onClick={this.handleBox}
+                        stepNumber="02"
+                        title={t('evolution')}
+                    >
+                        <Field label={t('stage')}>
+                            <div className="select">
+                                <select
+                                    name="stage"
+                                    onChange={this.handleChange}
+                                    value={stage}
+                                >
+                                    <option value="basic">Basic</option>
+                                    <option value="stage1">Stage 1</option>
+                                    <option value="stage2">Stage 2</option>
+                                </select>
                             </div>
-                        </div>
-                    </div>
-                    <div className="gfields-box">
-                        <GroupTitle
-                            onClick={this.handleFieldBox}
-                            stepNumber="02"
-                            title={t('evolution')}
-                        />
-                        <div className="gfields-content-wrapper">
-                            <div className="gfields-content">
-                                <Field label={t('stage')}>
-                                    <div className="select">
-                                        <select
-                                            name="stage"
-                                            onChange={this.handleChange}
-                                            value={stage}
-                                        >
-                                            <option value="basic">Basic</option>
-                                            <option value="stage1">Stage 1</option>
-                                            <option value="stage2">Stage 2</option>
-                                        </select>
-                                    </div>
-                                </Field>
-                                <Field label={t('name')}>
-                                    <input
-                                        type="text"
-                                        name="nameEvolution"
-                                        className="input"
-                                        onChange={this.handleChange}
-                                        value={nameEvolution}
-                                    />
-                                </Field>
-                                <Field label={t('picture')}>
-                                    <FileInput
-                                        name="evolvePicture"
-                                        onChange={this.handleChange}
-                                        value={evolvePicture}
-                                        uppy={this.evolvePictureUppy}
-                                    />
-                                </Field>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="gfields-box">
-                        <GroupTitle
-                            onClick={this.handleFieldBox}
-                            stepNumber="03"
-                            title={t('weaknessResistanceRetreat')}
-                        />
-                        <div className="gfields-content-wrapper">
-                            <div className="gfields-content">
-                                <Field label={t('weaknessType')}>
+                        </Field>
+                        <Field label={t('name')}>
+                            <input
+                                type="text"
+                                name="nameEvolution"
+                                className="input"
+                                onChange={this.handleChange}
+                                value={nameEvolution}
+                            />
+                        </Field>
+                        <Field label={t('picture')}>
+                            <FileInput
+                                name="evolvePicture"
+                                onChange={this.handleChange}
+                                value={evolvePicture}
+                                uppy={this.evolvePictureUppy}
+                            />
+                        </Field>
+                    </GroupBox>
+                    <GroupBox
+                        open={openedGroup === '03'}
+                        onClick={this.handleBox}
+                        stepNumber="03"
+                        title={t('weaknessResistanceRetreat')}
+                    >
+                        <Field label={t('weaknessType')}>
+                            <SelectInput
+                                name="weaknessType"
+                                onChange={this.handleChange}
+                                value={weaknessType}
+                                choices={ELEMENTS}
+                            />
+                        </Field>
+                        <Field label={t('weaknessAmount')}>
+                            <SelectInput
+                                blankLine={false}
+                                name="weaknessAmount"
+                                onChange={this.handleChange}
+                                value={weaknessAmount}
+                                choices={WEAKNESS_CHOICES}
+                            />
+                        </Field>
+                        <Field label={t('resistanceType')}>
+                            <SelectInput
+                                name="resistanceType"
+                                onChange={this.handleChange}
+                                value={resistanceType}
+                                choices={ELEMENTS}
+                            />
+                        </Field>
+                        <Field label={t('resistanceAmount')}>
+                            <SelectInput
+                                blankLine={false}
+                                name="resistanceAmount"
+                                onChange={this.handleChange}
+                                value={resistanceAmount}
+                                choices={RESISTANCE_CHOICES}
+                            />
+                        </Field>
+                        <Field label={t('retreat')}>
+                            <SelectInput
+                                blankLine={false}
+                                name="retreat"
+                                onChange={this.handleChange}
+                                value={retreat}
+                                choices={RETREAT_CHOICES}
+                            />
+                        </Field>
+                    </GroupBox>
+                    <GroupBox
+                        open={openedGroup === '04'}
+                        onClick={this.handleBox}
+                        stepNumber="04"
+                        title={t('attack1')}
+                    >
+                        <Field label={t('name')}>
+                            <input
+                                type="text"
+                                name="attack1Name"
+                                nested="attack1"
+                                className="input"
+                                onChange={this.handleChange}
+                                value={attack1.attack1Name}
+                            />
+                        </Field>
+                        <Field label={t('dammage')}>
+                            <SelectInput
+                                name="attack1Dammage"
+                                onChange={this.handleChange}
+                                value={attack1.attack1Dammage}
+                                nested="attack1"
+                                choices={DAMMAGE_CHOICES}
+                            />
+                        </Field>
+                        <Field label={t('info')}>
+                            <textarea
+                                type="text"
+                                name="attack1Info"
+                                nested="attack1"
+                                className="textarea"
+                                onChange={this.handleChange}
+                                value={attack1.attack1Info}
+                            />
+                        </Field>
+                        <Field label="Type">
+                            <div className="columns">
+                                <div className="column is-two-fifths">
                                     <SelectInput
-                                        name="weaknessType"
+                                        name="attack1Amount"
                                         onChange={this.handleChange}
-                                        value={weaknessType}
-                                        choices={ELEMENTS}
-                                    />
-                                </Field>
-                                <Field label={t('weaknessAmount')}>
-                                    <SelectInput
-                                        blankLine={false}
-                                        name="weaknessAmount"
-                                        onChange={this.handleChange}
-                                        value={weaknessAmount}
-                                        choices={WEAKNESS_CHOICES}
-                                    />
-                                </Field>
-                                <Field label={t('resistanceType')}>
-                                    <SelectInput
-                                        name="resistanceType"
-                                        onChange={this.handleChange}
-                                        value={resistanceType}
-                                        choices={ELEMENTS}
-                                    />
-                                </Field>
-                                <Field label={t('resistanceAmount')}>
-                                    <SelectInput
-                                        blankLine={false}
-                                        name="resistanceAmount"
-                                        onChange={this.handleChange}
-                                        value={resistanceAmount}
-                                        choices={RESISTANCE_CHOICES}
-                                    />
-                                </Field>
-                                <Field label={t('retreat')}>
-                                    <SelectInput
-                                        blankLine={false}
-                                        name="retreat"
-                                        onChange={this.handleChange}
-                                        value={retreat}
-                                        choices={RETREAT_CHOICES}
-                                    />
-                                </Field>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="gfields-box">
-                        <GroupTitle
-                            onClick={this.handleFieldBox}
-                            stepNumber="04"
-                            title={t('attack1')}
-                        />
-                        <div className="gfields-content-wrapper">
-                            <div className="gfields-content">
-                                <Field label={t('name')}>
-                                    <input
-                                        type="text"
-                                        name="attack1Name"
+                                        value={attack1.attack1Amount}
                                         nested="attack1"
-                                        className="input"
-                                        onChange={this.handleChange}
-                                        value={attack1.attack1Name}
+                                        choices={ATTACK_AMOUNT_CHOICES}
+                                        blankLine={false}
                                     />
-                                </Field>
-                                <Field label={t('dammage')}>
+                                </div>
+                                <div className="column is-three-fifths">
                                     <SelectInput
-                                        name="attack1Dammage"
+                                        name="attack1Type"
                                         onChange={this.handleChange}
-                                        value={attack1.attack1Dammage}
+                                        value={attack1.attack1Type}
+                                        choices={ELEMENTS}
                                         nested="attack1"
-                                        choices={DAMMAGE_CHOICES}
                                     />
-                                </Field>
-                                <Field label={t('info')}>
-                                    <textarea
-                                        type="text"
-                                        name="attack1Info"
-                                        nested="attack1"
-                                        className="textarea"
-                                        onChange={this.handleChange}
-                                        value={attack1.attack1Info}
-                                    />
-                                </Field>
-                                <Field label="Type">
-                                    <div className="columns">
-                                        <div className="column is-two-fifths">
-                                            <SelectInput
-                                                name="attack1Amount"
-                                                onChange={this.handleChange}
-                                                value={attack1.attack1Amount}
-                                                nested="attack1"
-                                                choices={ATTACK_AMOUNT_CHOICES}
-                                                blankLine={false}
-                                            />
-                                        </div>
-                                        <div className="column is-three-fifths">
-                                            <SelectInput
-                                                name="attack1Type"
-                                                onChange={this.handleChange}
-                                                value={attack1.attack1Type}
-                                                choices={ELEMENTS}
-                                                nested="attack1"
-                                            />
-                                        </div>
-                                    </div>
-                                </Field>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </Field>
+                    </GroupBox>
                 </div>
                 <div className="column is-half has-text-centered">
                     <div className="shape-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="200px">
-                            <defs>
-                                <linearGradient id="rg" x1="0%" y1="100%" x2="100%" y2="0%">
-                                    <stop offset="0" stop-color="rgb(255,147,73)" />
-                                    <stop offset="1" stop-color="rgb(255,194,123)" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="839"
@@ -425,129 +384,122 @@ class Generator extends Component {
                             removePicture={this.removePicture}
                             mainPictureUppy={this.mainPictureUppy}
                             evolvePictureUppy={this.evolvePictureUppy}
+                            handleBox={this.handleBox}
                         />
                     </div>
                 </div>
                 <div className="column is-one-quarter">
-                    <div className="gfields-box">
-                        <GroupTitle
-                            onClick={this.handleFieldBox}
-                            stepNumber="05"
-                            title={t('attack2')}
+                    <GroupBox
+                        open={openedGroup === '05'}
+                        onClick={this.handleBox}
+                        stepNumber="05"
+                        title={t('attack2')}
+                    >
+                        <Field label={t('name')}>
+                            <input
+                                type="text"
+                                name="attack2Name"
+                                className="input"
+                                onChange={this.handleChange}
+                                nested="attack2"
+                                value={attack2.attack2Name}
                             />
-                        <div className="gfields-content-wrapper">
-                            <div className="gfields-content">
-                                <Field label={t('name')}>
-                                    <input
-                                        type="text"
-                                        name="attack2Name"
-                                        className="input"
-                                        onChange={this.handleChange}
-                                        nested="attack2"
-                                        value={attack2.attack2Name}
-                                    />
-                                </Field>
-                                <Field label={t('dammage')}>
+                        </Field>
+                        <Field label={t('dammage')}>
+                            <SelectInput
+                                name="attack2Dammage"
+                                onChange={this.handleChange}
+                                value={attack2.attack2Dammage}
+                                nested="attack2"
+                                choices={DAMMAGE_CHOICES}
+                            />
+                        </Field>
+                        <Field label={t('info')}>
+                            <textarea
+                                type="text"
+                                name="attack2Info"
+                                className="textarea"
+                                onChange={this.handleChange}
+                                nested="attack2"
+                                value={attack2.attack2Info}
+                            />
+                        </Field>
+                        <Field label="Type">
+                            <div className="columns">
+                                <div className="column is-two-fifths">
                                     <SelectInput
-                                        name="attack2Dammage"
+                                        name="attack2Amount"
                                         onChange={this.handleChange}
-                                        value={attack2.attack2Dammage}
+                                        value={attack2.attack2Amount}
                                         nested="attack2"
-                                        choices={DAMMAGE_CHOICES}
-                                    />
-                                </Field>
-                                <Field label={t('info')}>
-                                    <textarea
-                                        type="text"
-                                        name="attack2Info"
-                                        className="textarea"
-                                        onChange={this.handleChange}
-                                        nested="attack2"
-                                        value={attack2.attack2Info}
-                                    />
-                                </Field>
-                                <Field label="Type">
-                                    <div className="columns">
-                                        <div className="column is-two-fifths">
-                                            <SelectInput
-                                                name="attack2Amount"
-                                                onChange={this.handleChange}
-                                                value={attack2.attack2Amount}
-                                                nested="attack2"
-                                                choices={ATTACK_AMOUNT_CHOICES}
-                                                blankLine={false}
-                                            />
-                                        </div>
-                                        <div className="column is-three-fifths">
-                                            <SelectInput
-                                                name="attack2Type"
-                                                onChange={this.handleChange}
-                                                value={attack2.attack2Type}
-                                                choices={ELEMENTS}
-                                                nested="attack2"
-                                            />
-                                        </div>
-                                    </div>
-                                </Field>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="gfields-box">
-                        <GroupTitle
-                            onClick={this.handleFieldBox}
-                            stepNumber="06"
-                            title={t('additionalInformation')}
-                        />
-                        <div className="gfields-content-wrapper">
-                            <div className="gfields-content">
-                                <Field label={t('description')}>
-                                    <textarea
-                                        name="description"
-                                        className="textarea"
-                                        onChange={this.handleChange}
-                                        value={description}
-                                    />
-                                </Field>
-                                <Field label={t('illustrator')}>
-                                    <input
-                                        type="text"
-                                        name="illustrator"
-                                        className="input"
-                                        onChange={this.handleChange}
-                                        value={illustrator}
-                                    />
-                                </Field>
-                                <Field label={t('collectionNumber')}>
-                                    <input
-                                        type="text"
-                                        name="cardNumber"
-                                        className="input small"
-                                        onChange={this.handleChange}
-                                        maxLength={3}
-                                        value={cardNumber}
-                                    />{' '}
-                                    /
-                                    <input
-                                        type="text"
-                                        name="totalCollection"
-                                        className="input small"
-                                        onChange={this.handleChange}
-                                        maxLength={3}
-                                        value={totalCollection}
-                                    />
-                                </Field>
-                                <Field label={t('rarity')}>
-                                    <SelectInput
-                                        name="rarity"
-                                        onChange={this.handleChange}
-                                        value={rarity}
-                                        choices={RARITY_CHOICES}
+                                        choices={ATTACK_AMOUNT_CHOICES}
                                         blankLine={false}
                                     />
-                                </Field>
+                                </div>
+                                <div className="column is-three-fifths">
+                                    <SelectInput
+                                        name="attack2Type"
+                                        onChange={this.handleChange}
+                                        value={attack2.attack2Type}
+                                        choices={ELEMENTS}
+                                        nested="attack2"
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </Field>
+                    </GroupBox>
+                    <GroupBox
+                        open={openedGroup === '06'}
+                        onClick={this.handleBox}
+                        stepNumber="06"
+                        title={t('additionalInformation')}
+                    >
+                        <Field label={t('description')}>
+                            <textarea
+                                name="description"
+                                className="textarea"
+                                onChange={this.handleChange}
+                                value={description}
+                            />
+                        </Field>
+                        <Field label={t('illustrator')}>
+                            <input
+                                type="text"
+                                name="illustrator"
+                                className="input"
+                                onChange={this.handleChange}
+                                value={illustrator}
+                            />
+                        </Field>
+                        <Field label={t('collectionNumber')}>
+                            <input
+                                type="text"
+                                name="cardNumber"
+                                className="input small"
+                                onChange={this.handleChange}
+                                maxLength={3}
+                                value={cardNumber}
+                            />{' '}
+                            /
+                            <input
+                                type="text"
+                                name="totalCollection"
+                                className="input small"
+                                onChange={this.handleChange}
+                                maxLength={3}
+                                value={totalCollection}
+                            />
+                        </Field>
+                        <Field label={t('rarity')}>
+                            <SelectInput
+                                name="rarity"
+                                onChange={this.handleChange}
+                                value={rarity}
+                                choices={RARITY_CHOICES}
+                                blankLine={false}
+                            />
+                        </Field>
+                    </GroupBox>
                     <div className="panel-actions">
                         <button onClick={this.exportCard} className="gradient-btn" title={t('downloadCard')}>
                             <i className="fas fa-download" />

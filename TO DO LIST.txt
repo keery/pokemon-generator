@@ -3,6 +3,7 @@ Design
 Actually files are uploaded directly, so handle them, and find a solution to remove useless files (different system, or expiration time, or ***ENTER A SOLUTION HERE***)
 GPDR friendly
 Resize logo reatreat, weakness, resistance (too small)
+Reset card is usable when groupBox is open
 
 -----EVOLUTION-----:
 Checker uppy pull request about setting of dynamic local
