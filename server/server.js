@@ -10,7 +10,11 @@ import logger from './logger';
 import setupRoutes from './routes';
 import { cors, getUppyOptions } from './middlewares';
 
-dotenv.config();
+const envResult = dotenv.config();
+if (envResult.error) {
+    throw envResult.error
+}
+
 const { PORT, HOST, PROTOCOL, SESSION_SECRET, CACHE_ID } = process.env;
 const uppyOptions = getUppyOptions();
 
@@ -34,6 +38,10 @@ app.use(companion.app(uppyOptions));
 companion.socket(app.listen(PORT), uppyOptions);
 
 app.listen({ host : HOST, port : PORT }, () => {
+    // logger.info(process.env);
+    // if ()
+    // console.log(PROTOCOL);
+    // console.log(PROTOCOL);
     logger.info(`Server url ${PROTOCOL}://${HOST}:${PORT}`);
 });
 

@@ -18,7 +18,8 @@
     "dotenv": "^8.1.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
-    "express-session": "^1.17.0"
+    "express-session": "^1.17.0",
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
