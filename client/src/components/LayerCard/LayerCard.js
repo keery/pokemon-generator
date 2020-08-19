@@ -20,7 +20,7 @@ import {
 import './LayerCard.scss';
 
 const LayerCard = ({
-    handleChange, setRetreatVisible, illustrator, name, description, hp, resistanceType, resistanceAmount, weaknessAmount, weaknessType, mainPicture, mainPictureUppy, evolvePictureUppy, removePicture, handleBox,
+    handleChange, setRetreatVisible, illustrator, name, type, description, hp, resistanceType, resistanceAmount, weaknessAmount, weaknessType, mainPicture, mainPictureUppy, evolvePictureUppy, removePicture, handleBox,
 }) => (
     <div className="LayerCard">
         {/* NAME */}
@@ -49,6 +49,18 @@ const LayerCard = ({
             value={hp}
         />
 
+        {/* TYPE */}
+        <ButtonList
+            name="type"
+            x={83}
+            y={5.4}
+            size={3.9}
+            items={ELEMENTS}
+            handleClick={handleChange}
+            value={type}
+            removeButton={false}
+        />
+
         {/* MAIN PICTURE */}
         <InteractiveFile
             name="mainPicture"
@@ -72,8 +84,8 @@ const LayerCard = ({
         <ButtonList
             name="weaknessType"
             x={12.7}
-            y={84.8}
-            size={3.2}
+            y={84.9}
+            size={2.9}
             items={ELEMENTS}
             handleClick={handleChange}
             value={weaknessType}
@@ -94,9 +106,9 @@ const LayerCard = ({
         {/* RESISTANCE TYPE */}
         <ButtonList
             name="resistanceType"
-            x={45.7}
-            y={84.8}
-            size={3.2}
+            x={45.8}
+            y={84.9}
+            size={2.9}
             items={ELEMENTS}
             handleClick={handleChange}
             value={resistanceType}

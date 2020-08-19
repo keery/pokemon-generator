@@ -16,6 +16,8 @@
         background-size: contain;
         background-repeat: no-repeat;
         border: 2px dashed transparent;
+        box-sizing: content-box;
+        background-repeat: no-repeat;
 
         &:hover + .list-items {
             display: inline-flex;

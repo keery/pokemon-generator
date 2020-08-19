@@ -3,7 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import PropTypes from 'prop-types';
 import './ButtonList.scss';
 
-const ButtonList = ({ name, x, y, size, items, handleClick, value }) => {
+const ButtonList = ({ name, x, y, size, items, handleClick, value, removeButton }) => {
     const [selected, selectItem] = useState(value);
     const didMountRef = useRef(false);
     const inputRef = useRef(null);
@@ -44,11 +44,15 @@ const ButtonList = ({ name, x, y, size, items, handleClick, value }) => {
         >
             <animated.div className={`preview ${value}`} style={props} />
             <ul className="list-items">
-                <li
-                    key="default"
-                    className="default"
-                    onClick={() => selectItem('')}
-                />
+                {
+                    removeButton && (
+                        <li
+                            key="default"
+                            className="default"
+                            onClick={() => selectItem('')}
+                        />
+                    )
+                }
                 {
                     items.map(item => (
                         <li
@@ -71,21 +75,23 @@ const ButtonList = ({ name, x, y, size, items, handleClick, value }) => {
 };
 
 ButtonList.propTypes = {
-    name        : PropTypes.string.isRequired,
-    x           : PropTypes.number,
-    y           : PropTypes.number,
-    size        : PropTypes.number,
-    items       : PropTypes.arrayOf(PropTypes.string),
-    handleClick : PropTypes.func.isRequired,
-    value       : PropTypes.string,
+    name         : PropTypes.string.isRequired,
+    x            : PropTypes.number,
+    y            : PropTypes.number,
+    size         : PropTypes.number,
+    items        : PropTypes.arrayOf(PropTypes.string),
+    handleClick  : PropTypes.func.isRequired,
+    value        : PropTypes.string,
+    removeButton : PropTypes.bool
 };
 
 ButtonList.defaultProps = {
-    items : [],
-    x     : 0,
-    y     : 0,
-    size  : 3,
-    value : '',
+    items        : [],
+    x            : 0,
+    y            : 0,
+    size         : 3,
+    value        : '',
+    removeButton : true,
 };
 
 export default ButtonList;

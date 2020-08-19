@@ -5,7 +5,7 @@ GPDR friendly
 Reset card is usable when groupBox is open
 Retreat size
 Button see all intreavtive areas
-Set pokemon element from card
+Update picto element with bigger size
 Edit evolution name from card
 Move main picture and evolution picture
 Edit attack from card
