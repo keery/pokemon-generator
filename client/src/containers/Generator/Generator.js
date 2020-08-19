@@ -81,9 +81,22 @@ class Generator extends Component {
         this.setState({ [pictureName] : null }, this.cacheCard);
     }
 
-    handleBox = (number) => {
+    handleBox = (number, focusField = null) => {
         const { openedGroup } = this.state;
-        this.setState({ openedGroup : openedGroup === number ? '' : number });
+
+        // Divided in if/else in order to avoid focus on closing
+        if (openedGroup === number) {
+            this.setState({ openedGroup : '' });
+        }
+        else {
+            if (focusField) {
+                const input = document.querySelector(focusField);
+                
+                if (input) input.focus();
+                else console.log(`${focusField} to focus doesn't exist`);
+            }
+            this.setState({ openedGroup : number });
+        }
     }
 
     render() {

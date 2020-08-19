@@ -64,7 +64,8 @@ const LayerCard = ({
             height={3}
             width={71.9}
             handleClick={handleBox}
-            linkedGroup="03"
+            linkedGroup="01"
+            focusField="input[name=species]"
         />
 
         {/* WEAKNESS TYPE */}
@@ -158,6 +159,7 @@ const LayerCard = ({
             width={14.2}
             handleClick={handleBox}
             linkedGroup="06"
+            focusField="input[name=cardNumber]"
         />
     </div>
 );
