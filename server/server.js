@@ -38,10 +38,6 @@ app.use(companion.app(uppyOptions));
 companion.socket(app.listen(PORT), uppyOptions);
 
 app.listen({ host : HOST, port : PORT }, () => {
-    // logger.info(process.env);
-    // if ()
-    // console.log(PROTOCOL);
-    // console.log(PROTOCOL);
     logger.info(`Server url ${PROTOCOL}://${HOST}:${PORT}`);
 });
 
