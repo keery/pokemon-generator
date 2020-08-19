@@ -11,7 +11,7 @@ const uploadFile = (req, res) => {
 const getTransloaditSignature = (req, res) => {
     const params = {
         auth : {
-            expires : dayjs().add(3, 'hour').format('YYYY/MM/DD HH:mm:ss+00:00'),
+            expires : dayjs().add(6, 'hour').format('YYYY/MM/DD HH:mm:ss+00:00'),
             key     : process.env.TRANSLOADIT_KEY,
         },
         template_id : process.env.TRANSLOADIT_TEMPLATE_ID,
