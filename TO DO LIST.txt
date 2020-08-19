@@ -2,8 +2,15 @@
 Design
 Actually files are uploaded directly, so handle them, and find a solution to remove useless files (different system, or expiration time, or ***ENTER A SOLUTION HERE***)
 GPDR friendly
-Resize logo reatreat, weakness, resistance (too small)
 Reset card is usable when groupBox is open
+Retreat size
+Button see all intreavtive areas
+Set pokemon element from card
+Edit evolution name from card
+Move main picture and evolution picture
+Edit attack from card
+Fix instagram
+Animation picture is above evolution picture
 
 -----EVOLUTION-----:
 Checker uppy pull request about setting of dynamic local
