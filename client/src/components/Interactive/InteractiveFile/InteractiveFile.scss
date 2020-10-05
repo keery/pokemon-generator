@@ -78,9 +78,21 @@
         height: 100%;
         opacity: 0;
         transition: opacity .2s ease-in-out;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 
+    .click-bg {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: -1;
+        background-color: #fff;
+        
         &:after {
             content: '';
+            opacity: 0;
             display: block;
             border: 2px dashed transparent;
             position: absolute;
@@ -93,7 +105,7 @@
     }
 
     &:hover {
-        .click-zone {
+        .click-bg:after {
             opacity: 1;
         }
     }

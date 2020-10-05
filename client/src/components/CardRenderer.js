@@ -67,7 +67,7 @@ class CardRenderer extends Component {
             nextState.resistanceImg = resistanceType ? await this.getDynamicImg(`1-${resistanceType}.png`) : null;
         }
         if (prevProps.retreat !== retreat) {
-            nextState.retreatImg = retreat > 0 && retreat <= 4 ? await this.getDynamicImg(`retreat-${retreat}.png`) : null;
+            nextState.retreatImg = retreat > 0 && retreat <= 4 ? await this.getDynamicImg(`retreat-${retreat}.png`, 100, 22) : null;
         }
         if (prevProps.rarity !== rarity) {
             nextState.rarityLogo = rarity ? await this.getDynamicImg(`rarity-${rarity}.png`) : null;
@@ -101,8 +101,8 @@ class CardRenderer extends Component {
         });
     };
 
-    getDynamicImg = (file) => {
-        return this.createImg(require(`../assets/1-gen/${file}`));
+    getDynamicImg = (file, maxWidth = false, maxHeight = false) => {
+        return this.createImg(require(`../assets/1-gen/${file}`), maxWidth, maxHeight);
     }
 
     updateImgPos = (event) => {
@@ -251,7 +251,7 @@ class CardRenderer extends Component {
                     <Group x={29} y={627} width={570}>
                         <TypeAmount type={weaknessImg} amount={weaknessAmount} />
                         <TypeAmount type={resistanceImg} amount={resistanceAmount} x={178} />
-                        { retreatVisible && retreatImg && <KonvaImage x={376} y={20} image={retreatImg} /> }
+                        { retreatVisible && retreatImg && <KonvaImage x={355} y={16} image={retreatImg} /> }
                     </Group>
                     { description !== '' && (
                         <Group x={57} y={680} width={423}>

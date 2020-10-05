@@ -42,28 +42,31 @@ const InteractiveFile = ({ name, picture, uppy, removePicture, t }) => {
     }
     else {
         content = (
-            <div
-                className="click-zone"
-                onClick={() => {
-                    context.openModalWith(
-                        <Dashboard
-                            uppy={uppy}
-                            plugins={['Instagram', 'Webcam', 'Url']}
-                            proudlyDisplayPoweredByUppy={false}
-                            metaFields={[
-                                { id : 'name', name : 'Name', placeholder : 'File name' },
-                            ]}
-                            browserBackButtonClose
-                        />
-                    );
-                }}
-            >
-                <div className="bg" />
-                <span className="picture">
-                    <i className="fas fa-camera-retro" />
-                    <i className="fas fa-camera-retro" />
-                </span>
-            </div>
+            <>
+                <div
+                    className="click-zone"
+                    onClick={() => {
+                        context.openModalWith(
+                            <Dashboard
+                                uppy={uppy}
+                                plugins={['Instagram', 'Webcam', 'Url']}
+                                proudlyDisplayPoweredByUppy={false}
+                                metaFields={[
+                                    { id : 'name', name : 'Name', placeholder : 'File name' },
+                                ]}
+                                browserBackButtonClose
+                            />
+                        );
+                    }}
+                />
+                <div className="click-bg">
+                    <div className="bg" />
+                    <span className="picture">
+                        <i className="fas fa-camera-retro" />
+                        <i className="fas fa-camera-retro" />
+                    </span>
+                </div>
+            </>
         )
     }
 

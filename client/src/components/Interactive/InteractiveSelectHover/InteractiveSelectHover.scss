@@ -16,9 +16,13 @@
         bottom: 0;
     }
 
+    > i:first-of-type {
+        margin-left: 0;
+    }
+
     > span, > i {
         display: none;
-        margin-left: -1px;
+        margin-left: 4px;
         cursor: pointer;
     }
 
