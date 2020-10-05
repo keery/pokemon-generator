@@ -84,8 +84,8 @@ const LayerCard = ({
         <ButtonList
             name="weaknessType"
             x={12.7}
-            y={84.9}
-            size={2.9}
+            y={85}
+            size={2.5}
             items={ELEMENTS}
             handleClick={handleChange}
             value={weaknessType}
@@ -106,9 +106,9 @@ const LayerCard = ({
         {/* RESISTANCE TYPE */}
         <ButtonList
             name="resistanceType"
-            x={45.8}
-            y={84.9}
-            size={2.9}
+            x={46}
+            y={85}
+            size={2.5}
             items={ELEMENTS}
             handleClick={handleChange}
             value={resistanceType}
