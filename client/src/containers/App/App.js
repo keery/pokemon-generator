@@ -1,11 +1,18 @@
-import React, { Suspense } from 'react';
-import 'bulma/css/bulma.css';
-import { Generator } from '..';
+import React, { Suspense } from 'react'
+import 'bulma/css/bulma.css'
+import { Generator } from '..'
 import {
-    Header, Loader, ErrorBoundary, LoaderProvider, LoaderConsumer, ModalConsumer, ModalProvider, StoreProvider,
-} from '../../components';
-import './App.scss';
-import '../../assets/style/index.scss';
+    Header,
+    Loader,
+    ErrorBoundary,
+    LoaderProvider,
+    LoaderConsumer,
+    ModalConsumer,
+    ModalProvider,
+    StoreProvider,
+} from '../../components'
+import './App.scss'
+import '../../assets/style/index.scss'
 
 const App = () => (
     <Suspense fallback={<Loader />}>
@@ -28,6 +35,6 @@ const App = () => (
             </LoaderProvider>
         </ErrorBoundary>
     </Suspense>
-);
+)
 
-export default App;
+export default App

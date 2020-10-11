@@ -1,53 +1,63 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Text, Group, Image as ImageCanvas } from 'react-konva';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Text, Group, Image as ImageCanvas } from 'react-konva'
 
 const Attack = ({
-    damage, desc, name, width, height, x, y, imgTypeAmount, tiny,
+    damage,
+    desc,
+    name,
+    width,
+    height,
+    x,
+    y,
+    imgTypeAmount,
+    tiny,
 }) => {
-    let imgTypeAmountY = 30;
-    let damageY = 40;
+    let imgTypeAmountY = 30
+    let damageY = 40
 
     if (tiny) {
-        height = 50;
-        imgTypeAmountY = 0;
-        damageY = 10;
+        height = 50
+        imgTypeAmountY = 0
+        damageY = 10
     }
     const global = {
-        textAttackX : 15,
-        textWidth   : 278,
-    };
+        textAttackX: 15,
+        textWidth: 278,
+    }
 
     let attackNameData = {
-        fontSize      : 19,
-        y             : 0,
-        align         : 'center',
-        wrap          : 'char',
-        verticalAlign : 'middle',
-    };
+        fontSize: 19,
+        y: 0,
+        align: 'center',
+        wrap: 'char',
+        verticalAlign: 'middle',
+    }
 
     if (desc !== '') {
         attackNameData = {
-            fontSize      : 16,
-            y             : 2,
-            align         : 'left',
-            verticalAlign : 'top',
-        };
+            fontSize: 16,
+            y: 2,
+            align: 'left',
+            verticalAlign: 'top',
+        }
     }
 
     if (damage !== '' || imgTypeAmount) {
-        global.textAttackX = 54;
-        global.textWidth = 200;
+        global.textAttackX = 54
+        global.textWidth = 200
     }
 
     const attackDescData = {
-        fontSize : 12,
-        y        : name !== '' ? 20 : 2,
-        align    : 'left',
-    };
+        fontSize: 12,
+        y: name !== '' ? 20 : 2,
+        align: 'left',
+    }
 
     if (imgTypeAmount) {
-        imgTypeAmount = <ImageCanvas image={imgTypeAmount} x={0} y={imgTypeAmountY} />;
+        imgTypeAmount = (
+            <ImageCanvas image={imgTypeAmount} x={0} y={imgTypeAmountY} />
+        )
     }
 
     return (
@@ -62,7 +72,11 @@ const Attack = ({
             clipX={0}
         >
             {imgTypeAmount}
-            <Group y={attackNameData.y} x={global.textAttackX} width={global.textWidth}>
+            <Group
+                y={attackNameData.y}
+                x={global.textAttackX}
+                width={global.textWidth}
+            >
                 <Text
                     text={name}
                     fontFamily="pokename"
@@ -95,30 +109,30 @@ const Attack = ({
                 align="right"
             />
         </Group>
-    );
-};
+    )
+}
 
 Attack.defaultProps = {
-    damage        : '',
-    name          : '',
-    desc          : '',
-    width         : 380,
-    height        : 107,
-    imgTypeAmount : null,
-    tiny          : false,
-};
+    damage: '',
+    name: '',
+    desc: '',
+    width: 380,
+    height: 107,
+    imgTypeAmount: null,
+    tiny: false,
+}
 
 Attack.propTypes = {
-    damage        : PropTypes.string,
-    name          : PropTypes.string,
-    desc          : PropTypes.string,
-    width         : PropTypes.number,
-    height        : PropTypes.number,
-    tiny          : PropTypes.bool,
+    damage: PropTypes.string,
+    name: PropTypes.string,
+    desc: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.number,
+    tiny: PropTypes.bool,
     // eslint-disable-next-line react/forbid-prop-types
-    imgTypeAmount : PropTypes.object,
-    x             : PropTypes.number.isRequired,
-    y             : PropTypes.number.isRequired,
-};
+    imgTypeAmount: PropTypes.object,
+    x: PropTypes.number.isRequired,
+    y: PropTypes.number.isRequired,
+}
 
-export default Attack;
+export default Attack

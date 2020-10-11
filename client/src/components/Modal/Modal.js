@@ -1,14 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
-import './Modal.scss';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withTranslation } from 'react-i18next'
+import './Modal.scss'
 
 const Modal = ({ content, closeModal, t }) => (
     <div className="Modal">
-        <div
-            className="modal-closing-area"
-            onClick={closeModal}
-        />
+        <div className="modal-closing-area" onClick={closeModal} />
         <div className="modal-container">
             <button
                 id="modal-close"
@@ -18,16 +15,15 @@ const Modal = ({ content, closeModal, t }) => (
             >
                 <i className="fas fa-times" />
             </button>
-            { content }
+            {content}
         </div>
     </div>
-);
-
+)
 
 Modal.propTypes = {
-    content    : PropTypes.node.isRequired,
-    closeModal : PropTypes.func.isRequired,
-    t          : PropTypes.func.isRequired,
-};
+    content: PropTypes.node.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    t: PropTypes.func.isRequired,
+}
 
-export default withTranslation('index')(Modal);
+export default withTranslation('index')(Modal)

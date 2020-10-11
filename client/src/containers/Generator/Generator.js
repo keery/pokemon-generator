@@ -1,15 +1,20 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Stage } from 'react-konva';
-import { withTranslation } from 'react-i18next';
-import isEqual from 'lodash.isequal';
-import DEFAULT_STATE from './Generator.d';
-import { encrypt, decrypt, printCard } from '../../helper';
-import { withStore } from '../../hoc';
-import getUppy from './getUppy';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Stage } from 'react-konva'
+import { withTranslation } from 'react-i18next'
+import isEqual from 'lodash.isequal'
+import DEFAULT_STATE from './Generator.d'
+import { encrypt, decrypt, printCard } from '../../helper'
+import { withStore } from '../../hoc'
+import getUppy from './getUppy'
 import {
-    CardRenderer, FileInput, SelectInput, Field, LayerCard, GroupBox,
-} from '../../components';
+    CardRenderer,
+    FileInput,
+    SelectInput,
+    Field,
+    LayerCard,
+    GroupBox,
+} from '../../components'
 import {
     ELEMENTS,
     HP_CHOICES,
@@ -20,82 +25,111 @@ import {
     KEY_CACHE_POKECARD,
     RETREAT_CHOICES,
     RESISTANCE_CHOICES,
-} from '../../const';
+} from '../../const'
 
-const { REACT_APP_VERSION, REACT_APP_TITLE, REACT_APP_ENCRYPT_KEY } = process.env;
+const {
+    REACT_APP_VERSION,
+    REACT_APP_TITLE,
+    REACT_APP_ENCRYPT_KEY,
+} = process.env
 
 class Generator extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
-        const cachedCard = localStorage.getItem(KEY_CACHE_POKECARD);
-        this.state = cachedCard ? decrypt(cachedCard, REACT_APP_ENCRYPT_KEY) : DEFAULT_STATE;
-        this.stageRef = React.createRef();
-        this.mainPictureUppy = getUppy('uppy-main-picture', props.transloaditParams, props.i18n.language);
-        this.evolvePictureUppy = getUppy('uppy-evolve-picture', props.transloaditParams, props.i18n.language);
+        const cachedCard = localStorage.getItem(KEY_CACHE_POKECARD)
+        this.state = cachedCard
+            ? decrypt(cachedCard, REACT_APP_ENCRYPT_KEY)
+            : DEFAULT_STATE
+        this.stageRef = React.createRef()
+        this.mainPictureUppy = getUppy(
+            'uppy-main-picture',
+            props.transloaditParams,
+            props.i18n.language
+        )
+        this.evolvePictureUppy = getUppy(
+            'uppy-evolve-picture',
+            props.transloaditParams,
+            props.i18n.language
+        )
     }
 
     handleChange = (event) => {
-        const nested = event.target.getAttribute('nested');
+        const nested = event.target.getAttribute('nested')
         if (nested) {
-            this.setState({
-                [nested] : { ...this.state[nested], [event.target.name] : event.target.value },
-            }, this.cacheCard);
-        } else this.setState({ [event.target.name] : event.target.value }, this.cacheCard);
-    };
+            this.setState(
+                {
+                    [nested]: {
+                        ...this.state[nested],
+                        [event.target.name]: event.target.value,
+                    },
+                },
+                this.cacheCard
+            )
+        } else
+            this.setState(
+                { [event.target.name]: event.target.value },
+                this.cacheCard
+            )
+    }
 
     cacheCard = () => {
-        localStorage.setItem(KEY_CACHE_POKECARD, encrypt(this.state, REACT_APP_ENCRYPT_KEY));
+        localStorage.setItem(
+            KEY_CACHE_POKECARD,
+            encrypt(this.state, REACT_APP_ENCRYPT_KEY)
+        )
     }
 
     exportCard = () => {
-        const link = document.createElement('a');
-        link.download = 'card.png';
-        link.href = this.stageRef.current.getStage().toDataURL();
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    };
+        const link = document.createElement('a')
+        link.download = 'card.png'
+        link.href = this.stageRef.current.getStage().toDataURL()
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+    }
 
     resetCard = () => {
         if (
-            !isEqual(this.state, DEFAULT_STATE)
-            && window.confirm(this.props.t('confirmReset'))
+            !isEqual(this.state, DEFAULT_STATE) &&
+            window.confirm(this.props.t('confirmReset'))
         ) {
-            this.setState(DEFAULT_STATE);
-            this.flip = true;
-            localStorage.removeItem(KEY_CACHE_POKECARD);
+            this.setState(DEFAULT_STATE)
+            this.flip = true
+            localStorage.removeItem(KEY_CACHE_POKECARD)
         }
-    };
+    }
 
     updateImgPos = (event) => {
-        const { attrs } = event.target;
-        this.setState({ [`${attrs.name}X`] : attrs.x, [`${attrs.name}Y`] : attrs.y }, this.cacheCard);
+        const { attrs } = event.target
+        this.setState(
+            { [`${attrs.name}X`]: attrs.x, [`${attrs.name}Y`]: attrs.y },
+            this.cacheCard
+        )
     }
 
     setRetreatVisible = (visible) => {
-        this.setState({ retreatVisible : visible }, this.cacheCard);
+        this.setState({ retreatVisible: visible }, this.cacheCard)
     }
 
     removePicture = (pictureName) => {
-        this.setState({ [pictureName] : null }, this.cacheCard);
+        this.setState({ [pictureName]: null }, this.cacheCard)
     }
 
     handleBox = (number, focusField = null) => {
-        const { openedGroup } = this.state;
+        const { openedGroup } = this.state
 
         // Divided in if/else in order to avoid focus on closing
         if (openedGroup === number) {
-            this.setState({ openedGroup : '' });
-        }
-        else {
+            this.setState({ openedGroup: '' })
+        } else {
             if (focusField) {
-                const input = document.querySelector(focusField);
-                
-                if (input) input.focus();
-                else console.log(`${focusField} to focus doesn't exist`);
+                const input = document.querySelector(focusField)
+
+                if (input) input.focus()
+                else console.log(`${focusField} to focus doesn't exist`)
             }
-            this.setState({ openedGroup : number });
+            this.setState({ openedGroup: number })
         }
     }
 
@@ -111,13 +145,22 @@ class Generator extends Component {
             stage,
             nameEvolution,
             evolvePicture,
-            weaknessType, weaknessAmount, resistanceType, resistanceAmount, retreat, description, illustrator, cardNumber, totalCollection, rarity,
+            weaknessType,
+            weaknessAmount,
+            resistanceType,
+            resistanceAmount,
+            retreat,
+            description,
+            illustrator,
+            cardNumber,
+            totalCollection,
+            rarity,
             attack1,
             attack2,
             openedGroup,
-        } = this.state;
+        } = this.state
 
-        const { t } = this.props;
+        const { t } = this.props
 
         return (
             <div className="Generator columns">
@@ -380,11 +423,7 @@ class Generator extends Component {
                         <div id="circle-5" className="circle" />
                     </div>
                     <div className="card-container">
-                        <Stage
-                            width={540}
-                            height={755}
-                            ref={this.stageRef}
-                        >
+                        <Stage width={540} height={755} ref={this.stageRef}>
                             <CardRenderer
                                 {...this.state}
                                 updateImgPos={this.updateImgPos}
@@ -514,16 +553,28 @@ class Generator extends Component {
                         </Field>
                     </GroupBox>
                     <div className="panel-actions">
-                        <button onClick={this.exportCard} className="gradient-btn" title={t('downloadCard')}>
+                        <button
+                            onClick={this.exportCard}
+                            className="gradient-btn"
+                            title={t('downloadCard')}
+                        >
                             <i className="fas fa-download" />
                         </button>
-                        <button onClick={printCard} className="gradient-btn" title={t('printCard')}>
+                        <button
+                            onClick={printCard}
+                            className="gradient-btn"
+                            title={t('printCard')}
+                        >
                             <i className="fas fa-print" />
                         </button>
                         <button className="gradient-btn" title={t('saveCard')}>
                             <i className="fas fa-hdd" />
                         </button>
-                        <button onClick={this.resetCard} className="gradient-btn" title={t('resetCard')}>
+                        <button
+                            onClick={this.resetCard}
+                            className="gradient-btn"
+                            title={t('resetCard')}
+                        >
                             <i className="fas fa-sync-alt" />
                         </button>
                         <button className="gradient-btn" title={t('shareCard')}>
@@ -538,20 +589,25 @@ class Generator extends Component {
                             </div>
                         </div>
                         <div className="signature-desc">
-                            <span role="img" aria-label="megaphone">📢</span> {t('news')}
+                            <span role="img" aria-label="megaphone">
+                                📢
+                            </span>{' '}
+                            {t('news')}
                         </div>
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 
 Generator.propTypes = {
-    transloaditParams : PropTypes.shape({
-        signature : PropTypes.string,
-        params    : PropTypes.string,
+    transloaditParams: PropTypes.shape({
+        signature: PropTypes.string,
+        params: PropTypes.string,
     }).isRequired,
-};
+}
 
-export default withTranslation('generator')(withStore(['transloaditParams'])(Generator));
+export default withTranslation('generator')(
+    withStore(['transloaditParams'])(Generator)
+)

@@ -1,7 +1,7 @@
-import React from 'react';
-import { withTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
-import LanguageSelector from '../LanguageSelector/LanguageSelector';
+import React from 'react'
+import { withTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
+import LanguageSelector from '../LanguageSelector/LanguageSelector'
 // import LogoPokeball from '../../assets/img/pokeball.png';
 
 const Header = ({ t }) => (
@@ -17,8 +17,14 @@ const Header = ({ t }) => (
                     {/* <div id="logo-title">{process.env.REACT_APP_TITLE.toUpperCase()}</div> */}
                 </div>
                 <div className="menu-left">
-                    <a title={t('index:signUp')} href="/tmp">{t('index:signUp')}</a>
-                    <a className="gradient-btn tiny" title={t('index:signIn')} href="/tmp">
+                    <a title={t('index:signUp')} href="/tmp">
+                        {t('index:signUp')}
+                    </a>
+                    <a
+                        className="gradient-btn tiny"
+                        title={t('index:signIn')}
+                        href="/tmp"
+                    >
                         <i className="fas fa-user" />
                         {t('index:signIn')}
                     </a>
@@ -27,10 +33,10 @@ const Header = ({ t }) => (
             </div>
         </nav>
     </header>
-);
+)
 
 Header.propTypes = {
-    t : PropTypes.func.isRequired,
-};
+    t: PropTypes.func.isRequired,
+}
 
-export default withTranslation()(Header);
+export default withTranslation()(Header)

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
     InteractiveInput,
     InteractiveFile,
@@ -6,21 +6,36 @@ import {
     InteractiveSelectHover,
     InteractiveTextarea,
     InteractiveArea,
-} from '../Interactive';
+} from '../Interactive'
 
-import { ButtonList } from '..';
+import { ButtonList } from '..'
 
 import {
     HP_CHOICES,
     RESISTANCE_CHOICES,
     WEAKNESS_CHOICES,
     ELEMENTS,
-} from '../../const';
+} from '../../const'
 
-import './LayerCard.scss';
+import './LayerCard.scss'
 
 const LayerCard = ({
-    handleChange, setRetreatVisible, illustrator, name, type, description, hp, resistanceType, resistanceAmount, weaknessAmount, weaknessType, mainPicture, mainPictureUppy, evolvePictureUppy, removePicture, handleBox,
+    handleChange,
+    setRetreatVisible,
+    illustrator,
+    name,
+    type,
+    description,
+    hp,
+    resistanceType,
+    resistanceAmount,
+    weaknessAmount,
+    weaknessType,
+    mainPicture,
+    mainPictureUppy,
+    evolvePictureUppy,
+    removePicture,
+    handleBox,
 }) => (
     <div className="LayerCard">
         {/* NAME */}
@@ -174,6 +189,6 @@ const LayerCard = ({
             focusField="input[name=cardNumber]"
         />
     </div>
-);
+)
 
-export default LayerCard;
+export default LayerCard

@@ -12,7 +12,7 @@ const ELEMENTS = [
     // TODO: Find background
     // 'steel',
     // 'dark',
-];
+]
 
 const HP_CHOICES = [
     '30',
@@ -38,11 +38,11 @@ const HP_CHOICES = [
     '230',
     '240',
     '250',
-];
+]
 
-const WEAKNESS_CHOICES = ['', '+10', '+20', '+30', '+40', 'x2'];
+const WEAKNESS_CHOICES = ['', '+10', '+20', '+30', '+40', 'x2']
 
-const RESISTANCE_CHOICES = ['', '-10', '-20', '-30', '-40'];
+const RESISTANCE_CHOICES = ['', '-10', '-20', '-30', '-40']
 
 const DAMMAGE_CHOICES = [
     '10',
@@ -64,28 +64,27 @@ const DAMMAGE_CHOICES = [
     '120',
     '150',
     '200',
-];
+]
 
-const ATTACK_AMOUNT_CHOICES = ['1', '2', '3', '4'];
+const ATTACK_AMOUNT_CHOICES = ['1', '2', '3', '4']
 
-const RARITY_CHOICES = ['common', 'uncommon', 'rare'];
+const RARITY_CHOICES = ['common', 'uncommon', 'rare']
 
-const RETREAT_CHOICES = ['0', '1', '2', '3', '4'];
+const RETREAT_CHOICES = ['0', '1', '2', '3', '4']
 
 /**
  * Local storage keys
  */
-const KEY_CACHE_POKECARD = 'pokecard';
-const KEY_CACHE_LNG = 'lngPG';
-
+const KEY_CACHE_POKECARD = 'pokecard'
+const KEY_CACHE_LNG = 'lngPG'
 
 /**
  * Languages
  */
 
-const LANGUAGES = ['en', 'fr', 'es'];
+const LANGUAGES = ['en', 'fr', 'es']
 
-const DEFAULT_LANGUAGES = 'en';
+const DEFAULT_LANGUAGES = 'en'
 
 export {
     KEY_CACHE_POKECARD,
@@ -100,4 +99,4 @@ export {
     RARITY_CHOICES,
     RETREAT_CHOICES,
     RESISTANCE_CHOICES,
-};
+}

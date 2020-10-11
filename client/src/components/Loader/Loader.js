@@ -1,5 +1,5 @@
-import React from 'react';
-import LogoPokeball from '../../assets/img/pokeball.gif';
+import React from 'react'
+import LogoPokeball from '../../assets/img/pokeball.gif'
 
 const Loader = () => (
     <div className="Loader">
@@ -7,6 +7,6 @@ const Loader = () => (
             <img src={LogoPokeball} alt="" className="gif-loader" />
         </div>
     </div>
-);
+)
 
-export default Loader;
+export default Loader
