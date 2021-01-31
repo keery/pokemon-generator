@@ -1,24 +1,24 @@
 .InteractiveInput {
-    position: absolute;
-    border: 2px transparent;
+  position: absolute;
+  border: 2px transparent;
 
-    > input {
-        width: 100%;
-        border: 2px dashed transparent;
-        margin: 0;
-        padding: 0 .4rem;
-        height: 100%;
-        background-color: transparent;
-        outline: none;
-        color: transparent;
-        caret-color: black;
+  > input {
+    width: 100%;
+    border: 2px dashed transparent;
+    margin: 0;
+    padding: 0 0.4rem;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    color: transparent;
+    caret-color: black;
 
-        &:hover {
-            border: 2px dashed #fdd705;
-        }
-
-        &:focus {
-            border: 2px solid #fdd705;
-        }
+    &:hover {
+      border: 2px dashed yellow.600;
     }
+
+    &:focus {
+      border: 2px solid yellow.600;
+    }
+  }
 }

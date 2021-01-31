@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
+
+body {
+  font-family: 'Noto Sans Jp';
+}
+
+::-moz-selection {
+  color: white;
+  background-color: black;
+}
+
+::selection {
+  color: white;
+  background-color: black;
+}
+
+.konvajs-content {
+  margin: 0 auto;
+  position: relative;
+  transform-style: preserve-3d;
+  border-radius: 23px;
+  transition: transform ease-in-out 0.8s;
+}
+
+.konvajs-content:before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  box-shadow: 0 20px 46px -6px #cacaca;
+  width: 100%;
+  height: 25%;
+  border-radius: 90px;
+}
+
+.konvajs-content > canvas {
+  border-radius: 23px;
+  background-color: white !important;
+  backface-visibility: hidden;
+  overflow: hidden;
+  transition: transform ease-in-out 0.8s;
+}
+
+.fire {
+  background-image: url(../assets/1-gen/fire.png);
+}
+.grass {
+  background-image: url(../assets/1-gen/grass.png);
+}
+.water {
+  background-image: url(../assets/1-gen/water.png);
+}
+.electric {
+  background-image: url(../assets/1-gen/electric.png);
+}
+.psychic {
+  background-image: url(../assets/1-gen/psychic.png);
+}
+.fighting {
+  background-image: url(../assets/1-gen/fighting.png);
+}
+.normal {
+  background-image: url(../assets/1-gen/normal.png);
+}
+.steel {
+  background-image: url(../assets/1-gen/steel.png);
+}
+.dark {
+  background-image: url(../assets/1-gen/dark.png);
+}

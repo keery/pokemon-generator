@@ -1,16 +1,17 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types'
+import { FormLabel, FormControl } from '@chakra-ui/react'
+import React from 'react'
 
 const Field = ({ label, children }) => (
-    <div className="field">
-        <label className="label">{label}</label>
-        {children}
-    </div>
-);
+  <FormControl py={1}>
+    <FormLabel>{label}</FormLabel>
+    {children}
+  </FormControl>
+)
 
 Field.propTypes = {
-    label    : PropTypes.string.isRequired,
-    children : PropTypes.node.isRequired,
-};
+  label: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+}
 
-export default Field;
+export default Field

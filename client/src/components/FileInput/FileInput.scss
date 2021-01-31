@@ -1,65 +1,65 @@
-@import "../../assets/style/const.scss";
+// @import "../../assets/style/const.scss";
 
-.file-label {
-    width: 100%;
-    color: #8a8484;
-}
-.file-label-uploaded {
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    width: 100%;
-    left: calc(100% - 1.5rem);
-    transition: left ease-in-out 0.5s;
-    background-color: $rose;
-    padding-left: 3rem;
-    color: white;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
+// .file-label {
+//   width: 100%;
+//   color: #8a8484;
+// }
+// .file-label-uploaded {
+// position: absolute;
+// top: 0px;
+// bottom: 0px;
+// width: 100%;
+// left: calc(100% - 1.5rem);
+// transition: left ease-in-out 0.5s;
+// background-color: $rose;
+// padding-left: 3rem;
+// color: white;
+// font-weight: bold;
+// display: flex;
+// align-items: center;
 
-    > span {
-        text-overflow: ellipsis;
-        width: 80%;
-        overflow: hidden;
-    }
-}
-.file-cta {
-    width: 100%;
-    padding: 1.5em;
-    border-radius: 15px;
-    border: 1px solid #ededed;
-    transition: border-color ease-in-out 0.5s;
-    overflow: hidden;
-}
+// > span {
+//   text-overflow: ellipsis;
+//   width: 80%;
+//   overflow: hidden;
+// }
+// }
+// .file-cta {
+//   width: 100%;
+//   padding: 1.5em;
+//   border-radius: 15px;
+//   border: 1px solid #ededed;
+//   transition: border-color ease-in-out 0.5s;
+//   overflow: hidden;
+// }
 
-.file-icon {
-    position: absolute;
-    left: calc(100% - 3rem);
-    top: 50%;
-    transform: translateY(-50%);
-    background: linear-gradient(to left, #ff9349 0%, #ffc27b 100%);
-    border-radius: 100%;
-    height: 3rem;
-    width: 3rem;
-    color: #fff;
-    transition: left ease-in-out 0.5s;
-    z-index: 1;
-}
+// .file-icon {
+//   position: absolute;
+//   left: calc(100% - 3rem);
+//   top: 50%;
+//   transform: translateY(-50%);
+//   background: linear-gradient(to left, #ff9349 0%, #ffc27b 100%);
+//   border-radius: 100%;
+//   height: 3rem;
+//   width: 3rem;
+//   color: #fff;
+//   transition: left ease-in-out 0.5s;
+//   z-index: 1;
+// }
 
 .file.uploaded {
-    .file-label-uploaded {
-        left: 1.5rem;
-    }
-    .file-icon {
-        left: 0;
-    }
-    .file-cta {
-        border-color: #ff9d54;
-    }
-    &:hover {
-        .file-label-uploaded {
-            background-color: #fac0a0;
-        }
-    }
+  // .file-label-uploaded {
+  //   left: 1.5rem;
+  // }
+  // .file-icon {
+  //   left: 0;
+  // }
+  // .file-cta {
+  //   border-color: #ff9d54;
+  // }
+  // &:hover {
+  //   .file-label-uploaded {
+  //     background-color: #fac0a0;
+  //   }
+  // }
 }

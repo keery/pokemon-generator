@@ -1,33 +1,37 @@
-import React, { Suspense } from 'react';
-import 'bulma/css/bulma.css';
-import { Generator } from '..';
+import React, { Suspense } from 'react'
+import { ChakraProvider, Container } from '@chakra-ui/react'
+import { Generator } from '..'
 import {
-    Header, Loader, ErrorBoundary, LoaderProvider, LoaderConsumer, ModalConsumer, ModalProvider, StoreProvider,
-} from '../../components';
-import './App.scss';
-import '../../assets/style/index.scss';
-
+  Header,
+  Loader,
+  ErrorBoundary,
+  LoaderProvider,
+  LoaderConsumer,
+  ModalConsumer,
+  ModalProvider,
+  StoreProvider,
+} from '../../components'
+import theme from '../../theme'
+console.log(theme.components)
 const App = () => (
-    <Suspense fallback={<Loader />}>
-        <ErrorBoundary>
-            <LoaderProvider>
-                <StoreProvider>
-                    <ModalProvider>
-                        <LoaderConsumer />
-                        <ModalConsumer />
-                        <section className="App">
-                            <Header />
-                            <div className="container is-fluid">
-                                <div className="columns is-centered is-vcentered full-height">
-                                    <Generator />
-                                </div>
-                            </div>
-                        </section>
-                    </ModalProvider>
-                </StoreProvider>
-            </LoaderProvider>
-        </ErrorBoundary>
-    </Suspense>
-);
+  <Suspense fallback={<Loader />}>
+    <ErrorBoundary>
+      <ChakraProvider theme={theme}>
+        <LoaderProvider>
+          <StoreProvider>
+            <ModalProvider>
+              <LoaderConsumer />
+              <ModalConsumer />
+              <Header />
+              <Container maxW="1200px">
+                <Generator />
+              </Container>
+            </ModalProvider>
+          </StoreProvider>
+        </LoaderProvider>
+      </ChakraProvider>
+    </ErrorBoundary>
+  </Suspense>
+)
 
-export default App;
+export default App
