@@ -2,6 +2,10 @@ import { extendTheme } from '@chakra-ui/react'
 import { Input, Button, Accordion, Select, Textarea } from './components'
 
 const overrides = {
+  fonts: {
+    body: 'Noto Sans Jp, sans-serif',
+    heading: 'Noto Sans Jp, serif',
+  },
   colors: {
     grey: {
       100: '#f5f8ff',

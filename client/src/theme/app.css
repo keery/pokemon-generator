@@ -1,8 +1,28 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
-
-body {
-  font-family: 'Noto Sans Jp';
+@font-face {
+  font-family: 'pokename';
+  src: url('/assets/fonts/GillSansStd-BoldCondensed.otf');
 }
+@font-face {
+  font-family: 'pokevolution';
+  src: url('/assets/fonts/GillSansStd-BoldItalic.otf');
+}
+@font-face {
+  font-family: 'pokehp';
+  src: url('/assets/fonts/FuturaStd-Heavy.otf');
+}
+@font-face {
+  font-family: 'poke';
+  src: url('/assets/fonts/gill-sans-bold-extra-condensed.ttf');
+}
+@font-face {
+  font-family: 'gstd';
+  src: url('/assets/fonts/GillSansStd.otf');
+}
+@font-face {
+  font-family: 'radio';
+  src: url('/assets/fonts/RadioGrotesk/RadioGrotesk-Regular.otf');
+}
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
 
 ::-moz-selection {
   color: white;
