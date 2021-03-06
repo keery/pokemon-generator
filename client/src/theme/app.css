@@ -89,3 +89,7 @@
 .dark {
   background-image: url(/assets/1-gen/dark.png);
 }
+/* > #chakra-modal-generator */
+.chakra-modal__content-container {
+  width: auto !important;
+}

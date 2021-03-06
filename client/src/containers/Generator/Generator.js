@@ -27,22 +27,6 @@ const Generator = () => {
     console.log(data)
   }
 
-  // handleChange = (event) => {
-  //   const nested = event.target.getAttribute('nested')
-  //   if (nested) {
-  //     this.setState(
-  //       {
-  //         [nested]: {
-  //           ...this.state[nested],
-  //           [event.target.name]: event.target.value,
-  //         },
-  //       },
-  //       this.cacheCard,
-  //     )
-  //   } else
-  //     this.setState({ [event.target.name]: event.target.value }, this.cacheCard)
-  // }
-
   // cacheCard = () => {
   //   localStorage.setItem(
   //     KEY_CACHE_POKECARD,
@@ -84,23 +68,6 @@ const Generator = () => {
 
   // removePicture = (pictureName) => {
   //   this.setState({ [pictureName]: null }, this.cacheCard)
-  // }
-
-  // handleBox = (number, focusField = null) => {
-  //   const { openedGroup } = this.state
-
-  //   // Divided in if/else in order to avoid focus on closing
-  //   if (openedGroup === number) {
-  //     this.setState({ openedGroup: '' })
-  //   } else {
-  //     if (focusField) {
-  //       const input = document.querySelector(focusField)
-
-  //       if (input) input.focus()
-  //       else console.log(`${focusField} to focus doesn't exist`)
-  //     }
-  //     this.setState({ openedGroup: number })
-  //   }
   // }
 
   return (
