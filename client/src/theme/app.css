@@ -43,29 +43,29 @@ body {
 }
 
 .fire {
-  background-image: url(../assets/1-gen/fire.png);
+  background-image: url(/assets/1-gen/fire.png);
 }
 .grass {
-  background-image: url(../assets/1-gen/grass.png);
+  background-image: url(/assets/1-gen/grass.png);
 }
 .water {
-  background-image: url(../assets/1-gen/water.png);
+  background-image: url(/assets/1-gen/water.png);
 }
 .electric {
-  background-image: url(../assets/1-gen/electric.png);
+  background-image: url(/assets/1-gen/electric.png);
 }
 .psychic {
-  background-image: url(../assets/1-gen/psychic.png);
+  background-image: url(/assets/1-gen/psychic.png);
 }
 .fighting {
-  background-image: url(../assets/1-gen/fighting.png);
+  background-image: url(/assets/1-gen/fighting.png);
 }
 .normal {
-  background-image: url(../assets/1-gen/normal.png);
+  background-image: url(/assets/1-gen/normal.png);
 }
 .steel {
-  background-image: url(../assets/1-gen/steel.png);
+  background-image: url(/assets/1-gen/steel.png);
 }
 .dark {
-  background-image: url(../assets/1-gen/dark.png);
+  background-image: url(/assets/1-gen/dark.png);
 }

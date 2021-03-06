@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Select } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
+import { useFormContext } from 'react-hook-form'
 import { Field } from '..'
 import {
   ELEMENTS,
@@ -35,27 +36,44 @@ const optionsRetreat = RETREAT_CHOICES.map((el) => (
 
 const FieldsSubInfo = () => {
   const { t } = useTranslation('generator')
+  const { register } = useFormContext()
 
   return (
     <Box>
       <Field label={t('weaknessType')}>
-        <Select name="weaknessType" placeholder=" ">
+        <Select
+          name="weaknessType"
+          placeholder=" "
+          textTransform="capitalize"
+          ref={register}
+        >
           {optionsType}
         </Select>
       </Field>
       <Field label={t('weaknessAmount')}>
-        <Select name="weaknessAmount">{optionsWeakness}</Select>
+        <Select name="weaknessAmount" ref={register}>
+          {optionsWeakness}
+        </Select>
       </Field>
       <Field label={t('resistanceType')}>
-        <Select name="resistanceType" placeholder=" ">
+        <Select
+          name="resistanceType"
+          placeholder=" "
+          textTransform="capitalize"
+          ref={register}
+        >
           {optionsType}
         </Select>
       </Field>
       <Field label={t('resistanceAmount')}>
-        <Select name="resistanceAmount">{optionsResistance}</Select>
+        <Select name="resistanceAmount" ref={register}>
+          {optionsResistance}
+        </Select>
       </Field>
       <Field label={t('retreat')}>
-        <Select name="retreat">{optionsRetreat}</Select>
+        <Select name="retreat" ref={register}>
+          {optionsRetreat}
+        </Select>
       </Field>
     </Box>
   )

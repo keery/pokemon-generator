@@ -27,7 +27,7 @@
     "illustrator" : "Illustrateur",
     "collectionNumber" : "Numéro de collection",
     "rarity" : "Rareté",
-    "weaknessResistanceRetreat" : "Faiblesse, résistance et coût de retrait",
+    "weaknessResistanceRetreat" : "Faiblesse, résistance, retrait",
     "weaknessType" : "Type de faiblesse",
     "weaknessAmount" : "Montant de la faiblesse",
     "resistanceType" : "Type de résistance",

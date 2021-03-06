@@ -1,9 +1,16 @@
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { Dashboard } from '@uppy/react'
-import { withTranslation } from 'react-i18next'
+import { withTranslation, getI18n } from 'react-i18next'
 import { Box, Text, Icon } from '@chakra-ui/react'
-import { ModalContext } from '../../context'
+import Uppy from '@uppy/core'
+import Url from '@uppy/url'
+import Webcam from '@uppy/webcam'
+import Instagram from '@uppy/instagram'
+import Transloadit from '@uppy/transloadit'
+import XHRUpload from '@uppy/xhr-upload'
+import French from '@uppy/locales/lib/fr_FR'
+import Spanish from '@uppy/locales/lib/es_ES'
 import { FaCloudUploadAlt } from 'react-icons/fa'
 
 const EMPTY_STATE = {
@@ -11,11 +18,55 @@ const EMPTY_STATE = {
   uploadLabel: '',
 }
 
-class FileInput extends Component {
-  static contextType = ModalContext
+const getUppyTranslations = (locale) => {
+  switch (locale) {
+    case 'fr':
+      return French
+    case 'es':
+      return Spanish
+    default:
+      return false
+  }
+}
 
+const TRANSLOADIT_KEY = 'be3e863775b14553a504aaa98ca3c32c'
+const TRANSLOADIT_SECRET = 'bf39fb91c830d0a63f1e7880508d4f79c4bc1075'
+const TRANSLOADIT_TEMPLATE_ID = '2451e3544cfd4eb29688983b6c7e8956'
+
+class FileInput extends Component {
   constructor(props) {
     super(props)
+
+    this.uppy = new Uppy({
+      id: props.name,
+      autoProceed: true,
+      // locale: getUppyTranslations(language),
+      debug: true,
+      allowMultipleUploads: false,
+      restrictions: {
+        maxFileSize: 1000000,
+        maxNumberOfFiles: 1,
+        allowedFileTypes: ['image/*'],
+      },
+    })
+      .use(Webcam)
+      .use(Instagram, {
+        companionUrl: process.env.REACT_APP_SERVER_URL,
+      })
+      .use(Url, {
+        companionUrl: process.env.REACT_APP_SERVER_URL,
+      })
+      .use(Transloadit, {
+        debug: true,
+        // signature: TRANSLOADIT_SECRET,
+        params: {
+          auth: {
+            // expires: dayjs().add(6, 'hour').format('YYYY/MM/DD HH:mm:ss+00:00'),
+            key: TRANSLOADIT_KEY,
+          },
+          template_id: TRANSLOADIT_TEMPLATE_ID,
+        },
+      })
 
     if (props.value) {
       this.state = {
@@ -27,30 +78,28 @@ class FileInput extends Component {
     }
   }
 
-  // componentDidMount() {
-  //   const { onChange, name, uppy } = this.props;
-  //   uppy.on("transloadit:result", (stepName, result) => {
-  //     const file = uppy.getFile(result.localId);
-
-  //     this.setState({
-  //       uploadLabel: file.name,
-  //       isUploaded: true,
-  //     });
-
-  //     onChange({
-  //       target: {
-  //         name,
-  //         value: {
-  //           src: file.response.uploadURL,
-  //           name: file.name,
-  //         },
-  //         getAttribute: () => false,
-  //       },
-  //     });
-  //     uppy.reset();
-  //     this.context.closeModal();
-  //   });
-  // }
+  componentDidMount() {
+    const { onChange, name } = this.props
+    this.uppy.on('transloadit:result', (stepName, result) => {
+      const file = this.uppy.getFile(result.localId)
+      this.setState({
+        uploadLabel: file.name,
+        isUploaded: true,
+      })
+      onChange({
+        target: {
+          name,
+          value: {
+            src: file.response.uploadURL,
+            name: file.name,
+          },
+          getAttribute: () => false,
+        },
+      })
+      this.uppy.reset()
+      // this.context.closeModal()
+    })
+  }
 
   // componentDidUpdate(prevProps, prevState) {
   //   if (prevProps.value !== this.props.value && !this.props.value) {
@@ -63,23 +112,23 @@ class FileInput extends Component {
   //   this.props.uppy.close();
   // }
 
-  handleFile = (event) => {
-    const { isUploaded } = this.state
-    console.log(isUploaded)
-    this.setState({
-      // uploadLabel: file.name,
-      isUploaded: !isUploaded,
-    })
-    // this.context.openModalWith(
-    //   <Dashboard
-    //     uppy={this.props.uppy}
-    //     plugins={['Instagram', 'Webcam', 'Url']}
-    //     proudlyDisplayPoweredByUppy={false}
-    //     metaFields={[{ id: 'name', name: 'Name', placeholder: 'File name' }]}
-    //     browserBackButtonClose
-    //   />,
-    // )
-  }
+  // handleFile = (event) => {
+  //   const { isUploaded } = this.state
+  //   console.log(isUploaded)
+  //   this.setState({
+  //     // uploadLabel: file.name,
+  //     isUploaded: !isUploaded,
+  //   })
+  //   // this.context.openModalWith(
+  //     <Dashboard
+  //       uppy={this.props.uppy}
+  //       plugins={['Instagram', 'Webcam', 'Url']}
+  //       proudlyDisplayPoweredByUppy={false}
+  //       metaFields={[{ id: 'name', name: 'Name', placeholder: 'File name' }]}
+  //       browserBackButtonClose
+  //     />
+  //   )
+  // }
 
   render() {
     const { name } = this.props
@@ -87,6 +136,13 @@ class FileInput extends Component {
     return (
       <Box w="100%" color="#8a8484" onClick={this.handleFile}>
         <div className="file-input" name={name} />
+        <Dashboard
+          uppy={this.uppy}
+          plugins={['Instagram', 'Webcam', 'Url']}
+          proudlyDisplayPoweredByUppy={false}
+          metaFields={[{ id: 'name', name: 'Name', placeholder: 'File name' }]}
+          browserBackButtonClose
+        />
         <Box
           width="100%"
           padding="8px"
@@ -141,21 +197,6 @@ class FileInput extends Component {
       </Box>
     )
   }
-}
-
-FileInput.defaultProps = {
-  onChange: () => null,
-  value: false,
-}
-
-FileInput.propTypes = {
-  onChange: PropTypes.func,
-  name: PropTypes.string.isRequired,
-  uppy: PropTypes.object.isRequired,
-  value: PropTypes.shape({
-    src: PropTypes.string,
-    name: PropTypes.string,
-  }),
 }
 
 export default withTranslation('fileInput')(FileInput)

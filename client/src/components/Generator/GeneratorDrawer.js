@@ -58,24 +58,24 @@ const GeneratorDrawer = () => {
                 </AccordionPanel>
               </AccordionItem>
               <AccordionItem>
+                <GroupButton number="03" label={t('attack1')} />
+                <AccordionPanel>
+                  <FieldsAttack name="attack1" />
+                </AccordionPanel>
+              </AccordionItem>
+              <AccordionItem>
+                <GroupButton number="04" label={t('attack2')} />
+                <AccordionPanel>
+                  <FieldsAttack name="attack2" />
+                </AccordionPanel>
+              </AccordionItem>
+              <AccordionItem>
                 <GroupButton
-                  number="03"
+                  number="05"
                   label={t('weaknessResistanceRetreat')}
                 />
                 <AccordionPanel>
                   <FieldsSubInfo />
-                </AccordionPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <GroupButton number="04" label={t('attack1')} />
-                <AccordionPanel>
-                  <FieldsAttack attackNumber="1" />
-                </AccordionPanel>
-              </AccordionItem>
-              <AccordionItem>
-                <GroupButton number="05" label={t('attack2')} />
-                <AccordionPanel>
-                  <FieldsAttack attackNumber="2" />
                 </AccordionPanel>
               </AccordionItem>
               <AccordionItem>

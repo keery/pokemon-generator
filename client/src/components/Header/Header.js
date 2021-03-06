@@ -1,9 +1,8 @@
-import React from "react";
-import { Container, Image, Link, Text, Flex } from "@chakra-ui/react";
-import { withTranslation } from "react-i18next";
-import PropTypes from "prop-types";
-import LanguageSelector from "../LanguageSelector/LanguageSelector";
-import LogoPokeball from "../../assets/img/pokeball.png";
+import React from 'react'
+import { Container, Image, Link, Text, Flex } from '@chakra-ui/react'
+import { withTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
+import LanguageSelector from '../LanguageSelector/LanguageSelector'
 
 const Header = ({ t }) => (
   <header>
@@ -12,7 +11,7 @@ const Header = ({ t }) => (
         <Link href="/" id="logo">
           <Image
             w="40px"
-            src={LogoPokeball}
+            src={`${process.env.REACT_APP_FRONT_URL}/assets/img/pokeball.png`}
             alt={`Logo ${process.env.REACT_APP_TITLE}`}
           />
         </Link>
@@ -30,10 +29,10 @@ const Header = ({ t }) => (
       </div> */}
     </Container>
   </header>
-);
+)
 
 Header.propTypes = {
   t: PropTypes.func.isRequired,
-};
+}
 
-export default withTranslation()(Header);
+export default withTranslation()(Header)

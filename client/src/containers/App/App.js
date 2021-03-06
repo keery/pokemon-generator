@@ -9,7 +9,6 @@ import {
   LoaderConsumer,
   ModalConsumer,
   ModalProvider,
-  StoreProvider,
 } from '../../components'
 import theme from '../../theme'
 console.log(theme.components)
@@ -18,16 +17,14 @@ const App = () => (
     <ErrorBoundary>
       <ChakraProvider theme={theme}>
         <LoaderProvider>
-          <StoreProvider>
-            <ModalProvider>
-              <LoaderConsumer />
-              <ModalConsumer />
-              <Header />
-              <Container maxW="1200px">
-                <Generator />
-              </Container>
-            </ModalProvider>
-          </StoreProvider>
+          <ModalProvider>
+            <LoaderConsumer />
+            <ModalConsumer />
+            <Header />
+            <Container maxW="1200px">
+              <Generator />
+            </Container>
+          </ModalProvider>
         </LoaderProvider>
       </ChakraProvider>
     </ErrorBoundary>

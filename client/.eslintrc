@@ -9,14 +9,6 @@ extends:
 rules :
   "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
 
-  "react/jsx-indent" : ["error", 4]
-
-  "indent": ["error", 4]
-
-  "react/jsx-indent-props": ["error", 4]
-
-  "key-spacing": ["error", { "beforeColon": true, "align" : 'colon' }]
-
   import/no-extraneous-dependencies: "off"
   react/jsx-one-expression-per-line : "off"
   react/destructuring-assignment : "off"
@@ -24,3 +16,6 @@ rules :
   jsx-a11y/no-static-element-interactions : "off"
   jsx-a11y/no-noninteractive-tabindex : "off"
   jsx-a11y/no-noninteractive-element-interactions : "off"
+  react/prop-types: "off"
+  arrow-parens: "off"
+  semi: "off"

@@ -1,24 +1,28 @@
-import axios from 'axios';
-import French from '@uppy/locales/lib/fr_FR';
-import Spanish from '@uppy/locales/lib/es_ES';
+import axios from 'axios'
+import French from '@uppy/locales/lib/fr_FR'
+import Spanish from '@uppy/locales/lib/es_ES'
 
 export const getUppyTranslations = (locale) => {
-    switch (locale) {
+  switch (locale) {
     case 'fr':
-        return French;
+      return French
     case 'es':
-        return Spanish;
+      return Spanish
     default:
-        return false;
-    }
-};
+      return false
+  }
+}
 
 export default async () => {
-    const { data : { params, signature } } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/transloadit/signature`);
+  const {
+    data: { params, signature },
+  } = await axios.get(
+    `${process.env.REACT_APP_SERVER_URL}/api/transloadit/signature`,
+  )
 
-    return {
-        params,
-        signature,
-        waitForEncoding : true,
-    };
-};
+  return {
+    params,
+    signature,
+    waitForEncoding: true,
+  }
+}

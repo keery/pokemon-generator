@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Input, Select, Textarea, Flex } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
+import { useFormContext } from 'react-hook-form'
 import { Field } from '..'
 import { DAMAGE_CHOICES, ATTACK_AMOUNT_CHOICES, ELEMENTS } from '../../const'
 
@@ -22,32 +23,34 @@ const optionsAmount = ATTACK_AMOUNT_CHOICES.map((el) => (
   </option>
 ))
 
-const FieldsAttack = ({ attackNumber }) => {
+const FieldsAttack = ({ name }) => {
   const { t } = useTranslation('generator')
+  const { register } = useFormContext()
 
   return (
     <Box>
       <Field label={t('name')}>
-        <Input name={`attack${attackNumber}Name`} type="text" />
+        <Input name={`${name}.name`} type="text" ref={register} />
       </Field>
       <Field label={t('damage')}>
-        <Select name={`attack${attackNumber}Damage`} placeholder=" ">
+        <Select name={`${name}.damage`} placeholder=" " ref={register}>
           {optionsDamage}
         </Select>
       </Field>
       <Field label={t('info')}>
-        <Textarea name={`attack${attackNumber}Info`} />
+        <Textarea name={`${name}.info`} ref={register} />
       </Field>
       <Field label={`${t('amount')} / ${t('type')}`}>
         <Flex>
-          <Select name={`attack${attackNumber}Amount`} mr={3} w="40%">
+          <Select name={`${name}.amount`} mr={3} w="40%" ref={register}>
             {optionsAmount}
           </Select>
           <Select
-            name={`attack${attackNumber}Type`}
+            name={`${name}.type`}
             textTransform="capitalize"
             placeholder=" "
             w="60%"
+            ref={register}
           >
             {optionsType}
           </Select>

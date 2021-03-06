@@ -75,7 +75,6 @@ const RETREAT_CHOICES = ['0', '1', '2', '3', '4']
 /**
  * Local storage keys
  */
-const KEY_CACHE_POKECARD = 'pokecard'
 const KEY_CACHE_LNG = 'lngPG'
 
 /**
@@ -87,7 +86,6 @@ const LANGUAGES = ['en', 'fr', 'es']
 const DEFAULT_LANGUAGES = 'en'
 
 export {
-  KEY_CACHE_POKECARD,
   KEY_CACHE_LNG,
   LANGUAGES,
   DEFAULT_LANGUAGES,
