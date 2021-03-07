@@ -1,31 +1,29 @@
 import React from 'react'
-import { Box, Input, Select, Textarea, Flex } from '@chakra-ui/react'
+import { Box, Input, Textarea } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useFormContext } from 'react-hook-form'
 import { Field } from '..'
 import { DAMAGE_CHOICES, ATTACK_AMOUNT_CHOICES, ELEMENTS } from '../../const'
+import Select from '../Select'
 
-const optionsDamage = DAMAGE_CHOICES.map((el) => (
-  <option value={el} key={el}>
-    {el}
-  </option>
-))
+const optionsDamage = DAMAGE_CHOICES.map((el) => ({
+  value: el,
+  label: el,
+}))
 
-const optionsType = ELEMENTS.map((el) => (
-  <option value={el} key={el}>
-    {el}
-  </option>
-))
+const optionsType = ELEMENTS.map((el) => ({
+  value: el,
+  label: el,
+}))
 
-const optionsAmount = ATTACK_AMOUNT_CHOICES.map((el) => (
-  <option value={el} key={el}>
-    {el}
-  </option>
-))
+const optionsAmount = ATTACK_AMOUNT_CHOICES.map((el) => ({
+  value: el,
+  label: el,
+}))
 
 const FieldsAttack = ({ name }) => {
   const { t } = useTranslation('generator')
-  const { register } = useFormContext()
+  const { register, control } = useFormContext()
 
   return (
     <Box>
@@ -33,28 +31,26 @@ const FieldsAttack = ({ name }) => {
         <Input name={`${name}.name`} type="text" ref={register} />
       </Field>
       <Field label={t('damage')}>
-        <Select name={`${name}.damage`} placeholder=" " ref={register}>
-          {optionsDamage}
-        </Select>
+        <Select
+          name={`${name}.damage`}
+          options={optionsDamage}
+          control={control}
+          hasIcon={false}
+          isClearable
+        />
       </Field>
       <Field label={t('info')}>
         <Textarea name={`${name}.info`} ref={register} />
       </Field>
-      <Field label={`${t('amount')} / ${t('type')}`}>
-        <Flex>
-          <Select name={`${name}.amount`} mr={3} w="40%" ref={register}>
-            {optionsAmount}
-          </Select>
-          <Select
-            name={`${name}.type`}
-            textTransform="capitalize"
-            placeholder=" "
-            w="60%"
-            ref={register}
-          >
-            {optionsType}
-          </Select>
-        </Flex>
+      <Field label={t('amount')}>
+        <Select
+          name={`${name}.amount`}
+          options={optionsAmount}
+          hasIcon={false}
+        />
+      </Field>
+      <Field label={t('type')}>
+        <Select name={`${name}.type`} isClearable options={optionsType} />
       </Field>
     </Box>
   )

@@ -40,9 +40,9 @@ const HP_CHOICES = [
   '250',
 ]
 
-const WEAKNESS_CHOICES = ['', '+10', '+20', '+30', '+40', 'x2']
+const WEAKNESS_CHOICES = ['+10', '+20', '+30', '+40', 'x2']
 
-const RESISTANCE_CHOICES = ['', '-10', '-20', '-30', '-40']
+const RESISTANCE_CHOICES = ['-10', '-20', '-30', '-40']
 
 const DAMAGE_CHOICES = [
   '10',
@@ -70,7 +70,7 @@ const ATTACK_AMOUNT_CHOICES = ['1', '2', '3', '4']
 
 const RARITY_CHOICES = ['common', 'uncommon', 'rare']
 
-const RETREAT_CHOICES = ['0', '1', '2', '3', '4']
+const RETREAT_CHOICES = ['1', '2', '3', '4']
 
 /**
  * Local storage keys

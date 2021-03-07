@@ -1,21 +1,29 @@
 import React from 'react'
-import { Box, Input, Select } from '@chakra-ui/react'
+import { Box, Input } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useFormContext } from 'react-hook-form'
 import { Field, FileInput } from '..'
+import Select from '../Select'
+
+const optionsStage = [
+  { value: 'basic', label: 'Basic' },
+  { value: 'stage1', label: 'Stage 1' },
+  { value: 'stage2', label: 'Stage 2' },
+]
 
 const FieldsEvolution = () => {
   const { t } = useTranslation('generator')
-  const { register } = useFormContext()
+  const { register, control } = useFormContext()
 
   return (
     <Box>
       <Field label={t('stage')}>
-        <Select name="stage" ref={register}>
-          <option value="basic">Basic</option>
-          <option value="stage1">Stage 1</option>
-          <option value="stage2">Stage 2</option>
-        </Select>
+        <Select
+          name="stage"
+          options={optionsStage}
+          control={control}
+          hasIcon={false}
+        />
       </Field>
       <Field label={t('name')}>
         <Input name="nameEvolution" type="text" ref={register} />

@@ -62,6 +62,10 @@
   transition: transform ease-in-out 0.8s;
 }
 
+/* #generator-drawer-accordion button[aria-expanded='true'] + .chakra-collapse {
+  overflow: unset !important;
+} */
+
 .fire {
   background-image: url(/assets/1-gen/fire.png);
 }

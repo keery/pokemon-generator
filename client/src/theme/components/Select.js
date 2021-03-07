@@ -5,7 +5,7 @@ const Select = {
       field: {
         backgroundColor: 'grey.100',
         border: '1px solid #ededed',
-        borderRadius: '10px',
+        borderRadius: 'md',
         _hover: {
           borderColor: '1px solid #b5b5b5',
         },

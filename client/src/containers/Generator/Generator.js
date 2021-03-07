@@ -27,6 +27,20 @@ const Generator = () => {
     console.log(data)
   }
 
+  const resetCard = () => {
+    form.getValues()
+    console.log(form.getValues(), !isEqual(form.getValues(), DEFAULT_STATE))
+    console.log(DEFAULT_STATE)
+    // if (
+    //   !isEqual(form.getValues(), DEFAULT_STATE) &&
+    //   window.confirm('confirmReset')
+    // ) {
+    //   form.setValue(DEFAULT_STATE)
+    //   // this.flip = true
+    //   localStorage.removeItem(process.env.REACT_APP_KEY_CACHE)
+    // }
+  }
+
   // cacheCard = () => {
   //   localStorage.setItem(
   //     KEY_CACHE_POKECARD,
@@ -41,17 +55,6 @@ const Generator = () => {
   //   document.body.appendChild(link)
   //   link.click()
   //   document.body.removeChild(link)
-  // }
-
-  // resetCard = () => {
-  //   if (
-  //     !isEqual(this.state, DEFAULT_STATE) &&
-  //     window.confirm(this.props.t('confirmReset'))
-  //   ) {
-  //     this.setState(DEFAULT_STATE)
-  //     this.flip = true
-  //     localStorage.removeItem(KEY_CACHE_POKECARD)
-  //   }
   // }
 
   // updateImgPos = (event) => {
@@ -90,7 +93,7 @@ const Generator = () => {
             {/* <Framer /> */}
           </Box>
         </Flex>
-        <PanelActions />
+        <PanelActions reset={resetCard} />
       </form>
     </FormProvider>
   )

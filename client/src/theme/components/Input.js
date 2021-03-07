@@ -5,10 +5,7 @@ const Input = {
       field: {
         backgroundColor: 'grey.100',
         border: '1px solid #ededed',
-        borderRadius: '10px',
-        _hover: {
-          borderColor: '1px solid #b5b5b5',
-        },
+        borderRadius: 'md',
       },
     },
   },

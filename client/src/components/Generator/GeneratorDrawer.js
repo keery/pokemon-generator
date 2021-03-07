@@ -59,7 +59,7 @@ const GeneratorDrawer = () => {
               </AccordionItem>
               <AccordionItem>
                 <GroupButton number="03" label={t('attack1')} />
-                <AccordionPanel>
+                <AccordionPanel overflow="unset">
                   <FieldsAttack name="attack1" />
                 </AccordionPanel>
               </AccordionItem>

@@ -1,19 +1,19 @@
 import React from 'react'
-import { Box, Input, Select, Textarea, Flex } from '@chakra-ui/react'
+import { Box, Input, Textarea, Flex } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useFormContext } from 'react-hook-form'
+import Select from '../Select'
 import { Field } from '..'
 import { RARITY_CHOICES } from '../../const'
 
-const optionsRarity = RARITY_CHOICES.map((el) => (
-  <option value={el} key={el}>
-    {el}
-  </option>
-))
+const optionsRarity = RARITY_CHOICES.map((el) => ({
+  value: el,
+  label: el,
+}))
 
 const FieldsBottomInfo = () => {
   const { t } = useTranslation('generator')
-  const { register } = useFormContext()
+  const { register, control } = useFormContext()
 
   return (
     <Box>
@@ -33,9 +33,12 @@ const FieldsBottomInfo = () => {
         </Flex>
       </Field>
       <Field label={t('rarity')}>
-        <Select name="rarity" textTransform="capitalize" ref={register}>
-          {optionsRarity}
-        </Select>
+        <Select
+          name="rarity"
+          control={control}
+          options={optionsRarity}
+          hasIcon={false}
+        />
       </Field>
     </Box>
   )

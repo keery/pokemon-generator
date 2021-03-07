@@ -3,7 +3,7 @@ const Textarea = {
     outline: {
       backgroundColor: 'grey.100',
       border: '1px solid #ededed',
-      borderRadius: '10px',
+      borderRadius: 'md',
       maxH: '300px',
       _hover: {
         borderColor: '1px solid #b5b5b5',

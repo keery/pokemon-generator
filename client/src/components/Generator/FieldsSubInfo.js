@@ -1,7 +1,8 @@
 import React from 'react'
-import { Box, Select } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
 import { useFormContext } from 'react-hook-form'
+import Select from '../Select'
 import { Field } from '..'
 import {
   ELEMENTS,
@@ -10,70 +11,74 @@ import {
   RETREAT_CHOICES,
 } from '../../const'
 
-const optionsType = ELEMENTS.map((el) => (
-  <option value={el} key={el}>
-    {el}
-  </option>
-))
+const optionsType = ELEMENTS.map((el) => ({
+  value: el,
+  label: el,
+}))
 
-const optionsWeakness = WEAKNESS_CHOICES.map((el) => (
-  <option value={el} key={el}>
-    {el}
-  </option>
-))
+const optionsWeakness = WEAKNESS_CHOICES.map((el) => ({
+  value: el,
+  label: el,
+}))
 
-const optionsResistance = RESISTANCE_CHOICES.map((el) => (
-  <option value={el} key={el}>
-    {el}
-  </option>
-))
+const optionsResistance = RESISTANCE_CHOICES.map((el) => ({
+  value: el,
+  label: el,
+}))
 
-const optionsRetreat = RETREAT_CHOICES.map((el) => (
-  <option value={el} key={el}>
-    {el}
-  </option>
-))
+const optionsRetreat = RETREAT_CHOICES.map((el) => ({
+  value: el,
+  label: el,
+}))
 
 const FieldsSubInfo = () => {
   const { t } = useTranslation('generator')
-  const { register } = useFormContext()
+  const { control } = useFormContext()
 
   return (
     <Box>
       <Field label={t('weaknessType')}>
         <Select
           name="weaknessType"
-          placeholder=" "
-          textTransform="capitalize"
-          ref={register}
-        >
-          {optionsType}
-        </Select>
+          control={control}
+          options={optionsType}
+          isClearable
+        />
       </Field>
       <Field label={t('weaknessAmount')}>
-        <Select name="weaknessAmount" ref={register}>
-          {optionsWeakness}
-        </Select>
+        <Select
+          name="weaknessAmount"
+          control={control}
+          options={optionsWeakness}
+          hasIcon={false}
+          isClearable
+        />
       </Field>
       <Field label={t('resistanceType')}>
         <Select
           name="resistanceType"
-          placeholder=" "
-          textTransform="capitalize"
-          ref={register}
-        >
-          {optionsType}
-        </Select>
+          control={control}
+          options={optionsType}
+          isClearable
+        />
       </Field>
       <Field label={t('resistanceAmount')}>
-        <Select name="resistanceAmount" ref={register}>
-          {optionsResistance}
-        </Select>
+        <Select
+          name="resistanceAmount"
+          control={control}
+          options={optionsResistance}
+          hasIcon={false}
+          isClearable
+        />
       </Field>
       <Field label={t('retreat')}>
-        <Select name="retreat" ref={register}>
-          {optionsRetreat}
-        </Select>
+        <Select
+          name="retreat"
+          control={control}
+          options={optionsRetreat}
+          hasIcon={false}
+          isClearable
+        />
       </Field>
     </Box>
   )
