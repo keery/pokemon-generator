@@ -3,13 +3,14 @@ import { useTheme } from '@chakra-ui/react'
 import ReactSelect from 'react-select'
 import { useController } from 'react-hook-form'
 
-const getStyle = (theme, hasIcon) => {
+const getStyle = (theme, iconPath) => {
   const before = {
     content: '""',
     display: 'inline-block',
     backgroundPosition: 'center',
     width: '32px',
     height: '32px',
+    backgroundRepeat: 'no-repeat',
   }
 
   return {
@@ -23,12 +24,15 @@ const getStyle = (theme, hasIcon) => {
         backgroundColor: theme.colors.grey['100'],
         borderRadius: theme.radii.md,
         height: '40px',
-        ...(hasIcon && value.length > 0
+        ...(iconPath && value.length > 0
           ? {
               ':before': {
                 ...before,
                 marginLeft: '8px',
-                backgroundImage: `url(/assets/1-gen/1-${value[0].value}.png)`,
+                backgroundImage: `url(/assets/1-gen/${iconPath.replace(
+                  '{{value}}',
+                  value[0].value,
+                )})`,
               },
             }
           : {}),
@@ -46,11 +50,14 @@ const getStyle = (theme, hasIcon) => {
         backgroundColor: isSelected
           ? theme.colors.blue['500']
           : styles.backgroundColor,
-        ':before': hasIcon
+        ':before': iconPath
           ? {
               ...before,
               marginRight: '10px',
-              backgroundImage: `url(/assets/1-gen/1-${data.value}.png)`,
+              backgroundImage: `url(/assets/1-gen/${iconPath.replace(
+                '{{value}}',
+                data.value,
+              )})`,
               borderRadius: theme.radii.md,
               backgroundColor: isSelected
                 ? theme.colors.blue['200']
@@ -68,7 +75,7 @@ const Select = ({
   control,
   options,
   placeholder = '',
-  hasIcon = true,
+  iconPath = null,
   isClearable = false,
 }) => {
   const theme = useTheme()
@@ -86,7 +93,7 @@ const Select = ({
       name={name}
       placeholder={placeholder}
       options={options}
-      styles={getStyle(theme, hasIcon)}
+      styles={getStyle(theme, iconPath)}
       onChange={onChange}
       isClearable={isClearable}
       menuPortalTarget={document.body}

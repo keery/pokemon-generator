@@ -43,6 +43,7 @@ const FieldsSubInfo = () => {
           control={control}
           options={optionsType}
           isClearable
+          iconPath="1-{{value}}.png"
         />
       </Field>
       <Field label={t('weaknessAmount')}>
@@ -50,7 +51,6 @@ const FieldsSubInfo = () => {
           name="weaknessAmount"
           control={control}
           options={optionsWeakness}
-          hasIcon={false}
           isClearable
         />
       </Field>
@@ -59,6 +59,7 @@ const FieldsSubInfo = () => {
           name="resistanceType"
           control={control}
           options={optionsType}
+          iconPath="1-{{value}}.png"
           isClearable
         />
       </Field>
@@ -67,7 +68,6 @@ const FieldsSubInfo = () => {
           name="resistanceAmount"
           control={control}
           options={optionsResistance}
-          hasIcon={false}
           isClearable
         />
       </Field>
@@ -76,8 +76,8 @@ const FieldsSubInfo = () => {
           name="retreat"
           control={control}
           options={optionsRetreat}
-          hasIcon={false}
           isClearable
+          iconPath="1-normal.png"
         />
       </Field>
     </Box>

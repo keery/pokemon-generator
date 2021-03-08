@@ -35,7 +35,6 @@ const FieldsAttack = ({ name }) => {
           name={`${name}.damage`}
           options={optionsDamage}
           control={control}
-          hasIcon={false}
           isClearable
         />
       </Field>
@@ -43,14 +42,15 @@ const FieldsAttack = ({ name }) => {
         <Textarea name={`${name}.info`} ref={register} />
       </Field>
       <Field label={t('amount')}>
-        <Select
-          name={`${name}.amount`}
-          options={optionsAmount}
-          hasIcon={false}
-        />
+        <Select name={`${name}.amount`} options={optionsAmount} />
       </Field>
       <Field label={t('type')}>
-        <Select name={`${name}.type`} isClearable options={optionsType} />
+        <Select
+          name={`${name}.type`}
+          isClearable
+          options={optionsType}
+          iconPath="1-{{value}}.png"
+        />
       </Field>
     </Box>
   )

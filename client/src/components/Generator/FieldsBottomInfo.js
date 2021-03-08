@@ -37,7 +37,7 @@ const FieldsBottomInfo = () => {
           name="rarity"
           control={control}
           options={optionsRarity}
-          hasIcon={false}
+          iconPath="rarity-{{value}}.png"
         />
       </Field>
     </Box>

@@ -34,18 +34,18 @@ const FieldsPokemonInfo = () => {
         <Input name="name" type="text" ref={register} />
       </Field>
       <Field label={t('type')}>
-        <Select name="type" options={optionsType} control={control} />
+        <Select
+          name="type"
+          options={optionsType}
+          control={control}
+          iconPath="1-{{value}}.png"
+        />
       </Field>
       <Field label={t('picture')}>
         <FileInput name="mainImage" />
       </Field>
       <Field label="HP">
-        <Select
-          name="hp"
-          options={optionsHP}
-          control={control}
-          hasIcon={false}
-        />
+        <Select name="hp" options={optionsHP} control={control} />
       </Field>
       <Field label={t('species')}>
         <Input name="species" type="text" ref={register} />

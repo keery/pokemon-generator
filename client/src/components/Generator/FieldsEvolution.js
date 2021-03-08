@@ -18,12 +18,7 @@ const FieldsEvolution = () => {
   return (
     <Box>
       <Field label={t('stage')}>
-        <Select
-          name="stage"
-          options={optionsStage}
-          control={control}
-          hasIcon={false}
-        />
+        <Select name="stage" options={optionsStage} control={control} />
       </Field>
       <Field label={t('name')}>
         <Input name="nameEvolution" type="text" ref={register} />
