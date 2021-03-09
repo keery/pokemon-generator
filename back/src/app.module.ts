@@ -1,0 +1,54 @@
+import { Module } from '@nestjs/common'
+import { ConfigModule, ConfigService } from '@nestjs/config'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
+import { CardModule } from '~card/card.module'
+import { ImageStorageModule } from '~image_storage/image_storage.module'
+import { MailModule } from './mail/mail.module'
+import { ConsoleModule } from 'nestjs-console'
+import { I18nModule, I18nJsonParser } from 'nestjs-i18n'
+import * as path from 'path'
+
+@Module({
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: [
+        `.env.${process.env.NODE_ENV}`,
+        `.env.${process.env.NODE_ENV}.local`,
+      ],
+      ignoreEnvFile: process.env.NODE_ENV === 'production',
+    }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (config: ConfigService) => {
+        return {
+          type: 'postgres',
+          host: config.get('POSTGRESQL_ADDON_HOST'),
+          port: Number(config.get('POSTGRESQL_ADDON_PORT')),
+          username: config.get('POSTGRESQL_ADDON_USER'),
+          password: config.get('POSTGRESQL_ADDON_PASSWORD'),
+          database: config.get('POSTGRESQL_ADDON_DB'),
+          entities: [__dirname + '/**/*.entity{.ts,.js}'],
+          synchronize: true,
+          logging: process.env.NODE_ENV === 'dev',
+        } as PostgresConnectionOptions
+      },
+    }),
+    I18nModule.forRoot({
+      fallbackLanguage: 'en',
+      parser: I18nJsonParser,
+      parserOptions: {
+        path: path.join(__dirname, '/i18n/'),
+        watch: process.env.NODE_ENV === 'dev',
+      },
+    }),
+    CardModule,
+    ImageStorageModule,
+    MailModule,
+    ConsoleModule,
+  ],
+  providers: [],
+  exports: [],
+})
+export class AppModule {}

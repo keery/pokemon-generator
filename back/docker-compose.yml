@@ -1,0 +1,25 @@
+version: '3.6'
+# docker-compose -p pokemon up -d
+services:
+  postgres:
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_USER: pokemon-admin
+      POSTGRES_PASSWORD: pokemon-password
+      POSTGRES_DB: pokemon
+    ports:
+      - 5434:5432
+    volumes:
+      - postgresql:/var/lib/postgresql/pokemon
+      - postgresql_data:/var/lib/postgresql/pokemon/data
+
+  maildev:
+    image: djfarrelly/maildev
+    ports:
+      - '1082:80'
+      - '26:25'
+
+volumes:
+  postgresql:
+  postgresql_data:

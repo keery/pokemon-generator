@@ -56,16 +56,19 @@ class FileInput extends Component {
       .use(Url, {
         companionUrl: process.env.REACT_APP_SERVER_URL,
       })
-      .use(Transloadit, {
-        debug: true,
-        // signature: TRANSLOADIT_SECRET,
-        params: {
-          auth: {
-            // expires: dayjs().add(6, 'hour').format('YYYY/MM/DD HH:mm:ss+00:00'),
-            key: TRANSLOADIT_KEY,
-          },
-          template_id: TRANSLOADIT_TEMPLATE_ID,
-        },
+      // .use(Transloadit, {
+      //   debug: true,
+      //   // signature: TRANSLOADIT_SECRET,
+      //   params: {
+      //     auth: {
+      //       // expires: dayjs().add(6, 'hour').format('YYYY/MM/DD HH:mm:ss+00:00'),
+      //       key: TRANSLOADIT_KEY,
+      //     },
+      //     template_id: TRANSLOADIT_TEMPLATE_ID,
+      //   },
+      // })
+      .use(XHRUpload, {
+        endpoint: `${process.env.REACT_APP_SERVER_URL}/api/file/upload`,
       })
 
     if (props.value) {
