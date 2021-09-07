@@ -27,6 +27,7 @@ const LayerCard = ({
     type,
     description,
     hp,
+    stage,
     resistanceType,
     resistanceAmount,
     weaknessAmount,
@@ -39,17 +40,31 @@ const LayerCard = ({
 }) => (
     <div className="LayerCard">
         {/* NAME */}
-        <InteractiveInput
-            name="name"
-            x={8.7}
-            y={7}
-            height={4.3}
-            width={55}
-            fontSize={31}
-            fontFamily="pokename"
-            onChange={handleChange}
-            value={name}
-        />
+        {stage === 'basic' ? (
+            <InteractiveInput
+                name="name"
+                x={8.7}
+                y={7}
+                height={4.3}
+                width={55}
+                fontSize={31}
+                fontFamily="pokename"
+                onChange={handleChange}
+                value={name}
+            />
+        ) : (
+            <InteractiveInput
+                name="name"
+                x={25.3}
+                y={7}
+                height={4.3}
+                width={39.4}
+                fontSize={31}
+                fontFamily="pokename"
+                onChange={handleChange}
+                value={name}
+            />
+        )}
 
         {/* HP */}
         <InteractiveSelect
