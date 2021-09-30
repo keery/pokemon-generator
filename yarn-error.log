@@ -1,0 +1,42 @@
+Arguments: 
+  /usr/local/bin/node /opt/homebrew/bin/yarn i
+
+PATH: 
+  /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.22.11
+
+Node version: 
+  16.9.1
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  SyntaxError: /Users/guillaumeesnault/Documents/Projects/pokemon-generator/package.json: Unexpected token } in JSON at position 386
+      at JSON.parse (<anonymous>)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "pokemon-generator",
+    "version": "1.0.0",
+    "scripts": {
+      "i": "yarn install",
+      "client-dev": "cd client && npm run start",
+      "server-dev": "cd server && npm run start",
+      "client-dependencies": "cd client && npm i",
+      "server-dependencies": "cd server && npm i",
+      "dev": "concurrently --kill-others-on-fail \"npm run server-dev\" \"npm run client-dev\"",
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

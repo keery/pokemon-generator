@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500;600;700;800&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@font-face {
+  font-family: "pokename";
+  src: url("/assets/fonts/GillSansStd-BoldCondensed.otf");
+}
+@font-face {
+  font-family: "pokevolution";
+  src: url("/assets/fonts/GillSansStd-BoldItalic.otf");
+}
+@font-face {
+  font-family: "pokehp";
+  src: url("/assets/fonts/FuturaStd-Heavy.otf");
+}
+@font-face {
+  font-family: "poke";
+  src: url("/assets/fonts/gill-sans-bold-extra-condensed.ttf");
+}
+
+::-moz-selection {
+  background: #b6b3ec;
+}
+::selection {
+  background: #b6b3ec;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  color: #313131;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.shape-bg {
+  /* animation-name: rotate; */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.shape-bg:nth-child(0) {
+  top: 91%;
+  left: 58%;
+  animation-duration: 88s;
+  animation-delay: -44s;
+  transform-origin: -15vw -8vh;
+}
+.shape-bg:nth-child(1) {
+  top: -22%;
+  left: -17%;
+  animation-duration: 112s;
+  animation-delay: -106s;
+  transform-origin: 19vw 22vh;
+}
+.shape-bg:nth-child(2) {
+  top: 47%;
+  left: -22%;
+  animation-duration: 85s;
+  animation-delay: -85s;
+  transform-origin: -9vw -6vh;
+}
+.shape-bg:nth-child(3) {
+  top: 30%;
+  left: 48%;
+  animation-duration: 50s;
+  animation-delay: -3s;
+  transform-origin: -9vw 22vh;
+}
+.shape-bg:nth-child(4) {
+  top: 97%;
+  left: 80%;
+  animation-duration: 104s;
+  animation-delay: -27s;
+  transform-origin: -10vw 14vh;
+}
+.shape-bg:nth-child(5) {
+  top: 67%;
+  left: 100%;
+  animation-duration: 8s;
+  animation-delay: -50s;
+  transform-origin: -21vw 15vh;
+}
+.shape-bg:nth-child(6) {
+  top: 35%;
+  left: 92%;
+  animation-duration: 97s;
+  animation-delay: -58s;
+  transform-origin: 19vw 8vh;
+}
+.shape-bg:nth-child(7) {
+  top: 66%;
+  left: 81%;
+  animation-duration: 6s;
+  animation-delay: -58s;
+  transform-origin: 17vw -7vh;
+}
+.shape-bg:nth-child(8) {
+  top: 63%;
+  left: 2%;
+  animation-duration: 11s;
+  animation-delay: -97s;
+  transform-origin: 20vw -23vh;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* .shape-bg {
+  animation-name: rotate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.shape-bg:nth-child(0) {
+  top: 91%;
+  left: 58%;
+  animation-duration: 88s;
+  animation-delay: -44s;
+  transform-origin: -15vw -8vh;
+}
+.shape-bg:nth-child(1) {
+  top: 8%;
+  left: 86%;
+  animation-duration: 112s;
+  animation-delay: -106s;
+  transform-origin: 19vw 22vh;
+}
+.shape-bg:nth-child(2) {
+  top: 23%;
+  left: 42%;
+  animation-duration: 85s;
+  animation-delay: -85s;
+  transform-origin: -9vw -6vh;
+}
+.shape-bg:nth-child(3) {
+  top: 30%;
+  left: 48%;
+  animation-duration: 50s;
+  animation-delay: -3s;
+  transform-origin: -9vw 22vh;
+}
+.shape-bg:nth-child(4) {
+  top: 97%;
+  left: 80%;
+  animation-duration: 104s;
+  animation-delay: -27s;
+  transform-origin: -10vw 14vh;
+}
+.shape-bg:nth-child(5) {
+  top: 67%;
+  left: 100%;
+  animation-duration: 8s;
+  animation-delay: -50s;
+  transform-origin: -21vw 15vh;
+}
+.shape-bg:nth-child(6) {
+  top: 35%;
+  left: 92%;
+  animation-duration: 97s;
+  animation-delay: -58s;
+  transform-origin: 19vw 8vh;
+}
+.shape-bg:nth-child(7) {
+  top: 66%;
+  left: 81%;
+  animation-duration: 6s;
+  animation-delay: -58s;
+  transform-origin: 17vw -7vh;
+}
+.shape-bg:nth-child(8) {
+  top: 63%;
+  left: 2%;
+  animation-duration: 11s;
+  animation-delay: -97s;
+  transform-origin: 20vw -23vh;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+} */

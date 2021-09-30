@@ -2,20 +2,15 @@
   "name": "pokemon-generator",
   "version": "1.0.0",
   "scripts": {
-    "client-dev": "cd client && npm run start",
-    "server-dev": "cd server && npm run start",
-    "client-dependencies": "cd client && npm i",
-    "server-dependencies": "cd server && npm i",
-    "dev": "concurrently --kill-others-on-fail \"npm run server-dev\" \"npm run client-dev\"",
-    "i": "npm install && concurrently --kill-others-on-fail \"npm run server-dependencies\" \"npm run client-dependencies\""
-  },
-  "devDependencies": {
-    "concurrently": "^4.0.1",
-    "cross-env": "^7.0.2",
-    "eslint-plugin-react": "^7.16.0"
-  },
-  "dependencies": {
-    "@uppy/transloadit": "^1.3.2",
-    "glob": "^7.1.3"
+    "i": "yarn install",
+    "install": "yarn client:install && yarn server:install",
+    "client:install": "cd client && yarn",
+    "server:install": "cd server && yarn",
+    "server:dev": "cd server && yarn start",
+    "server:build": "cd server && yarn build",
+    "server:start": "cd server && yarn start",
+    "client:dev": "cd client && yarn start",
+    "client:build": "cd client && yarn build",
+    "client:start": "cd client && yarn start"
   }
 }
