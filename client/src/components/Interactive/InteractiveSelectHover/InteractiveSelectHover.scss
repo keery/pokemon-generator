@@ -1,0 +1,67 @@
+.InteractiveSelectHover {
+    position: absolute;
+    min-height: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed transparent;
+
+    > input {
+        border: none;
+        background-color: transparent;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    > i:first-of-type {
+        margin-left: 0;
+    }
+
+    > span, > i {
+        display: none;
+        margin-left: 4px;
+        cursor: pointer;
+    }
+
+    img {
+        width: 2.8rem;
+    }
+
+    .more-icon {
+        display: none;
+        opacity: 1;
+
+        &.fade {
+            opacity: .5;
+        }
+    }
+
+    &:hover {
+        border: 2px dashed #fdd705;
+
+        > i {
+            display: flex;
+            position: relative;
+
+            &:nth-child(3):before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 100%;
+                width: 4px;
+            }
+        }
+
+        .more-icon {
+            display: flex;
+        }
+    }
+
+    &.down {
+        border: 2px solid #fdd705;
+    }
+}

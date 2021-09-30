@@ -1,13 +1,13 @@
-import React from 'react';
-import { LoaderContext } from '../../context';
-import { Loader } from '..';
+import React from 'react'
+import { LoaderContext } from '../../context'
+import { Loader } from '..'
 
 export default () => (
     <LoaderContext.Consumer>
-        { ({ isLoading }) => {
+        {({ isLoading }) => {
             if (isLoading) {
-                return <Loader />;
+                return <Loader />
             }
         }}
     </LoaderContext.Consumer>
-);
+)

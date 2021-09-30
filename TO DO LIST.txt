@@ -27,3 +27,4 @@ Create sprite with all elements
 Information when user select amount without type
 Select picture from galery already created
 Drag and drop attacks
+LIst of all creations
