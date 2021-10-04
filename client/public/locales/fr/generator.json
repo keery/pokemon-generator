@@ -10,6 +10,7 @@
         "steel" : "Acier",
         "dark" : "Ténebre"
     },
+    "basicInfo" : "Informations",
     "common" : "Commun",
     "uncommon" : "Peu commun",
     "rare" : "Rare",

@@ -1,45 +1,47 @@
-import React from 'react'
-import { Text, Group } from 'react-konva'
-import { useWatch } from 'react-hook-form'
-import ImageCanvas from './ImageCanvas'
+import React from "react";
+import { Text, Group, Rect } from "react-konva";
+import { useWatch } from "react-hook-form";
+import ImageCanvas from "./ImageCanvas";
+
+const global = {
+  img: null,
+  height: 98,
+  width: 428,
+  textWidth: 0,
+  textHeight: 0,
+  textAttackX: 0,
+};
 
 const Attack = ({ name, x, y, isTiny = false, control }) => {
   const attack = useWatch({
     control,
     name,
-  })
-  let imgTypeAmountY = 30
-  let damageY = 40
-
-  const global = {
-    textAttackX: 15,
-    textWidth: 278,
-    img: null,
-    height: 107,
-    width: 380,
-  }
+  });
+  let imgTypeAmountY = 25;
+  let damageY = 40;
 
   if (isTiny) {
-    global.height = 50
-    imgTypeAmountY = 0
-    damageY = 10
+    global.height = 80;
+    imgTypeAmountY = 14;
+    damageY = 28;
   }
 
   let attackNameData = {
-    fontSize: 19,
-    y: 0,
-    align: 'center',
-    wrap: 'char',
-    verticalAlign: 'middle',
-  }
+    fontSize: 24,
+    y: 15,
+    x: 0,
+    align: "center",
+    verticalAlign: "middle",
+    width: 423,
+  };
 
   if (Boolean(attack.info)) {
     attackNameData = {
-      fontSize: 16,
+      fontSize: 20,
       y: 2,
-      align: 'left',
-      verticalAlign: 'top',
-    }
+      align: "left",
+      verticalAlign: "top",
+    };
   }
 
   if (Boolean(attack.amount) && Boolean(attack.type)) {
@@ -47,72 +49,105 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
       <ImageCanvas
         src={`1-gen/${attack.amount}-${attack.type}.png`}
         x={0}
+        width={50}
+        height={50}
         y={imgTypeAmountY}
       />
-    )
+    );
+  } else {
+    global.img = null;
   }
 
   if (Boolean(attack.damage) || global.img) {
-    global.textAttackX = 54
-    global.textWidth = 200
+    global.textAttackX = 60;
+    global.textWidth = 306;
+    global.textHeight = 100;
+  } else {
+    global.textAttackX = 12;
+    global.textWidth = 405;
+    global.textHeight = 100;
   }
 
   const attackDescData = {
-    fontSize: 12,
-    y: name !== '' ? 20 : 2,
-    align: 'left',
-  }
+    fontSize: 17,
+    y: name !== "" ? 23 : 2,
+    align: "left",
+  };
 
   return (
-    <Group
-      width={global.width}
-      height={global.height}
-      x={x}
-      y={y}
-      clipWidth={global.width}
-      clipHeight={global.height}
-      clipY={0}
-      clipX={0}
-    >
-      {global.img}
+    <>
+      {/* <Rect
+        width={global.width}
+        height={global.height}
+        x={x}
+        y={y}
+        clipWidth={global.width}
+        clipHeight={global.height}
+        clipY={0}
+        clipX={0}
+        fill="#000000"
+      /> */}
       <Group
-        y={attackNameData.y}
-        x={global.textAttackX}
-        width={global.textWidth}
+        width={global.width}
+        height={global.height}
+        x={x}
+        y={y}
+        // clipWidth={global.width}
+        clipHeight={global.height}
+        clipY={0}
+        clipX={0}
       >
-        <Text
-          text={attack.name}
-          fontFamily="pokename"
-          fontSize={attackNameData.fontSize}
+        {global.img}
+        <Group
           y={attackNameData.y}
-          x={0}
+          x={global.textAttackX}
           width={global.textWidth}
-          height={global.height}
-          align={attackNameData.align}
-          wrap={attackNameData.wrap}
-          verticalAlign={attackNameData.verticalAlign}
-        />
+          height={40}
+        >
+          {/* <Rect
+            y={attackNameData.y}
+            x={0}
+            width={global.textWidth}
+            height={28}
+            align={attackNameData.align}
+            verticalAlign={attackNameData.verticalAlign}
+            fill="#000000"
+          /> */}
+          <Text
+            text={attack.name}
+            fontFamily="pokename"
+            fontSize={attackNameData.fontSize}
+            y={attackNameData.y}
+            x={0}
+            width={global.textWidth}
+            height={28}
+            align={attackNameData.align}
+            verticalAlign={attackNameData.verticalAlign}
+          />
+          <Text
+            text={attack.info}
+            fontFamily="gstd"
+            fontSize={attackDescData.fontSize}
+            y={attackDescData.y}
+            x={0}
+            width={global.textWidth}
+            height={isTiny ? 60 : 90}
+            wrap="word"
+            lineHeight={1.1}
+          />
+        </Group>
         <Text
-          text={attack.info}
+          text={attack.damage}
           fontFamily="gstd"
-          fontSize={attackDescData.fontSize}
-          y={attackDescData.y}
+          fontSize={32}
+          y={damageY}
           x={0}
-          width={global.textWidth}
-          wrap="word"
+          width={423}
+          align="right"
         />
       </Group>
-      <Text
-        text={attack.damage}
-        fontFamily="gstd"
-        fontSize={27}
-        y={damageY}
-        x={196}
-        width={100}
-        align="right"
-      />
-    </Group>
-  )
-}
+    </>
+  );
+};
 
-export default Attack
+export default Attack;

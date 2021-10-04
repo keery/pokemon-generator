@@ -6,3 +6,9 @@ export const encrypt = (data, key) =>
 
 export const decrypt = (encryptedData, key) =>
   JSON.parse(AES.decrypt(encryptedData, key).toString(EncUTF8));
+
+export const cacheCard = (values) =>
+  localStorage.setItem(
+    process.env.NEXT_PUBLIC_KEY_CACHE,
+    encrypt(values, process.env.NEXT_PUBLIC_ENCRYPT_KEY)
+  );

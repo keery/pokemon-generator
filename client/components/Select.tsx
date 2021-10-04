@@ -1,8 +1,9 @@
 import React from "react";
 import { useTheme } from "@chakra-ui/react";
 import ReactSelect from "react-select";
-import { useController } from "react-hook-form";
+import { useController, useFormContext } from "react-hook-form";
 import dynamic from "next/dynamic";
+import { cacheCard } from "~utils/cache";
 
 const getStyle = (theme, iconPath) => {
   const before = {
@@ -45,7 +46,7 @@ const getStyle = (theme, iconPath) => {
         textTransform: "capitalize",
         transition: "border-color 200ms",
         boxShadow: isFocused ? "0px 0px 2px #868686" : "none",
-        border: isFocused ? "1px solid white" : "1px solid #cacaca",
+        border: isFocused ? "1px solid #5389c5" : "1px solid #cacaca",
         backgroundColor: "rgb(255 255 255 / 30%)",
         borderRadius: theme.radii.sm,
         height: "40px",
@@ -54,6 +55,7 @@ const getStyle = (theme, iconPath) => {
               ":before": {
                 ...before,
                 marginLeft: "8px",
+                backgroundSize: "50px",
                 backgroundImage: `url(/assets/img/1-gen/${iconPath.replace(
                   "{{value}}",
                   value[0].value
@@ -81,6 +83,7 @@ const getStyle = (theme, iconPath) => {
           ? {
               ...before,
               marginRight: "10px",
+              backgroundSize: "45px",
               backgroundImage: `url(/assets/img/1-gen/${iconPath.replace(
                 "{{value}}",
                 data.value
@@ -101,6 +104,7 @@ const Select = ({
   isClearable = false,
 }) => {
   const theme = useTheme();
+  const form = useFormContext();
   const { field } = useController({
     name,
     control,
@@ -108,6 +112,7 @@ const Select = ({
 
   const onChange = (data) => {
     field.onChange(data?.value || "");
+    cacheCard(form.getValues());
   };
 
   return (

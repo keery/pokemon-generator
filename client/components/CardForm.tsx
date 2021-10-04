@@ -43,7 +43,7 @@ const CardForm = () => {
             color="#3b434c"
           >
             <Box>
-              <CardFormHeader step={1} title="Pokémon Info" />
+              <CardFormHeader step={1} title={t("basicInfo")} />
               <CardFieldsGroup>
                 <FieldsPokemonInfo />
               </CardFieldsGroup>

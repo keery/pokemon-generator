@@ -11,7 +11,7 @@ const Input = {
         },
         _focus: {
           boxShadow: "0px 0px 2px #868686",
-          border: "1px solid white",
+          border: "1px solid #5389c5",
         },
       },
     },

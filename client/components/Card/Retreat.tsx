@@ -1,16 +1,23 @@
-import React from 'react'
-import { useWatch } from 'react-hook-form'
-import ImageCanvas from './ImageCanvas'
+import React from "react";
+import { useWatch } from "react-hook-form";
+import ImageCanvas from "~components/Card/ImageCanvas";
 
 const Retreat = ({ control }) => {
   const retreat = useWatch({
     control,
-    name: 'retreat',
-  })
+    name: "retreat",
+  });
 
-  if (!Boolean(retreat)) return null
+  if (!Boolean(retreat)) return null;
 
-  return <ImageCanvas src={`1-gen/retreat-${retreat}.png`} x={376} y={20} />
-}
+  return (
+    <ImageCanvas
+      src={`1-gen/retreat-${retreat}.png`}
+      x={312}
+      width={115}
+      height={26}
+    />
+  );
+};
 
-export default Retreat
+export default Retreat;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Layer, Group, Stage } from "react-konva";
+import { Layer, Group, Stage, Rect } from "react-konva";
 import { useFormContext } from "react-hook-form";
 import { Box } from "@chakra-ui/react";
 import Name from "./Card/Name";
@@ -19,7 +19,6 @@ import Retreat from "./Card/Retreat";
 const CardRenderer = () => {
   const stageRef = React.createRef();
   const { control, watch } = useFormContext();
-  console.log(watch());
   // constructor(props) {
   //   super(props)
 
@@ -150,9 +149,10 @@ const CardRenderer = () => {
           <Attacks control={control} />
           <MainImage control={control} />
           <Evolution control={control} />
-          <Group x={29} y={600} width={570}>
+          {/* <Rect x={25} y={590} width={570} height={30} fill="#000000" /> */}
+          <Group x={38} y={593} width={570}>
             <TypeWithAmount control={control} name="weakness" />
-            <TypeWithAmount control={control} name="resistance" x={178} />
+            <TypeWithAmount control={control} name="resistance" x={165} />
             <Retreat control={control} />
           </Group>
           <Description control={control} />

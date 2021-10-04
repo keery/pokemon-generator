@@ -16,6 +16,10 @@
   font-family: "poke";
   src: url("/assets/fonts/gill-sans-bold-extra-condensed.ttf");
 }
+@font-face {
+  font-family: "gstd";
+  src: url("/assets/fonts/GillSansStd.otf");
+}
 
 ::-moz-selection {
   background: #b6b3ec;

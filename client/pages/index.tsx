@@ -7,7 +7,7 @@ import BackgroundBlur from "~components/BackgroundBlur";
 import Card from "~components/Card";
 import CardForm from "~components/CardForm";
 import { CARD_DEFAULT_STATE } from "~data/card";
-import { decrypt, encrypt } from "~utils/cache";
+import { decrypt, cacheCard } from "~utils/cache";
 import { useForm, FormProvider } from "react-hook-form";
 import PanelOptions from "~components/PanelOptions";
 import Nav from "~components/Nav";
@@ -29,10 +29,7 @@ const Home: NextPage = () => {
   };
 
   const onChange = () => {
-    localStorage.setItem(
-      process.env.NEXT_PUBLIC_KEY_CACHE,
-      encrypt(form.getValues(), process.env.NEXT_PUBLIC_ENCRYPT_KEY)
-    );
+    cacheCard(form.getValues());
   };
 
   return (

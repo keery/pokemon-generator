@@ -1,6 +1,7 @@
 import React from "react";
 import { useWatch } from "react-hook-form";
-import { Text, Group, Image as ImageCanvas } from "react-konva";
+import { Text, Group } from "react-konva";
+import ImageCanvas from "~components/Card/ImageCanvas";
 
 const TypeWithAmount = ({ control, name, x = 0, y = 0 }) => {
   const values = useWatch({
@@ -10,13 +11,20 @@ const TypeWithAmount = ({ control, name, x = 0, y = 0 }) => {
 
   const type = values[`${name}Type`];
   const amount = values[`${name}Amount`];
-  console.log("dsfsd", type);
 
   return (
     <Group x={x} y={y}>
-      {type && <ImageCanvas image={type} x={27} y={0} width={58} height={58} />}
-      {Boolean(amount) && (
-        <Text text={amount} fontFamily="pokename" fontSize={15} y={25} x={73} />
+      {type !== "" && (
+        <ImageCanvas
+          src={`1-gen/${type}.png`}
+          x={27}
+          y={0}
+          width={26}
+          height={26}
+        />
+      )}
+      {Boolean(amount) && amount !== "" && (
+        <Text text={amount} fontFamily="pokename" fontSize={15} y={8} x={57} />
       )}
     </Group>
   );
