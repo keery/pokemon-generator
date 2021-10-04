@@ -83,3 +83,7 @@ export const KEY_CACHE_LNG = "lngPG";
 export const LANGUAGES = ["en", "fr", "es"];
 
 export const DEFAULT_LANGUAGES = "en";
+
+export const BASIC = "basic";
+export const STAGE_ONE = "stage1";
+export const STAGE_TWO = "stage2";

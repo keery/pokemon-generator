@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, VStack, Stack } from "@chakra-ui/react";
+import { Flex, Box, VStack } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import CardFormHeader from "~components/CardFormHeader";
 import CardFieldsGroup from "~components/CardFieldsGroup";
@@ -13,8 +13,17 @@ import Logo from "~components/Logo";
 const CardForm = () => {
   const { t } = useTranslation("generator");
   return (
-    <Flex height="100%" flex={1} w="500px">
+    <Flex height="100%" flex={1} w="500px" zIndex={10}>
       <Flex pos="relative" flex={1}>
+        <Box
+          background="radial-gradient(50% 50%, rgb(220, 193, 228), transparent)"
+          pos="absolute"
+          top="70%"
+          left="50%"
+          w="500px"
+          h="500px"
+          transform="translate(-50%, -50%)"
+        />
         <Flex
           pos="absolute"
           left={0}

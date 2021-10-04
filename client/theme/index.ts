@@ -33,7 +33,7 @@ const theme = extendTheme({
     "3xl": "2.15rem",
   },
   colors: {
-    main: "#b181f2",
+    main: "#516fb3",
     main2: "#f4e8fb",
   },
   radii: {
@@ -102,8 +102,16 @@ const theme = extendTheme({
   layerStyles: {
     glass: {
       backdropFilter: "blur(16px) saturate(180%)",
-      bgColor: "rgb(255 255 255 / 62%)",
+      bgColor: "rgb(255 255 255 / 25%)",
       border: "1px solid rgb(255 255 255 / 60%)",
+    },
+    "neuro-flat": {
+      backgroundColor: "#e0e0e0",
+      boxShadow: "5px 5px 10px #cccccc, -5px -5px 10px #f4f4f4",
+    },
+    "neuro-inset": {
+      backgroundColor: "#e0e0e0",
+      boxShadow: "inset 5px 5px 10px #cccccc, inset -5px -5px 10px #f4f4f4",
     },
   },
 });

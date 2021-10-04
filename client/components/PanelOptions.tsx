@@ -31,6 +31,8 @@ const OptionButton = ({ icon, label, onClick, ...rest }) => (
       fontSize="1.7rem"
       backdropFilter="none"
       border="none"
+      // background="#e0e0e0"
+      // boxShadow="20px 20px 60px #bebebe, -20px -20px 60px #ffffff"
       {...rest}
     />
   </Tooltip>
@@ -48,9 +50,16 @@ const PanelOptions = () => {
           aria-label="icon"
           icon={<Menu />}
           onClick={() => null}
+          layerStyle="glass"
         />
       </AspectRatio>
-      <VStack borderRadius="sm" p={1.5} layerStyle="glass" spacing={4}>
+      <VStack
+        borderRadius="sm"
+        layerStyle="glass"
+        p={1.5}
+        spacing={4}
+        pos="relative"
+      >
         <OptionButton
           icon={<Download />}
           onClick={() => null}

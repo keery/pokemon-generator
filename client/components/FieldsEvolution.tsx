@@ -5,11 +5,12 @@ import { useFormContext } from "react-hook-form";
 import Field from "~components/Field";
 import FileInput from "~components/FileInput";
 import Select from "~components/Select";
+import { BASIC, STAGE_ONE, STAGE_TWO } from "~constants";
 
 const optionsStage = [
-  { value: "basic", label: "Basic" },
-  { value: "stage1", label: "Stage 1" },
-  { value: "stage2", label: "Stage 2" },
+  { value: BASIC, label: "Basic" },
+  { value: STAGE_ONE, label: "Stage 1" },
+  { value: STAGE_TWO, label: "Stage 2" },
 ];
 
 const FieldsEvolution = () => {

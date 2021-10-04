@@ -7,11 +7,12 @@ const Illustrator = ({ control }) => {
     control,
     name: "illustrator",
   });
+
   if (!Boolean(illustrator)) return null;
 
   return (
     <Text
-      text={illustrator}
+      text={`Illus. ${illustrator}`}
       fontFamily="pokename"
       width={105}
       height={12}

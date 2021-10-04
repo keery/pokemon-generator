@@ -202,8 +202,8 @@ const FileInput = ({ name }) => {
             left={isUploaded ? 0 : "calc(100% - 38px)"}
             top="50%"
             transform="translateY(-50%)"
-            bg="linear-gradient(to left, #ff9349 0%, #ffc27b 100%)"
-            borderRadius="md"
+            background="linear-gradient(#516fb3, #6e91e0)"
+            borderRadius="sm"
             h="38px"
             w="38px"
             color="#fff"
@@ -218,7 +218,7 @@ const FileInput = ({ name }) => {
             w="100%"
             left={isUploaded ? "19px" : "calc(100% - 19px)"}
             transition="left ease-in-out 0.5s"
-            backgroundColor="orange.500"
+            background="linear-gradient(#516fb3, #6e91e0)"
             pl="3rem"
             color="white"
             fontWeight="bold"

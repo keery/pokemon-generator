@@ -1,6 +1,8 @@
+import { BASIC } from "~constants";
+
 export const CARD_DEFAULT_STATE = {
   type: "fire",
-  stage: "basic",
+  stage: BASIC,
   name: "",
   nameEvolution: "",
   mainImage: null,

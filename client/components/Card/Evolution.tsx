@@ -4,13 +4,14 @@ import { Group } from "react-konva";
 import EvolutionImage from "./EvolutionImage";
 import EvolutionName from "./EvolutionName";
 import ImageCanvas from "./ImageCanvas";
+import { BASIC } from "~constants";
 
 const Evolution = ({ control }) => {
   const stage = useWatch({
     control,
     name: "stage",
   });
-  if (stage === "basic") return null;
+  if (stage === BASIC) return null;
 
   return (
     <Group>

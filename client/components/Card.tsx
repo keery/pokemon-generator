@@ -1,7 +1,7 @@
 import React from "react";
-import { Layer, Group, Stage, Rect } from "react-konva";
+import { Layer, Group, Stage } from "react-konva";
 import { useFormContext } from "react-hook-form";
-import { Box } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import Name from "./Card/Name";
 import Attacks from "./Card/Attacks";
 import MainImage from "./Card/MainImage";
@@ -138,7 +138,40 @@ const CardRenderer = () => {
   // }
 
   return (
-    <Box layerStyle="glass" border="none" pos="relative" borderRadius="1.8rem">
+    <Box border="none" pos="relative">
+      <Image
+        src="assets/img/pokemon-water-3.png"
+        pos="absolute"
+        left="105%"
+        right="0%"
+        w="210px"
+        transform="rotateY(180deg)"
+      />
+      <Image
+        src="assets/img/kaiminus.png"
+        pos="absolute"
+        bottom="-10%"
+        left="100%"
+        // transform="rotateY(180deg)"
+        w="300px"
+      />
+      <Image
+        src="assets/img/carapuce.png"
+        pos="absolute"
+        right="100%"
+        top="20%"
+        width="270px"
+        transform="rotate(20deg)"
+      />
+      <Box
+        pos="absolute"
+        left="0"
+        top="0"
+        right="0"
+        bottom="0"
+        layerStyle="glass"
+        borderRadius="1.8rem"
+      />
       <Stage width={500} height={700}>
         {/* <Stage width={540} height={755} ref={stageRef}> */}
         <Layer>
