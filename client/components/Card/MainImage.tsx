@@ -1,37 +1,41 @@
-import React from 'react'
-import { useWatch } from 'react-hook-form'
-import { Group } from 'react-konva'
-import ImageCanvas from './ImageCanvas'
+import React from "react";
+import { useWatch } from "react-hook-form";
+import { Group } from "react-konva";
+import ImageCanvas from "~components/Card/ImageCanvas";
 
-const MainImage = ({ control }) => {
-  const image = useWatch({
+const MainImage = ({ control, updateImgPos }) => {
+  const { mainImage, mainImageX, mainImageY } = useWatch({
     control,
-    name: 'mainImage',
-  })
+    name: ["mainImage", "mainImageX", "mainImageY"],
+  });
 
-  if (!Boolean(image)) return null
+  if (!Boolean(mainImage)) return null;
 
   return (
     <Group
-      width={412}
-      height={289}
-      y={95}
-      x={65}
-      clipWidth={412}
-      clipHeight={295}
+      width={400}
+      height={280}
+      y={88}
+      x={58}
+      clipWidth={383}
+      clipHeight={271}
       clipY={0}
       clipX={-2}
     >
-      {/* <KonvaImage
-        image={mainImage}
+      <ImageCanvas
+        src={mainImage}
+        // src="https://static01.nyt.com/images/2020/12/14/well/14google-photo/14google-photo-mediumSquareAt3X.jpg"
+        prefixPath=""
+        maxHeight={280}
+        maxWidth={390}
         y={mainImageY}
         x={mainImageX}
         draggable
         name="mainImage"
         onDragEnd={updateImgPos}
-      /> */}
+      />
     </Group>
-  )
-}
+  );
+};
 
-export default MainImage
+export default MainImage;

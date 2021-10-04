@@ -42,7 +42,7 @@ const FieldsPokemonInfo = () => {
         />
       </Field>
       <Field label={t("picture")}>
-        <FileInput name="mainImage" />
+        <FileInput name="mainImage" control={control} />
       </Field>
       <Field label="HP">
         <Select name="hp" options={optionsHP} control={control} />

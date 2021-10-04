@@ -7,7 +7,7 @@ import BackgroundBlur from "~components/BackgroundBlur";
 import Card from "~components/Card";
 import CardForm from "~components/CardForm";
 import { CARD_DEFAULT_STATE } from "~data/card";
-import { decrypt, cacheCard } from "~utils/cache";
+import { decrypt } from "~utils/cache";
 import { useForm, FormProvider } from "react-hook-form";
 import PanelOptions from "~components/PanelOptions";
 import Nav from "~components/Nav";
@@ -22,23 +22,16 @@ const Home: NextPage = () => {
     defaultValues: cachedCard
       ? decrypt(cachedCard, process.env.NEXT_PUBLIC_ENCRYPT_KEY)
       : CARD_DEFAULT_STATE,
+    shouldUnregister: false,
   });
 
   const onSubmit = (data) => {
     console.log(data);
   };
 
-  const onChange = () => {
-    cacheCard(form.getValues());
-  };
-
   return (
     <FormProvider {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        onChange={onChange}
-        style={{ height: "100%" }}
-      >
+      <form onSubmit={form.handleSubmit(onSubmit)} style={{ height: "100%" }}>
         <BackgroundBlur />
         <Container h="100%" py={6}>
           <HStack

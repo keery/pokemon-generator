@@ -19,7 +19,7 @@ export const CARD_DEFAULT_STATE = {
   retreat: "",
   retreatVisible: true,
   description: "",
-  illustrator: "Illus. ",
+  illustrator: "",
   cardNumber: "",
   totalCollection: "",
   rarity: "",

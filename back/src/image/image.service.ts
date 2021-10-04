@@ -11,7 +11,7 @@ AWS.config.update({
 })
 
 @Injectable()
-export class ImageStorageService {
+export class ImageService {
   private readonly storage = new AWS.S3()
   private bucketName = process.env.AWS_BUCKET_NAME
 

@@ -3,17 +3,16 @@ import { withTranslation, getI18n } from "react-i18next";
 import { Box, Text, Icon, Flex } from "@chakra-ui/react";
 import Uppy from "@uppy/core";
 import Url from "@uppy/url";
-import DragDropModule from "@uppy/drag-drop";
 import { Dashboard, DashboardModal, DragDrop, useUppy } from "@uppy/react";
 import Webcam from "@uppy/webcam";
 import Instagram from "@uppy/instagram";
-import Transloadit from "@uppy/transloadit";
 import XHRUpload from "@uppy/xhr-upload";
 import French from "@uppy/locales/lib/fr_FR";
 import Spanish from "@uppy/locales/lib/es_ES";
 import Modal from "~components/Modal";
 import Upload from "public/assets/img/upload.svg";
 import dynamic from "next/dynamic";
+import { Control, useController } from "react-hook-form";
 
 const EMPTY_STATE = {
   isUploaded: false,
@@ -37,9 +36,15 @@ const TRANSLOADIT_TEMPLATE_ID = "2451e3544cfd4eb29688983b6c7e8956";
 
 interface Props {
   name: string;
+  control: Control;
 }
 
-const FileInput = ({ name }) => {
+const FileInput = ({ name, control }: Props) => {
+  const { field } = useController({
+    name,
+    control,
+  });
+
   // constructor(props) {
   //   super(props);
 
@@ -63,10 +68,10 @@ const FileInput = ({ name }) => {
   //   });
   //   // .use(Webcam)
   //   // .use(Instagram, {
-  //   //   companionUrl: process.env.REACT_APP_SERVER_URL,
+  //   //   companionUrl: process.env.NEXT_PUBLIC_API_URL,
   //   // })
   //   // .use(Url, {
-  //   //   companionUrl: process.env.REACT_APP_SERVER_URL,
+  //   //   companionUrl: process.env.NEXT_PUBLIC_API_URL,
   //   // })
   //   // .use(Transloadit, {
   //   //   debug: true,
@@ -80,7 +85,7 @@ const FileInput = ({ name }) => {
   //   //   },
   //   // })
   //   // .use(XHRUpload, {
-  //   //   endpoint: `${process.env.REACT_APP_SERVER_URL}/api/file/upload`,
+  //   //   endpoint: `${process.env.NEXT_PUBLIC_API_URL}/api/file/upload`,
   //   // });
 
   //   if (props.value) {
@@ -158,18 +163,24 @@ const FileInput = ({ name }) => {
         allowedFileTypes: ["image/*"],
       },
     })
-      .use(DragDropModule, {
-        target: null,
-        width: "100%",
-        height: "100%",
-        note: null,
+      .use(XHRUpload, {
+        endpoint: `${process.env.NEXT_PUBLIC_API_URL}/image/upload`,
+        getResponseData: (responseText, response) => {
+          return {
+            url: "https://static01.nyt.com/images/2020/12/14/well/14google-photo/14google-photo-mediumSquareAt3X.jpg",
+          };
+        },
       })
-      .use(Webcam);
+      .use(Webcam)
+      .on("upload-success", (file, response) => {
+        field.onChange(response.body.url);
+        setUploaded(true);
+      });
     // .use(Instagram, {
-    //   companionUrl: process.env.REACT_APP_SERVER_URL,
+    //   companionUrl: process.env.NEXT_PUBLIC_API_URL,
     // })
     // .use(Url, {
-    //   companionUrl: process.env.REACT_APP_SERVER_URL,
+    //   companionUrl: process.env.NEXT_PUBLIC_API_URL,
     // });
   });
   const [isUploaded, setUploaded] = useState(false);

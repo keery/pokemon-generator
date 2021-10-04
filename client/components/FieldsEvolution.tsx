@@ -26,7 +26,7 @@ const FieldsEvolution = () => {
         <Input name="nameEvolution" type="text" ref={register} />
       </Field>
       <Field label={t("picture")}>
-        <FileInput name="evolvePicture" ref={register} />
+        <FileInput name="evolvePicture" control={control} />
       </Field>
     </>
   );

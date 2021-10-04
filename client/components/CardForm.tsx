@@ -8,6 +8,7 @@ import FieldsEvolution from "~components/FieldsEvolution";
 import FieldsAttack from "~components/FieldsAttack";
 import FieldsSubInfo from "~components/FieldsSubInfo";
 import FieldsBottomInfo from "~components/FieldsBottomInfo";
+import CacheForm from "~components/CacheForm";
 import Logo from "~components/Logo";
 
 const CardForm = () => {
@@ -15,6 +16,7 @@ const CardForm = () => {
   return (
     <Flex height="100%" flex={1} w="500px" zIndex={10}>
       <Flex pos="relative" flex={1}>
+        <CacheForm />
         <Box
           background="radial-gradient(50% 50%, rgb(220, 193, 228), transparent)"
           pos="absolute"

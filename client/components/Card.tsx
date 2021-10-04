@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Layer, Group, Stage } from "react-konva";
 import { useFormContext } from "react-hook-form";
 import { Box, Image } from "@chakra-ui/react";
@@ -15,10 +15,11 @@ import CollectionNumber from "./Card/CollectionNumber";
 import TypeBackground from "./Card/TypeBackground";
 import Rarity from "./Card/Rarity";
 import Retreat from "./Card/Retreat";
+import { DragEndEvent } from "leaflet";
 
 const CardRenderer = () => {
   const stageRef = React.createRef();
-  const { control, watch } = useFormContext();
+  const { control, setValue, formState, getValues } = useFormContext();
   // constructor(props) {
   //   super(props)
 
@@ -113,29 +114,16 @@ const CardRenderer = () => {
   //   return this.createImg(require(`../assets/1-gen/${file}`))
   // }
 
-  // const updateImgPos = (event) => {
-  //   const { attrs } = event.target
-  //   this.setState({ [`${attrs.name}X`]: attrs.x, [`${attrs.name}Y`]: attrs.y })
-  // }
+  useEffect(() => {
+    console.log("dirtyFields", formState.dirtyFields);
+  }, [formState.dirtyFields]);
 
-  // calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
-  //   if (srcWidth > maxWidth || srcHeight > maxHeight) {
-  //     let height = 0
-  //     let width = 0
-
-  //     if (srcWidth > srcHeight) {
-  //       height = maxHeight + 4
-  //       width = (srcWidth / srcHeight) * height
-  //     } else {
-  //       width = maxWidth + 4
-  //       height = (srcHeight / srcWidth) * width
-  //     }
-
-  //     return { width, height }
-  //   }
-
-  //   return { width: srcWidth, height: srcHeight }
-  // }
+  const updateImgPos = (event: DragEndEvent): void => {
+    const { attrs } = event.target;
+    setValue(`${attrs.name}X`, attrs.x);
+    setValue(`${attrs.name}Y`, attrs.y);
+    console.log("o", getValues(), `${attrs.name}Y`);
+  };
 
   return (
     <Box border="none" pos="relative">
@@ -180,7 +168,7 @@ const CardRenderer = () => {
           <HP control={control} />
           <SubInfo control={control} />
           <Attacks control={control} />
-          <MainImage control={control} />
+          <MainImage control={control} updateImgPos={updateImgPos} />
           <Evolution control={control} />
           {/* <Rect x={25} y={590} width={570} height={30} fill="#000000" /> */}
           <Group x={38} y={593} width={570}>

@@ -3,7 +3,6 @@ import { useTheme } from "@chakra-ui/react";
 import ReactSelect from "react-select";
 import { useController, useFormContext } from "react-hook-form";
 import dynamic from "next/dynamic";
-import { cacheCard } from "~utils/cache";
 
 const getStyle = (theme, iconPath) => {
   const before = {
@@ -21,13 +20,17 @@ const getStyle = (theme, iconPath) => {
       ...base,
       color: "#929292",
       ":hover": {
-        color: "rgb(255 255 255 / 80%)",
+        color: theme.colors.main,
       },
     }),
     clearIndicator: (base) => ({
       ...base,
       color: "#929292",
-      ":hover": { ...base[":hover"], cursor: "pointer" },
+      ":hover": {
+        ...base[":hover"],
+        color: theme.colors.main,
+        cursor: "pointer",
+      },
     }),
     indicatorSeparator: (base) => ({ ...base, backgroundColor: "#929292" }),
     singleValue: (base) => ({ ...base, color: "#3b434c", fontWeight: "500" }),
@@ -75,9 +78,11 @@ const getStyle = (theme, iconPath) => {
         display: "flex",
         alignItems: "center",
         color: "white",
-        backgroundColor: isSelected ? "#c8aaff" : "transparent",
+        backgroundColor: isSelected ? theme.colors.main : "transparent",
         ":hover": {
-          backgroundColor: isSelected ? "#c8aaff" : "rgb(255 255 255 / 30%)",
+          backgroundColor: isSelected
+            ? theme.colors.main
+            : "rgb(255 255 255 / 30%)",
         },
         ":before": iconPath
           ? {
@@ -112,7 +117,6 @@ const Select = ({
 
   const onChange = (data) => {
     field.onChange(data?.value || "");
-    cacheCard(form.getValues());
   };
 
   return (
