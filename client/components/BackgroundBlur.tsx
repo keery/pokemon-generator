@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@chakra-ui/react";
 import { useWatch, Control } from "react-hook-form";
 import { Element } from "~@types/Card";
+import dynamic from "next/dynamic";
 
 const gradients: Record<Element, any> = {
   normal:
@@ -14,7 +15,8 @@ const gradients: Record<Element, any> = {
   electric:
     "linear-gradient(45deg, rgb(251 254 63 / 31%), rgb(136 113 0 / 24%) 45%, rgb(202 179 22 / 42%) 71%, rgb(255 100 9 / 30%))",
   psychic:
-    "linear-gradient(45deg, rgb(225 63 254 / 31%), rgb(95 10 251 / 16%) 45%, rgb(254 63 204 / 42%) 71%, rgb(51 0 255 / 30%))",
+    "linear-gradient(45deg, rgb(205 170 250), rgb(196 193 251) 45%, rgb(209 151 236) 71%, rgb(157 166 244))",
+  // "linear-gradient(45deg, rgb(225 63 254 / 31%), rgb(95 10 251 / 16%) 45%, rgb(254 63 204 / 42%) 71%, rgb(51 0 255 / 30%))",
   fighting:
     "linear-gradient(45deg, rgb(254 151 63 / 31%), rgb(251 114 10 / 16%) 45%, rgb(254 116 63 / 42%) 71%, rgb(249 81 30 / 53%))",
 };
@@ -22,25 +24,37 @@ interface Props {
   control: Control;
 }
 
-const BackgroundBlur = ({ control }: Props) => {
-  const type: Element = useWatch({
-    control,
-    name: "type",
-  });
-
-  console.log(type);
+const Bg = ({ type, isSelected }) => {
   return (
     <Box
       pos="absolute"
-      left="0"
-      right="0"
-      top="0"
-      bottom="0"
-      z-index="-1"
-      transition="all ease-in-out 4s"
+      left={0}
+      right={0}
+      top={0}
+      bottom={0}
+      zIndex={-1}
+      transition="opacity 400ms"
       bgImage={gradients[type]}
+      opacity={isSelected ? 1 : 0}
     />
   );
 };
 
-export default BackgroundBlur;
+const BackgroundBlur = ({ control }: Props) => {
+  const selectedType: Element = useWatch({
+    control,
+    name: "type",
+  });
+
+  return (
+    <>
+      {Object.keys(gradients).map((type) => (
+        <Bg key={type} type={type} isSelected={selectedType === type} />
+      ))}
+    </>
+  );
+};
+
+export default dynamic(() => Promise.resolve(BackgroundBlur), {
+  ssr: false,
+});
