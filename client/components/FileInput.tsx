@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Box, Text, Icon, Flex, useDisclosure } from "@chakra-ui/react";
 import Uppy from "@uppy/core";
 import Url from "@uppy/url";
@@ -6,6 +6,8 @@ import { Dashboard, useUppy } from "@uppy/react";
 import Webcam from "@uppy/webcam";
 import Instagram from "@uppy/instagram";
 import Facebook from "@uppy/facebook";
+import GoogleDrive from "@uppy/google-drive";
+import Dropbox from "@uppy/dropbox";
 import XHRUpload from "@uppy/xhr-upload";
 import French from "@uppy/locales/lib/fr_FR";
 import Spanish from "@uppy/locales/lib/es_ES";
@@ -25,11 +27,6 @@ const getUppyTranslations = (locale) => {
       return false;
   }
 };
-
-const TRANSLOADIT_KEY = "be3e863775b14553a504aaa98ca3c32c";
-const TRANSLOADIT_SECRET = "bf39fb91c830d0a63f1e7880508d4f79c4bc1075";
-const TRANSLOADIT_TEMPLATE_ID = "2451e3544cfd4eb29688983b6c7e8956";
-
 interface Props {
   name: string;
   control: Control;
@@ -170,10 +167,16 @@ const FileInput = ({ name, control }: Props) => {
       .use(Url, {
         companionUrl: COMPANION_URL,
       })
+      .use(Dropbox, {
+        companionUrl: COMPANION_URL,
+      })
       .use(Instagram, {
         companionUrl: COMPANION_URL,
       })
       .use(Facebook, {
+        companionUrl: COMPANION_URL,
+      })
+      .use(GoogleDrive, {
         companionUrl: COMPANION_URL,
       })
       .on("upload-success", (file, response) => {
@@ -251,7 +254,14 @@ const FileInput = ({ name, control }: Props) => {
     >
       <Dashboard
         uppy={uppy}
-        plugins={["Instagram", "Webcam", "Url"]}
+        plugins={[
+          "Instagram",
+          "Webcam",
+          "Url",
+          "GoogleDrive",
+          "Facebook",
+          "Dropbox",
+        ]}
         proudlyDisplayPoweredByUppy={false}
         metaFields={[{ id: "name", name: "Name", placeholder: "File name" }]}
       />

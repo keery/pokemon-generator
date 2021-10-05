@@ -2729,6 +2729,16 @@
     "@uppy/utils" "^4.0.1"
     preact "^10.5.13"
 
+"@uppy/dropbox@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@uppy/dropbox/-/dropbox-2.0.2.tgz#f796e3929c3f71a99edaad537de8c50b4045a4ec"
+  integrity sha512-+A8651syECe943iYFfbFWdRw0On2S9/r+ddhSlPcsar3+Ls1IxDl8tfJcQQ7Y2pBCQ9mRAm5zTW9gwvmdVDqMw==
+  dependencies:
+    "@uppy/companion-client" "^2.0.1"
+    "@uppy/provider-views" "^2.0.2"
+    "@uppy/utils" "^4.0.1"
+    preact "^10.5.13"
+
 "@uppy/facebook@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@uppy/facebook/-/facebook-2.0.2.tgz#3dc995229103c4039eccc8de13fec517cee50501"
@@ -2744,6 +2754,16 @@
   resolved "https://registry.yarnpkg.com/@uppy/file-input/-/file-input-2.0.2.tgz#1cfaace0d2a11dcc328b12b008c0607b669603d7"
   integrity sha512-txh9czf4lrRUWJpHgrpZWSXVG2ecmY15gG2teARrcgCjdrAReLudhqvMmMsgN0JhUvmooI/nvHkwhXfnkhMScQ==
   dependencies:
+    "@uppy/utils" "^4.0.1"
+    preact "^10.5.13"
+
+"@uppy/google-drive@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@uppy/google-drive/-/google-drive-2.0.2.tgz#22b35ca1d590e77f481203c51d1d125c4b6cbba1"
+  integrity sha512-PYiSiu3wRIxg6VJWBV4MTkzTcp3kmPJnUiDAiRf6itzKQhwd/K0wtW1TXNp7/42aEvLYKGAkRcSy0jUpIogvGQ==
+  dependencies:
+    "@uppy/companion-client" "^2.0.1"
+    "@uppy/provider-views" "^2.0.2"
     "@uppy/utils" "^4.0.1"
     preact "^10.5.13"
 

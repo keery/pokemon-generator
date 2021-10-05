@@ -23,6 +23,18 @@ export class UppyService implements OnModuleInit {
           key: process.env.INSTAGRAM_KEY,
           secret: process.env.INSTAGRAM_SECRET,
         },
+        drive: {
+          key: process.env.GOOGLE_DRIVE_KEY,
+          secret: process.env.GOOGLE_DRIVE_SECRET,
+        },
+        facebook: {
+          key: process.env.FACEBOOK_KEY,
+          secret: process.env.FACEBOOK_SECRET,
+        },
+        dropbox: {
+          key: process.env.DROPBOX_KEY,
+          secret: process.env.DROPBOX_SECRET,
+        },
       },
       server: {
         // host: `localhost:${process.env.PORT || 3002}`,
