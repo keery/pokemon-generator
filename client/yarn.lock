@@ -2729,6 +2729,16 @@
     "@uppy/utils" "^4.0.1"
     preact "^10.5.13"
 
+"@uppy/facebook@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@uppy/facebook/-/facebook-2.0.2.tgz#3dc995229103c4039eccc8de13fec517cee50501"
+  integrity sha512-vS67029+49F565yGr2LIdCFqM/HXgfBltTIXAbMeRsvs4lS4QAuZ6NdM0ei1TIVwdkgRlQYPSS9mE/aFpAeMVA==
+  dependencies:
+    "@uppy/companion-client" "^2.0.1"
+    "@uppy/provider-views" "^2.0.2"
+    "@uppy/utils" "^4.0.1"
+    preact "^10.5.13"
+
 "@uppy/file-input@^2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@uppy/file-input/-/file-input-2.0.2.tgz#1cfaace0d2a11dcc328b12b008c0607b669603d7"
@@ -2755,10 +2765,10 @@
     "@uppy/utils" "^4.0.1"
     preact "^10.5.13"
 
-"@uppy/locales@^1.7.0":
-  version "1.22.0"
-  resolved "https://registry.yarnpkg.com/@uppy/locales/-/locales-1.22.0.tgz#9cea0322c16315443637c1682111c5558a336123"
-  integrity sha512-wz2D4Ud9eNcJdwXeN4Ftjw+EFDbgqE/Y6Ef3jCG11//lRH38OOuRyN3oURzNW0+Jz9rp7+yrG8/cWa/vt1Z9CA==
+"@uppy/locales@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@uppy/locales/-/locales-2.0.1.tgz#22f73c8bcedf16099355e68ca66d28afe15a24a5"
+  integrity sha512-6AzVJv1QTzPi0iikL8XRx84KtbMBW2llzH2KIHegX918gqvTdHXl6SEUPVaWVALkeqtWWALms095tA+9Crg9aA==
 
 "@uppy/progress-bar@^2.0.2":
   version "2.0.2"

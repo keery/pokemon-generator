@@ -16,8 +16,8 @@ const MainImage = ({ control, updateImgPos }) => {
       width={400}
       height={280}
       y={88}
-      x={58}
-      clipWidth={383}
+      x={60}
+      clipWidth={381}
       clipHeight={271}
       clipY={0}
       clipX={-2}

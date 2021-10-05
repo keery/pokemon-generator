@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Layer, Group, Stage } from "react-konva";
 import { useFormContext } from "react-hook-form";
 import { Box, Image } from "@chakra-ui/react";
@@ -19,7 +19,7 @@ import { DragEndEvent } from "leaflet";
 
 const CardRenderer = () => {
   const stageRef = React.createRef();
-  const { control, setValue, formState, getValues } = useFormContext();
+  const { control, setValue } = useFormContext();
   // constructor(props) {
   //   super(props)
 
@@ -114,15 +114,10 @@ const CardRenderer = () => {
   //   return this.createImg(require(`../assets/1-gen/${file}`))
   // }
 
-  useEffect(() => {
-    console.log("dirtyFields", formState.dirtyFields);
-  }, [formState.dirtyFields]);
-
   const updateImgPos = (event: DragEndEvent): void => {
     const { attrs } = event.target;
     setValue(`${attrs.name}X`, attrs.x);
     setValue(`${attrs.name}Y`, attrs.y);
-    console.log("o", getValues(), `${attrs.name}Y`);
   };
 
   return (
@@ -139,7 +134,7 @@ const CardRenderer = () => {
         src="assets/img/kaiminus.png"
         pos="absolute"
         bottom="-10%"
-        left="100%"
+        left="102%"
         // transform="rotateY(180deg)"
         w="300px"
       />
@@ -170,7 +165,6 @@ const CardRenderer = () => {
           <Attacks control={control} />
           <MainImage control={control} updateImgPos={updateImgPos} />
           <Evolution control={control} />
-          {/* <Rect x={25} y={590} width={570} height={30} fill="#000000" /> */}
           <Group x={38} y={593} width={570}>
             <TypeWithAmount control={control} name="weakness" />
             <TypeWithAmount control={control} name="resistance" x={165} />

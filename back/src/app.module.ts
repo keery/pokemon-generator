@@ -7,6 +7,7 @@ import { ImageModule } from '~image/image.module'
 import { MailModule } from './mail/mail.module'
 import { ConsoleModule } from 'nestjs-console'
 import { I18nModule, I18nJsonParser } from 'nestjs-i18n'
+import { UppyService } from './uppy/uppy.service'
 import * as path from 'path'
 
 @Module({

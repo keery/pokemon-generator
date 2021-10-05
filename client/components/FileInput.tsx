@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { withTranslation, getI18n } from "react-i18next";
-import { Box, Text, Icon, Flex } from "@chakra-ui/react";
+import { Box, Text, Icon, Flex, useDisclosure } from "@chakra-ui/react";
 import Uppy from "@uppy/core";
 import Url from "@uppy/url";
-import { Dashboard, DashboardModal, DragDrop, useUppy } from "@uppy/react";
+import { Dashboard, useUppy } from "@uppy/react";
 import Webcam from "@uppy/webcam";
 import Instagram from "@uppy/instagram";
+import Facebook from "@uppy/facebook";
 import XHRUpload from "@uppy/xhr-upload";
 import French from "@uppy/locales/lib/fr_FR";
 import Spanish from "@uppy/locales/lib/es_ES";
@@ -13,11 +13,7 @@ import Modal from "~components/Modal";
 import Upload from "public/assets/img/upload.svg";
 import dynamic from "next/dynamic";
 import { Control, useController } from "react-hook-form";
-
-const EMPTY_STATE = {
-  isUploaded: false,
-  uploadLabel: "",
-};
+import { useTranslation } from "next-i18next";
 
 const getUppyTranslations = (locale) => {
   switch (locale) {
@@ -39,11 +35,17 @@ interface Props {
   control: Control;
 }
 
+const COMPANION_URL = `${process.env.NEXT_PUBLIC_API_URL}/image/companion`;
+
 const FileInput = ({ name, control }: Props) => {
+  const { i18n } = useTranslation("generator");
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { field } = useController({
     name,
     control,
   });
+
+  const [isUploaded, setUploaded] = useState(false);
 
   // constructor(props) {
   //   super(props);
@@ -54,11 +56,6 @@ const FileInput = ({ name, control }: Props) => {
   //     // locale: getUppyTranslations(language),
   //     debug: true,
   //     allowMultipleUploads: false,
-  //     restrictions: {
-  //       maxFileSize: 1000000,
-  //       maxNumberOfFiles: 1,
-  //       allowedFileTypes: ["image/*"],
-  //     },
   //   }).use(DragDrop, {
   //     target: null,
   //     width: "100%",
@@ -154,7 +151,7 @@ const FileInput = ({ name, control }: Props) => {
     return new Uppy({
       id: name,
       autoProceed: true,
-      // locale: getUppyTranslations(language),
+      locale: getUppyTranslations(i18n.language),
       debug: true,
       allowMultipleUploads: false,
       restrictions: {
@@ -165,30 +162,35 @@ const FileInput = ({ name, control }: Props) => {
     })
       .use(XHRUpload, {
         endpoint: `${process.env.NEXT_PUBLIC_API_URL}/image/upload`,
-        getResponseData: (responseText, response) => {
-          return {
-            url: "https://static01.nyt.com/images/2020/12/14/well/14google-photo/14google-photo-mediumSquareAt3X.jpg",
-          };
-        },
+        getResponseData: (responseText, response) => ({
+          url: "https://static01.nyt.com/images/2020/12/14/well/14google-photo/14google-photo-mediumSquareAt3X.jpg",
+        }),
       })
       .use(Webcam)
+      .use(Url, {
+        companionUrl: COMPANION_URL,
+      })
+      .use(Instagram, {
+        companionUrl: COMPANION_URL,
+      })
+      .use(Facebook, {
+        companionUrl: COMPANION_URL,
+      })
       .on("upload-success", (file, response) => {
         field.onChange(response.body.url);
         setUploaded(true);
+        onClose();
+        uppy.reset();
       });
-    // .use(Instagram, {
-    //   companionUrl: process.env.NEXT_PUBLIC_API_URL,
-    // })
-    // .use(Url, {
-    //   companionUrl: process.env.NEXT_PUBLIC_API_URL,
-    // });
   });
-  const [isUploaded, setUploaded] = useState(false);
 
   return (
     <Modal
+      onClose={onClose}
+      isOpen={isOpen}
       button={
         <Flex
+          onClick={onOpen}
           direction="column"
           justifyContent="center"
           height={10}
