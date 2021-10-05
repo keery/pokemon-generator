@@ -1,6 +1,7 @@
 import React from "react";
-import { Text, Group, Rect } from "react-konva";
+import { Text, Group } from "react-konva";
 import { useWatch } from "react-hook-form";
+import { Attack } from "~@types/Card";
 import ImageCanvas from "./ImageCanvas";
 
 const global = {
@@ -13,7 +14,7 @@ const global = {
 };
 
 const Attack = ({ name, x, y, isTiny = false, control }) => {
-  const attack = useWatch({
+  const attack: Attack = useWatch({
     control,
     name,
   });
@@ -26,7 +27,7 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
     damageY = 28;
   }
 
-  let attackNameData = {
+  let attackNameData: any = {
     fontSize: 24,
     y: 15,
     x: 0,
@@ -76,23 +77,11 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
 
   return (
     <>
-      {/* <Rect
-        width={global.width}
-        height={global.height}
-        x={x}
-        y={y}
-        clipWidth={global.width}
-        clipHeight={global.height}
-        clipY={0}
-        clipX={0}
-        fill="#000000"
-      /> */}
       <Group
         width={global.width}
         height={global.height}
         x={x}
         y={y}
-        // clipWidth={global.width}
         clipHeight={global.height}
         clipY={0}
         clipX={0}
@@ -104,15 +93,6 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
           width={global.textWidth}
           height={40}
         >
-          {/* <Rect
-            y={attackNameData.y}
-            x={0}
-            width={global.textWidth}
-            height={28}
-            align={attackNameData.align}
-            verticalAlign={attackNameData.verticalAlign}
-            fill="#000000"
-          /> */}
           <Text
             text={attack.name}
             fontFamily="pokename"

@@ -1,7 +1,8 @@
+import { Element, Rarity } from "~@types/Card";
 /**
  * Pokemon information
  */
-export const ELEMENTS = [
+export const ELEMENTS: Element[] = [
   "fire",
   "grass",
   "water",
@@ -68,7 +69,10 @@ export const DAMAGE_CHOICES = [
 
 export const ATTACK_AMOUNT_CHOICES = ["1", "2", "3", "4"];
 
-export const RARITY_CHOICES = ["common", "uncommon", "rare"];
+export const COMMON = "common";
+export const UNCOMMON = "uncommon";
+export const RARE = "rare";
+export const RARITY_CHOICES: Rarity[] = [COMMON, UNCOMMON, RARE];
 
 export const RETREAT_CHOICES = ["1", "2", "3", "4"];
 
