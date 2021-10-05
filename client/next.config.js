@@ -1,7 +1,5 @@
 const { i18n } = require("./next-i18next.config");
 
-let envVars = {};
-
 module.exports = {
   i18n,
   webpack(config) {
@@ -24,5 +22,4 @@ module.exports = {
   },
   distDir: "build",
   devtool: "inline-source-map",
-  env: envVars,
 };
