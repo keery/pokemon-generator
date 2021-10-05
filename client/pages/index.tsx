@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} style={{ height: "100%" }}>
-        <BackgroundBlur />
+        <BackgroundBlur control={form.control} />
         <Container h="100%" py={6}>
           <HStack
             justifyContent="center"

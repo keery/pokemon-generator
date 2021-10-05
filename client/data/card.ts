@@ -1,7 +1,7 @@
 import { BASIC } from "~constants";
 
 export const CARD_DEFAULT_STATE = {
-  type: "fire",
+  type: "water",
   stage: BASIC,
   name: "",
   nameEvolution: "",
