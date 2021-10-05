@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "@chakra-ui/react";
 import ReactSelect from "react-select";
-import { useController, useFormContext } from "react-hook-form";
+import { useController, Control } from "react-hook-form";
 import dynamic from "next/dynamic";
 
 const getStyle = (theme, iconPath) => {
@@ -100,6 +100,16 @@ const getStyle = (theme, iconPath) => {
     },
   };
 };
+
+interface Props {
+  name: string;
+  control: Control;
+  placeholder?: string;
+  isClearable?: boolean;
+  iconPath?: string;
+  options: Record<string, any>[];
+}
+
 const Select = ({
   name,
   control,
@@ -107,9 +117,8 @@ const Select = ({
   placeholder = "",
   iconPath = null,
   isClearable = false,
-}) => {
+}: Props) => {
   const theme = useTheme();
-  const form = useFormContext();
   const { field } = useController({
     name,
     control,

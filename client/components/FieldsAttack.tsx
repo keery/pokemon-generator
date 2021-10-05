@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Input, Textarea } from "@chakra-ui/react";
+import { Input, Textarea } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { useFormContext } from "react-hook-form";
 import { DAMAGE_CHOICES, ATTACK_AMOUNT_CHOICES, ELEMENTS } from "~constants";
@@ -42,7 +42,11 @@ const FieldsAttack = ({ name }) => {
         <Textarea name={`${name}.info`} ref={register} />
       </Field>
       <Field label={t("amount")}>
-        <Select name={`${name}.amount`} options={optionsAmount} />
+        <Select
+          name={`${name}.amount`}
+          options={optionsAmount}
+          control={control}
+        />
       </Field>
       <Field label={t("type")}>
         <Select
@@ -50,6 +54,7 @@ const FieldsAttack = ({ name }) => {
           isClearable
           options={optionsType}
           iconPath="1-{{value}}.png"
+          control={control}
         />
       </Field>
     </>

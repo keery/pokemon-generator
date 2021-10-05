@@ -5,7 +5,7 @@ import { Text } from "react-konva";
 const CollectionNumber = ({ control }) => {
   const { totalCollection, cardNumber } = useWatch({
     control,
-    description: ["cardNumber", "totalCollection"],
+    name: ["cardNumber", "totalCollection"],
   });
 
   const number = useMemo(() => {

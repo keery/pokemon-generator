@@ -1,6 +1,6 @@
-import React from 'react'
-import { useForm, useWatch } from 'react-hook-form'
-import ImageCanvas from '../../ImageCanvas'
+import React from "react";
+import { useForm, useWatch } from "react-hook-form";
+// import ImageCanvas from '../../ImageCanvas'
 
 // function StageImage({ control }) {
 //   const stageImage = useWatch({

@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, Group } from "react-konva";
 import { useWatch } from "react-hook-form";
-import { Attack } from "~@types/Card";
+import { IAttack } from "~@types/Card";
 import ImageCanvas from "./ImageCanvas";
 
 const global = {
@@ -14,7 +14,7 @@ const global = {
 };
 
 const Attack = ({ name, x, y, isTiny = false, control }) => {
-  const attack: Attack = useWatch({
+  const attack: IAttack = useWatch({
     control,
     name,
   });

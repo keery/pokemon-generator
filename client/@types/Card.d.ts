@@ -9,7 +9,7 @@ export type Element =
 
 export type Rarity = "common" | "uncommon" | "rare";
 
-export interface Attack {
+export interface IAttack {
   name: string;
   damage: string;
   info: string;
@@ -42,6 +42,6 @@ export interface Card {
   species: string;
   length: string;
   weight: string;
-  attack1: Attack;
-  attack2: Attack;
+  attack1: IAttack;
+  attack2: IAttack;
 }

@@ -40,5 +40,4 @@ export const CARD_DEFAULT_STATE = {
     type: "",
     amount: "1",
   },
-  openedGroup: "",
 };

@@ -1,24 +1,24 @@
-import React from 'react'
-import { Layer, Group, Stage } from 'react-konva'
-import { useFormContext } from 'react-hook-form'
+import React from "react";
+import { Layer, Group, Stage } from "react-konva";
+import { useFormContext } from "react-hook-form";
 // import { generateImg } from '../helper'
-import Name from './Name'
-import Attacks from './Attacks'
-import MainImage from './MainImage'
-import Evolution from './Evolution'
-import HP from './HP'
-import SubInfo from './SubInfo'
-import TypeWithAmount from './TypeWithAmount'
-import Description from './Description'
-import Illustrator from './Illustrator'
-import CollectionNumber from './CollectionNumber'
-import TypeBackground from './TypeBackground'
-import Rarity from './Rarity'
-import Retreat from './Retreat'
+import Name from "./Name";
+import Attacks from "./Attacks";
+import MainImage from "./MainImage";
+import Evolution from "./Evolution";
+import HP from "./HP";
+import SubInfo from "./SubInfo";
+import TypeWithAmount from "./TypeWithAmount";
+import Description from "./Description";
+import Illustrator from "./Illustrator";
+import CollectionNumber from "./CollectionNumber";
+import TypeBackground from "./TypeBackground";
+import Rarity from "./Rarity";
+import Retreat from "./Retreat";
 
 const CardRenderer = () => {
-  const stageRef = React.createRef()
-  const { control } = useFormContext()
+  const stageRef = React.createRef<Stage>();
+  const { control } = useFormContext();
 
   // constructor(props) {
   //   super(props)
@@ -161,7 +161,7 @@ const CardRenderer = () => {
         </Layer>
       </Stage>
     </>
-  )
-}
+  );
+};
 
-export default CardRenderer
+export default CardRenderer;
