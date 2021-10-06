@@ -24,7 +24,6 @@ const MainImage = ({ control, updateImgPos }) => {
     >
       <ImageCanvas
         src={mainImage}
-        // src="https://static01.nyt.com/images/2020/12/14/well/14google-photo/14google-photo-mediumSquareAt3X.jpg"
         prefixPath=""
         maxHeight={280}
         maxWidth={390}
