@@ -16,7 +16,7 @@ import Upload from "public/assets/img/upload.svg";
 import dynamic from "next/dynamic";
 import { Control, useController } from "react-hook-form";
 import { useTranslation } from "next-i18next";
-import { saveAs } from "file-saver";
+import axios from "axios";
 
 const getUppyTranslations = (locale) => {
   switch (locale) {
@@ -54,19 +54,17 @@ const FileInput = ({ name, control }: Props) => {
       debug: true,
       allowMultipleUploads: false,
       restrictions: {
-        // maxFileSize: 1000000,
+        maxFileSize: 1000000,
         maxNumberOfFiles: 1,
         allowedFileTypes: ["image/*"],
       },
     })
       .use(XHRUpload, {
-        // responseType: "arraybuffer",
         endpoint: `${process.env.NEXT_PUBLIC_API_URL}/image/upload`,
         getResponseData: (responseText, response) => {
-          console.log(response);
           return {
-            // url: responseText,
-            url: "https://static01.nyt.com/images/2020/12/14/well/14google-photo/14google-photo-mediumSquareAt3X.jpg",
+            url: responseText,
+            // url: "https://static01.nyt.com/images/2020/12/14/well/14google-photo/14google-photo-mediumSquareAt3X.jpg",
           };
         },
       })
@@ -87,15 +85,28 @@ const FileInput = ({ name, control }: Props) => {
         companionUrl: COMPANION_URL,
       })
       .on("upload-success", (file, response) => {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          field.onChange(e.target.result);
-          setUploaded(true);
-          onClose();
-          uppy.reset();
-        };
-        // reader.readAsDataURL(response.body.url);
-        reader.readAsDataURL(file.data);
+        axios
+          .get(
+            `${process.env.NEXT_PUBLIC_API_URL}/image/tmp/get/${response.body.url}`,
+            {
+              responseType: "blob",
+            }
+          )
+          .then((res) => {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              field.onChange(e.target.result);
+              setUploaded(true);
+              onClose();
+              uppy.reset();
+            };
+            reader.readAsDataURL(res.data);
+          })
+          .catch(() => {
+            onClose();
+            uppy.reset();
+            // TODO: Toast error
+          });
       });
   });
 

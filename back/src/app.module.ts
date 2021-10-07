@@ -6,12 +6,16 @@ import { CardModule } from '~card/card.module'
 import { ImageModule } from '~image/image.module'
 import { MailModule } from './mail/mail.module'
 import { ConsoleModule } from 'nestjs-console'
+import { ServeStaticModule } from '@nestjs/serve-static'
 import { I18nModule, I18nJsonParser } from 'nestjs-i18n'
-import { UppyService } from './uppy/uppy.service'
 import * as path from 'path'
+import { join } from 'path'
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
