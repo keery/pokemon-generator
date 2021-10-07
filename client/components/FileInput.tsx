@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Text, Icon, Flex, useDisclosure, Image } from "@chakra-ui/react";
+import { Box, Text, Flex, useDisclosure, Spinner } from "@chakra-ui/react";
 import Uppy from "@uppy/core";
 import Url from "@uppy/url";
 import { Dashboard, useUppy } from "@uppy/react";
@@ -13,6 +13,7 @@ import French from "@uppy/locales/lib/fr_FR";
 import Spanish from "@uppy/locales/lib/es_ES";
 import Modal from "~components/Modal";
 import Upload from "public/assets/img/upload.svg";
+import Check from "public/assets/img/check.svg";
 import dynamic from "next/dynamic";
 import { Control, useController } from "react-hook-form";
 import { useTranslation } from "next-i18next";
@@ -33,6 +34,14 @@ interface Props {
   control: Control;
 }
 
+const PLUGINS = [
+  "Instagram",
+  "Webcam",
+  "Url",
+  "GoogleDrive",
+  "Facebook",
+  "Dropbox",
+];
 const COMPANION_URL = `${process.env.NEXT_PUBLIC_API_URL}/image/companion`;
 
 const FileInput = ({ name, control }: Props) => {
@@ -44,7 +53,7 @@ const FileInput = ({ name, control }: Props) => {
   });
 
   const [isUploaded, setUploaded] = useState(false);
-  const [file, setFile] = useState(null);
+  const [isLoading, setLoading] = useState(false);
 
   const uppy = useUppy(() => {
     return new Uppy({
@@ -85,6 +94,7 @@ const FileInput = ({ name, control }: Props) => {
         companionUrl: COMPANION_URL,
       })
       .on("upload-success", (file, response) => {
+        setLoading(true);
         axios
           .get(
             `${process.env.NEXT_PUBLIC_API_URL}/image/tmp/get/${response.body.url}`,
@@ -106,7 +116,8 @@ const FileInput = ({ name, control }: Props) => {
             onClose();
             uppy.reset();
             // TODO: Toast error
-          });
+          })
+          .finally(() => setLoading(false));
       });
   });
 
@@ -136,8 +147,7 @@ const FileInput = ({ name, control }: Props) => {
             <Text color="grey.500" fontSize=".9rem" fontWeight="600" pl="10px">
               Choisir une photo
             </Text>
-            <Icon
-              as={Upload}
+            <Box
               position="absolute"
               left={isUploaded ? 0 : "calc(100% - 38px)"}
               top="50%"
@@ -150,7 +160,9 @@ const FileInput = ({ name, control }: Props) => {
               transition="left ease-in-out 0.5s"
               zIndex="1"
               p=".7rem"
-            />
+            >
+              {isLoading ? <Spinner /> : isUploaded ? <Check /> : <Upload />}
+            </Box>
             <Box
               position="absolute"
               top="0px"
@@ -168,26 +180,24 @@ const FileInput = ({ name, control }: Props) => {
                 backgroundColor: isUploaded ? "orange.400" : "orange.500",
               }}
             >
-              <Text textOverflow="ellipsis" w="80%" overflow="hidden">
-                upload label
+              <Text
+                textOverflow="ellipsis"
+                w="80%"
+                overflow="hidden"
+                fontSize=".9rem"
+                fontWeight="600"
+              >
+                Photo ajoutée
               </Text>
             </Box>
           </Flex>
-          {!!file && <Image src={file} />}
         </>
       }
       size="xl"
     >
       <Dashboard
         uppy={uppy}
-        plugins={[
-          "Instagram",
-          "Webcam",
-          "Url",
-          "GoogleDrive",
-          "Facebook",
-          "Dropbox",
-        ]}
+        plugins={PLUGINS}
         proudlyDisplayPoweredByUppy={false}
         metaFields={[{ id: "name", name: "Name", placeholder: "File name" }]}
       />

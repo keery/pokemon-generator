@@ -8,6 +8,7 @@ import {
   Divider,
   Input,
   Textarea,
+  Spinner,
 } from "./components";
 
 const theme = extendTheme({
@@ -50,6 +51,7 @@ const theme = extendTheme({
     Divider,
     Input,
     Textarea,
+    Spinner,
   },
   textStyles: {},
   breakpoints: {},
