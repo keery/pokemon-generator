@@ -1,3 +1,5 @@
+import { RgbaColor } from "react-colorful";
+
 export type Element =
   | "fire"
   | "grass"
@@ -37,6 +39,7 @@ export interface Card {
   description: string;
   illustrator: string;
   cardNumber: string;
+  bgColor: RgbaColor;
   totalCollection: string;
   rarity: RARITY;
   species: string;

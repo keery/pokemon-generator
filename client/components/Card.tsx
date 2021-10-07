@@ -8,6 +8,7 @@ import MainImage from "./Card/MainImage";
 import Evolution from "./Card/Evolution";
 import HP from "./Card/HP";
 import SubInfo from "./Card/SubInfo";
+import ColorBackground from "./Card/ColorBackground";
 import TypeWithAmount from "./Card/TypeWithAmount";
 import Description from "./Card/Description";
 import Illustrator from "./Card/Illustrator";
@@ -110,10 +111,6 @@ const CardRenderer = () => {
   //   })
   // }
 
-  // const getDynamicImg = (file) => {
-  //   return this.createImg(require(`../assets/1-gen/${file}`))
-  // }
-
   const updateImgPos = (event: DragEndEvent): void => {
     const { attrs } = event.target;
     setValue(`${attrs.name}X`, attrs.x);
@@ -135,7 +132,6 @@ const CardRenderer = () => {
         pos="absolute"
         bottom="-10%"
         left="102%"
-        // transform="rotateY(180deg)"
         w="300px"
       />
       <Image
@@ -146,15 +142,7 @@ const CardRenderer = () => {
         width="270px"
         transform="rotate(20deg)"
       />
-      <Box
-        pos="absolute"
-        left="0"
-        top="0"
-        right="0"
-        bottom="0"
-        layerStyle="glass"
-        borderRadius="1.8rem"
-      />
+      <ColorBackground control={control} />
       <Stage width={500} height={700}>
         {/* <Stage width={540} height={755} ref={stageRef}> */}
         <Layer>

@@ -36,6 +36,7 @@
     "next-i18next": "8.0.0",
     "next-seo": "^4.27.0",
     "react": "16.8.6",
+    "react-colorful": "^5.5.0",
     "react-dom": "16.8.6",
     "react-hook-form": "^6.14.2",
     "react-i18next": "^11.8.8",

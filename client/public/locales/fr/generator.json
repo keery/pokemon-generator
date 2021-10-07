@@ -38,12 +38,13 @@
     "attack2" : "Attaque 2",
     "additionalInformation" : "Bas de carte",
     "confirmReset" : "Voulez vous vraiment réinitialiser votre carte ?",
-    "downloadCard" : "Télécharger la carte",
-    "printCard" : "Imprimer la carte",
-    "saveCard" : "Enregistrer la carte",
+    "downloadCard" : "Télécharger",
+    "printCard" : "Imprimer",
+    "saveCard" : "Enregistrer",
     "resetCard" : "Recommencer",
     "shareCard" : "Partagez à vos amis",
     "news" : "De nombreuses fonctionnalités arrivent bientôt ! La possibilité de dessiner vos cartes à l'aide d'outils, enregistrer vos cartes directement sur votre compte, une application mobile afin de pouvoir créer vos propres cartes où vous le souhaitez, et bien plus, restez à l'écoute.",
     "importPicture" : "Importer une photo",
-    "uploadFailed": "Le téléchargement de l'image a échoué"
+    "uploadFailed": "Le téléchargement de l'image a échoué",
+    "colorBg": "Couleur de fond"
 }

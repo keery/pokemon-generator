@@ -3,6 +3,7 @@ import {
   VStack,
   Tooltip,
   IconButton,
+  IconButtonProps,
   Flex,
   AspectRatio,
 } from "@chakra-ui/react";
@@ -11,13 +12,26 @@ import Print from "public/assets/img/print.svg";
 import Reset from "public/assets/img/reset.svg";
 import Menu from "public/assets/img/menu.svg";
 import Download from "public/assets/img/download.svg";
+import ColorPicker from "~components/ColorPicker";
 
 const printCard = () => {
   window.print();
 };
 
-const OptionButton = ({ icon, label, onClick, ...rest }) => (
-  <Tooltip hasArrow shouldWrapChildren label={label} aria-label={label}>
+interface Props extends Omit<IconButtonProps, "aria-label"> {
+  icon: JSX.Element;
+  label?: string;
+  withTooltip?: boolean;
+}
+
+const OptionButton = ({
+  icon,
+  label,
+  onClick,
+  withTooltip = true,
+  ...rest
+}: Props) => {
+  const Button = (
     <IconButton
       icon={icon}
       onClick={onClick}
@@ -31,17 +45,30 @@ const OptionButton = ({ icon, label, onClick, ...rest }) => (
       fontSize="1.7rem"
       backdropFilter="none"
       border="none"
-      // background="#e0e0e0"
-      // boxShadow="20px 20px 60px #bebebe, -20px -20px 60px #ffffff"
       {...rest}
     />
-  </Tooltip>
-);
+  );
+
+  if (withTooltip)
+    return (
+      <Tooltip hasArrow shouldWrapChildren label={label} aria-label={label}>
+        {Button}
+      </Tooltip>
+    );
+
+  return Button;
+};
 
 const PanelOptions = () => {
   const { t } = useTranslation("generator");
   return (
-    <Flex mt={6} alignItems="flex-start" direction="column">
+    <Flex
+      mt={6}
+      alignItems="flex-start"
+      direction="column"
+      pos="relative"
+      zIndex={100}
+    >
       <AspectRatio ratio={1} w="100%" mb={6}>
         <IconButton
           color="main"
@@ -60,11 +87,7 @@ const PanelOptions = () => {
         spacing={4}
         pos="relative"
       >
-        <OptionButton
-          icon={<Download />}
-          onClick={() => null}
-          label={t("downloadCard")}
-        />
+        <OptionButton icon={<Download />} label={t("downloadCard")} />
         <OptionButton
           icon={<Print />}
           onClick={printCard}
@@ -75,6 +98,7 @@ const PanelOptions = () => {
           onClick={() => null}
           label={t("resetCard")}
         />
+        <ColorPicker />
       </VStack>
     </Flex>
   );

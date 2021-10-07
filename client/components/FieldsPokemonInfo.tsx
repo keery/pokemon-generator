@@ -6,7 +6,6 @@ import Select from "~components/Select";
 import FileInput from "~components/FileInput";
 import Field from "~components/Field";
 import { ELEMENTS, HP_CHOICES } from "~constants";
-// import getUppy from '../../getUppy'
 
 const optionsType = ELEMENTS.map((el) => ({
   value: el,
@@ -21,12 +20,6 @@ const optionsHP = HP_CHOICES.map((el) => ({
 const FieldsPokemonInfo = () => {
   const { t } = useTranslation("generator");
   const { register, control } = useFormContext();
-
-  // const mainImageUppy = getUppy(
-  //   'uppy-main-picture',
-  //   props.transloaditParams,
-  //   props.i18n.language,
-  // )
 
   return (
     <>
