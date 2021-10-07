@@ -44,5 +44,6 @@
     "resetCard" : "Recommencer",
     "shareCard" : "Partagez à vos amis",
     "news" : "De nombreuses fonctionnalités arrivent bientôt ! La possibilité de dessiner vos cartes à l'aide d'outils, enregistrer vos cartes directement sur votre compte, une application mobile afin de pouvoir créer vos propres cartes où vous le souhaitez, et bien plus, restez à l'écoute.",
-    "importPicture" : "Importer une photo"
+    "importPicture" : "Importer une photo",
+    "uploadFailed": "Le téléchargement de l'image a échoué"
 }

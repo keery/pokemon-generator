@@ -17,12 +17,6 @@ export class ImageService {
   private drive = google.drive({ version: 'v3', auth: this.auth })
 
   bufferToStream(binary) {
-    // const stream = new Readable({
-    //   read() {
-    //     this.push(binary)
-    //     this.push(null)
-    //   },
-    // })
     const stream = new Readable()
     stream.push(binary)
     stream.push(null)

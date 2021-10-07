@@ -18,6 +18,7 @@ import dynamic from "next/dynamic";
 import { Control, useController } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import axios from "axios";
+import useToast from "~hooks/useToast";
 
 const getUppyTranslations = (locale) => {
   switch (locale) {
@@ -45,7 +46,8 @@ const PLUGINS = [
 const COMPANION_URL = `${process.env.NEXT_PUBLIC_API_URL}/image/companion`;
 
 const FileInput = ({ name, control }: Props) => {
-  const { i18n } = useTranslation("generator");
+  const { errorToast } = useToast();
+  const { i18n, t } = useTranslation("generator");
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { field } = useController({
     name,
@@ -115,7 +117,7 @@ const FileInput = ({ name, control }: Props) => {
           .catch(() => {
             onClose();
             uppy.reset();
-            // TODO: Toast error
+            errorToast(t("uploadFailed"));
           })
           .finally(() => setLoading(false));
       });
