@@ -18,6 +18,15 @@ const printCard = () => {
   window.print();
 };
 
+const exportCard = () => {
+  const link = document.createElement("a");
+  link.download = "card.png";
+  link.href = this.stageRef.current.getStage().toDataURL();
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 interface Props extends Omit<IconButtonProps, "aria-label"> {
   icon: JSX.Element;
   label?: string;
@@ -87,7 +96,11 @@ const PanelOptions = () => {
         spacing={4}
         pos="relative"
       >
-        <OptionButton icon={<Download />} label={t("downloadCard")} />
+        <OptionButton
+          icon={<Download />}
+          onClick={exportCard}
+          label={t("downloadCard")}
+        />
         <OptionButton
           icon={<Print />}
           onClick={printCard}

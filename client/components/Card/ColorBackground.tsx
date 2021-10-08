@@ -3,7 +3,6 @@ import { useWatch, Control } from "react-hook-form";
 import { Box } from "@chakra-ui/react";
 import { RgbaColor } from "react-colorful";
 import { getRgbaColor } from "~utils/helper";
-import dynamic from "next/dynamic";
 
 interface Props {
   control: Control;
@@ -28,6 +27,4 @@ const ColorBackground = ({ control }: Props) => {
   );
 };
 
-export default dynamic(() => Promise.resolve(ColorBackground), {
-  ssr: false,
-});
+export default ColorBackground;

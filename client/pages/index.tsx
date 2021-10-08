@@ -4,13 +4,14 @@ import { HStack, Container, Flex } from "@chakra-ui/react";
 import { SSRConfig } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import BackgroundBlur from "~components/BackgroundBlur";
-import Card from "~components/Card";
+
 import CardForm from "~components/CardForm";
 import { CARD_DEFAULT_STATE } from "~data/card";
 import { decrypt } from "~utils/cache";
 import { useForm, FormProvider } from "react-hook-form";
 import PanelOptions from "~components/PanelOptions";
-import Nav from "~components/Nav";
+import dynamic from "next/dynamic";
+const Card = dynamic(() => import("~components/Card"), { ssr: false });
 
 const Home: NextPage = () => {
   const cachedCard =
@@ -49,7 +50,6 @@ const Home: NextPage = () => {
               height="100%"
               borderRadius="md"
             >
-              <Nav />
               <Card />
             </Flex>
           </HStack>

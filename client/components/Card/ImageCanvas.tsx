@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Image as KonvaImage } from "react-konva";
+import React, { useState, useEffect, useRef } from "react";
+import { Image as KonvaImage, Transformer } from "react-konva";
 import useImage from "use-image";
 
 function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
@@ -38,8 +38,19 @@ const ImageCanvas = ({
   onDragEnd = () => null,
 }: Props) => {
   const [size, setSize] = useState([width, height]);
-
+  const trRef = useRef(null);
+  const imgRef = useRef(null);
   const [image] = useImage(`${prefixPath}${src}`, "anonymous");
+  const [isSelected, setSelected] = useState(null);
+
+  useEffect(() => {
+    if (isSelected) {
+      console.log(trRef.current);
+      // we need to attach transformer manually
+      // trRef.current.children([imgRef.current]);
+      // trRef.current.getLayer().batchDraw();
+    }
+  }, [isSelected, trRef, imgRef]);
 
   useEffect(() => {
     if (image && maxHeight && maxWidth) {
@@ -56,16 +67,30 @@ const ImageCanvas = ({
   if (!image) return null;
 
   return (
-    <KonvaImage
-      name={name}
-      image={image}
-      width={size[0]}
-      height={size[1]}
-      x={x}
-      y={y}
-      draggable={draggable}
-      onDragEnd={onDragEnd}
-    />
+    <>
+      <Transformer
+        ref={trRef}
+        boundBoxFunc={(oldBox, newBox) => {
+          // limit resize
+          if (newBox.width < 5 || newBox.height < 5) {
+            return oldBox;
+          }
+          return newBox;
+        }}
+      />
+      <KonvaImage
+        ref={imgRef}
+        name={name}
+        image={image}
+        width={size[0]}
+        height={size[1]}
+        x={x}
+        y={y}
+        draggable={draggable}
+        onDragEnd={onDragEnd}
+        onClick={() => setSelected(!isSelected)}
+      />
+    </>
   );
 };
 
