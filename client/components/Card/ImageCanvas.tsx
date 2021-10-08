@@ -25,10 +25,13 @@ interface Props {
   onDragEnd?: (event: any) => void;
   clipWidth?: number;
   clipHeight?: number;
+  scaleY?: number;
+  scaleX?: number;
   clipY?: number;
   clipX?: number;
   onSelect?: () => void;
   isSelected?: boolean;
+  onTransformEnd?: (name: string, scaleX: number, scaleY: number) => void;
 }
 
 const ImageCanvas = ({
@@ -48,8 +51,11 @@ const ImageCanvas = ({
   clipHeight = null,
   clipY = null,
   clipX = null,
+  scaleY = null,
+  scaleX = null,
   onSelect = null,
   isSelected = false,
+  onTransformEnd = null,
 }: Props) => {
   const [size, setSize] = useState([width, height]);
   const trRef = useRef(null);
@@ -104,10 +110,16 @@ const ImageCanvas = ({
           height={size[1]}
           x={x}
           y={y}
+          scaleX={scaleX}
+          scaleY={scaleY}
           draggable={draggable}
           onDragEnd={onDragEnd}
           isSelected={isSelected}
           onClick={() => (isTransformable ? onSelect() : null)}
+          onTransformEnd={() => {
+            const node = imgRef.current;
+            onTransformEnd(name, node.scaleX(), node.scaleY());
+          }}
         />
       </Group>
     </>

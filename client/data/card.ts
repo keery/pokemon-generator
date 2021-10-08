@@ -8,6 +8,8 @@ export const CARD_DEFAULT_STATE = {
   mainImage: null,
   mainImageX: -2,
   mainImageY: 0,
+  mainImageScaleX: 0,
+  mainImageScaleY: 0,
   evolvePicture: null,
   evolvePictureX: 0,
   evolvePictureY: 0,

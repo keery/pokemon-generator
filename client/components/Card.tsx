@@ -32,6 +32,11 @@ const Card = () => {
     setValue(`${attrs.name}Y`, attrs.y);
   };
 
+  const updateScale = (name, scaleX: number, scaleY: number) => {
+    setValue(`${name}ScaleX`, scaleX);
+    setValue(`${name}ScaleY`, scaleY);
+  };
+
   const resetSelected = useCallback(() => {
     setCard({ ...card, selectedImg: null });
   }, [card]);
@@ -82,6 +87,7 @@ const Card = () => {
           <MainImage
             control={control}
             updateImgPos={updateImgPos}
+            updateScale={updateScale}
             isSelected={card.selectedImg === "mainImage"}
             onSelect={() => setCard({ ...card, selectedImg: "mainImage" })}
           />

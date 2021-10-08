@@ -1,12 +1,38 @@
 import React from "react";
-import { useWatch } from "react-hook-form";
+import { useWatch, Control } from "react-hook-form";
 import { Group } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
 
-const MainImage = ({ control, updateImgPos, onSelect, isSelected = false }) => {
-  const { mainImage, mainImageX, mainImageY } = useWatch({
+interface Props {
+  updateImgPos: (event: DragEvent) => void;
+  updateScale: (name: string, scaleX: number, scaleY: number) => void;
+  onSelect: () => void;
+  control: Control;
+  isSelected?: boolean;
+}
+
+const MainImage = ({
+  control,
+  updateImgPos,
+  updateScale,
+  onSelect,
+  isSelected = false,
+}: Props) => {
+  const {
+    mainImage,
+    mainImageX,
+    mainImageY,
+    mainImageScaleY,
+    mainImageScaleX,
+  } = useWatch({
     control,
-    name: ["mainImage", "mainImageX", "mainImageY"],
+    name: [
+      "mainImage",
+      "mainImageX",
+      "mainImageY",
+      "mainImageScaleX",
+      "mainImageScaleY",
+    ],
   });
 
   if (!Boolean(mainImage)) return null;
@@ -20,9 +46,12 @@ const MainImage = ({ control, updateImgPos, onSelect, isSelected = false }) => {
         maxWidth={390}
         y={mainImageY}
         x={mainImageX}
+        scaleX={mainImageScaleX}
+        scaleY={mainImageScaleY}
         draggable
         name="mainImage"
         onDragEnd={updateImgPos}
+        onTransformEnd={updateScale}
         isTransformable
         isSelected={isSelected}
         onSelect={onSelect}
