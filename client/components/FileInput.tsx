@@ -58,7 +58,8 @@ const FileInput = ({ name, control }: Props) => {
     name,
     control,
   });
-  const [isUploaded, setUploaded] = useState(false);
+
+  const [isUploaded, setUploaded] = useState(!!field.value);
   const [isLoading, setLoading] = useState(false);
 
   const uppy = useUppy(() => {
