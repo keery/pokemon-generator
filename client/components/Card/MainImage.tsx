@@ -4,7 +4,7 @@ import { Group } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
 
 interface Props {
-  updateImgPos: (event: DragEvent) => void;
+  updateImgPos: (event: any) => void;
   updateScale: (name: string, scaleX: number, scaleY: number) => void;
   onSelect: () => void;
   control: Control;

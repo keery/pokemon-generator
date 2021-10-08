@@ -16,7 +16,6 @@ import CollectionNumber from "./Card/CollectionNumber";
 import TypeBackground from "./Card/TypeBackground";
 import Rarity from "./Card/Rarity";
 import Retreat from "./Card/Retreat";
-import { DragEndEvent } from "leaflet";
 import useClickOutside from "~hooks/useClickOutside";
 import { cardState } from "~atoms/cardState";
 import { useRecoilState } from "recoil";
@@ -26,16 +25,16 @@ const Card = () => {
   const { control, setValue } = useFormContext();
   const [card, setCard] = useRecoilState(cardState);
 
-  const updateImgPos = (event: DragEndEvent): void => {
+  const updateImgPos = useCallback((event: any): void => {
     const { attrs } = event.target;
     setValue(`${attrs.name}X`, attrs.x);
     setValue(`${attrs.name}Y`, attrs.y);
-  };
+  }, []);
 
-  const updateScale = (name, scaleX: number, scaleY: number) => {
+  const updateScale = useCallback((name, scaleX: number, scaleY: number) => {
     setValue(`${name}ScaleX`, scaleX);
     setValue(`${name}ScaleY`, scaleY);
-  };
+  }, []);
 
   const resetSelected = useCallback(() => {
     setCard({ ...card, selectedImg: null });

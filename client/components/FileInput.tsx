@@ -15,10 +15,13 @@ import Modal from "~components/Modal";
 import Upload from "public/assets/img/upload.svg";
 import Check from "public/assets/img/check.svg";
 import dynamic from "next/dynamic";
-import { Control, useController } from "react-hook-form";
+import { Control, useController, useFormContext } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import axios from "axios";
 import useToast from "~hooks/useToast";
+import { cardState } from "~atoms/cardState";
+import { useSetRecoilState } from "recoil";
+import { CARD_DEFAULT_STATE } from "~data/card";
 
 const getUppyTranslations = (locale) => {
   switch (locale) {
@@ -46,6 +49,8 @@ const PLUGINS = [
 const COMPANION_URL = `${process.env.NEXT_PUBLIC_API_URL}/image/companion`;
 
 const FileInput = ({ name, control }: Props) => {
+  const { setValue } = useFormContext();
+  const setCardState = useSetRecoilState(cardState);
   const { errorToast } = useToast();
   const { i18n, t } = useTranslation("generator");
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -53,7 +58,6 @@ const FileInput = ({ name, control }: Props) => {
     name,
     control,
   });
-
   const [isUploaded, setUploaded] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
@@ -111,6 +115,19 @@ const FileInput = ({ name, control }: Props) => {
               setUploaded(true);
               onClose();
               uppy.reset();
+
+              // Reset transformation values
+              setValue(`${name}X`, CARD_DEFAULT_STATE[`${name}X`]);
+              setValue(`${name}Y`, CARD_DEFAULT_STATE[`${name}Y`]);
+              setValue(`${name}ScaleX`, CARD_DEFAULT_STATE[`${name}ScaleX`]);
+              setValue(`${name}ScaleY`, CARD_DEFAULT_STATE[`${name}ScaleY`]);
+
+              // Select uploaded image
+              setTimeout(() => {
+                setCardState((state) => {
+                  return { ...state, selectedImg: name };
+                });
+              }, 100);
             };
             reader.readAsDataURL(res.data);
           })

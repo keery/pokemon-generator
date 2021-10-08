@@ -63,7 +63,7 @@ const ImageCanvas = ({
   const [image] = useImage(`${prefixPath}${src}`, "anonymous");
 
   useEffect(() => {
-    if (isSelected && isTransformable) {
+    if (isSelected && isTransformable && !!trRef.current && !!imgRef) {
       trRef.current.nodes([imgRef.current]);
       trRef.current.getLayer().batchDraw();
     }
