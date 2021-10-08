@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Image as KonvaImage, Transformer } from "react-konva";
+import { Image as KonvaImage, Transformer, Group } from "react-konva";
 import useImage from "use-image";
 
 function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
@@ -15,6 +15,7 @@ interface Props {
   width?: number;
   height?: number;
   maxHeight?: number;
+  isTransformable?: boolean;
   maxWidth?: number;
   x?: number;
   y?: number;
@@ -22,6 +23,12 @@ interface Props {
   draggable?: boolean;
   name?: string;
   onDragEnd?: (event: any) => void;
+  clipWidth?: number;
+  clipHeight?: number;
+  clipY?: number;
+  clipX?: number;
+  onSelect?: () => void;
+  isSelected?: boolean;
 }
 
 const ImageCanvas = ({
@@ -35,22 +42,26 @@ const ImageCanvas = ({
   prefixPath = "assets/img/",
   draggable = false,
   name = "",
+  isTransformable = false,
   onDragEnd = () => null,
+  clipWidth = null,
+  clipHeight = null,
+  clipY = null,
+  clipX = null,
+  onSelect = null,
+  isSelected = false,
 }: Props) => {
   const [size, setSize] = useState([width, height]);
   const trRef = useRef(null);
   const imgRef = useRef(null);
   const [image] = useImage(`${prefixPath}${src}`, "anonymous");
-  const [isSelected, setSelected] = useState(null);
 
   useEffect(() => {
-    if (isSelected) {
-      console.log(trRef.current);
-      // we need to attach transformer manually
-      // trRef.current.children([imgRef.current]);
-      // trRef.current.getLayer().batchDraw();
+    if (isSelected && isTransformable) {
+      trRef.current.nodes([imgRef.current]);
+      trRef.current.getLayer().batchDraw();
     }
-  }, [isSelected, trRef, imgRef]);
+  }, [isSelected, trRef, imgRef, isTransformable]);
 
   useEffect(() => {
     if (image && maxHeight && maxWidth) {
@@ -68,28 +79,37 @@ const ImageCanvas = ({
 
   return (
     <>
-      <Transformer
-        ref={trRef}
-        boundBoxFunc={(oldBox, newBox) => {
-          // limit resize
-          if (newBox.width < 5 || newBox.height < 5) {
-            return oldBox;
-          }
-          return newBox;
-        }}
-      />
-      <KonvaImage
-        ref={imgRef}
-        name={name}
-        image={image}
-        width={size[0]}
-        height={size[1]}
-        x={x}
-        y={y}
-        draggable={draggable}
-        onDragEnd={onDragEnd}
-        onClick={() => setSelected(!isSelected)}
-      />
+      {isTransformable && isSelected && (
+        <Transformer
+          ref={trRef}
+          boundBoxFunc={(oldBox, newBox) => {
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
+            return newBox;
+          }}
+        />
+      )}
+      <Group
+        clipWidth={clipWidth}
+        clipHeight={clipHeight}
+        clipY={clipY}
+        clipX={clipX}
+      >
+        <KonvaImage
+          ref={imgRef}
+          name={name}
+          image={image}
+          width={size[0]}
+          height={size[1]}
+          x={x}
+          y={y}
+          draggable={draggable}
+          onDragEnd={onDragEnd}
+          isSelected={isSelected}
+          onClick={() => (isTransformable ? onSelect() : null)}
+        />
+      </Group>
     </>
   );
 };

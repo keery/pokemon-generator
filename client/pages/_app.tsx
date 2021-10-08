@@ -8,6 +8,7 @@ import AppHead from "~components/AppHead";
 import Layout from "~components/Layout";
 import { QueryClientProvider } from "react-query";
 import { appWithTranslation } from "next-i18next";
+import { RecoilRoot } from "recoil";
 
 import "@uppy/core/dist/style.min.css";
 import "@uppy/dashboard/dist/style.css";
@@ -18,9 +19,11 @@ const App = ({ Component, pageProps }: AppProps) => {
       <AppHead />
       <QueryClientProvider client={client}>
         <ChakraProvider theme={theme}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <RecoilRoot>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </RecoilRoot>
         </ChakraProvider>
       </QueryClientProvider>
     </>

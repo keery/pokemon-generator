@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useCallback } from "react";
 import { Layer, Group, Stage } from "react-konva";
 import { useFormContext } from "react-hook-form";
 import { Box, Image } from "@chakra-ui/react";
@@ -17,10 +17,14 @@ import TypeBackground from "./Card/TypeBackground";
 import Rarity from "./Card/Rarity";
 import Retreat from "./Card/Retreat";
 import { DragEndEvent } from "leaflet";
+import useClickOutside from "~hooks/useClickOutside";
+import { cardState } from "~atoms/cardState";
+import { useRecoilState } from "recoil";
 
 const Card = () => {
-  const stageRef = React.createRef();
+  const stageRef = useRef();
   const { control, setValue } = useFormContext();
+  const [card, setCard] = useRecoilState(cardState);
 
   const updateImgPos = (event: DragEndEvent): void => {
     const { attrs } = event.target;
@@ -28,8 +32,14 @@ const Card = () => {
     setValue(`${attrs.name}Y`, attrs.y);
   };
 
+  const resetSelected = useCallback(() => {
+    setCard({ ...card, selectedImg: null });
+  }, [card]);
+
+  useClickOutside(stageRef, resetSelected);
+
   return (
-    <Box border="none" pos="relative">
+    <Box border="none" pos="relative" ref={stageRef}>
       <Image
         src="assets/img/pokemon-water-3.png"
         pos="absolute"
@@ -54,14 +64,31 @@ const Card = () => {
         transform="rotate(20deg)"
       />
       <ColorBackground control={control} />
-      <Stage width={500} height={700}>
+      <Stage
+        width={500}
+        height={700}
+        onMouseDown={(e) => {
+          if (
+            !e.target.attrs.name ||
+            (!e.target.attrs.isSelected &&
+              !e.target.attrs.name.includes("_anchor"))
+          ) {
+            resetSelected();
+          }
+        }}
+      >
         <Layer>
           <TypeBackground control={control} />
+          <MainImage
+            control={control}
+            updateImgPos={updateImgPos}
+            isSelected={card.selectedImg === "mainImage"}
+            onSelect={() => setCard({ ...card, selectedImg: "mainImage" })}
+          />
           <Name control={control} />
           <HP control={control} />
           <SubInfo control={control} />
           <Attacks control={control} />
-          <MainImage control={control} updateImgPos={updateImgPos} />
           <Evolution control={control} />
           <Group x={38} y={593} width={570}>
             <TypeWithAmount control={control} name="weakness" />
