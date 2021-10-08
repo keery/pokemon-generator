@@ -76,12 +76,9 @@ const FileInput = ({ name, control }: Props) => {
     })
       .use(XHRUpload, {
         endpoint: `${process.env.NEXT_PUBLIC_API_URL}/image/upload`,
-        getResponseData: (responseText, response) => {
-          return {
-            url: responseText,
-            // url: "https://static01.nyt.com/images/2020/12/14/well/14google-photo/14google-photo-mediumSquareAt3X.jpg",
-          };
-        },
+        getResponseData: (responseText, response) => ({
+          url: responseText,
+        }),
       })
       .use(Webcam)
       .use(Url, {

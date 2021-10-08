@@ -83,6 +83,8 @@ const Card = () => {
       >
         <Layer>
           <TypeBackground control={control} />
+          <HP control={control} />
+          <SubInfo control={control} />
           <MainImage
             control={control}
             updateImgPos={updateImgPos}
@@ -91,10 +93,14 @@ const Card = () => {
             onSelect={() => setCard({ ...card, selectedImg: "mainImage" })}
           />
           <Name control={control} />
-          <HP control={control} />
-          <SubInfo control={control} />
           <Attacks control={control} />
-          <Evolution control={control} />
+          <Evolution
+            control={control}
+            updateImgPos={updateImgPos}
+            isSelected={card.selectedImg === "evolvePicture"}
+            updateScale={updateScale}
+            onSelect={() => setCard({ ...card, selectedImg: "evolvePicture" })}
+          />
           <Group x={38} y={593} width={570}>
             <TypeWithAmount control={control} name="weakness" />
             <TypeWithAmount control={control} name="resistance" x={165} />

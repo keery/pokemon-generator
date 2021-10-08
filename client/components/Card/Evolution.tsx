@@ -1,12 +1,17 @@
 import React from "react";
 import { useWatch } from "react-hook-form";
-import { Group } from "react-konva";
 import EvolutionImage from "./EvolutionImage";
 import EvolutionName from "./EvolutionName";
 import ImageCanvas from "./ImageCanvas";
 import { BASIC } from "~constants";
 
-const Evolution = ({ control }) => {
+const Evolution = ({
+  control,
+  updateImgPos,
+  isSelected,
+  onSelect,
+  updateScale,
+}) => {
   const stage = useWatch({
     control,
     name: "stage",
@@ -14,7 +19,7 @@ const Evolution = ({ control }) => {
   if (stage === BASIC) return null;
 
   return (
-    <Group>
+    <>
       <ImageCanvas
         src="1-gen/slice-stage.png"
         x={49}
@@ -22,9 +27,15 @@ const Evolution = ({ control }) => {
         width={79}
         height={50}
       />
-      <EvolutionImage control={control} />
+      <EvolutionImage
+        control={control}
+        updateImgPos={updateImgPos}
+        isSelected={isSelected}
+        onSelect={onSelect}
+        updateScale={updateScale}
+      />
       <EvolutionName control={control} />
-    </Group>
+    </>
   );
 };
 
