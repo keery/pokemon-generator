@@ -1,6 +1,3 @@
-Reset card
-Print
-changing pokemon background
 Undo/redo
 Interactive
 Theme retro
