@@ -3,6 +3,7 @@ import { useTheme } from "@chakra-ui/react";
 import ReactSelect from "react-select";
 import { useController, Control } from "react-hook-form";
 import dynamic from "next/dynamic";
+import { useTranslation } from "next-i18next";
 
 const getStyle = (theme, iconPath) => {
   const before = {
@@ -118,6 +119,7 @@ const Select = ({
   iconPath = null,
   isClearable = false,
 }: Props) => {
+  const { t } = useTranslation("generator");
   const theme = useTheme();
   const { field } = useController({
     name,
@@ -138,6 +140,7 @@ const Select = ({
       isClearable={isClearable}
       menuPortalTarget={document.body}
       menuPlacement="auto"
+      formatOptionLabel={({ label }) => t(label)}
       value={field.value}
       // menuIsOpen
     />
