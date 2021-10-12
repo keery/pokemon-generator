@@ -1,8 +1,15 @@
 import { BASIC } from "~constants";
+import { Card } from "~@types/Card";
 
-export const CARD_DEFAULT_STATE = {
-  type: "water",
-  stage: BASIC,
+export const CARD_DEFAULT_STATE: Card = {
+  type: {
+    label: "water",
+    value: "water",
+  },
+  stage: {
+    label: BASIC,
+    value: BASIC,
+  },
   name: "",
   nameEvolution: "",
   mainImage: null,
@@ -13,34 +20,42 @@ export const CARD_DEFAULT_STATE = {
   evolvePicture: null,
   evolvePictureX: 0,
   evolvePictureY: 0,
-  hp: "30",
-  weaknessType: "",
-  weaknessAmount: "",
-  resistanceType: "",
-  resistanceAmount: "",
-  retreat: "",
-  retreatVisible: true,
+  hp: {
+    label: "30 HP",
+    value: 30,
+  },
+  weaknessType: null,
+  weaknessAmount: null,
+  resistanceType: null,
+  resistanceAmount: null,
+  retreat: null,
   description: "",
   illustrator: "",
   cardNumber: "",
   totalCollection: "",
-  rarity: "",
+  rarity: null,
   species: "",
   length: "",
   weight: "",
   bgColor: { r: 255, g: 255, b: 255, a: 0 },
   attack1: {
     name: "",
-    damage: "",
+    damage: null,
     info: "",
-    type: "",
-    amount: "1",
+    type: null,
+    amount: {
+      label: "1",
+      value: 1,
+    },
   },
   attack2: {
     name: "",
-    damage: "",
+    damage: null,
     info: "",
-    type: "",
-    amount: "1",
+    type: null,
+    amount: {
+      label: "1",
+      value: 1,
+    },
   },
 };

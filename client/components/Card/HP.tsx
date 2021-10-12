@@ -1,9 +1,10 @@
 import React from "react";
 import { useWatch } from "react-hook-form";
 import { Text } from "react-konva";
+import { Select } from "~@types/Card";
 
 const HP = ({ control }) => {
-  const hp = useWatch({
+  const hp: Select<string> = useWatch({
     control,
     name: "hp",
   });
@@ -11,7 +12,7 @@ const HP = ({ control }) => {
 
   return (
     <Text
-      text={`${hp} HP`}
+      text={`${hp.value} HP`}
       fontFamily="pokehp"
       width={150}
       height={150}

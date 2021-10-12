@@ -68,8 +68,9 @@ const OptionButton = ({
   return Button;
 };
 
-const PanelOptions = () => {
+const PanelOptions = ({ resetCard }) => {
   const { t } = useTranslation("generator");
+
   return (
     <Flex
       mt={6}
@@ -108,7 +109,7 @@ const PanelOptions = () => {
         />
         <OptionButton
           icon={<Reset />}
-          onClick={() => null}
+          onClick={resetCard}
           label={t("resetCard")}
         />
         <ColorPicker />

@@ -45,7 +45,7 @@ const Card = () => {
 
   return (
     <Box border="none" pos="relative" ref={stageRef}>
-      <PokemonsBackground control={control} />
+      {/* <PokemonsBackground control={control} /> */}
       <ColorBackground control={control} />
       <Stage
         width={500}

@@ -95,11 +95,11 @@ const PokemonsBackground = ({ control }: Props) => {
 
   return (
     <>
-      {Object.keys(pokemons).map((element) => (
+      {/* {Object.keys(pokemons).map((element) => (
         <Box
           className={`bg-pokemon
           ${isVariant ? "even" : "odd"}
-           ${selectedType === element ? "active" : "inactive"}`}
+           ${selectedType.value === element ? "active" : "inactive"}`}
         >
           <Box
             pos="absolute"
@@ -135,7 +135,7 @@ const PokemonsBackground = ({ control }: Props) => {
             />
           </Box>
         </Box>
-      ))}
+      ))} */}
     </>
   );
 };

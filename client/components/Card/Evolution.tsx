@@ -4,6 +4,7 @@ import EvolutionImage from "./EvolutionImage";
 import EvolutionName from "./EvolutionName";
 import ImageCanvas from "./ImageCanvas";
 import { BASIC } from "~constants";
+import { Select, Stage } from "~@types/Card";
 
 const Evolution = ({
   control,
@@ -12,11 +13,11 @@ const Evolution = ({
   onSelect,
   updateScale,
 }) => {
-  const stage = useWatch({
+  const stage: Select<Stage> = useWatch({
     control,
     name: "stage",
   });
-  if (stage === BASIC) return null;
+  if (stage.value === BASIC) return null;
 
   return (
     <>

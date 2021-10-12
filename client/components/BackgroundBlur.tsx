@@ -51,7 +51,7 @@ const BackgroundBlur = ({ control }: Props) => {
   return (
     <>
       {Object.keys(gradients).map((type) => (
-        <Bg key={type} type={type} isSelected={selectedType === type} />
+        <Bg key={type} type={type} isSelected={selectedType.value === type} />
       ))}
     </>
   );

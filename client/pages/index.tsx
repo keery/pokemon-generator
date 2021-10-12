@@ -4,12 +4,12 @@ import { HStack, Container, Flex } from "@chakra-ui/react";
 import { SSRConfig } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import BackgroundBlur from "~components/BackgroundBlur";
-
 import CardForm from "~components/CardForm";
 import { CARD_DEFAULT_STATE } from "~data/card";
 import { decrypt } from "~utils/cache";
 import { useForm, FormProvider } from "react-hook-form";
 import PanelOptions from "~components/PanelOptions";
+import isEqual from "lodash.isequal";
 import dynamic from "next/dynamic";
 const Card = dynamic(() => import("~components/Card"), { ssr: false });
 
@@ -30,6 +30,19 @@ const Home: NextPage = () => {
     console.log(data);
   };
 
+  const resetCard = () => {
+    console.log(isEqual(form.getValues(), CARD_DEFAULT_STATE));
+    if (
+      !isEqual(form.getValues(), CARD_DEFAULT_STATE) &&
+      window.confirm("test")
+      // window.confirm(this.props.t('confirmReset'))
+    ) {
+      form.reset(CARD_DEFAULT_STATE);
+      // this.flip = true;
+      localStorage.removeItem(process.env.NEXT_PUBLIC_KEY_CACHE);
+    }
+  };
+
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} style={{ height: "100%" }}>
@@ -41,7 +54,7 @@ const Home: NextPage = () => {
             alignItems="flex-start"
             spacing={5}
           >
-            <PanelOptions />
+            <PanelOptions resetCard={resetCard} />
             <CardForm />
             <Flex
               flex={2}

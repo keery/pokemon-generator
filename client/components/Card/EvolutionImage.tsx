@@ -1,6 +1,6 @@
 import React from "react";
 import { useWatch } from "react-hook-form";
-import { Group, Rect } from "react-konva";
+import { Group } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
 
 const EvolutionImage = ({
@@ -19,7 +19,6 @@ const EvolutionImage = ({
 
   return (
     <Group width={66} height={60} y={55} x={43}>
-      {/* <Rect fill="#000000" width={61} height={53} x={0} y={0} /> */}
       <ImageCanvas
         isTransformable
         isSelected={isSelected}

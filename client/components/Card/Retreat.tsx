@@ -1,9 +1,10 @@
 import React from "react";
 import { useWatch } from "react-hook-form";
 import ImageCanvas from "~components/Card/ImageCanvas";
+import { Select } from "~@types/Card";
 
 const Retreat = ({ control }) => {
-  const retreat = useWatch({
+  const retreat: Select<string> = useWatch({
     control,
     name: "retreat",
   });
@@ -12,7 +13,7 @@ const Retreat = ({ control }) => {
 
   return (
     <ImageCanvas
-      src={`1-gen/retreat-${retreat}.png`}
+      src={`1-gen/retreat-${retreat.value}.png`}
       x={312}
       width={115}
       height={26}

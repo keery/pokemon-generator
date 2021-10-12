@@ -48,7 +48,7 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
   if (Boolean(attack.amount) && Boolean(attack.type)) {
     global.img = (
       <ImageCanvas
-        src={`1-gen/${attack.amount}-${attack.type}.png`}
+        src={`1-gen/${attack.amount.value}-${attack.type.value}.png`}
         x={0}
         width={50}
         height={50}
@@ -59,7 +59,7 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
     global.img = null;
   }
 
-  if (Boolean(attack.damage) || global.img) {
+  if (Boolean(attack?.damage?.value) || global.img) {
     global.textAttackX = 60;
     global.textWidth = 306;
     global.textHeight = 100;
@@ -117,7 +117,7 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
           />
         </Group>
         <Text
-          text={attack.damage}
+          text={attack.damage?.value}
           fontFamily="gstd"
           fontSize={32}
           y={damageY}

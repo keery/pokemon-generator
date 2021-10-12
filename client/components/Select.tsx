@@ -125,7 +125,7 @@ const Select = ({
   });
 
   const onChange = (data) => {
-    field.onChange(data?.value || "");
+    field.onChange(data || "");
   };
 
   return (
@@ -138,9 +138,7 @@ const Select = ({
       isClearable={isClearable}
       menuPortalTarget={document.body}
       menuPlacement="auto"
-      defaultValue={
-        Boolean(field.value) ? { value: field.value, label: field.value } : null
-      }
+      value={field.value}
       // menuIsOpen
     />
   );

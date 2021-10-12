@@ -14,17 +14,23 @@ const TypeWithAmount = ({ control, name, x = 0, y = 0 }) => {
 
   return (
     <Group x={x} y={y}>
-      {type !== "" && (
+      {Boolean(type?.value) && type?.value !== "" && (
         <ImageCanvas
-          src={`1-gen/${type}.png`}
+          src={`1-gen/${type?.value}.png`}
           x={27}
           y={0}
           width={26}
           height={26}
         />
       )}
-      {Boolean(amount) && amount !== "" && (
-        <Text text={amount} fontFamily="pokename" fontSize={15} y={8} x={57} />
+      {Boolean(amount) && amount.value !== "" && (
+        <Text
+          text={amount.value}
+          fontFamily="pokename"
+          fontSize={15}
+          y={8}
+          x={57}
+        />
       )}
     </Group>
   );

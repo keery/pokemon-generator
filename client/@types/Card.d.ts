@@ -1,4 +1,5 @@
 import { RgbaColor } from "react-colorful";
+import { BASIC, STAGE_ONE, STAGE_TWO } from "~constants";
 
 export type Element =
   | "fire"
@@ -10,38 +11,46 @@ export type Element =
   | "normal";
 
 export type Rarity = "common" | "uncommon" | "rare";
+export type Stage = "basic" | "stage1" | "stage2";
+
+export interface Select<T> {
+  label?: string;
+  value?: T;
+}
 
 export interface IAttack {
   name: string;
-  damage: string;
+  damage: Select<string>;
   info: string;
-  type: Element;
-  amount: number;
+  type: Select<Element>;
+  amount: Select<number>;
 }
 
 export interface Card {
-  type: Element;
-  stage: BASIC;
+  type: Select<Element>;
+  stage: Select<Stage>;
   name: string;
   nameEvolution: string;
   mainImage: string;
   mainImageX: number;
   mainImageY: number;
+  mainImageScaleX: number;
+  mainImageScaleY: number;
   evolvePicture: string;
   evolvePictureX: number;
   evolvePictureY: number;
-  hp: string | number;
-  weaknessType: Element;
-  weaknessAmount: number;
-  resistanceType: Element;
-  resistanceAmount: number;
+  hp: Select<string | number>;
+  weaknessType: Select<Element>;
+  weaknessAmount: Select<number>;
+  resistanceType: Select<Element>;
+  resistanceAmount: Select<number>;
   retreat: number;
   description: string;
   illustrator: string;
   cardNumber: string;
   bgColor: RgbaColor;
   totalCollection: string;
-  rarity: RARITY;
+  rarity: Select<Rarity>;
   species: string;
   length: string;
   weight: string;
