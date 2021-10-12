@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 import { useWatch, Control } from "react-hook-form";
-import { Element } from "~@types/Card";
+import { Element, Select } from "~@types/Card";
 import dynamic from "next/dynamic";
 
 const gradients: Record<Element, any> = {
@@ -43,7 +43,7 @@ const Bg = ({ type, isSelected }) => {
 };
 
 const BackgroundBlur = ({ control }: Props) => {
-  const selectedType: Element = useWatch({
+  const selectedType: Select<Element> = useWatch({
     control,
     name: "type",
   });

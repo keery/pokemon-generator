@@ -13,12 +13,12 @@ const printCard = () => {
 };
 
 const exportCard = () => {
-  const link = document.createElement("a");
-  link.download = "card.png";
-  link.href = this.stageRef.current.getStage().toDataURL();
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  // const link = document.createElement("a");
+  // link.download = "card.png";
+  // link.href = this.stageRef.current.getStage().toDataURL();
+  // document.body.appendChild(link);
+  // link.click();
+  // document.body.removeChild(link);
 };
 
 const PanelOptions = () => {
