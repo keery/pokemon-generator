@@ -52,7 +52,6 @@ const Card = () => {
       className={card.isFlipped ? "flipped" : ""}
     >
       <PokemonsBackground control={control} />
-      <ColorBackground control={control} />
       <Backface />
       <Stage
         width={500}
@@ -68,6 +67,7 @@ const Card = () => {
         }}
       >
         <Layer>
+          <ColorBackground control={control} />
           <TypeBackground control={control} />
           <HP control={control} />
           <SubInfo control={control} />

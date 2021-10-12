@@ -1,29 +1,21 @@
 import React from "react";
 import { useWatch, Control } from "react-hook-form";
-import { Box } from "@chakra-ui/react";
-import { RgbaColor } from "react-colorful";
+import { Rect } from "react-konva";
 import { getRgbaColor } from "~utils/helper";
+import { RgbaColor } from "react-colorful";
 
 interface Props {
   control: Control;
 }
 
 const ColorBackground = ({ control }: Props) => {
-  const color: RgbaColor = useWatch({
+  const bgColor: RgbaColor = useWatch({
     control,
     name: "bgColor",
   });
 
   return (
-    <Box
-      pos="absolute"
-      left="0"
-      top="0"
-      right="0"
-      bottom="0"
-      bgColor={getRgbaColor(color)}
-      borderRadius="1.8rem"
-    />
+    <Rect width={400} height={280} y={88} x={60} fill={getRgbaColor(bgColor)} />
   );
 };
 
