@@ -10,8 +10,8 @@ const Textarea = {
         borderColor: "#77b2f5",
       },
       _focus: {
-        boxShadow: "0px 0px 2px #868686",
-        border: "1px solid #5389c5",
+        boxShadow: "0px 0px 9px #a0c2ff !important",
+        border: "1px solid #fefeff",
       },
     },
   },

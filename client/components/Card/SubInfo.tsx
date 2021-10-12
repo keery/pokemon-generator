@@ -14,7 +14,7 @@ const HP = ({ control }) => {
     if (species !== "" && (length !== "" || weight !== "")) info += ". ";
     if (length !== "") info += `Length: ${length}`;
     if (length !== "" && weight !== "") info += ", ";
-    if (weight !== "") info += `Weight: ${weight}`;
+    if (weight !== "") info += `Weight: ${weight} lbs`;
     return info;
   }, [species, length, weight]);
 

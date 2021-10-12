@@ -56,9 +56,12 @@ const FieldsPokemonInfo = () => {
           <Input name="weight" type="text" ref={register} />
           <InputRightAddon
             children="lbs"
-            borderRightRadius="md"
-            bg="transparent"
+            color="main"
+            borderRightRadius="sm"
+            bg="rgb(255 255 255 / 30%)"
             fontWeight="500"
+            border="1px solid"
+            borderColor="#cacaca"
           />
         </InputGroup>
       </Field>

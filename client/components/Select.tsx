@@ -19,7 +19,7 @@ const getStyle = (theme, iconPath) => {
     menuPortal: (base) => ({ ...base, zIndex: 9999 }),
     dropdownIndicator: (base) => ({
       ...base,
-      color: "#929292",
+      color: theme.colors.main,
       ":hover": {
         color: theme.colors.main,
       },
@@ -49,8 +49,8 @@ const getStyle = (theme, iconPath) => {
         color: "white",
         textTransform: "capitalize",
         transition: "border-color 200ms",
-        boxShadow: isFocused ? "0px 0px 2px #868686" : "none",
-        border: isFocused ? "1px solid #5389c5" : "1px solid #cacaca",
+        boxShadow: isFocused ? "0px 0px 9px #a0c2ff !important" : "none",
+        border: isFocused ? "1px solid #fefeff" : "1px solid #cacaca",
         backgroundColor: "rgb(255 255 255 / 30%)",
         borderRadius: theme.radii.sm,
         height: "40px",
@@ -68,7 +68,7 @@ const getStyle = (theme, iconPath) => {
             }
           : {}),
         ":hover": {
-          borderColor: "#77b2f5",
+          borderColor: isFocused ? "#fefeff" : "#77b2f5",
         },
       };
     },
