@@ -46,7 +46,6 @@ const Card = () => {
 
   return (
     <Box
-      border="none"
       pos="relative"
       ref={stageRef}
       className={card.isFlipped ? "flipped" : ""}
@@ -54,6 +53,7 @@ const Card = () => {
       <PokemonsBackground control={control} />
       <Backface />
       <Stage
+        id="card"
         width={500}
         height={700}
         onMouseDown={(e) => {

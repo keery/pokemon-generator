@@ -13,12 +13,22 @@ const printCard = () => {
 };
 
 const exportCard = () => {
-  // const link = document.createElement("a");
-  // link.download = "card.png";
-  // link.href = this.stageRef.current.getStage().toDataURL();
-  // document.body.appendChild(link);
-  // link.click();
-  // document.body.removeChild(link);
+  const date = new Date();
+
+  let name = `pokemon-card`;
+  name += `-${date.getFullYear()}`;
+  name += `-${date.getMonth()}`;
+  name += `-${date.getDate()}`;
+  name += `-${date.getHours()}`;
+  name += `-${date.getMinutes()}`;
+  name += `-${date.getSeconds()}`;
+  name += `.jpg`;
+
+  const canva = document.getElementsByTagName("canvas");
+  const link = document.createElement("a");
+  link.download = name;
+  link.href = canva[0].toDataURL();
+  link.click();
 };
 
 const PanelOptions = () => {
