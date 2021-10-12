@@ -19,7 +19,7 @@ import { Control, useController, useFormContext } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import axios from "axios";
 import useToast from "~hooks/useToast";
-import { cardState } from "~atoms/cardState";
+import { cardAtom } from "~atoms/card";
 import { useSetRecoilState } from "recoil";
 import { CARD_DEFAULT_STATE } from "~data/card";
 
@@ -50,7 +50,7 @@ const COMPANION_URL = `${process.env.NEXT_PUBLIC_API_URL}/image/companion`;
 
 const FileInput = ({ name, control }: Props) => {
   const { setValue } = useFormContext();
-  const setCardState = useSetRecoilState(cardState);
+  const setCardState = useSetRecoilState(cardAtom);
   const { errorToast } = useToast();
   const { i18n, t } = useTranslation("generator");
   const { isOpen, onOpen, onClose } = useDisclosure();

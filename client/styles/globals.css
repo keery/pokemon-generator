@@ -162,3 +162,48 @@ a {
 .bg-pokemon.active.odd > div:nth-child(3) {
   transition-delay: 0.2s;
 }
+
+/* BACKFACE FLIPPING */
+.konvajs-content > canvas,
+.backface {
+  transition: transform linear 0.6s;
+}
+.konvajs-content > canvas {
+  backface-visibility: hidden;
+}
+.flipped .konvajs-content > canvas {
+  animation: flipFrontface 1s linear;
+}
+.flipped .backface {
+  animation: flipBackface 1s linear;
+}
+
+@keyframes flipBackface {
+  0% {
+    transform: rotateY(180deg);
+  }
+  30% {
+    transform: rotateY(0deg);
+  }
+  70% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes flipFrontface {
+  0% {
+    transform: rotateY(0deg);
+  }
+  30% {
+    transform: rotateY(180deg);
+  }
+  70% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}

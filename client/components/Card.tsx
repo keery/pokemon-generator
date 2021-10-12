@@ -5,6 +5,7 @@ import { Box } from "@chakra-ui/react";
 import Name from "./Card/Name";
 import Attacks from "./Card/Attacks";
 import MainImage from "./Card/MainImage";
+import Backface from "./Card/Backface";
 import Evolution from "./Card/Evolution";
 import HP from "./Card/HP";
 import SubInfo from "./Card/SubInfo";
@@ -17,14 +18,14 @@ import TypeBackground from "./Card/TypeBackground";
 import Rarity from "./Card/Rarity";
 import Retreat from "./Card/Retreat";
 import useClickOutside from "~hooks/useClickOutside";
-import { cardState } from "~atoms/cardState";
+import { cardAtom } from "~atoms/card";
 import { useRecoilState } from "recoil";
 import PokemonsBackground from "./PokemonsBackground";
 
 const Card = () => {
   const stageRef = useRef();
   const { control, setValue } = useFormContext();
-  const [card, setCard] = useRecoilState(cardState);
+  const [card, setCard] = useRecoilState(cardAtom);
 
   const updateImgPos = useCallback((event: any): void => {
     const { attrs } = event.target;
@@ -44,9 +45,15 @@ const Card = () => {
   useClickOutside(stageRef, resetSelected);
 
   return (
-    <Box border="none" pos="relative" ref={stageRef}>
+    <Box
+      border="none"
+      pos="relative"
+      ref={stageRef}
+      className={card.isFlipped ? "flipped" : ""}
+    >
       <PokemonsBackground control={control} />
       <ColorBackground control={control} />
+      <Backface />
       <Stage
         width={500}
         height={700}

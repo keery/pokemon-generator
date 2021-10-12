@@ -6,6 +6,10 @@ import ConfirmReset from "~components/ConfirmReset";
 import OptionButton from "~components/PanelOptions/OptionButton";
 import isEqual from "lodash.isequal";
 import { CARD_DEFAULT_STATE } from "~data/card";
+import { cardAtom } from "~atoms/card";
+import { useRecoilState } from "recoil";
+
+const FLIPPING_TIME = 1000;
 
 const ResetButton = () => {
   const { t } = useTranslation("generator");
@@ -17,11 +21,19 @@ const ResetButton = () => {
   const [isDisabled, setDisabled] = useState(
     isEqual(formValues, CARD_DEFAULT_STATE)
   );
+  const [card, setCardState] = useRecoilState(cardAtom);
 
   const confirmReset = useCallback(() => {
     setOpen(false);
-    reset(CARD_DEFAULT_STATE);
     localStorage.removeItem(process.env.NEXT_PUBLIC_KEY_CACHE);
+    setCardState({ ...card, isFlipped: true });
+
+    setTimeout(() => {
+      reset(CARD_DEFAULT_STATE);
+    }, FLIPPING_TIME / 2);
+    setTimeout(() => {
+      setCardState({ ...card, isFlipped: false });
+    }, FLIPPING_TIME);
   }, []);
 
   useMemo(() => {

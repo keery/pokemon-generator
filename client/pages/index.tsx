@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { GetServerSideProps, NextPage } from "next";
 import { HStack, Container, Flex } from "@chakra-ui/react";
 import { SSRConfig } from "next-i18next";

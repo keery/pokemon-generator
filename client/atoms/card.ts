@@ -1,8 +1,9 @@
 import { atom } from "recoil";
 
-export const cardState = atom({
+export const cardAtom = atom({
   key: "cardState",
   default: {
     selectedImg: null,
+    isFlipped: false,
   },
 });
