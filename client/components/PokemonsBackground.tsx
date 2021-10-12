@@ -21,7 +21,7 @@ const pokemons: Record<Element, BgPokemon[]> = {
     { src: "assets/img/bg/pokemon-water-3.png", transform: "rotateY(180deg)" },
   ],
   psychic: [
-    { src: "assets/img/bg/pokemon-psychic-1.webp", transform: "rotate(20deg)" },
+    { src: "assets/img/bg/pokemon-psychic-1.png", transform: "rotate(20deg)" },
     {
       src: "assets/img/bg/pokemon-psychic-2.png",
       transform: "rotateY(180deg)",
