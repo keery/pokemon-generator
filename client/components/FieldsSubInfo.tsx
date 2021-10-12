@@ -42,7 +42,7 @@ const FieldsSubInfo = () => {
           control={control}
           options={optionsType}
           isClearable
-          iconPath="1-{{value}}.png"
+          iconPath="{{value}}.png"
         />
       </Field>
       <Field label={t("weaknessAmount")}>
@@ -58,7 +58,7 @@ const FieldsSubInfo = () => {
           name="resistanceType"
           control={control}
           options={optionsType}
-          iconPath="1-{{value}}.png"
+          iconPath="{{value}}.png"
           isClearable
         />
       </Field>
@@ -76,7 +76,7 @@ const FieldsSubInfo = () => {
           control={control}
           options={optionsRetreat}
           isClearable
-          iconPath="1-normal.png"
+          iconPath="normal.png"
         />
       </Field>
     </>

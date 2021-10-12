@@ -58,8 +58,11 @@ const getStyle = (theme, iconPath) => {
           ? {
               ":before": {
                 ...before,
-                marginLeft: "8px",
-                backgroundSize: "50px",
+                marginLeft: "10px",
+                marginRight: "5px",
+                width: "24px",
+                height: "24px",
+                backgroundSize: "contain",
                 backgroundImage: `url(/assets/img/1-gen/${iconPath.replace(
                   "{{value}}",
                   value[0].value
@@ -88,8 +91,10 @@ const getStyle = (theme, iconPath) => {
         ":before": iconPath
           ? {
               ...before,
-              marginRight: "10px",
-              backgroundSize: "45px",
+              width: "22px",
+              height: "22px",
+              marginRight: "15px",
+              backgroundSize: "contain",
               backgroundImage: `url(/assets/img/1-gen/${iconPath.replace(
                 "{{value}}",
                 data.value

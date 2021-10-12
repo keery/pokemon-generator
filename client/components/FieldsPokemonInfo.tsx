@@ -31,7 +31,7 @@ const FieldsPokemonInfo = () => {
           name="type"
           options={optionsType}
           control={control}
-          iconPath="1-{{value}}.png"
+          iconPath="{{value}}.png"
         />
       </Field>
       <Field label={t("picture")}>

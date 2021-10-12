@@ -3,7 +3,13 @@ import { Box, Text, Flex, Link, Image } from "@chakra-ui/react";
 
 const Logo = () => {
   return (
-    <Link href="/" display="inline-block" textDecoration="none">
+    <Link
+      href="/"
+      display="inline-block"
+      _hover={{
+        textDecoration: "none",
+      }}
+    >
       <Flex alignItems="center">
         <Image
           w="50px"
