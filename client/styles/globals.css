@@ -129,3 +129,36 @@ a {
     transform: rotate(360deg);
   }
 }
+
+.bg-pokemon > div {
+  transition: transform ease-in-out 0.5s;
+}
+
+.bg-pokemon.inactive > div {
+  transform: scale(0);
+  transition-duration: 0.3s;
+}
+
+.bg-pokemon.active > div {
+  transform: scale(1);
+}
+
+.bg-pokemon.active.even > div:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.bg-pokemon.active.even > div:nth-child(1) {
+  transition-delay: 0.35s;
+}
+.bg-pokemon.active.even > div:nth-child(3) {
+  transition-delay: 0.5s;
+}
+
+.bg-pokemon.active.odd > div:nth-child(2) {
+  transition-delay: 0.5s;
+}
+.bg-pokemon.active.odd > div:nth-child(1) {
+  transition-delay: 0.35s;
+}
+.bg-pokemon.active.odd > div:nth-child(3) {
+  transition-delay: 0.2s;
+}

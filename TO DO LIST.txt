@@ -1,30 +1,17 @@
------MUST DO-----:
-Design
-Actually files are uploaded directly, so handle them, and find a solution to remove useless files (different system, or expiration time, or ***ENTER A SOLUTION HERE***)
-GPDR friendly
-Reset card is usable when groupBox is open
-Retreat size
-Button see all intreavtive areas
-Update picto element with bigger size
-Edit evolution name from card
-Move main picture and evolution picture
-Edit attack from card
-Fix instagram
-Animation picture is above evolution picture
-
------EVOLUTION-----:
-Checker uppy pull request about setting of dynamic local
-Use only one instance of uppy
+Reset card
+Print
+changing pokemon background
+Undo/redo
+Interactive
 Theme retro
+Mobile
+Burger menu
+Add missing Element Dark + Acier
+
+
+-----MUST DO-----:
+Button see all intreavtive areas
+Edit evolution name from card
+Edit attack from card
 Share on social networks
-Animation on close modal ?
-Use Typescript or Flow
-Play sound effect on actions ?
 Draw on card with pen
-Card galery to see old created cards into a pokedex
-Optimize rendering with shouldComponentUpdate
-Create sprite with all elements
-Information when user select amount without type
-Select picture from galery already created
-Drag and drop attacks
-LIst of all creations

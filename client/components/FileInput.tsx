@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Box, Text, Flex, useDisclosure, Spinner } from "@chakra-ui/react";
 import Uppy from "@uppy/core";
 import Url from "@uppy/url";
@@ -61,6 +61,11 @@ const FileInput = ({ name, control }: Props) => {
 
   const [isUploaded, setUploaded] = useState(!!field.value);
   const [isLoading, setLoading] = useState(false);
+
+  const deleteFile = () => {
+    setUploaded(false);
+    field.onChange(null);
+  };
 
   const uppy = useUppy(() => {
     return new Uppy({
@@ -143,7 +148,7 @@ const FileInput = ({ name, control }: Props) => {
       onClose={onClose}
       isOpen={isOpen}
       button={
-        <>
+        <Box>
           <Flex
             onClick={onOpen}
             direction="column"
@@ -208,7 +213,20 @@ const FileInput = ({ name, control }: Props) => {
               </Text>
             </Box>
           </Flex>
-        </>
+          {isUploaded && (
+            <Text
+              fontSize="0.7rem"
+              mt={0.5}
+              onClick={deleteFile}
+              _hover={{
+                cursor: "pointer",
+                textDecoration: "underline",
+              }}
+            >
+              Supprimer l'image
+            </Text>
+          )}
+        </Box>
       }
       size="xl"
     >

@@ -1,7 +1,7 @@
 import React, { useRef, useCallback } from "react";
 import { Layer, Group, Stage } from "react-konva";
 import { useFormContext } from "react-hook-form";
-import { Box, Image } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import Name from "./Card/Name";
 import Attacks from "./Card/Attacks";
 import MainImage from "./Card/MainImage";
@@ -19,6 +19,7 @@ import Retreat from "./Card/Retreat";
 import useClickOutside from "~hooks/useClickOutside";
 import { cardState } from "~atoms/cardState";
 import { useRecoilState } from "recoil";
+import PokemonsBackground from "./PokemonsBackground";
 
 const Card = () => {
   const stageRef = useRef();
@@ -44,29 +45,7 @@ const Card = () => {
 
   return (
     <Box border="none" pos="relative" ref={stageRef}>
-      <Image
-        src="assets/img/pokemon-water-3.png"
-        pos="absolute"
-        left="105%"
-        right="0%"
-        w="210px"
-        transform="rotateY(180deg)"
-      />
-      <Image
-        src="assets/img/kaiminus.png"
-        pos="absolute"
-        bottom="-10%"
-        left="102%"
-        w="300px"
-      />
-      <Image
-        src="assets/img/carapuce.png"
-        pos="absolute"
-        right="100%"
-        top="20%"
-        width="270px"
-        transform="rotate(20deg)"
-      />
+      <PokemonsBackground control={control} />
       <ColorBackground control={control} />
       <Stage
         width={500}
