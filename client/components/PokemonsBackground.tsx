@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Image, Box } from "@chakra-ui/react";
 import { useWatch, Control } from "react-hook-form";
-import { Element } from "~@types/Card";
+import { Element, Select } from "~@types/Card";
 
 interface Props {
   control: Control;
@@ -82,7 +82,7 @@ const pokemons: Record<Element, BgPokemon[]> = {
 };
 
 const PokemonsBackground = ({ control }: Props) => {
-  const selectedType: Element = useWatch({
+  const selectedType: Select<Element> = useWatch({
     control,
     name: "type",
   });
@@ -91,12 +91,13 @@ const PokemonsBackground = ({ control }: Props) => {
 
   useEffect(() => {
     setVariant(!isVariant);
-  }, [selectedType]);
+  }, [selectedType?.value]);
 
   return (
     <>
-      {/* {Object.keys(pokemons).map((element) => (
+      {Object.keys(pokemons).map((element) => (
         <Box
+          key={element}
           className={`bg-pokemon
           ${isVariant ? "even" : "odd"}
            ${selectedType.value === element ? "active" : "inactive"}`}
@@ -135,7 +136,7 @@ const PokemonsBackground = ({ control }: Props) => {
             />
           </Box>
         </Box>
-      ))} */}
+      ))}
     </>
   );
 };

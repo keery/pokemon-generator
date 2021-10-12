@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { GetServerSideProps, NextPage } from "next";
 import { HStack, Container, Flex } from "@chakra-ui/react";
 import { SSRConfig } from "next-i18next";
@@ -8,10 +8,13 @@ import CardForm from "~components/CardForm";
 import { CARD_DEFAULT_STATE } from "~data/card";
 import { decrypt } from "~utils/cache";
 import { useForm, FormProvider } from "react-hook-form";
-import PanelOptions from "~components/PanelOptions";
-import isEqual from "lodash.isequal";
 import dynamic from "next/dynamic";
+
 const Card = dynamic(() => import("~components/Card"), { ssr: false });
+const PanelOptions = dynamic(
+  () => import("~components/PanelOptions/PanelOptions"),
+  { ssr: false }
+);
 
 const Home: NextPage = () => {
   const cachedCard =
@@ -30,22 +33,12 @@ const Home: NextPage = () => {
     console.log(data);
   };
 
-  const resetCard = () => {
-    console.log(isEqual(form.getValues(), CARD_DEFAULT_STATE));
-    if (
-      !isEqual(form.getValues(), CARD_DEFAULT_STATE) &&
-      window.confirm("test")
-      // window.confirm(this.props.t('confirmReset'))
-    ) {
-      form.reset(CARD_DEFAULT_STATE);
-      // this.flip = true;
-      localStorage.removeItem(process.env.NEXT_PUBLIC_KEY_CACHE);
-    }
-  };
-
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} style={{ height: "100%" }}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        style={{ height: "100%", overflow: "hidden" }}
+      >
         <BackgroundBlur control={form.control} />
         <Container h="100%" py={6}>
           <HStack
@@ -54,7 +47,7 @@ const Home: NextPage = () => {
             alignItems="flex-start"
             spacing={5}
           >
-            <PanelOptions resetCard={resetCard} />
+            <PanelOptions />
             <CardForm />
             <Flex
               flex={2}

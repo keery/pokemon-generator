@@ -11,14 +11,13 @@ const Button = {
     },
   },
   defaultProps: {
-    colorScheme: "white",
+    colorScheme: "blue",
   },
   variants: {
     solid: {
       _hover: {
         opacity: 0.8,
       },
-      layerStyle: "glass",
     },
   },
   sizes: {

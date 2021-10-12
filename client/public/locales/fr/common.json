@@ -3,5 +3,6 @@
     "title": "Titre app",
     "description": "Description app"
   },
-  "hello": "Bonjour"
+  "cancel": "Annuler",
+  "confirm": "Confirmer"
 }

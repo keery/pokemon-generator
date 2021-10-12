@@ -1,18 +1,12 @@
 import React from "react";
-import {
-  VStack,
-  Tooltip,
-  IconButton,
-  IconButtonProps,
-  Flex,
-  AspectRatio,
-} from "@chakra-ui/react";
+import { VStack, IconButton, Flex, AspectRatio } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import Print from "public/assets/img/print.svg";
-import Reset from "public/assets/img/reset.svg";
 import Menu from "public/assets/img/menu.svg";
 import Download from "public/assets/img/download.svg";
 import ColorPicker from "~components/ColorPicker";
+import OptionButton from "~components/PanelOptions/OptionButton";
+import ResetButton from "~components/PanelOptions/ResetButton";
 
 const printCard = () => {
   window.print();
@@ -27,48 +21,7 @@ const exportCard = () => {
   document.body.removeChild(link);
 };
 
-interface Props extends Omit<IconButtonProps, "aria-label"> {
-  icon: JSX.Element;
-  label?: string;
-  withTooltip?: boolean;
-}
-
-const OptionButton = ({
-  icon,
-  label,
-  onClick,
-  withTooltip = true,
-  ...rest
-}: Props) => {
-  const Button = (
-    <IconButton
-      icon={icon}
-      onClick={onClick}
-      color="main"
-      aria-label="icon"
-      borderRadius="sm"
-      bgColor="transparent"
-      _hover={{
-        bgColor: "white",
-      }}
-      fontSize="1.7rem"
-      backdropFilter="none"
-      border="none"
-      {...rest}
-    />
-  );
-
-  if (withTooltip)
-    return (
-      <Tooltip hasArrow shouldWrapChildren label={label} aria-label={label}>
-        {Button}
-      </Tooltip>
-    );
-
-  return Button;
-};
-
-const PanelOptions = ({ resetCard }) => {
+const PanelOptions = () => {
   const { t } = useTranslation("generator");
 
   return (
@@ -107,11 +60,7 @@ const PanelOptions = ({ resetCard }) => {
           onClick={printCard}
           label={t("printCard")}
         />
-        <OptionButton
-          icon={<Reset />}
-          onClick={resetCard}
-          label={t("resetCard")}
-        />
+        <ResetButton />
         <ColorPicker />
       </VStack>
     </Flex>
