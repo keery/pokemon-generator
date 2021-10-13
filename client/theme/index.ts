@@ -9,6 +9,7 @@ import {
   Input,
   Textarea,
   Spinner,
+  Kbd,
 } from "./components";
 
 const theme = extendTheme({
@@ -52,6 +53,7 @@ const theme = extendTheme({
     Input,
     Textarea,
     Spinner,
+    Kbd,
   },
   textStyles: {},
   breakpoints: {},

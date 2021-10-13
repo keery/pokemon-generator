@@ -64,11 +64,13 @@ const PanelOptions = () => {
           icon={<Download />}
           onClick={exportCard}
           label={t("downloadCard")}
+          keyboard_shortcut={["ctrl", "d"]}
         />
         <OptionButton
           icon={<Print />}
           onClick={printCard}
           label={t("printCard")}
+          keyboard_shortcut={["ctrl", "p"]}
         />
         <ResetButton />
         <ColorPicker />

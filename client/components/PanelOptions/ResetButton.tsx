@@ -50,6 +50,7 @@ const ResetButton = () => {
         icon={<Reset />}
         onClick={() => setOpen(true)}
         label={t("resetCard")}
+        keyboard_shortcut={["ctrl", "r"]}
       />
       <ConfirmReset isOpen={isOpen} setOpen={setOpen} confirm={confirmReset} />
     </>

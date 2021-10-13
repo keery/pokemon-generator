@@ -1,19 +1,41 @@
-import React from "react";
-import { Tooltip, IconButton, IconButtonProps } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import {
+  Tooltip,
+  IconButton,
+  IconButtonProps,
+  Kbd,
+  Flex,
+  Text,
+} from "@chakra-ui/react";
+import Mousetrap from "mousetrap";
 
 interface Props extends Omit<IconButtonProps, "aria-label"> {
   icon: JSX.Element;
   label?: string;
   withTooltip?: boolean;
+  keyboard_shortcut: string[];
 }
 
 const OptionButton = ({
   icon,
   label,
   onClick,
+  keyboard_shortcut,
   withTooltip = true,
   ...rest
 }: Props) => {
+  useEffect(() => {
+    const shortcut = keyboard_shortcut.join("+").toLowerCase();
+    Mousetrap.bind(shortcut, (event) => {
+      if (!rest.isDisabled) {
+        onClick(event);
+      }
+    });
+    return () => {
+      Mousetrap.unbind(shortcut);
+    };
+  }, []);
+
   const Button = (
     <IconButton
       icon={icon}
@@ -25,6 +47,10 @@ const OptionButton = ({
       _hover={{
         bgColor: "white",
       }}
+      _active={{
+        bgColor: "white",
+        transform: "scale(0.9)",
+      }}
       fontSize="1.7rem"
       backdropFilter="none"
       border="none"
@@ -34,7 +60,22 @@ const OptionButton = ({
 
   if (withTooltip)
     return (
-      <Tooltip hasArrow shouldWrapChildren label={label} aria-label={label}>
+      <Tooltip
+        hasArrow
+        shouldWrapChildren
+        label={
+          <Flex alignItems="center">
+            <Text mr={2}>{label}</Text>
+            {keyboard_shortcut.map((key, index) => (
+              <>
+                {index > 0 ? "+" : ""}
+                <Kbd>{key}</Kbd>
+              </>
+            ))}
+          </Flex>
+        }
+        aria-label={label}
+      >
         {Button}
       </Tooltip>
     );

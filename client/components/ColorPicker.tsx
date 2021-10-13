@@ -7,14 +7,16 @@ import {
   PopoverContent,
   PopoverBody,
   Square,
-  Tooltip,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import { getRgbaColor } from "~utils/helper";
 import dynamic from "next/dynamic";
+import OptionButton from "~components/PanelOptions/OptionButton";
 
 const ColorPicker = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { t } = useTranslation("generator");
   const { control } = useFormContext();
   const { field } = useController({
@@ -23,25 +25,31 @@ const ColorPicker = () => {
   });
 
   return (
-    <Popover>
+    <Popover isOpen={isOpen} onClose={onClose}>
       <PopoverTrigger>
-        <Box h="40px" w="100%" p={1} cursor="pointer">
-          <Tooltip
-            hasArrow
-            shouldWrapChildren
-            h="100%"
-            w="100%"
+        <Box h="40px" w="100%" cursor="pointer">
+          <OptionButton
+            _hover={{
+              bgColor: "transparent",
+            }}
+            _active={{
+              bgColor: "transparent",
+            }}
+            icon={
+              <Box h="100%" w="100%" p={1}>
+                <Square
+                  bgColor={getRgbaColor(field.value)}
+                  h="100%"
+                  w="100%"
+                  borderRadius="100%"
+                  border="4px solid white"
+                />
+              </Box>
+            }
+            onClick={onOpen}
             label={t("colorBg")}
-            aria-label={t("colorBg")}
-          >
-            <Square
-              bgColor={getRgbaColor(field.value)}
-              h="100%"
-              w="100%"
-              borderRadius="100%"
-              border="4px solid white"
-            />
-          </Tooltip>
+            keyboard_shortcut={["ctrl", "b"]}
+          />
         </Box>
       </PopoverTrigger>
       <PopoverContent
