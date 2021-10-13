@@ -167,7 +167,7 @@ const FileInput = ({ name, control }: Props) => {
             transition="border-color 200ms"
           >
             <Text color="grey.500" fontSize=".9rem" fontWeight="600" pl="10px">
-              Choisir une photo
+              {t("choosePicture")}
             </Text>
             <Box
               position="absolute"
@@ -209,7 +209,7 @@ const FileInput = ({ name, control }: Props) => {
                 fontSize=".9rem"
                 fontWeight="600"
               >
-                Photo ajoutée
+                {t("pictureAdded")}
               </Text>
             </Box>
           </Flex>
@@ -223,7 +223,7 @@ const FileInput = ({ name, control }: Props) => {
                 textDecoration: "underline",
               }}
             >
-              Supprimer l'image
+              {t("removePicture")}
             </Text>
           )}
         </Box>

@@ -1,3 +1,9 @@
 {
-  "Hello": "Bonjour"
+  "seo": {
+    "title": "Create your pokemon card | Pokemon Card Generator",
+    "description": "Creare the pokemon card of your dream, print it, then share it to all your friends, import photos directly from your favorite platforms like Instagram, Facebook, Google Drive or even take instant photo with your camera"
+  },
+  "backHome": "Back to home",
+  "cancel": "Cancel",
+  "confirm": "Confirm"
 }
