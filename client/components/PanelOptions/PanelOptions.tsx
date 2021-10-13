@@ -1,8 +1,7 @@
 import React from "react";
-import { VStack, IconButton, Flex, AspectRatio } from "@chakra-ui/react";
+import { VStack, Flex } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import Print from "public/assets/img/print.svg";
-import Menu from "public/assets/img/menu.svg";
 import Download from "public/assets/img/download.svg";
 import ColorPicker from "~components/ColorPicker";
 import OptionButton from "~components/PanelOptions/OptionButton";
@@ -36,23 +35,12 @@ const PanelOptions = () => {
 
   return (
     <Flex
-      mt={6}
+      mt={14}
       alignItems="flex-start"
       direction="column"
       pos="relative"
       zIndex={100}
     >
-      <AspectRatio ratio={1} w="100%" mb={6}>
-        <IconButton
-          color="main"
-          fontSize="1.7rem"
-          borderRadius="sm"
-          aria-label="icon"
-          icon={<Menu />}
-          onClick={() => null}
-          layerStyle="glass"
-        />
-      </AspectRatio>
       <VStack
         borderRadius="sm"
         layerStyle="glass"
