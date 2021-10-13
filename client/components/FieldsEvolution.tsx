@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import Field from "~components/Field";
 import FileInput from "~components/FileInput";
 import Select from "~components/Select";
@@ -16,6 +16,10 @@ const optionsStage = [
 const FieldsEvolution = () => {
   const { t } = useTranslation("generator");
   const { register, control } = useFormContext();
+  const stage = useWatch({
+    control,
+    name: "stage",
+  });
 
   return (
     <>
@@ -24,13 +28,18 @@ const FieldsEvolution = () => {
       </Field>
       <Field label={t("name")}>
         <Input
+          layerStyle={stage.value === BASIC ? "disabled" : ""}
           name="nameEvolution"
           type="text"
           {...register(`nameEvolution`)}
         />
       </Field>
       <Field label={t("picture")}>
-        <FileInput name="evolvePicture" control={control} />
+        <FileInput
+          name="evolvePicture"
+          control={control}
+          isDisabled={stage.value === BASIC}
+        />
       </Field>
     </>
   );

@@ -36,6 +36,7 @@ const getUppyTranslations = (locale) => {
 interface Props {
   name: string;
   control: Control;
+  isDisabled?: boolean;
 }
 
 const PLUGINS = [
@@ -48,7 +49,7 @@ const PLUGINS = [
 ];
 const COMPANION_URL = `${process.env.NEXT_PUBLIC_API_URL}/image/companion`;
 
-const FileInput = ({ name, control }: Props) => {
+const FileInput = ({ name, control, isDisabled }: Props) => {
   const { setValue } = useFormContext();
   const setCardState = useSetRecoilState(cardAtom);
   const { errorToast } = useToast();
@@ -62,7 +63,6 @@ const FileInput = ({ name, control }: Props) => {
   const [isLoading, setLoading] = useState(false);
 
   const deleteFile = () => {
-    setUploaded(false);
     field.onChange(null);
   };
 
@@ -164,6 +164,7 @@ const FileInput = ({ name, control }: Props) => {
               borderColor: "#77b2f5",
             }}
             transition="border-color 200ms"
+            layerStyle={isDisabled ? "disabled" : ""}
           >
             <Text color="grey.500" fontSize=".9rem" fontWeight="600" pl="10px">
               {t("choosePicture")}

@@ -118,6 +118,10 @@ const theme = extendTheme({
       backgroundColor: "#e0e0e0",
       boxShadow: "inset 5px 5px 10px #cccccc, inset -5px -5px 10px #f4f4f4",
     },
+    disabled: {
+      opacity: 0.4,
+      pointerEvents: "none",
+    },
   },
 });
 
