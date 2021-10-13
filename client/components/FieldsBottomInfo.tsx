@@ -25,11 +25,16 @@ const FieldsBottomInfo = () => {
       </Field>
       <Field label={t("collectionNumber")}>
         <Flex alignItems="center">
-          <Input name="cardNumber" type="text" ref={register} />
+          <Input name="cardNumber" type="text" ref={register} maxLength={3} />
           <Box mx={3} fontWeight="600">
             /
           </Box>
-          <Input name="totalCollection" type="text" ref={register} />
+          <Input
+            name="totalCollection"
+            type="text"
+            ref={register}
+            maxLength={3}
+          />
         </Flex>
       </Field>
       <Field label={t("rarity")}>

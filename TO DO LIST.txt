@@ -2,12 +2,5 @@ Undo/redo
 Interactive
 Theme retro
 Mobile
-Burger menu
-
-
------MUST DO-----:
-Button see all intreavtive areas
-Edit evolution name from card
-Edit attack from card
 Share on social networks
 Draw on card with pen
