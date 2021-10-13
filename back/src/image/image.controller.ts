@@ -67,15 +67,6 @@ export class ImageController {
     }
   }
 
-  @All('test')
-  async test() {
-    console.log(__dirname)
-    // console.log(join(__dirname, '../..', `public/files/${id}`))
-    // this.imgService.uploadFile()
-    // this.imgService.test()
-    return 'test réussi'
-  }
-
   @All('companion')
   async companion(@Req() req, @Res() res) {
     return this.uppyService.handleCompanion(req, res)
