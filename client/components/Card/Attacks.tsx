@@ -4,10 +4,10 @@ import { Rect } from "react-konva";
 import Attack from "./Attack";
 
 const Description = ({ control }) => {
-  const {
-    attack1: { type: attack1Type, amount: attack1Amount, ...attack1 },
-    attack2: { type: attack2Type, amount: attack2Amount, ...attack2 },
-  } = useWatch({
+  const [
+    { type: attack1Type, amount: attack1Amount, ...attack1 },
+    { type: attack2Type, amount: attack2Amount, ...attack2 },
+  ] = useWatch({
     control,
     name: ["attack1", "attack2"],
   });

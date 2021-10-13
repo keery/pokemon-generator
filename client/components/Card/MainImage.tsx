@@ -18,22 +18,17 @@ const MainImage = ({
   onSelect,
   isSelected = false,
 }: Props) => {
-  const {
-    mainImage,
-    mainImageX,
-    mainImageY,
-    mainImageScaleY,
-    mainImageScaleX,
-  } = useWatch({
-    control,
-    name: [
-      "mainImage",
-      "mainImageX",
-      "mainImageY",
-      "mainImageScaleX",
-      "mainImageScaleY",
-    ],
-  });
+  const [mainImage, mainImageX, mainImageY, mainImageScaleY, mainImageScaleX] =
+    useWatch({
+      control,
+      name: [
+        "mainImage",
+        "mainImageX",
+        "mainImageY",
+        "mainImageScaleX",
+        "mainImageScaleY",
+      ],
+    });
 
   if (!Boolean(mainImage)) return null;
 

@@ -10,7 +10,7 @@ const EvolutionImage = ({
   onSelect,
   updateScale,
 }) => {
-  const { evolvePicture, evolvePictureX, evolvePictureY } = useWatch({
+  const [evolvePicture, evolvePictureX, evolvePictureY] = useWatch({
     control,
     name: ["evolvePicture", "evolvePictureX", "evolvePictureY"],
   });

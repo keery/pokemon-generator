@@ -59,7 +59,6 @@ const FileInput = ({ name, control }: Props) => {
     control,
   });
 
-  const [isUploaded, setUploaded] = useState(!!field.value);
   const [isLoading, setLoading] = useState(false);
 
   const deleteFile = () => {
@@ -115,7 +114,6 @@ const FileInput = ({ name, control }: Props) => {
             const reader = new FileReader();
             reader.onload = function (e) {
               field.onChange(e.target.result);
-              setUploaded(true);
               onClose();
               uppy.reset();
 
@@ -145,6 +143,7 @@ const FileInput = ({ name, control }: Props) => {
 
   return (
     <Modal
+      size="xl"
       onClose={onClose}
       isOpen={isOpen}
       button={
@@ -171,7 +170,7 @@ const FileInput = ({ name, control }: Props) => {
             </Text>
             <Box
               position="absolute"
-              left={isUploaded ? 0 : "calc(100% - 38px)"}
+              left={Boolean(field.value) ? 0 : "calc(100% - 38px)"}
               top="50%"
               transform="translateY(-50%)"
               background="linear-gradient(#516fb3, #6e91e0)"
@@ -183,14 +182,20 @@ const FileInput = ({ name, control }: Props) => {
               zIndex="1"
               p=".7rem"
             >
-              {isLoading ? <Spinner /> : isUploaded ? <Check /> : <Upload />}
+              {isLoading ? (
+                <Spinner />
+              ) : Boolean(field.value) ? (
+                <Check />
+              ) : (
+                <Upload />
+              )}
             </Box>
             <Box
               position="absolute"
               top="0px"
               bottom="0px"
               w="100%"
-              left={isUploaded ? "19px" : "calc(100% - 19px)"}
+              left={Boolean(field.value) ? "19px" : "calc(100% - 19px)"}
               transition="left ease-in-out 0.5s"
               background="linear-gradient(#516fb3, #6e91e0)"
               pl="3rem"
@@ -199,7 +204,9 @@ const FileInput = ({ name, control }: Props) => {
               display="flex"
               alignItems="center"
               _hover={{
-                backgroundColor: isUploaded ? "orange.400" : "orange.500",
+                backgroundColor: Boolean(field.value)
+                  ? "orange.400"
+                  : "orange.500",
               }}
             >
               <Text
@@ -213,7 +220,7 @@ const FileInput = ({ name, control }: Props) => {
               </Text>
             </Box>
           </Flex>
-          {isUploaded && (
+          {Boolean(field.value) && (
             <Text
               fontSize="0.7rem"
               mt={0.5}
@@ -228,7 +235,6 @@ const FileInput = ({ name, control }: Props) => {
           )}
         </Box>
       }
-      size="xl"
     >
       <Dashboard
         uppy={uppy}

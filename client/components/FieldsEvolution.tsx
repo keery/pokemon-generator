@@ -23,7 +23,11 @@ const FieldsEvolution = () => {
         <Select name="stage" options={optionsStage} control={control} />
       </Field>
       <Field label={t("name")}>
-        <Input name="nameEvolution" type="text" ref={register} />
+        <Input
+          name="nameEvolution"
+          type="text"
+          {...register(`nameEvolution`)}
+        />
       </Field>
       <Field label={t("picture")}>
         <FileInput name="evolvePicture" control={control} />

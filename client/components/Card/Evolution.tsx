@@ -17,6 +17,7 @@ const Evolution = ({
     control,
     name: "stage",
   });
+
   if (stage.value === BASIC) return null;
 
   return (

@@ -18,21 +18,26 @@ const FieldsBottomInfo = () => {
   return (
     <>
       <Field label={t("description")}>
-        <Textarea name="description" ref={register} />
+        <Textarea name="description" {...register(`description`)} />
       </Field>
       <Field label={t("illustrator")}>
-        <Input name="illustrator" type="text" ref={register} />
+        <Input name="illustrator" type="text" {...register(`illustrator`)} />
       </Field>
       <Field label={t("collectionNumber")}>
         <Flex alignItems="center">
-          <Input name="cardNumber" type="text" ref={register} maxLength={3} />
+          <Input
+            name="cardNumber"
+            type="text"
+            {...register(`cardNumber`)}
+            maxLength={3}
+          />
           <Box mx={3} fontWeight="600">
             /
           </Box>
           <Input
             name="totalCollection"
             type="text"
-            ref={register}
+            {...register(`totalCollection`)}
             maxLength={3}
           />
         </Flex>

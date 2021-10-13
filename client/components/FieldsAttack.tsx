@@ -28,7 +28,11 @@ const FieldsAttack = ({ name }) => {
   return (
     <>
       <Field label={t("name")}>
-        <Input name={`${name}.name`} type="text" ref={register} />
+        <Input
+          name={`${name}.name`}
+          type="text"
+          {...register(`${name}.name`)}
+        />
       </Field>
       <Field label={t("damage")}>
         <Select
@@ -39,7 +43,7 @@ const FieldsAttack = ({ name }) => {
         />
       </Field>
       <Field label={t("info")}>
-        <Textarea name={`${name}.info`} ref={register} />
+        <Textarea name={`${name}.info`} {...register(`${name}.info`)} />
       </Field>
       <Field label={t("amount")}>
         <Select

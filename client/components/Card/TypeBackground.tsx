@@ -4,13 +4,7 @@ import ImageCanvas from "~components/Card/ImageCanvas";
 import { Select, Element, Stage } from "~@types/Card";
 
 const TypeBackground = ({ control }) => {
-  const {
-    type,
-    stage,
-  }: {
-    type?: Select<Element>;
-    stage?: Select<Stage>;
-  } = useWatch({
+  const [type, stage]: [Select<Element>, Select<Stage>] = useWatch({
     control,
     name: ["type", "stage"],
   });

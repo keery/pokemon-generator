@@ -24,7 +24,7 @@ const FieldsPokemonInfo = () => {
   return (
     <>
       <Field label={t("name")}>
-        <Input name="name" type="text" ref={register} />
+        <Input name="name" type="text" {...register(`name`)} />
       </Field>
       <Field label={t("type")}>
         <Select
@@ -41,19 +41,19 @@ const FieldsPokemonInfo = () => {
         <Select name="hp" options={optionsHP} control={control} />
       </Field>
       <Field label={t("species")}>
-        <Input name="species" type="text" ref={register} />
+        <Input name="species" type="text" {...register(`species`)} />
       </Field>
       <Field label={t("length")}>
         <Input
           name="length"
           type="text"
           // placeholder={"0' 0\""}
-          ref={register}
+          {...register(`length`)}
         />
       </Field>
       <Field label={t("weight")}>
         <InputGroup>
-          <Input name="weight" type="text" ref={register} />
+          <Input name="weight" type="text" {...register(`weight`)} />
           <InputRightAddon
             children="lbs"
             color="main"

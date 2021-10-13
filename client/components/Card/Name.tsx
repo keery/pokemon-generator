@@ -5,13 +5,7 @@ import { BASIC } from "~constants";
 import { Select, Stage } from "~@types/Card";
 
 const Name = ({ control }) => {
-  const {
-    name,
-    stage,
-  }: {
-    name?: string;
-    stage?: Select<Stage>;
-  } = useWatch({
+  const [name, stage]: [string, Select<Stage>] = useWatch({
     control,
     name: ["name", "stage"],
   });

@@ -3,7 +3,7 @@ import { useWatch } from "react-hook-form";
 import { Text } from "react-konva";
 
 const HP = ({ control }) => {
-  const { species, length, weight } = useWatch({
+  const [species, length, weight]: string[] = useWatch({
     control,
     name: ["species", "length", "weight"],
   });

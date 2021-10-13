@@ -4,13 +4,10 @@ import { Text, Group } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
 
 const TypeWithAmount = ({ control, name, x = 0, y = 0 }) => {
-  const values = useWatch({
+  const [amount, type] = useWatch({
     control,
     name: [`${name}Amount`, `${name}Type`],
   });
-
-  const type = values[`${name}Type`];
-  const amount = values[`${name}Amount`];
 
   return (
     <Group x={x} y={y}>
