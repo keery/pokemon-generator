@@ -39,11 +39,41 @@ const AppHead = () => {
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
-          crossOrigin="true"
+          crossOrigin="anonymous"
         />
         <link
           href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
           rel="stylesheet"
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/GillSansStd-BoldCondensed.otf"
+          as="font"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/GillSansStd-BoldItalic.otf"
+          as="font"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/FuturaStd-Heavy.otf"
+          as="font"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/gill-sans-bold-extra-condensed.ttf"
+          as="font"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/GillSansStd.otf"
+          as="font"
+          crossOrigin="anonymous"
         />
       </NextHead>
       <DefaultSeo

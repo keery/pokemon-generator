@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import {
   Tooltip,
   IconButton,
@@ -67,10 +67,10 @@ const OptionButton = ({
           <Flex alignItems="center">
             <Text mr={2}>{label}</Text>
             {keyboard_shortcut.map((key, index) => (
-              <>
+              <Fragment key={key}>
                 {index > 0 ? "+" : ""}
                 <Kbd>{key}</Kbd>
-              </>
+              </Fragment>
             ))}
           </Flex>
         }
