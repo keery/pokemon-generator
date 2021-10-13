@@ -3,6 +3,7 @@
     "title": "Crée ta carte pokemon | Pokemon Card Generator",
     "description": "Crée la carte pokémon de tes rêves, imprime la, partage la à tes amis, importe directement des photos depuis tes plateformes préférées ou prends une photo avec ta caméra"
   },
+  "backHome": "Retour à l'accueil",
   "cancel": "Annuler",
   "confirm": "Confirmer"
 }

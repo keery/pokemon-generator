@@ -24,6 +24,7 @@ const theme = extendTheme({
   fonts: {
     body: "Inter, sans-serif",
     heading: "Inter, serif",
+    nes: '"Press Start 2P"',
   },
   fontSizes: {
     xs: "12px",
