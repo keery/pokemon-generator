@@ -3,7 +3,6 @@ Interactive
 Theme retro
 Mobile
 Burger menu
-Add missing Element Dark + Acier
 
 
 -----MUST DO-----:
