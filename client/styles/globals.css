@@ -236,3 +236,17 @@ a {
     top: 75% !important;
   }
 }
+
+.card-container > div:not(.bg-pokemon) {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+/* .card-container > div, */
+.konvajs-content,
+.konvajs-content > canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

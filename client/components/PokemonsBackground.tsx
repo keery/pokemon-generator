@@ -127,6 +127,7 @@ const PokemonsBackground = ({ control }: Props) => {
           <Box
             pos="absolute"
             right="0%"
+            top="0%"
             left={pokemons[element][2].left || "105%"}
             width={pokemons[element][2].width || "250px"}
           >

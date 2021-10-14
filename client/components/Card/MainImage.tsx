@@ -48,7 +48,7 @@ const MainImage = ({
         // style stage container:
         console.log("fds");
         const container = e.target.getStage().container();
-        container.style.cursor = "pointer";
+        container.style.cursor = "move";
       }}
       onMouseLeave={(e) => {
         const container = e.target.getStage().container();

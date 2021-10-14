@@ -15,7 +15,12 @@ const CardForm = () => {
   const { t } = useTranslation("generator");
 
   return (
-    <Flex height="100%" flex={1} w="500px" zIndex={10}>
+    <Flex
+      height="100%"
+      flex={1}
+      w="500px"
+      minW={{ base: "300px", lg: "350px" }}
+    >
       <Flex pos="relative" flex={1}>
         <CacheForm />
         <Box
@@ -37,13 +42,14 @@ const CardForm = () => {
           height="100%"
           layerStyle="glass"
           borderRadius="md"
-          px={8}
+          px={{ base: 4, lg: 8 }}
           py={8}
           direction="column"
+          zIndex={10}
         >
-          <Box>
+          <Flex alignItems="center">
             <Logo />
-          </Box>
+          </Flex>
           <VStack
             overflow="scroll"
             mt={10}

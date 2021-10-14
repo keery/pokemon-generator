@@ -4,7 +4,7 @@ import { Flex, VStack } from "@chakra-ui/react";
 const CardFieldsGroup = ({ children }) => {
   return (
     <Flex
-      px={6}
+      px={{ base: 3, lg: 6 }}
       py={4}
       bgColor="rgb(255 255 255 / 33%)"
       borderRadius="12px"

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { Box, Text, Flex, useDisclosure, Spinner } from "@chakra-ui/react";
 import Uppy from "@uppy/core";
 import Url from "@uppy/url";
@@ -36,7 +36,6 @@ const getUppyTranslations = (locale) => {
 interface Props {
   name: string;
   control: Control;
-  isDisabled?: boolean;
 }
 
 const PLUGINS = [
@@ -49,7 +48,7 @@ const PLUGINS = [
 ];
 const COMPANION_URL = `${process.env.NEXT_PUBLIC_API_URL}/image/companion`;
 
-const FileInput = ({ name, control, isDisabled }: Props) => {
+const FileInput = ({ name, control }: Props) => {
   const { setValue } = useFormContext();
   const setCardState = useSetRecoilState(cardAtom);
   const { errorToast } = useToast();
@@ -160,7 +159,6 @@ const FileInput = ({ name, control, isDisabled }: Props) => {
               borderColor: "#77b2f5",
             }}
             transition="border-color 200ms"
-            layerStyle={isDisabled ? "disabled" : ""}
           >
             <Text
               onClick={onOpen}

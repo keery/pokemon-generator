@@ -26,20 +26,15 @@ const FieldsEvolution = () => {
       <Field label={t("stage")}>
         <Select name="stage" options={optionsStage} control={control} />
       </Field>
-      <Field label={t("name")}>
+      <Field label={t("name")} isDisabled={stage.value === BASIC}>
         <Input
-          layerStyle={stage.value === BASIC ? "disabled" : ""}
           name="nameEvolution"
           type="text"
           {...register(`nameEvolution`)}
         />
       </Field>
-      <Field label={t("picture")}>
-        <FileInput
-          name="evolvePicture"
-          control={control}
-          isDisabled={stage.value === BASIC}
-        />
+      <Field label={t("picture")} isDisabled={stage.value === BASIC}>
+        <FileInput name="evolvePicture" control={control} />
       </Field>
     </>
   );
