@@ -32,10 +32,15 @@ const Card = () => {
     setValue(`${attrs.name}Y`, attrs.y);
   }, []);
 
-  const updateScale = useCallback((name, scaleX: number, scaleY: number) => {
-    setValue(`${name}ScaleX`, scaleX);
-    setValue(`${name}ScaleY`, scaleY);
-  }, []);
+  const updateScale = useCallback(
+    (name, scaleX: number, scaleY: number, x: number, y: number) => {
+      setValue(`${name}ScaleX`, scaleX);
+      setValue(`${name}ScaleY`, scaleY);
+      setValue(`${name}X`, x);
+      setValue(`${name}Y`, y);
+    },
+    []
+  );
 
   const resetSelected = useCallback(() => {
     if (card.selectedImg === null) return;

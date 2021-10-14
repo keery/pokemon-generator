@@ -31,7 +31,13 @@ interface Props {
   clipX?: number;
   onSelect?: () => void;
   isSelected?: boolean;
-  onTransformEnd?: (name: string, scaleX: number, scaleY: number) => void;
+  onTransformEnd?: (
+    name: string,
+    scaleX: number,
+    scaleY: number,
+    x: number,
+    y: number
+  ) => void;
 }
 
 const ImageCanvas = ({
@@ -118,7 +124,13 @@ const ImageCanvas = ({
           onClick={() => (isTransformable ? onSelect() : null)}
           onTransformEnd={() => {
             const node = imgRef.current;
-            onTransformEnd(name, node.scaleX(), node.scaleY());
+            onTransformEnd(
+              name,
+              node.scaleX(),
+              node.scaleY(),
+              node.attrs.x,
+              node.attrs.y
+            );
           }}
         />
       </Group>

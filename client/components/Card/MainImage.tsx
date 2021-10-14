@@ -5,7 +5,13 @@ import ImageCanvas from "~components/Card/ImageCanvas";
 
 interface Props {
   updateImgPos: (event: any) => void;
-  updateScale: (name: string, scaleX: number, scaleY: number) => void;
+  updateScale: (
+    name: string,
+    scaleX: number,
+    scaleY: number,
+    x: number,
+    y: number
+  ) => void;
   onSelect: () => void;
   control: Control;
   isSelected?: boolean;
