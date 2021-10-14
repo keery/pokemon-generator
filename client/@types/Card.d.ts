@@ -55,7 +55,7 @@ export interface Card {
   length: string;
   weight: string;
   attack1Name: string;
-  attack1Damage: Select<string>;
+  attack1Damage?: Select<string>;
   attack1Info: string;
   attack1Type: Select<Element>;
   attack1Amount: Select<number>;

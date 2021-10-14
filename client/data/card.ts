@@ -39,18 +39,18 @@ export const CARD_DEFAULT_STATE: Card = {
   weight: "",
   bgColor: { r: 255, g: 255, b: 255, a: 0 },
   attack1Name: "",
-  attack1damage: null,
-  attack1info: "",
-  attack1type: null,
-  attack1amount: {
+  attack1Damage: null,
+  attack1Info: "",
+  attack1Type: null,
+  attack1Amount: {
     label: "1",
     value: 1,
   },
   attack2Name: "",
-  attack2damage: null,
-  attack2info: "",
-  attack2type: null,
-  attack2amount: {
+  attack2Damage: null,
+  attack2Info: "",
+  attack2Type: null,
+  attack2Amount: {
     label: "1",
     value: 1,
   },
