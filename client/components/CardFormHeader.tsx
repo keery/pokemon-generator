@@ -17,7 +17,7 @@ const CardFormHeader = ({ title }: Props) => {
       zIndex="99"
     >
       <Flex alignItems="center" p="6px 28px 6px 8px" color="black" w="100%">
-        <Text fontWeight="800" fontSize="22px" color="#3b434c">
+        <Text fontWeight="800" fontSize="22px" color="text">
           {title}
         </Text>
       </Flex>

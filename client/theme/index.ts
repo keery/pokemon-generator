@@ -38,6 +38,7 @@ const theme = extendTheme({
   colors: {
     main: "#516fb3",
     main2: "#f4e8fb",
+    text: "#3b434c",
   },
   radii: {
     xs: "0.3rem",

@@ -147,7 +147,6 @@ const FileInput = ({ name, control, isDisabled }: Props) => {
       button={
         <Box>
           <Flex
-            onClick={onOpen}
             direction="column"
             justifyContent="center"
             height={10}
@@ -157,14 +156,20 @@ const FileInput = ({ name, control, isDisabled }: Props) => {
             overflow="hidden"
             pos="relative"
             bgColor="rgb(255 255 255 / 30%)"
-            cursor="pointer"
             _hover={{
               borderColor: "#77b2f5",
             }}
             transition="border-color 200ms"
             layerStyle={isDisabled ? "disabled" : ""}
           >
-            <Text color="grey.500" fontSize=".9rem" fontWeight="600" pl="10px">
+            <Text
+              onClick={onOpen}
+              color="grey.500"
+              fontSize=".9rem"
+              fontWeight="500"
+              pl="10px"
+              cursor="pointer"
+            >
               {t("choosePicture")}
             </Text>
             <Box
@@ -172,11 +177,11 @@ const FileInput = ({ name, control, isDisabled }: Props) => {
               left={Boolean(field.value) ? 0 : "calc(100% - 38px)"}
               top="50%"
               transform="translateY(-50%)"
-              background="linear-gradient(#516fb3, #6e91e0)"
+              bgColor="text"
               borderRadius="sm"
               h="38px"
               w="38px"
-              color="#fff"
+              color="white"
               transition="left ease-in-out 0.5s"
               zIndex="1"
               p=".7rem"
@@ -196,17 +201,14 @@ const FileInput = ({ name, control, isDisabled }: Props) => {
               w="100%"
               left={Boolean(field.value) ? "19px" : "calc(100% - 19px)"}
               transition="left ease-in-out 0.5s"
-              background="linear-gradient(#516fb3, #6e91e0)"
+              bgColor="text"
               pl="3rem"
               color="white"
               fontWeight="bold"
               display="flex"
               alignItems="center"
-              _hover={{
-                backgroundColor: Boolean(field.value)
-                  ? "orange.400"
-                  : "orange.500",
-              }}
+              cursor="default"
+              pointerEvents="unset"
             >
               <Text
                 textOverflow="ellipsis"
@@ -223,9 +225,9 @@ const FileInput = ({ name, control, isDisabled }: Props) => {
             <Text
               fontSize="0.7rem"
               mt={0.5}
+              cursor="pointer"
               onClick={deleteFile}
               _hover={{
-                cursor: "pointer",
                 textDecoration: "underline",
               }}
             >

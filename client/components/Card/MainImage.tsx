@@ -39,7 +39,22 @@ const MainImage = ({
   if (!Boolean(mainImage)) return null;
 
   return (
-    <Group width={400} height={280} y={88} x={60}>
+    <Group
+      width={400}
+      height={280}
+      y={88}
+      x={60}
+      onMouseEnter={(e) => {
+        // style stage container:
+        console.log("fds");
+        const container = e.target.getStage().container();
+        container.style.cursor = "pointer";
+      }}
+      onMouseLeave={(e) => {
+        const container = e.target.getStage().container();
+        container.style.cursor = "default";
+      }}
+    >
       <ImageCanvas
         src={mainImage}
         prefixPath=""
