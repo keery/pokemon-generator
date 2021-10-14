@@ -125,9 +125,7 @@ const FileInput = ({ name, control, isDisabled }: Props) => {
 
               // Select uploaded image
               setTimeout(() => {
-                setCardState((state) => {
-                  return { ...state, selectedImg: name };
-                });
+                setCardState((s) => ({ ...s, selectedImg: name }));
               }, 100);
             };
             reader.readAsDataURL(res.data);

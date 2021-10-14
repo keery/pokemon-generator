@@ -1,7 +1,5 @@
-Undo/redo
 Interactive
 Theme retro
 Mobile
 Share on social networks
-Draw on card with pen
 Publish card and see collections

@@ -15,11 +15,11 @@ const PrevNextButtons = () => {
       <OptionButton
         icon={<Prev />}
         onClick={() => {
-          setHistoryState({
-            ...historyState,
-            historyIndex: historyState.historyIndex - 1,
+          setHistoryState((h) => ({
+            ...h,
+            historyIndex: h.historyIndex - 1,
             historyAction: "prev",
-          });
+          }));
         }}
         label={t("prev")}
         isDisabled={historyState.historyIndex <= 0}
@@ -28,11 +28,11 @@ const PrevNextButtons = () => {
       <OptionButton
         icon={<Next />}
         onClick={() => {
-          setHistoryState({
-            ...historyState,
-            historyIndex: historyState.historyIndex + 1,
+          setHistoryState((h) => ({
+            ...h,
+            historyIndex: h.historyIndex + 1,
             historyAction: "next",
-          });
+          }));
         }}
         isDisabled={historyState.historyIndex + 1 >= historyState.historyLength}
         label={t("next")}

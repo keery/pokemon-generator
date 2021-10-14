@@ -41,7 +41,7 @@ const CacheForm = () => {
           return total;
         }, {}),
       };
-      console.log(diff);
+
       const newHistory = [
         ...history.slice(0, state.historyIndex + 1),
         historyLine,
@@ -70,7 +70,7 @@ const CacheForm = () => {
       historyState.historyAction === "prev"
         ? history[historyState.historyIndex + 1].original
         : history[historyState.historyIndex].changed;
-    console.log(changeToApply);
+
     reset({
       ...formValues,
       ...changeToApply,
