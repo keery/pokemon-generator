@@ -4,22 +4,36 @@ import { Rect } from "react-konva";
 import Attack from "./Attack";
 
 const Description = ({ control }) => {
-  const [
-    { type: attack1Type, amount: attack1Amount, ...attack1 },
-    { type: attack2Type, amount: attack2Amount, ...attack2 },
-  ] = useWatch({
+  const attack1 = useWatch({
     control,
-    name: ["attack1", "attack2"],
+    name: [
+      "attack1Amount",
+      "attack1Type",
+      "attack1Name",
+      "attack1Damage",
+      "attack1Info",
+    ],
+  });
+
+  const attack2 = useWatch({
+    control,
+    name: [
+      "attack2Amount",
+      "attack2Type",
+      "attack2Name",
+      "attack2Damage",
+      "attack2Info",
+    ],
   });
 
   const isTiny = useMemo(() => {
     const attack1isFill =
-      Object.values(attack1).some((value) => Boolean(value)) ||
-      (Boolean(attack1Type) && Boolean(attack1Amount));
+      attack1.slice(2).some((value) => Boolean(value)) ||
+      (Boolean(attack1[0]) && Boolean(attack1[1]));
 
     const attack2isFill =
-      Object.values(attack2).some((value) => Boolean(value)) ||
-      (Boolean(attack2Type) && Boolean(attack2Amount));
+      attack2.slice(2).some((value) => Boolean(value)) ||
+      (Boolean(attack2[0]) && Boolean(attack2[1]));
 
     return attack1isFill && attack2isFill;
   }, [attack1, attack2]);
@@ -27,10 +41,13 @@ const Description = ({ control }) => {
   return (
     <>
       <Attack
-        control={control}
+        amount={attack1[0]}
+        type={attack1[1]}
+        name={attack1[2]}
+        damage={attack1[3]}
+        info={attack1[4]}
         x={35}
         y={isTiny ? 400 : 432}
-        name="attack1"
         isTiny={isTiny}
       />
       <Rect
@@ -42,11 +59,14 @@ const Description = ({ control }) => {
         fill="#000000"
       />
       <Attack
-        control={control}
+        amount={attack2[0]}
+        type={attack2[1]}
+        name={attack2[2]}
+        damage={attack2[3]}
+        info={attack2[4]}
         x={35}
         y={isTiny ? 491 : 442}
         isTiny={isTiny}
-        name="attack2"
       />
     </>
   );

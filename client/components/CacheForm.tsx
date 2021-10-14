@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { cacheCard, decrypt } from "~utils/cache";
 import { useWatch, useFormContext } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { historyAtom } from "~atoms/history";
+import { cacheCard } from "~utils/cache";
 import dynamic from "next/dynamic";
 import isEqual from "lodash.isequal";
 import debounce from "lodash.debounce";
@@ -14,38 +14,38 @@ const CacheForm = () => {
     control,
   });
   const [historyState, setHistoryState] = useRecoilState(historyAtom);
-  const [history, setHistory] = useState([cacheCard(formValues)]);
+  const [history, setHistory] = useState([
+    { changed: formValues, original: formValues },
+  ]);
+  const [prevState, setPrev] = useState({ ...formValues });
   const isInit = useRef(false);
 
   const onChange = useCallback(
-    debounce((values, history, state) => {
+    debounce((values, history, state, prev) => {
       if (!isInit.current) {
         isInit.current = true;
         return;
       }
 
-      if (
-        isEqual(
-          values,
-          decrypt(
-            history[history.length - 1],
-            process.env.NEXT_PUBLIC_ENCRYPT_KEY
-          )
-        )
-      )
-        return;
-      const encryptedValues = cacheCard(values);
-      console.log(
-        state.historyIndex,
-        values,
-        history,
-        isEqual(encryptedValues, history[history.length - 1])
-      );
+      if (isEqual(values, history[history.length - 1])) return;
+
+      cacheCard(values);
+      const diff = updatedDiff(prev, values);
+
+      if (Object.keys(diff).length === 0) throw new Error("No change diff");
+
+      const historyLine = {
+        changed: diff,
+        original: { [Object.keys(diff)[0]]: prev[Object.keys(diff)[0]] },
+      };
+
       const newHistory = [
         ...history.slice(0, state.historyIndex + 1),
-        encryptedValues,
+        historyLine,
       ];
+
       setHistory(newHistory);
+      setPrev(values);
       setHistoryState({
         historyIndex: newHistory.length - 1,
         historyLength: newHistory.length,
@@ -56,19 +56,22 @@ const CacheForm = () => {
   );
 
   useEffect(() => {
-    onChange(formValues, history, historyState);
+    onChange(formValues, history, historyState, prevState);
   }, [formValues]);
 
   useEffect(() => {
-    if (historyState.historyAction !== "arrow") return;
+    if (!["next", "prev"].includes(historyState.historyAction)) return;
     isInit.current = false;
 
-    reset(
-      decrypt(
-        history[historyState.historyIndex],
-        process.env.NEXT_PUBLIC_ENCRYPT_KEY
-      )
-    );
+    const changeToApply =
+      historyState.historyAction === "prev"
+        ? history[historyState.historyIndex + 1].original
+        : history[historyState.historyIndex].changed;
+
+    reset({
+      ...formValues,
+      ...changeToApply,
+    });
     setHistoryState({
       ...historyState,
       historyAction: null,

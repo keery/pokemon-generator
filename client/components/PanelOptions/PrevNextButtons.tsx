@@ -18,7 +18,7 @@ const PrevNextButtons = () => {
           setHistoryState({
             ...historyState,
             historyIndex: historyState.historyIndex - 1,
-            historyAction: "arrow",
+            historyAction: "prev",
           });
         }}
         label={t("prev")}
@@ -31,7 +31,7 @@ const PrevNextButtons = () => {
           setHistoryState({
             ...historyState,
             historyIndex: historyState.historyIndex + 1,
-            historyAction: "arrow",
+            historyAction: "next",
           });
         }}
         isDisabled={historyState.historyIndex + 1 >= historyState.historyLength}

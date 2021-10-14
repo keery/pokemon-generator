@@ -1,7 +1,6 @@
 import React from "react";
 import { Text, Group } from "react-konva";
-import { useWatch } from "react-hook-form";
-import { IAttack } from "~@types/Card";
+import { Select } from "~@types/Card";
 import ImageCanvas from "./ImageCanvas";
 
 const global = {
@@ -13,11 +12,27 @@ const global = {
   textAttackX: 0,
 };
 
-const Attack = ({ name, x, y, isTiny = false, control }) => {
-  const attack: IAttack = useWatch({
-    control,
-    name,
-  });
+interface Props {
+  name: string;
+  damage: Select<string>;
+  info: string;
+  type: Select<Element>;
+  amount: Select<number>;
+  x: number;
+  y: number;
+  isTiny: boolean;
+}
+
+const Attack = ({
+  x,
+  y,
+  isTiny = false,
+  name,
+  damage,
+  info,
+  type,
+  amount,
+}: Props) => {
   let imgTypeAmountY = 25;
   let damageY = 40;
 
@@ -36,7 +51,7 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
     width: 423,
   };
 
-  if (Boolean(attack.info)) {
+  if (Boolean(info)) {
     attackNameData = {
       fontSize: 20,
       y: 2,
@@ -45,10 +60,10 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
     };
   }
 
-  if (Boolean(attack.amount) && Boolean(attack.type)) {
+  if (Boolean(amount) && Boolean(type)) {
     global.img = (
       <ImageCanvas
-        src={`1-gen/${attack.amount.value}-${attack.type.value}.png`}
+        src={`1-gen/${amount.value}-${type.value}.png`}
         x={0}
         width={50}
         height={50}
@@ -59,7 +74,7 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
     global.img = null;
   }
 
-  if (Boolean(attack?.damage?.value) || global.img) {
+  if (Boolean(damage?.value) || global.img) {
     global.textAttackX = 60;
     global.textWidth = 306;
     global.textHeight = 100;
@@ -94,7 +109,7 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
           height={40}
         >
           <Text
-            text={attack.name}
+            text={name}
             fontFamily="pokename"
             fontSize={attackNameData.fontSize}
             y={attackNameData.y}
@@ -105,7 +120,7 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
             verticalAlign={attackNameData.verticalAlign}
           />
           <Text
-            text={attack.info}
+            text={info}
             fontFamily="gstd"
             fontSize={attackDescData.fontSize}
             y={attackDescData.y}
@@ -117,7 +132,7 @@ const Attack = ({ name, x, y, isTiny = false, control }) => {
           />
         </Group>
         <Text
-          text={attack.damage?.value}
+          text={damage?.value}
           fontFamily="gstd"
           fontSize={32}
           y={damageY}

@@ -28,33 +28,29 @@ const FieldsAttack = ({ name }) => {
   return (
     <>
       <Field label={t("name")}>
-        <Input
-          name={`${name}.name`}
-          type="text"
-          {...register(`${name}.name`)}
-        />
+        <Input name={`${name}Name`} type="text" {...register(`${name}Name`)} />
       </Field>
       <Field label={t("damage")}>
         <Select
-          name={`${name}.damage`}
+          name={`${name}Damage`}
           options={optionsDamage}
           control={control}
           isClearable
         />
       </Field>
       <Field label={t("info")}>
-        <Textarea name={`${name}.info`} {...register(`${name}.info`)} />
+        <Textarea name={`${name}Info`} {...register(`${name}Info`)} />
       </Field>
       <Field label={t("amount")}>
         <Select
-          name={`${name}.amount`}
+          name={`${name}Amount`}
           options={optionsAmount}
           control={control}
         />
       </Field>
       <Field label={t("type")}>
         <Select
-          name={`${name}.type`}
+          name={`${name}Type`}
           isClearable
           options={optionsType}
           iconPath="{{value}}.png"

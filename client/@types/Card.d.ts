@@ -54,6 +54,14 @@ export interface Card {
   species: string;
   length: string;
   weight: string;
-  attack1: IAttack;
-  attack2: IAttack;
+  attack1Name: string;
+  attack1Damage: Select<string>;
+  attack1Info: string;
+  attack1Type: Select<Element>;
+  attack1Amount: Select<number>;
+  attack2Name: string;
+  attack2Damage: Select<string>;
+  attack2Info: string;
+  attack2Type: Select<Element>;
+  attack2Amount: Select<number>;
 }
