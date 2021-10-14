@@ -38,6 +38,7 @@ const Card = () => {
   }, []);
 
   const resetSelected = useCallback(() => {
+    if (card.selectedImg === null) return;
     setCard({ ...card, selectedImg: null });
   }, [card]);
 

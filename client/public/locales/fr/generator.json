@@ -48,5 +48,7 @@
     "colorBg": "Couleur de fond",
     "choosePicture": "Choisir une image",
     "pictureAdded": "Image ajoutée",
-    "removePicture": "Supprimer l'image"
+    "removePicture": "Supprimer l'image",
+    "prev" : "Annuler",
+    "next" : "Rétablir"
 }

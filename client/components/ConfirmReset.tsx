@@ -1,4 +1,4 @@
-import React from "react";
+import { useRef } from "react";
 import {
   AlertDialog,
   AlertDialogBody,
@@ -11,8 +11,9 @@ import {
 import { useTranslation } from "next-i18next";
 
 const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
-  const cancelRef = React.useRef();
+  const cancelRef = useRef();
   const { t } = useTranslation("generator");
+
   return (
     <AlertDialog
       isOpen={isOpen}
@@ -29,12 +30,13 @@ const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
           <AlertDialogFooter>
             <Button
               variant="line"
+              cursor="pointer"
               ref={cancelRef}
               onClick={() => setOpen(false)}
             >
               {t("common:cancel")}
             </Button>
-            <Button onClick={confirm} ml={3}>
+            <Button onClick={confirm} ml={3} cursor="pointer">
               {t("common:confirm")}
             </Button>
           </AlertDialogFooter>

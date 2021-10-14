@@ -47,5 +47,7 @@
     "colorBg": "Background color",
     "choosePicture": "Choose an image",
     "pictureAdded": "Image added",
-    "removePicture": "Remove image"
+    "removePicture": "Remove image",
+    "prev" : "Undo",
+    "next" : "Redo"
 }

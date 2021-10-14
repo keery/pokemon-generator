@@ -6,6 +6,7 @@ import Download from "public/assets/img/download.svg";
 import ColorPicker from "~components/ColorPicker";
 import OptionButton from "~components/PanelOptions/OptionButton";
 import ResetButton from "~components/PanelOptions/ResetButton";
+import PrevNextButtons from "./PrevNextButtons";
 
 const printCard = () => {
   window.print();
@@ -61,6 +62,7 @@ const PanelOptions = () => {
           keyboard_shortcut={["ctrl", "p"]}
         />
         <ResetButton />
+        <PrevNextButtons />
         <ColorPicker />
       </VStack>
     </Flex>

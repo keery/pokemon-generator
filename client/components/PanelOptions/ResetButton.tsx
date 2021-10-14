@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useCallback } from "react";
+import React, { useMemo, useState, useCallback, memo } from "react";
 import Reset from "public/assets/img/reset.svg";
 import { useTranslation } from "next-i18next";
 import { useWatch, useFormContext } from "react-hook-form";
@@ -7,7 +7,8 @@ import OptionButton from "~components/PanelOptions/OptionButton";
 import isEqual from "lodash.isequal";
 import { CARD_DEFAULT_STATE } from "~data/card";
 import { cardAtom } from "~atoms/card";
-import { useRecoilState } from "recoil";
+import { historyAtom, HISTORY_DEFAULT_STATE } from "~atoms/history";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 const FLIPPING_TIME = 1000;
 
@@ -22,6 +23,7 @@ const ResetButton = () => {
     isEqual(formValues, CARD_DEFAULT_STATE)
   );
   const [card, setCardState] = useRecoilState(cardAtom);
+  const setHistoryState = useSetRecoilState(historyAtom);
 
   const confirmReset = useCallback(() => {
     setOpen(false);
@@ -30,6 +32,7 @@ const ResetButton = () => {
 
     setTimeout(() => {
       reset(CARD_DEFAULT_STATE);
+      setHistoryState(HISTORY_DEFAULT_STATE);
     }, FLIPPING_TIME / 2);
     setTimeout(() => {
       setCardState({ ...card, isFlipped: false });
@@ -57,4 +60,4 @@ const ResetButton = () => {
   );
 };
 
-export default ResetButton;
+export default memo(ResetButton);

@@ -34,7 +34,7 @@ const OptionButton = ({
     return () => {
       Mousetrap.unbind(shortcut);
     };
-  }, []);
+  }, [rest.isDisabled, onClick]);
 
   const Button = (
     <IconButton

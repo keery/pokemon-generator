@@ -13,6 +13,7 @@ import Logo from "~components/Logo";
 
 const CardForm = () => {
   const { t } = useTranslation("generator");
+
   return (
     <Flex height="100%" flex={1} w="500px" zIndex={10}>
       <Flex pos="relative" flex={1}>
