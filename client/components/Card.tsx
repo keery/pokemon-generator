@@ -1,7 +1,7 @@
 import React, { useRef, useCallback } from "react";
 import { Layer, Group, Stage } from "react-konva";
 import { useFormContext } from "react-hook-form";
-import { Box, useOutsideClick, AspectRatio } from "@chakra-ui/react";
+import { Box, useOutsideClick, Flex, Image } from "@chakra-ui/react";
 import Name from "./Card/Name";
 import Attacks from "./Card/Attacks";
 import MainImage from "./Card/MainImage";
@@ -22,7 +22,8 @@ import { useRecoilState } from "recoil";
 import PokemonsBackground from "./PokemonsBackground";
 
 const Card = () => {
-  const stageRef = useRef();
+  const stageRef = useRef(null);
+  const imgRef = useRef(null);
   const { control, setValue } = useFormContext();
   const [card, setCard] = useRecoilState(cardAtom);
 
@@ -42,6 +43,23 @@ const Card = () => {
     []
   );
 
+  const preserveRatioCanva = () => {
+    if (typeof stageRef !== "undefined" && typeof imgRef !== "undefined") {
+      stageRef.current.style.width = `${imgRef.current.width}px`;
+      stageRef.current.style.height = `${imgRef.current.height}px`;
+    }
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("load", preserveRatioCanva);
+    window.addEventListener("resize", preserveRatioCanva);
+
+    return () => {
+      window.removeEventListener("resize", preserveRatioCanva);
+      window.removeEventListener("load", preserveRatioCanva);
+    };
+  }, [imgRef, stageRef]);
+
   const resetSelected = useCallback(() => {
     if (card.selectedImg === null) return;
     setCard({ ...card, selectedImg: null });
@@ -50,68 +68,89 @@ const Card = () => {
   useOutsideClick({ ref: stageRef, handler: resetSelected });
 
   return (
-    <Box pos="relative" className={card.isFlipped ? "flipped" : ""} w="100%">
-      <AspectRatio
-        ref={stageRef}
-        maxW="500px"
-        pos="relative"
-        margin="0 auto"
-        ratio={5 / 7}
-      >
-        <Box className="card-container" overflow="visible!important">
-          <PokemonsBackground control={control} />
-          <Backface />
-          <Stage
-            id="test"
-            width={500}
-            height={700}
-            onMouseDown={(e) => {
-              if (
-                !e.target.attrs.name ||
-                (!e.target.attrs.isSelected &&
-                  !e.target.attrs.name.includes("_anchor"))
-              ) {
-                resetSelected();
-              }
-            }}
-          >
-            <Layer>
-              <ColorBackground control={control} />
-              <TypeBackground control={control} />
-              <HP control={control} />
-              <SubInfo control={control} />
-              <MainImage
-                control={control}
-                updateImgPos={updateImgPos}
-                updateScale={updateScale}
-                isSelected={card.selectedImg === "mainImage"}
-                onSelect={() => setCard({ ...card, selectedImg: "mainImage" })}
-              />
-              <Name control={control} />
-              <Attacks control={control} />
-              <Evolution
-                control={control}
-                updateImgPos={updateImgPos}
-                isSelected={card.selectedImg === "evolvePicture"}
-                updateScale={updateScale}
-                onSelect={() =>
-                  setCard({ ...card, selectedImg: "evolvePicture" })
+    <Flex
+      pos="relative"
+      className={card.isFlipped ? "flipped" : ""}
+      w="100%"
+      h="100%"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Flex alignItems="center" h="100%" display="inline-flex" pos="relative">
+        <Image
+          opacity="0"
+          ref={imgRef}
+          src="assets/img/1-gen/water-basic.png"
+          maxW="100%"
+          maxH="100%"
+          m="0 auto"
+        />
+        <Box
+          ref={stageRef}
+          margin="0 auto"
+          pos="absolute"
+          left={0}
+          right={0}
+          top="50%"
+          bottom={0}
+          transform="translateY(-50%)"
+        >
+          <Box className="card-container" overflow="visible!important">
+            <PokemonsBackground control={control} />
+            <Backface />
+            <Stage
+              width={500}
+              height={700}
+              onMouseDown={(e) => {
+                if (
+                  !e.target.attrs.name ||
+                  (!e.target.attrs.isSelected &&
+                    !e.target.attrs.name.includes("_anchor"))
+                ) {
+                  resetSelected();
                 }
-              />
-              <Group x={38} y={593} width={570}>
-                <TypeWithAmount control={control} name="weakness" />
-                <TypeWithAmount control={control} name="resistance" x={165} />
-                <Retreat control={control} />
-              </Group>
-              <Description control={control} />
-              <Illustrator control={control} />
-              <CollectionNumber control={control} />
-              <Rarity control={control} />
-            </Layer>
-          </Stage>
+              }}
+            >
+              <Layer>
+                <ColorBackground control={control} />
+                <TypeBackground control={control} />
+                <HP control={control} />
+                <SubInfo control={control} />
+                <MainImage
+                  control={control}
+                  updateImgPos={updateImgPos}
+                  updateScale={updateScale}
+                  isSelected={card.selectedImg === "mainImage"}
+                  onSelect={() =>
+                    setCard({ ...card, selectedImg: "mainImage" })
+                  }
+                />
+                <Name control={control} />
+                <Attacks control={control} />
+                <Evolution
+                  control={control}
+                  updateImgPos={updateImgPos}
+                  isSelected={card.selectedImg === "evolvePicture"}
+                  updateScale={updateScale}
+                  onSelect={() =>
+                    setCard({ ...card, selectedImg: "evolvePicture" })
+                  }
+                />
+                <Group x={38} y={593} width={570}>
+                  <TypeWithAmount control={control} name="weakness" />
+                  <TypeWithAmount control={control} name="resistance" x={165} />
+                  <Retreat control={control} />
+                </Group>
+                <Description control={control} />
+                <Illustrator control={control} />
+                <CollectionNumber control={control} />
+                <Rarity control={control} />
+              </Layer>
+            </Stage>
+          </Box>
         </Box>
-      </AspectRatio>
-    </Box>
+      </Flex>
+    </Flex>
   );
 };
 

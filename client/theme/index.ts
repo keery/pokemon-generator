@@ -107,7 +107,7 @@ const theme = extendTheme({
   },
   layerStyles: {
     glass: {
-      backdropFilter: "blur(16px) saturate(180%)",
+      backdropFilter: "blur(8px) saturate(180%)",
       bgColor: "rgb(255 255 255 / 25%)",
       border: "1px solid rgb(255 255 255 / 60%)",
     },

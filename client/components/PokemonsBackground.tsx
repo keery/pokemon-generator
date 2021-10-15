@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Image, Box } from "@chakra-ui/react";
+import { Image, Box, Circle } from "@chakra-ui/react";
 import { useWatch, Control } from "react-hook-form";
 import { Element, Select } from "~@types/Card";
 
@@ -12,6 +12,7 @@ interface BgPokemon {
   transform?: string;
   width?: string;
   left?: string;
+  maxWidth?: string;
 }
 
 const pokemons: Record<Element, BgPokemon[]> = {
@@ -76,8 +77,17 @@ const pokemons: Record<Element, BgPokemon[]> = {
       transform: "rotateY(180deg) translateX(-9px) translateY(-90px)",
       width: "370px",
     },
-    { src: "assets/img/bg/pokemon-grass-1.png", width: "270px" },
-    { src: "assets/img/bg/pokemon-grass-3.png", transform: "rotateY(180deg)" },
+    {
+      src: "assets/img/bg/pokemon-grass-1.png",
+      width: "18vw",
+      maxWidth: "270px",
+    },
+    {
+      src: "assets/img/bg/pokemon-grass-3.png",
+      transform: "rotateY(180deg)",
+      width: "18vw",
+      maxWidth: "250px",
+    },
   ],
 };
 
@@ -101,12 +111,18 @@ const PokemonsBackground = ({ control }: Props) => {
           className={`bg-pokemon
           ${isVariant ? "even" : "odd"}
            ${selectedType.value === element ? "active" : "inactive"}`}
+          userSelect="none"
+          display={{
+            base: "none",
+            xl: "block",
+          }}
         >
           <Box
             pos="absolute"
             right="100%"
             top="20%"
             width={pokemons[element][0].width || "270px"}
+            maxWidth={pokemons[element][0].maxWidth || "none"}
           >
             <Image
               src={pokemons[element][0].src}
@@ -118,6 +134,7 @@ const PokemonsBackground = ({ control }: Props) => {
             bottom="-10%"
             left={pokemons[element][1].left || "102%"}
             width={pokemons[element][1].width || "300px"}
+            maxWidth={pokemons[element][1].maxWidth || "none"}
           >
             <Image
               src={pokemons[element][1].src}
@@ -130,6 +147,7 @@ const PokemonsBackground = ({ control }: Props) => {
             top="0%"
             left={pokemons[element][2].left || "105%"}
             width={pokemons[element][2].width || "250px"}
+            maxWidth={pokemons[element][2].maxWidth || "none"}
           >
             <Image
               src={pokemons[element][2].src}
