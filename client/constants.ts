@@ -10,10 +10,12 @@ export const ELEMENTS: Element[] = [
   "psychic",
   "fighting",
   "normal",
-  // TODO: Find background
-  // 'steel',
-  // 'dark',
 ];
+
+export const ELEMENTS_OPTIONS = ELEMENTS.map((el) => ({
+  value: el,
+  label: el,
+}));
 
 export const HP_CHOICES = [
   "30",
@@ -41,9 +43,24 @@ export const HP_CHOICES = [
   "250",
 ];
 
+export const HP_OPTIONS = HP_CHOICES.map((el) => ({
+  value: el,
+  label: `${el} HP`,
+}));
+
 export const WEAKNESS_CHOICES = ["+10", "+20", "+30", "+40", "x2"];
 
+export const WEAKNESS_OPTIONS = WEAKNESS_CHOICES.map((el) => ({
+  value: el,
+  label: el,
+}));
+
 export const RESISTANCE_CHOICES = ["-10", "-20", "-30", "-40"];
+
+export const RESISTANCE_OPTIONS = RESISTANCE_CHOICES.map((el) => ({
+  value: el,
+  label: el,
+}));
 
 export const DAMAGE_CHOICES = [
   "10",
@@ -74,7 +91,11 @@ export const UNCOMMON = "uncommon";
 export const RARE = "rare";
 export const RARITY_CHOICES: Rarity[] = [COMMON, UNCOMMON, RARE];
 
-export const RETREAT_CHOICES = ["1", "2", "3", "4"];
+export const RETREAT_CHOICES = [0, 1, 2, 3, 4];
+export const RETREAT_OPTIONS = RETREAT_CHOICES.map((el) => ({
+  value: el,
+  label: el,
+}));
 
 /**
  * Local storage keys

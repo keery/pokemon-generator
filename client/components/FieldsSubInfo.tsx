@@ -5,30 +5,11 @@ import Select from "~components/Select";
 import Field from "~components/Field";
 import {
   ELEMENTS,
-  WEAKNESS_CHOICES,
-  RESISTANCE_CHOICES,
-  RETREAT_CHOICES,
+  WEAKNESS_OPTIONS,
+  RESISTANCE_OPTIONS,
+  RETREAT_OPTIONS,
+  ELEMENTS_OPTIONS,
 } from "~constants";
-
-const optionsType = ELEMENTS.map((el) => ({
-  value: el,
-  label: el,
-}));
-
-const optionsWeakness = WEAKNESS_CHOICES.map((el) => ({
-  value: el,
-  label: el,
-}));
-
-const optionsResistance = RESISTANCE_CHOICES.map((el) => ({
-  value: el,
-  label: el,
-}));
-
-const optionsRetreat = RETREAT_CHOICES.map((el) => ({
-  value: el,
-  label: el,
-}));
 
 const FieldsSubInfo = () => {
   const { t } = useTranslation("generator");
@@ -40,7 +21,7 @@ const FieldsSubInfo = () => {
         <Select
           name="weaknessType"
           control={control}
-          options={optionsType}
+          options={ELEMENTS_OPTIONS}
           isClearable
           iconPath="{{value}}.png"
         />
@@ -49,7 +30,7 @@ const FieldsSubInfo = () => {
         <Select
           name="weaknessAmount"
           control={control}
-          options={optionsWeakness}
+          options={WEAKNESS_OPTIONS}
           isClearable
         />
       </Field>
@@ -57,7 +38,7 @@ const FieldsSubInfo = () => {
         <Select
           name="resistanceType"
           control={control}
-          options={optionsType}
+          options={ELEMENTS_OPTIONS}
           iconPath="{{value}}.png"
           isClearable
         />
@@ -66,7 +47,7 @@ const FieldsSubInfo = () => {
         <Select
           name="resistanceAmount"
           control={control}
-          options={optionsResistance}
+          options={RESISTANCE_OPTIONS}
           isClearable
         />
       </Field>
@@ -74,7 +55,7 @@ const FieldsSubInfo = () => {
         <Select
           name="retreat"
           control={control}
-          options={optionsRetreat}
+          options={RETREAT_OPTIONS}
           isClearable
           iconPath="normal.png"
         />

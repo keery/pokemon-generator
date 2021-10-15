@@ -20,6 +20,10 @@ const CardForm = () => {
       flex={1}
       w="500px"
       minW={{ base: "300px", lg: "350px" }}
+      display={{
+        base: "none",
+        md: "flex",
+      }}
     >
       <Flex pos="relative" flex={1}>
         <CacheForm />

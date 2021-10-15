@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "@chakra-ui/react";
 import ReactSelect from "react-select";
-import { useController, Control } from "react-hook-form";
+import { useController, Control, useWatch } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 
@@ -130,6 +130,7 @@ const Select = ({
     name,
     control,
   });
+  const value = useWatch({ control, name });
 
   const onChange = (data) => {
     field.onChange(data || "");
@@ -146,7 +147,7 @@ const Select = ({
       menuPortalTarget={document.body}
       menuPlacement="auto"
       formatOptionLabel={({ label }) => t(label)}
-      value={field.value}
+      value={value}
       // menuIsOpen
     />
   );

@@ -44,7 +44,7 @@ export interface Card {
   weaknessAmount: Select<number>;
   resistanceType: Select<Element>;
   resistanceAmount: Select<number>;
-  retreat: number;
+  retreat: Select<number>;
   description: string;
   illustrator: string;
   cardNumber: string;

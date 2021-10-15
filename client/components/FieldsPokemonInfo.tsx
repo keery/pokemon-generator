@@ -1,35 +1,26 @@
 import React from "react";
-import { Input, InputRightAddon, InputGroup } from "@chakra-ui/react";
+import { InputRightAddon, InputGroup } from "@chakra-ui/react";
 import { useFormContext } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import Select from "~components/Select";
 import FileInput from "~components/FileInput";
 import Field from "~components/Field";
-import { ELEMENTS, HP_CHOICES } from "~constants";
-
-const optionsType = ELEMENTS.map((el) => ({
-  value: el,
-  label: el,
-}));
-
-const optionsHP = HP_CHOICES.map((el) => ({
-  value: el,
-  label: `${el} HP`,
-}));
+import Input from "~components/Input";
+import { ELEMENTS_OPTIONS, HP_OPTIONS } from "~constants";
 
 const FieldsPokemonInfo = () => {
   const { t } = useTranslation("generator");
-  const { register, control } = useFormContext();
+  const { control } = useFormContext();
 
   return (
     <>
       <Field label={t("name")}>
-        <Input name="name" type="text" {...register(`name`)} />
+        <Input name="name" control={control} />
       </Field>
       <Field label={t("type")}>
         <Select
           name="type"
-          options={optionsType}
+          options={ELEMENTS_OPTIONS}
           control={control}
           iconPath="{{value}}.png"
         />
@@ -38,22 +29,17 @@ const FieldsPokemonInfo = () => {
         <FileInput name="mainImage" control={control} />
       </Field>
       <Field label="HP">
-        <Select name="hp" options={optionsHP} control={control} />
+        <Select name="hp" options={HP_OPTIONS} control={control} />
       </Field>
       <Field label={t("species")}>
-        <Input name="species" type="text" {...register(`species`)} />
+        <Input name="species" control={control} />
       </Field>
       <Field label={t("length")}>
-        <Input
-          name="length"
-          type="text"
-          // placeholder={"0' 0\""}
-          {...register(`length`)}
-        />
+        <Input name="length" control={control} />
       </Field>
       <Field label={t("weight")}>
         <InputGroup>
-          <Input name="weight" type="text" {...register(`weight`)} />
+          <Input name="weight" control={control} />
           <InputRightAddon
             children="lbs"
             color="main"

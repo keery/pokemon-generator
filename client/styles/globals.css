@@ -22,10 +22,11 @@
 }
 
 ::-moz-selection {
-  background: #b6b3ec;
+  background: #fe5b54;
 }
 ::selection {
-  background: #b6b3ec;
+  background: #fe5b54;
+  color: #fff;
 }
 
 html,

@@ -4,12 +4,12 @@ import ImageCanvas from "~components/Card/ImageCanvas";
 import { Select } from "~@types/Card";
 
 const Retreat = ({ control }) => {
-  const retreat: Select<string> = useWatch({
+  const retreat: Select<number> = useWatch({
     control,
     name: "retreat",
   });
 
-  if (!Boolean(retreat)) return null;
+  if (!Boolean(retreat) || +retreat.value === 0) return null;
 
   return (
     <ImageCanvas

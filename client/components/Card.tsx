@@ -20,6 +20,7 @@ import Retreat from "./Card/Retreat";
 import { cardAtom } from "~atoms/card";
 import { useRecoilState } from "recoil";
 import PokemonsBackground from "./PokemonsBackground";
+import InteractiveLayer from "./Interactive/InteractiveLayer";
 
 const Card = () => {
   const stageRef = useRef(null);
@@ -147,6 +148,7 @@ const Card = () => {
                 <Rarity control={control} />
               </Layer>
             </Stage>
+            <InteractiveLayer />
           </Box>
         </Box>
       </Flex>
