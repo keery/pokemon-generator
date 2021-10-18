@@ -39,6 +39,8 @@
     "resetTitle": "Reset card",
     "downloadCard" : "Download",
     "printCard" : "Print",
+    "showZone" : "Show areas",
+    "hideZone" : "Hide areas",
     "saveCard" : "Save",
     "resetCard" : "Reset",
     "shareCard" : "Share to your friends",
