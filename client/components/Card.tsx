@@ -69,7 +69,7 @@ const Card = () => {
   useOutsideClick({ ref: stageRef, handler: resetSelected });
 
   const stage = useWatch({ control, name: "stage" });
-  console.log(stage);
+
   return (
     <Flex
       pos="relative"
