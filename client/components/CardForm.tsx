@@ -77,13 +77,21 @@ const CardForm = () => {
               </CardFieldsGroup>
             </Box>
             <Box flex={1}>
-              <CardFormHeader step={3} title={t("attack1")} />
+              <CardFormHeader
+                step={3}
+                title={t("attack1")}
+                id={`field-attack1-label`}
+              />
               <CardFieldsGroup>
                 <FieldsAttack name="attack1" />
               </CardFieldsGroup>
             </Box>
             <Box flex={1}>
-              <CardFormHeader step={4} title={t("attack2")} />
+              <CardFormHeader
+                step={4}
+                title={t("attack2")}
+                id={`field-attack1-label`}
+              />
               <CardFieldsGroup>
                 <FieldsAttack name="attack2" />
               </CardFieldsGroup>

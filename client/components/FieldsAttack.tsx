@@ -27,7 +27,7 @@ const FieldsAttack = ({ name }) => {
 
   return (
     <>
-      <Field label={t("name")} id={`field-${name}-label`}>
+      <Field label={t("name")}>
         <Input
           name={`${name}Name`}
           type="text"
