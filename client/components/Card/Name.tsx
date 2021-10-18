@@ -1,13 +1,18 @@
 import React from "react";
-import { useWatch } from "react-hook-form";
+import { useWatch, Control } from "react-hook-form";
 import { Text } from "react-konva";
 import { BASIC } from "~constants";
 import { Select, Stage } from "~@types/Card";
 
-const Name = ({ control }) => {
-  const [name, stage]: [string, Select<Stage>] = useWatch({
+interface Props {
+  control: Control;
+  stage: Select<Stage>;
+}
+
+const Name = ({ control, stage }: Props) => {
+  const name: string = useWatch({
     control,
-    name: ["name", "stage"],
+    name: "name",
   });
 
   return (

@@ -31,15 +31,15 @@ const FieldsPokemonInfo = () => {
       <Field label="HP">
         <Select name="hp" options={HP_OPTIONS} control={control} />
       </Field>
-      <Field label={t("species")}>
-        <Input name="species" control={control} />
+      <Field label={t("species")} id="field-species-label">
+        <Input name="species" control={control} id="field-species" />
       </Field>
       <Field label={t("length")}>
         <Input name="length" control={control} />
       </Field>
       <Field label={t("weight")}>
         <InputGroup>
-          <Input name="weight" control={control} />
+          <Input name="weight" control={control} borderRightRadius="none" />
           <InputRightAddon
             children="lbs"
             color="main"

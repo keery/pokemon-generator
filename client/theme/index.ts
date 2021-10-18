@@ -45,7 +45,9 @@ const theme = extendTheme({
     sm: "0.5rem",
     md: "2rem",
   },
-  shadows: {},
+  shadows: {
+    md: "0px 0px 9px #a0c2ff",
+  },
   components: {
     Button,
     Container,

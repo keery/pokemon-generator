@@ -48,13 +48,13 @@ const InteractiveTextarea = ({
         borderRadius={0}
         minH="0"
         width="100%"
-        border="3px solid transparent"
+        border="2px solid transparent"
         height="100%"
         backgroundColor="transparent"
         outline="none"
         resize="none"
         overflow="hidden"
-        transition="border ease-in-out 0.08s"
+        transition="border ease-in-out 0.08s, box-shadow 200ms ease-in-out"
         lineHeight="1"
         color="transparent"
         autoComplete="off"
@@ -62,10 +62,11 @@ const InteractiveTextarea = ({
           caretColor: "black",
         }}
         _hover={{
-          border: "3px solid #000",
+          border: "2px solid #fff",
         }}
         _focus={{
-          border: "3px solid #000",
+          border: "2px solid #fff",
+          shadow: "0px 0px 9px #a0c2ff!important",
         }}
       />
     </Box>

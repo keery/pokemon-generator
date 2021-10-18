@@ -31,7 +31,7 @@ const InteractiveInput = ({
   return (
     <Box
       pos="absolute"
-      border="2px solid yellow"
+      // border="2px solid yellow"
       left={`${x}%`}
       top={`${y}%`}
       height={`${height}%`}
@@ -49,14 +49,14 @@ const InteractiveInput = ({
         }}
         fontSize={`${fontSize}px`}
         fontFamily={fontFamily}
-        // _hover={{
-        //   border: "2px dashed",
-        //   borderColor: "yellow.600",
-        // }}
-        // _focus={{
-        //   border: "2px solid",
-        //   borderColor: "yellow.600",
-        // }}
+        borderRadius="xs"
+        _hover={{
+          border: "2px solid #fff",
+        }}
+        _focus={{
+          border: "2px solid #fff",
+          shadow: "0px 0px 9px #a0c2ff!important",
+        }}
         onChange={(event) => {
           field.onChange(
             !!prefix
@@ -64,7 +64,7 @@ const InteractiveInput = ({
               : event.target.value
           );
         }}
-        value={value !== "" ? prefix + value : value}
+        value={value !== "" && prefix ? prefix + value : value}
         name={name}
         autoComplete="off"
         pos="absolute"

@@ -32,7 +32,7 @@ const CacheForm = () => {
       cacheCard(values);
       const diff = updatedDiff(prev, values);
 
-      if (Object.keys(diff).length === 0) throw new Error("No change diff");
+      if (Object.keys(diff).length === 0) return;
 
       const historyLine = {
         changed: diff,

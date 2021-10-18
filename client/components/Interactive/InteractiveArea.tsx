@@ -1,71 +1,53 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Box } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
+import React from "react";
+import { motion } from "framer-motion";
+import { useTheme } from "@chakra-ui/react";
+
+interface Props {
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+  inputTarget: string;
+  labelTarget: string;
+  noRadius?: boolean;
+}
 
 const InteractiveArea = ({
-  name,
   x,
   y,
   height,
   width,
-  children,
-  setSelected,
-}) => {
+  inputTarget,
+  labelTarget,
+  noRadius,
+}: Props) => {
+  const theme = useTheme();
+
   return (
     <motion.div
-      layoutId={`area-${name}`}
       style={{
-        position: 'absolute',
-        border: '2px transparent',
-        cursor: 'pointer',
+        position: "absolute",
+        cursor: "pointer",
         left: `${x}%`,
         top: `${y}%`,
         height: `${height}%`,
         width: `${width}%`,
-        backgroundColor: 'rgba(0, 0, 0, 0.54)',
+        border: "2px solid",
+        borderColor: "transparent",
+        borderRadius: noRadius ? "0" : theme.radii.sm,
       }}
-      // _hover: {{,
-      //   backgroundColor: 'rgba(0, 0, 0, 0.54)',
-      //   border: '2px dashed',
-      //   borderColor: 'yellow.600',
-      // }}
-      onClick={() => setSelected(name)}
-    >
-      {/* <Box
-        pos="absolute"
-        border="2px transparent"
-        cursor="pointer"
-        left={`${x}%`}
-        top={`${y}%`}
-        height={`${height}%`}
-        width={`${width}%`}
-        backgroundColor="rgba(0, 0, 0, 0.54)"
-        _hover={{
-          backgroundColor: 'rgba(0, 0, 0, 0.54)',
-          border: '2px dashed',
-          borderColor: 'yellow.600',
-        }}
-        onClick={() => setSelected(name)}
-      > */}
-      {children}
-      {/* </Box> */}
-    </motion.div>
-  )
-}
+      whileHover={{
+        boxShadow: "0px 0px 9px #a0c2ff",
+        borderColor: "#fff",
+      }}
+      onClick={() => {
+        document
+          .getElementById(labelTarget)
+          .scrollIntoView({ behavior: "smooth" });
+        document.getElementById(inputTarget).focus({ preventScroll: true });
+      }}
+    />
+  );
+};
 
-InteractiveArea.propTypes = {
-  x: PropTypes.number,
-  y: PropTypes.number,
-  height: PropTypes.number,
-  width: PropTypes.number,
-}
-
-InteractiveArea.defaultProps = {
-  x: 0,
-  y: 0,
-  height: 5,
-  width: 100,
-}
-
-export default InteractiveArea
+export default InteractiveArea;

@@ -6,12 +6,7 @@ import Select from "~components/Select";
 import Input from "~components/Input";
 import Textarea from "~components/Textarea";
 import Field from "~components/Field";
-import { RARITY_CHOICES } from "~constants";
-
-const optionsRarity = RARITY_CHOICES.map((el) => ({
-  value: el,
-  label: el,
-}));
+import { RARITY_OPTIONS } from "~constants";
 
 const FieldsBottomInfo = () => {
   const { t } = useTranslation("generator");
@@ -25,9 +20,14 @@ const FieldsBottomInfo = () => {
       <Field label={t("illustrator")}>
         <Input name="illustrator" control={control} />
       </Field>
-      <Field label={t("collectionNumber")}>
+      <Field label={t("collectionNumber")} id="field-collection-label">
         <Flex alignItems="center">
-          <Input name="cardNumber" control={control} maxLength={3} />
+          <Input
+            name="cardNumber"
+            control={control}
+            maxLength={3}
+            id="field-collection"
+          />
           <Box mx={3} fontWeight="600">
             /
           </Box>
@@ -38,7 +38,7 @@ const FieldsBottomInfo = () => {
         <Select
           name="rarity"
           control={control}
-          options={optionsRarity}
+          options={RARITY_OPTIONS}
           iconPath="rarity-{{value}}.png"
         />
       </Field>

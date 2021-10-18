@@ -161,6 +161,7 @@ const FileInput = ({ name, control }: Props) => {
             transition="border-color 200ms"
           >
             <Text
+              id={name}
               onClick={onOpen}
               color="grey.500"
               fontSize=".9rem"

@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from "react";
 import { Layer, Group, Stage } from "react-konva";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import { Box, useOutsideClick, Flex, Image } from "@chakra-ui/react";
 import Name from "./Card/Name";
 import Attacks from "./Card/Attacks";
@@ -68,6 +68,8 @@ const Card = () => {
 
   useOutsideClick({ ref: stageRef, handler: resetSelected });
 
+  const stage = useWatch({ control, name: "stage" });
+  console.log(stage);
   return (
     <Flex
       pos="relative"
@@ -99,55 +101,61 @@ const Card = () => {
           <Box className="card-container" overflow="visible!important">
             <PokemonsBackground control={control} />
             <Backface />
-            <Stage
-              width={500}
-              height={700}
-              onMouseDown={(e) => {
-                if (
-                  !e.target.attrs.name ||
-                  (!e.target.attrs.isSelected &&
-                    !e.target.attrs.name.includes("_anchor"))
-                ) {
-                  resetSelected();
-                }
-              }}
-            >
-              <Layer>
-                <ColorBackground control={control} />
-                <TypeBackground control={control} />
-                <HP control={control} />
-                <SubInfo control={control} />
-                <MainImage
-                  control={control}
-                  updateImgPos={updateImgPos}
-                  updateScale={updateScale}
-                  isSelected={card.selectedImg === "mainImage"}
-                  onSelect={() =>
-                    setCard({ ...card, selectedImg: "mainImage" })
+            <Box className="card-stage">
+              <Stage
+                width={500}
+                height={700}
+                onMouseDown={(e) => {
+                  if (
+                    !e.target.attrs.name ||
+                    (!e.target.attrs.isSelected &&
+                      !e.target.attrs.name.includes("_anchor"))
+                  ) {
+                    resetSelected();
                   }
-                />
-                <Name control={control} />
-                <Attacks control={control} />
-                <Evolution
-                  control={control}
-                  updateImgPos={updateImgPos}
-                  isSelected={card.selectedImg === "evolvePicture"}
-                  updateScale={updateScale}
-                  onSelect={() =>
-                    setCard({ ...card, selectedImg: "evolvePicture" })
-                  }
-                />
-                <Group x={38} y={593} width={570}>
-                  <TypeWithAmount control={control} name="weakness" />
-                  <TypeWithAmount control={control} name="resistance" x={165} />
-                  <Retreat control={control} />
-                </Group>
-                <Description control={control} />
-                <Illustrator control={control} />
-                <CollectionNumber control={control} />
-                <Rarity control={control} />
-              </Layer>
-            </Stage>
+                }}
+              >
+                <Layer>
+                  <ColorBackground control={control} />
+                  <TypeBackground control={control} />
+                  <HP control={control} />
+                  <SubInfo control={control} />
+                  <MainImage
+                    control={control}
+                    updateImgPos={updateImgPos}
+                    updateScale={updateScale}
+                    isSelected={card.selectedImg === "mainImage"}
+                    onSelect={() =>
+                      setCard({ ...card, selectedImg: "mainImage" })
+                    }
+                  />
+                  <Name control={control} stage={stage} />
+                  <Attacks control={control} />
+                  <Evolution
+                    control={control}
+                    updateImgPos={updateImgPos}
+                    isSelected={card.selectedImg === "evolvePicture"}
+                    updateScale={updateScale}
+                    onSelect={() =>
+                      setCard({ ...card, selectedImg: "evolvePicture" })
+                    }
+                  />
+                  <Group x={38} y={593} width={570}>
+                    <TypeWithAmount control={control} name="weakness" />
+                    <TypeWithAmount
+                      control={control}
+                      name="resistance"
+                      x={165}
+                    />
+                    <Retreat control={control} />
+                  </Group>
+                  <Description control={control} />
+                  <Illustrator control={control} />
+                  <CollectionNumber control={control} />
+                  <Rarity control={control} />
+                </Layer>
+              </Stage>
+            </Box>
             <InteractiveLayer />
           </Box>
         </Box>

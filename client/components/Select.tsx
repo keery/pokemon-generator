@@ -33,7 +33,7 @@ const getStyle = (theme, iconPath) => {
         cursor: "pointer",
       },
     }),
-    indicatorSeparator: (base) => ({ ...base, backgroundColor: "#929292" }),
+    indicatorSeparator: (base) => ({ ...base, backgroundColor: "#cacaca" }),
     singleValue: (base) => ({ ...base, color: "#3b434c", fontWeight: "500" }),
     menu: (base) => ({
       ...base,

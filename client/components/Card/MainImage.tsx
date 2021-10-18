@@ -45,8 +45,6 @@ const MainImage = ({
       y={88}
       x={60}
       onMouseEnter={(e) => {
-        // style stage container:
-        console.log("fds");
         const container = e.target.getStage().container();
         container.style.cursor = "move";
       }}

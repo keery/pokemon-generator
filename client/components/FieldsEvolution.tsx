@@ -5,13 +5,7 @@ import { useFormContext, useWatch } from "react-hook-form";
 import Field from "~components/Field";
 import FileInput from "~components/FileInput";
 import Select from "~components/Select";
-import { BASIC, STAGE_ONE, STAGE_TWO } from "~constants";
-
-const optionsStage = [
-  { value: BASIC, label: "Basic" },
-  { value: STAGE_ONE, label: "Stage 1" },
-  { value: STAGE_TWO, label: "Stage 2" },
-];
+import { BASIC, STAGE_OPTIONS } from "~constants";
 
 const FieldsEvolution = () => {
   const { t } = useTranslation("generator");
@@ -24,7 +18,7 @@ const FieldsEvolution = () => {
   return (
     <>
       <Field label={t("stage")}>
-        <Select name="stage" options={optionsStage} control={control} />
+        <Select name="stage" options={STAGE_OPTIONS} control={control} />
       </Field>
       <Field label={t("name")} isDisabled={stage.value === BASIC}>
         <Input

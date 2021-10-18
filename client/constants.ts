@@ -91,6 +91,11 @@ export const UNCOMMON = "uncommon";
 export const RARE = "rare";
 export const RARITY_CHOICES: Rarity[] = [COMMON, UNCOMMON, RARE];
 
+export const RARITY_OPTIONS = RARITY_CHOICES.map((el) => ({
+  value: el,
+  label: el,
+}));
+
 export const RETREAT_CHOICES = [0, 1, 2, 3, 4];
 export const RETREAT_OPTIONS = RETREAT_CHOICES.map((el) => ({
   value: el,
@@ -112,3 +117,9 @@ export const DEFAULT_LANGUAGES = "en";
 export const BASIC = "basic";
 export const STAGE_ONE = "stage1";
 export const STAGE_TWO = "stage2";
+
+export const STAGE_OPTIONS = [
+  { value: BASIC, label: "Basic" },
+  { value: STAGE_ONE, label: "Stage 1" },
+  { value: STAGE_TWO, label: "Stage 2" },
+];

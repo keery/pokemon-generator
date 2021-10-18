@@ -27,8 +27,13 @@ const FieldsAttack = ({ name }) => {
 
   return (
     <>
-      <Field label={t("name")}>
-        <Input name={`${name}Name`} type="text" {...register(`${name}Name`)} />
+      <Field label={t("name")} id={`field-${name}-label`}>
+        <Input
+          name={`${name}Name`}
+          type="text"
+          {...register(`${name}Name`)}
+          id={`field-${name}`}
+        />
       </Field>
       <Field label={t("damage")}>
         <Select

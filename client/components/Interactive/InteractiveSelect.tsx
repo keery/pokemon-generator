@@ -35,6 +35,11 @@ const InteractiveSelect = ({
       height={`${height}%`}
       width={`${width}%`}
       className={`InteractiveSelect ${className}`}
+      borderRadius="sm"
+      _hover={{
+        border: "2px solid #fff",
+        shadow: "md",
+      }}
     >
       <Select
         variant="unstyled"
@@ -46,24 +51,12 @@ const InteractiveSelect = ({
           });
         }}
         value={value?.value}
-        position="absolute"
         color="transparent"
-        w="125%"
         h="100%"
-        right="-25%"
         backgroundColor="transparent"
         textAlign="justify"
         fontFamily="pokehp"
         fontSize="18px"
-        border="2px dashed transparent"
-        _hover={{
-          border: "2px dashed",
-          borderColor: "yellow.600",
-        }}
-        _focus={{
-          border: "2px solid",
-          borderColor: "yellow.600",
-        }}
       >
         {choices.map(({ label, value }) => (
           <option key={`is-${value}`} value={value}>
@@ -71,7 +64,6 @@ const InteractiveSelect = ({
           </option>
         ))}
       </Select>
-      <Box h="100%" w="100%" border="2px dashed transparent" />
     </Box>
   );
 };
