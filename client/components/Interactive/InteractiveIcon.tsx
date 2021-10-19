@@ -7,6 +7,8 @@ import {
   Box,
   BoxProps,
 } from "@chakra-ui/react";
+import { useRecoilValue } from "recoil";
+import { areaAtom } from "~atoms/area";
 
 type Placement = "bottom" | "top" | "left" | "right";
 export interface Props extends FlexProps {
@@ -85,6 +87,7 @@ const InteractiveIcon = ({
   const buttonRef = useRef(null);
   const { line, button } = getPlacement(placement, lineLength);
   const [transform, setTransform] = useState({});
+  const { isVisible } = useRecoilValue(areaAtom);
 
   useEffect(() => {
     if (!buttonRef.current) return;
@@ -98,6 +101,8 @@ const InteractiveIcon = ({
       });
     }
   }, [buttonRef?.current, placement]);
+
+  if (!isVisible) return null;
 
   return (
     <>
