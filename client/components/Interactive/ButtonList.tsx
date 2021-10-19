@@ -5,10 +5,11 @@ import {
   BoxProps,
   AspectRatio,
   ChakraProps,
+  Icon,
 } from "@chakra-ui/react";
 import { motion, MotionStyle } from "framer-motion";
 import { useController, useWatch, Control } from "react-hook-form";
-import { Select } from "~@types/Card";
+import Cross from "public/assets/img/cross.svg";
 
 const styleEl = {
   width: "1.8rem",
@@ -19,17 +20,6 @@ const styleEl = {
   position: "relative",
   backgroundSize: "contain",
   outline: "none",
-};
-
-const styleDeleteBtn = {
-  content: '""',
-  position: "absolute",
-  display: "block",
-  backgroundColor: "#c1c1c1",
-  left: "50%",
-  top: "50%",
-  width: "7%",
-  height: "50%",
 };
 
 const stylePreview: BoxProps = {
@@ -138,22 +128,15 @@ const ButtonList = ({
                   whileTap={{ scale: 0.9 }}
                   style={{ outline: "none" }}
                 >
-                  <Box
+                  <Icon
+                    as={Cross}
+                    bgColor="#fff"
                     {...(styleEl as ChakraProps)}
-                    backgroundColor="#fff"
-                    transition="box-shadow ease-in-out .1s"
+                    color="#c1c1c1"
                     border="1px solid #d8d8d8"
-                    _before={{
-                      ...styleDeleteBtn,
-                      transform:
-                        "translateX(-50%) translateY(-50%) rotate(45deg)",
-                    }}
-                    _after={{
-                      ...styleDeleteBtn,
-                      transform:
-                        "translateX(-50%) translateY(-50%) rotate(-45deg)",
-                    }}
+                    transition="box-shadow ease-in-out .1s"
                     onClick={() => field.onChange(null)}
+                    p={1}
                   />
                 </motion.button>
               )}
