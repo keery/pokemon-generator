@@ -90,7 +90,7 @@ const CardForm = () => {
               <CardFormHeader
                 step={4}
                 title={t("attack2")}
-                id={`field-attack1-label`}
+                id={`field-attack2-label`}
               />
               <CardFieldsGroup>
                 <FieldsAttack name="attack2" />

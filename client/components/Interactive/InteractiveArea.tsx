@@ -1,8 +1,7 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { useTheme, Box } from "@chakra-ui/react";
+import { useTheme, Box, BoxProps } from "@chakra-ui/react";
 
-interface Props {
+interface Props extends BoxProps {
   x: number;
   y: number;
   height: number;
@@ -22,6 +21,7 @@ const InteractiveArea = ({
   labelTarget,
   noRadius,
   icon,
+  ...rest
 }: Props) => {
   const theme = useTheme();
 
@@ -51,6 +51,7 @@ const InteractiveArea = ({
           boxShadow: "0px 0px 9px #a0c2ff",
           borderColor: "#fff",
         }}
+        {...rest}
       />
     </Box>
   );

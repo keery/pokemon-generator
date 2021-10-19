@@ -20,8 +20,12 @@ import InteractiveIcon from "./InteractiveIcon";
 import Pen from "public/assets/img/pen.svg";
 import Star from "public/assets/img/star.svg";
 import Sword from "public/assets/img/sword.svg";
+import Add from "public/assets/img/add.svg";
+import Stage from "public/assets/img/stage.svg";
+import HP from "public/assets/img/hp.svg";
 import Pokeball from "public/assets/img/pokeball.svg";
 import { useTranslation } from "next-i18next";
+import useAttacks from "~hooks/useAttacks";
 
 const InteractiveLayer = () => {
   const { t } = useTranslation("generator");
@@ -30,6 +34,7 @@ const InteractiveLayer = () => {
     control,
     name: "stage",
   });
+  const { isTiny } = useAttacks(control);
 
   const isBasicStage = useMemo(() => stage.value === BASIC, [stage]);
 
@@ -48,6 +53,7 @@ const InteractiveLayer = () => {
           top: "30%",
           label: t("picture"),
           lineLength: 13.8,
+          linePos: 32,
         }}
       />
       {/* STAGE */}
@@ -64,8 +70,9 @@ const InteractiveLayer = () => {
             placement="left"
             top={isBasicStage ? "4.3%" : "4.8%"}
             label={t("stage")}
-            icon={<Pen />}
+            icon={<Stage />}
             lineLength={11}
+            linePos={6}
           />
         }
       />
@@ -84,10 +91,11 @@ const InteractiveLayer = () => {
             icon={
               <InteractiveIcon
                 placement="top"
-                left="40%"
+                left="16%"
                 label={t("nameEvolve")}
                 icon={<Pen />}
                 lineLength={6.5}
+                linePos={37}
               />
             }
           />
@@ -104,6 +112,7 @@ const InteractiveLayer = () => {
               top: "11%",
               label: t("pictureEvolve"),
               lineLength: 10.5,
+              linePos: 13,
             }}
           />
         </>
@@ -120,10 +129,11 @@ const InteractiveLayer = () => {
         icon={
           <InteractiveIcon
             placement="top"
-            left={isBasicStage ? "25%" : "21%"}
+            left={isBasicStage ? "25%" : "50%"}
             label={t("name")}
             icon={<Pen />}
             lineLength={9.3}
+            linePos={isBasicStage ? 31.5 : 55}
           />
         }
       />
@@ -140,10 +150,11 @@ const InteractiveLayer = () => {
         icon={
           <InteractiveIcon
             placement="top"
-            left="73%"
+            left="77%"
             label="HP"
-            icon={<Pen />}
+            icon={<HP />}
             lineLength={8.8}
+            linePos={80}
           />
         }
       />
@@ -163,6 +174,7 @@ const InteractiveLayer = () => {
             label={t("type")}
             icon={<Pokeball />}
             lineLength={11.8}
+            linePos={8}
           />
         }
       />
@@ -183,27 +195,71 @@ const InteractiveLayer = () => {
             label={t("details")}
             icon={<Pen />}
             lineLength={16.3}
+            linePos={55}
           />
         }
       />
-      {/* ATTACK */}
+      {/* ATTACK 1 */}
       <InteractiveArea
         x={6.8}
-        y={58}
-        height={23}
+        y={57}
+        height={isTiny ? 12 : 24.5}
         width={86}
         inputTarget="field-attack1"
         labelTarget="field-attack1-label"
         icon={
           <InteractiveIcon
             placement="left"
-            top="67%"
+            top={isTiny ? "61%" : "67%"}
             label={t("attack1")}
-            icon={<Sword />}
+            icon={<Sword fontSize="1.1rem" />}
             lineLength={8.8}
+            linePos={isTiny ? 62.7 : 68.6}
           />
         }
       />
+      {/* ATTACK 2 */}
+      {isTiny ? (
+        <InteractiveArea
+          x={6.8}
+          y={70}
+          height={11.8}
+          width={86}
+          inputTarget="field-attack2"
+          labelTarget="field-attack2-label"
+          icon={
+            <InteractiveIcon
+              placement="left"
+              top={"74%"}
+              label={t("attack2")}
+              icon={<Sword fontSize="1.1rem" />}
+              lineLength={8.8}
+              linePos={75.8}
+            />
+          }
+        />
+      ) : (
+        <InteractiveArea
+          x={6.8}
+          y={79.9}
+          height={0}
+          width={86}
+          inputTarget="field-attack2"
+          labelTarget="field-attack2-label"
+          border="none"
+          icon={
+            <InteractiveIcon
+              placement="left"
+              top={"75%"}
+              label={t("attack2")}
+              icon={<Add fontSize="1.1rem" fill="#62b93a" />}
+              lineLength={0}
+              linePos={75.8}
+            />
+          }
+        />
+      )}
+
       {/* WEAKNESS TYPE */}
       <ButtonList
         name="weaknessType"
@@ -212,6 +268,16 @@ const InteractiveLayer = () => {
         size={5.4}
         options={ELEMENTS_OPTIONS}
         control={control}
+        icon={
+          <InteractiveIcon
+            placement="left"
+            top="84.5%"
+            label={t("weakness")}
+            icon={<Pokeball />}
+            lineLength={15}
+            linePos={86.4}
+          />
+        }
       />
       {/* WEAKNESS AMOUNT */}
       <InteractiveSelect
@@ -222,6 +288,17 @@ const InteractiveLayer = () => {
         width={7}
         choices={WEAKNESS_OPTIONS}
         control={control}
+        icon={
+          <InteractiveIcon
+            placement="bottom"
+            isSecondLine
+            left="8%"
+            label={t("weakAmount")}
+            icon={<Pen />}
+            lineLength={19.8}
+            linePos={21.7}
+          />
+        }
       />
       {/* RESISTANCE TYPE */}
       <ButtonList
@@ -231,6 +308,16 @@ const InteractiveLayer = () => {
         size={5.4}
         options={ELEMENTS_OPTIONS}
         control={control}
+        icon={
+          <InteractiveIcon
+            placement="bottom"
+            left="32%"
+            label={t("resistance")}
+            icon={<Pokeball />}
+            lineLength={13.5}
+            linePos={48.4}
+          />
+        }
       />
       {/* RESISTANCE AMOUNT */}
       <InteractiveSelect
@@ -241,6 +328,17 @@ const InteractiveLayer = () => {
         width={7}
         choices={RESISTANCE_OPTIONS}
         control={control}
+        icon={
+          <InteractiveIcon
+            placement="bottom"
+            isSecondLine
+            left="51%"
+            label={t("resAmount")}
+            icon={<Pen />}
+            lineLength={19.8}
+            linePos={54.7}
+          />
+        }
       />
       {/* RETREAT */}
       <InteractiveSelect
@@ -258,6 +356,7 @@ const InteractiveLayer = () => {
             label={t("retreat")}
             icon={<Pen />}
             lineLength={8.7}
+            linePos={86.3}
           />
         }
       />
@@ -273,10 +372,11 @@ const InteractiveLayer = () => {
         icon={
           <InteractiveIcon
             placement="left"
-            top="89.7%"
+            top="91.7%"
             label={t("description")}
             icon={<Pen />}
             lineLength={10.6}
+            linePos={93.3}
           />
         }
       />
@@ -293,10 +393,11 @@ const InteractiveLayer = () => {
         icon={
           <InteractiveIcon
             placement="bottom"
-            left="5.5%"
+            left="-5%"
             label={t("illustrator")}
             icon={<Pen />}
             lineLength={5.4}
+            linePos={10}
           />
         }
       />
@@ -311,10 +412,11 @@ const InteractiveLayer = () => {
         icon={
           <InteractiveIcon
             placement="bottom"
-            left="75.8%"
+            left="84%"
             label={t("collectionNb")}
             icon={<Pen />}
             lineLength={5.4}
+            linePos={88}
           />
         }
       />
@@ -334,6 +436,7 @@ const InteractiveLayer = () => {
             label={t("rarity")}
             icon={<Star />}
             lineLength={7}
+            linePos={95.3}
           />
         }
       />

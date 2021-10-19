@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import {
   IconButton,
   FlexProps,
@@ -14,8 +14,10 @@ type Placement = "bottom" | "top" | "left" | "right";
 export interface Props extends FlexProps {
   placement: Placement;
   lineLength: number;
+  linePos: number;
   label?: string;
   icon: JSX.Element;
+  isSecondLine?: boolean;
 }
 
 const LINE = {
@@ -23,16 +25,22 @@ const LINE = {
   bgColor: "white",
 };
 
-const getPlacement = (placement: Placement, lineLength: number) => {
+const getPlacement = (
+  placement: Placement,
+  lineLength: number,
+  linePos: number,
+  isSecondLine: boolean
+) => {
   switch (placement) {
     case "bottom":
       return {
         button: {
-          top: "102%",
+          top: isSecondLine ? "108%" : "102%",
         },
         line: {
           ...LINE,
-          bottom: "-2%",
+          left: `${linePos}%`,
+          bottom: isSecondLine ? "-8%" : "-2%",
           h: `${lineLength}%`,
           w: "2px",
         },
@@ -40,11 +48,12 @@ const getPlacement = (placement: Placement, lineLength: number) => {
     case "top":
       return {
         button: {
-          bottom: "102%",
+          bottom: isSecondLine ? "108%" : "102%",
         },
         line: {
           ...LINE,
-          top: "-2%",
+          left: `${linePos}%`,
+          top: isSecondLine ? "-8%" : "-2%",
           h: `${lineLength}%`,
           w: "2px",
         },
@@ -52,11 +61,12 @@ const getPlacement = (placement: Placement, lineLength: number) => {
     case "left":
       return {
         button: {
-          right: "102%",
+          right: isSecondLine ? "108%" : "102%",
         },
         line: {
           ...LINE,
-          left: "-2%",
+          top: `${linePos}%`,
+          left: isSecondLine ? "-8%" : "-2%",
           w: `${lineLength}%`,
           h: "2px",
         },
@@ -64,11 +74,12 @@ const getPlacement = (placement: Placement, lineLength: number) => {
     case "right":
       return {
         button: {
-          left: "102%",
+          left: isSecondLine ? "108%" : "102%",
         },
         line: {
           ...LINE,
-          right: "-2%",
+          top: `${linePos}%`,
+          right: isSecondLine ? "-8%" : "-2%",
           w: `${lineLength}%`,
           h: "2px",
         },
@@ -82,38 +93,24 @@ const InteractiveIcon = ({
   icon,
   onClick,
   label,
+  linePos,
+  isSecondLine = false,
   ...rest
 }: Props) => {
-  const buttonRef = useRef(null);
-  const { line, button } = getPlacement(placement, lineLength);
-  const [transform, setTransform] = useState({});
+  const { line, button } = getPlacement(
+    placement,
+    lineLength,
+    linePos,
+    isSecondLine
+  );
   const { isVisible } = useRecoilValue(areaAtom);
-
-  useEffect(() => {
-    if (!buttonRef.current) return;
-    if (placement === "bottom" || placement === "top") {
-      setTransform({
-        transform: `translateX(${buttonRef.current.clientWidth / 2}px)`,
-      });
-    } else {
-      setTransform({
-        transform: `translateY(${buttonRef.current.clientHeight / 2}px)`,
-      });
-    }
-  }, [buttonRef?.current, placement]);
 
   if (!isVisible) return null;
 
   return (
     <>
-      <Box
-        left={rest?.left}
-        top={rest?.top}
-        {...(line as BoxProps)}
-        {...transform}
-      />
+      <Box {...(line as BoxProps)} transition="all ease-in-out 200ms" />
       <Flex
-        ref={buttonRef}
         {...button}
         pos="absolute"
         color="main"
@@ -126,6 +123,7 @@ const InteractiveIcon = ({
         boxShadow="1px 1px 4px #a99d9d"
         cursor="pointer"
         onClick={onClick}
+        transition="all ease-in-out 200ms"
         {...rest}
       >
         {!!label && (

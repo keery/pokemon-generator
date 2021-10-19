@@ -36,7 +36,7 @@ const InteractiveFile = ({
   const { setValue } = useFormContext();
   const [value, stage] = useWatch({ control, name: [name, "stage"] });
   const { t } = useTranslation("generator");
-  console.log(stage);
+
   return (
     <Box
       role="group"
@@ -138,7 +138,10 @@ const InteractiveFile = ({
             _groupHover={{ opacity: 1, transform: "translateY(0)" }}
             maxW="60%"
           >
-            <Flex fontSize="10rem" justifyContent="center">
+            <Flex
+              fontSize={name === "mainImage" ? "10rem" : "1rem"}
+              justifyContent="center"
+            >
               <Image />
             </Flex>
             {!noText && (

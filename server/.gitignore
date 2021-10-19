@@ -1,6 +1,0 @@
-/node_modules
-/files
-/tmp
-package-lock.json
-.env
-.DS_Store
