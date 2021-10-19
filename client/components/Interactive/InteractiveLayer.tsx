@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import InteractiveInput from "./InteractiveInput";
 import InteractiveFile from "./InteractiveFile";
 import InteractiveSelect from "./InteractiveSelect";
@@ -6,7 +6,6 @@ import InteractiveTextarea from "./InteractiveTextarea";
 import ButtonList from "./ButtonList";
 import InteractiveArea from "./InteractiveArea";
 import { useWatch, useFormContext } from "react-hook-form";
-import { Box, Image } from "@chakra-ui/react";
 import {
   BASIC,
   HP_OPTIONS,
@@ -17,13 +16,22 @@ import {
   STAGE_OPTIONS,
   RARITY_OPTIONS,
 } from "~constants";
+import InteractiveIcon from "./InteractiveIcon";
+import Pen from "public/assets/img/pen.svg";
+import Star from "public/assets/img/star.svg";
+import Sword from "public/assets/img/sword.svg";
+import Pokeball from "public/assets/img/pokeball.svg";
+import { useTranslation } from "next-i18next";
 
 const InteractiveLayer = () => {
+  const { t } = useTranslation("generator");
   const { control } = useFormContext();
   const stage = useWatch({
     control,
     name: "stage",
   });
+
+  const isBasicStage = useMemo(() => stage.value === BASIC, [stage]);
 
   return (
     <>
@@ -35,29 +43,53 @@ const InteractiveLayer = () => {
         x={11.6}
         y={12.6}
         control={control}
+        icon={{
+          placement: "left",
+          top: "30%",
+          label: t("picture"),
+          lineLength: 13.8,
+        }}
       />
       {/* STAGE */}
       <InteractiveSelect
         name="stage"
         x={8.9}
-        y={4}
+        y={isBasicStage ? 4.8 : 5.3}
         height={3}
-        width={20}
+        width={isBasicStage ? 20 : 11}
         choices={STAGE_OPTIONS}
         control={control}
+        icon={
+          <InteractiveIcon
+            placement="left"
+            top={isBasicStage ? "4.3%" : "4.8%"}
+            label={t("stage")}
+            icon={<Pen />}
+            lineLength={11}
+          />
+        }
       />
       {/* EVOLUTION NAME */}
-      {stage.value !== BASIC && (
+      {!isBasicStage && (
         <>
           <InteractiveInput
             name="nameEvolution"
             x={35.6}
             y={4.5}
             height={2.6}
-            width={42}
+            width={30}
             fontSize={13}
             fontFamily="pokevolution"
             control={control}
+            icon={
+              <InteractiveIcon
+                placement="top"
+                left="40%"
+                label={t("nameEvolve")}
+                icon={<Pen />}
+                lineLength={6.5}
+              />
+            }
           />
           <InteractiveFile
             name="evolvePicture"
@@ -67,6 +99,12 @@ const InteractiveLayer = () => {
             y={7.9}
             control={control}
             noText
+            icon={{
+              placement: "left",
+              top: "11%",
+              label: t("pictureEvolve"),
+              lineLength: 10.5,
+            }}
           />
         </>
       )}
@@ -79,6 +117,15 @@ const InteractiveLayer = () => {
         width={stage.value === BASIC ? 55 : 37.4}
         fontSize={31}
         control={control}
+        icon={
+          <InteractiveIcon
+            placement="top"
+            left={isBasicStage ? "25%" : "21%"}
+            label={t("name")}
+            icon={<Pen />}
+            lineLength={9.3}
+          />
+        }
       />
       {/* HP */}
       <InteractiveSelect
@@ -90,6 +137,15 @@ const InteractiveLayer = () => {
         choices={HP_OPTIONS}
         className="hp"
         control={control}
+        icon={
+          <InteractiveIcon
+            placement="top"
+            left="73%"
+            label="HP"
+            icon={<Pen />}
+            lineLength={8.8}
+          />
+        }
       />
       {/* TYPE */}
       <ButtonList
@@ -100,6 +156,15 @@ const InteractiveLayer = () => {
         options={ELEMENTS_OPTIONS}
         control={control}
         removeButton={false}
+        icon={
+          <InteractiveIcon
+            placement="right"
+            top="6.2%"
+            label={t("type")}
+            icon={<Pokeball />}
+            lineLength={11.8}
+          />
+        }
       />
 
       {/* SPECIES SIZE WEIGHT */}
@@ -111,6 +176,15 @@ const InteractiveLayer = () => {
         inputTarget="field-species"
         labelTarget="field-species-label"
         noRadius
+        icon={
+          <InteractiveIcon
+            placement="right"
+            top="53.2%"
+            label={t("details")}
+            icon={<Pen />}
+            lineLength={16.3}
+          />
+        }
       />
       {/* ATTACK */}
       <InteractiveArea
@@ -120,6 +194,15 @@ const InteractiveLayer = () => {
         width={86}
         inputTarget="field-attack1"
         labelTarget="field-attack1-label"
+        icon={
+          <InteractiveIcon
+            placement="left"
+            top="67%"
+            label={t("attack1")}
+            icon={<Sword />}
+            lineLength={8.8}
+          />
+        }
       />
       {/* WEAKNESS TYPE */}
       <ButtonList
@@ -168,6 +251,15 @@ const InteractiveLayer = () => {
         width={24.4}
         choices={RETREAT_OPTIONS}
         control={control}
+        icon={
+          <InteractiveIcon
+            placement="right"
+            top="84.6%"
+            label={t("retreat")}
+            icon={<Pen />}
+            lineLength={8.7}
+          />
+        }
       />
       {/* DESCRIPTION */}
       <InteractiveTextarea
@@ -178,6 +270,15 @@ const InteractiveLayer = () => {
         width={81.7}
         fontSize={15}
         control={control}
+        icon={
+          <InteractiveIcon
+            placement="left"
+            top="89.7%"
+            label={t("description")}
+            icon={<Pen />}
+            lineLength={10.6}
+          />
+        }
       />
       {/* ILLUSTRATOR */}
       <InteractiveInput
@@ -189,6 +290,15 @@ const InteractiveLayer = () => {
         fontSize={10.5}
         control={control}
         prefix="Illus. "
+        icon={
+          <InteractiveIcon
+            placement="bottom"
+            left="5.5%"
+            label={t("illustrator")}
+            icon={<Pen />}
+            lineLength={5.4}
+          />
+        }
       />
       {/* COLLECTION */}
       <InteractiveArea
@@ -198,6 +308,15 @@ const InteractiveLayer = () => {
         width={10}
         inputTarget="field-collection"
         labelTarget="field-collection-label"
+        icon={
+          <InteractiveIcon
+            placement="bottom"
+            left="75.8%"
+            label={t("collectionNb")}
+            icon={<Pen />}
+            lineLength={5.4}
+          />
+        }
       />
       {/* RARITY */}
       <ButtonList
@@ -208,6 +327,15 @@ const InteractiveLayer = () => {
         options={RARITY_OPTIONS}
         control={control}
         prefix="rarity-"
+        icon={
+          <InteractiveIcon
+            placement="right"
+            top="93.6%"
+            label={t("rarity")}
+            icon={<Star />}
+            lineLength={7}
+          />
+        }
       />
     </>
   );

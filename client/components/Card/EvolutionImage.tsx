@@ -18,7 +18,20 @@ const EvolutionImage = ({
   if (!Boolean(evolvePicture)) return null;
 
   return (
-    <Group width={66} height={60} y={55} x={43}>
+    <Group
+      width={66}
+      height={60}
+      y={55}
+      x={43}
+      onMouseEnter={(e) => {
+        const container = e.target.getStage().container();
+        container.style.cursor = "move";
+      }}
+      onMouseLeave={(e) => {
+        const container = e.target.getStage().container();
+        container.style.cursor = "default";
+      }}
+    >
       <ImageCanvas
         isTransformable
         isSelected={isSelected}

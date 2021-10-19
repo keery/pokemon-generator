@@ -20,7 +20,7 @@ const TypeWithAmount = ({ control, name, x = 0, y = 0 }) => {
           height={26}
         />
       )}
-      {Boolean(amount) && amount.value !== "" && (
+      {Boolean(amount) && amount.value !== "" && amount.value !== "0" && (
         <Text
           text={amount.value}
           fontFamily="pokename"

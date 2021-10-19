@@ -14,7 +14,7 @@ export type Rarity = "common" | "uncommon" | "rare";
 export type Stage = "basic" | "stage1" | "stage2";
 
 export interface Select<T> {
-  label?: string;
+  label?: string | number;
   value?: T;
 }
 

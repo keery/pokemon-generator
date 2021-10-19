@@ -1,7 +1,5 @@
-import { Element, Rarity } from "~@types/Card";
-/**
- * Pokemon information
- */
+import { Element, Rarity, Select } from "~@types/Card";
+
 export const ELEMENTS: Element[] = [
   "fire",
   "grass",
@@ -12,7 +10,7 @@ export const ELEMENTS: Element[] = [
   "normal",
 ];
 
-export const ELEMENTS_OPTIONS = ELEMENTS.map((el) => ({
+export const ELEMENTS_OPTIONS: Select<string>[] = ELEMENTS.map((el) => ({
   value: el,
   label: el,
 }));
@@ -43,24 +41,28 @@ export const HP_CHOICES = [
   "250",
 ];
 
-export const HP_OPTIONS = HP_CHOICES.map((el) => ({
+export const HP_OPTIONS: Select<string>[] = HP_CHOICES.map((el) => ({
   value: el,
   label: `${el} HP`,
 }));
 
 export const WEAKNESS_CHOICES = ["+10", "+20", "+30", "+40", "x2"];
 
-export const WEAKNESS_OPTIONS = WEAKNESS_CHOICES.map((el) => ({
-  value: el,
-  label: el,
-}));
+export const WEAKNESS_OPTIONS: Select<string>[] = WEAKNESS_CHOICES.map(
+  (el) => ({
+    value: el,
+    label: el,
+  })
+);
 
 export const RESISTANCE_CHOICES = ["-10", "-20", "-30", "-40"];
 
-export const RESISTANCE_OPTIONS = RESISTANCE_CHOICES.map((el) => ({
-  value: el,
-  label: el,
-}));
+export const RESISTANCE_OPTIONS: Select<string>[] = RESISTANCE_CHOICES.map(
+  (el) => ({
+    value: el,
+    label: el,
+  })
+);
 
 export const DAMAGE_CHOICES = [
   "10",
@@ -91,13 +93,13 @@ export const UNCOMMON = "uncommon";
 export const RARE = "rare";
 export const RARITY_CHOICES: Rarity[] = [COMMON, UNCOMMON, RARE];
 
-export const RARITY_OPTIONS = RARITY_CHOICES.map((el) => ({
+export const RARITY_OPTIONS: Select<string>[] = RARITY_CHOICES.map((el) => ({
   value: el,
   label: el,
 }));
 
 export const RETREAT_CHOICES = [0, 1, 2, 3, 4];
-export const RETREAT_OPTIONS = RETREAT_CHOICES.map((el) => ({
+export const RETREAT_OPTIONS: Select<number>[] = RETREAT_CHOICES.map((el) => ({
   value: el,
   label: el,
 }));
@@ -118,7 +120,7 @@ export const BASIC = "basic";
 export const STAGE_ONE = "stage1";
 export const STAGE_TWO = "stage2";
 
-export const STAGE_OPTIONS = [
+export const STAGE_OPTIONS: Select<string>[] = [
   { value: BASIC, label: "Basic" },
   { value: STAGE_ONE, label: "Stage 1" },
   { value: STAGE_TWO, label: "Stage 2" },

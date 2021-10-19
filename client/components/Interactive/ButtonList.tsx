@@ -10,6 +10,7 @@ import {
 import { motion, MotionStyle } from "framer-motion";
 import { useController, useWatch, Control } from "react-hook-form";
 import Cross from "public/assets/img/cross.svg";
+import { Select } from "~@types/Card";
 
 const styleEl = {
   width: "1.8rem",
@@ -37,8 +38,9 @@ interface Props {
   size?: number;
   removeButton?: boolean;
   control: Control;
-  options: { value: string; label: string }[];
+  options: Select<any>[];
   prefix?: string;
+  icon: JSX.Element;
 }
 
 const ButtonList = ({
@@ -50,13 +52,15 @@ const ButtonList = ({
   removeButton = true,
   control,
   prefix = "",
+  icon,
 }: Props) => {
   const { field } = useController({ control, name });
   const value = useWatch({ control, name });
   const [isVisible, setVisible] = useState(false);
 
   return (
-    <>
+    <Box role="group">
+      <Box onClick={() => setVisible(!isVisible)}>{icon}</Box>
       <Box
         className="ButtonList"
         left={`${x}%`}
@@ -71,6 +75,7 @@ const ButtonList = ({
         <AspectRatio
           borderRadius="100%"
           border="2px solid transparent"
+          transition="box-shadow 200ms, border-color 200ms"
           _groupHover={{
             border: "2px solid #fff",
             shadow: "md",
@@ -164,7 +169,7 @@ const ButtonList = ({
           </motion.div>
         )}
       </Box>
-    </>
+    </Box>
   );
 };
 
