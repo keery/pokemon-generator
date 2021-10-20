@@ -9,6 +9,7 @@ import Image from "public/assets/img/image.svg";
 import { useTranslation } from "next-i18next";
 import { BASIC } from "~constants";
 import { cardAtom } from "~atoms/card";
+import { areaAtom } from "~atoms/area";
 import { useRecoilValue } from "recoil";
 
 interface Props {
@@ -33,6 +34,7 @@ const InteractiveFile = ({
   icon,
 }: Props) => {
   const card = useRecoilValue(cardAtom);
+  const { isVisible } = useRecoilValue(areaAtom);
   const { setValue } = useFormContext();
   const [value, stage] = useWatch({ control, name: [name, "stage"] });
   const { t } = useTranslation("generator");
@@ -76,7 +78,7 @@ const InteractiveFile = ({
           {name === "mainImage" ? (
             <Box
               transition="opacity 300ms"
-              opacity={0}
+              opacity={isVisible ? 1 : 0}
               _groupHover={{
                 opacity: 1,
               }}
@@ -120,7 +122,7 @@ const InteractiveFile = ({
               right="0"
               top="0"
               bottom="0"
-              opacity={0}
+              opacity={isVisible ? 1 : 0}
               backdropFilter="blur(8px) saturate(180%)"
               bgColor="rgb(255 255 255 / 55%)"
               _groupHover={{
@@ -132,9 +134,9 @@ const InteractiveFile = ({
           <Flex
             color="main"
             direction="column"
-            transform="translateY(20px)"
             transition="opacity 300ms, transform 300ms"
-            opacity={0}
+            opacity={isVisible ? 1 : 0}
+            transform={isVisible ? "translateY(0)" : "translateY(20px)"}
             _groupHover={{ opacity: 1, transform: "translateY(0)" }}
             maxW="60%"
             alignItems="center"
