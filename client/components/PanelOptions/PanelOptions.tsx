@@ -44,8 +44,9 @@ const PanelOptions = () => {
 
   return (
     <Flex
-      mt={{ base: 0, sm: 14 }}
+      mt={{ base: 0, xl: 14 }}
       alignItems="flex-start"
+      alignSelf={{ base: "center", xl: "flex-start" }}
       direction="column"
       pos="relative"
       zIndex={100}

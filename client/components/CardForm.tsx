@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, VStack } from "@chakra-ui/react";
+import { Flex, Box, VStack, useBreakpointValue } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import CardFormHeader from "~components/CardFormHeader";
 import CardFieldsGroup from "~components/CardFieldsGroup";
@@ -8,11 +8,13 @@ import FieldsEvolution from "~components/FieldsEvolution";
 import FieldsAttack from "~components/FieldsAttack";
 import FieldsSubInfo from "~components/FieldsSubInfo";
 import FieldsBottomInfo from "~components/FieldsBottomInfo";
-import CacheForm from "~components/CacheForm";
 import Logo from "~components/Logo";
 
 const CardForm = () => {
   const { t } = useTranslation("generator");
+  const isVisible = useBreakpointValue({ base: false, xl: true });
+
+  if (!isVisible) return null;
 
   return (
     <Flex
@@ -26,7 +28,6 @@ const CardForm = () => {
       }}
     >
       <Flex pos="relative" flex={1}>
-        <CacheForm />
         <Box
           background="radial-gradient(50% 50%, rgb(220, 193, 228), transparent)"
           pos="absolute"
