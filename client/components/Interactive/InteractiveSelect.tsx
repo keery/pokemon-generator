@@ -58,10 +58,16 @@ const InteractiveSelect = ({
           variant="unstyled"
           name={name}
           onChange={(event) => {
-            field.onChange({
-              value: event.target.selectedOptions[0].value,
-              label: event.target.selectedOptions[0].text,
-            });
+            const value = event.target.selectedOptions[0].value;
+
+            if (value === "") {
+              field.onChange(null);
+            } else {
+              field.onChange({
+                value: value,
+                label: event.target.selectedOptions[0].text,
+              });
+            }
           }}
           value={value?.value}
           color="transparent"
@@ -71,6 +77,7 @@ const InteractiveSelect = ({
           fontFamily="pokehp"
           fontSize="18px"
         >
+          <option value=""></option>
           {choices.map(({ label, value }) => (
             <option key={`is-${value}`} value={value}>
               {label}

@@ -29,7 +29,7 @@ const FieldsPokemonInfo = () => {
         <FileInput name="mainImage" control={control} />
       </Field>
       <Field label="HP">
-        <Select name="hp" options={HP_OPTIONS} control={control} />
+        <Select name="hp" options={HP_OPTIONS} control={control} isClearable />
       </Field>
       <Field label={t("species")} id="field-species-label">
         <Input name="species" control={control} id="field-species" />

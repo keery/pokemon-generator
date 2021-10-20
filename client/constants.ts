@@ -106,7 +106,7 @@ export const RARITY_OPTIONS: Select<string>[] = RARITY_CHOICES.map((el) => ({
   label: el,
 }));
 
-export const RETREAT_CHOICES = [0, 1, 2, 3, 4];
+export const RETREAT_CHOICES = [1, 2, 3, 4];
 export const RETREAT_OPTIONS: Select<number>[] = RETREAT_CHOICES.map((el) => ({
   value: el,
   label: el,
