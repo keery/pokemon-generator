@@ -8,6 +8,7 @@ import {
   PopoverBody,
   Square,
   useDisclosure,
+  AspectRatio,
 } from "@chakra-ui/react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslation } from "next-i18next";
@@ -27,7 +28,11 @@ const ColorPicker = () => {
   return (
     <Popover isOpen={isOpen} onClose={onClose}>
       <PopoverTrigger>
-        <Box h="40px" w="100%" cursor="pointer">
+        <AspectRatio
+          w={{ base: "30px", sm: "40px" }}
+          cursor="pointer"
+          ratio={1}
+        >
           <OptionButton
             _hover={{
               bgColor: "transparent",
@@ -42,15 +47,19 @@ const ColorPicker = () => {
                   h="100%"
                   w="100%"
                   borderRadius="100%"
-                  border="4px solid white"
+                  border="solid white"
+                  borderWidth={{ base: "3px", sm: "4px" }}
                 />
               </Box>
             }
             onClick={onOpen}
             label={t("colorBg")}
             keyboard_shortcut={["ctrl", "b"]}
+            p={0}
+            w="100%"
+            h="100%"
           />
-        </Box>
+        </AspectRatio>
       </PopoverTrigger>
       <PopoverContent
         zIndex={9999}

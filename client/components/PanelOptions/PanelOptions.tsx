@@ -1,5 +1,10 @@
 import React from "react";
-import { VStack, Flex } from "@chakra-ui/react";
+import {
+  Stack,
+  Flex,
+  StackDivider,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import Print from "public/assets/img/print.svg";
 import Download from "public/assets/img/download.svg";
@@ -7,6 +12,7 @@ import ColorPicker from "~components/ColorPicker";
 import OptionButton from "~components/PanelOptions/OptionButton";
 import ResetButton from "~components/PanelOptions/ResetButton";
 import EyeButton from "~components/PanelOptions/EyeButton";
+import FormButton from "~components/PanelOptions/FormButton";
 import PrevNextButtons from "./PrevNextButtons";
 
 const printCard = () => {
@@ -34,22 +40,30 @@ const exportCard = () => {
 
 const PanelOptions = () => {
   const { t } = useTranslation("generator");
+  const hasDivider = useBreakpointValue({ base: true, sm: false });
 
   return (
     <Flex
-      mt={14}
+      mt={{ base: 0, sm: 14 }}
       alignItems="flex-start"
       direction="column"
       pos="relative"
       zIndex={100}
+      w={{ base: "100%", sm: "auto" }}
     >
-      <VStack
+      <Stack
+        direction={{ base: "row", sm: "column" }}
         borderRadius="sm"
         layerStyle="glass"
         p={1.5}
-        spacing={4}
+        spacing={{ base: 0, sm: 4 }}
         pos="relative"
+        w="100%"
+        justifyContent="space-between"
+        alignItems="center"
+        divider={hasDivider && <StackDivider />}
       >
+        <FormButton />
         <OptionButton
           icon={<Download />}
           onClick={exportCard}
@@ -66,7 +80,7 @@ const PanelOptions = () => {
         <PrevNextButtons />
         <EyeButton />
         <ColorPicker />
-      </VStack>
+      </Stack>
     </Flex>
   );
 };

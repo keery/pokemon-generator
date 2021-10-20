@@ -1,6 +1,6 @@
 import React from "react";
 import { GetServerSideProps, NextPage } from "next";
-import { HStack, Container, Flex } from "@chakra-ui/react";
+import { Stack, Container, Flex } from "@chakra-ui/react";
 import { SSRConfig } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import BackgroundBlur from "~components/BackgroundBlur";
@@ -41,7 +41,8 @@ const Home: NextPage = () => {
       >
         <BackgroundBlur control={form.control} />
         <Container h="100%" py={6}>
-          <HStack
+          <Stack
+            direction={{ base: "column-reverse", sm: "row" }}
             justifyContent="center"
             h="100%"
             alignItems="flex-start"
@@ -58,7 +59,7 @@ const Home: NextPage = () => {
             >
               <Card />
             </Flex>
-          </HStack>
+          </Stack>
         </Container>
       </form>
     </FormProvider>

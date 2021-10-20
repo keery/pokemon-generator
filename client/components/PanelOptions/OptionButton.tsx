@@ -44,6 +44,10 @@ const OptionButton = ({
       aria-label="icon"
       borderRadius="sm"
       bgColor="transparent"
+      minW={{ base: "auto", sm: 10 }}
+      w="auto"
+      h={{ base: "auto", sm: 10 }}
+      p={1}
       _hover={{
         bgColor: "white",
       }}
@@ -51,7 +55,7 @@ const OptionButton = ({
         bgColor: "white",
         transform: "scale(0.9)",
       }}
-      fontSize="1.7rem"
+      fontSize={{ base: "1.4rem", sm: "1.7rem" }}
       backdropFilter="none"
       border="none"
       {...rest}

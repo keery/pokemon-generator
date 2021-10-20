@@ -53,6 +53,7 @@
     "saveCard" : "Save",
     "resetCard" : "Reset",
     "shareCard" : "Share to your friends",
+    "openForm": "Open form",
     "importPicture" : "Import a picture",
     "uploadFailed": "Image downloading has failed",
     "colorBg": "Background color",
