@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Image, Box, Circle } from "@chakra-ui/react";
+import { Image, Box, ResponsiveValue } from "@chakra-ui/react";
 import { useWatch, Control } from "react-hook-form";
 import { Element, Select } from "~@types/Card";
 
@@ -8,11 +8,11 @@ interface Props {
 }
 
 interface BgPokemon {
-  src: string;
-  transform?: string;
-  width?: string;
-  left?: string;
-  maxWidth?: string;
+  src: string | ResponsiveValue<string>;
+  transform?: string | ResponsiveValue<string>;
+  width?: string | ResponsiveValue<string>;
+  left?: string | ResponsiveValue<string>;
+  maxWidth?: string | ResponsiveValue<string>;
 }
 
 const pokemons: Record<Element, BgPokemon[]> = {
@@ -48,7 +48,7 @@ const pokemons: Record<Element, BgPokemon[]> = {
     },
     {
       src: "assets/img/bg/pokemon-fighting-3.png",
-      left: "94%",
+      left: { base: "80%", xl: "90%" },
       width: "380px",
     },
     {
@@ -80,13 +80,11 @@ const pokemons: Record<Element, BgPokemon[]> = {
     {
       src: "assets/img/bg/pokemon-grass-1.png",
       width: "18vw",
-      maxWidth: "270px",
     },
     {
       src: "assets/img/bg/pokemon-grass-3.png",
       transform: "rotateY(180deg)",
       width: "18vw",
-      maxWidth: "250px",
     },
   ],
 };
@@ -114,7 +112,7 @@ const PokemonsBackground = ({ control }: Props) => {
           userSelect="none"
           display={{
             base: "none",
-            xl: "block",
+            lg: "block",
           }}
         >
           <Box

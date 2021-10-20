@@ -2,6 +2,7 @@ import React from "react";
 import { useTheme, Box, BoxProps } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
+import useColorArea from "~hooks/useColorArea";
 
 interface Props extends BoxProps {
   x: number;
@@ -27,6 +28,7 @@ const InteractiveArea = ({
 }: Props) => {
   const theme = useTheme();
   const { isVisible } = useRecoilValue(areaAtom);
+  const areaColor = useColorArea();
 
   return (
     <Box
@@ -47,7 +49,7 @@ const InteractiveArea = ({
         height={`${height}%`}
         width={`${width}%`}
         border={"2px solid"}
-        borderColor={isVisible ? "white" : "transparent"}
+        borderColor={isVisible ? areaColor : "transparent"}
         borderRadius={noRadius ? "0" : theme.radii.xs}
         transition="box-shadow 200ms, border-color 200ms"
         _groupHover={{

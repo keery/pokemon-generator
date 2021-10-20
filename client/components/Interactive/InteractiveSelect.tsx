@@ -4,6 +4,7 @@ import { Select as SelectType } from "~@types/Card";
 import { Control, useController, useWatch } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
+import useColorArea from "~hooks/useColorArea";
 
 interface Props {
   name: string;
@@ -31,6 +32,7 @@ const InteractiveSelect = ({
   const value = useWatch({ control, name });
   const inputRef = useRef(null);
   const { isVisible } = useRecoilValue(areaAtom);
+  const areaColor = useColorArea();
 
   return (
     <Box role="group">
@@ -44,8 +46,8 @@ const InteractiveSelect = ({
         width={`${width}%`}
         className={`InteractiveSelect`}
         borderRadius="xs"
-        transition="border-color ease-in-out 200ms, box-shadow 200ms ease-in-out"
-        border={`2px solid ${isVisible ? "#fff" : "transparent"}`}
+        transition="box-shadow 200ms, border-color 200ms"
+        border={`2px solid ${isVisible ? areaColor : "transparent"}`}
         _groupHover={{
           border: "2px solid #fff",
           shadow: "md",

@@ -161,7 +161,7 @@ const InteractiveLayer = () => {
       {/* TYPE */}
       <ButtonList
         name="type"
-        x={83.3}
+        x={83.5}
         y={5.6}
         size={7}
         options={ELEMENTS_OPTIONS}

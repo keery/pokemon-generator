@@ -1,13 +1,21 @@
 import { Element, Rarity, Select } from "~@types/Card";
 
+export const FIRE = "fire";
+export const GRASS = "grass";
+export const WATER = "water";
+export const ELECTRIC = "electric";
+export const PSYCHIC = "psychic";
+export const FIGHTING = "fighting";
+export const NORMAL = "normal";
+
 export const ELEMENTS: Element[] = [
-  "fire",
-  "grass",
-  "water",
-  "electric",
-  "psychic",
-  "fighting",
-  "normal",
+  FIRE,
+  GRASS,
+  WATER,
+  ELECTRIC,
+  PSYCHIC,
+  FIGHTING,
+  NORMAL,
 ];
 
 export const ELEMENTS_OPTIONS: Select<string>[] = ELEMENTS.map((el) => ({

@@ -3,6 +3,7 @@ import { Box, Textarea } from "@chakra-ui/react";
 import { Control, useController, useWatch } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
+import useColorArea from "~hooks/useColorArea";
 
 interface Props {
   name: string;
@@ -32,6 +33,7 @@ const InteractiveTextarea = ({
   const { field } = useController({ control, name });
   const value = useWatch({ control, name });
   const { isVisible } = useRecoilValue(areaAtom);
+  const areaColor = useColorArea();
 
   return (
     <Box role="group">
@@ -59,7 +61,7 @@ const InteractiveTextarea = ({
           minH="0"
           width="100%"
           border="2px solid"
-          borderColor={isVisible ? "white" : "transparent"}
+          borderColor={isVisible ? areaColor : "transparent"}
           height="100%"
           backgroundColor="transparent"
           outline="none"

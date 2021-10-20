@@ -13,6 +13,7 @@ import Cross from "public/assets/img/cross.svg";
 import { Select } from "~@types/Card";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
+import useColorArea from "~hooks/useColorArea";
 
 const styleEl = {
   width: "1.8rem",
@@ -60,6 +61,7 @@ const ButtonList = ({
   const value = useWatch({ control, name });
   const [isVisible, setVisible] = useState(false);
   const { isVisible: areaIsVisible } = useRecoilValue(areaAtom);
+  const areaColor = useColorArea();
 
   return (
     <Box role="group">
@@ -77,7 +79,7 @@ const ButtonList = ({
       >
         <AspectRatio
           borderRadius="100%"
-          border={`2px solid ${areaIsVisible ? "#fff" : "transparent"}`}
+          border={`2px solid ${areaIsVisible ? areaColor : "transparent"}`}
           transition="box-shadow 200ms, border-color 200ms"
           _groupHover={{
             border: "2px solid #fff",
