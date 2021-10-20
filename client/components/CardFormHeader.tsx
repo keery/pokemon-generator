@@ -19,7 +19,11 @@ const CardFormHeader = ({ title, id = "" }: Props) => {
       id={id}
     >
       <Flex alignItems="center" p="6px 28px 6px 8px" color="black" w="100%">
-        <Text fontWeight="800" fontSize="22px" color="text">
+        <Text
+          fontWeight="800"
+          fontSize="22px"
+          color={{ base: "white", xl: "text" }}
+        >
           {title}
         </Text>
       </Flex>

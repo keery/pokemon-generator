@@ -1,6 +1,6 @@
 import React from "react";
 import { GetServerSideProps, NextPage } from "next";
-import { Stack, Container, Flex } from "@chakra-ui/react";
+import { Stack, Container, Flex, useBreakpointValue } from "@chakra-ui/react";
 import { SSRConfig } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import BackgroundBlur from "~components/BackgroundBlur";
@@ -30,6 +30,8 @@ const Home: NextPage = () => {
     shouldUnregister: false,
   });
 
+  const isFormVisible = useBreakpointValue({ base: false, xl: true });
+
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -51,7 +53,7 @@ const Home: NextPage = () => {
             spacing={5}
           >
             <PanelOptions />
-            <CardForm />
+            {isFormVisible && <CardForm />}
             <Flex
               flex={2}
               alignItems="center"

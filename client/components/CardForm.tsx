@@ -12,20 +12,14 @@ import Logo from "~components/Logo";
 
 const CardForm = () => {
   const { t } = useTranslation("generator");
-  const isVisible = useBreakpointValue({ base: false, xl: true });
-
-  if (!isVisible) return null;
+  const isDesktop = useBreakpointValue({ base: false, xl: true });
 
   return (
     <Flex
       height="100%"
       flex={1}
-      w="500px"
+      w={{ base: "100%", xl: "500px" }}
       minW={{ base: "300px", lg: "350px" }}
-      display={{
-        base: "none",
-        xl: "flex",
-      }}
     >
       <Flex pos="relative" flex={1}>
         <Box
@@ -45,19 +39,22 @@ const CardForm = () => {
           top={0}
           flex={1}
           height="100%"
-          layerStyle="glass"
-          borderRadius="md"
+          layerStyle={isDesktop ? "glass" : ""}
+          borderRadius={{ base: "none", xl: "md" }}
           px={{ base: 4, lg: 8 }}
-          py={8}
+          pt={{ base: 10, xl: 8 }}
+          pb={8}
           direction="column"
           zIndex={10}
         >
-          <Flex alignItems="center">
-            <Logo />
-          </Flex>
+          {isDesktop && (
+            <Flex alignItems="center">
+              <Logo />
+            </Flex>
+          )}
           <VStack
             overflow="scroll"
-            mt={10}
+            mt={{ base: 0, xl: 10 }}
             spacing={14}
             alignItems="stretch"
             borderRadius="12px"

@@ -6,6 +6,7 @@ import {
   Kbd,
   Flex,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import Mousetrap from "mousetrap";
 
@@ -24,7 +25,9 @@ const OptionButton = ({
   withTooltip = true,
   ...rest
 }: Props) => {
+  const isMobile = useBreakpointValue({ base: true, sm: false });
   useEffect(() => {
+    if (isMobile) return;
     const shortcut = keyboard_shortcut.join("+").toLowerCase();
     Mousetrap.bind(shortcut, (event) => {
       if (!rest.isDisabled) {
@@ -34,7 +37,7 @@ const OptionButton = ({
     return () => {
       Mousetrap.unbind(shortcut);
     };
-  }, [rest.isDisabled, onClick]);
+  }, [rest.isDisabled, onClick, isMobile]);
 
   const Button = (
     <IconButton
@@ -62,7 +65,7 @@ const OptionButton = ({
     />
   );
 
-  if (withTooltip)
+  if (withTooltip && !isMobile)
     return (
       <Tooltip
         hasArrow
