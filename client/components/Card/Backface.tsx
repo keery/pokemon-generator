@@ -13,7 +13,6 @@ const Backface = () => {
       bottom="0"
       backgroundSize="100%"
       transform="rotateY(180deg)"
-      style={{ backfaceVisibility: "hidden" }}
     />
   );
 };
