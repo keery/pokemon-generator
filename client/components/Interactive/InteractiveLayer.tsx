@@ -60,8 +60,8 @@ const InteractiveLayer = () => {
       <InteractiveSelect
         name="stage"
         x={8.9}
-        y={isBasicStage ? 4.8 : 5.3}
-        height={3}
+        y={isBasicStage ? 4.9 : 5.7}
+        height={2.3}
         width={isBasicStage ? 20 : 11}
         choices={STAGE_OPTIONS}
         control={control}
@@ -82,7 +82,7 @@ const InteractiveLayer = () => {
           <InteractiveInput
             name="nameEvolution"
             x={35.6}
-            y={4.5}
+            y={4.2}
             height={2.6}
             width={30}
             fontSize={13}
@@ -121,9 +121,9 @@ const InteractiveLayer = () => {
       <InteractiveInput
         name="name"
         x={stage.value === BASIC ? 8.9 : 25.8}
-        y={6.8}
-        height={4.5}
-        width={stage.value === BASIC ? 55 : 37.4}
+        y={7}
+        height={4.2}
+        width={stage.value === BASIC ? 54 : 37.4}
         fontSize={31}
         control={control}
         icon={
@@ -141,8 +141,8 @@ const InteractiveLayer = () => {
       <InteractiveSelect
         name="hp"
         x={63.4}
-        y={6.8}
-        height={4.5}
+        y={7}
+        height={4.2}
         width={19.8}
         choices={HP_OPTIONS}
         className="hp"
@@ -345,7 +345,7 @@ const InteractiveLayer = () => {
         name="retreat"
         x={69}
         y={84.7}
-        height={4.1}
+        height={4}
         width={24.4}
         choices={RETREAT_OPTIONS}
         control={control}
@@ -384,7 +384,7 @@ const InteractiveLayer = () => {
       <InteractiveInput
         name="illustrator"
         x={5.4}
-        y={94.4}
+        y={94.5}
         height={2.2}
         width={22}
         fontSize={10.5}
