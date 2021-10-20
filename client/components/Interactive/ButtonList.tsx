@@ -6,6 +6,9 @@ import {
   AspectRatio,
   ChakraProps,
   Icon,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
 } from "@chakra-ui/react";
 import { motion, MotionStyle } from "framer-motion";
 import { useController, useWatch, Control } from "react-hook-form";
@@ -66,114 +69,106 @@ const ButtonList = ({
   return (
     <Box role="group">
       <Box onClick={() => setVisible(!isVisible)}>{icon}</Box>
-      <Box
-        className="ButtonList"
-        left={`${x}%`}
-        top={`${y}%`}
-        pos="absolute"
-        display="inline-block"
-        role="group"
-        w={`${size}%`}
-        onMouseEnter={() => setVisible(true)}
-        onMouseLeave={() => setVisible(false)}
-      >
-        <AspectRatio
-          borderRadius="100%"
-          border={`2px solid ${areaIsVisible ? areaColor : "transparent"}`}
-          transition="box-shadow 200ms, border-color 200ms"
-          _groupHover={{
-            border: "2px solid #fff",
-            shadow: "md",
-          }}
-          width={`100%`}
-          ratio={1}
-        >
+      <Popover placement="top">
+        <PopoverTrigger>
           <Box
-            {...stylePreview}
-            bgImage={
-              Boolean(value)
-                ? `assets/img/1-gen/${prefix}${value.value}.png)`
-                : null
-            }
-            w="100%"
-            h="100%"
-          />
-        </AspectRatio>
-        {isVisible && (
-          <motion.div
-            style={{
+            className="ButtonList"
+            left={`${x}%`}
+            top={`${y}%`}
+            pos="absolute"
+            display="inline-block"
+            role="group"
+            w={`${size}%`}
+            onMouseEnter={() => setVisible(true)}
+            onMouseLeave={() => setVisible(false)}
+          >
+            <AspectRatio
+              borderRadius="100%"
+              border={`2px solid ${areaIsVisible ? areaColor : "transparent"}`}
+              transition="box-shadow 200ms, border-color 200ms"
+              _groupHover={{
+                border: "2px solid #fff",
+                shadow: "md",
+              }}
+              width={`100%`}
+              ratio={1}
+            >
+              <Box
+                {...stylePreview}
+                bgImage={
+                  Boolean(value)
+                    ? `assets/img/1-gen/${prefix}${value.value}.png)`
+                    : null
+                }
+                w="100%"
+                h="100%"
+              />
+            </AspectRatio>
+          </Box>
+        </PopoverTrigger>
+        <PopoverContent
+          border="none"
+          w="auto"
+          background="none"
+          layerStyle="glass"
+          borderRadius="sm"
+          bgColor="rgb(255 255 255 / 40%)"
+        >
+          <HStack
+            spacing=".5rem"
+            p="10px 20px"
+            display="inline-flex"
+            _before={{
+              content: '""',
+              display: "block",
               position: "absolute",
-              bottom: "calc(100% + 15px)",
-              left: "50%",
-              minWidth: "100%",
-              x: "-50%",
-            }}
-            animate={{
-              y: 0,
-            }}
-            initial={{
-              y: "10px",
+              left: "0",
+              right: "0",
+              height: "30px",
+              top: "100%",
             }}
           >
-            <HStack
-              spacing=".5rem"
-              p="10px 20px"
-              borderRadius="8px"
-              display="inline-flex"
-              layerStyle="glass"
-              bgColor="rgb(255 255 255 / 40%)"
-              _before={{
-                content: '""',
-                display: "block",
-                position: "absolute",
-                left: "0",
-                right: "0",
-                height: "30px",
-                top: "100%",
-              }}
-            >
-              {removeButton && (
+            {removeButton && (
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                style={{ outline: "none" }}
+              >
+                <Icon
+                  as={Cross}
+                  bgColor="#fff"
+                  {...(styleEl as ChakraProps)}
+                  color="#c1c1c1"
+                  border="1px solid #d8d8d8"
+                  transition="box-shadow ease-in-out .1s"
+                  onClick={() => field.onChange(null)}
+                  p={1}
+                />
+              </motion.button>
+            )}
+            {options.map((item) => {
+              const isSelected = value?.value === item.value;
+              return (
                 <motion.button
-                  whileHover={{ scale: 1.1 }}
+                  key={item.value}
+                  className={item.value}
+                  style={{
+                    ...(styleEl as MotionStyle),
+                    transition: "opacity 200ms",
+                    backgroundImage: `url(assets/img/1-gen/${prefix}${item.value}.png)`,
+                    opacity: isSelected ? 0.5 : 1,
+                    cursor: isSelected ? "not-allowed" : "pointer",
+                  }}
+                  whileHover={{ scale: isSelected ? 1 : 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  style={{ outline: "none" }}
-                >
-                  <Icon
-                    as={Cross}
-                    bgColor="#fff"
-                    {...(styleEl as ChakraProps)}
-                    color="#c1c1c1"
-                    border="1px solid #d8d8d8"
-                    transition="box-shadow ease-in-out .1s"
-                    onClick={() => field.onChange(null)}
-                    p={1}
-                  />
-                </motion.button>
-              )}
-              {options.map((item) => {
-                const isSelected = value?.value === item.value;
-                return (
-                  <motion.button
-                    key={item.value}
-                    className={item.value}
-                    style={{
-                      ...(styleEl as MotionStyle),
-                      transition: "opacity 200ms",
-                      backgroundImage: `url(assets/img/1-gen/${prefix}${item.value}.png)`,
-                      opacity: isSelected ? 0.5 : 1,
-                      cursor: isSelected ? "not-allowed" : "pointer",
-                    }}
-                    whileHover={{ scale: isSelected ? 1 : 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    disabled={isSelected}
-                    onClick={() => field.onChange(item)}
-                  />
-                );
-              })}
-            </HStack>
-          </motion.div>
-        )}
-      </Box>
+                  disabled={isSelected}
+                  onClick={() => field.onChange(item)}
+                />
+              );
+            })}
+          </HStack>
+        </PopoverContent>
+      </Popover>
     </Box>
   );
 };
