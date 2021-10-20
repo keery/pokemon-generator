@@ -26,14 +26,9 @@ const FormButton = () => {
         label={t("openForm")}
         keyboard_shortcut={["ctrl", "f"]}
       />
-      <Drawer
-        placement="bottom"
-        size="full"
-        isOpen={isOpen}
-        onClose={onClose}
-        // finalFocusRef={btnRef}
-      >
+      <Drawer placement="bottom" size="full" isOpen={isOpen} onClose={onClose}>
         <DrawerContent
+          height="100%"
           layerStyle="glass"
           border="none"
           bgColor="rgb(0 0 0 / 52%)"

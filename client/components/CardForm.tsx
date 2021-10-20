@@ -43,7 +43,7 @@ const CardForm = () => {
           borderRadius={{ base: "none", xl: "md" }}
           px={{ base: 4, lg: 8 }}
           pt={{ base: 10, xl: 8 }}
-          pb={8}
+          pb={{ base: 0, xl: 8 }}
           direction="column"
           zIndex={10}
         >
