@@ -25,6 +25,7 @@ interface Props {
   onDragEnd?: (event: any) => void;
   clipWidth?: number;
   clipHeight?: number;
+  rotation?: number;
   scaleY?: number;
   scaleX?: number;
   clipY?: number;
@@ -35,6 +36,7 @@ interface Props {
     name: string,
     scaleX: number,
     scaleY: number,
+    rotation: number,
     x: number,
     y: number
   ) => void;
@@ -59,6 +61,7 @@ const ImageCanvas = ({
   clipX = null,
   scaleY = 1,
   scaleX = 1,
+  rotation = 0,
   onSelect = null,
   isSelected = false,
   onTransformEnd = null,
@@ -118,6 +121,7 @@ const ImageCanvas = ({
           y={y}
           scaleX={scaleX}
           scaleY={scaleY}
+          rotation={rotation}
           draggable={draggable}
           onDragEnd={onDragEnd}
           isSelected={isSelected}
@@ -128,6 +132,7 @@ const ImageCanvas = ({
               name,
               node.scaleX(),
               node.scaleY(),
+              node.attrs.rotation,
               node.attrs.x,
               node.attrs.y
             );

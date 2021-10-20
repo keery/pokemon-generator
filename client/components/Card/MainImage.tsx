@@ -9,6 +9,7 @@ interface Props {
     name: string,
     scaleX: number,
     scaleY: number,
+    rotation: number,
     x: number,
     y: number
   ) => void;
@@ -24,18 +25,25 @@ const MainImage = ({
   onSelect,
   isSelected = false,
 }: Props) => {
-  const [mainImage, mainImageX, mainImageY, mainImageScaleY, mainImageScaleX] =
-    useWatch({
-      control,
-      name: [
-        "mainImage",
-        "mainImageX",
-        "mainImageY",
-        "mainImageScaleX",
-        "mainImageScaleY",
-      ],
-    });
-
+  const [
+    mainImage,
+    mainImageX,
+    mainImageY,
+    mainImageScaleY,
+    mainImageScaleX,
+    mainImageRotation,
+  ] = useWatch({
+    control,
+    name: [
+      "mainImage",
+      "mainImageX",
+      "mainImageY",
+      "mainImageScaleX",
+      "mainImageScaleY",
+      "mainImageRotation",
+    ],
+  });
+  console.log(mainImageRotation);
   if (!Boolean(mainImage)) return null;
 
   return (
@@ -62,6 +70,7 @@ const MainImage = ({
         x={mainImageX}
         scaleX={mainImageScaleX}
         scaleY={mainImageScaleY}
+        rotation={mainImageRotation}
         draggable
         name="mainImage"
         onDragEnd={updateImgPos}

@@ -46,9 +46,17 @@ const Card = () => {
   }, []);
 
   const updateScale = useCallback(
-    (name, scaleX: number, scaleY: number, x: number, y: number) => {
+    (
+      name,
+      scaleX: number,
+      scaleY: number,
+      rotation: number,
+      x: number,
+      y: number
+    ) => {
       setValue(`${name}ScaleX`, scaleX);
       setValue(`${name}ScaleY`, scaleY);
+      setValue(`${name}Rotation`, rotation);
       setValue(`${name}X`, x);
       setValue(`${name}Y`, y);
     },

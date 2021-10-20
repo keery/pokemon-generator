@@ -10,9 +10,23 @@ const EvolutionImage = ({
   onSelect,
   updateScale,
 }) => {
-  const [evolvePicture, evolvePictureX, evolvePictureY] = useWatch({
+  const [
+    evolvePicture,
+    evolvePictureX,
+    evolvePictureY,
+    evolvePictureScaleY,
+    evolvePictureScaleX,
+    evolvePictureRotation,
+  ] = useWatch({
     control,
-    name: ["evolvePicture", "evolvePictureX", "evolvePictureY"],
+    name: [
+      "evolvePicture",
+      "evolvePictureX",
+      "evolvePictureY",
+      "evolvePictureScaleY",
+      "evolvePictureScaleX",
+      "evolvePictureRotation",
+    ],
   });
 
   if (!Boolean(evolvePicture)) return null;
@@ -38,6 +52,9 @@ const EvolutionImage = ({
         src={evolvePicture}
         y={evolvePictureY}
         x={evolvePictureX}
+        scaleX={evolvePictureScaleX}
+        scaleY={evolvePictureScaleY}
+        rotation={evolvePictureRotation}
         onSelect={onSelect}
         maxWidth={61}
         maxHeight={53}
