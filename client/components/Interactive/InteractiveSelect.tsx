@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { Box, Select } from "@chakra-ui/react";
 import { Select as SelectType } from "~@types/Card";
 import { Control, useController, useWatch } from "react-hook-form";
+import { useRecoilValue } from "recoil";
+import { areaAtom } from "~atoms/area";
 
 interface Props {
   name: string;
@@ -22,13 +24,13 @@ const InteractiveSelect = ({
   height,
   width,
   choices,
-  className = "",
   control,
   icon,
 }: Props) => {
   const { field } = useController({ control, name });
   const value = useWatch({ control, name });
   const inputRef = useRef(null);
+  const { isVisible } = useRecoilValue(areaAtom);
 
   return (
     <Box role="group">
@@ -40,9 +42,10 @@ const InteractiveSelect = ({
         top={`${y}%`}
         height={`${height}%`}
         width={`${width}%`}
-        className={`InteractiveSelect ${className}`}
-        borderRadius="sm"
+        className={`InteractiveSelect`}
+        borderRadius="xs"
         transition="border-color ease-in-out 200ms, box-shadow 200ms ease-in-out"
+        border={`2px solid ${isVisible ? "#fff" : "transparent"}`}
         _groupHover={{
           border: "2px solid #fff",
           shadow: "md",

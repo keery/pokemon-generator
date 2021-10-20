@@ -11,6 +11,8 @@ import { motion, MotionStyle } from "framer-motion";
 import { useController, useWatch, Control } from "react-hook-form";
 import Cross from "public/assets/img/cross.svg";
 import { Select } from "~@types/Card";
+import { useRecoilValue } from "recoil";
+import { areaAtom } from "~atoms/area";
 
 const styleEl = {
   width: "1.8rem",
@@ -57,6 +59,7 @@ const ButtonList = ({
   const { field } = useController({ control, name });
   const value = useWatch({ control, name });
   const [isVisible, setVisible] = useState(false);
+  const { isVisible: areaIsVisible } = useRecoilValue(areaAtom);
 
   return (
     <Box role="group">
@@ -74,7 +77,7 @@ const ButtonList = ({
       >
         <AspectRatio
           borderRadius="100%"
-          border="2px solid transparent"
+          border={`2px solid ${areaIsVisible ? "#fff" : "transparent"}`}
           transition="box-shadow 200ms, border-color 200ms"
           _groupHover={{
             border: "2px solid #fff",

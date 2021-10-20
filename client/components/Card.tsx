@@ -1,7 +1,13 @@
 import React, { useRef, useCallback } from "react";
 import { Layer, Group, Stage } from "react-konva";
 import { useFormContext, useWatch } from "react-hook-form";
-import { Box, useOutsideClick, Flex, Image } from "@chakra-ui/react";
+import {
+  Box,
+  useOutsideClick,
+  Flex,
+  Image,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import Name from "./Card/Name";
 import Attacks from "./Card/Attacks";
 import MainImage from "./Card/MainImage";
@@ -21,12 +27,16 @@ import { cardAtom } from "~atoms/card";
 import { useRecoilState } from "recoil";
 import PokemonsBackground from "./PokemonsBackground";
 import InteractiveLayer from "./Interactive/InteractiveLayer";
+import { useRecoilValue } from "recoil";
+import { areaAtom } from "~atoms/area";
 
 const Card = () => {
+  const { isVisible } = useRecoilValue(areaAtom);
   const stageRef = useRef(null);
   const imgRef = useRef(null);
   const { control, setValue } = useFormContext();
   const [card, setCard] = useRecoilState(cardAtom);
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   const updateImgPos = useCallback((event: any): void => {
     const { attrs } = event.target;
@@ -54,6 +64,7 @@ const Card = () => {
   React.useEffect(() => {
     window.addEventListener("load", preserveRatioCanva);
     window.addEventListener("resize", preserveRatioCanva);
+    new ResizeObserver(preserveRatioCanva).observe(imgRef.current);
 
     return () => {
       window.removeEventListener("resize", preserveRatioCanva);
@@ -75,7 +86,9 @@ const Card = () => {
       pos="relative"
       className={card.isFlipped ? "flipped" : ""}
       w="100%"
-      h="100%"
+      h={{ base: "100%", xl: "100%" }}
+      py={isVisible && !isMobile ? 14 : 0}
+      px={isVisible && !isMobile ? 30 : 0}
       justifyContent="center"
       alignItems="center"
     >
@@ -87,6 +100,7 @@ const Card = () => {
           maxW="100%"
           maxH="100%"
           m="0 auto"
+          w="100%"
         />
         <Box
           ref={stageRef}

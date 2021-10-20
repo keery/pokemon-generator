@@ -121,8 +121,8 @@ const InteractiveLayer = () => {
       <InteractiveInput
         name="name"
         x={stage.value === BASIC ? 8.9 : 25.8}
-        y={7}
-        height={4.3}
+        y={6.8}
+        height={4.5}
         width={stage.value === BASIC ? 55 : 37.4}
         fontSize={31}
         control={control}
@@ -336,7 +336,7 @@ const InteractiveLayer = () => {
             label={t("resAmount")}
             icon={<Pen />}
             lineLength={19.8}
-            linePos={54.7}
+            linePos={55.7}
           />
         }
       />
@@ -403,7 +403,7 @@ const InteractiveLayer = () => {
       />
       {/* COLLECTION */}
       <InteractiveArea
-        x={81.5}
+        x={81.2}
         y={94.5}
         height={2.2}
         width={10}

@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { Box, Input } from "@chakra-ui/react";
 import { Control, useController, useWatch } from "react-hook-form";
+import { useRecoilValue } from "recoil";
+import { areaAtom } from "~atoms/area";
 
 interface Props {
   name: string;
@@ -30,6 +32,7 @@ const InteractiveInput = ({
   const inputRef = useRef(null);
   const { field } = useController({ control, name });
   const value = useWatch({ control, name });
+  const { isVisible } = useRecoilValue(areaAtom);
 
   return (
     <Box role="group">
@@ -46,7 +49,7 @@ const InteractiveInput = ({
           variant="unstyled"
           w="100%"
           type="text"
-          border="none"
+          border={`2px solid ${isVisible ? "#fff" : "transparent"}`}
           height="100%"
           color="transparent"
           style={{

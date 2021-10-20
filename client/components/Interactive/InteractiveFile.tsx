@@ -57,7 +57,7 @@ const InteractiveFile = ({
           label={""}
         />
       ) : (
-        <InteractiveIcon icon={<Image />} {...icon} />
+        <InteractiveIcon icon={<Image width="1rem" />} {...icon} />
       )}
 
       {!Boolean(card.selectedImg) && !Boolean(value) && (
@@ -137,15 +137,21 @@ const InteractiveFile = ({
             opacity={0}
             _groupHover={{ opacity: 1, transform: "translateY(0)" }}
             maxW="60%"
+            alignItems="center"
           >
             <Flex
-              fontSize={name === "mainImage" ? "10rem" : "1rem"}
+              w={name === "mainImage" ? "60%" : "1rem"}
               justifyContent="center"
             >
-              <Image />
+              <Image width="100%" />
             </Flex>
             {!noText && (
-              <Text textAlign="center" fontWeight="bold" fontSize="1.3rem">
+              <Text
+                textAlign="center"
+                fontWeight="bold"
+                fontSize="1.3rem"
+                whiteSpace="nowrap"
+              >
                 {t("choosePicture")}
               </Text>
             )}

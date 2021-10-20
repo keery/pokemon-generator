@@ -22,7 +22,7 @@ const CardForm = () => {
       minW={{ base: "300px", lg: "350px" }}
       display={{
         base: "none",
-        md: "flex",
+        xl: "flex",
       }}
     >
       <Flex pos="relative" flex={1}>

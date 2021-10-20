@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { Box, Textarea } from "@chakra-ui/react";
 import { Control, useController, useWatch } from "react-hook-form";
+import { useRecoilValue } from "recoil";
+import { areaAtom } from "~atoms/area";
 
 interface Props {
   name: string;
@@ -29,6 +31,8 @@ const InteractiveTextarea = ({
   const inputRef = useRef(null);
   const { field } = useController({ control, name });
   const value = useWatch({ control, name });
+  const { isVisible } = useRecoilValue(areaAtom);
+
   return (
     <Box role="group">
       <Box onClick={() => inputRef?.current.focus()}>{icon}</Box>
@@ -55,7 +59,7 @@ const InteractiveTextarea = ({
           minH="0"
           width="100%"
           border="2px solid"
-          borderColor="transparent"
+          borderColor={isVisible ? "white" : "transparent"}
           height="100%"
           backgroundColor="transparent"
           outline="none"

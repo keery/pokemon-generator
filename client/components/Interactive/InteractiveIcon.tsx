@@ -6,6 +6,7 @@ import {
   Text,
   Box,
   BoxProps,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
@@ -35,7 +36,7 @@ const getPlacement = (
     case "bottom":
       return {
         button: {
-          top: isSecondLine ? "108%" : "102%",
+          top: isSecondLine ? "106.5%" : "101%",
         },
         line: {
           ...LINE,
@@ -48,7 +49,7 @@ const getPlacement = (
     case "top":
       return {
         button: {
-          bottom: isSecondLine ? "108%" : "102%",
+          bottom: isSecondLine ? "106.5%" : "101%",
         },
         line: {
           ...LINE,
@@ -61,7 +62,7 @@ const getPlacement = (
     case "left":
       return {
         button: {
-          right: isSecondLine ? "108%" : "102%",
+          right: isSecondLine ? "106.5%" : "101%",
         },
         line: {
           ...LINE,
@@ -74,7 +75,7 @@ const getPlacement = (
     case "right":
       return {
         button: {
-          left: isSecondLine ? "108%" : "102%",
+          left: isSecondLine ? "106.5%" : "101%",
         },
         line: {
           ...LINE,
@@ -104,8 +105,9 @@ const InteractiveIcon = ({
     isSecondLine
   );
   const { isVisible } = useRecoilValue(areaAtom);
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
-  if (!isVisible) return null;
+  if (!isVisible || isMobile) return null;
 
   return (
     <>
