@@ -26,6 +26,8 @@ import HP from "public/assets/img/hp.svg";
 import Pokeball from "public/assets/img/pokeball.svg";
 import { useTranslation } from "next-i18next";
 import useAttacks from "~hooks/useAttacks";
+import { cardAtom } from "~atoms/card";
+import { useRecoilValue } from "recoil";
 
 const InteractiveLayer = () => {
   const { t } = useTranslation("generator");
@@ -35,8 +37,10 @@ const InteractiveLayer = () => {
     name: "stage",
   });
   const { isTiny } = useAttacks(control);
-
+  const card = useRecoilValue(cardAtom);
   const isBasicStage = useMemo(() => stage.value === BASIC, [stage]);
+
+  if (Boolean(card.selectedImg)) return null;
 
   return (
     <>

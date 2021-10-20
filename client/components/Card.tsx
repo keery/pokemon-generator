@@ -32,6 +32,7 @@ import { areaAtom } from "~atoms/area";
 
 const Card = () => {
   const { isVisible } = useRecoilValue(areaAtom);
+  const containerRef = useRef(null);
   const stageRef = useRef(null);
   const imgRef = useRef(null);
   const { control, setValue } = useFormContext();
@@ -55,9 +56,9 @@ const Card = () => {
   );
 
   const preserveRatioCanva = () => {
-    if (typeof stageRef !== "undefined" && typeof imgRef !== "undefined") {
-      stageRef.current.style.width = `${imgRef.current.width}px`;
-      stageRef.current.style.height = `${imgRef.current.height}px`;
+    if (typeof containerRef !== "undefined" && typeof imgRef !== "undefined") {
+      containerRef.current.style.width = `${imgRef.current.width}px`;
+      containerRef.current.style.height = `${imgRef.current.height}px`;
     }
   };
 
@@ -70,7 +71,7 @@ const Card = () => {
       window.removeEventListener("resize", preserveRatioCanva);
       window.removeEventListener("load", preserveRatioCanva);
     };
-  }, [imgRef, stageRef]);
+  }, [imgRef, containerRef]);
 
   const resetSelected = useCallback(() => {
     if (card.selectedImg === null) return;
@@ -103,7 +104,7 @@ const Card = () => {
           w="100%"
         />
         <Box
-          ref={stageRef}
+          ref={containerRef}
           margin="0 auto"
           pos="absolute"
           left={0}
@@ -115,7 +116,7 @@ const Card = () => {
           <Box className="card-container" overflow="visible!important">
             <PokemonsBackground control={control} />
             <Backface />
-            <Box className="card-stage">
+            <Box className="card-stage" ref={stageRef}>
               <Stage
                 width={500}
                 height={700}

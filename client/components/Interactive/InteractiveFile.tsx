@@ -8,7 +8,6 @@ import Delete from "public/assets/img/delete.svg";
 import Image from "public/assets/img/image.svg";
 import { useTranslation } from "next-i18next";
 import { BASIC } from "~constants";
-import { cardAtom } from "~atoms/card";
 import { areaAtom } from "~atoms/area";
 import { useRecoilValue } from "recoil";
 
@@ -33,7 +32,6 @@ const InteractiveFile = ({
   noText = false,
   icon,
 }: Props) => {
-  const card = useRecoilValue(cardAtom);
   const { isVisible } = useRecoilValue(areaAtom);
   const { setValue } = useFormContext();
   const [value, stage] = useWatch({ control, name: [name, "stage"] });
@@ -62,7 +60,7 @@ const InteractiveFile = ({
         <InteractiveIcon icon={<Image width="1rem" />} {...icon} />
       )}
 
-      {!Boolean(card.selectedImg) && !Boolean(value) && (
+      {!Boolean(value) && (
         <Flex
           border="2px transparent"
           cursor="pointer"
