@@ -22,7 +22,7 @@ const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
       isCentered
     >
       <AlertDialogOverlay>
-        <AlertDialogContent borderRadius="sm">
+        <AlertDialogContent borderRadius="sm" mx={2}>
           <AlertDialogHeader fontSize="lg" fontWeight="bold">
             {t("resetTitle")}
           </AlertDialogHeader>

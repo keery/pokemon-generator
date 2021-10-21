@@ -30,7 +30,7 @@ const Modal = ({
       {button}
       <ModalChakra isOpen={isOpen} onClose={onClose} isCentered {...rest}>
         <ModalOverlay />
-        <ModalContent py={5} mx={2}>
+        <ModalContent py={5} w="96%">
           {title && <ModalHeader>{title}</ModalHeader>}
           {withCloseButton && <ModalCloseButton />}
           <ModalBody>{children}</ModalBody>
