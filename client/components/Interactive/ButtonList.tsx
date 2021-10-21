@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
   HStack,
@@ -9,6 +9,7 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { motion, MotionStyle } from "framer-motion";
 import { useController, useWatch, Control } from "react-hook-form";
@@ -62,14 +63,14 @@ const ButtonList = ({
 }: Props) => {
   const { field } = useController({ control, name });
   const value = useWatch({ control, name });
-  const [isVisible, setVisible] = useState(false);
   const { isVisible: areaIsVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Box role="group">
-      <Box onClick={() => setVisible(!isVisible)}>{icon}</Box>
-      <Popover placement="top">
+      <Box onClick={onOpen}>{icon}</Box>
+      <Popover placement="top" isOpen={isOpen} onClose={onClose}>
         <PopoverTrigger>
           <Box
             className="ButtonList"
@@ -79,8 +80,6 @@ const ButtonList = ({
             display="inline-block"
             role="group"
             w={`${size}%`}
-            onMouseEnter={() => setVisible(true)}
-            onMouseLeave={() => setVisible(false)}
           >
             <AspectRatio
               borderRadius="100%"
@@ -90,8 +89,9 @@ const ButtonList = ({
                 border: "2px solid #fff",
                 shadow: "md",
               }}
-              width={`100%`}
+              width="100%"
               ratio={1}
+              onClick={onOpen}
             >
               <Box
                 {...stylePreview}

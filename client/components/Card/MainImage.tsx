@@ -43,7 +43,7 @@ const MainImage = ({
       "mainImageRotation",
     ],
   });
-  console.log(mainImageRotation);
+
   if (!Boolean(mainImage)) return null;
 
   return (
