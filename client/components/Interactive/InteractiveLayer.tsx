@@ -101,6 +101,7 @@ const InteractiveLayer = () => {
             fontSize={13}
             fontFamily="pokevolution"
             control={control}
+            fontSizeRatio={0.0056}
             icon={
               <InteractiveIcon
                 placement="top"
@@ -139,6 +140,7 @@ const InteractiveLayer = () => {
         width={stage.value === BASIC ? 54 : 37.4}
         fontSize={31}
         control={control}
+        fontSizeRatio={0.011}
         icon={
           <InteractiveIcon
             placement="top"
@@ -407,6 +409,7 @@ const InteractiveLayer = () => {
         fontSize={10.5}
         control={control}
         prefix="Illus. "
+        fontSizeRatio={0.0062}
         icon={
           <InteractiveIcon
             placement="bottom"

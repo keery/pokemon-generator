@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Box, Textarea } from "@chakra-ui/react";
 import { Control, useController, useWatch } from "react-hook-form";
 import { useRecoilValue } from "recoil";
@@ -34,6 +34,13 @@ const InteractiveTextarea = ({
   const value = useWatch({ control, name });
   const { isVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
+
+  useEffect(() => {
+    new ResizeObserver(() => {
+      inputRef.current.style.fontSize =
+        inputRef?.current.clientWidth * 0.00235 + "rem";
+    }).observe(inputRef?.current);
+  }, [inputRef?.current]);
 
   return (
     <Box role="group">

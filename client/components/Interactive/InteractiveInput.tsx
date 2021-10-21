@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Box, Input } from "@chakra-ui/react";
 import { Control, useController, useWatch } from "react-hook-form";
 import { useRecoilValue } from "recoil";
@@ -16,6 +16,7 @@ interface Props {
   control: Control;
   prefix?: string;
   icon: JSX.Element;
+  fontSizeRatio: number;
 }
 
 const InteractiveInput = ({
@@ -29,12 +30,20 @@ const InteractiveInput = ({
   control,
   prefix,
   icon,
+  fontSizeRatio,
 }: Props) => {
   const inputRef = useRef(null);
   const { field } = useController({ control, name });
   const value = useWatch({ control, name });
   const { isVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
+
+  useEffect(() => {
+    new ResizeObserver(() => {
+      inputRef.current.style.fontSize =
+        inputRef?.current.clientWidth * fontSizeRatio + "rem";
+    }).observe(inputRef?.current);
+  }, [inputRef?.current, fontSizeRatio]);
 
   return (
     <Box role="group">
