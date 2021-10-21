@@ -10,7 +10,6 @@ interface Props extends TextareaProps {
 const Textarea = ({ control, name, ...rest }: Props) => {
   const { field } = useController({ control, name });
   const value = useWatch({ control, name });
-  const { fontSize, ref } = useFitText();
 
   return (
     <TextareaChakra
