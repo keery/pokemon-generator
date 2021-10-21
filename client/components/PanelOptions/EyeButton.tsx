@@ -13,10 +13,10 @@ const EyeButton = () => {
   const isMobile = useBreakpointValue({ base: true, xl: false });
 
   useEffect(() => {
-    if (isMobile && !isVisible) {
+    if (isMobile) {
       setArea((s) => ({ ...s, isVisible: true }));
     }
-  }, [isMobile, isVisible]);
+  }, [isMobile]);
 
   return (
     <OptionButton
