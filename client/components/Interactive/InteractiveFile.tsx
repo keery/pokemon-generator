@@ -76,7 +76,7 @@ const InteractiveFile = ({
           {name === "mainImage" ? (
             <Box
               transition="opacity 300ms"
-              opacity={1}
+              opacity={isVisible ? 1 : 0}
               _groupHover={{
                 opacity: 1,
               }}

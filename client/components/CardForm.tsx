@@ -5,7 +5,7 @@ import CardFormHeader from "~components/CardFormHeader";
 import CardFieldsGroup from "~components/CardFieldsGroup";
 import FieldsPokemonInfo from "~components/FieldsPokemonInfo";
 import FieldsEvolution from "~components/FieldsEvolution";
-import FieldsAttack from "~components/FieldsAttack";
+import FieldsAttack from "~components/Fields/FieldsAttack";
 import FieldsSubInfo from "~components/FieldsSubInfo";
 import FieldsBottomInfo from "~components/FieldsBottomInfo";
 import Logo from "~components/Logo";

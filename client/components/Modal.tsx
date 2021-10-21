@@ -11,7 +11,7 @@ import {
 
 interface Props extends ModalProps {
   title?: string;
-  button: React.ReactElement;
+  button?: React.ReactElement;
   children: React.ReactNode;
   withCloseButton?: boolean;
 }
@@ -19,7 +19,7 @@ interface Props extends ModalProps {
 const Modal = ({
   onClose,
   isOpen,
-  button,
+  button = null,
   children,
   title,
   withCloseButton = false,
@@ -30,7 +30,7 @@ const Modal = ({
       {button}
       <ModalChakra isOpen={isOpen} onClose={onClose} isCentered {...rest}>
         <ModalOverlay />
-        <ModalContent py={5}>
+        <ModalContent py={5} mx={2}>
           {title && <ModalHeader>{title}</ModalHeader>}
           {withCloseButton && <ModalCloseButton />}
           <ModalBody>{children}</ModalBody>

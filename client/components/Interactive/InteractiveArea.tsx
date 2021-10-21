@@ -1,8 +1,15 @@
-import React from "react";
-import { useTheme, Box, BoxProps } from "@chakra-ui/react";
+import React, { useCallback } from "react";
+import {
+  useTheme,
+  Box,
+  BoxProps,
+  useBreakpointValue,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";
+import Modal from "~components/Interactive/ModalInteractiveArea";
 
 interface Props extends BoxProps {
   x: number;
@@ -13,6 +20,7 @@ interface Props extends BoxProps {
   labelTarget: string;
   noRadius?: boolean;
   icon: JSX.Element;
+  fields: JSX.Element;
 }
 
 const InteractiveArea = ({
@@ -24,22 +32,33 @@ const InteractiveArea = ({
   labelTarget,
   noRadius,
   icon,
+  fields,
   ...rest
 }: Props) => {
   const theme = useTheme();
   const { isVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
+  const isMobile = useBreakpointValue({ base: true, xl: false });
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const onClick = useCallback(() => {
+    if (isMobile) {
+      onOpen();
+    } else {
+      document
+        .getElementById(labelTarget)
+        .scrollIntoView({ behavior: "smooth" });
+      document.getElementById(inputTarget).focus({ preventScroll: true });
+    }
+  }, [isMobile]);
 
   return (
-    <Box
-      role="group"
-      onClick={() => {
-        document
-          .getElementById(labelTarget)
-          .scrollIntoView({ behavior: "smooth" });
-        document.getElementById(inputTarget).focus({ preventScroll: true });
-      }}
-    >
+    <Box role="group" onClick={onClick}>
+      {isMobile && (
+        <Modal isOpen={isOpen} onClose={onClose}>
+          {fields}
+        </Modal>
+      )}
       <Box>{icon}</Box>
       <Box
         position={"absolute"}

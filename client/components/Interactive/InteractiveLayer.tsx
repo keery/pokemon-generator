@@ -17,6 +17,9 @@ import {
   RARITY_OPTIONS,
 } from "~constants";
 import InteractiveIcon from "./InteractiveIcon";
+import FieldsCollection from "~components/Fields/FieldsCollection";
+import FieldsLengthWeight from "~components/Fields/FieldsLengthWeight";
+import FieldsAttackTab from "~components/Fields/FieldsAttackTab";
 import Pen from "public/assets/img/pen.svg";
 import Star from "public/assets/img/star.svg";
 import Sword from "public/assets/img/sword.svg";
@@ -193,6 +196,7 @@ const InteractiveLayer = () => {
         inputTarget="field-species"
         labelTarget="field-species-label"
         noRadius
+        fields={<FieldsLengthWeight control={control} />}
         icon={
           <InteractiveIcon
             placement="right"
@@ -212,6 +216,7 @@ const InteractiveLayer = () => {
         width={86}
         inputTarget="field-attack1"
         labelTarget="field-attack1-label"
+        fields={<FieldsAttackTab />}
         icon={
           <InteractiveIcon
             placement="left"
@@ -232,6 +237,7 @@ const InteractiveLayer = () => {
           width={86}
           inputTarget="field-attack2"
           labelTarget="field-attack2-label"
+          fields={<FieldsAttackTab defaultIndex={1} />}
           icon={
             <InteractiveIcon
               placement="left"
@@ -251,6 +257,7 @@ const InteractiveLayer = () => {
           width={86}
           inputTarget="field-attack2"
           labelTarget="field-attack2-label"
+          fields={<FieldsAttackTab defaultIndex={1} />}
           border="none"
           icon={
             <InteractiveIcon
@@ -414,6 +421,7 @@ const InteractiveLayer = () => {
         width={10}
         inputTarget="field-collection"
         labelTarget="field-collection-label"
+        fields={<FieldsCollection control={control} />}
         icon={
           <InteractiveIcon
             placement="bottom"
