@@ -30,7 +30,7 @@ const FieldsEvolution = () => {
         />
       </Field>
       <Field label={t("picture")} isDisabled={stage.value === BASIC}>
-        <FileInput name="evolvePicture" control={control} />
+        <FileInput name="evolvePicture" id="evolvePicture" />
       </Field>
     </>
   );

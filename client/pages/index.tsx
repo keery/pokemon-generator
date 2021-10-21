@@ -5,6 +5,7 @@ import { SSRConfig } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import BackgroundBlur from "~components/BackgroundBlur";
 import CardForm from "~components/CardForm";
+import ModalUppy from "~components/ModalUppy";
 import { CARD_DEFAULT_STATE } from "~data/card";
 import { decrypt } from "~utils/cache";
 import { useForm, FormProvider } from "react-hook-form";
@@ -65,6 +66,12 @@ const Home: NextPage = () => {
             </Flex>
           </Stack>
         </Container>
+        <ModalUppy name="mainImage" id="mainImage" control={form.control} />
+        <ModalUppy
+          name="evolvePicture"
+          id="evolvePicture"
+          control={form.control}
+        />
       </form>
     </FormProvider>
   );
