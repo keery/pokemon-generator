@@ -237,30 +237,41 @@ a {
 }
 
 @media print {
-  * {
+  *,
+  .backface {
     visibility: hidden;
   }
+  body,
+  html,
   .backface,
   .konvajs-content,
   .konvajs-content > * {
     visibility: visible !important;
   }
+  body,
+  html,
+  .konvajs-content {
+    height: 100% !important;
+    width: 100% !important;
+    background-color: blue !important;
+  }
+
   .konvajs-content > canvas,
   .backface {
     width: 6.3cm !important;
+    min-width: 6.3cm !important;
+    max-width: 6.3cm !important;
     height: auto !important;
     position: fixed !important;
     left: 0% !important;
-    transform: translateX(-50%) translateY(-50%) scale(1) !important;
+    transform: scale(1) !important;
     display: block !important;
     z-index: 999999;
-  }
-
-  .konvajs-content > canvas {
-    top: 25% !important;
+    top: 0 !important;
   }
 
   .backface {
     top: 75% !important;
+    left: 300px !important;
   }
 }
