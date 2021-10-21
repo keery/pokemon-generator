@@ -13,12 +13,7 @@ import French from "@uppy/locales/lib/fr_FR";
 import Spanish from "@uppy/locales/lib/es_ES";
 import Modal from "~components/Modal";
 import dynamic from "next/dynamic";
-import {
-  Control,
-  useController,
-  useFormContext,
-  useWatch,
-} from "react-hook-form";
+import { Control, useController, useFormContext } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import axios from "axios";
 import useToast from "~hooks/useToast";

@@ -124,6 +124,7 @@ const ImageCanvas = ({
           rotation={rotation}
           draggable={draggable}
           onDragEnd={onDragEnd}
+          on
           isSelected={isSelected}
           onClick={() => (isTransformable ? onSelect() : null)}
           onTransformEnd={() => {

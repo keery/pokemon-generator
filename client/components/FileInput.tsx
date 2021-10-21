@@ -41,7 +41,6 @@ const FileInput = ({ id, name }: Props) => {
         transition="border-color 200ms"
       >
         <Text
-          id={id}
           onClick={() => document.getElementById(name).click()}
           color="grey.500"
           fontSize=".9rem"

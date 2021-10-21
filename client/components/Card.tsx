@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useEffect } from "react";
 import { Layer, Group, Stage } from "react-konva";
 import { useFormContext, useWatch } from "react-hook-form";
 import {
@@ -29,6 +29,7 @@ import PokemonsBackground from "./PokemonsBackground";
 import InteractiveLayer from "./Interactive/InteractiveLayer";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
+import Mousetrap from "mousetrap";
 
 const Card = () => {
   const { isVisible } = useRecoilValue(areaAtom);
@@ -70,7 +71,7 @@ const Card = () => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener("load", preserveRatioCanva);
     window.addEventListener("resize", preserveRatioCanva);
     new ResizeObserver(preserveRatioCanva).observe(imgRef.current);
@@ -85,6 +86,17 @@ const Card = () => {
     if (card.selectedImg === null) return;
     setCard({ ...card, selectedImg: null });
   }, [card]);
+
+  useEffect(() => {
+    if (!Boolean(card.selectedImg)) return;
+    Mousetrap.bind("backspace", () => {
+      setCard({ ...card, selectedImg: null });
+      setValue(card.selectedImg, null);
+    });
+    return () => {
+      Mousetrap.unbind("return");
+    };
+  }, [card.selectedImg]);
 
   useOutsideClick({ ref: stageRef, handler: resetSelected });
 
