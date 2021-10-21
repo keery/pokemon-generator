@@ -67,8 +67,8 @@ const InteractiveLayer = () => {
       <InteractiveSelect
         name="stage"
         x={8.9}
-        y={isBasicStage ? 4.9 : 5.7}
-        height={2.3}
+        y={isBasicStage ? 3.9 : 4.7}
+        height={3.3}
         width={isBasicStage ? 20 : 11}
         choices={STAGE_OPTIONS}
         control={control}
