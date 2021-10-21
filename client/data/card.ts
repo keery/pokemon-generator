@@ -24,10 +24,7 @@ export const CARD_DEFAULT_STATE: Card = {
   evolvePictureRotation: 0,
   evolvePictureScaleX: 1,
   evolvePictureScaleY: 1,
-  hp: {
-    label: "30 HP",
-    value: 30,
-  },
+  hp: null,
   weaknessType: null,
   weaknessAmount: null,
   resistanceType: null,

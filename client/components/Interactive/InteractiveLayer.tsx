@@ -40,7 +40,7 @@ const InteractiveLayer = () => {
   const card = useRecoilValue(cardAtom);
   const isBasicStage = useMemo(() => stage.value === BASIC, [stage]);
 
-  if (Boolean(card.selectedImg)) return null;
+  if (Boolean(card.selectedImg) || card.isFlipped) return null;
 
   return (
     <>
@@ -69,6 +69,7 @@ const InteractiveLayer = () => {
         width={isBasicStage ? 20 : 11}
         choices={STAGE_OPTIONS}
         control={control}
+        hasEmptyOption={false}
         icon={
           <InteractiveIcon
             placement="left"

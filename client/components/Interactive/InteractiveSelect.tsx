@@ -16,6 +16,7 @@ interface Props {
   className?: string;
   icon: JSX.Element;
   choices: SelectType<any>[];
+  hasEmptyOption?: boolean;
 }
 
 const InteractiveSelect = ({
@@ -27,6 +28,7 @@ const InteractiveSelect = ({
   choices,
   control,
   icon,
+  hasEmptyOption = true,
 }: Props) => {
   const { field } = useController({ control, name });
   const value = useWatch({ control, name });
@@ -77,7 +79,7 @@ const InteractiveSelect = ({
           fontFamily="pokehp"
           fontSize="18px"
         >
-          <option value=""></option>
+          {hasEmptyOption && <option value=""></option>}
           {choices.map(({ label, value }) => (
             <option key={`is-${value}`} value={value}>
               {label}
