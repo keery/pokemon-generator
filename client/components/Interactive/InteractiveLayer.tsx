@@ -17,6 +17,7 @@ import {
   RARITY_OPTIONS,
 } from "~constants";
 import InteractiveIcon from "./InteractiveIcon";
+import { Box } from "@chakra-ui/react";
 import FieldsCollection from "~components/Fields/FieldsCollection";
 import FieldsLengthWeight from "~components/Fields/FieldsLengthWeight";
 import FieldsAttackTab from "~components/Fields/FieldsAttackTab";
@@ -43,10 +44,11 @@ const InteractiveLayer = () => {
   const card = useRecoilValue(cardAtom);
   const isBasicStage = useMemo(() => stage.value === BASIC, [stage]);
 
-  if (Boolean(card.selectedImg) || card.isFlipped) return null;
-
   return (
-    <>
+    <Box
+      opacity={Boolean(card.selectedImg) || card.isFlipped ? 0 : 1}
+      transition="opacity 200ms"
+    >
       {/* MAIN PICTURE */}
       <InteractiveFile
         name="mainImage"
@@ -453,7 +455,7 @@ const InteractiveLayer = () => {
           />
         }
       />
-    </>
+    </Box>
   );
 };
 
