@@ -10,6 +10,7 @@ import {
   PopoverTrigger,
   PopoverContent,
   useDisclosure,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { motion, MotionStyle } from "framer-motion";
 import { useController, useWatch, Control } from "react-hook-form";
@@ -61,6 +62,7 @@ const ButtonList = ({
   prefix = "",
   icon,
 }: Props) => {
+  const isMobile = useBreakpointValue({ base: true, sm: false });
   const { field } = useController({ control, name });
   const value = useWatch({ control, name });
   const { isVisible: areaIsVisible } = useRecoilValue(areaAtom);
@@ -162,7 +164,10 @@ const ButtonList = ({
                   whileHover={{ scale: isSelected ? 1 : 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   disabled={isSelected}
-                  onClick={() => field.onChange(item)}
+                  onClick={() => {
+                    field.onChange(item);
+                    if (isMobile) onClose;
+                  }}
                 />
               );
             })}
