@@ -81,22 +81,22 @@ const InteractiveFile = ({
                 opacity: 1,
               }}
             >
-              <Box
-                pos="absolute"
-                left={stage.value === BASIC ? 0 : "12%"}
-                right="0"
-                top="0"
-                height="7.8%"
-                backdropFilter="blur(8px) saturate(180%)"
-                bgColor="rgb(255 255 255 / 65%)"
-              />
+              {stage.value !== BASIC && (
+                <Box
+                  pos="absolute"
+                  left={"12%"}
+                  right="0"
+                  top="0"
+                  height="7.8%"
+                  bgColor="rgb(255 255 255 / 65%)"
+                />
+              )}
               <Box
                 pos="absolute"
                 left="0"
                 right="0"
-                top="7.8%"
-                height="92.2%"
-                backdropFilter="blur(8px) saturate(180%)"
+                top={stage.value === BASIC ? 0 : "7.8%"}
+                height={stage.value === BASIC ? "100%" : "92.2%"}
                 bgColor="rgb(255 255 255 / 65%)"
               />
               {stage.value !== BASIC && (
