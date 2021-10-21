@@ -166,7 +166,7 @@ const ButtonList = ({
                   disabled={isSelected}
                   onClick={() => {
                     field.onChange(item);
-                    if (isMobile) onClose;
+                    if (isMobile) onClose();
                   }}
                 />
               );
