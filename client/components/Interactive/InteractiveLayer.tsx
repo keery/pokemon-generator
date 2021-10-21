@@ -46,8 +46,11 @@ const InteractiveLayer = () => {
 
   return (
     <Box
+      visibility={
+        Boolean(card.selectedImg) || card.isFlipped ? "hidden" : "visible"
+      }
       opacity={Boolean(card.selectedImg) || card.isFlipped ? 0 : 1}
-      transition="opacity 200ms"
+      transition="visibility 200ms linear,opacity 200ms linear"
     >
       {/* MAIN PICTURE */}
       <InteractiveFile
