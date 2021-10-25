@@ -16,6 +16,7 @@ interface Props {
   control: Control;
   prefix?: string;
   icon: JSX.Element;
+  fullWidth: number;
 }
 
 const InteractiveTextarea = ({
@@ -28,6 +29,7 @@ const InteractiveTextarea = ({
   fontFamily = "pokevolution",
   control,
   icon,
+  fullWidth,
 }: Props) => {
   const inputRef = useRef(null);
   const { field } = useController({ control, name });
@@ -38,9 +40,9 @@ const InteractiveTextarea = ({
   useEffect(() => {
     new ResizeObserver(() => {
       inputRef.current.style.fontSize =
-        inputRef?.current.clientWidth * 0.00235 + "rem";
+        (inputRef?.current.clientWidth / fullWidth) * fontSize + "px";
     }).observe(inputRef?.current);
-  }, [inputRef?.current]);
+  }, [inputRef?.current, fullWidth]);
 
   return (
     <Box role="group">

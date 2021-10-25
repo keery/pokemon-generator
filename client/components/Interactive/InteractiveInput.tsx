@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from "react";
-import { Box, Input } from "@chakra-ui/react";
+import { Box, Input, InputProps } from "@chakra-ui/react";
 import { Control, useController, useWatch } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";
 
-interface Props {
+interface Props extends InputProps {
   name: string;
   x: number;
   y: number;
@@ -16,7 +16,7 @@ interface Props {
   control: Control;
   prefix?: string;
   icon: JSX.Element;
-  fontSizeRatio: number;
+  fullWidth: number;
 }
 
 const InteractiveInput = ({
@@ -30,7 +30,8 @@ const InteractiveInput = ({
   control,
   prefix,
   icon,
-  fontSizeRatio,
+  fullWidth,
+  ...rest
 }: Props) => {
   const inputRef = useRef(null);
   const { field } = useController({ control, name });
@@ -41,9 +42,9 @@ const InteractiveInput = ({
   useEffect(() => {
     new ResizeObserver(() => {
       inputRef.current.style.fontSize =
-        inputRef?.current.clientWidth * fontSizeRatio + "rem";
+        (inputRef?.current.clientWidth / fullWidth) * fontSize + "px";
     }).observe(inputRef?.current);
-  }, [inputRef?.current, fontSizeRatio]);
+  }, [inputRef?.current, fullWidth]);
 
   return (
     <Box role="group">
@@ -91,6 +92,7 @@ const InteractiveInput = ({
           top={0}
           bottom={0}
           right={0}
+          {...rest}
         />
       </Box>
     </Box>
