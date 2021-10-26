@@ -253,7 +253,6 @@ a {
   .konvajs-content {
     height: 100% !important;
     width: 100% !important;
-    background-color: blue !important;
   }
 
   .konvajs-content > canvas,
