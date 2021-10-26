@@ -23,6 +23,7 @@ const CardForm = () => {
     >
       <Flex pos="relative" flex={1}>
         <Box
+          display={{ base: "none", sm: "block" }}
           background="radial-gradient(50% 50%, rgb(220, 193, 228), transparent)"
           pos="absolute"
           top="70%"
