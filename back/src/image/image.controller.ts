@@ -40,7 +40,7 @@ export class ImageController {
       }),
     }),
   )
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
+  uploadFile(@UploadedFile() file: any) {
     return file.filename
   }
 
