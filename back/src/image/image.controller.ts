@@ -67,6 +67,11 @@ export class ImageController {
     }
   }
 
+  @All('test')
+  async test() {
+    return 'test réussi'
+  }
+
   @All('companion')
   async companion(@Req() req, @Res() res) {
     return this.uppyService.handleCompanion(req, res)
