@@ -26,29 +26,30 @@ if ((env === 'dev' || env === 'test') && !process.env.CI) {
   }
 }
 
-const ormconfig: PostgresConnectionOptions = {
-  type: 'postgres',
-  host: config.POSTGRESQL_ADDON_HOST,
-  port: Number(config.POSTGRESQL_ADDON_PORT),
-  username: config.POSTGRESQL_ADDON_USER,
-  password: config.POSTGRESQL_ADDON_PASSWORD,
-  database: config.POSTGRESQL_ADDON_DB,
-  entities: [__dirname + '/**/*.entity{.ts,.js}'],
-  synchronize: false,
-  logging: env === 'dev',
-  migrations: [__dirname + '/migrations/*{.ts,.js}'],
-  ...(process.env.NODE_ENV === 'production'
-    ? {
-        extra: {
-          ssl: {
-            rejectUnauthorized: false,
-          },
-        },
-      }
-    : {}),
-  cli: {
-    migrationsDir: 'src/migrations',
-  },
-}
+// const ormconfig: PostgresConnectionOptions = {
+//   type: 'postgres',
+//   host: config.POSTGRESQL_ADDON_HOST,
+//   port: Number(config.POSTGRESQL_ADDON_PORT),
+//   username: config.POSTGRESQL_ADDON_USER,
+//   password: config.POSTGRESQL_ADDON_PASSWORD,
+//   database: config.POSTGRESQL_ADDON_DB,
+//   entities: [__dirname + '/**/*.entity{.ts,.js}'],
+//   synchronize: false,
+//   logging: env === 'dev',
+//   migrations: [__dirname + '/migrations/*{.ts,.js}'],
+//   ...(process.env.NODE_ENV === 'production'
+//     ? {
+//         extra: {
+//           ssl: {
+//             rejectUnauthorized: false,
+//           },
+//         },
+//       }
+//     : {}),
+//   cli: {
+//     migrationsDir: 'src/migrations',
+//   },
+// }
+const ormconfig = {}
 
 export = ormconfig

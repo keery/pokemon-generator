@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
-import { CardModule } from '~card/card.module'
+// import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
+// import { CardModule } from '~card/card.module'
 import { ImageModule } from '~image/image.module'
 import { MailModule } from './mail/mail.module'
 import { ConsoleModule } from 'nestjs-console'
@@ -17,23 +17,23 @@ import { join } from 'path'
       rootPath: join(__dirname, '..', 'public'),
     }),
     ConfigModule.forRoot(),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: async (config: ConfigService) => {
-        return {
-          type: 'postgres',
-          host: config.get('POSTGRESQL_ADDON_HOST'),
-          port: Number(config.get('POSTGRESQL_ADDON_PORT')),
-          username: config.get('POSTGRESQL_ADDON_USER'),
-          password: config.get('POSTGRESQL_ADDON_PASSWORD'),
-          database: config.get('POSTGRESQL_ADDON_DB'),
-          entities: [__dirname + '/**/*.entity{.ts,.js}'],
-          synchronize: true,
-          logging: process.env.NODE_ENV === 'dev',
-        } as PostgresConnectionOptions
-      },
-    }),
+    // TypeOrmModule.forRootAsync({
+    //   imports: [ConfigModule],
+    //   inject: [ConfigService],
+    // useFactory: async (config: ConfigService) => {
+    //   return {
+    //     // type: 'postgres',
+    //     // host: config.get('POSTGRESQL_ADDON_HOST'),
+    //     // port: Number(config.get('POSTGRESQL_ADDON_PORT')),
+    //     // username: config.get('POSTGRESQL_ADDON_USER'),
+    //     // password: config.get('POSTGRESQL_ADDON_PASSWORD'),
+    //     // database: config.get('POSTGRESQL_ADDON_DB'),
+    //     entities: [__dirname + '/**/*.entity{.ts,.js}'],
+    //     synchronize: true,
+    //     logging: process.env.NODE_ENV === 'dev',
+    //   } as PostgresConnectionOptions
+    // },
+    // }),
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       parser: I18nJsonParser,
@@ -42,7 +42,7 @@ import { join } from 'path'
         watch: process.env.NODE_ENV === 'dev',
       },
     }),
-    CardModule,
+    // CardModule,
     ImageModule,
     MailModule,
     ConsoleModule,
