@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3002
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
   app.enableCors({
-    origin: '*',
+    origin: 'https://card-pokemon.com',
   })
   app.useGlobalPipes(new ValidationPipe())
   app.setGlobalPrefix('/api')
