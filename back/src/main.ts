@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3002
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
-  app.enableCors()
+  // app.enableCors()
   app.useGlobalPipes(new ValidationPipe())
   app.setGlobalPrefix('/api')
   const options = new DocumentBuilder()
