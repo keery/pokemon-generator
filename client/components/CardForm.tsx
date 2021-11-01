@@ -54,7 +54,7 @@ const CardForm = () => {
             </Flex>
           )}
           <VStack
-            overflow="scroll"
+            overflowY="scroll"
             mt={{ base: 0, xl: 10 }}
             spacing={14}
             alignItems="stretch"

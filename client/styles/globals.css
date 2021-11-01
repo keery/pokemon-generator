@@ -21,6 +21,20 @@
   src: url("/assets/fonts/GillSansStd.otf");
 }
 
+.not-apple-like ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.not-apple-like ::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgb(128 128 128 / 18%);
+}
+
+.not-apple-like ::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #626262;
+}
+
 ::-moz-selection {
   background: #fe5b54;
 }
