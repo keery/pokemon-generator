@@ -28,9 +28,15 @@ const Modal = ({
   return (
     <>
       {button}
-      <ModalChakra isOpen={isOpen} onClose={onClose} isCentered {...rest}>
+      <ModalChakra
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+        {...rest}
+        scrollBehavior="inside"
+      >
         <ModalOverlay />
-        <ModalContent py={5} w="96%">
+        <ModalContent py={5} w="96%" maxH="95vh">
           {title && <ModalHeader>{title}</ModalHeader>}
           {withCloseButton && <ModalCloseButton />}
           <ModalBody>{children}</ModalBody>

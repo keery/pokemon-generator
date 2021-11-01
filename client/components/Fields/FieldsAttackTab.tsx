@@ -18,7 +18,7 @@ const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
         <Tab>{t("attack2")}</Tab>
       </TabList>
       <TabPanels>
-        <TabPanel>
+        <TabPanel maxH="100%">
           <FieldsAttack name="attack1" />
         </TabPanel>
         <TabPanel>
