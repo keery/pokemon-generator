@@ -5,7 +5,11 @@ import useImage from "use-image";
 function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
   if (srcWidth <= maxWidth && srcHeight <= maxHeight)
     return { width: srcWidth, height: srcHeight };
-  var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+  const ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+
+  if (srcWidth > srcHeight) {
+    return { width: maxWidth, height: srcHeight * ratio };
+  }
 
   return { width: srcWidth * ratio, height: srcHeight * ratio };
 }

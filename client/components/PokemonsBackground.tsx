@@ -80,11 +80,13 @@ const pokemons: Record<Element, BgPokemon[]> = {
     {
       src: "assets/img/bg/pokemon-grass-1.png",
       width: "18vw",
+      maxWidth: "280px",
     },
     {
       src: "assets/img/bg/pokemon-grass-3.png",
       transform: "rotateY(180deg)",
       width: "18vw",
+      maxWidth: "320px",
     },
   ],
 };
