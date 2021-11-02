@@ -9,18 +9,17 @@ interface Props {
 const Layout = ({ children }: Props) => {
   const isVisible = useBreakpointValue({ base: true, xl: false });
   const isMacLike = useMemo(() => {
-    if (typeof navigator !== "undefined") {
-      return /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform);
+    if (
+      typeof navigator !== "undefined" &&
+      /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)
+    ) {
+      return "not-apple-like";
     }
-    return null;
+    return "";
   }, []);
 
   return (
-    <Flex
-      direction="column"
-      h="100%"
-      className={!isMacLike ? "not-apple-like" : ""}
-    >
+    <Flex direction="column" h="100%" className={isMacLike}>
       {isVisible && (
         <Container py={2}>
           <Logo />

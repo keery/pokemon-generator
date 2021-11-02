@@ -138,7 +138,7 @@ const InteractiveLayer = () => {
         y={7}
         height={4.2}
         width={stage.value === BASIC ? 54 : 37.4}
-        fullWidth={265}
+        fullWidth={stage.value === BASIC ? 265 : 183}
         fontSize={31}
         control={control}
         icon={

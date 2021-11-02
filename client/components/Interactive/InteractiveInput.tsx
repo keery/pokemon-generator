@@ -41,6 +41,7 @@ const InteractiveInput = ({
 
   useEffect(() => {
     new ResizeObserver(() => {
+      if (!inputRef.current) return;
       inputRef.current.style.fontSize =
         (inputRef?.current.clientWidth / fullWidth) * fontSize + "px";
     }).observe(inputRef?.current);
