@@ -61,5 +61,8 @@
     "pictureAdded": "Image added",
     "removePicture": "Remove image",
     "prev" : "Undo",
-    "next" : "Redo"
+    "next" : "Redo",
+    "help": "Help",
+    "eyeButtonHelp": "Show interactive areas",
+    "dontDisplay": "Don't show again"
 }

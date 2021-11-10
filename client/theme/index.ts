@@ -39,6 +39,7 @@ const theme = extendTheme({
     main: "#516fb3",
     main2: "#f4e8fb",
     text: "#3b434c",
+    pokeball: "#fe5b54",
   },
   radii: {
     xs: "0.3rem",

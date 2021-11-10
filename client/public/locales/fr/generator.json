@@ -62,5 +62,8 @@
     "pictureAdded": "Image ajoutée",
     "removePicture": "Supprimer l'image",
     "prev" : "Annuler",
-    "next" : "Rétablir"
+    "next" : "Rétablir",
+    "help": "Aide",
+    "eyeButtonHelp": "Afficher les zones interactives",
+    "dontDisplay": "Ne plus afficher"
 }

@@ -36,7 +36,7 @@ const getPlacement = (
     case "bottom":
       return {
         button: {
-          top: isSecondLine ? "106.5%" : "101%",
+          top: isSecondLine ? "calc(101% + 36px)" : "101%",
         },
         line: {
           ...LINE,
