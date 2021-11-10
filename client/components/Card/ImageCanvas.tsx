@@ -54,7 +54,7 @@ const ImageCanvas = ({
   y,
   maxHeight = null,
   maxWidth = null,
-  prefixPath = "assets/img/",
+  prefixPath = "../assets/img/",
   draggable = false,
   name = "",
   isTransformable = false,

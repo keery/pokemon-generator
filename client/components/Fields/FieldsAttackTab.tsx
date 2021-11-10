@@ -1,9 +1,7 @@
 import React from "react";
-
 import { useTranslation } from "next-i18next";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import FieldsAttack from "~components/Fields/FieldsAttack";
-
 interface Props {
   defaultIndex?: number;
 }

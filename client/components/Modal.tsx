@@ -8,8 +8,11 @@ import {
   ModalBody,
   ModalCloseButton,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import { closeModalWithUrl } from "~utils/helper";
 
-interface Props extends ModalProps {
+interface Props extends Omit<ModalProps, "isOpen"> {
+  name: string;
   title?: string;
   button?: React.ReactElement;
   children: React.ReactNode;
@@ -17,20 +20,22 @@ interface Props extends ModalProps {
 }
 
 const Modal = ({
+  name,
   onClose,
-  isOpen,
   button = null,
   children,
   title,
   withCloseButton = false,
   ...rest
 }: Props) => {
+  const router = useRouter();
+
   return (
     <>
       {button}
       <ModalChakra
-        isOpen={isOpen}
-        onClose={onClose}
+        isOpen={router.query?.modal === name}
+        onClose={() => closeModalWithUrl(onClose)}
         isCentered
         {...rest}
         scrollBehavior="inside"

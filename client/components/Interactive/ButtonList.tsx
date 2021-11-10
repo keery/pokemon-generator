@@ -158,7 +158,7 @@ const ButtonList = ({
                   style={{
                     ...(styleEl as MotionStyle),
                     transition: "opacity 200ms",
-                    backgroundImage: `url(assets/img/1-gen/${prefix}${item.value}.png)`,
+                    backgroundImage: `url(/assets/img/1-gen/${prefix}${item.value}.png)`,
                     opacity: isSelected ? 0.5 : 1,
                     cursor: isSelected ? "not-allowed" : "pointer",
                   }}

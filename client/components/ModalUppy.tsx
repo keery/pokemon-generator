@@ -20,6 +20,7 @@ import useToast from "~hooks/useToast";
 import { cardAtom } from "~atoms/card";
 import { useSetRecoilState } from "recoil";
 import { CARD_DEFAULT_STATE } from "~data/card";
+import { openModalWithUrl, closeModalWithUrl } from "~utils/helper";
 
 const getUppyTranslations = (locale) => {
   switch (locale) {
@@ -52,7 +53,7 @@ const ModalUppy = ({ id, name, control }: Props) => {
   const setCardState = useSetRecoilState(cardAtom);
   const { errorToast } = useToast();
   const { i18n, t } = useTranslation("generator");
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onOpen, onClose } = useDisclosure();
   const { field } = useController({
     name,
     control,
@@ -105,7 +106,7 @@ const ModalUppy = ({ id, name, control }: Props) => {
             const reader = new FileReader();
             reader.onload = function (e) {
               field.onChange(e.target.result);
-              onClose();
+              closeModalWithUrl(onClose);
               uppy.reset();
 
               // Reset transformation values
@@ -122,7 +123,7 @@ const ModalUppy = ({ id, name, control }: Props) => {
             reader.readAsDataURL(res.data);
           })
           .catch(() => {
-            onClose();
+            closeModalWithUrl(onClose);
             uppy.reset();
             errorToast(t("uploadFailed"));
           });
@@ -131,10 +132,10 @@ const ModalUppy = ({ id, name, control }: Props) => {
 
   return (
     <Modal
+      name={name}
       size="xl"
       onClose={onClose}
-      isOpen={isOpen}
-      button={<Box id={id} onClick={onOpen} />}
+      button={<Box id={id} onClick={() => openModalWithUrl(name, onOpen)} />}
     >
       <Dashboard
         uppy={uppy}

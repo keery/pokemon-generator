@@ -196,6 +196,7 @@ const InteractiveLayer = () => {
 
       {/* SPECIES SIZE WEIGHT */}
       <InteractiveArea
+        name="species-size-weight"
         x={13.9}
         y={53.7}
         height={3}
@@ -217,6 +218,7 @@ const InteractiveLayer = () => {
       />
       {/* ATTACK 1 */}
       <InteractiveArea
+        name="attack-1"
         x={6.8}
         y={57}
         height={isTiny ? 12 : 24.5}
@@ -238,6 +240,7 @@ const InteractiveLayer = () => {
       {/* ATTACK 2 */}
       {isTiny ? (
         <InteractiveArea
+          name="attack-2"
           x={6.8}
           y={70}
           height={11.8}
@@ -258,6 +261,7 @@ const InteractiveLayer = () => {
         />
       ) : (
         <InteractiveArea
+          name="attack-2"
           x={6.8}
           y={79.9}
           height={0}
@@ -424,6 +428,7 @@ const InteractiveLayer = () => {
       />
       {/* COLLECTION */}
       <InteractiveArea
+        name="collection"
         x={81.2}
         y={94.5}
         height={2.2}

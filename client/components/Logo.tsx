@@ -13,7 +13,7 @@ const Logo = () => {
       <Flex alignItems="center">
         <Image
           w="50px"
-          src={`assets/img/pokeball.png`}
+          src={`/assets/img/pokeball.png`}
           alt={`Logo ${process.env.NEXT_PUBLIC_APP_NAME}`}
         />
 

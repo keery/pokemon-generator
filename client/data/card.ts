@@ -55,24 +55,4 @@ export const CARD_DEFAULT_STATE: Card = {
     label: "1",
     value: 1,
   },
-  // attack1: {
-  //   name: "",
-  //   damage: null,
-  //   info: "",
-  //   type: null,
-  //   amount: {
-  //     label: "1",
-  //     value: 1,
-  //   },
-  // },
-  // attack2: {
-  //   name: "",
-  //   damage: null,
-  //   info: "",
-  //   type: null,
-  //   amount: {
-  //     label: "1",
-  //     value: 1,
-  //   },
-  // },
 };

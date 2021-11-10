@@ -17,73 +17,77 @@ interface BgPokemon {
 
 const pokemons: Record<Element, BgPokemon[]> = {
   water: [
-    { src: "assets/img/bg/pokemon-water-1.png", transform: "rotate(20deg)" },
-    { src: "assets/img/bg/pokemon-water-2.png" },
-    { src: "assets/img/bg/pokemon-water-3.png", transform: "rotateY(180deg)" },
+    { src: "/assets/img/bg/pokemon-water-1.png", transform: "rotate(20deg)" },
+    { src: "/assets/img/bg/pokemon-water-2.png" },
+    { src: "/assets/img/bg/pokemon-water-3.png", transform: "rotateY(180deg)" },
   ],
   psychic: [
-    { src: "assets/img/bg/pokemon-psychic-1.png", transform: "rotate(20deg)" },
+    { src: "/assets/img/bg/pokemon-psychic-1.png", transform: "rotate(20deg)" },
     {
-      src: "assets/img/bg/pokemon-psychic-2.png",
+      src: "/assets/img/bg/pokemon-psychic-2.png",
       transform: "rotateY(180deg)",
     },
-    { src: "assets/img/bg/pokemon-psychic-3.png" },
+    { src: "/assets/img/bg/pokemon-psychic-3.png" },
   ],
   normal: [
-    { src: "assets/img/bg/pokemon-normal-1.png", transform: "rotate(20deg)" },
-    { src: "assets/img/bg/pokemon-normal-4.png", width: "350px" },
-    { src: "assets/img/bg/pokemon-normal-3.png", width: "190px", left: "110%" },
+    { src: "/assets/img/bg/pokemon-normal-1.png", transform: "rotate(20deg)" },
+    { src: "/assets/img/bg/pokemon-normal-4.png", width: "350px" },
+    {
+      src: "/assets/img/bg/pokemon-normal-3.png",
+      width: "190px",
+      left: "110%",
+    },
   ],
   fire: [
     {
-      src: "assets/img/bg/pokemon-fire-1.png",
+      src: "/assets/img/bg/pokemon-fire-1.png",
       transform: "rotateY(180deg) translateX(28px)",
     },
-    { src: "assets/img/bg/pokemon-fire-2.png" },
-    { src: "assets/img/bg/pokemon-fire-3.png", transform: "rotateY(180deg)" },
+    { src: "/assets/img/bg/pokemon-fire-2.png" },
+    { src: "/assets/img/bg/pokemon-fire-3.png", transform: "rotateY(180deg)" },
   ],
   fighting: [
     {
-      src: "assets/img/bg/pokemon-fighting-1.png",
+      src: "/assets/img/bg/pokemon-fighting-1.png",
     },
     {
-      src: "assets/img/bg/pokemon-fighting-3.png",
+      src: "/assets/img/bg/pokemon-fighting-3.png",
       left: { base: "80%", xl: "90%" },
       width: "380px",
     },
     {
-      src: "assets/img/bg/pokemon-fighting-4.png",
+      src: "/assets/img/bg/pokemon-fighting-4.png",
       width: "210px",
     },
   ],
   electric: [
     {
-      src: "assets/img/bg/pokemon-electric-1.png",
+      src: "/assets/img/bg/pokemon-electric-1.png",
       transform:
         "rotateY(180deg) translateX(20px) translateY(-90px) rotateZ(-55deg)",
     },
     {
-      src: "assets/img/bg/pokemon-electric-3.png",
+      src: "/assets/img/bg/pokemon-electric-3.png",
       transform: "rotateY(180deg)",
       width: "410px",
     },
     {
-      src: "assets/img/bg/pokemon-electric-2.png",
+      src: "/assets/img/bg/pokemon-electric-2.png",
     },
   ],
   grass: [
     {
-      src: "assets/img/bg/pokemon-grass-2.png",
+      src: "/assets/img/bg/pokemon-grass-2.png",
       transform: "rotateY(180deg) translateX(-9px) translateY(-90px)",
       width: "370px",
     },
     {
-      src: "assets/img/bg/pokemon-grass-1.png",
+      src: "/assets/img/bg/pokemon-grass-1.png",
       width: "18vw",
       maxWidth: "280px",
     },
     {
-      src: "assets/img/bg/pokemon-grass-3.png",
+      src: "/assets/img/bg/pokemon-grass-3.png",
       transform: "rotateY(180deg)",
       width: "18vw",
       maxWidth: "320px",

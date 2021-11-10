@@ -4,17 +4,17 @@ import { useFormContext } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 
 interface Props {
-  isOpen: boolean;
+  name: string;
   onClose: () => void;
   children: React.ReactNode;
 }
 
-const ModalInteractiveArea = ({ isOpen, onClose, children }: Props) => {
+const ModalInteractiveArea = ({ name, onClose, children }: Props) => {
   const { t } = useTranslation("generator");
   const { control } = useFormContext();
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} withCloseButton>
+    <Modal name={name} onClose={onClose} withCloseButton>
       {children}
     </Modal>
   );

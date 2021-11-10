@@ -10,8 +10,10 @@ import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";
 import Modal from "~components/Interactive/ModalInteractiveArea";
+import { openModalWithUrl } from "~utils/helper";
 
 interface Props extends BoxProps {
+  name: string;
   x: number;
   y: number;
   height: number;
@@ -24,6 +26,7 @@ interface Props extends BoxProps {
 }
 
 const InteractiveArea = ({
+  name,
   x,
   y,
   height,
@@ -39,23 +42,23 @@ const InteractiveArea = ({
   const { isVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
   const isMobile = useBreakpointValue({ base: true, xl: false });
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onOpen, onClose } = useDisclosure();
 
   const onClick = useCallback(() => {
     if (isMobile) {
-      onOpen();
+      openModalWithUrl(name, onOpen);
     } else {
       document
         .getElementById(labelTarget)
         .scrollIntoView({ behavior: "smooth" });
       document.getElementById(inputTarget).focus({ preventScroll: true });
     }
-  }, [isMobile]);
+  }, [isMobile, name]);
 
   return (
     <Box role="group" onClick={onClick}>
       {isMobile && (
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal name={name} onClose={onClose}>
           {fields}
         </Modal>
       )}
