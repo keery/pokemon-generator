@@ -4,6 +4,7 @@ import { Control, useController, useWatch } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";
+import { observeFieldResize } from "~utils/helper";
 
 interface Props {
   name: string;
@@ -38,11 +39,8 @@ const InteractiveTextarea = ({
   const areaColor = useColorArea();
 
   useEffect(() => {
-    new ResizeObserver(() => {
-      inputRef.current.style.fontSize =
-        (inputRef?.current.clientWidth / fullWidth) * fontSize + "px";
-    }).observe(inputRef?.current);
-  }, [inputRef?.current, fullWidth]);
+    observeFieldResize(inputRef.current, fullWidth, fontSize);
+  }, [inputRef?.current, fullWidth, fontSize]);
 
   return (
     <Box role="group">

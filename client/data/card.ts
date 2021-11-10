@@ -38,7 +38,7 @@ export const CARD_DEFAULT_STATE: Card = {
   species: "",
   length: "",
   weight: "",
-  bgColor: { r: 255, g: 255, b: 255, a: 0 },
+  bgColor: { r: 255, g: 255, b: 255, a: 1 },
   attack1Name: "",
   attack1Damage: null,
   attack1Info: "",
