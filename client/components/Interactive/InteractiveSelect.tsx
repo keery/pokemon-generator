@@ -78,6 +78,7 @@ const InteractiveSelect = ({
           textAlign="justify"
           fontFamily="pokehp"
           fontSize="18px"
+          cursor="pointer"
         >
           {hasEmptyOption && <option value=""></option>}
           {choices.map(({ label, value }) => (

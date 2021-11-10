@@ -82,6 +82,7 @@ const ButtonList = ({
             display="inline-block"
             role="group"
             w={`${size}%`}
+            cursor="pointer"
           >
             <AspectRatio
               borderRadius="100%"
