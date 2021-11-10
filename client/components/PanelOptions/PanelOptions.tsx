@@ -49,7 +49,7 @@ const PanelOptions = () => {
       alignSelf={{ base: "center", xl: "flex-start" }}
       direction="column"
       pos="relative"
-      // zIndex={100}
+      zIndex={9}
       w={{ base: "100%", sm: "auto" }}
     >
       <Stack

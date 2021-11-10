@@ -16,6 +16,7 @@ const CardForm = () => {
 
   return (
     <Flex
+      zIndex={8}
       height="100%"
       flex={1}
       w={{ base: "100%", xl: "500px" }}
