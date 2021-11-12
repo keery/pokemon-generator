@@ -9,6 +9,7 @@ import {
   Square,
   useDisclosure,
   AspectRatio,
+  Text,
 } from "@chakra-ui/react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslation } from "next-i18next";
@@ -65,13 +66,27 @@ const ColorPicker = () => {
         zIndex={9999}
         border="none"
         w="fit-content"
-        bgColor="transparent"
+        borderRadius="sm"
+        layerStyle="glass"
+        bgColor="rgb(255, 255, 255)"
         boxShadow="none"
+        mx={2}
         _focus={{
           boxShadow: "none",
         }}
       >
-        <PopoverBody>
+        <PopoverBody p={0}>
+          <Text
+            display={{ base: "block", xl: "none" }}
+            fontWeight="600"
+            textTransform="uppercase"
+            fontSize="0.9rem"
+            py={2}
+            color="text"
+            textAlign="center"
+          >
+            {t("colorBg")}
+          </Text>
           <RgbaColorPicker color={field.value} onChange={field.onChange} />
         </PopoverBody>
       </PopoverContent>
