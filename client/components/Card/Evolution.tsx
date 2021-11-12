@@ -12,6 +12,7 @@ const Evolution = ({
   isSelected,
   onSelect,
   updateScale,
+  onDelete,
 }) => {
   const stage: Select<Stage> = useWatch({
     control,
@@ -35,6 +36,7 @@ const Evolution = ({
         isSelected={isSelected}
         onSelect={onSelect}
         updateScale={updateScale}
+        onDelete={onDelete}
       />
       <EvolutionName control={control} />
     </>

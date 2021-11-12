@@ -62,6 +62,8 @@
     "choosePicture": "Choisir une image",
     "pictureAdded": "Image ajoutée",
     "removePicture": "Supprimer l'image",
+    "remove": "Supprimer",
+    "resize": "Redimensionner",
     "prev" : "Annuler",
     "next" : "Rétablir",
     "help": "Aide",

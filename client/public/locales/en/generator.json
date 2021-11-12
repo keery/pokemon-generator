@@ -61,6 +61,8 @@
     "choosePicture": "Choose an image",
     "pictureAdded": "Image added",
     "removePicture": "Remove image",
+    "remove": "Delete",
+    "resize": "Resize",
     "prev" : "Undo",
     "next" : "Redo",
     "help": "Help",

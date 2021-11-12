@@ -2750,13 +2750,6 @@
     "@uppy/utils" "^4.0.2"
     preact "^10.5.13"
 
-"@uppy/drop-target@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@uppy/drop-target/-/drop-target-1.1.1.tgz#9bfbcb7b284ef605d01fc24823f857cbad51377a"
-  integrity sha512-2MxNGEkI2vt1D6MEa0PNqR+VTMbuUzmiytHyy57phZNCNes8K4BdnneBwla2nG3LI0D1TURK7MKxaSjv93d3Vg==
-  dependencies:
-    "@uppy/utils" "^4.0.3"
-
 "@uppy/dropbox@^2.0.2":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@uppy/dropbox/-/dropbox-2.0.3.tgz#82522140709fc1fc7e27af43c64c1d8b200e6e3e"
@@ -2885,13 +2878,6 @@
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@uppy/utils/-/utils-4.0.2.tgz#6767e47ab659d4acc0fb7e47e45eb20445fd9713"
   integrity sha512-Vk3iOVPUAR2gbP+OuJSetGgX0hQPIDpsnliobEXmV88xtmRTUryMaNGTE8Ka5LKxd3XM03svauoRnco+5ISHyQ==
-  dependencies:
-    lodash.throttle "^4.1.1"
-
-"@uppy/utils@^4.0.3":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@uppy/utils/-/utils-4.0.3.tgz#181fdd161e1450d31af0cf7bc97946a99196a8fe"
-  integrity sha512-LApneC8lNvTonzSJFupxzuEvKhwp/Klc1otq8t+zXpdgjLVVSuW/rJBFfdIDrmDoqSzVLQKYjMy07CmhDAWfKg==
   dependencies:
     lodash.throttle "^4.1.1"
 
@@ -10765,7 +10751,15 @@ react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-konva@^17.0.2-5:
+react-konva-utils@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-konva-utils/-/react-konva-utils-0.2.0.tgz#e79ed7776edd50f40c152d8d49d2693ff12e910b"
+  integrity sha512-xjxhmuZnRJthInyb5wLwdgtO5gQnUvCpEutMoFwQtnwL4s4JFNLTq+fjlmCGhP+TxiJXiztzwinptL+wxP16pg==
+  dependencies:
+    react-konva "^17.0.2-4"
+    use-image "^1.0.7"
+
+react-konva@^17.0.2-4, react-konva@^17.0.2-5:
   version "17.0.2-5"
   resolved "https://registry.yarnpkg.com/react-konva/-/react-konva-17.0.2-5.tgz#e70b0acf323402de0a540f27b300fbe7ed151849"
   integrity sha512-IyzdfqRDK8r1ulp/jbLPX18AuO+n5yNtL0+4T0QEUsgArRqIl/VRCG1imA5mYJBk0cBNC5+fWDHN+HWEW62ZEQ==

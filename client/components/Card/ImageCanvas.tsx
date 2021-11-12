@@ -1,29 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Image as KonvaImage, Transformer, Group } from "react-konva";
+import { Html } from "react-konva-utils";
+import { useDisclosure } from "@chakra-ui/react";
 import useImage from "use-image";
-
-function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
-  if (srcWidth <= maxWidth && srcHeight <= maxHeight)
-    return { width: srcWidth, height: srcHeight };
-
-  const axe = maxWidth / srcWidth < maxHeight / srcHeight ? "width" : "height";
-
-  const ratioWidth = maxWidth / srcWidth;
-  const ratioHeight = maxHeight / srcHeight;
-
-  const resizedHeight = srcHeight * ratioWidth;
-  const resizedWidth = srcWidth * ratioHeight;
-
-  if (maxWidth / resizedWidth === maxHeight / resizedHeight) {
-    return { width: resizedWidth, height: resizedHeight };
-  }
-  if (axe === "height") {
-    return { width: resizedWidth, height: maxHeight };
-  }
-  if (axe === "width") {
-    return { width: maxWidth, height: resizedHeight };
-  }
-}
+import useLongPress from "~hooks/useLongPress";
+import { calculateAspectRatioFit } from "~utils/helper";
+import PressMenu from "~components/PressMenu";
+import Trash from "public/assets/img/trash.svg";
+import Resize from "public/assets/img/resize.svg";
 
 interface Props {
   src: string;
@@ -46,6 +30,7 @@ interface Props {
   clipY?: number;
   clipX?: number;
   onSelect?: () => void;
+  onDelete?: () => void;
   isSelected?: boolean;
   onTransformEnd?: (
     name: string,
@@ -80,11 +65,38 @@ const ImageCanvas = ({
   onSelect = null,
   isSelected = false,
   onTransformEnd = null,
+  onDelete = null,
 }: Props) => {
   const [size, setSize] = useState([width, height]);
+  const [menuPosition, setMenuPosition] = useState(null);
   const trRef = useRef(null);
   const imgRef = useRef(null);
   const [image] = useImage(`${prefixPath}${src}`, "anonymous");
+  const { onOpen, onClose, isOpen: menuIsOpen } = useDisclosure();
+
+  const onLongPress = (e) => {
+    if (
+      e.type === "touchstart" ||
+      e.type === "touchmove" ||
+      e.type === "touchend" ||
+      e.type === "touchcancel"
+    ) {
+      setMenuPosition(e.currentTarget.pointerPos);
+    } else if (
+      e.type === "mousedown" ||
+      e.type === "mouseup" ||
+      e.type === "mousemove" ||
+      e.type === "mouseover" ||
+      e.type === "mouseout" ||
+      e.type === "mouseenter" ||
+      e.type === "mouseleave"
+    ) {
+      setMenuPosition({ x: e.evt.offsetX, y: e.evt.offsetY });
+    }
+    onOpen();
+  };
+
+  const longPressEvent = useLongPress(onLongPress);
 
   useEffect(() => {
     if (isSelected && isTransformable && !!trRef.current && !!imgRef) {
@@ -139,9 +151,12 @@ const ImageCanvas = ({
           rotation={rotation}
           draggable={draggable}
           onDragEnd={onDragEnd}
-          on
           isSelected={isSelected}
-          onClick={() => (isTransformable ? onSelect() : null)}
+          onClick={() => {
+            if (isTransformable) {
+              onSelect();
+            }
+          }}
           onTransformEnd={() => {
             const node = imgRef.current;
             onTransformEnd(
@@ -153,7 +168,21 @@ const ImageCanvas = ({
               node.attrs.y
             );
           }}
+          {...longPressEvent}
         />
+        {isTransformable && (
+          <Html>
+            <PressMenu
+              position={menuPosition}
+              onClose={onClose}
+              isOpen={menuIsOpen}
+              items={[
+                { name: "Remove", icon: <Trash />, onClick: onDelete },
+                { name: "Resize", icon: <Resize />, onClick: onSelect },
+              ]}
+            />
+          </Html>
+        )}
       </Group>
     </>
   );

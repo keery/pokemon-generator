@@ -87,6 +87,10 @@ const Card = () => {
     setCard({ ...card, selectedImg: null });
   }, [card]);
 
+  const deleteFile = (name) => {
+    setValue(name, null);
+  };
+
   useEffect(() => {
     if (!Boolean(card.selectedImg)) return;
     Mousetrap.bind("backspace", () => {
@@ -163,6 +167,7 @@ const Card = () => {
                     onSelect={() =>
                       setCard({ ...card, selectedImg: "mainImage" })
                     }
+                    onDelete={() => deleteFile("mainImage")}
                   />
                   <Name control={control} stage={stage} />
                   <Attacks control={control} />
@@ -174,6 +179,7 @@ const Card = () => {
                     onSelect={() =>
                       setCard({ ...card, selectedImg: "evolvePicture" })
                     }
+                    onDelete={() => deleteFile("evolvePicture")}
                   />
                   <Group x={38} y={593} width={570}>
                     <TypeWithAmount control={control} name="weakness" />

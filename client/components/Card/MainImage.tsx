@@ -16,6 +16,7 @@ interface Props {
   onSelect: () => void;
   control: Control;
   isSelected?: boolean;
+  onDelete: () => void;
 }
 
 const MainImage = ({
@@ -24,6 +25,7 @@ const MainImage = ({
   updateScale,
   onSelect,
   isSelected = false,
+  onDelete,
 }: Props) => {
   const [
     mainImage,
@@ -82,6 +84,7 @@ const MainImage = ({
         clipHeight={271}
         clipY={0}
         clipX={-2}
+        onDelete={onDelete}
       />
     </Group>
   );
