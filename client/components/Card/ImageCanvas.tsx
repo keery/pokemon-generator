@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Image as KonvaImage, Transformer, Group } from "react-konva";
 import { Html } from "react-konva-utils";
 import { useDisclosure } from "@chakra-ui/react";
@@ -68,33 +68,28 @@ const ImageCanvas = ({
   onDelete = null,
 }: Props) => {
   const [size, setSize] = useState([width, height]);
+  const [isDragging, setDragging] = useState(false);
   const [menuPosition, setMenuPosition] = useState(null);
   const trRef = useRef(null);
   const imgRef = useRef(null);
   const [image] = useImage(`${prefixPath}${src}`, "anonymous");
   const { onOpen, onClose, isOpen: menuIsOpen } = useDisclosure();
 
-  const onLongPress = (e) => {
-    if (
-      e.type === "touchstart" ||
-      e.type === "touchmove" ||
-      e.type === "touchend" ||
-      e.type === "touchcancel"
-    ) {
-      setMenuPosition(e.currentTarget.pointerPos);
-    } else if (
-      e.type === "mousedown" ||
-      e.type === "mouseup" ||
-      e.type === "mousemove" ||
-      e.type === "mouseover" ||
-      e.type === "mouseout" ||
-      e.type === "mouseenter" ||
-      e.type === "mouseleave"
-    ) {
-      setMenuPosition({ x: e.evt.offsetX, y: e.evt.offsetY });
-    }
-    onOpen();
-  };
+  const onLongPress = useCallback(
+    (e) => {
+      if (isDragging) return;
+      if (
+        e.type === "touchstart" ||
+        e.type === "touchmove" ||
+        e.type === "touchend" ||
+        e.type === "touchcancel"
+      ) {
+        setMenuPosition(e.currentTarget.pointerPos);
+      }
+      onOpen();
+    },
+    [isDragging]
+  );
 
   const longPressEvent = useLongPress(onLongPress);
 
@@ -150,7 +145,14 @@ const ImageCanvas = ({
           scaleY={scaleY}
           rotation={rotation}
           draggable={draggable}
-          onDragEnd={onDragEnd}
+          onDragStart={() => {
+            setMenuPosition(null);
+            setDragging(true);
+          }}
+          onDragEnd={(event) => {
+            setDragging(false);
+            onDragEnd(event);
+          }}
           isSelected={isSelected}
           onClick={() => {
             if (isTransformable) {

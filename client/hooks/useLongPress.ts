@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useEffect } from "react";
 
 export function on<T extends Window | Document | HTMLElement | EventTarget>(
   obj: T | null,
@@ -48,6 +48,10 @@ const useLongPress = (
   const timeout = useRef<ReturnType<typeof setTimeout>>();
   const target = useRef<EventTarget>();
 
+  useEffect(() => {
+    clear();
+  }, [callback]);
+
   const start = useCallback(
     (event: TouchEvent | MouseEvent) => {
       // prevent ghost click on mobile devices
@@ -55,6 +59,7 @@ const useLongPress = (
         on(event.target, "touchend", preventDefault, { passive: false });
         target.current = event.target;
       }
+
       timeout.current = setTimeout(() => callback(event), delay);
     },
     [callback, delay, isPreventDefault]
