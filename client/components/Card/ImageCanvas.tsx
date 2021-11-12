@@ -5,13 +5,24 @@ import useImage from "use-image";
 function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
   if (srcWidth <= maxWidth && srcHeight <= maxHeight)
     return { width: srcWidth, height: srcHeight };
-  const ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
 
-  if (srcWidth > srcHeight) {
-    return { width: maxWidth, height: srcHeight * ratio };
+  const axe = maxWidth / srcWidth < maxHeight / srcHeight ? "width" : "height";
+
+  const ratioWidth = maxWidth / srcWidth;
+  const ratioHeight = maxHeight / srcHeight;
+
+  const resizedHeight = srcHeight * ratioWidth;
+  const resizedWidth = srcWidth * ratioHeight;
+
+  if (maxWidth / resizedWidth === maxHeight / resizedHeight) {
+    return { width: resizedWidth, height: resizedHeight };
   }
-
-  return { width: srcWidth * ratio, height: srcHeight * ratio };
+  if (axe === "height") {
+    return { width: resizedWidth, height: maxHeight };
+  }
+  if (axe === "width") {
+    return { width: maxWidth, height: resizedHeight };
+  }
 }
 
 interface Props {
