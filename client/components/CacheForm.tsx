@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import isEqual from "lodash.isequal";
 import debounce from "lodash.debounce";
 import { updatedDiff } from "deep-object-diff";
+import { CARD_DEFAULT_STATE } from "~data/card";
 
 const CacheForm = () => {
   const { control, reset } = useFormContext();
@@ -31,7 +32,6 @@ const CacheForm = () => {
 
       cacheCard(values);
       const diff = updatedDiff(prev, values);
-
       if (Object.keys(diff).length === 0) return;
 
       const historyLine = {
@@ -59,6 +59,8 @@ const CacheForm = () => {
   );
 
   useEffect(() => {
+    const isResetted = updatedDiff(CARD_DEFAULT_STATE, formValues);
+    if (isResetted) return null;
     onChange(formValues, history, historyState, prevState);
   }, [formValues]);
 
