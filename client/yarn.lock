@@ -2750,6 +2750,13 @@
     "@uppy/utils" "^4.0.2"
     preact "^10.5.13"
 
+"@uppy/drop-target@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@uppy/drop-target/-/drop-target-1.1.1.tgz#9bfbcb7b284ef605d01fc24823f857cbad51377a"
+  integrity sha512-2MxNGEkI2vt1D6MEa0PNqR+VTMbuUzmiytHyy57phZNCNes8K4BdnneBwla2nG3LI0D1TURK7MKxaSjv93d3Vg==
+  dependencies:
+    "@uppy/utils" "^4.0.3"
+
 "@uppy/dropbox@^2.0.2":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@uppy/dropbox/-/dropbox-2.0.3.tgz#82522140709fc1fc7e27af43c64c1d8b200e6e3e"
@@ -2878,6 +2885,13 @@
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@uppy/utils/-/utils-4.0.2.tgz#6767e47ab659d4acc0fb7e47e45eb20445fd9713"
   integrity sha512-Vk3iOVPUAR2gbP+OuJSetGgX0hQPIDpsnliobEXmV88xtmRTUryMaNGTE8Ka5LKxd3XM03svauoRnco+5ISHyQ==
+  dependencies:
+    lodash.throttle "^4.1.1"
+
+"@uppy/utils@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@uppy/utils/-/utils-4.0.3.tgz#181fdd161e1450d31af0cf7bc97946a99196a8fe"
+  integrity sha512-LApneC8lNvTonzSJFupxzuEvKhwp/Klc1otq8t+zXpdgjLVVSuW/rJBFfdIDrmDoqSzVLQKYjMy07CmhDAWfKg==
   dependencies:
     lodash.throttle "^4.1.1"
 
@@ -11188,11 +11202,6 @@ requires-port@^1.0.0:
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
 
-resize-observer-polyfill@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
-  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
-
 resolve-cwd@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/resolve-cwd/-/resolve-cwd-2.0.0.tgz#00a9f7387556e27038eae232caa372a6a59b665a"
@@ -12692,13 +12701,6 @@ use-callback-ref@^1.2.1, use-callback-ref@^1.2.3:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/use-callback-ref/-/use-callback-ref-1.2.5.tgz#6115ed242cfbaed5915499c0a9842ca2912f38a5"
   integrity sha512-gN3vgMISAgacF7sqsLPByqoePooY3n2emTH59Ur5d/M8eg4WTWu1xp8i8DHjohftIyEx0S08RiYxbffr4j8Peg==
-
-use-fit-text@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/use-fit-text/-/use-fit-text-2.4.0.tgz#d3d1cd72f6d29cfb2233ec0e0b38c6f25d319f67"
-  integrity sha512-Iy4LMrXcdxWlyZ5phntMpJMgyXGB1p3tV73y2r0QrZ6f/thPh+/QU3ie6RCXmjF8tHMs20FKMPskXeDYIla/Ww==
-  dependencies:
-    resize-observer-polyfill "^1.5.1"
 
 use-image@^1.0.7:
   version "1.0.8"

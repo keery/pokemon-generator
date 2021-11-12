@@ -182,6 +182,132 @@ a {
   color: #516fb3;
 }
 
+.drag-drop > div {
+  width: 100%;
+}
+.uppy-DragDrop-arrow {
+  fill: #516fb3 !important;
+}
+.uppy-DragDrop--isDragDropSupported {
+  border: none !important;
+  border-radius: 0 !important;
+}
+.uppy-DragDrop-container {
+  background-color: transparent !important;
+}
+.uppy-DragDrop-inner {
+  width: 100%;
+  height: 100%;
+}
+.uppy-DragDrop-arrow,
+.uppy-DragDrop-label {
+  z-index: 2;
+  position: relative;
+  transition: opacity 300ms, transform 300ms;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.uppy-DragDrop-inner:before,
+.uppy-DragDrop-inner:after {
+  content: "";
+  position: absolute;
+  opacity: 0;
+  background-color: rgb(255 255 255);
+  transition: opacity 300ms linear;
+}
+.uppy-DragDrop-inner:before {
+  display: none;
+}
+
+.uppy-DragDrop-inner:after {
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+.uppy-DragDrop-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5% !important;
+}
+.uppy-DragDrop-arrow {
+  width: 30% !important;
+  height: 30% !important;
+}
+
+.drag-drop.is-stage.is-main-image .uppy-DragDrop-inner:after {
+  top: 0%;
+  height: 100%;
+  clip-path: polygon(
+    0 0,
+    0% 7.6%,
+    12.2% 7.6%,
+    12.2% 0%,
+    100% 0%,
+    100% 100%,
+    0% 100%
+  );
+}
+
+.is-stage.drag-drop.is-main-image .uppy-DragDrop-container::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-image: url("/assets/img/1-gen/slice-stage-transparent.png");
+  left: -2.2%;
+  top: -3.3%;
+  width: 27.7%;
+  height: 18.8%;
+  z-index: 999;
+  background-position: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: opacity 300ms linear;
+  opacity: 0;
+}
+
+.is-stage.is-main-image.drag-drop:hover .uppy-DragDrop-container::before,
+.is-stage.is-main-image
+  .uppy-DragDrop-container.uppy-DragDrop--isDraggingOver::before,
+.interactive-file-visible
+  .is-stage.is-main-image
+  .uppy-DragDrop-container::before {
+  opacity: 1;
+}
+
+.interactive-file-visible .uppy-DragDrop-arrow,
+.drag-drop:hover .uppy-DragDrop-arrow,
+.uppy-DragDrop--isDraggingOver .uppy-DragDrop-arrow,
+.interactive-file-visible .uppy-DragDrop-label,
+.drag-drop:hover .uppy-DragDrop-label,
+.uppy-DragDrop--isDraggingOver .uppy-DragDrop-label {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.interactive-file-visible .uppy-DragDrop-inner:before,
+.drag-drop:hover .uppy-DragDrop-inner:before,
+.uppy-DragDrop--isDraggingOver .uppy-DragDrop-inner:before,
+.interactive-file-visible .uppy-DragDrop-inner:after,
+.drag-drop:hover .uppy-DragDrop-inner:after,
+.uppy-DragDrop--isDraggingOver .uppy-DragDrop-inner:after {
+  opacity: 1;
+}
+
+.is-evolve-picture .uppy-DragDrop-inner {
+  padding: 0 !important;
+}
+.is-evolve-picture .uppy-DragDrop-arrow {
+  margin-bottom: 0 !important;
+  width: 40% !important;
+  height: 40% !important;
+}
+.is-evolve-picture .uppy-DragDrop-label {
+  display: none !important;
+}
+
 /* BACKFACE FLIPPING */
 .backface {
   color: white;

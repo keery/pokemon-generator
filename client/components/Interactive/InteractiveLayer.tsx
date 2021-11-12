@@ -55,7 +55,7 @@ const InteractiveLayer = () => {
       {/* MAIN PICTURE */}
       <InteractiveFile
         name="mainImage"
-        width={76.3}
+        width={76.4}
         height={38.9}
         x={11.6}
         y={12.6}

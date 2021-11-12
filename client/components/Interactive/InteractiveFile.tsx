@@ -1,15 +1,16 @@
 import React from "react";
-import { Flex, Box, Text, Image as ChakraImage } from "@chakra-ui/react";
+import { Flex, Box, Image as ChakraImage } from "@chakra-ui/react";
 import { Control, useFormContext, useWatch } from "react-hook-form";
 import InteractiveIcon, {
   Props as InteractiveIconProps,
 } from "./InteractiveIcon";
 import Delete from "public/assets/img/delete.svg";
 import Image from "public/assets/img/image.svg";
-import { useTranslation } from "next-i18next";
 import { BASIC } from "~constants";
 import { areaAtom } from "~atoms/area";
 import { useRecoilValue } from "recoil";
+import { DragDrop } from "@uppy/react";
+import useUppy from "~hooks/useUppy";
 
 interface Props {
   control: Control;
@@ -35,19 +36,13 @@ const InteractiveFile = ({
   const { isVisible } = useRecoilValue(areaAtom);
   const { setValue } = useFormContext();
   const [value, stage] = useWatch({ control, name: [name, "stage"] });
-  const { t } = useTranslation("generator");
+  const uppy = useUppy({
+    id: `${name}-interactive`,
+    fieldName: name,
+  });
 
   return (
-    <Box
-      role="group"
-      onClick={() => {
-        if (Boolean(value)) {
-          setValue(name, null);
-        } else {
-          document.getElementById(name).click();
-        }
-      }}
-    >
+    <Box role="group">
       {Boolean(value) ? (
         <InteractiveIcon
           icon={<Delete fill="#fe5b54" fontSize="1.7rem" />}
@@ -73,88 +68,40 @@ const InteractiveFile = ({
           justifyContent="center"
           role="group"
         >
-          {name === "mainImage" ? (
-            <Box
-              transition="opacity 300ms"
-              opacity={isVisible ? 1 : 0}
-              _groupHover={{
-                opacity: 1,
-              }}
-            >
-              {stage.value !== BASIC && (
-                <Box
-                  pos="absolute"
-                  left={"12%"}
-                  right="0"
-                  top="0"
-                  height="7.8%"
-                  bgColor="rgb(255 255 255 / 65%)"
-                />
-              )}
-              <Box
-                pos="absolute"
-                left="0"
-                right="0"
-                top={stage.value === BASIC ? 0 : "7.8%"}
-                height={stage.value === BASIC ? "100%" : "92.2%"}
-                bgColor="rgb(255 255 255 / 65%)"
-              />
-              {stage.value !== BASIC && (
-                <ChakraImage
-                  src="assets/img/1-gen/slice-stage-transparent.png"
-                  pos="absolute"
-                  left="-2.4%"
-                  w="20.7%"
-                  top="-3.2%"
-                  userSelect="unset"
-                  unselectable="on"
-                  pointerEvents="none"
-                />
-              )}
-            </Box>
-          ) : (
-            <Box
-              transition="opacity 300ms"
-              pos="absolute"
-              left="0"
-              right="0"
-              top="0"
-              bottom="0"
-              opacity={isVisible ? 1 : 0}
-              backdropFilter="blur(8px) saturate(180%)"
-              bgColor="rgb(255 255 255 / 55%)"
-              _groupHover={{
-                opacity: 1,
-              }}
-            />
-          )}
-
           <Flex
+            className={isVisible ? "interactive-file-visible" : ""}
             color="main"
             direction="column"
-            transition="opacity 300ms, transform 300ms"
-            opacity={isVisible ? 1 : 0}
-            transform={isVisible ? "translateY(0)" : "translateY(20px)"}
-            _groupHover={{ opacity: 1, transform: "translateY(0)" }}
-            maxW="60%"
+            w="100%"
+            h="100%"
             alignItems="center"
           >
             <Flex
-              w={name === "mainImage" ? "60%" : "1rem"}
+              w={"100%"}
               justifyContent="center"
+              h="100%"
+              className={`drag-drop ${
+                stage.value !== BASIC ? "is-stage" : ""
+              } ${
+                name === "mainImage" ? "is-main-image" : "is-evolve-picture"
+              }`}
+              zIndex={name !== "mainImage" ? 999 : null}
+              fontSize={{ base: "0.8rem", sm: "0.9rem", md: "1rem" }}
             >
-              <Image width="100%" />
+              <DragDrop
+                uppy={uppy}
+                width="100%"
+                height="100%"
+                onClick={(event) => {
+                  event.preventDefault();
+                  if (Boolean(value)) {
+                    setValue(name, null);
+                  } else {
+                    document.getElementById(name).click();
+                  }
+                }}
+              />
             </Flex>
-            {!noText && (
-              <Text
-                textAlign="center"
-                fontWeight="bold"
-                fontSize="1.3rem"
-                whiteSpace="nowrap"
-              >
-                {t("choosePicture")}
-              </Text>
-            )}
           </Flex>
         </Flex>
       )}
