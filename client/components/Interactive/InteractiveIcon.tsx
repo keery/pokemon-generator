@@ -126,6 +126,9 @@ const InteractiveIcon = ({
         cursor="pointer"
         onClick={onClick}
         transition="all ease-in-out 200ms"
+        _hover={{
+          bgColor: "rgb(255 255 255 / 70%)",
+        }}
         {...rest}
       >
         {!!label && (
