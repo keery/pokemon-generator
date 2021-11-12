@@ -56,6 +56,7 @@
     "openForm": "Ouvrir le formulaire",
     "news" : "De nombreuses fonctionnalités arrivent bientôt ! La possibilité de dessiner vos cartes à l'aide d'outils, enregistrer vos cartes directement sur votre compte, une application mobile afin de pouvoir créer vos propres cartes où vous le souhaitez, et bien plus, restez à l'écoute.",
     "importPicture" : "Importer une photo",
+    "fileTooBig": "L'image est trop volumineuse ({{max}}Mo maximum)",
     "uploadFailed": "Le téléchargement de l'image a échoué",
     "colorBg": "Couleur de fond",
     "choosePicture": "Choisir une image",

@@ -29,7 +29,7 @@ const getUppyTranslations = (locale) => {
 };
 
 const COMPANION_URL = `${process.env.NEXT_PUBLIC_API_URL}/image/companion`;
-
+const MAX_FILE_SIZE = 1000000;
 interface Params {
   id: string;
   onSuccess?: () => void;
@@ -51,7 +51,7 @@ const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
       debug: true,
       allowMultipleUploads: false,
       restrictions: {
-        maxFileSize: 1000000,
+        maxFileSize: MAX_FILE_SIZE,
         maxNumberOfFiles: 1,
         allowedFileTypes: ["image/*"],
       },
@@ -77,6 +77,11 @@ const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
       })
       .use(GoogleDrive, {
         companionUrl: COMPANION_URL,
+      })
+      .on("restriction-failed", (event) => {
+        if (event.size > MAX_FILE_SIZE) {
+          errorToast(t("fileTooBig", { max: MAX_FILE_SIZE * 0.000001 }));
+        }
       })
       .on("upload-success", (file, response) => {
         axios

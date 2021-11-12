@@ -55,6 +55,7 @@
     "shareCard" : "Share to your friends",
     "openForm": "Open form",
     "importPicture" : "Import a picture",
+    "fileTooBig": "Image file is too big ({{max}}Mo maximum)",
     "uploadFailed": "Image downloading has failed",
     "colorBg": "Background color",
     "choosePicture": "Choose an image",
