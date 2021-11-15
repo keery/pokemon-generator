@@ -89,6 +89,7 @@ const Card = () => {
 
   const deleteFile = (name) => {
     setValue(name, null);
+    setCard({ ...card, selectedImg: null });
   };
 
   useEffect(() => {
