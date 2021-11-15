@@ -124,7 +124,7 @@ const Card = () => {
         <Image
           opacity="0"
           ref={imgRef}
-          src="/assets/img/1-gen/water-basic.png"
+          src="/assets/img/card-shape.png"
           maxW="100%"
           maxH="100%"
           m="0 auto"
