@@ -10,6 +10,7 @@ const EvolutionImage = ({
   onSelect,
   updateScale,
   onDelete,
+  t,
 }) => {
   const [
     evolvePicture,
@@ -69,6 +70,7 @@ const EvolutionImage = ({
         clipY={0}
         clipX={0}
         onDelete={onDelete}
+        t={t}
       />
     </Group>
   );

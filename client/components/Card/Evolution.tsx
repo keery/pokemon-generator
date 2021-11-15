@@ -30,7 +30,6 @@ const Evolution = ({
         y={79}
         width={79}
         height={50}
-        t={t}
       />
       <EvolutionImage
         control={control}
@@ -39,6 +38,7 @@ const Evolution = ({
         onSelect={onSelect}
         updateScale={updateScale}
         onDelete={onDelete}
+        t={t}
       />
       <EvolutionName control={control} />
     </>
