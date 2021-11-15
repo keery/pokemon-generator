@@ -131,6 +131,7 @@ const PokemonsBackground = ({ control }: Props) => {
             <Image
               src={pokemons[element][0].src}
               transform={pokemons[element][0].transform}
+              alt="Pokemon n°1"
             />
           </Box>
           <Box
@@ -143,6 +144,7 @@ const PokemonsBackground = ({ control }: Props) => {
             <Image
               src={pokemons[element][1].src}
               transform={pokemons[element][1].transform}
+              alt="Pokemon n°2"
             />
           </Box>
           <Box
@@ -156,6 +158,7 @@ const PokemonsBackground = ({ control }: Props) => {
             <Image
               src={pokemons[element][2].src}
               transform={pokemons[element][2].transform}
+              alt="Pokemon n°3"
             />
           </Box>
         </Box>

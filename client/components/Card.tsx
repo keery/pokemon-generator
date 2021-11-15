@@ -122,6 +122,7 @@ const Card = () => {
     >
       <Flex alignItems="center" h="100%" display="inline-flex" pos="relative">
         <Image
+          alt="Card shape"
           opacity="0"
           ref={imgRef}
           src="/assets/img/card-shape.png"

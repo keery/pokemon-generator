@@ -52,7 +52,7 @@ const InteractiveFile = ({
           label={""}
         />
       ) : (
-        <InteractiveIcon icon={<Image width="1rem" />} {...icon} />
+        <InteractiveIcon icon={<Image width="1rem" alt="Delete" />} {...icon} />
       )}
 
       {!Boolean(value) && (
