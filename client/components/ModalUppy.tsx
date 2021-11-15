@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Box, useDisclosure } from "@chakra-ui/react";
 import { Dashboard } from "@uppy/react";
 import French from "@uppy/locales/lib/fr_FR";
@@ -7,6 +7,8 @@ import Modal from "~components/Modal";
 import dynamic from "next/dynamic";
 import useUppy from "~hooks/useUppy";
 import { openModalWithUrl, closeModalWithUrl } from "~utils/helper";
+import { cardAtom } from "~atoms/card";
+import { useSetRecoilState } from "recoil";
 
 const getUppyTranslations = (locale) => {
   switch (locale) {
@@ -21,6 +23,7 @@ const getUppyTranslations = (locale) => {
 interface Props {
   name: string;
   id: string;
+  isDesktop: boolean;
 }
 
 const PLUGINS = [
@@ -32,13 +35,23 @@ const PLUGINS = [
   "Dropbox",
 ];
 
-const ModalUppy = ({ id, name }: Props) => {
+const ModalUppy = ({ id, name, isDesktop }: Props) => {
   const { onOpen, onClose } = useDisclosure();
+  const setCardState = useSetRecoilState(cardAtom);
+
+  const onSuccess = useCallback(() => {
+    closeModalWithUrl(onClose);
+    if (isDesktop) {
+      setTimeout(() => {
+        setCardState((s) => ({ ...s, selectedImg: name }));
+      }, 100);
+    }
+  }, [isDesktop]);
 
   const uppy = useUppy({
     id,
     fieldName: name,
-    onSuccess: () => closeModalWithUrl(onClose),
+    onSuccess,
     onError: () => closeModalWithUrl(onClose),
   });
 

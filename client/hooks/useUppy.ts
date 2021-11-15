@@ -13,8 +13,6 @@ import { useTranslation } from "next-i18next";
 import axios from "axios";
 import useToast from "~hooks/useToast";
 import { useFormContext } from "react-hook-form";
-import { cardAtom } from "~atoms/card";
-import { useSetRecoilState } from "recoil";
 import { CARD_DEFAULT_STATE } from "~data/card";
 
 const getUppyTranslations = (locale) => {
@@ -41,7 +39,6 @@ const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
   const { setValue } = useFormContext();
   const { t, i18n } = useTranslation("generator");
   const { errorToast } = useToast();
-  const setCardState = useSetRecoilState(cardAtom);
 
   const uppy = useUppyReact(() => {
     const instance = new Uppy({
@@ -110,11 +107,6 @@ const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
                 `${fieldName}ScaleY`,
                 CARD_DEFAULT_STATE[`${fieldName}ScaleY`]
               );
-
-              // Select uploaded image
-              setTimeout(() => {
-                setCardState((s) => ({ ...s, selectedImg: fieldName }));
-              }, 100);
             };
             reader.readAsDataURL(res.data);
           })

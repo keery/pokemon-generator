@@ -66,8 +66,12 @@ const Home: NextPage = () => {
             </Flex>
           </Stack>
         </Container>
-        <ModalUppy name="mainImage" id="mainImage" />
-        <ModalUppy name="evolvePicture" id="evolvePicture" />
+        <ModalUppy name="mainImage" id="mainImage" isDesktop={isFormVisible} />
+        <ModalUppy
+          name="evolvePicture"
+          id="evolvePicture"
+          isDesktop={isFormVisible}
+        />
       </form>
     </FormProvider>
   );
