@@ -31,6 +31,9 @@ import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import Mousetrap from "mousetrap";
 import { useTranslation } from "next-i18next";
+import Konva from "konva";
+
+Konva.hitOnDragEnabled = true;
 
 const Card = () => {
   const { isVisible } = useRecoilValue(areaAtom);

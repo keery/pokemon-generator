@@ -27,7 +27,6 @@ const CacheForm = () => {
         isInit.current = true;
         return;
       }
-
       if (isEqual(values, history[history.length - 1])) return;
 
       cacheCard(values);
@@ -60,7 +59,7 @@ const CacheForm = () => {
 
   useEffect(() => {
     const isResetted = updatedDiff(CARD_DEFAULT_STATE, formValues);
-    if (isResetted) return null;
+    if (Object.keys(isResetted).length === 0) return null;
     onChange(formValues, history, historyState, prevState);
   }, [formValues]);
 

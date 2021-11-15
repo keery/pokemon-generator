@@ -4,7 +4,7 @@ import { Html } from "react-konva-utils";
 import { useDisclosure } from "@chakra-ui/react";
 import useImage from "use-image";
 import useLongPress from "~hooks/useLongPress";
-import { calculateAspectRatioFit } from "~utils/helper";
+import { calculateAspectRatioFit, getCenter, getDistance } from "~utils/image";
 import PressMenu from "~components/PressMenu";
 import Trash from "public/assets/img/trash.svg";
 import Resize from "public/assets/img/resize.svg";
@@ -76,6 +76,7 @@ const ImageCanvas = ({
   const trRef = useRef(null);
   const imgRef = useRef(null);
   const [image] = useImage(`${prefixPath}${src}`, "anonymous");
+
   const { onOpen, onClose, isOpen: menuIsOpen } = useDisclosure();
 
   const onLongPress = useCallback(
@@ -117,19 +118,11 @@ const ImageCanvas = ({
 
   if (!image) return null;
 
+  let lastCenter = null;
+  let lastDist = 0;
+
   return (
     <>
-      {isTransformable && isSelected && (
-        <Transformer
-          ref={trRef}
-          boundBoxFunc={(oldBox, newBox) => {
-            if (newBox.width < 5 || newBox.height < 5) {
-              return oldBox;
-            }
-            return newBox;
-          }}
-        />
-      )}
       <Group
         clipWidth={clipWidth}
         clipHeight={clipHeight}
@@ -157,16 +150,12 @@ const ImageCanvas = ({
             onDragEnd(event);
           }}
           isSelected={isSelected}
-          onTap={() => {
-            if (isTransformable) {
-              onSelect();
-            }
-          }}
           onClick={() => {
             if (isTransformable) {
               onSelect();
             }
           }}
+          {...longPressEvent}
           onTransformEnd={() => {
             const node = imgRef.current;
             onTransformEnd(
@@ -178,7 +167,80 @@ const ImageCanvas = ({
               node.attrs.y
             );
           }}
-          {...longPressEvent}
+          onTouchEnd={() => {
+            longPressEvent.onTouchEnd();
+            const node = imgRef.current;
+            if (!!node.attrs.x) {
+              onTransformEnd(
+                name,
+                node.scaleX(),
+                node.scaleY(),
+                node.attrs.rotation,
+                node.attrs.x,
+                node.attrs.y
+              );
+            }
+          }}
+          onTouchMove={(e) => {
+            setMenuPosition(null);
+            if (!isTransformable) return;
+            const node = imgRef.current;
+            e.evt.preventDefault();
+            const touch1 = e.evt.touches[0];
+            const touch2 = e.evt.touches[1];
+
+            if (touch1 && touch2) {
+              if (node.isDragging()) {
+                node.stopDrag();
+              }
+
+              const p1 = {
+                x: touch1.clientX,
+                y: touch1.clientY,
+              };
+              const p2 = {
+                x: touch2.clientX,
+                y: touch2.clientY,
+              };
+
+              if (!lastCenter) {
+                lastCenter = getCenter(p1, p2);
+                return;
+              }
+              const newCenter = getCenter(p1, p2);
+
+              const dist = getDistance(p1, p2);
+
+              if (!lastDist) {
+                lastDist = dist;
+              }
+
+              // local coordinates of center point
+              const pointTo = {
+                x: (newCenter.x - node.x()) / node.scaleX(),
+                y: (newCenter.y - node.y()) / node.scaleX(),
+              };
+
+              const scale = node.scaleX() * (dist / lastDist);
+
+              node.scaleX(scale);
+              node.scaleY(scale);
+
+              // calculate new position of the node
+              const dx = newCenter.x - lastCenter.x;
+              const dy = newCenter.y - lastCenter.y;
+
+              const newPos = {
+                x: newCenter.x - pointTo.x * scale + dx,
+                y: newCenter.y - pointTo.y * scale + dy,
+              };
+
+              node.position(newPos);
+
+              lastDist = dist;
+              lastCenter = newCenter;
+            }
+          }}
         />
         {isTransformable && (
           <Html>
@@ -188,12 +250,23 @@ const ImageCanvas = ({
               isOpen={menuIsOpen}
               items={[
                 { name: t("remove"), icon: <Trash />, onClick: onDelete },
-                { name: t("resize"), icon: <Resize />, onClick: onSelect },
+                // { name: t("resize"), icon: <Resize />, onClick: onSelect },
               ]}
             />
           </Html>
         )}
       </Group>
+      {isTransformable && isSelected && (
+        <Transformer
+          ref={trRef}
+          boundBoxFunc={(oldBox, newBox) => {
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
+            return newBox;
+          }}
+        />
+      )}
     </>
   );
 };

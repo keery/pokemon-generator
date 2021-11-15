@@ -31,31 +31,3 @@ export const closeModalWithUrl = (close: () => void): void => {
   Router.push(`/`, undefined, { shallow: true });
   close();
 };
-
-export function calculateAspectRatioFit(
-  srcWidth,
-  srcHeight,
-  maxWidth,
-  maxHeight
-) {
-  if (srcWidth <= maxWidth && srcHeight <= maxHeight)
-    return { width: srcWidth, height: srcHeight };
-
-  const axe = maxWidth / srcWidth < maxHeight / srcHeight ? "width" : "height";
-
-  const ratioWidth = maxWidth / srcWidth;
-  const ratioHeight = maxHeight / srcHeight;
-
-  const resizedHeight = srcHeight * ratioWidth;
-  const resizedWidth = srcWidth * ratioHeight;
-
-  if (maxWidth / resizedWidth === maxHeight / resizedHeight) {
-    return { width: resizedWidth, height: resizedHeight };
-  }
-  if (axe === "height") {
-    return { width: resizedWidth, height: maxHeight };
-  }
-  if (axe === "width") {
-    return { width: maxWidth, height: resizedHeight };
-  }
-}
