@@ -1,8 +1,6 @@
 import React, { useCallback } from "react";
 import { Box, useDisclosure } from "@chakra-ui/react";
 import { Dashboard } from "@uppy/react";
-import French from "@uppy/locales/lib/fr_FR";
-import Spanish from "@uppy/locales/lib/es_ES";
 import Modal from "~components/Modal";
 import dynamic from "next/dynamic";
 import useUppy from "~hooks/useUppy";
@@ -10,16 +8,6 @@ import { openModalWithUrl, closeModalWithUrl } from "~utils/helper";
 import { cardAtom } from "~atoms/card";
 import { useSetRecoilState } from "recoil";
 
-const getUppyTranslations = (locale) => {
-  switch (locale) {
-    case "fr":
-      return French;
-    case "es":
-      return Spanish;
-    default:
-      return false;
-  }
-};
 interface Props {
   name: string;
   id: string;
