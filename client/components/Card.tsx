@@ -30,6 +30,7 @@ import InteractiveLayer from "./Interactive/InteractiveLayer";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import Mousetrap from "mousetrap";
+import { useTranslation } from "next-i18next";
 
 const Card = () => {
   const { isVisible } = useRecoilValue(areaAtom);
@@ -39,6 +40,7 @@ const Card = () => {
   const { control, setValue } = useFormContext();
   const [card, setCard] = useRecoilState(cardAtom);
   const isMobile = useBreakpointValue({ base: true, md: false });
+  const { t } = useTranslation("generator");
 
   const updateImgPos = useCallback((event: any): void => {
     const { attrs } = event.target;
@@ -169,6 +171,7 @@ const Card = () => {
                       setCard({ ...card, selectedImg: "mainImage" })
                     }
                     onDelete={() => deleteFile("mainImage")}
+                    t={t}
                   />
                   <Name control={control} stage={stage} />
                   <Attacks control={control} />
@@ -181,6 +184,7 @@ const Card = () => {
                       setCard({ ...card, selectedImg: "evolvePicture" })
                     }
                     onDelete={() => deleteFile("evolvePicture")}
+                    t={t}
                   />
                   <Group x={38} y={593} width={570}>
                     <TypeWithAmount control={control} name="weakness" />

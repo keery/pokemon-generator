@@ -8,6 +8,7 @@ import { calculateAspectRatioFit } from "~utils/helper";
 import PressMenu from "~components/PressMenu";
 import Trash from "public/assets/img/trash.svg";
 import Resize from "public/assets/img/resize.svg";
+import { TFunction } from "next-i18next";
 
 interface Props {
   src: string;
@@ -32,6 +33,7 @@ interface Props {
   onSelect?: () => void;
   onDelete?: () => void;
   isSelected?: boolean;
+  t?: TFunction;
   onTransformEnd?: (
     name: string,
     scaleX: number,
@@ -66,6 +68,7 @@ const ImageCanvas = ({
   isSelected = false,
   onTransformEnd = null,
   onDelete = null,
+  t,
 }: Props) => {
   const [size, setSize] = useState([width, height]);
   const [isDragging, setDragging] = useState(false);
@@ -179,8 +182,8 @@ const ImageCanvas = ({
               onClose={onClose}
               isOpen={menuIsOpen}
               items={[
-                { name: "Remove", icon: <Trash />, onClick: onDelete },
-                { name: "Resize", icon: <Resize />, onClick: onSelect },
+                { name: t("remove"), icon: <Trash />, onClick: onDelete },
+                { name: t("resize"), icon: <Resize />, onClick: onSelect },
               ]}
             />
           </Html>
