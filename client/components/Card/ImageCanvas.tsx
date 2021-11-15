@@ -157,6 +157,11 @@ const ImageCanvas = ({
             onDragEnd(event);
           }}
           isSelected={isSelected}
+          onTap={() => {
+            if (isTransformable) {
+              onSelect();
+            }
+          }}
           onClick={() => {
             if (isTransformable) {
               onSelect();
