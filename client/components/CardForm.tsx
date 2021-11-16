@@ -59,7 +59,7 @@ const CardForm = () => {
             mt={{ base: 0, xl: 10 }}
             spacing={14}
             alignItems="stretch"
-            borderRadius="12px"
+            borderRadius="sm"
             direction="column"
             w="100%"
             color="#3b434c"

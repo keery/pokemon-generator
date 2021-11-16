@@ -43,7 +43,7 @@ const Modal = ({
         <ModalOverlay />
         <ModalContent py={5} w="96%" maxH="95vh">
           {title && <ModalHeader>{title}</ModalHeader>}
-          {withCloseButton && <ModalCloseButton />}
+          {withCloseButton && <ModalCloseButton zIndex={9} />}
           <ModalBody>{children}</ModalBody>
         </ModalContent>
       </ModalChakra>

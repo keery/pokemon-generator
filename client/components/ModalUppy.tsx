@@ -45,17 +45,20 @@ const ModalUppy = ({ id, name, isDesktop }: Props) => {
 
   return (
     <Modal
+      withCloseButton
       name={name}
       size="xl"
       onClose={onClose}
       button={<Box id={id} onClick={() => openModalWithUrl(name, onOpen)} />}
     >
-      <Dashboard
-        uppy={uppy}
-        plugins={PLUGINS}
-        proudlyDisplayPoweredByUppy={false}
-        metaFields={[{ id: "name", name: "Name", placeholder: "File name" }]}
-      />
+      <Box pt={4}>
+        <Dashboard
+          uppy={uppy}
+          plugins={PLUGINS}
+          proudlyDisplayPoweredByUppy={false}
+          metaFields={[{ id: "name", name: "Name", placeholder: "File name" }]}
+        />
+      </Box>
     </Modal>
   );
 };
