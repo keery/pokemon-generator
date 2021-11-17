@@ -10,7 +10,6 @@ import { CARD_DEFAULT_STATE } from "~data/card";
 import { decrypt } from "~utils/cache";
 import { useForm, FormProvider } from "react-hook-form";
 import dynamic from "next/dynamic";
-import CacheForm from "~components/CacheForm";
 
 const Card = dynamic(() => import("~components/Card"), { ssr: false });
 const PanelOptions = dynamic(
@@ -43,7 +42,6 @@ const Home: NextPage = () => {
         onSubmit={form.handleSubmit(onSubmit)}
         style={{ height: "100%", overflow: "hidden" }}
       >
-        <CacheForm />
         <BackgroundBlur control={form.control} />
         <Container h="100%" py={6}>
           <Stack

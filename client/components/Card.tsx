@@ -32,6 +32,7 @@ import { areaAtom } from "~atoms/area";
 import Mousetrap from "mousetrap";
 import { useTranslation } from "next-i18next";
 import Konva from "konva";
+import CacheForm from "~components/CacheForm";
 
 Konva.hitOnDragEnabled = true;
 
@@ -44,6 +45,7 @@ const Card = () => {
   const [card, setCard] = useRecoilState(cardAtom);
   const isMobile = useBreakpointValue({ base: true, md: false });
   const { t } = useTranslation("generator");
+  const stage = useWatch({ control, name: "stage" });
 
   const updateImgPos = useCallback((event: any): void => {
     const { attrs } = event.target;
@@ -110,8 +112,6 @@ const Card = () => {
 
   useOutsideClick({ ref: stageRef, handler: resetSelected });
 
-  const stage = useWatch({ control, name: "stage" });
-
   return (
     <Flex
       pos="relative"
@@ -123,6 +123,7 @@ const Card = () => {
       justifyContent="center"
       alignItems="center"
     >
+      <CacheForm />
       <Flex alignItems="center" h="100%" display="inline-flex" pos="relative">
         <Image
           alt="Card shape"

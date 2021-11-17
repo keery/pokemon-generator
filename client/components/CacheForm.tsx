@@ -1,24 +1,34 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { useWatch, useFormContext } from "react-hook-form";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  useMemo,
+} from "react";
+import { useFormContext } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { historyAtom } from "~atoms/history";
 import { cacheCard } from "~utils/cache";
-import dynamic from "next/dynamic";
 import isEqual from "lodash.isequal";
 import debounce from "lodash.debounce";
 import { updatedDiff } from "deep-object-diff";
 import { CARD_DEFAULT_STATE } from "~data/card";
 
-const CacheForm = () => {
-  const { control, reset } = useFormContext();
-  const formValues = useWatch({
-    control,
-  });
+const CacheWrapper = () => {
+  const { watch } = useFormContext();
+  const values = watch();
+
+  return <CacheForm formValues={values} />;
+};
+
+const CacheForm = ({ formValues }) => {
+  const { reset } = useFormContext();
+  const initialValues = useMemo(() => ({ ...formValues }), []);
   const [historyState, setHistoryState] = useRecoilState(historyAtom);
   const [history, setHistory] = useState([
-    { changed: formValues, original: formValues },
+    { changed: initialValues, original: initialValues },
   ]);
-  const [prevState, setPrev] = useState({ ...formValues });
+  const [prevState, setPrev] = useState({ ...initialValues });
   const isInit = useRef(false);
 
   const onChange = useCallback(
@@ -27,10 +37,39 @@ const CacheForm = () => {
         isInit.current = true;
         return;
       }
-      if (isEqual(values, history[history.length - 1])) return;
+
+      if (
+        isEqual(values, history[history.length - 1]) ||
+        ["next", "prev"].includes(historyState.historyAction)
+      )
+        return;
 
       cacheCard(values);
-      const diff = updatedDiff(prev, values);
+      const isResetted = updatedDiff(CARD_DEFAULT_STATE, formValues);
+
+      if (Object.keys(isResetted).length === 0) {
+        setHistory([
+          { changed: CARD_DEFAULT_STATE, original: CARD_DEFAULT_STATE },
+        ]);
+        setPrev({ ...CARD_DEFAULT_STATE });
+        return;
+      }
+
+      let diff = {};
+
+      // Case I am doing modif from middle of history
+      if (
+        state.historyIndex > 0 &&
+        state.historyIndex + 1 !== state.historyLength
+      ) {
+        diff = updatedDiff(
+          { ...prev, ...history[state.historyIndex + 1].original },
+          values
+        );
+      } else {
+        diff = updatedDiff(prev, values);
+      }
+
       if (Object.keys(diff).length === 0) return;
 
       const historyLine = {
@@ -47,25 +86,22 @@ const CacheForm = () => {
       ];
 
       setHistory(newHistory);
-      setPrev(values);
+      setPrev({ ...values });
       setHistoryState({
         historyIndex: newHistory.length - 1,
         historyLength: newHistory.length,
         historyAction: "increment",
       });
     }, 200),
-    []
+    [history, historyState, prevState]
   );
 
   useEffect(() => {
-    const isResetted = updatedDiff(CARD_DEFAULT_STATE, formValues);
-    if (Object.keys(isResetted).length === 0) return null;
     onChange(formValues, history, historyState, prevState);
   }, [formValues]);
 
   useEffect(() => {
     if (!["next", "prev"].includes(historyState.historyAction)) return;
-    isInit.current = false;
 
     const changeToApply =
       historyState.historyAction === "prev"
@@ -85,6 +121,4 @@ const CacheForm = () => {
   return <></>;
 };
 
-export default dynamic(() => Promise.resolve(CacheForm), {
-  ssr: false,
-});
+export default CacheWrapper;
