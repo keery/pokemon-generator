@@ -133,6 +133,7 @@ const Card = () => {
           maxH="100%"
           m="0 auto"
           w="auto"
+          minW="100%"
         />
         <Box
           ref={containerRef}

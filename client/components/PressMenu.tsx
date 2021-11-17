@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Popover,
   Flex,
+  Box,
   PopoverContent,
   PopoverBody,
   Text,
   PopoverArrow,
   PopoverProps,
+  PopoverTrigger,
 } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 
@@ -27,15 +29,26 @@ interface Props extends PopoverProps {
 const PressMenu = ({ items, isOpen, onClose, position }: Props) => {
   const { t } = useTranslation("generator");
 
+  useEffect(() => {
+    const konva = document.querySelector("canvas");
+    konva.addEventListener("touchstart", onClose);
+    return () => {
+      konva.removeEventListener("touchstart", onClose);
+    };
+  }, []);
+
   if (!position) return null;
 
   return (
     <Popover isOpen={isOpen} onClose={onClose}>
-      <PopoverContent
-        position="absolute"
-        left={`${position.x - 50 < 0 ? 0 : position.x - 50}px`}
-        top={`${position.y - 100 < 0 ? 0 : position.y - 100}px`}
-      >
+      <PopoverTrigger>
+        <Box
+          position="absolute"
+          left={`${position.x - 50 < 0 ? 0 : position.x - 50}px`}
+          top={`${position.y - 100 < 0 ? 0 : position.y - 100}px`}
+        />
+      </PopoverTrigger>
+      <PopoverContent>
         <PopoverArrow />
         <PopoverBody
           color="white"

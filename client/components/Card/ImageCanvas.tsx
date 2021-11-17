@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Image as KonvaImage, Transformer, Group } from "react-konva";
+import { Image as KonvaImage, Transformer, Group, Rect } from "react-konva";
 import { Html } from "react-konva-utils";
 import { useDisclosure } from "@chakra-ui/react";
 import useImage from "use-image";
@@ -76,7 +76,6 @@ const ImageCanvas = ({
   const trRef = useRef(null);
   const imgRef = useRef(null);
   const [image] = useImage(`${prefixPath}${src}`, "anonymous");
-
   const { onOpen, onClose, isOpen: menuIsOpen } = useDisclosure();
 
   const onLongPress = useCallback(
@@ -89,8 +88,8 @@ const ImageCanvas = ({
         e.type === "touchcancel"
       ) {
         setMenuPosition(e.currentTarget.pointerPos);
+        onOpen();
       }
-      onOpen();
     },
     [isDragging]
   );
@@ -129,6 +128,16 @@ const ImageCanvas = ({
         clipY={clipY}
         clipX={clipX}
       >
+        <Rect
+          x={0}
+          y={0}
+          width={clipWidth}
+          height={clipHeight}
+          {...longPressEvent}
+          onTouchEnd={() => {
+            longPressEvent.onTouchEnd();
+          }}
+        />
         <KonvaImage
           ref={imgRef}
           name={name}
