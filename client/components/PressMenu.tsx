@@ -40,7 +40,7 @@ const PressMenu = ({ items, isOpen, onClose, position }: Props) => {
   if (!position) return null;
 
   return (
-    <Popover isOpen={isOpen} onClose={onClose}>
+    <Popover isOpen={isOpen} onClose={onClose} placement="top">
       <PopoverTrigger>
         <Box
           position="absolute"
