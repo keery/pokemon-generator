@@ -10,83 +10,147 @@ interface Props {
 interface BgPokemon {
   src: string | ResponsiveValue<string>;
   transform?: string | ResponsiveValue<string>;
-  width?: string | ResponsiveValue<string>;
+  height?: string | ResponsiveValue<string>;
+  right?: string | ResponsiveValue<string>;
+  top?: string | ResponsiveValue<string>;
   left?: string | ResponsiveValue<string>;
-  maxWidth?: string | ResponsiveValue<string>;
+  maxHeight?: string | ResponsiveValue<string>;
 }
 
 const pokemons: Record<Element, BgPokemon[]> = {
   water: [
-    { src: "assets/img/bg/pokemon-water-1.png", transform: "rotate(20deg)" },
-    { src: "assets/img/bg/pokemon-water-2.png" },
-    { src: "assets/img/bg/pokemon-water-3.png", transform: "rotateY(180deg)" },
+    {
+      src: "/assets/img/bg/pokemon-water-1.png",
+      transform: "rotate(20deg)",
+      height: "35vh",
+      maxHeight: "240px",
+    },
+    {
+      src: "/assets/img/bg/pokemon-water-2.png",
+      height: "60vh",
+      maxHeight: "475px",
+    },
+    {
+      src: "/assets/img/bg/pokemon-water-3.png",
+      transform: "rotateY(180deg)",
+      height: "25vh",
+      maxHeight: "200px",
+    },
   ],
   psychic: [
-    { src: "assets/img/bg/pokemon-psychic-1.png", transform: "rotate(20deg)" },
     {
-      src: "assets/img/bg/pokemon-psychic-2.png",
-      transform: "rotateY(180deg)",
+      src: "/assets/img/bg/pokemon-psychic-1.png",
+      transform: "rotate(20deg)",
+      height: "30vh",
+      maxHeight: "240px",
     },
-    { src: "assets/img/bg/pokemon-psychic-3.png" },
+    {
+      src: "/assets/img/bg/pokemon-psychic-2.png",
+      transform: "rotateY(180deg)",
+      height: "40vh",
+      maxHeight: "305px",
+    },
+    {
+      src: "/assets/img/bg/pokemon-psychic-3.png",
+      height: "30vh",
+      maxHeight: "255px",
+    },
   ],
   normal: [
-    { src: "assets/img/bg/pokemon-normal-1.png", transform: "rotate(20deg)" },
-    { src: "assets/img/bg/pokemon-normal-4.png", width: "350px" },
-    { src: "assets/img/bg/pokemon-normal-3.png", width: "190px", left: "110%" },
+    {
+      src: "/assets/img/bg/pokemon-normal-1.png",
+      transform: "rotate(20deg)",
+      height: "34vh",
+      maxHeight: "270px",
+    },
+    {
+      src: "/assets/img/bg/pokemon-normal-4.png",
+      height: "55vh",
+      maxHeight: "440px",
+    },
+    {
+      src: "/assets/img/bg/pokemon-normal-3.png",
+      height: "25vh",
+      maxHeight: "190px",
+      left: "110%",
+    },
   ],
   fire: [
     {
-      src: "assets/img/bg/pokemon-fire-1.png",
+      src: "/assets/img/bg/pokemon-fire-1.png",
       transform: "rotateY(180deg) translateX(28px)",
+      height: "35vh",
+      maxHeight: "260px",
     },
-    { src: "assets/img/bg/pokemon-fire-2.png" },
-    { src: "assets/img/bg/pokemon-fire-3.png", transform: "rotateY(180deg)" },
+    {
+      src: "/assets/img/bg/pokemon-fire-2.png",
+      height: "45vh",
+      maxHeight: "340px",
+    },
+    {
+      src: "/assets/img/bg/pokemon-fire-3.png",
+      transform: "rotateY(180deg)",
+      height: "35vh",
+      maxHeight: "250px",
+    },
   ],
   fighting: [
     {
-      src: "assets/img/bg/pokemon-fighting-1.png",
+      src: "/assets/img/bg/pokemon-fighting-1.png",
+      height: "35vh",
+      maxHeight: "260px",
+      right: "103%",
     },
     {
-      src: "assets/img/bg/pokemon-fighting-3.png",
-      left: { base: "80%", xl: "90%" },
-      width: "380px",
+      src: "/assets/img/bg/pokemon-fighting-3.png",
+      left: { base: "80%", xl: "93%" },
+      height: "50vh",
+      maxHeight: "380px",
     },
     {
-      src: "assets/img/bg/pokemon-fighting-4.png",
-      width: "210px",
+      src: "/assets/img/bg/pokemon-fighting-4.png",
+      height: "25vh",
+      maxHeight: "180px",
     },
   ],
   electric: [
     {
-      src: "assets/img/bg/pokemon-electric-1.png",
-      transform:
-        "rotateY(180deg) translateX(20px) translateY(-90px) rotateZ(-55deg)",
+      src: "/assets/img/bg/pokemon-electric-1.png",
+      transform: "rotateY(180deg) rotateZ(-55deg)",
+      height: "45vh",
+      maxHeight: "270px",
     },
     {
-      src: "assets/img/bg/pokemon-electric-3.png",
+      src: "/assets/img/bg/pokemon-electric-3.png",
       transform: "rotateY(180deg)",
-      width: "410px",
+      height: "50vh",
+      maxHeight: "380px",
     },
     {
-      src: "assets/img/bg/pokemon-electric-2.png",
+      src: "/assets/img/bg/pokemon-electric-2.png",
+      height: "30vh",
+      maxHeight: "180px",
     },
   ],
   grass: [
     {
-      src: "assets/img/bg/pokemon-grass-2.png",
-      transform: "rotateY(180deg) translateX(-9px) translateY(-90px)",
-      width: "370px",
+      src: "/assets/img/bg/pokemon-grass-2.png",
+      transform: "rotateY(180deg) ",
+      height: "50vh",
+      maxHeight: "370px",
+      right: "103%",
+      top: "10%",
     },
     {
-      src: "assets/img/bg/pokemon-grass-1.png",
-      width: "18vw",
-      maxWidth: "280px",
+      src: "/assets/img/bg/pokemon-grass-1.png",
+      height: "45vh",
+      maxHeight: "300px",
     },
     {
-      src: "assets/img/bg/pokemon-grass-3.png",
+      src: "/assets/img/bg/pokemon-grass-3.png",
       transform: "rotateY(180deg)",
-      width: "18vw",
-      maxWidth: "320px",
+      height: "30vh",
+      maxHeight: "220px",
     },
   ],
 };
@@ -119,26 +183,30 @@ const PokemonsBackground = ({ control }: Props) => {
         >
           <Box
             pos="absolute"
-            right="100%"
-            top="20%"
-            width={pokemons[element][0].width || "270px"}
-            maxWidth={pokemons[element][0].maxWidth || "none"}
+            right={pokemons[element][0].right || "100%"}
+            top={pokemons[element][0].top || "20%"}
           >
             <Image
+              height={pokemons[element][0].height || "250px"}
+              maxHeight={pokemons[element][0].maxHeight || "none"}
+              maxWidth={"none"}
               src={pokemons[element][0].src}
               transform={pokemons[element][0].transform}
+              alt="Pokemon n°1"
             />
           </Box>
           <Box
             pos="absolute"
             bottom="-10%"
             left={pokemons[element][1].left || "102%"}
-            width={pokemons[element][1].width || "300px"}
-            maxWidth={pokemons[element][1].maxWidth || "none"}
           >
             <Image
+              height={pokemons[element][1].height || "250px"}
+              maxWidth={"none"}
+              maxHeight={pokemons[element][1].maxHeight || "none"}
               src={pokemons[element][1].src}
               transform={pokemons[element][1].transform}
+              alt="Pokemon n°2"
             />
           </Box>
           <Box
@@ -146,12 +214,14 @@ const PokemonsBackground = ({ control }: Props) => {
             right="0%"
             top="0%"
             left={pokemons[element][2].left || "105%"}
-            width={pokemons[element][2].width || "250px"}
-            maxWidth={pokemons[element][2].maxWidth || "none"}
           >
             <Image
+              height={pokemons[element][2].height || "250px"}
+              maxWidth={"none"}
+              maxHeight={pokemons[element][2].maxHeight || "none"}
               src={pokemons[element][2].src}
               transform={pokemons[element][2].transform}
+              alt="Pokemon n°3"
             />
           </Box>
         </Box>
