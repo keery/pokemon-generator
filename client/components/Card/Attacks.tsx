@@ -13,7 +13,7 @@ const Description = ({ control }) => {
         type={attack1[1]}
         name={attack1[2]}
         damage={attack1[3]}
-        info={attack1[4]}
+        description={attack1[4]}
         x={35}
         y={isTiny ? 400 : 432}
         isTiny={isTiny}
@@ -31,7 +31,7 @@ const Description = ({ control }) => {
         type={attack2[1]}
         name={attack2[2]}
         damage={attack2[3]}
-        info={attack2[4]}
+        description={attack2[4]}
         x={35}
         y={isTiny ? 491 : 442}
         isTiny={isTiny}

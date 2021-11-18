@@ -15,7 +15,7 @@ const global = {
 interface Props {
   name: string;
   damage: Select<string>;
-  info: string;
+  description: string;
   type: Select<Element>;
   amount: Select<number>;
   x: number;
@@ -29,29 +29,30 @@ const Attack = ({
   isTiny = false,
   name,
   damage,
-  info,
+  description,
   type,
   amount,
 }: Props) => {
   let imgTypeAmountY = 25;
   let damageY = 40;
 
-  if (isTiny) {
-    global.height = 80;
-    imgTypeAmountY = 14;
-    damageY = 28;
-  }
-
   let attackNameData: any = {
     fontSize: 24,
-    y: 15,
+    y: 20,
     x: 0,
     align: "center",
     verticalAlign: "middle",
     width: 423,
   };
 
-  if (Boolean(info)) {
+  if (isTiny) {
+    attackNameData.y = 14;
+    global.height = 80;
+    imgTypeAmountY = 14;
+    damageY = 28;
+  }
+
+  if (Boolean(description)) {
     attackNameData = {
       fontSize: 20,
       y: 2,
@@ -120,7 +121,7 @@ const Attack = ({
             verticalAlign={attackNameData.verticalAlign}
           />
           <Text
-            text={info}
+            text={description}
             fontFamily="gstd"
             fontSize={attackDescData.fontSize}
             y={attackDescData.y}
