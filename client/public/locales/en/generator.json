@@ -67,5 +67,6 @@
     "next" : "Redo",
     "help": "Help",
     "eyeButtonHelp": "Show interactive areas",
-    "dontDisplay": "Don't show again"
+    "dontDisplay": "Don't show again",
+    "resizeImg" : "Resize image"
 }

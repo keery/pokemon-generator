@@ -59,6 +59,7 @@ const InteractiveLayer = () => {
         height={38.9}
         x={11.6}
         y={12.6}
+        zIndex={8}
         control={control}
         icon={{
           placement: "left",
@@ -118,7 +119,10 @@ const InteractiveLayer = () => {
             width={12.2}
             height={7.6}
             x={8.6}
+            zIndex={10}
             y={7.9}
+            originalWidth={66}
+            originalHeight={60}
             control={control}
             noText
             icon={{

@@ -365,6 +365,7 @@ a {
   }
 }
 
+.resize-stage > div,
 .card-stage > div {
   height: 100%;
   width: 100%;

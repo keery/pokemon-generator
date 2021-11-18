@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, Image as ChakraImage } from "@chakra-ui/react";
+import { Flex, Box, useDisclosure } from "@chakra-ui/react";
 import { Control, useFormContext, useWatch } from "react-hook-form";
 import InteractiveIcon, {
   Props as InteractiveIconProps,
@@ -11,11 +11,17 @@ import { areaAtom } from "~atoms/area";
 import { useRecoilValue } from "recoil";
 import { DragDrop } from "@uppy/react";
 import useUppy from "~hooks/useUppy";
+import { openModalWithUrl, closeModalWithUrl } from "~utils/helper";
+import ModalResizeImg from "~components/Interactive/ModalResizeImg";
 
 interface Props {
   control: Control;
+  zIndex?: number;
   width: number;
   height: number;
+  ratio: number;
+  originalWidth: number;
+  originalHeight: number;
   x: number;
   y: number;
   name: string;
@@ -30,12 +36,16 @@ const InteractiveFile = ({
   y,
   name,
   control,
-  noText = false,
   icon,
+  zIndex,
+  ratio,
+  originalWidth,
+  originalHeight,
 }: Props) => {
   const { isVisible } = useRecoilValue(areaAtom);
   const { setValue } = useFormContext();
   const [value, stage] = useWatch({ control, name: [name, "stage"] });
+  const { onOpen, onClose } = useDisclosure();
   const uppy = useUppy({
     id: `${name}-interactive`,
     fieldName: name,
@@ -55,18 +65,19 @@ const InteractiveFile = ({
         <InteractiveIcon icon={<Image width="1rem" alt="Delete" />} {...icon} />
       )}
 
-      {!Boolean(value) && (
+      {!Boolean(value) ? (
         <Flex
-          border="2px transparent"
+          alignItems="center"
+          justifyContent="center"
+          role="group"
+          h="100%"
+          zIndex={zIndex}
           cursor="pointer"
           position="absolute"
           left={`${x}%`}
           top={`${y}%`}
           height={`${height}%`}
           width={`${width}%`}
-          alignItems="center"
-          justifyContent="center"
-          role="group"
         >
           <Flex
             className={isVisible ? "interactive-file-visible" : ""}
@@ -104,6 +115,27 @@ const InteractiveFile = ({
             </Flex>
           </Flex>
         </Flex>
+      ) : (
+        <>
+          <Flex
+            onClick={() => openModalWithUrl(`resize-${name}`, onClose)}
+            cursor="pointer"
+            position="absolute"
+            left={`${x}%`}
+            top={`${y}%`}
+            height={`${height}%`}
+            width={`${width}%`}
+            zIndex={zIndex}
+            role="group"
+          />
+          <ModalResizeImg
+            name={name}
+            modalName={`resize-${name}`}
+            onClose={() => closeModalWithUrl(onClose)}
+            originalWidth={originalWidth}
+            originalHeight={originalHeight}
+          />
+        </>
       )}
     </Box>
   );

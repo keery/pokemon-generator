@@ -7,6 +7,7 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
+  ModalFooter,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { closeModalWithUrl } from "~utils/helper";
@@ -16,6 +17,7 @@ interface Props extends Omit<ModalProps, "isOpen"> {
   title?: string;
   button?: React.ReactElement;
   children: React.ReactNode;
+  footer?: JSX.Element;
   withCloseButton?: boolean;
 }
 
@@ -26,6 +28,7 @@ const Modal = ({
   children,
   title,
   withCloseButton = false,
+  footer,
   ...rest
 }: Props) => {
   const router = useRouter();
@@ -45,6 +48,7 @@ const Modal = ({
           {title && <ModalHeader>{title}</ModalHeader>}
           {withCloseButton && <ModalCloseButton zIndex={9} />}
           <ModalBody>{children}</ModalBody>
+          {footer && <ModalFooter>{footer}</ModalFooter>}
         </ModalContent>
       </ModalChakra>
     </>

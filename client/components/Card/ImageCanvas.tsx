@@ -30,6 +30,7 @@ interface Props {
   scaleX?: number;
   clipY?: number;
   clipX?: number;
+  noClip?: boolean;
   onSelect?: () => void;
   onDelete?: () => void;
   isSelected?: boolean;
@@ -68,6 +69,7 @@ const ImageCanvas = ({
   isSelected = false,
   onTransformEnd = null,
   onDelete = null,
+  noClip = false,
   t,
 }: Props) => {
   const [size, setSize] = useState([width, height]);
@@ -123,16 +125,16 @@ const ImageCanvas = ({
   return (
     <>
       <Group
-        clipWidth={clipWidth}
-        clipHeight={clipHeight}
+        clipWidth={noClip ? 0 : clipWidth}
+        clipHeight={noClip ? 0 : clipHeight}
         clipY={clipY}
         clipX={clipX}
       >
         <Rect
           x={0}
           y={0}
-          width={clipWidth}
-          height={clipHeight}
+          width={clipWidth || width}
+          height={clipHeight || height}
           {...longPressEvent}
           onTouchEnd={() => {
             longPressEvent.onTouchEnd();

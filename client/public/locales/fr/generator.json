@@ -68,5 +68,6 @@
     "next" : "Rétablir",
     "help": "Aide",
     "eyeButtonHelp": "Afficher les zones interactives",
-    "dontDisplay": "Ne plus afficher"
+    "dontDisplay": "Ne plus afficher",
+    "resizeImg" : "Redimensionner l'image"
 }
