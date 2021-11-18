@@ -131,8 +131,8 @@ const ModalResizeImg = ({
                 scaleY={pictureScaleY}
                 rotation={pictureRotation}
                 onDragEnd={onDragEnd}
-                // isTransformable
-                // t={t}
+                isTransformable
+                t={t}
               />
               <Line
                 x={0}
