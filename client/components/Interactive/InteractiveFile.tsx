@@ -19,7 +19,6 @@ interface Props {
   zIndex?: number;
   width: number;
   height: number;
-  ratio: number;
   originalWidth: number;
   originalHeight: number;
   x: number;
@@ -38,7 +37,6 @@ const InteractiveFile = ({
   control,
   icon,
   zIndex,
-  ratio,
   originalWidth,
   originalHeight,
 }: Props) => {
