@@ -168,65 +168,88 @@ const PokemonsBackground = ({ control }: Props) => {
   }, [selectedType?.value]);
 
   return (
-    <>
-      {Object.keys(pokemons).map((element) => (
-        <Box
-          key={element}
-          className={`bg-pokemon
+    <Box
+      display="inline-flex"
+      pos="absolute"
+      top="50%"
+      left="50%"
+      transform="translateY(-50%) translateX(-50%)"
+      maxW="500px"
+      maxH="700px"
+      h="100%"
+      w="100%"
+      justifyContent="center"
+    >
+      <Box display="inline-flex" pos="relative">
+        <Image
+          alt="Card shape 2"
+          opacity="0"
+          src="/assets/img/card-shape.png"
+          maxW="500px"
+          maxH="700px"
+          m="0 auto"
+          w="auto"
+          minW="100%"
+        />
+        {Object.keys(pokemons).map((element) => (
+          <Box
+            key={element}
+            className={`bg-pokemon
           ${isVariant ? "even" : "odd"}
            ${selectedType.value === element ? "active" : "inactive"}`}
-          userSelect="none"
-          display={{
-            base: "none",
-            lg: "block",
-          }}
-        >
-          <Box
-            pos="absolute"
-            right={pokemons[element][0].right || "100%"}
-            top={pokemons[element][0].top || "20%"}
+            userSelect="none"
+            display={{
+              base: "none",
+              lg: "block",
+            }}
           >
-            <Image
-              height={pokemons[element][0].height || "250px"}
-              maxHeight={pokemons[element][0].maxHeight || "none"}
-              maxWidth={"none"}
-              src={pokemons[element][0].src}
-              transform={pokemons[element][0].transform}
-              alt="Pokemon n°1"
-            />
+            <Box
+              pos="absolute"
+              right={pokemons[element][0].right || "100%"}
+              top={pokemons[element][0].top || "20%"}
+            >
+              <Image
+                height={pokemons[element][0].height || "250px"}
+                maxHeight={pokemons[element][0].maxHeight || "none"}
+                maxWidth={"none"}
+                src={pokemons[element][0].src}
+                transform={pokemons[element][0].transform}
+                alt="Pokemon n°1"
+              />
+            </Box>
+            <Box
+              pos="absolute"
+              bottom="-10%"
+              left={pokemons[element][1].left || "102%"}
+            >
+              <Image
+                height={pokemons[element][1].height || "250px"}
+                maxWidth={"none"}
+                maxHeight={pokemons[element][1].maxHeight || "none"}
+                src={pokemons[element][1].src}
+                transform={pokemons[element][1].transform}
+                alt="Pokemon n°2"
+              />
+            </Box>
+            <Box
+              pos="absolute"
+              right="0%"
+              top="0%"
+              left={pokemons[element][2].left || "105%"}
+            >
+              <Image
+                height={pokemons[element][2].height || "250px"}
+                maxWidth={"none"}
+                maxHeight={pokemons[element][2].maxHeight || "none"}
+                src={pokemons[element][2].src}
+                transform={pokemons[element][2].transform}
+                alt="Pokemon n°3"
+              />
+            </Box>
           </Box>
-          <Box
-            pos="absolute"
-            bottom="-10%"
-            left={pokemons[element][1].left || "102%"}
-          >
-            <Image
-              height={pokemons[element][1].height || "250px"}
-              maxWidth={"none"}
-              maxHeight={pokemons[element][1].maxHeight || "none"}
-              src={pokemons[element][1].src}
-              transform={pokemons[element][1].transform}
-              alt="Pokemon n°2"
-            />
-          </Box>
-          <Box
-            pos="absolute"
-            right="0%"
-            top="0%"
-            left={pokemons[element][2].left || "105%"}
-          >
-            <Image
-              height={pokemons[element][2].height || "250px"}
-              maxWidth={"none"}
-              maxHeight={pokemons[element][2].maxHeight || "none"}
-              src={pokemons[element][2].src}
-              transform={pokemons[element][2].transform}
-              alt="Pokemon n°3"
-            />
-          </Box>
-        </Box>
-      ))}
-    </>
+        ))}
+      </Box>
+    </Box>
   );
 };
 

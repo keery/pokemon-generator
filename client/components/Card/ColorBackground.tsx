@@ -15,7 +15,7 @@ const ColorBackground = ({ control }: Props) => {
   });
 
   return (
-    <Rect width={400} height={280} y={88} x={59} fill={getRgbaColor(bgColor)} />
+    <Rect width={400} height={274} y={88} x={55} fill={getRgbaColor(bgColor)} />
   );
 };
 

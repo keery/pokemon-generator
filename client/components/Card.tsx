@@ -118,13 +118,18 @@ const Card = () => {
       className={card.isFlipped ? "flipped" : ""}
       w="100%"
       h={{ base: "100%", xl: "100%" }}
-      py={isVisible && !isMobile ? 14 : 0}
-      px={isVisible && !isMobile ? 30 : 0}
       justifyContent="center"
       alignItems="center"
     >
       <CacheForm />
-      <Flex alignItems="center" h="100%" display="inline-flex" pos="relative">
+      <Flex
+        alignItems="center"
+        h="100%"
+        display="inline-flex"
+        pos="relative"
+        py={isVisible && !isMobile ? 14 : 0}
+        px={isVisible && !isMobile ? 30 : 0}
+      >
         <Image
           alt="Card shape"
           opacity="0"
@@ -136,6 +141,7 @@ const Card = () => {
           w="auto"
           minW="100%"
         />
+        <PokemonsBackground control={control} />
         <Box
           ref={containerRef}
           margin="0 auto"
@@ -147,7 +153,6 @@ const Card = () => {
           transform="translateY(-50%)"
         >
           <Box className="card-container" overflow="visible!important">
-            <PokemonsBackground control={control} />
             <Backface />
             <Box className="card-stage" ref={stageRef}>
               <Stage
