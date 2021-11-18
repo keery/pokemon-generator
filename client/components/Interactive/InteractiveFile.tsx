@@ -58,6 +58,7 @@ const InteractiveFile = ({
           p={0}
           borderRadius="100%"
           label={""}
+          onClick={() => setValue(name, null)}
         />
       ) : (
         <InteractiveIcon icon={<Image width="1rem" alt="Delete" />} {...icon} />
