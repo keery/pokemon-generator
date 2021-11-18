@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import Modal from "~components/Modal";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, AspectRatio } from "@chakra-ui/react";
 import { Layer, Stage, Group, Rect, Line } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
 import { useWatch, useFormContext } from "react-hook-form";
@@ -101,9 +101,8 @@ const ModalResizeImg = ({
       }
       withCloseButton
     >
-      <Box
-        width={GLOBAL_WIDTH}
-        height={GLOBAL_HEIGHT}
+      <AspectRatio
+        ratio={GLOBAL_WIDTH / GLOBAL_HEIGHT}
         className="resize-stage"
         borderRadius="sm"
         overflow="hidden"
@@ -188,7 +187,7 @@ const ModalResizeImg = ({
             />
           </Layer>
         </Stage>
-      </Box>
+      </AspectRatio>
     </Modal>
   );
 };

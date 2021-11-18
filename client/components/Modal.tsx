@@ -45,7 +45,11 @@ const Modal = ({
       >
         <ModalOverlay />
         <ModalContent py={5} w="96%" maxH="95vh">
-          {title && <ModalHeader>{title}</ModalHeader>}
+          {title && (
+            <ModalHeader fontSize={{ base: "md", sm: "lg", md: "xl" }}>
+              {title}
+            </ModalHeader>
+          )}
           {withCloseButton && <ModalCloseButton zIndex={9} />}
           <ModalBody>{children}</ModalBody>
           {footer && <ModalFooter>{footer}</ModalFooter>}
