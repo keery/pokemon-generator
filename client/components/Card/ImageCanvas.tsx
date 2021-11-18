@@ -1,14 +1,7 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import { Image as KonvaImage, Transformer, Group, Rect } from "react-konva";
-import { Html } from "react-konva-utils";
-import { useDisclosure } from "@chakra-ui/react";
+import React, { useState, useEffect, useRef } from "react";
+import { Image as KonvaImage, Transformer, Group } from "react-konva";
 import useImage from "use-image";
-import useLongPress from "~hooks/useLongPress";
 import { calculateAspectRatioFit, getCenter, getDistance } from "~utils/image";
-import PressMenu from "~components/PressMenu";
-import Trash from "public/assets/img/trash.svg";
-import Resize from "public/assets/img/resize.svg";
-import { TFunction } from "next-i18next";
 
 interface Props {
   src: string;
@@ -32,9 +25,8 @@ interface Props {
   clipX?: number;
   noClip?: boolean;
   onSelect?: () => void;
-  onDelete?: () => void;
+  getImgSize?: (name: string, width: number, height: number) => void;
   isSelected?: boolean;
-  t?: TFunction;
   onTransformEnd?: (
     name: string,
     scaleX: number,
@@ -47,8 +39,8 @@ interface Props {
 
 const ImageCanvas = ({
   src,
-  width,
-  height,
+  width = null,
+  height = null,
   x,
   y,
   maxHeight = null,
@@ -68,35 +60,13 @@ const ImageCanvas = ({
   onSelect = null,
   isSelected = false,
   onTransformEnd = null,
-  onDelete = null,
+  getImgSize = null,
   noClip = false,
-  t,
 }: Props) => {
   const [size, setSize] = useState([width, height]);
-  const [isDragging, setDragging] = useState(false);
-  const [menuPosition, setMenuPosition] = useState(null);
   const trRef = useRef(null);
   const imgRef = useRef(null);
   const [image] = useImage(`${prefixPath}${src}`, "anonymous");
-  const { onOpen, onClose, isOpen: menuIsOpen } = useDisclosure();
-
-  const onLongPress = useCallback(
-    (e) => {
-      if (isDragging) return;
-      if (
-        e.type === "touchstart" ||
-        e.type === "touchmove" ||
-        e.type === "touchend" ||
-        e.type === "touchcancel"
-      ) {
-        setMenuPosition(e.currentTarget.pointerPos);
-        onOpen();
-      }
-    },
-    [isDragging]
-  );
-
-  const longPressEvent = useLongPress(onLongPress);
 
   useEffect(() => {
     if (isSelected && isTransformable && !!trRef.current && !!imgRef) {
@@ -106,16 +76,18 @@ const ImageCanvas = ({
   }, [isSelected, trRef, imgRef, isTransformable]);
 
   useEffect(() => {
-    if (image && maxHeight && maxWidth) {
-      const { width, height } = calculateAspectRatioFit(
+    if (image && maxHeight && maxWidth && !width && !height) {
+      const { width: newWidth, height: newHeight } = calculateAspectRatioFit(
         image.width,
         image.height,
         maxWidth,
         maxHeight
       );
-      setSize([width, height]);
+
+      if (getImgSize) getImgSize(name, newWidth, newHeight);
+      setSize([newWidth, newHeight]);
     }
-  }, [image]);
+  }, [image, width, height]);
 
   if (!image) return null;
 
@@ -130,16 +102,6 @@ const ImageCanvas = ({
         clipY={clipY}
         clipX={clipX}
       >
-        <Rect
-          x={0}
-          y={0}
-          width={clipWidth || width}
-          height={clipHeight || height}
-          {...longPressEvent}
-          onTouchEnd={() => {
-            longPressEvent.onTouchEnd();
-          }}
-        />
         <KonvaImage
           ref={imgRef}
           name={name}
@@ -152,21 +114,13 @@ const ImageCanvas = ({
           scaleY={scaleY}
           rotation={rotation}
           draggable={draggable}
-          onDragStart={() => {
-            setMenuPosition(null);
-            setDragging(true);
-          }}
-          onDragEnd={(event) => {
-            setDragging(false);
-            onDragEnd(event);
-          }}
+          onDragEnd={onDragEnd}
           isSelected={isSelected}
           onClick={() => {
             if (isTransformable) {
               onSelect();
             }
           }}
-          {...longPressEvent}
           onTransformEnd={() => {
             const node = imgRef.current;
             onTransformEnd(
@@ -179,7 +133,6 @@ const ImageCanvas = ({
             );
           }}
           onTouchEnd={() => {
-            longPressEvent.onTouchEnd();
             const node = imgRef.current;
             if (!!node.attrs.x) {
               onTransformEnd(
@@ -193,7 +146,6 @@ const ImageCanvas = ({
             }
           }}
           onTouchMove={(e) => {
-            setMenuPosition(null);
             if (!isTransformable) return;
             const node = imgRef.current;
             e.evt.preventDefault();
@@ -253,19 +205,6 @@ const ImageCanvas = ({
             }
           }}
         />
-        {isTransformable && (
-          <Html>
-            <PressMenu
-              position={menuPosition}
-              onClose={onClose}
-              isOpen={menuIsOpen}
-              items={[
-                { name: t("remove"), icon: <Trash />, onClick: onDelete },
-                // { name: t("resize"), icon: <Resize />, onClick: onSelect },
-              ]}
-            />
-          </Html>
-        )}
       </Group>
       {isTransformable && isSelected && (
         <Transformer

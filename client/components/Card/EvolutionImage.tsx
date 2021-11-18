@@ -9,8 +9,7 @@ const EvolutionImage = ({
   isSelected,
   onSelect,
   updateScale,
-  onDelete,
-  t,
+  updateImgSize,
 }) => {
   const [
     evolvePicture,
@@ -63,14 +62,13 @@ const EvolutionImage = ({
         name="evolvePicture"
         onDragEnd={updateImgPos}
         onTransformEnd={updateScale}
+        getImgSize={updateImgSize}
         draggable
         prefixPath=""
         clipWidth={61}
         clipHeight={53}
         clipY={0}
         clipX={0}
-        onDelete={onDelete}
-        t={t}
       />
     </Group>
   );

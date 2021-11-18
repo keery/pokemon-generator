@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Box, useDisclosure } from "@chakra-ui/react";
+import { Flex, Box, useDisclosure, useBreakpointValue } from "@chakra-ui/react";
 import { Control, useFormContext, useWatch } from "react-hook-form";
 import InteractiveIcon, {
   Props as InteractiveIconProps,
@@ -13,6 +13,7 @@ import { DragDrop } from "@uppy/react";
 import useUppy from "~hooks/useUppy";
 import { openModalWithUrl, closeModalWithUrl } from "~utils/helper";
 import ModalResizeImg from "~components/Interactive/ModalResizeImg";
+import ModalResizeImgButton from "~components/Interactive/ModalResizeImgButton";
 
 interface Props {
   control: Control;
@@ -40,6 +41,7 @@ const InteractiveFile = ({
   originalWidth,
   originalHeight,
 }: Props) => {
+  const isMobile = useBreakpointValue({ base: true, xl: false });
   const { isVisible } = useRecoilValue(areaAtom);
   const { setValue } = useFormContext();
   const [value, stage] = useWatch({ control, name: [name, "stage"] });
@@ -48,6 +50,8 @@ const InteractiveFile = ({
     id: `${name}-interactive`,
     fieldName: name,
   });
+
+  const onDelete = () => setValue(name, null);
 
   return (
     <Box role="group">
@@ -58,7 +62,7 @@ const InteractiveFile = ({
           p={0}
           borderRadius="100%"
           label={""}
-          onClick={() => setValue(name, null)}
+          onClick={onDelete}
         />
       ) : (
         <InteractiveIcon icon={<Image width="1rem" alt="Delete" />} {...icon} />
@@ -115,26 +119,26 @@ const InteractiveFile = ({
           </Flex>
         </Flex>
       ) : (
-        <>
-          <Flex
-            onClick={() => openModalWithUrl(`resize-${name}`, onClose)}
-            cursor="pointer"
-            position="absolute"
-            left={`${x}%`}
-            top={`${y}%`}
-            height={`${height}%`}
-            width={`${width}%`}
-            zIndex={zIndex}
-            role="group"
-          />
-          <ModalResizeImg
-            name={name}
-            modalName={`resize-${name}`}
-            onClose={() => closeModalWithUrl(onClose)}
-            originalWidth={originalWidth}
-            originalHeight={originalHeight}
-          />
-        </>
+        isMobile && (
+          <>
+            <ModalResizeImgButton
+              onOpen={() => openModalWithUrl(`resize-${name}`, onClose)}
+              onDelete={onDelete}
+              left={`${x}%`}
+              top={`${y}%`}
+              height={`${height}%`}
+              width={`${width}%`}
+              zIndex={zIndex}
+            />
+            <ModalResizeImg
+              name={name}
+              modalName={`resize-${name}`}
+              onClose={() => closeModalWithUrl(onClose)}
+              originalWidth={originalWidth}
+              originalHeight={originalHeight}
+            />
+          </>
+        )
       )}
     </Box>
   );

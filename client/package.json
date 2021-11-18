@@ -44,7 +44,6 @@
     "react-hook-form": "^7.17.3",
     "react-i18next": "^11.8.8",
     "react-konva": "^17.0.2-5",
-    "react-konva-utils": "^0.2.0",
     "react-query": "^3.9.8",
     "react-scripts": "3.0.1",
     "react-select": "^4.2.1",

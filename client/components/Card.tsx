@@ -71,6 +71,14 @@ const Card = () => {
     []
   );
 
+  const updateImgSize = useCallback(
+    (name: string, width: number, height: number) => {
+      setValue(`${name}Width`, width);
+      setValue(`${name}Height`, height);
+    },
+    []
+  );
+
   const preserveRatioCanva = () => {
     if (typeof containerRef !== "undefined" && typeof imgRef !== "undefined") {
       containerRef.current.style.width = `${imgRef.current.width}px`;
@@ -93,11 +101,6 @@ const Card = () => {
     if (card.selectedImg === null) return;
     setCard({ ...card, selectedImg: null });
   }, [card]);
-
-  const deleteFile = (name) => {
-    setValue(name, null);
-    setCard({ ...card, selectedImg: null });
-  };
 
   useEffect(() => {
     if (!Boolean(card.selectedImg)) return;
@@ -181,8 +184,6 @@ const Card = () => {
                     onSelect={() =>
                       setCard({ ...card, selectedImg: "mainImage" })
                     }
-                    onDelete={() => deleteFile("mainImage")}
-                    t={t}
                   />
                   <Name control={control} stage={stage} />
                   <Attacks control={control} />
@@ -191,11 +192,10 @@ const Card = () => {
                     updateImgPos={updateImgPos}
                     isSelected={card.selectedImg === "evolvePicture"}
                     updateScale={updateScale}
+                    updateImgSize={updateImgSize}
                     onSelect={() =>
                       setCard({ ...card, selectedImg: "evolvePicture" })
                     }
-                    onDelete={() => deleteFile("evolvePicture")}
-                    t={t}
                   />
                   <Group x={38} y={593} width={570}>
                     <TypeWithAmount control={control} name="weakness" />

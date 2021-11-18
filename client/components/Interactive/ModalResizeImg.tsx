@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Modal from "~components/Modal";
-import { Box, Button, AspectRatio } from "@chakra-ui/react";
+import { Button, AspectRatio, Flex } from "@chakra-ui/react";
 import { Layer, Stage, Group, Rect, Line } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
 import { useWatch, useFormContext } from "react-hook-form";
@@ -38,12 +38,15 @@ const ModalResizeImg = ({
   );
   const { control, setValue } = useFormContext();
   const { t } = useTranslation("generator");
+
   const [
     picture,
     pictureX,
     pictureY,
     pictureScaleY,
     pictureScaleX,
+    pictureWidth,
+    pictureHeight,
     pictureRotation,
   ] = useWatch({
     control,
@@ -53,26 +56,58 @@ const ModalResizeImg = ({
       `${name}Y`,
       `${name}ScaleX`,
       `${name}ScaleY`,
+      `${name}Width`,
+      `${name}Height`,
       `${name}Rotation`,
     ],
   });
+
   const [coord, setCoord] = useState({
     x: pictureX * strechWidthRatio,
     y: pictureY * strechHeightRatio,
     scaleX: pictureScaleX,
     scaleY: pictureScaleY,
     rotation: pictureRotation,
+    width: pictureWidth * strechWidthRatio,
+    height: pictureHeight * strechHeightRatio,
   });
+
+  useEffect(() => {
+    setCoord((s) => ({
+      ...s,
+      width: pictureWidth * strechWidthRatio,
+      height: pictureHeight * strechHeightRatio,
+    }));
+  }, [pictureWidth, pictureHeight]);
 
   const onDragEnd = (event) => {
     const { x, y, rotation, scaleX, scaleY } = event.target.attrs;
-    setCoord({
+    setCoord((s) => ({
+      ...s,
       x,
       y,
       scaleX,
       scaleY,
       rotation,
-    });
+    }));
+  };
+
+  const onTransformEnd = (
+    name,
+    scaleX: number,
+    scaleY: number,
+    rotation: number,
+    x: number,
+    y: number
+  ) => {
+    setCoord((s) => ({
+      ...s,
+      x,
+      y,
+      scaleX,
+      scaleY,
+      rotation,
+    }));
   };
 
   const onSubmit = () => {
@@ -81,6 +116,14 @@ const ModalResizeImg = ({
 
     setValue(`${name}X`, coord.x * reduceWidthRatio);
     setValue(`${name}Y`, coord.y * reduceHeightRatio);
+    setValue(`${name}ScaleX`, coord.scaleX);
+    setValue(`${name}ScaleY`, coord.scaleY);
+    setValue(`${name}Rotation`, coord.rotation);
+    onClose();
+  };
+
+  const deleteFile = () => {
+    setValue(name, null);
     onClose();
   };
 
@@ -90,14 +133,19 @@ const ModalResizeImg = ({
       name={modalName}
       onClose={onClose}
       footer={
-        <>
-          <Button variant="line" cursor="pointer" onClick={onClose}>
-            {t("common:cancel")}
+        <Flex justifyContent="space-between" w="100%">
+          <Button colorScheme="red" cursor="pointer" onClick={deleteFile}>
+            {t("remove")}
           </Button>
-          <Button ml={3} cursor="pointer" onClick={onSubmit}>
-            {t("common:confirm")}
-          </Button>
-        </>
+          <Flex>
+            <Button variant="line" cursor="pointer" onClick={onClose}>
+              {t("common:cancel")}
+            </Button>
+            <Button ml={3} cursor="pointer" onClick={onSubmit}>
+              {t("common:confirm")}
+            </Button>
+          </Flex>
+        </Flex>
       }
       withCloseButton
     >
@@ -106,10 +154,22 @@ const ModalResizeImg = ({
         className="resize-stage"
         borderRadius="sm"
         overflow="hidden"
+        transform="translateZ(1)"
       >
         <Stage width={GLOBAL_WIDTH} height={GLOBAL_HEIGHT}>
           <Layer>
-            <Group x={PADDING_X} y={PADDING_Y}>
+            <Group
+              x={PADDING_X}
+              y={PADDING_Y}
+              onMouseEnter={(e) => {
+                const container = e.target.getStage().container();
+                container.style.cursor = "move";
+              }}
+              onMouseLeave={(e) => {
+                const container = e.target.getStage().container();
+                container.style.cursor = "default";
+              }}
+            >
               <ImageCanvas
                 noClip
                 src={picture}
@@ -120,8 +180,8 @@ const ModalResizeImg = ({
                 name={name}
                 maxWidth={WIDTH_IMG_AREA + 10}
                 maxHeight={HEIGHT_IMG_AREA + 10}
-                width={WIDTH_IMG_AREA}
-                height={HEIGHT_IMG_AREA}
+                width={coord.width}
+                height={coord.height}
                 clipHeight={HEIGHT_IMG_AREA}
                 clipWidth={WIDTH_IMG_AREA}
                 clipY={0}
@@ -130,8 +190,8 @@ const ModalResizeImg = ({
                 scaleY={pictureScaleY}
                 rotation={pictureRotation}
                 onDragEnd={onDragEnd}
+                onTransformEnd={onTransformEnd}
                 isTransformable
-                t={t}
               />
               <Line
                 x={0}

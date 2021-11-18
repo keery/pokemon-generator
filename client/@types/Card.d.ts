@@ -37,12 +37,16 @@ export interface Card {
   mainImageRotation: number;
   mainImageScaleX: number;
   mainImageScaleY: number;
+  mainImageWidth: number;
+  mainImageHeight: number;
   evolvePicture: string;
   evolvePictureX: number;
   evolvePictureY: number;
   evolvePictureRotation: number;
   evolvePictureScaleY: number;
   evolvePictureScaleX: number;
+  evolvePictureWidth: number;
+  evolvePictureHeight: number;
   hp: Select<string | number>;
   weaknessType: Select<Element>;
   weaknessAmount: Select<number>;

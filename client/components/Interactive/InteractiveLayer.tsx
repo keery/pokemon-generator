@@ -123,8 +123,8 @@ const InteractiveLayer = () => {
             x={8.6}
             zIndex={10}
             y={7.9}
-            originalWidth={66}
-            originalHeight={60}
+            originalWidth={61}
+            originalHeight={53}
             control={control}
             noText
             icon={{

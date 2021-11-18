@@ -2,11 +2,9 @@ import React, { useEffect } from "react";
 import {
   Popover,
   Flex,
-  Box,
   PopoverContent,
   PopoverBody,
   Text,
-  PopoverArrow,
   PopoverProps,
   PopoverTrigger,
 } from "@chakra-ui/react";
@@ -20,13 +18,9 @@ interface Item {
 
 interface Props extends PopoverProps {
   items: Item[];
-  position: {
-    x: number;
-    y: number;
-  };
 }
 
-const PressMenu = ({ items, isOpen, onClose, position }: Props) => {
+const PressMenu = ({ items, isOpen, onClose, children }: Props) => {
   const { t } = useTranslation("generator");
 
   useEffect(() => {
@@ -37,19 +31,10 @@ const PressMenu = ({ items, isOpen, onClose, position }: Props) => {
     };
   }, []);
 
-  if (!position) return null;
-
   return (
     <Popover isOpen={isOpen} onClose={onClose} placement="top">
-      <PopoverTrigger>
-        <Box
-          position="absolute"
-          left={`${position.x - 50 < 0 ? 0 : position.x - 50}px`}
-          top={`${position.y - 100 < 0 ? 0 : position.y - 100}px`}
-        />
-      </PopoverTrigger>
-      <PopoverContent>
-        <PopoverArrow />
+      <PopoverTrigger>{children}</PopoverTrigger>
+      <PopoverContent w="auto" bgColor="transparent">
         <PopoverBody
           color="white"
           borderRadius=".825rem"

@@ -12,6 +12,7 @@ const Evolution = ({
   isSelected,
   onSelect,
   updateScale,
+  updateImgSize,
   onDelete,
   t,
 }) => {
@@ -38,6 +39,7 @@ const Evolution = ({
         onSelect={onSelect}
         updateScale={updateScale}
         onDelete={onDelete}
+        updateImgSize={updateImgSize}
         t={t}
       />
       <EvolutionName control={control} />

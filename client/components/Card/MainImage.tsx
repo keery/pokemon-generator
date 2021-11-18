@@ -2,7 +2,6 @@ import React from "react";
 import { useWatch, Control } from "react-hook-form";
 import { Group } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
-import { TFunction } from "next-i18next";
 
 interface Props {
   updateImgPos: (event: any) => void;
@@ -17,8 +16,6 @@ interface Props {
   onSelect: () => void;
   control: Control;
   isSelected?: boolean;
-  onDelete: () => void;
-  t: TFunction;
 }
 
 const MainImage = ({
@@ -27,8 +24,6 @@ const MainImage = ({
   updateScale,
   onSelect,
   isSelected = false,
-  onDelete,
-  t,
 }: Props) => {
   const [
     mainImage,
@@ -87,8 +82,6 @@ const MainImage = ({
         clipHeight={271}
         clipY={0}
         clipX={-2}
-        onDelete={onDelete}
-        t={t}
       />
     </Group>
   );
