@@ -4,6 +4,7 @@ import { Text, Flex, Link, Image, Heading } from "@chakra-ui/react";
 const Logo = () => {
   return (
     <Link
+      ml={4}
       href="/"
       display="inline-block"
       _hover={{

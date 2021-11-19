@@ -1,5 +1,14 @@
 import React from "react";
-import { Flex, Box, VStack, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  useBreakpointValue,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import CardFormHeader from "~components/CardFormHeader";
 import CardFieldsGroup from "~components/CardFieldsGroup";
@@ -13,6 +22,47 @@ import Logo from "~components/Logo";
 const CardForm = () => {
   const { t } = useTranslation("generator");
   const isDesktop = useBreakpointValue({ base: false, xl: true });
+
+  const Form = [
+    {
+      header: <CardFormHeader step={1} title={t("basicInfo")} />,
+      fields: <FieldsPokemonInfo />,
+    },
+    {
+      header: <CardFormHeader step={2} title={t("evolution")} />,
+      fields: <FieldsEvolution />,
+    },
+    {
+      header: (
+        <CardFormHeader
+          step={3}
+          title={t("attack1")}
+          id={`field-attack1-label`}
+        />
+      ),
+      fields: <FieldsAttack name="attack1" />,
+    },
+    {
+      header: (
+        <CardFormHeader
+          step={4}
+          title={t("attack2")}
+          id={`field-attack2-label`}
+        />
+      ),
+      fields: <FieldsAttack name="attack2" />,
+    },
+    {
+      header: (
+        <CardFormHeader step={5} title={t("weaknessResistanceRetreat")} />
+      ),
+      fields: <FieldsSubInfo />,
+    },
+    {
+      header: <CardFormHeader step={6} title={t("additionalInformation")} />,
+      fields: <FieldsBottomInfo />,
+    },
+  ];
 
   return (
     <Flex
@@ -43,7 +93,7 @@ const CardForm = () => {
           height="100%"
           layerStyle={isDesktop ? "glass" : ""}
           borderRadius={{ base: "none", xl: "md" }}
-          px={{ base: 4, lg: 8 }}
+          px={{ base: 2, lg: 4 }}
           pt={{ base: 10, xl: 8 }}
           pb={{ base: 0, xl: 8 }}
           direction="column"
@@ -54,61 +104,34 @@ const CardForm = () => {
               <Logo />
             </Flex>
           )}
-          <VStack
+          <Accordion
+            defaultIndex={[0, 1, 2, 3, 4, 5]}
             overflowY="scroll"
+            allowMultiple
+            allowToggle
             mt={{ base: 0, xl: 10 }}
-            spacing={14}
-            alignItems="stretch"
-            borderRadius="sm"
-            direction="column"
             w="100%"
             color="#3b434c"
           >
-            <Box>
-              <CardFormHeader step={1} title={t("basicInfo")} />
-              <CardFieldsGroup>
-                <FieldsPokemonInfo />
-              </CardFieldsGroup>
-            </Box>
-            <Box>
-              <CardFormHeader step={2} title={t("evolution")} />
-              <CardFieldsGroup>
-                <FieldsEvolution />
-              </CardFieldsGroup>
-            </Box>
-            <Box flex={1}>
-              <CardFormHeader
-                step={3}
-                title={t("attack1")}
-                id={`field-attack1-label`}
-              />
-              <CardFieldsGroup>
-                <FieldsAttack name="attack1" />
-              </CardFieldsGroup>
-            </Box>
-            <Box flex={1}>
-              <CardFormHeader
-                step={4}
-                title={t("attack2")}
-                id={`field-attack2-label`}
-              />
-              <CardFieldsGroup>
-                <FieldsAttack name="attack2" />
-              </CardFieldsGroup>
-            </Box>
-            <Box>
-              <CardFormHeader step={5} title={t("weaknessResistanceRetreat")} />
-              <CardFieldsGroup>
-                <FieldsSubInfo />
-              </CardFieldsGroup>
-            </Box>
-            <Box>
-              <CardFormHeader step={6} title={t("additionalInformation")} />
-              <CardFieldsGroup>
-                <FieldsBottomInfo />
-              </CardFieldsGroup>
-            </Box>
-          </VStack>
+            {Form.map(({ header, fields }) => (
+              <AccordionItem border="none" mt={4}>
+                <AccordionButton
+                  justifyContent="space-between"
+                  textAlign="left"
+                  py={0}
+                  px={2}
+                  borderRadius="sm"
+                  w="100%"
+                >
+                  {header}
+                  <AccordionIcon color={{ base: "white", xl: "#3b434c" }} />
+                </AccordionButton>
+                <AccordionPanel px={0}>
+                  <CardFieldsGroup>{fields}</CardFieldsGroup>
+                </AccordionPanel>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </Flex>
       </Flex>
     </Flex>

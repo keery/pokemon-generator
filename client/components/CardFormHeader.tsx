@@ -11,14 +11,14 @@ const CardFormHeader = ({ title, id = "" }: Props) => {
   return (
     <Flex
       as="header"
-      borderRadius="12px"
+      borderRadius="sm"
       px={0}
       py={0}
       alignItems="center"
       zIndex="99"
       id={id}
     >
-      <Flex alignItems="center" p="6px 28px 6px 8px" color="black" w="100%">
+      <Flex alignItems="center" p="6px 15px 6px 8px" color="black" w="100%">
         <Text
           fontWeight="800"
           fontSize="22px"
