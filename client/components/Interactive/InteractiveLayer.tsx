@@ -46,6 +46,7 @@ const InteractiveLayer = () => {
 
   return (
     <Box
+      className="InteractiveLayer"
       visibility={
         Boolean(card.selectedImg) || card.isFlipped ? "hidden" : "visible"
       }

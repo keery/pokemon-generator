@@ -40,6 +40,7 @@ const ModalResizeImgButton = ({ onDelete, onOpen, ...rest }: Props) => {
         ]}
       >
         <Flex
+          userSelect="none"
           onClick={onOpen}
           cursor="pointer"
           position="absolute"
