@@ -30,7 +30,6 @@ import InteractiveLayer from "./Interactive/InteractiveLayer";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import Mousetrap from "mousetrap";
-import { useTranslation } from "next-i18next";
 import Konva from "konva";
 import CacheForm from "~components/CacheForm";
 
@@ -44,7 +43,6 @@ const Card = () => {
   const { control, setValue } = useFormContext();
   const [card, setCard] = useRecoilState(cardAtom);
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const { t } = useTranslation("generator");
   const stage = useWatch({ control, name: "stage" });
 
   const updateImgPos = useCallback((event: any): void => {

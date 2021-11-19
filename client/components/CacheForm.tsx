@@ -5,9 +5,9 @@ import React, {
   useCallback,
   useMemo,
 } from "react";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useWatch } from "react-hook-form";
 import { useRecoilState } from "recoil";
-import { historyAtom } from "~atoms/history";
+import { historyAtom, HISTORY_DEFAULT_STATE } from "~atoms/history";
 import { cacheCard } from "~utils/cache";
 import isEqual from "lodash.isequal";
 import debounce from "lodash.debounce";
@@ -15,8 +15,8 @@ import { updatedDiff } from "deep-object-diff";
 import { CARD_DEFAULT_STATE } from "~data/card";
 
 const CacheWrapper = () => {
-  const { watch } = useFormContext();
-  const values = watch();
+  const { control } = useFormContext();
+  const values = useWatch({ control });
 
   return <CacheForm formValues={values} />;
 };
@@ -45,9 +45,10 @@ const CacheForm = ({ formValues }) => {
         return;
 
       cacheCard(values);
-      const isResetted = updatedDiff(CARD_DEFAULT_STATE, formValues);
+      const isResetted = updatedDiff(CARD_DEFAULT_STATE, values);
 
       if (Object.keys(isResetted).length === 0) {
+        setHistoryState(HISTORY_DEFAULT_STATE);
         setHistory([
           { changed: CARD_DEFAULT_STATE, original: CARD_DEFAULT_STATE },
         ]);
