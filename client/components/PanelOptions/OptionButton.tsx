@@ -7,6 +7,7 @@ import {
   Flex,
   Text,
   useBreakpointValue,
+  useDisclosure,
 } from "@chakra-ui/react";
 import Mousetrap from "mousetrap";
 
@@ -25,7 +26,9 @@ const OptionButton = ({
   withTooltip = true,
   ...rest
 }: Props) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const isMobile = useBreakpointValue({ base: true, sm: false });
+
   useEffect(() => {
     if (isMobile) return;
     const shortcut = keyboard_shortcut.join("+").toLowerCase();
@@ -42,7 +45,12 @@ const OptionButton = ({
   const Button = (
     <IconButton
       icon={icon}
-      onClick={onClick}
+      onMouseEnter={onOpen}
+      onMouseLeave={onClose}
+      onClick={(e) => {
+        onClick(e);
+        onClose();
+      }}
       color="main"
       aria-label="icon"
       borderRadius="sm"
@@ -68,6 +76,7 @@ const OptionButton = ({
   if (withTooltip && !isMobile)
     return (
       <Tooltip
+        isOpen={isOpen}
         hasArrow
         shouldWrapChildren
         label={
