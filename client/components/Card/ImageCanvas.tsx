@@ -27,6 +27,8 @@ interface Props {
   onSelect?: () => void;
   getImgSize?: (name: string, width: number, height: number) => void;
   isSelected?: boolean;
+  onMouseEnter?: (e: any) => void;
+  onMouseLeave?: (e: any) => void;
   onTransformEnd?: (
     name: string,
     scaleX: number,
@@ -62,6 +64,8 @@ const ImageCanvas = ({
   onTransformEnd = null,
   getImgSize = null,
   noClip = false,
+  onMouseEnter = null,
+  onMouseLeave = null,
 }: Props) => {
   const [size, setSize] = useState([width, height]);
   const trRef = useRef(null);
@@ -116,8 +120,10 @@ const ImageCanvas = ({
           draggable={draggable}
           onDragEnd={onDragEnd}
           isSelected={isSelected}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
           onClick={() => {
-            if (isTransformable) {
+            if (isTransformable && onSelect) {
               onSelect();
             }
           }}

@@ -309,6 +309,7 @@ a {
   opacity: 1;
 }
 
+.uppy-DragDrop--isDraggingOver .uppy-DragDrop-inner:before,
 .uppy-DragDrop--isDraggingOver .uppy-DragDrop-inner:after {
   background-color: #e7e7e7;
 }

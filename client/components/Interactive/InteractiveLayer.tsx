@@ -62,8 +62,14 @@ const InteractiveLayer = () => {
         y={15.5}
         zIndex={8}
         control={control}
-        originalWidth={381}
-        originalHeight={271}
+        resizeModalConf={{
+          originalWidth: 381,
+          originalHeight: 271,
+          heightImgArea: 298,
+          widthImgArea: 419,
+          width: 450,
+          height: 375,
+        }}
         icon={{
           placement: "left",
           top: "30%",
@@ -124,8 +130,14 @@ const InteractiveLayer = () => {
             x={8.6}
             zIndex={10}
             y={7.9}
-            originalWidth={61}
-            originalHeight={53}
+            resizeModalConf={{
+              originalWidth: 61,
+              originalHeight: 53,
+              heightImgArea: 266,
+              widthImgArea: 305,
+              width: 400,
+              height: 350,
+            }}
             control={control}
             noText
             icon={{

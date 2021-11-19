@@ -13,6 +13,7 @@ interface Props {
     x: number,
     y: number
   ) => void;
+  updateImgSize: (name: string, width: number, height: number) => void;
   onSelect: () => void;
   control: Control;
   isSelected?: boolean;
@@ -23,6 +24,7 @@ const MainImage = ({
   updateImgPos,
   updateScale,
   onSelect,
+  updateImgSize,
   isSelected = false,
 }: Props) => {
   const [
@@ -77,6 +79,7 @@ const MainImage = ({
         onTransformEnd={updateScale}
         isTransformable
         isSelected={isSelected}
+        getImgSize={updateImgSize}
         onSelect={onSelect}
         clipWidth={381}
         clipHeight={271}

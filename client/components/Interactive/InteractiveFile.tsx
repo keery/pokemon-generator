@@ -20,13 +20,19 @@ interface Props {
   zIndex?: number;
   width: number;
   height: number;
-  originalWidth: number;
-  originalHeight: number;
   x: number;
   y: number;
   name: string;
   noText?: boolean;
   icon: Omit<InteractiveIconProps, "icon">;
+  resizeModalConf: {
+    originalWidth: number;
+    originalHeight: number;
+    heightImgArea: number;
+    widthImgArea: number;
+    width: number;
+    height: number;
+  };
 }
 
 const InteractiveFile = ({
@@ -38,8 +44,7 @@ const InteractiveFile = ({
   control,
   icon,
   zIndex,
-  originalWidth,
-  originalHeight,
+  resizeModalConf,
 }: Props) => {
   const isMobile = useBreakpointValue({ base: true, xl: false });
   const { isVisible } = useRecoilValue(areaAtom);
@@ -134,8 +139,7 @@ const InteractiveFile = ({
               name={name}
               modalName={`resize-${name}`}
               onClose={() => closeModalWithUrl(onClose)}
-              originalWidth={originalWidth}
-              originalHeight={originalHeight}
+              resizeModalConf={resizeModalConf}
             />
           </>
         )

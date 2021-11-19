@@ -179,6 +179,7 @@ const Card = () => {
                     updateImgPos={updateImgPos}
                     updateScale={updateScale}
                     isSelected={card.selectedImg === "mainImage"}
+                    updateImgSize={updateImgSize}
                     onSelect={() =>
                       setCard({ ...card, selectedImg: "mainImage" })
                     }
