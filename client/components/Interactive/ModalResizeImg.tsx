@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import Modal from "~components/Modal";
 import { Button, AspectRatio, Flex } from "@chakra-ui/react";
-import { Layer, Stage, Group, Rect, Line } from "react-konva";
+import { Layer, Stage, Group, Line } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
 import { useWatch, useFormContext } from "react-hook-form";
 import { useTranslation } from "next-i18next";
@@ -219,37 +219,37 @@ const ModalResizeImg = ({
                 ]}
               />
             </Group>
-            <Rect
+            <Line
               x={0}
               y={0}
-              width={paddingX}
-              height={height}
+              stroke="#000000"
               fill="#000000"
               opacity={0.5}
-            />
-            <Rect
-              x={width - paddingX}
-              y={0}
-              width={paddingX}
-              height={height}
-              fill="#000000"
-              opacity={0.5}
-            />
-            <Rect
-              x={paddingX - 0.2}
-              y={0}
-              width={width - paddingX * 2 + 0.4}
-              height={paddingY}
-              fill="#000000"
-              opacity={0.5}
-            />
-            <Rect
-              x={paddingX - 0.2}
-              y={height - paddingY}
-              width={width - paddingX * 2 + 0.4}
-              height={paddingY}
-              fill="#000000"
-              opacity={0.5}
+              closed
+              points={[
+                0,
+                0,
+                paddingX,
+                0,
+                paddingX,
+                height - paddingY,
+                paddingX + widthImgArea,
+                paddingY + heightImgArea,
+                paddingX + widthImgArea,
+                paddingY,
+                paddingX,
+                paddingY,
+                paddingX,
+                0,
+                width,
+                0,
+                width,
+                height,
+                0,
+                height,
+                0,
+                0,
+              ]}
             />
           </Layer>
         </Stage>
