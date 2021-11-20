@@ -27,7 +27,7 @@ const getUppyTranslations = (locale) => {
 };
 
 const COMPANION_URL = `${process.env.NEXT_PUBLIC_API_URL}/image/companion`;
-const MAX_FILE_SIZE = 1000000;
+const MAX_FILE_SIZE = 2000000;
 interface Params {
   id: string;
   onSuccess?: () => void;

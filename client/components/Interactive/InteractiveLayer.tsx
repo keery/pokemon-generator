@@ -43,7 +43,7 @@ const InteractiveLayer = () => {
   const { isTiny } = useAttacks(control);
   const card = useRecoilValue(cardAtom);
   const isBasicStage = useMemo(() => stage.value === BASIC, [stage]);
-
+  console.log(isBasicStage);
   return (
     <Box
       className="InteractiveLayer"
@@ -57,9 +57,9 @@ const InteractiveLayer = () => {
       <InteractiveFile
         name="mainImage"
         width={76.4}
-        height={35.8}
+        height={isBasicStage ? 38.8 : 35.8}
         x={11.6}
-        y={15.5}
+        y={isBasicStage ? 12.7 : 15.5}
         zIndex={8}
         control={control}
         resizeModalConf={{
