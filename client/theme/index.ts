@@ -13,13 +13,22 @@ import {
 } from "./components";
 
 const theme = extendTheme({
+  config: {
+    initialColorMode: "light",
+    useSystemColorMode: false,
+  },
   styles: {
-    global: {
+    global: ({ colorMode }) => ({
+      body: {
+        background: "white",
+        fontFamily: colorMode === "dark" ? "nes" : "body",
+        fontSize: colorMode === "dark" ? "0.8rem" : "1rem",
+      },
       h1: {
         fontSize: "5xl",
         fontWeight: "900",
       },
-    },
+    }),
   },
   fonts: {
     body: "Inter, sans-serif",
@@ -125,6 +134,32 @@ const theme = extendTheme({
     disabled: {
       opacity: 0.4,
       pointerEvents: "none",
+    },
+    "nes-container": {
+      borderImageSlice: 3,
+      borderImageWidth: 3,
+      borderImageOutset: 2,
+      padding: "1rem 1.5rem",
+      margin: "4px",
+      borderRadius: "none",
+      borderStyle: "solid",
+      borderWidth: "4px",
+      borderColor: "black",
+      borderImageSource: `url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8" ?><svg version="1.1" width="8" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M3 1 h1 v1 h-1 z M4 1 h1 v1 h-1 z M2 2 h1 v1 h-1 z M5 2 h1 v1 h-1 z M1 3 h1 v1 h-1 z M6 3 h1 v1 h-1 z M1 4 h1 v1 h-1 z M6 4 h1 v1 h-1 z M2 5 h1 v1 h-1 z M5 5 h1 v1 h-1 z M3 6 h1 v1 h-1 z M4 6 h1 v1 h-1 z" fill="rgb(33,37,41)" /></svg>')`,
+    },
+    "nes-input": {
+      borderRadius: "none",
+      borderStyle: "solid",
+      borderWidth: "4px",
+      fontSize: "xs",
+      borderImageSlice: 2,
+      borderImageWidth: 2,
+      borderImageSource: `url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8" ?><svg version="1.1" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z" fill="rgb(33,37,41)" /></svg>')`,
+      borderImageOutset: 2,
+      width: "calc(100% - 8px)",
+      padding: ".5rem 1rem",
+      margin: "4px",
+      backgroundClip: "padding-box",
     },
   },
 });

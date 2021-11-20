@@ -1,9 +1,9 @@
 import React from "react";
-import { Input } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { useFormContext, useWatch } from "react-hook-form";
 import FileInput from "~components/FileInput";
 import Select from "~components/Select";
+import Input from "~components/Input";
 import { BASIC, STAGE_OPTIONS } from "~constants";
 import dynamic from "next/dynamic";
 
@@ -11,7 +11,7 @@ const Field = dynamic(() => import("~components/Field"), { ssr: false });
 
 const FieldsEvolution = () => {
   const { t } = useTranslation("generator");
-  const { register, control } = useFormContext();
+  const { control } = useFormContext();
   const stage = useWatch({
     control,
     name: "stage",
@@ -23,11 +23,7 @@ const FieldsEvolution = () => {
         <Select name="stage" options={STAGE_OPTIONS} control={control} />
       </Field>
       <Field label={t("name")} isDisabled={stage.value === BASIC}>
-        <Input
-          name="nameEvolution"
-          type="text"
-          {...register(`nameEvolution`)}
-        />
+        <Input name="nameEvolution" type="text" control={control} />
       </Field>
       <Field label={t("picture")} isDisabled={stage.value === BASIC}>
         <FileInput name="evolvePicture" id="evolvePicture" />

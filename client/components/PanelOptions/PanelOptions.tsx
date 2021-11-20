@@ -4,6 +4,8 @@ import {
   Flex,
   StackDivider,
   useBreakpointValue,
+  useColorMode,
+  Image,
 } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import Print from "public/assets/img/print.svg";
@@ -41,6 +43,7 @@ const exportCard = () => {
 const PanelOptions = () => {
   const { t } = useTranslation("generator");
   const hasDivider = useBreakpointValue({ base: true, sm: false });
+  const { colorMode } = useColorMode();
 
   return (
     <Flex
@@ -66,13 +69,25 @@ const PanelOptions = () => {
       >
         <FormButton />
         <OptionButton
-          icon={<Download />}
+          icon={
+            colorMode === "dark" ? (
+              <Image src="/assets/img/pixel/download.png" boxSize="24px" />
+            ) : (
+              <Download />
+            )
+          }
           onClick={exportCard}
           label={t("downloadCard")}
           keyboard_shortcut={["ctrl", "d"]}
         />
         <OptionButton
-          icon={<Print />}
+          icon={
+            colorMode === "dark" ? (
+              <Image src="/assets/img/pixel/print.png" boxSize="24px" />
+            ) : (
+              <Print />
+            )
+          }
           onClick={printCard}
           label={t("printCard")}
           keyboard_shortcut={["ctrl", "p"]}
