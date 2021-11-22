@@ -152,6 +152,13 @@ const Card = () => {
           top="50%"
           bottom={0}
           transform="translateY(-50%)"
+          transition="box-shadow ease-in-out 10ms"
+          boxShadow={
+            card.isFlipped
+              ? "0px 15px 15px rgb(0 0 0 / 0%)"
+              : "0px 15px 15px rgb(0 0 0 / 19%)"
+          }
+          borderRadius="4rem"
         >
           <Box className="card-container" overflow="visible!important">
             <Backface />

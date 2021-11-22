@@ -8,6 +8,7 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalFooter,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { closeModalWithUrl } from "~utils/helper";
@@ -32,6 +33,19 @@ const Modal = ({
   ...rest
 }: Props) => {
   const router = useRouter();
+  const style = useColorModeValue(
+    {},
+    {
+      layerStyle: "nes-container",
+      borderRadius: "none",
+      px: "0",
+    }
+  );
+
+  const headerFontsize = useColorModeValue(
+    { base: "md", sm: "lg", md: "xl" },
+    { base: "xs", sm: "sm", md: "md" }
+  );
 
   return (
     <>
@@ -44,13 +58,18 @@ const Modal = ({
         scrollBehavior="inside"
       >
         <ModalOverlay />
-        <ModalContent py={5} w="96%" maxH="95vh">
+        <ModalContent
+          py={5}
+          w="96%"
+          maxH="95vh"
+          {...style}
+          color="text"
+          bgColor="white"
+        >
           {title && (
-            <ModalHeader fontSize={{ base: "md", sm: "lg", md: "xl" }}>
-              {title}
-            </ModalHeader>
+            <ModalHeader fontSize={headerFontsize}>{title}</ModalHeader>
           )}
-          {withCloseButton && <ModalCloseButton zIndex={9} />}
+          {withCloseButton && <ModalCloseButton color="text" zIndex={9} />}
           <ModalBody>{children}</ModalBody>
           {footer && <ModalFooter>{footer}</ModalFooter>}
         </ModalContent>

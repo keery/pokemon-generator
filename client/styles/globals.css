@@ -203,6 +203,101 @@ a {
   width: 100%;
   height: 100%;
 }
+
+.chakra-ui-dark .uppy-Root {
+  font-family: "Press Start 2P";
+}
+
+.chakra-ui-dark .uppy-Dashboard-AddFiles-title,
+.chakra-ui-dark .uppy-DragDrop-label,
+.chakra-ui-dark .uppy-DashboardTab-name,
+.chakra-ui-dark .uppy-Provider-authTitle {
+  font-size: 0.8rem;
+}
+.chakra-ui-dark .uppy-DashboardContent-back,
+.chakra-ui-dark .uppy-DashboardTab-name,
+.chakra-ui-dark .uppy-DashboardContent-title {
+  font-size: 0.65rem;
+}
+
+.chakra-ui-dark .uppy-Webcam-title {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.chakra-ui-dark .uppy-Webcam-permissons {
+  padding: 0px 1rem;
+  line-height: 1.2;
+}
+
+.chakra-ui-dark .uppy-DashboardContent-title {
+  max-width: 200px;
+}
+.chakra-ui-dark .uppy-Provider-btn-google svg {
+  display: inline-block;
+}
+.chakra-ui-dark .uppy-c-btn-primary {
+  font-size: 0.8rem;
+  position: relative;
+  border-style: solid;
+  border-width: 4px;
+  cursor: pointer;
+  border-radius: none;
+  border-image-slice: 2;
+  border-image-width: 2;
+  border-image-outset: 2;
+  display: inline-block;
+  border-image-source: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8" ?><svg version="1.1" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z" fill="rgb(33,37,41)" /></svg>');
+  text-align: center;
+  color: white;
+  user-select: none;
+  border-radius: none;
+  background-color: #209cee;
+}
+.chakra-ui-dark .uppy-c-btn-primary:after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  bottom: -4px;
+  left: -4px;
+  box-shadow: inset -4px -4px #006bb3;
+}
+.chakra-ui-dark .uppy-c-btn-primary:hover {
+  color: white;
+  background-color: #108de0;
+}
+.chakra-ui-dark .uppy-c-btn-primary:hover:after {
+  box-shadow: inset -6px -6px #006bb3;
+}
+
+.chakra-ui-dark .uppy-c-textInput {
+  border-radius: none;
+  border-style: solid;
+  border-width: 4px;
+  font-size: 0.7rem;
+  border-image-slice: 2;
+  border-image-width: 2;
+  border-image-outset: 2;
+  border-image-source: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8" ?><svg version="1.1" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z" fill="rgb(33,37,41)" /></svg>');
+  width: calc(100% - 8px);
+  padding: 0.5rem 1rem;
+  margin: 4px;
+  background-clip: padding-box;
+}
+.chakra-ui-dark .uppy-Url {
+  display: flex;
+  align-items: center;
+}
+.chakra-ui-dark .uppy-Url > input {
+  flex: 2;
+}
+.chakra-ui-dark .uppy-Url > button {
+  flex: 1;
+  margin-left: 10px;
+  height: 41px;
+}
+
 .uppy-DragDrop-arrow,
 .uppy-DragDrop-label {
   z-index: 2;

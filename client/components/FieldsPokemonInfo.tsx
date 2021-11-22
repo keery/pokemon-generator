@@ -26,7 +26,7 @@ const FieldsPokemonInfo = () => {
         />
       </Field>
       <Field label={t("picture")}>
-        <FileInput name="mainImage" id="mainImage" />
+        <FileInput name="mainImage" />
       </Field>
       <Field label="HP">
         <Select name="hp" options={HP_OPTIONS} control={control} isClearable />

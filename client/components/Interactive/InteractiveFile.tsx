@@ -1,5 +1,11 @@
 import React from "react";
-import { Flex, Box, useDisclosure, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  useDisclosure,
+  useBreakpointValue,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { Control, useFormContext, useWatch } from "react-hook-form";
 import InteractiveIcon, {
   Props as InteractiveIconProps,
@@ -50,12 +56,12 @@ const InteractiveFile = ({
   const { isVisible } = useRecoilValue(areaAtom);
   const { setValue } = useFormContext();
   const [value, stage] = useWatch({ control, name: [name, "stage"] });
-  const { onOpen, onClose } = useDisclosure();
+  const { onClose } = useDisclosure();
   const uppy = useUppy({
     id: `${name}-interactive`,
     fieldName: name,
   });
-
+  const borderRadius = useColorModeValue("100%", "none");
   const onDelete = () => setValue(name, null);
 
   return (
@@ -65,7 +71,7 @@ const InteractiveFile = ({
           icon={<Delete fill="#fe5b54" fontSize="1.7rem" />}
           {...icon}
           p={0}
-          borderRadius="100%"
+          borderRadius={borderRadius}
           label={""}
           onClick={onDelete}
         />

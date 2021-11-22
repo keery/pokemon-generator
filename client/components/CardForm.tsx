@@ -9,6 +9,8 @@ import {
   AccordionPanel,
   AccordionIcon,
   useColorModeValue,
+  useColorMode,
+  Image,
 } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import CardFormHeader from "~components/CardFormHeader";
@@ -25,6 +27,7 @@ const CardForm = () => {
   const isDesktop = useBreakpointValue({ base: false, xl: true });
   const layerStyle = useColorModeValue("glass", "nes-container");
   const borderRadius = useColorModeValue("md", "none");
+  const { colorMode } = useColorMode();
 
   const Form = [
     {
@@ -118,20 +121,35 @@ const CardForm = () => {
           >
             {Form.map(({ header, fields }) => (
               <AccordionItem border="none" mt={4}>
-                <AccordionButton
-                  justifyContent="space-between"
-                  textAlign="left"
-                  py={0}
-                  px={2}
-                  borderRadius="sm"
-                  w="100%"
-                >
-                  {header}
-                  <AccordionIcon color={{ base: "white", xl: "#3b434c" }} />
-                </AccordionButton>
-                <AccordionPanel px={0}>
-                  <CardFieldsGroup>{fields}</CardFieldsGroup>
-                </AccordionPanel>
+                {({ isExpanded }) => (
+                  <>
+                    <AccordionButton
+                      justifyContent="space-between"
+                      textAlign="left"
+                      py={0}
+                      px={2}
+                      borderRadius="sm"
+                      w="100%"
+                    >
+                      {header}
+                      {colorMode === "dark" ? (
+                        <Image
+                          src="/assets/img/pixel/chevron.png"
+                          w="20px"
+                          transition="transform ease-in-out 200ms"
+                          transform={isExpanded ? null : "rotate(180deg)"}
+                        />
+                      ) : (
+                        <AccordionIcon
+                          color={{ base: "white", xl: "#3b434c" }}
+                        />
+                      )}
+                    </AccordionButton>
+                    <AccordionPanel px={0}>
+                      <CardFieldsGroup>{fields}</CardFieldsGroup>
+                    </AccordionPanel>
+                  </>
+                )}
               </AccordionItem>
             ))}
           </Accordion>

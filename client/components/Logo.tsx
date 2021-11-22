@@ -13,7 +13,7 @@ import LogoPixel from "~components/LogoPixel";
 const Logo = () => {
   const { colorMode } = useColorMode();
   const fontFamily = useColorModeValue("body", "nes");
-  const fontSize = useColorModeValue("1rem", "0.9rem");
+  const fontSize = useColorModeValue("1rem", "0.8rem");
   const mt = useColorModeValue(0, "0.5rem");
 
   return (

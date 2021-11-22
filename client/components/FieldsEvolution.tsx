@@ -26,7 +26,7 @@ const FieldsEvolution = () => {
         <Input name="nameEvolution" type="text" control={control} />
       </Field>
       <Field label={t("picture")} isDisabled={stage.value === BASIC}>
-        <FileInput name="evolvePicture" id="evolvePicture" />
+        <FileInput name="evolvePicture" />
       </Field>
     </>
   );

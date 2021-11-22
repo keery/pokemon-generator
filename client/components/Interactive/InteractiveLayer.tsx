@@ -17,7 +17,7 @@ import {
   RARITY_OPTIONS,
 } from "~constants";
 import InteractiveIcon from "./InteractiveIcon";
-import { Box } from "@chakra-ui/react";
+import { Box, useColorMode, Image } from "@chakra-ui/react";
 import FieldsCollection from "~components/Fields/FieldsCollection";
 import FieldsLengthWeight from "~components/Fields/FieldsLengthWeight";
 import FieldsAttackTab from "~components/Fields/FieldsAttackTab";
@@ -43,7 +43,8 @@ const InteractiveLayer = () => {
   const { isTiny } = useAttacks(control);
   const card = useRecoilValue(cardAtom);
   const isBasicStage = useMemo(() => stage.value === BASIC, [stage]);
-  console.log(isBasicStage);
+  const { colorMode } = useColorMode();
+
   return (
     <Box
       className="InteractiveLayer"
@@ -342,25 +343,7 @@ const InteractiveLayer = () => {
           />
         }
       />
-      {/* RESISTANCE TYPE */}
-      <ButtonList
-        name="resistanceType"
-        x={45.8}
-        y={84.8}
-        size={5.4}
-        options={ELEMENTS_OPTIONS}
-        control={control}
-        icon={
-          <InteractiveIcon
-            placement="bottom"
-            left="32%"
-            label={t("resistance")}
-            icon={<Pokeball />}
-            lineLength={13.5}
-            linePos={48.4}
-          />
-        }
-      />
+
       {/* RESISTANCE AMOUNT */}
       <InteractiveSelect
         name="resistanceAmount"
@@ -382,6 +365,27 @@ const InteractiveLayer = () => {
           />
         }
       />
+
+      {/* RESISTANCE TYPE */}
+      <ButtonList
+        name="resistanceType"
+        x={45.8}
+        y={84.8}
+        size={5.4}
+        options={ELEMENTS_OPTIONS}
+        control={control}
+        icon={
+          <InteractiveIcon
+            placement="bottom"
+            left="32%"
+            label={t("resistance")}
+            icon={<Pokeball />}
+            lineLength={13.5}
+            linePos={48.4}
+          />
+        }
+      />
+
       {/* RETREAT */}
       <InteractiveSelect
         name="retreat"

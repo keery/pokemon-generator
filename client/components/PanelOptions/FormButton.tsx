@@ -9,6 +9,8 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
+  useColorMode,
+  Image,
 } from "@chakra-ui/react";
 import CardForm from "~components/CardForm";
 
@@ -16,12 +18,19 @@ const FormButton = () => {
   const { t } = useTranslation("generator");
   const isVisible = useBreakpointValue({ base: true, xl: false });
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode } = useColorMode();
   if (!isVisible) return null;
 
   return (
     <>
       <OptionButton
-        icon={<Form />}
+        icon={
+          colorMode === "dark" ? (
+            <Image src="/assets/img/pixel/form.png" boxSize="24px" />
+          ) : (
+            <Form />
+          )
+        }
         onClick={onOpen}
         label={t("openForm")}
         keyboard_shortcut={["ctrl", "f"]}
