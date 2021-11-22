@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, Flex } from "@chakra-ui/react";
+import { Box, Text, Flex, useColorModeValue } from "@chakra-ui/react";
 import Upload from "public/assets/img/upload.svg";
 import Check from "public/assets/img/check.svg";
 import dynamic from "next/dynamic";
@@ -14,6 +14,7 @@ interface Props {
 const FileInput = ({ id, name }: Props) => {
   const { t } = useTranslation("generator");
   const { setValue, control } = useFormContext();
+  const layerStyle = useColorModeValue(null, "nes-input");
   const value = useWatch({
     name,
     control,
@@ -39,6 +40,7 @@ const FileInput = ({ id, name }: Props) => {
           borderColor: "#77b2f5",
         }}
         transition="border-color 200ms"
+        layerStyle={layerStyle}
       >
         <Text
           onClick={() => document.getElementById(name).click()}

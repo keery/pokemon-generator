@@ -112,18 +112,21 @@ const EyeButton = () => {
 
   const icon = useMemo(() => {
     const shadow = { filter: "drop-shadow(0px 0px 6px #fff)" };
-    return isVisible ? (
-      colorMode === "dark" ? (
-        <Eye />
+
+    if (isVisible) {
+      return colorMode === "dark" ? (
+        <Image src="/assets/img/pixel/eye.png" w="24px" />
       ) : (
         <Eye {...(isHelpVisible && shadow)} />
-      )
-    ) : colorMode === "dark" ? (
-      <Image src="/assets/img/pixel/eye-close.png" boxSize="24px" />
-    ) : (
-      <EyeClose {...(isHelpVisible && shadow)} />
-    );
-  }, [isVisible]);
+      );
+    } else {
+      return colorMode === "dark" ? (
+        <Image src="/assets/img/pixel/eye-close.png" boxSize="24px" />
+      ) : (
+        <EyeClose {...(isHelpVisible && shadow)} />
+      );
+    }
+  }, [isVisible, colorMode]);
 
   const Button = (
     <OptionButton

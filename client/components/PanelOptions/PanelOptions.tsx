@@ -6,6 +6,7 @@ import {
   useBreakpointValue,
   useColorMode,
   Image,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import Print from "public/assets/img/print.svg";
@@ -58,8 +59,8 @@ const PanelOptions = () => {
       <Stack
         direction={{ base: "row", sm: "column" }}
         borderRadius="sm"
-        layerStyle="glass"
-        p={1.5}
+        layerStyle={colorMode === "dark" ? "nes-container" : "glass"}
+        p={colorMode === "dark" ? 0 : 1.5}
         spacing={{ base: 0, sm: 4 }}
         pos="relative"
         w="100%"

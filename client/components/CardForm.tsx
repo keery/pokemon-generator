@@ -8,6 +8,7 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import CardFormHeader from "~components/CardFormHeader";
@@ -22,6 +23,8 @@ import Logo from "~components/Logo";
 const CardForm = () => {
   const { t } = useTranslation("generator");
   const isDesktop = useBreakpointValue({ base: false, xl: true });
+  const layerStyle = useColorModeValue("glass", "nes-container");
+  const borderRadius = useColorModeValue("md", "none");
 
   const Form = [
     {
@@ -91,8 +94,8 @@ const CardForm = () => {
           top={0}
           flex={1}
           height="100%"
-          layerStyle={isDesktop ? "glass" : ""}
-          borderRadius={{ base: "none", xl: "md" }}
+          layerStyle={isDesktop ? layerStyle : ""}
+          borderRadius={{ base: "none", xl: borderRadius }}
           px={{ base: 2, lg: 4 }}
           pt={{ base: 10, xl: 8 }}
           pb={{ base: 0, xl: 8 }}

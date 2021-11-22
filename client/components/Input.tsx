@@ -18,7 +18,7 @@ const Input = ({ control, name, ...rest }: Props) => {
   const value = useWatch({ control, name });
 
   return (
-    <Box pos="relative">
+    <Box pos="relative" flex={1}>
       {colorMode === "dark" && (
         <Box
           bgColor="white"

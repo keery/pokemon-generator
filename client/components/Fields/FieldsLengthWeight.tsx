@@ -1,5 +1,9 @@
 import React from "react";
-import { InputRightAddon, InputGroup } from "@chakra-ui/react";
+import {
+  InputRightAddon,
+  InputGroup,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import Field from "~components/Field";
 import Input from "~components/Input";
 import { useTranslation } from "next-i18next";
@@ -11,6 +15,15 @@ interface Props {
 
 const FieldsLengthWeight = ({ control }: Props) => {
   const { t } = useTranslation("generator");
+  const inputGroupStyle = useColorModeValue(
+    {},
+    { layerStyle: "nes-input", p: 0 }
+  );
+  const inputStyle = useColorModeValue(
+    {},
+    { border: "none", fontSize: "xs", _focus: {} }
+  );
+  const addonStyle = useColorModeValue({}, { border: "none", px: 2 });
 
   return (
     <>
@@ -21,8 +34,13 @@ const FieldsLengthWeight = ({ control }: Props) => {
         <Input name="length" control={control} />
       </Field>
       <Field label={t("weight")}>
-        <InputGroup>
-          <Input name="weight" control={control} borderRightRadius="none" />
+        <InputGroup {...inputGroupStyle}>
+          <Input
+            name="weight"
+            control={control}
+            borderRightRadius="none"
+            {...inputStyle}
+          />
           <InputRightAddon
             children="lbs"
             color="main"
@@ -31,6 +49,7 @@ const FieldsLengthWeight = ({ control }: Props) => {
             fontWeight="500"
             border="1px solid"
             borderColor="#cacaca"
+            {...addonStyle}
           />
         </InputGroup>
       </Field>
