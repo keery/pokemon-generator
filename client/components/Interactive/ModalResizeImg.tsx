@@ -139,6 +139,7 @@ const ModalResizeImg = ({
   const variantRemove = useColorModeValue("solid", "nes-button-red");
   const variantConfirm = useColorModeValue("solid", "nes-button-blue");
   const borderRadius = useColorModeValue("sm", "none");
+  const layerStyle = useColorModeValue("", "nes-container");
 
   return (
     <Modal
@@ -175,7 +176,7 @@ const ModalResizeImg = ({
         borderRadius={borderRadius}
         overflow="hidden"
         transform="translateZ(1)"
-        layerStyle="nes-container"
+        layerStyle={layerStyle}
       >
         <Stage width={width} height={height}>
           <Layer>
