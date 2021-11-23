@@ -13,12 +13,13 @@ import LogoPixel from "~components/LogoPixel";
 const Logo = () => {
   const { colorMode } = useColorMode();
   const fontFamily = useColorModeValue("body", "nes");
-  const fontSize = useColorModeValue("1rem", "0.8rem");
+  const fontSize = useColorModeValue("1rem", "0.7rem");
   const mt = useColorModeValue(0, "0.5rem");
+  const ml = useColorModeValue(4, 0);
 
   return (
     <Link
-      ml={4}
+      ml={ml}
       href="/"
       display="inline-block"
       _hover={{

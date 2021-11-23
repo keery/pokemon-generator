@@ -5,6 +5,7 @@ import {
   StackDivider,
   useBreakpointValue,
   useColorMode,
+  useColorModeValue,
   Image,
 } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
@@ -44,6 +45,7 @@ const PanelOptions = () => {
   const { t } = useTranslation("generator");
   const hasDivider = useBreakpointValue({ base: true, sm: false });
   const { colorMode } = useColorMode();
+  const transform = useColorModeValue("translateX(0)", "translateX(-4px)");
 
   return (
     <Flex
@@ -61,6 +63,7 @@ const PanelOptions = () => {
         layerStyle={colorMode === "dark" ? "nes-container" : "glass"}
         p={colorMode === "dark" ? 0 : 1.5}
         spacing={{ base: 0, sm: 4 }}
+        transform={{ base: transform, sm: "translateX(0)" }}
         pos="relative"
         w="100%"
         justifyContent="space-between"

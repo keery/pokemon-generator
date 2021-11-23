@@ -4,10 +4,11 @@ import { Box } from "@chakra-ui/react";
 const LogoPixel = () => {
   return (
     <Box
-      w="86px"
+      w="68px"
       h="86px"
       pos="relative"
       display="inline-block"
+      transform="scale(0.7)"
       _before={{
         content: "''",
         w: "6px",

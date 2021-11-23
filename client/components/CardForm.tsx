@@ -28,6 +28,8 @@ const CardForm = () => {
   const isDesktop = useBreakpointValue({ base: false, xl: true });
   const layerStyle = useColorModeValue("glass", "nes-container");
   const borderRadius = useColorModeValue("md", "none");
+  const pt = useColorModeValue(8, 2);
+  const mt = useColorModeValue(10, 7);
   const { colorMode } = useColorMode();
 
   const Form = [
@@ -101,7 +103,7 @@ const CardForm = () => {
           layerStyle={isDesktop ? layerStyle : ""}
           borderRadius={{ base: "none", xl: borderRadius }}
           px={{ base: 2, lg: 4 }}
-          pt={{ base: 10, xl: 8 }}
+          pt={{ base: 10, xl: pt }}
           pb={{ base: 0, xl: 8 }}
           direction="column"
           zIndex={10}
@@ -117,7 +119,7 @@ const CardForm = () => {
             overflowY="scroll"
             allowMultiple
             allowToggle
-            mt={{ base: 0, xl: 10 }}
+            mt={{ base: 0, xl: mt }}
             w="100%"
             color="#3b434c"
           >
