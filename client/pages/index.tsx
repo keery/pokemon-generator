@@ -62,7 +62,7 @@ const Home: NextPage = () => {
               justifyContent="center"
               height="100%"
               borderRadius="md"
-              pb={{ base: 2, sm: 0 }}
+              pb={{ base: 4, sm: 0 }}
             >
               <Card />
             </Flex>
