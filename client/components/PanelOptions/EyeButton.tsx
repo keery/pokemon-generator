@@ -13,6 +13,8 @@ import {
   PopoverContent,
   PopoverBody,
   PopoverArrow,
+  useColorMode,
+  Image,
 } from "@chakra-ui/react";
 import OptionButton from "~components/PanelOptions/OptionButton";
 import { useTranslation } from "next-i18next";
@@ -106,15 +108,25 @@ const EyeButton = () => {
   const isMobile = useBreakpointValue({ base: true, xl: false });
   const [isHelpVisible, setHelpVisible] = useState(true);
   const isDontShowAgain = localStorage.getItem(KEY_CACHE) || null;
+  const { colorMode } = useColorMode();
 
   const icon = useMemo(() => {
     const shadow = { filter: "drop-shadow(0px 0px 6px #fff)" };
-    return isVisible ? (
-      <Eye {...(isHelpVisible && shadow)} />
-    ) : (
-      <EyeClose {...(isHelpVisible && shadow)} />
-    );
-  }, [isVisible]);
+
+    if (isVisible) {
+      return colorMode === "dark" ? (
+        <Image src="/assets/img/pixel/eye.png" w="24px" />
+      ) : (
+        <Eye {...(isHelpVisible && shadow)} />
+      );
+    } else {
+      return colorMode === "dark" ? (
+        <Image src="/assets/img/pixel/eye-close.png" boxSize="24px" />
+      ) : (
+        <EyeClose {...(isHelpVisible && shadow)} />
+      );
+    }
+  }, [isVisible, colorMode]);
 
   const Button = (
     <OptionButton

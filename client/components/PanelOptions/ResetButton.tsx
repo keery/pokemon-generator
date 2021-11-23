@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useCallback, memo } from "react";
 import Reset from "public/assets/img/reset.svg";
+import { useColorMode, Image } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import { useWatch, useFormContext } from "react-hook-form";
 import ConfirmReset from "~components/ConfirmReset";
@@ -24,6 +25,7 @@ const ResetButton = () => {
   );
   const setCardState = useSetRecoilState(cardAtom);
   const setHistoryState = useSetRecoilState(historyAtom);
+  const { colorMode } = useColorMode();
 
   const confirmReset = useCallback(() => {
     setOpen(false);
@@ -50,7 +52,13 @@ const ResetButton = () => {
     <>
       <OptionButton
         isDisabled={isDisabled}
-        icon={<Reset />}
+        icon={
+          colorMode === "dark" ? (
+            <Image src="/assets/img/pixel/reset.png" boxSize="24px" />
+          ) : (
+            <Reset />
+          )
+        }
         onClick={() => setOpen(true)}
         label={t("resetCard")}
         keyboard_shortcut={["ctrl", "r"]}

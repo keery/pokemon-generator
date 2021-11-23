@@ -7,12 +7,20 @@ import {
   AlertDialogContent,
   AlertDialogOverlay,
   Button,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 
 const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
   const cancelRef = useRef();
   const { t } = useTranslation("generator");
+  const contentStyle = useColorModeValue(
+    {},
+    { layerStyle: "nes-container", padding: "0rem 0.5rem" }
+  );
+  const variant = useColorModeValue("solid", "nes-button-blue");
+  const headerFontSize = useColorModeValue("lg", "md");
+  const bodyFontSize = useColorModeValue("md", "xs");
 
   return (
     <AlertDialog
@@ -22,13 +30,22 @@ const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
       isCentered
     >
       <AlertDialogOverlay>
-        <AlertDialogContent borderRadius="sm" mx={2}>
-          <AlertDialogHeader fontSize="lg" fontWeight="bold">
+        <AlertDialogContent
+          borderRadius="sm"
+          mx={2}
+          color="text"
+          bgColor="white"
+          {...contentStyle}
+        >
+          <AlertDialogHeader fontSize={headerFontSize} fontWeight="bold">
             {t("resetTitle")}
           </AlertDialogHeader>
-          <AlertDialogBody>{t("confirmReset")}</AlertDialogBody>
+          <AlertDialogBody fontSize={bodyFontSize}>
+            {t("confirmReset")}
+          </AlertDialogBody>
           <AlertDialogFooter>
             <Button
+              fontSize={bodyFontSize}
               variant="line"
               cursor="pointer"
               ref={cancelRef}
@@ -36,7 +53,7 @@ const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
             >
               {t("common:cancel")}
             </Button>
-            <Button onClick={confirm} ml={3} cursor="pointer">
+            <Button onClick={confirm} ml={3} cursor="pointer" variant={variant}>
               {t("common:confirm")}
             </Button>
           </AlertDialogFooter>

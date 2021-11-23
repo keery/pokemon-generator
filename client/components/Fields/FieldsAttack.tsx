@@ -1,10 +1,11 @@
 import React from "react";
-import { Input, Textarea } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { useFormContext } from "react-hook-form";
 import { DAMAGE_CHOICES, ATTACK_AMOUNT_CHOICES, ELEMENTS } from "~constants";
 import Select from "~components/Select";
 import Field from "~components/Field";
+import Input from "~components/Input";
+import Textarea from "~components/Textarea";
 
 const optionsDamage = DAMAGE_CHOICES.map((el) => ({
   value: el,
@@ -23,17 +24,12 @@ const optionsAmount = ATTACK_AMOUNT_CHOICES.map((el) => ({
 
 const FieldsAttack = ({ name }) => {
   const { t } = useTranslation("generator");
-  const { register, control } = useFormContext();
+  const { control } = useFormContext();
 
   return (
     <>
       <Field label={t("name")}>
-        <Input
-          name={`${name}Name`}
-          type="text"
-          {...register(`${name}Name`)}
-          id={`field-${name}`}
-        />
+        <Input control={control} name={`${name}Name`} id={`field-${name}`} />
       </Field>
       <Field label={t("damage")}>
         <Select
@@ -44,7 +40,7 @@ const FieldsAttack = ({ name }) => {
         />
       </Field>
       <Field label={t("info")}>
-        <Textarea name={`${name}Info`} {...register(`${name}Info`)} />
+        <Textarea name={`${name}Info`} control={control} />
       </Field>
       <Field label={t("amount")}>
         <Select

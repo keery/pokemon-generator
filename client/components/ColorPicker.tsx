@@ -10,6 +10,7 @@ import {
   useDisclosure,
   AspectRatio,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useController, useFormContext } from "react-hook-form";
 import { useTranslation } from "next-i18next";
@@ -25,6 +26,8 @@ const ColorPicker = () => {
     name: "bgColor",
     control,
   });
+  const border = useColorModeValue("solid white", "solid black");
+  const fontSize = useColorModeValue("0.9rem", "xs");
 
   return (
     <Popover isOpen={isOpen} onClose={onClose}>
@@ -48,7 +51,7 @@ const ColorPicker = () => {
                   h="100%"
                   w="100%"
                   borderRadius="100%"
-                  border="solid white"
+                  border={border}
                   borderWidth={{ base: "3px", sm: "4px" }}
                 />
               </Box>
@@ -80,7 +83,7 @@ const ColorPicker = () => {
             display={{ base: "block", xl: "none" }}
             fontWeight="600"
             textTransform="uppercase"
-            fontSize="0.9rem"
+            fontSize={fontSize}
             py={2}
             color="text"
             textAlign="center"

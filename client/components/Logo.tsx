@@ -1,7 +1,21 @@
 import React from "react";
-import { Text, Flex, Link, Image, Heading } from "@chakra-ui/react";
+import {
+  Text,
+  Flex,
+  Link,
+  Image,
+  Heading,
+  useColorModeValue,
+  useColorMode,
+} from "@chakra-ui/react";
+import LogoPixel from "~components/LogoPixel";
 
 const Logo = () => {
+  const { colorMode } = useColorMode();
+  const fontFamily = useColorModeValue("body", "nes");
+  const fontSize = useColorModeValue("1rem", "0.8rem");
+  const mt = useColorModeValue(0, "0.5rem");
+
   return (
     <Link
       ml={4}
@@ -12,18 +26,30 @@ const Logo = () => {
       }}
     >
       <Flex alignItems="center">
-        <Image
-          w="50px"
-          src={`/assets/img/pokeball.png`}
-          alt={`Logo ${process.env.NEXT_PUBLIC_APP_NAME}`}
-        />
+        {colorMode === "dark" ? (
+          <LogoPixel />
+        ) : (
+          <Image
+            w="50px"
+            src={`/assets/img/pokeball.png`}
+            alt={`Logo ${process.env.NEXT_PUBLIC_APP_NAME}`}
+          />
+        )}
 
-        <Heading as="h1" fontWeight="800" color="text" pl={3} lineHeight={0}>
-          <Text as="span" fontSize="19px" lineHeight="1">
+        <Heading
+          as="h1"
+          fontWeight="800"
+          color="text"
+          pl={3}
+          lineHeight={0}
+          fontFamily={fontFamily}
+          fontSize={fontSize}
+        >
+          <Text as="span" fontSize="1.2em" lineHeight="1">
             Pokemon card
           </Text>
           <br />
-          <Text as="span" fontSize="31px" lineHeight="1">
+          <Text as="div" fontSize="1.9em" lineHeight="1" mt={mt}>
             Generator
           </Text>
         </Heading>

@@ -1,19 +1,20 @@
 import React from "react";
-import { Box, Text, Flex } from "@chakra-ui/react";
+import { Box, Text, Flex, useColorMode } from "@chakra-ui/react";
 import Upload from "public/assets/img/upload.svg";
 import Check from "public/assets/img/check.svg";
 import dynamic from "next/dynamic";
 import { useFormContext, useWatch } from "react-hook-form";
 import { useTranslation } from "next-i18next";
+import FileInputPixel from "~components/FileInputPixel";
 
 interface Props {
   name: string;
-  id: string;
 }
 
-const FileInput = ({ id, name }: Props) => {
+const FileInput = ({ name }: Props) => {
   const { t } = useTranslation("generator");
   const { setValue, control } = useFormContext();
+  const { colorMode } = useColorMode();
   const value = useWatch({
     name,
     control,
@@ -22,6 +23,18 @@ const FileInput = ({ id, name }: Props) => {
   const deleteFile = () => {
     setValue(name, null);
   };
+
+  const onClick = () => document.getElementById(name).click();
+
+  if (colorMode === "dark")
+    return (
+      <FileInputPixel
+        name={name}
+        onClick={onClick}
+        deleteFile={deleteFile}
+        value={value}
+      />
+    );
 
   return (
     <Box>
@@ -41,7 +54,7 @@ const FileInput = ({ id, name }: Props) => {
         transition="border-color 200ms"
       >
         <Text
-          onClick={() => document.getElementById(name).click()}
+          onClick={onClick}
           color="grey.500"
           fontSize=".9rem"
           fontWeight="500"

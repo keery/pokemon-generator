@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
 
 interface Props {
   step: number;
@@ -8,6 +8,9 @@ interface Props {
 }
 
 const CardFormHeader = ({ title, id = "" }: Props) => {
+  const fontSize = useColorModeValue("xl", "md");
+  const fontWeight = useColorModeValue("800", "400");
+
   return (
     <Flex
       as="header"
@@ -20,8 +23,8 @@ const CardFormHeader = ({ title, id = "" }: Props) => {
     >
       <Flex alignItems="center" p="6px 15px 6px 8px" color="black" w="100%">
         <Text
-          fontWeight="800"
-          fontSize="22px"
+          fontWeight={fontWeight}
+          fontSize={fontSize}
           color={{ base: "white", xl: "text" }}
         >
           {title}

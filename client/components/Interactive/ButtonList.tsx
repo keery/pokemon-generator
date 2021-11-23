@@ -11,6 +11,9 @@ import {
   PopoverContent,
   useDisclosure,
   useBreakpointValue,
+  useColorMode,
+  useColorModeValue,
+  Image,
 } from "@chakra-ui/react";
 import { motion, MotionStyle } from "framer-motion";
 import { useController, useWatch, Control } from "react-hook-form";
@@ -68,6 +71,20 @@ const ButtonList = ({
   const { isVisible: areaIsVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode } = useColorMode();
+  const style = useColorModeValue(
+    {
+      layerStyle: "glass",
+      borderRadius: "sm",
+      bgColor: "rgb(255 255 255 / 60%)",
+    },
+    {
+      layerStyle: "nes-container",
+      bgColor: "white",
+      borderRadius: "none",
+      p: 0,
+    }
+  );
 
   return (
     <Box role="group">
@@ -109,14 +126,7 @@ const ButtonList = ({
             </AspectRatio>
           </Box>
         </PopoverTrigger>
-        <PopoverContent
-          border="none"
-          w="auto"
-          background="none"
-          layerStyle="glass"
-          borderRadius="sm"
-          bgColor="rgb(255 255 255 / 40%)"
-        >
+        <PopoverContent border="none" w="auto" background="none" {...style}>
           <HStack
             spacing=".5rem"
             p="10px 20px"
@@ -137,16 +147,24 @@ const ButtonList = ({
                 whileTap={{ scale: 0.9 }}
                 style={{ outline: "none" }}
               >
-                <Icon
-                  as={Cross}
-                  bgColor="#fff"
-                  {...(styleEl as ChakraProps)}
-                  color="#c1c1c1"
-                  border="1px solid #d8d8d8"
-                  transition="box-shadow ease-in-out .1s"
-                  onClick={() => field.onChange(null)}
-                  p={1}
-                />
+                {colorMode === "dark" ? (
+                  <Image
+                    src="/assets/img/pixel/close-circle.png"
+                    boxSize="28px"
+                    onClick={() => field.onChange(null)}
+                  />
+                ) : (
+                  <Icon
+                    as={Cross}
+                    bgColor="#fff"
+                    {...(styleEl as ChakraProps)}
+                    color="#c1c1c1"
+                    border="1px solid #d8d8d8"
+                    transition="box-shadow ease-in-out .1s"
+                    onClick={() => field.onChange(null)}
+                    p={1}
+                  />
+                )}
               </motion.button>
             )}
             {options.map((item) => {

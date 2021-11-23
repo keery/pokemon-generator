@@ -1,5 +1,4 @@
 import React from "react";
-import { Box, Flex } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { useFormContext } from "react-hook-form";
 import Select from "~components/Select";

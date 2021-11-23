@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
 import Modal from "~components/Modal";
-import { Button, AspectRatio, Flex } from "@chakra-ui/react";
+import { Button, AspectRatio, Flex, useColorModeValue } from "@chakra-ui/react";
 import { Layer, Stage, Group, Line } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
 import { useWatch, useFormContext } from "react-hook-form";
@@ -136,6 +136,10 @@ const ModalResizeImg = ({
     onClose();
   };
 
+  const variantRemove = useColorModeValue("solid", "nes-button-red");
+  const variantConfirm = useColorModeValue("solid", "nes-button-blue");
+  const borderRadius = useColorModeValue("sm", "none");
+
   return (
     <Modal
       title={t("resizeImg")}
@@ -143,14 +147,21 @@ const ModalResizeImg = ({
       onClose={onClose}
       footer={
         <Flex justifyContent="space-between" w="100%">
-          <Button colorScheme="red" cursor="pointer" onClick={deleteFile}>
+          <Button
+            colorScheme="red"
+            cursor="pointer"
+            onClick={deleteFile}
+            variant={variantRemove}
+          >
             {t("remove")}
           </Button>
           <Flex>
-            <Button variant="line" cursor="pointer" onClick={onClose}>
-              {t("common:cancel")}
-            </Button>
-            <Button ml={3} cursor="pointer" onClick={onSubmit}>
+            <Button
+              ml={3}
+              cursor="pointer"
+              onClick={onSubmit}
+              variant={variantConfirm}
+            >
               {t("common:confirm")}
             </Button>
           </Flex>
@@ -161,9 +172,10 @@ const ModalResizeImg = ({
       <AspectRatio
         ratio={width / height}
         className="resize-stage"
-        borderRadius="sm"
+        borderRadius={borderRadius}
         overflow="hidden"
         transform="translateZ(1)"
+        layerStyle="nes-container"
       >
         <Stage width={width} height={height}>
           <Layer>

@@ -8,6 +8,9 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  useColorModeValue,
+  useColorMode,
+  Image,
 } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import CardFormHeader from "~components/CardFormHeader";
@@ -18,10 +21,14 @@ import FieldsAttack from "~components/Fields/FieldsAttack";
 import FieldsSubInfo from "~components/FieldsSubInfo";
 import FieldsBottomInfo from "~components/FieldsBottomInfo";
 import Logo from "~components/Logo";
+import NesButton from "./NesButton";
 
 const CardForm = () => {
   const { t } = useTranslation("generator");
   const isDesktop = useBreakpointValue({ base: false, xl: true });
+  const layerStyle = useColorModeValue("glass", "nes-container");
+  const borderRadius = useColorModeValue("md", "none");
+  const { colorMode } = useColorMode();
 
   const Form = [
     {
@@ -91,8 +98,8 @@ const CardForm = () => {
           top={0}
           flex={1}
           height="100%"
-          layerStyle={isDesktop ? "glass" : ""}
-          borderRadius={{ base: "none", xl: "md" }}
+          layerStyle={isDesktop ? layerStyle : ""}
+          borderRadius={{ base: "none", xl: borderRadius }}
           px={{ base: 2, lg: 4 }}
           pt={{ base: 10, xl: 8 }}
           pb={{ base: 0, xl: 8 }}
@@ -100,8 +107,9 @@ const CardForm = () => {
           zIndex={10}
         >
           {isDesktop && (
-            <Flex alignItems="center">
+            <Flex alignItems="center" justifyContent="space-between">
               <Logo />
+              <NesButton />
             </Flex>
           )}
           <Accordion
@@ -115,20 +123,35 @@ const CardForm = () => {
           >
             {Form.map(({ header, fields }) => (
               <AccordionItem border="none" mt={4}>
-                <AccordionButton
-                  justifyContent="space-between"
-                  textAlign="left"
-                  py={0}
-                  px={2}
-                  borderRadius="sm"
-                  w="100%"
-                >
-                  {header}
-                  <AccordionIcon color={{ base: "white", xl: "#3b434c" }} />
-                </AccordionButton>
-                <AccordionPanel px={0}>
-                  <CardFieldsGroup>{fields}</CardFieldsGroup>
-                </AccordionPanel>
+                {({ isExpanded }) => (
+                  <>
+                    <AccordionButton
+                      justifyContent="space-between"
+                      textAlign="left"
+                      py={0}
+                      px={2}
+                      borderRadius="sm"
+                      w="100%"
+                    >
+                      {header}
+                      {colorMode === "dark" ? (
+                        <Image
+                          src="/assets/img/pixel/chevron.png"
+                          w="20px"
+                          transition="transform ease-in-out 200ms"
+                          transform={isExpanded ? null : "rotate(180deg)"}
+                        />
+                      ) : (
+                        <AccordionIcon
+                          color={{ base: "white", xl: "#3b434c" }}
+                        />
+                      )}
+                    </AccordionButton>
+                    <AccordionPanel px={0}>
+                      <CardFieldsGroup>{fields}</CardFieldsGroup>
+                    </AccordionPanel>
+                  </>
+                )}
               </AccordionItem>
             ))}
           </Accordion>
