@@ -510,6 +510,23 @@ a {
   }
 }
 
+.uppy-Webcam-buttonContainer {
+  display: flex;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.uppy-Webcam-buttonContainer button:nth-child(2) {
+  display: none;
+}
+.uppy-Webcam-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.uppy-DashboardContent-panelBody {
+  align-items: flex-start !important;
+}
+
 @media print {
   *,
   .backface {
