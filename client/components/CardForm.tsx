@@ -21,6 +21,7 @@ import FieldsAttack from "~components/Fields/FieldsAttack";
 import FieldsSubInfo from "~components/FieldsSubInfo";
 import FieldsBottomInfo from "~components/FieldsBottomInfo";
 import Logo from "~components/Logo";
+import NesButton from "./NesButton";
 
 const CardForm = () => {
   const { t } = useTranslation("generator");
@@ -106,8 +107,9 @@ const CardForm = () => {
           zIndex={10}
         >
           {isDesktop && (
-            <Flex alignItems="center">
+            <Flex alignItems="center" justifyContent="space-between">
               <Logo />
+              <NesButton />
             </Flex>
           )}
           <Accordion

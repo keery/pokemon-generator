@@ -6,7 +6,6 @@ import {
   useBreakpointValue,
   useColorMode,
   Image,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import Print from "public/assets/img/print.svg";
