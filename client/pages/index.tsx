@@ -56,6 +56,7 @@ const Home: NextPage = () => {
             <PanelOptions />
             {isFormVisible && <CardForm />}
             <Flex
+              alignSelf="center"
               flex={2}
               alignItems="center"
               justifyContent="center"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
   Box,
   HStack,
@@ -9,7 +9,6 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-  useDisclosure,
   useBreakpointValue,
   useColorMode,
   useColorModeValue,
@@ -70,7 +69,9 @@ const ButtonList = ({
   const value = useWatch({ control, name });
   const { isVisible: areaIsVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isOpen, setIsOpen] = useState(false);
+  const onOpen = () => setIsOpen(true);
+  const onClose = () => setIsOpen(false);
   const { colorMode } = useColorMode();
   const style = useColorModeValue(
     {
@@ -87,12 +88,12 @@ const ButtonList = ({
   );
 
   return (
-    <Box role="group">
+    <Box role="group" className="ButtonList">
       <Box onClick={onOpen}>{icon}</Box>
       <Popover placement="top" isOpen={isOpen} onClose={onClose}>
         <PopoverTrigger>
           <Box
-            className="ButtonList"
+            onClick={() => console.log("ici")}
             left={`${x}%`}
             top={`${y}%`}
             pos="absolute"
@@ -126,7 +127,13 @@ const ButtonList = ({
             </AspectRatio>
           </Box>
         </PopoverTrigger>
-        <PopoverContent border="none" w="auto" background="none" {...style}>
+        <PopoverContent
+          border="none"
+          w="auto"
+          background="none"
+          {...style}
+          onClick={() => console.log("ici")}
+        >
           <HStack
             spacing=".5rem"
             p="10px 20px"
