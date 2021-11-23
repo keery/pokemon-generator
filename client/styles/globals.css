@@ -501,6 +501,15 @@ a {
   height: 100% !important;
 }
 
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
 @media print {
   *,
   .backface {

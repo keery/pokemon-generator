@@ -34,14 +34,17 @@ const CardForm = () => {
 
   const Form = [
     {
+      id: "basic-info",
       header: <CardFormHeader step={1} title={t("basicInfo")} />,
       fields: <FieldsPokemonInfo />,
     },
     {
+      id: "evolution",
       header: <CardFormHeader step={2} title={t("evolution")} />,
       fields: <FieldsEvolution />,
     },
     {
+      id: "attack1",
       header: (
         <CardFormHeader
           step={3}
@@ -52,6 +55,7 @@ const CardForm = () => {
       fields: <FieldsAttack name="attack1" />,
     },
     {
+      id: "attack2",
       header: (
         <CardFormHeader
           step={4}
@@ -62,12 +66,14 @@ const CardForm = () => {
       fields: <FieldsAttack name="attack2" />,
     },
     {
+      id: "weakresretreat",
       header: (
         <CardFormHeader step={5} title={t("weaknessResistanceRetreat")} />
       ),
       fields: <FieldsSubInfo />,
     },
     {
+      id: "addinfo",
       header: <CardFormHeader step={6} title={t("additionalInformation")} />,
       fields: <FieldsBottomInfo />,
     },
@@ -123,8 +129,8 @@ const CardForm = () => {
             w="100%"
             color="#3b434c"
           >
-            {Form.map(({ header, fields }) => (
-              <AccordionItem border="none" mt={4}>
+            {Form.map(({ id, header, fields }) => (
+              <AccordionItem border="none" mt={4} key={id}>
                 {({ isExpanded }) => (
                   <>
                     <AccordionButton

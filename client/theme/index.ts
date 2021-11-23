@@ -224,6 +224,9 @@ const theme = extendTheme({
       border: "2px solid",
       borderRadius: "xs",
       transition: "box-shadow 200ms, border-color 200ms",
+      _hover: {
+        zIndex: 10,
+      },
       _groupHover: {
         boxShadow: "0px 0px 9px #a0c2ff",
         borderColor: "#fff",
