@@ -1,12 +1,11 @@
 import React, { useMemo } from "react";
-import { Flex, useBreakpointValue } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 
 interface Props {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: Props) => {
-  const isVisible = useBreakpointValue({ base: true, xl: false });
   const isMacLike = useMemo(() => {
     if (
       typeof navigator !== "undefined" &&
