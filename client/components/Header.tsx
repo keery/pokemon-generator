@@ -1,12 +1,21 @@
 import React from "react";
-import { Flex } from "@chakra-ui/react";
+import { Container, useColorModeValue } from "@chakra-ui/react";
 import Logo from "~components/Logo";
+import NesButton from "~components/NesButton";
 
 const Header = () => {
+  const py = useColorModeValue(4, 0);
+
   return (
-    <Flex pos="relative" zIndex={99}>
+    <Container
+      py={py}
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+    >
       <Logo />
-    </Flex>
+      <NesButton />
+    </Container>
   );
 };
 

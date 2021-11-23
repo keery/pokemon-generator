@@ -10751,15 +10751,7 @@ react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-react-konva-utils@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/react-konva-utils/-/react-konva-utils-0.2.0.tgz#e79ed7776edd50f40c152d8d49d2693ff12e910b"
-  integrity sha512-xjxhmuZnRJthInyb5wLwdgtO5gQnUvCpEutMoFwQtnwL4s4JFNLTq+fjlmCGhP+TxiJXiztzwinptL+wxP16pg==
-  dependencies:
-    react-konva "^17.0.2-4"
-    use-image "^1.0.7"
-
-react-konva@^17.0.2-4, react-konva@^17.0.2-5:
+react-konva@^17.0.2-5:
   version "17.0.2-5"
   resolved "https://registry.yarnpkg.com/react-konva/-/react-konva-17.0.2-5.tgz#e70b0acf323402de0a540f27b300fbe7ed151849"
   integrity sha512-IyzdfqRDK8r1ulp/jbLPX18AuO+n5yNtL0+4T0QEUsgArRqIl/VRCG1imA5mYJBk0cBNC5+fWDHN+HWEW62ZEQ==
@@ -10890,6 +10882,13 @@ react-style-singleton@^2.1.0:
     get-nonce "^1.0.0"
     invariant "^2.2.4"
     tslib "^1.0.0"
+
+react-switch@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-switch/-/react-switch-6.0.0.tgz#bd4a2dea08f211b8a32e55e8314fd44bc1ec947e"
+  integrity sha512-QV3/6eRK5/5epdQzIqvDAHRoGLbCv/wDpHUi6yBMXY1Xco5XGuIZxvB49PHoV1v/SpEgOCJLD/Zo43iic+aEIw==
+  dependencies:
+    prop-types "^15.7.2"
 
 react-transition-group@^4.3.0:
   version "4.4.2"

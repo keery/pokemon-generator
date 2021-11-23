@@ -8,6 +8,7 @@ import {
   AlertDialogOverlay,
   Button,
   useColorModeValue,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 
@@ -21,6 +22,7 @@ const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
   const variant = useColorModeValue("solid", "nes-button-blue");
   const headerFontSize = useColorModeValue("lg", "md");
   const bodyFontSize = useColorModeValue("md", "xs");
+  const px = useBreakpointValue({ base: 3, sm: 6 });
 
   return (
     <AlertDialog
@@ -32,18 +34,22 @@ const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
       <AlertDialogOverlay>
         <AlertDialogContent
           borderRadius="sm"
-          mx={2}
+          w="95%"
           color="text"
           bgColor="white"
           {...contentStyle}
         >
-          <AlertDialogHeader fontSize={headerFontSize} fontWeight="bold">
+          <AlertDialogHeader
+            fontSize={headerFontSize}
+            fontWeight="bold"
+            px={px}
+          >
             {t("resetTitle")}
           </AlertDialogHeader>
-          <AlertDialogBody fontSize={bodyFontSize}>
+          <AlertDialogBody fontSize={bodyFontSize} px={px}>
             {t("confirmReset")}
           </AlertDialogBody>
-          <AlertDialogFooter>
+          <AlertDialogFooter px={px}>
             <Button
               fontSize={bodyFontSize}
               variant="line"

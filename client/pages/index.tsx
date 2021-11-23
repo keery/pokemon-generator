@@ -6,6 +6,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import BackgroundBlur from "~components/BackgroundBlur";
 import CardForm from "~components/CardForm";
 import ModalUppy from "~components/ModalUppy";
+import Header from "~components/Header";
 import { CARD_DEFAULT_STATE } from "~data/card";
 import { decrypt } from "~utils/cache";
 import { useForm, FormProvider } from "react-hook-form";
@@ -38,6 +39,7 @@ const Home: NextPage = () => {
 
   return (
     <FormProvider {...form}>
+      {!isFormVisible && <Header />}
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         style={{ height: "100%", overflow: "hidden" }}
