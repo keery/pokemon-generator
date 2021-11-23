@@ -3,6 +3,7 @@ import Field from "~components/Field";
 import { useFormContext } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import Select from "~components/Select";
+import Checkbox from "~components/Checkbox";
 import FileInput from "~components/FileInput";
 import FieldsLengthWeight from "~components/Fields/FieldsLengthWeight";
 import Input from "~components/Input";
@@ -32,6 +33,11 @@ const FieldsPokemonInfo = () => {
         <Select name="hp" options={HP_OPTIONS} control={control} isClearable />
       </Field>
       <FieldsLengthWeight control={control} />
+      <Checkbox
+        name="firstEdition"
+        control={control}
+        label={t("firstEdition")}
+      />
     </>
   );
 };

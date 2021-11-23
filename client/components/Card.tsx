@@ -18,6 +18,7 @@ import SubInfo from "./Card/SubInfo";
 import ColorBackground from "./Card/ColorBackground";
 import TypeWithAmount from "./Card/TypeWithAmount";
 import Description from "./Card/Description";
+import FirstEdition from "./Card/FirstEdition";
 import Illustrator from "./Card/Illustrator";
 import CollectionNumber from "./Card/CollectionNumber";
 import TypeBackground from "./Card/TypeBackground";
@@ -191,6 +192,7 @@ const Card = () => {
                       setCard({ ...card, selectedImg: "mainImage" })
                     }
                   />
+                  <FirstEdition control={control} />
                   <Name control={control} stage={stage} />
                   <Attacks control={control} />
                   <Evolution

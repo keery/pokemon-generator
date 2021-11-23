@@ -69,5 +69,7 @@
     "help": "Aide",
     "eyeButtonHelp": "Afficher les zones interactives",
     "dontDisplay": "Ne plus afficher",
-    "resizeImg" : "Redimensionner l'image"
+    "resizeImg" : "Redimensionner l'image",
+    "firstEdition": "Première édition",
+    "1edition": "1ère édition"
 }

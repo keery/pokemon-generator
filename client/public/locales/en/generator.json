@@ -68,5 +68,7 @@
     "help": "Help",
     "eyeButtonHelp": "Show interactive areas",
     "dontDisplay": "Don't show again",
-    "resizeImg" : "Resize image"
+    "resizeImg" : "Resize image",
+    "firstEdition": "First edition",
+    "1edition": "1st edition"
 }

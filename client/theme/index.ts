@@ -218,6 +218,17 @@ const theme = extendTheme({
         "0 0.5em #209cee, 0 -0.5em #209cee, 0.5em 0 #209cee, -0.5em 0 #209cee",
       borderRadius: "none",
     },
+    "interactive-el": {
+      cursor: "pointer",
+      position: "absolute",
+      border: "2px solid",
+      borderRadius: "xs",
+      transition: "box-shadow 200ms, border-color 200ms",
+      _groupHover: {
+        boxShadow: "0px 0px 9px #a0c2ff",
+        borderColor: "#fff",
+      },
+    },
   },
 });
 

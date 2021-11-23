@@ -64,20 +64,13 @@ const InteractiveArea = ({
       )}
       <Box>{icon}</Box>
       <Box
-        position={"absolute"}
-        cursor={"pointer"}
+        layerStyle="interactive-el"
         left={`${x}%`}
         top={`${y}%`}
         height={`${height}%`}
         width={`${width}%`}
-        border={"2px solid"}
         borderColor={isVisible ? areaColor : "transparent"}
         borderRadius={noRadius ? "0" : theme.radii.xs}
-        transition="box-shadow 200ms, border-color 200ms"
-        _groupHover={{
-          boxShadow: "0px 0px 9px #a0c2ff",
-          borderColor: "#fff",
-        }}
         {...rest}
       />
     </Box>

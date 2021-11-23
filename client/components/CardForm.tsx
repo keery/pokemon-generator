@@ -21,7 +21,7 @@ import FieldsAttack from "~components/Fields/FieldsAttack";
 import FieldsSubInfo from "~components/FieldsSubInfo";
 import FieldsBottomInfo from "~components/FieldsBottomInfo";
 import Logo from "~components/Logo";
-import NesButton from "./NesButton";
+import NesButton from "~components/NesButton";
 
 const CardForm = () => {
   const { t } = useTranslation("generator");

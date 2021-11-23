@@ -3,8 +3,10 @@ import InteractiveInput from "./InteractiveInput";
 import InteractiveFile from "./InteractiveFile";
 import InteractiveSelect from "./InteractiveSelect";
 import InteractiveTextarea from "./InteractiveTextarea";
-import ButtonList from "./ButtonList";
+import InteractiveCheckbox from "./InteractiveCheckbox";
 import InteractiveArea from "./InteractiveArea";
+import InteractiveIcon from "./InteractiveIcon";
+import ButtonList from "./ButtonList";
 import { useWatch, useFormContext } from "react-hook-form";
 import {
   BASIC,
@@ -16,8 +18,7 @@ import {
   STAGE_OPTIONS,
   RARITY_OPTIONS,
 } from "~constants";
-import InteractiveIcon from "./InteractiveIcon";
-import { Box, useColorMode, Image } from "@chakra-ui/react";
+import { Box, useColorMode } from "@chakra-ui/react";
 import FieldsCollection from "~components/Fields/FieldsCollection";
 import FieldsLengthWeight from "~components/Fields/FieldsLengthWeight";
 import FieldsAttackTab from "~components/Fields/FieldsAttackTab";
@@ -489,6 +490,21 @@ const InteractiveLayer = () => {
             linePos={95.3}
           />
         }
+      />
+      {/* FIRST EDITION */}
+      <InteractiveCheckbox
+        name="firstEdition"
+        x={6}
+        y={53}
+        height={4.3}
+        width={7.4}
+        icon={{
+          placement: "left",
+          top: "53%",
+          label: t("1edition"),
+          lineLength: 8,
+          linePos: 54.6,
+        }}
       />
     </Box>
   );

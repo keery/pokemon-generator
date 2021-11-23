@@ -59,4 +59,5 @@ export const CARD_DEFAULT_STATE: Card = {
     label: "1",
     value: 1,
   },
+  firstEdition: false,
 };

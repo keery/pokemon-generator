@@ -72,4 +72,5 @@ export interface Card {
   attack2Info: string;
   attack2Type: Select<Element>;
   attack2Amount: Select<number>;
+  firstEdition: boolean;
 }
