@@ -93,7 +93,6 @@ const ButtonList = ({
       <Popover placement="top" isOpen={isOpen} onClose={onClose}>
         <PopoverTrigger>
           <Box
-            onClick={() => console.log("ici")}
             left={`${x}%`}
             top={`${y}%`}
             pos="absolute"
@@ -127,13 +126,7 @@ const ButtonList = ({
             </AspectRatio>
           </Box>
         </PopoverTrigger>
-        <PopoverContent
-          border="none"
-          w="auto"
-          background="none"
-          {...style}
-          onClick={() => console.log("ici")}
-        >
+        <PopoverContent border="none" w="auto" background="none" {...style}>
           <HStack
             spacing=".5rem"
             p="10px 20px"

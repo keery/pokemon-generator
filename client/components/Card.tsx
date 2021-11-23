@@ -140,8 +140,8 @@ const Card = () => {
           maxW="100%"
           maxH="100%"
           m="0 auto"
+          h="auto"
           w="auto"
-          minW="100%"
         />
         <PokemonsBackground control={control} />
         <Box

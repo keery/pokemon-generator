@@ -51,7 +51,7 @@ const Home: NextPage = () => {
             justifyContent="center"
             h="100%"
             alignItems="flex-start"
-            spacing={5}
+            spacing={{ base: 0, sm: 5 }}
           >
             <PanelOptions />
             {isFormVisible && <CardForm />}
@@ -62,6 +62,7 @@ const Home: NextPage = () => {
               justifyContent="center"
               height="100%"
               borderRadius="md"
+              pb={{ base: 2, sm: 0 }}
             >
               <Card />
             </Flex>
