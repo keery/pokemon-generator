@@ -24,7 +24,7 @@ const useAttacks = (control: Control) => {
     ],
   });
 
-  const isTiny = useMemo(() => {
+  const { isTiny, attack1isFill, attack2isFill } = useMemo(() => {
     const attack1isFill =
       attack1.slice(2).some((value) => Boolean(value)) ||
       (Boolean(attack1[0]) && Boolean(attack1[1]));
@@ -33,13 +33,19 @@ const useAttacks = (control: Control) => {
       attack2.slice(2).some((value) => Boolean(value)) ||
       (Boolean(attack2[0]) && Boolean(attack2[1]));
 
-    return attack1isFill && attack2isFill;
+    return {
+      isTiny: attack1isFill && attack2isFill,
+      attack1isFill,
+      attack2isFill,
+    };
   }, [attack1, attack2]);
 
   return {
     isTiny,
     attack1,
     attack2,
+    attack1isFill,
+    attack2isFill,
   };
 };
 

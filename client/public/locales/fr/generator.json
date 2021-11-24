@@ -71,5 +71,16 @@
     "dontDisplay": "Ne plus afficher",
     "resizeImg" : "Redimensionner l'image",
     "firstEdition": "Première édition",
-    "1edition": "1ère édition"
+    "1edition": "1ère édition",
+    "publish": {
+        "button": "Publier ma carte",
+        "requirements": {
+            "title": "Conditions de publication",
+            "desc": "Afin de pouvoir publier votre carte il faut qu'elle réponde à quelques critères :",
+            "hp": "Sélectionner une valeur pour le champ HP",
+            "name": "Saisir un nom",
+            "photo": "Ajouter une photo principale",
+            "attack": "Posséder au moins une attaque"
+        }
+    }
 }

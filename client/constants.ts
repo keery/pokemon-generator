@@ -133,3 +133,19 @@ export const STAGE_OPTIONS: Select<string>[] = [
   { value: STAGE_ONE, label: "Stage 1" },
   { value: STAGE_TWO, label: "Stage 2" },
 ];
+
+export const GRADIENTS: Record<Element, any> = {
+  normal:
+    "linear-gradient(45deg, rgb(0 0 0 / 31%), rgb(105 108 111 / 28%) 45%, rgb(39 39 39 / 42%) 71%, rgb(61 64 64 / 4%))",
+  water:
+    "linear-gradient(45deg, rgba(63, 128, 254, 0.31), rgba(10, 121, 251, 0.16) 45%, rgba(63, 125, 254, 0.42) 71%, rgba(74, 210, 202, 0.3))",
+  fire: "linear-gradient(45deg, rgb(255 0 0 / 31%), rgb(251 10 10 / 16%) 45%, rgb(254 63 63 / 42%) 71%, rgb(255 140 193 / 30%))",
+  grass:
+    "linear-gradient(45deg, rgb(76 255 98 / 31%), rgb(0 97 51 / 16%) 45%, rgb(149 255 68 / 42%) 71%, rgb(193 218 54 / 30%))",
+  electric:
+    "linear-gradient(45deg, rgb(253 219 96), rgb(247 238 194) 45%, rgb(255 241 146) 71%, rgb(255 214 99))",
+  psychic:
+    "linear-gradient(45deg, rgb(205 170 250), rgb(196 193 251) 45%, rgb(209 151 236) 71%, rgb(157 166 244))",
+  fighting:
+    "linear-gradient(45deg, rgb(255 176 108), rgb(255 229 181) 45%, rgb(247 155 60 / 88%) 71%, rgb(202 102 17))",
+};
