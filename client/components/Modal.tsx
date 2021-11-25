@@ -15,7 +15,7 @@ import { closeModalWithUrl } from "~utils/helper";
 
 interface Props extends ModalProps {
   name?: string;
-  title?: string;
+  title?: string | JSX.Element;
   button?: React.ReactElement | React.ReactNode;
   children: React.ReactNode;
   footer?: JSX.Element;

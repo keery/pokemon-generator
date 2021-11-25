@@ -1,6 +1,7 @@
 import { Element, Rarity, Select } from "~@types/Card";
 
 export const ROUTE_CGU = "/general-conditions-use";
+export const ROUTE_GALLERY = "/gallery";
 
 export const FIRE = "fire";
 export const GRASS = "grass";
