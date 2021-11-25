@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Image,
   Flex,
@@ -23,6 +23,12 @@ const NesButton = () => {
   const { setColorMode, colorMode } = useColorMode();
   const [isChecked, setChecked] = useState(colorMode === "dark");
   const electricColor = useBreakpointValue({ base: "#bfa531", xl: "#fbd83b" });
+
+  useEffect(() => {
+    if (!isChecked && colorMode === "dark") {
+      setChecked(true);
+    }
+  }, [colorMode]);
 
   const handleChange = (nextChecked) => {
     setChecked(nextChecked);
