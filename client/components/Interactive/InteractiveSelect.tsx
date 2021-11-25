@@ -1,7 +1,12 @@
 import React, { useRef } from "react";
 import { Box, Select } from "@chakra-ui/react";
 import { Select as SelectType } from "~@types/Card";
-import { Control, useController, useWatch } from "react-hook-form";
+import {
+  Control,
+  useController,
+  useWatch,
+  useFormContext,
+} from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";
@@ -30,7 +35,7 @@ const InteractiveSelect = ({
   icon,
   hasEmptyOption = true,
 }: Props) => {
-  const { field } = useController({ control, name });
+  const { setValue } = useFormContext();
   const value = useWatch({ control, name });
   const inputRef = useRef(null);
   const { isVisible } = useRecoilValue(areaAtom);
@@ -63,10 +68,10 @@ const InteractiveSelect = ({
             const value = event.target.selectedOptions[0].value;
 
             if (value === "") {
-              field.onChange(null);
+              setValue(name, null);
             } else {
-              field.onChange({
-                value: value,
+              setValue(name, {
+                value,
                 label: event.target.selectedOptions[0].text,
               });
             }

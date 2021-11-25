@@ -5,17 +5,16 @@ import {
   InputProps,
   useColorMode,
 } from "@chakra-ui/react";
-import { Control, useController, useWatch } from "react-hook-form";
+import { Control, useFormContext } from "react-hook-form";
 
 interface Props extends InputProps {
-  control: Control;
   name: string;
 }
 
-const Input = ({ control, name, ...rest }: Props) => {
+const Input = ({ name, ...rest }: Props) => {
   const { colorMode } = useColorMode();
-  const { field } = useController({ control, name });
-  const value = useWatch({ control, name });
+  const { watch, setValue } = useFormContext();
+  const value = watch(name);
 
   return (
     <Box pos="relative" flex={1}>
@@ -33,7 +32,7 @@ const Input = ({ control, name, ...rest }: Props) => {
         variant={colorMode === "dark" ? "nes" : "outline"}
         name={name}
         type="text"
-        onChange={(e) => field.onChange(e.target.value)}
+        onChange={(e) => setValue(name, e.target.value)}
         value={value}
         {...rest}
       />

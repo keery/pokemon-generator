@@ -18,7 +18,7 @@ const FieldsBottomInfo = () => {
         <Textarea name="description" control={control} />
       </Field>
       <Field label={t("illustrator")}>
-        <Input name="illustrator" control={control} />
+        <Input name="illustrator" />
       </Field>
       <FieldsCollection control={control} />
       <Field label={t("rarity")}>

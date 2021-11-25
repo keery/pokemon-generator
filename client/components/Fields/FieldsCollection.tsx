@@ -16,16 +16,11 @@ const FieldsCollection = ({ control }: Props) => {
     <>
       <Field label={t("collectionNumber")} id="field-collection-label">
         <Flex alignItems="center">
-          <Input
-            name="cardNumber"
-            control={control}
-            maxLength={3}
-            id="field-collection"
-          />
+          <Input name="cardNumber" maxLength={3} id="field-collection" />
           <Box mx={3} fontWeight="600">
             /
           </Box>
-          <Input name="totalCollection" control={control} maxLength={3} />
+          <Input name="totalCollection" maxLength={3} />
         </Flex>
       </Field>
     </>
