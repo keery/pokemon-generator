@@ -12,7 +12,43 @@ export class Card {
   id: number
 
   @Column()
+  img: string
+
+  @Column()
+  slug: string
+
+  @Column()
   name: string
+
+  @Column({
+    nullable: true,
+  })
+  description: string
+
+  @Column({
+    nullable: true,
+  })
+  attack1Name: string
+
+  @Column({
+    nullable: true,
+  })
+  attack1Description: string
+
+  @Column({
+    nullable: true,
+  })
+  attack2Name: string
+
+  @Column({
+    nullable: true,
+  })
+  attack2Description: string
+
+  @Column({
+    default: false,
+  })
+  isPublished: boolean
 
   @CreateDateColumn()
   created_at: Date

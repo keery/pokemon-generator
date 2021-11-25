@@ -25,33 +25,20 @@ export class ImageService {
   }
 
   async uploadFile(file) {
-    try {
-      const media = {
-        mimeType: file.mimetype,
-        body: this.bufferToStream(file.buffer),
-      }
-
-      this.drive.files.create(
-        {
-          // @ts-ignore
-          resource: {
-            name: uniqFilename(file.originalname),
-            parents: [process.env.GOOGLE_DRIVE_FOLDER_ID],
-          },
-          media: media,
-          fields: 'id',
-        },
-        function (err, file) {
-          if (err) {
-            console.error(err)
-          } else {
-            console.log('File Id: ', file.data.id)
-          }
-        },
-      )
-    } catch (err) {
-      console.log('err', err)
+    const media = {
+      mimeType: file.mimetype,
+      body: this.bufferToStream(file.buffer),
     }
+
+    return this.drive.files.create({
+      // @ts-ignore
+      resource: {
+        name: uniqFilename(file.originalname),
+        parents: [process.env.GOOGLE_DRIVE_FOLDER_ID],
+      },
+      media: media,
+      fields: 'id',
+    })
   }
 
   deleteFile = (url: string) => {

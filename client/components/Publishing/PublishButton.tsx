@@ -18,7 +18,7 @@ const PublishButton = () => {
   ]);
   const { attack1isComplete, attack2isComplete } = useAttacks(control);
   const { onClose, onOpen, isOpen } = useDisclosure();
-  const isNameValid = name !== "";
+  const isNameValid = name.trim() !== "";
   const isHpValid = Boolean(hp);
   const isPhotoValid = Boolean(mainImage);
 

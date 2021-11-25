@@ -23,22 +23,23 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
   const [isLoading, setLoading] = useState(false);
   const [isPublished, setPublished] = useState(false);
   const { getValues } = useFormContext();
-  const { mutate } = usePublishCard();
+  const { mutate } = usePublishCard({
+    onMutate: () => setLoading(true),
+    onSettled: () => setLoading(false),
+    onSuccess: () => {
+      setPublished(true);
+      setChecked(false);
+      onClose();
+    },
+    onError: () => {
+      errorToast(t("publishFailed"));
+    },
+  });
   const { errorToast } = useToast();
 
   const onSubmit = async () => {
-    try {
-      setLoading(true);
-      const values = await getPublishData(getValues());
-      mutate(values);
-      // setPublished(true);
-      // setChecked(false);
-      // onClose();
-    } catch (e) {
-      errorToast(t("publishFailed"));
-    } finally {
-      setLoading(false);
-    }
+    const values = await getPublishData(getValues());
+    await mutate(values);
   };
 
   return (
@@ -46,7 +47,10 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
       <Modal
         size="2xl"
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={() => {
+          setChecked(false);
+          onClose();
+        }}
         withCloseButton
         button={<Flex w="100%">{children}</Flex>}
         title={t("publish.confirm.title")}
