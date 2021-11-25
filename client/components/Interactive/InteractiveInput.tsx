@@ -71,6 +71,10 @@ const InteractiveInput = ({
           _groupHover={{
             border: "2px solid #fff",
           }}
+          _selection={{
+            background: "transparent",
+            color: "transparent",
+          }}
           _focus={{
             border: "2px solid #fff",
             shadow: "0px 0px 9px #a0c2ff!important",
