@@ -1,11 +1,5 @@
 import React, { useCallback } from "react";
-import {
-  useTheme,
-  Box,
-  BoxProps,
-  useBreakpointValue,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { useTheme, Box, BoxProps, useDisclosure } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";
@@ -41,27 +35,17 @@ const InteractiveArea = ({
   const theme = useTheme();
   const { isVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
-  const isMobile = useBreakpointValue({ base: true, xl: false });
   const { onOpen, onClose } = useDisclosure();
 
   const onClick = useCallback(() => {
-    if (isMobile) {
-      openModalWithUrl(name, onOpen);
-    } else {
-      document
-        .getElementById(labelTarget)
-        .scrollIntoView({ behavior: "smooth" });
-      document.getElementById(inputTarget).focus({ preventScroll: true });
-    }
-  }, [isMobile, name]);
+    openModalWithUrl(name, onOpen);
+  }, [name]);
 
   return (
     <Box role="group" onClick={onClick}>
-      {isMobile && (
-        <Modal name={name} onClose={onClose}>
-          {fields}
-        </Modal>
-      )}
+      <Modal name={name} onClose={onClose}>
+        {fields}
+      </Modal>
       <Box>{icon}</Box>
       <Box
         layerStyle="interactive-el"
