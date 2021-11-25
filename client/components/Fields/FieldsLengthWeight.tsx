@@ -54,19 +54,14 @@ const FieldsLengthWeight = ({ control }: Props) => {
   return (
     <>
       <Field label={t("species")} id="field-species-label">
-        <Input name="species" control={control} id="field-species" />
+        <Input name="species" id="field-species" />
       </Field>
       <Field label={t("length")}>
-        <Input name="length" control={control} />
+        <Input name="length" />
       </Field>
       <Field label={t("weight")}>
         <InputGroup {...inputGroupStyle} alignItems="center">
-          <Input
-            name="weight"
-            control={control}
-            borderRightRadius="none"
-            {...inputStyle}
-          />
+          <Input name="weight" borderRightRadius="none" {...inputStyle} />
           <InputRightAddon
             children="lbs"
             color="main"

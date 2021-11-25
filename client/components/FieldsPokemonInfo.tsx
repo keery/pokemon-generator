@@ -16,7 +16,7 @@ const FieldsPokemonInfo = () => {
   return (
     <>
       <Field label={t("name")}>
-        <Input name="name" control={control} />
+        <Input name="name" />
       </Field>
       <Field label={t("type")}>
         <Select

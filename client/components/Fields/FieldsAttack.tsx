@@ -29,7 +29,7 @@ const FieldsAttack = ({ name }) => {
   return (
     <>
       <Field label={t("name")}>
-        <Input control={control} name={`${name}Name`} id={`field-${name}`} />
+        <Input name={`${name}Name`} id={`field-${name}`} />
       </Field>
       <Field label={t("damage")}>
         <Select
