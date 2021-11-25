@@ -16,6 +16,8 @@ const Link = (props: Props) => {
   return (
     <NextLink passHref href={href} shallow={shallow} as={t(href as string)}>
       <ChakraLink
+        color="main"
+        fontWeight="bold"
         {...rest}
         _focus={{
           outline: "none",

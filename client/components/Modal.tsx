@@ -13,23 +13,24 @@ import {
 import { useRouter } from "next/router";
 import { closeModalWithUrl } from "~utils/helper";
 
-interface Props extends Omit<ModalProps, "isOpen"> {
-  name: string;
+interface Props extends ModalProps {
+  name?: string;
   title?: string;
-  button?: React.ReactElement;
+  button?: React.ReactElement | React.ReactNode;
   children: React.ReactNode;
   footer?: JSX.Element;
   withCloseButton?: boolean;
 }
 
 const Modal = ({
-  name,
+  name = "",
   onClose,
   button = null,
   children,
   title,
   withCloseButton = false,
   footer,
+  isOpen = false,
   ...rest
 }: Props) => {
   const router = useRouter();
@@ -51,7 +52,7 @@ const Modal = ({
     <>
       {button}
       <ModalChakra
-        isOpen={router.query?.modal === name}
+        isOpen={router.query?.modal === name || isOpen}
         onClose={() => closeModalWithUrl(onClose)}
         isCentered
         {...rest}

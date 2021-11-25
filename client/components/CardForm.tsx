@@ -22,7 +22,7 @@ import FieldsSubInfo from "~components/FieldsSubInfo";
 import FieldsBottomInfo from "~components/FieldsBottomInfo";
 import Logo from "~components/Logo";
 import NesButton from "~components/NesButton";
-import PublishButton from "~components/PublishButton";
+import PublishButton from "~components/Publishing/PublishButton";
 
 const CardForm = () => {
   const { t } = useTranslation("generator");
