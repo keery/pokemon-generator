@@ -4,8 +4,12 @@ import { Flex, Text, Checkbox, Button } from "@chakra-ui/react";
 import { useTranslation, Trans } from "next-i18next";
 import Link from "~components/Link";
 import PublishedSuccess from "~components/Publishing/PublishedSuccess";
+import WarningBox from "~components/WarningBox";
 import { ROUTE_CGU } from "~constants";
-import Warning from "public/assets/img/warning.svg";
+import { useFormContext } from "react-hook-form";
+import { getPublishData } from "~utils/card";
+import usePublishCard from "~hooks/usePublishCard";
+import useToast from "~hooks/useToast";
 
 interface Props {
   children: React.ReactNode;
@@ -13,33 +17,29 @@ interface Props {
   isOpen: boolean;
 }
 
-const WarningBox = ({ children, ...rest }) => {
-  const { t } = useTranslation("common");
-  return (
-    <Flex
-      bgColor="#ffd48a"
-      borderLeft="5px solid #8a5700"
-      borderRadius="5px"
-      px={8}
-      py={5}
-      direction="column"
-      {...rest}
-    >
-      <Flex alignItems="center" pb={2} fontSize="1.3rem">
-        <Warning />
-        <Text pl={2} fontWeight="bold" fontSize="1.1rem">
-          {t("warning")}
-        </Text>
-      </Flex>
-      {children}
-    </Flex>
-  );
-};
-
 const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
   const { t } = useTranslation("generator");
   const [isChecked, setChecked] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [isPublished, setPublished] = useState(false);
+  const { getValues } = useFormContext();
+  const { mutate } = usePublishCard();
+  const { errorToast } = useToast();
+
+  const onSubmit = async () => {
+    try {
+      setLoading(true);
+      const values = await getPublishData(getValues());
+      mutate(values);
+      // setPublished(true);
+      // setChecked(false);
+      // onClose();
+    } catch (e) {
+      errorToast(t("publishFailed"));
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -78,11 +78,9 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
         </Flex>
         <Flex justifyContent="flex-end" pt={4}>
           <Button
+            isLoading={isLoading}
             isDisabled={!isChecked}
-            onClick={() => {
-              setPublished(true);
-              onClose();
-            }}
+            onClick={onSubmit}
           >
             {t("publish.button")}
           </Button>

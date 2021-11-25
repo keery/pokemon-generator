@@ -30,8 +30,7 @@ const PublishedSuccess = ({ isOpen, onClose }: Props) => {
     <Modal
       size="lg"
       isOpen={isOpen}
-      onClose={onClose}
-      withCloseButton
+      onClose={() => null}
       title={
         <Flex mt="-60%" direction="column" alignItems="center">
           <Image src="/assets/img/success.gif" maxW="400px" />

@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 // import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
-// import { CardModule } from '~card/card.module'
+import { CardModule } from '~card/card.module'
 import { ImageModule } from '~image/image.module'
 import { MailModule } from './mail/mail.module'
 import { ConsoleModule } from 'nestjs-console'
@@ -42,7 +42,7 @@ import { join } from 'path'
         watch: process.env.NODE_ENV === 'dev',
       },
     }),
-    // CardModule,
+    CardModule,
     ImageModule,
     MailModule,
     ConsoleModule,

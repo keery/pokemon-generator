@@ -17,29 +17,7 @@ import ResetButton from "~components/PanelOptions/ResetButton";
 import EyeButton from "~components/PanelOptions/EyeButton";
 import FormButton from "~components/PanelOptions/FormButton";
 import PrevNextButtons from "./PrevNextButtons";
-
-const printCard = () => {
-  window.print();
-};
-
-const exportCard = () => {
-  const date = new Date();
-
-  let name = `pokemon-card`;
-  name += `-${date.getFullYear()}`;
-  name += `-${date.getMonth()}`;
-  name += `-${date.getDate()}`;
-  name += `-${date.getHours()}`;
-  name += `-${date.getMinutes()}`;
-  name += `-${date.getSeconds()}`;
-  name += `.jpg`;
-
-  const canva = document.getElementsByTagName("canvas");
-  const link = document.createElement("a");
-  link.download = name;
-  link.href = canva[0].toDataURL();
-  link.click();
-};
+import { exportCard, printCard } from "~utils/card";
 
 const PanelOptions = () => {
   const { t } = useTranslation("generator");

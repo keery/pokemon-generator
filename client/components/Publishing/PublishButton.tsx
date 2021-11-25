@@ -16,7 +16,7 @@ const PublishButton = () => {
     "hp",
     "mainImage",
   ]);
-  const { attack1isFill, attack2isFill } = useAttacks(control);
+  const { attack1isComplete, attack2isComplete } = useAttacks(control);
   const { onClose, onOpen, isOpen } = useDisclosure();
   const isNameValid = name !== "";
   const isHpValid = Boolean(hp);
@@ -24,18 +24,24 @@ const PublishButton = () => {
 
   const isDisabled = useMemo(() => {
     return (
-      (!attack1isFill && !attack2isFill) ||
+      (!attack1isComplete && !attack2isComplete) ||
       !isNameValid ||
       !isHpValid ||
       !isPhotoValid
     );
-  }, [attack1isFill, attack2isFill, isNameValid, isHpValid, isPhotoValid]);
+  }, [
+    attack1isComplete,
+    attack2isComplete,
+    isNameValid,
+    isHpValid,
+    isPhotoValid,
+  ]);
 
   return (
     <Flex mt={4} pos="relative">
       {isDisabled && (
         <PublishRequirements
-          isAttackValid={attack1isFill || attack2isFill}
+          isAttackValid={attack1isComplete || attack2isComplete}
           isNameValid={isNameValid}
           isHpValid={isHpValid}
           isPhotoValid={isPhotoValid}

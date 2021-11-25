@@ -41,6 +41,7 @@ const Card = () => {
   const containerRef = useRef(null);
   const stageRef = useRef(null);
   const imgRef = useRef(null);
+  const layerRef = useRef(null);
   const { control, setValue } = useFormContext();
   const [card, setCard] = useRecoilState(cardAtom);
   const isMobile = useBreakpointValue({ base: true, md: false });
@@ -114,6 +115,10 @@ const Card = () => {
 
   useOutsideClick({ ref: stageRef, handler: resetSelected });
 
+  useEffect(() => {
+    layerRef.current.getCanvas()._canvas.id = "card";
+  }, []);
+
   return (
     <Flex
       pos="relative"
@@ -177,7 +182,7 @@ const Card = () => {
                   }
                 }}
               >
-                <Layer>
+                <Layer ref={layerRef}>
                   <ColorBackground control={control} />
                   <TypeBackground control={control} />
                   <HP control={control} />

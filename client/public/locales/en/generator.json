@@ -57,6 +57,7 @@
     "importPicture" : "Import a picture",
     "fileTooBig": "Image file is too big ({{max}}Mo maximum)",
     "uploadFailed": "Image downloading has failed",
+    "publishFailed": "An error occurred while publishing",
     "colorBg": "Background color",
     "choosePicture": "Choose an image",
     "pictureAdded": "Image added",
