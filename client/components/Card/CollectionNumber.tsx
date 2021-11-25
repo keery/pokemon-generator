@@ -3,7 +3,7 @@ import { useWatch } from "react-hook-form";
 import { Text } from "react-konva";
 
 const CollectionNumber = ({ control }) => {
-  const [totalCollection, cardNumber] = useWatch({
+  const [cardNumber, totalCollection] = useWatch({
     control,
     name: ["cardNumber", "totalCollection"],
   });
