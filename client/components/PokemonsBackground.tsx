@@ -91,8 +91,8 @@ const PokemonsBackground = ({ control }: Props) => {
       fire: [
         {
           src: "pokemon-fire-1.png",
-          transform: colorMode === "dark" ? null : "translateX(28px)",
-          right: colorMode === "dark" ? "105%" : null,
+          transform: colorMode === "dark" ? null : "translateX(-28px)",
+          right: colorMode === "dark" ? "105%" : "100%",
           height: "35vh",
           maxHeight: "260px",
         },

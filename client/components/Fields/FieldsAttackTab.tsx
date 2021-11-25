@@ -15,7 +15,7 @@ interface Props {
 }
 
 const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
-  const [tabIndex, setTabIndex] = React.useState(0);
+  const [tabIndex, setTabIndex] = React.useState(defaultIndex);
   const { t } = useTranslation("generator");
   const fontSize = useColorModeValue("md", "0.65rem");
   const borderRadius = useColorModeValue("xl", "none");
