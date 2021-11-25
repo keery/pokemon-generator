@@ -477,9 +477,6 @@ a {
     transform: rotateY(0deg);
   }
 }
-.InteractiveLayer * {
-  user-select: none;
-}
 
 .resize-stage > div,
 .card-stage > div {
