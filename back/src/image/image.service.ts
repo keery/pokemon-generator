@@ -28,7 +28,7 @@ export class ImageService {
   async uploadFile(file) {
     const media = {
       mimeType: file.mimetype,
-      body: sharp(file.buffer).webp({ quality: 80 }),
+      body: sharp(file.buffer).webp({ quality: 75 }),
     }
 
     return this.drive.files.create({

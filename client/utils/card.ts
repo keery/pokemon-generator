@@ -12,7 +12,7 @@ export const exportCard = () => {
   name += `-${date.getHours()}`;
   name += `-${date.getMinutes()}`;
   name += `-${date.getSeconds()}`;
-  name += `.jpg`;
+  name += `.png`;
 
   const link = document.createElement("a");
   link.download = name;
