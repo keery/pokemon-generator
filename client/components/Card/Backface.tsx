@@ -5,7 +5,7 @@ const Backface = () => {
   return (
     <Image
       className="backface"
-      src="/assets/img/pokemon-card-back.png"
+      src="/assets/img/pokemon-card-back.webp"
       position="absolute"
       left="0"
       top="0"
