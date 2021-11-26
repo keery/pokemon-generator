@@ -11,7 +11,7 @@ const TypeBackground = ({ control }) => {
 
   return (
     <ImageCanvas
-      src={`1-gen/${type.value}-${stage.value}.png`}
+      src={`1-gen/${type.value}-${stage.value}.webp`}
       width={500}
       height={700}
     />
