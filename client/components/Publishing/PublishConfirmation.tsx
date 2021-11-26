@@ -27,9 +27,9 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
     onMutate: () => setLoading(true),
     onSettled: () => setLoading(false),
     onSuccess: () => {
-      setPublished(true);
-      setChecked(false);
-      onClose();
+      // setPublished(true);
+      // setChecked(false);
+      // onClose();
     },
     onError: () => {
       errorToast(t("publishFailed"));

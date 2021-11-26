@@ -46,7 +46,7 @@ export class CardController {
     card.attack1Description = body.attack1Description
     card.attack2Name = body.attack2Name
     card.attack2Description = body.attack2Description
-    card.img = 'https://www.mypokecard.com/my/galery/ySnUZUxAu1t2.jpg'
+    card.img = `https://drive.google.com/uc?export=view&id=${uploadedFile.data.id}`
 
     return this.service.create(card)
   }

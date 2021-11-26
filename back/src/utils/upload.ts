@@ -19,6 +19,6 @@ export const onlyImages = (req, file, callback) => {
 }
 
 export const uniqFilename = (filename: string) => {
-  const { name, ext } = parse(filename)
-  return `${createSlug(name)}-${new Date().getTime()}-${uuid()}${ext}`
+  const { name } = parse(filename)
+  return `${createSlug(name)}-${new Date().getTime()}-${uuid()}.webp`
 }

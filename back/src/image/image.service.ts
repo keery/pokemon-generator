@@ -2,6 +2,7 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common'
 import { uniqFilename } from '~utils/upload'
 import { google } from 'googleapis'
 import { Readable } from 'stream'
+import sharp from 'sharp'
 import credentials from './credentials-google.json'
 
 const SCOPES = ['https://www.googleapis.com/auth/drive.file']
@@ -27,7 +28,7 @@ export class ImageService {
   async uploadFile(file) {
     const media = {
       mimeType: file.mimetype,
-      body: this.bufferToStream(file.buffer),
+      body: sharp(file.buffer).webp({ quality: 80 }),
     }
 
     return this.drive.files.create({
