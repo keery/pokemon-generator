@@ -30,59 +30,59 @@ const PokemonsBackground = ({ control }: Props) => {
     () => ({
       water: [
         {
-          src: "pokemon-water-1.png",
+          src: "pokemon-water-1.webp",
           transform: colorMode === "dark" ? "rotate(0deg)" : "rotate(20deg)",
           right: colorMode === "dark" ? "105%" : null,
           height: "35vh",
           maxHeight: "240px",
         },
         {
-          src: "pokemon-water-2.png",
+          src: "pokemon-water-2.webp",
           height: "60vh",
           maxHeight: colorMode === "dark" ? "350px" : "475px",
         },
         {
-          src: "pokemon-water-3.png",
+          src: "pokemon-water-3.webp",
           height: "25vh",
           maxHeight: "200px",
         },
       ],
       psychic: [
         {
-          src: "pokemon-psychic-1.png",
+          src: "pokemon-psychic-1.webp",
           transform: colorMode === "dark" ? null : "rotate(20deg)",
           right: colorMode === "dark" ? "105%" : null,
           height: "30vh",
           maxHeight: "240px",
         },
         {
-          src: "pokemon-psychic-2.png",
+          src: "pokemon-psychic-2.webp",
           transform: "rotateY(180deg)",
           height: "40vh",
           maxHeight: "305px",
         },
         {
-          src: "pokemon-psychic-3.png",
+          src: "pokemon-psychic-3.webp",
           height: "30vh",
           maxHeight: "255px",
         },
       ],
       normal: [
         {
-          src: "pokemon-normal-1.png",
+          src: "pokemon-normal-1.webp",
           transform: colorMode === "dark" ? null : "rotate(20deg)",
           right: colorMode === "dark" ? "105%" : null,
           height: "34vh",
           maxHeight: "270px",
         },
         {
-          src: "pokemon-normal-4.png",
+          src: "pokemon-normal-4.webp",
           height: "55vh",
           maxHeight: "440px",
           left: colorMode === "dark" ? "90%" : null,
         },
         {
-          src: "pokemon-normal-3.png",
+          src: "pokemon-normal-3.webp",
           height: "25vh",
           maxHeight: "190px",
           left: "110%",
@@ -90,64 +90,64 @@ const PokemonsBackground = ({ control }: Props) => {
       ],
       fire: [
         {
-          src: "pokemon-fire-1.png",
+          src: "pokemon-fire-1.webp",
           transform: colorMode === "dark" ? null : "translateX(-28px)",
           right: colorMode === "dark" ? "105%" : "100%",
           height: "35vh",
           maxHeight: "260px",
         },
         {
-          src: "pokemon-fire-2.png",
+          src: "pokemon-fire-2.webp",
           height: "45vh",
           maxHeight: "340px",
         },
         {
-          src: "pokemon-fire-3.png",
+          src: "pokemon-fire-3.webp",
           height: "35vh",
           maxHeight: "250px",
         },
       ],
       fighting: [
         {
-          src: "pokemon-fighting-1.png",
+          src: "pokemon-fighting-1.webp",
           height: "35vh",
           maxHeight: "260px",
           right: "103%",
         },
         {
-          src: "pokemon-fighting-3.png",
+          src: "pokemon-fighting-3.webp",
           left: colorMode === "dark" ? "105%" : { base: "80%", xl: "93%" },
           height: "50vh",
           maxHeight: "380px",
         },
         {
-          src: "pokemon-fighting-4.png",
+          src: "pokemon-fighting-4.webp",
           height: "25vh",
           maxHeight: "180px",
         },
       ],
       electric: [
         {
-          src: "pokemon-electric-1.png",
+          src: "pokemon-electric-1.webp",
           transform: colorMode === "dark" ? null : "rotateZ(55deg)",
           height: "45vh",
           maxHeight: "270px",
         },
         {
-          src: "pokemon-electric-3.png",
+          src: "pokemon-electric-3.webp",
           height: "50vh",
           maxHeight: "380px",
           transform: colorMode === "dark" ? "translateX(-15%)" : null,
         },
         {
-          src: "pokemon-electric-2.png",
+          src: "pokemon-electric-2.webp",
           height: "30vh",
           maxHeight: "180px",
         },
       ],
       grass: [
         {
-          src: "pokemon-grass-2.png",
+          src: "pokemon-grass-2.webp",
           transform: "rotateY(180deg) ",
           height: "50vh",
           maxHeight: "370px",
@@ -155,12 +155,12 @@ const PokemonsBackground = ({ control }: Props) => {
           top: "10%",
         },
         {
-          src: "pokemon-grass-1.png",
+          src: "pokemon-grass-1.webp",
           height: "45vh",
           maxHeight: "300px",
         },
         {
-          src: "pokemon-grass-3.png",
+          src: "pokemon-grass-3.webp",
           height: "30vh",
           maxHeight: "220px",
         },
