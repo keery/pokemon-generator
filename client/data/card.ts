@@ -1,5 +1,5 @@
 import { BASIC } from "~constants";
-import { Card } from "~@types/Card";
+import { Card } from "~@types/CardGenerator";
 
 export const CARD_DEFAULT_STATE: Card = {
   type: {

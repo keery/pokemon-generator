@@ -1,7 +1,7 @@
 import React from "react";
 import { useWatch } from "react-hook-form";
 import ImageCanvas from "./ImageCanvas";
-import { Select, Rarity as RarityType } from "~@types/Card";
+import { Select, Rarity as RarityType } from "~@types/CardGenerator";
 
 const Rarity = ({ control }) => {
   const rarity: Select<RarityType> = useWatch({

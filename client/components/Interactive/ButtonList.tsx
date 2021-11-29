@@ -17,7 +17,7 @@ import {
 import { motion, MotionStyle } from "framer-motion";
 import { useController, useWatch, Control } from "react-hook-form";
 import Cross from "public/assets/img/cross.svg";
-import { Select } from "~@types/Card";
+import { Select } from "~@types/CardGenerator";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";

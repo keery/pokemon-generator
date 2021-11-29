@@ -5,6 +5,17 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
+import { ApiProperty } from '@nestjs/swagger'
+
+export enum Element {
+  FIRE = 'fire',
+  GRASS = 'grass',
+  WATER = 'water',
+  ELECTRIC = 'electric',
+  PSYCHIC = 'psychic',
+  FIGHTING = 'fighting',
+  NORMAL = 'normal',
+}
 
 @Entity()
 export class Card {
@@ -19,6 +30,12 @@ export class Card {
 
   @Column()
   name: string
+
+  @Column()
+  hp: string
+
+  @Column()
+  blurHash: string
 
   @Column({
     nullable: true,
@@ -49,6 +66,12 @@ export class Card {
     default: false,
   })
   isPublished: boolean
+
+  @Column({
+    type: 'enum',
+    enum: Element,
+  })
+  element: Element
 
   @CreateDateColumn()
   created_at: Date

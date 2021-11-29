@@ -2,7 +2,7 @@ import React from "react";
 import { useWatch, Control } from "react-hook-form";
 import { Text } from "react-konva";
 import { BASIC } from "~constants";
-import { Select, Stage } from "~@types/Card";
+import { Select, Stage } from "~@types/CardGenerator";
 
 interface Props {
   control: Control;

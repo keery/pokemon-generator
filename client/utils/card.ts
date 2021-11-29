@@ -1,3 +1,5 @@
+import { Element } from "~@types/CardGenerator";
+
 export const printCard = () => {
   window.print();
 };
@@ -22,15 +24,20 @@ export const exportCard = () => {
 
 export interface FormatValue {
   name: string;
+  hp: string;
+  element: Element;
   description: string;
   attack1Name: string;
   attack1Description: string;
   attack2Name: string;
   attack2Description: string;
 }
+
 export const formatValues = (values): FormatValue => {
   return {
     name: values.name,
+    hp: values.hp.value,
+    element: values.type.value,
     description: values.description || "",
     attack1Name: values.attack1Name || "",
     attack1Description: values.attack1Info || "",

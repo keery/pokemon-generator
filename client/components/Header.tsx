@@ -3,7 +3,11 @@ import { Container, useColorModeValue } from "@chakra-ui/react";
 import Logo from "~components/Logo";
 import NesButton from "~components/NesButton";
 
-const Header = () => {
+interface Props {
+  noColorChange?: boolean;
+}
+
+const Header = ({ noColorChange = false }: Props) => {
   const py = useColorModeValue(4, 0);
 
   return (
@@ -14,7 +18,7 @@ const Header = () => {
       alignItems="center"
     >
       <Logo />
-      <NesButton />
+      <NesButton noColorChange={noColorChange} />
     </Container>
   );
 };

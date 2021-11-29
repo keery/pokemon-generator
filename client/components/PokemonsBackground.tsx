@@ -7,7 +7,7 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import { useWatch, Control } from "react-hook-form";
-import { Element, Select } from "~@types/Card";
+import { Element, Select } from "~@types/CardGenerator";
 
 interface Props {
   control: Control;

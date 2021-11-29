@@ -1,11 +1,13 @@
 import React, { useMemo } from "react";
 import { Flex } from "@chakra-ui/react";
-
+import { useRouter } from "next/router";
+import Header from "~components/Header";
 interface Props {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: Props) => {
+  const { pathname } = useRouter();
   const isMacLike = useMemo(() => {
     if (
       typeof navigator !== "undefined" &&
@@ -18,6 +20,7 @@ const Layout = ({ children }: Props) => {
 
   return (
     <Flex direction="column" h="100%" className={isMacLike}>
+      {pathname !== "/" && <Header noColorChange />}
       {children}
     </Flex>
   );

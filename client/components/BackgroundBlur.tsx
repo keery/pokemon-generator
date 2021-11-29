@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
 import { useWatch, Control } from "react-hook-form";
-import { Element, Select } from "~@types/Card";
+import { Element, Select } from "~@types/CardGenerator";
 import dynamic from "next/dynamic";
 import { GRADIENTS } from "~constants";
 

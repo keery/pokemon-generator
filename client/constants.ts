@@ -1,4 +1,4 @@
-import { Element, Rarity, Select } from "~@types/Card";
+import { Element, Rarity, Select } from "~@types/CardGenerator";
 
 export const ROUTE_CGU = "/general-conditions-use";
 export const ROUTE_GALLERY = "/gallery";

@@ -41,6 +41,7 @@
     "@nestjsx/crud-typeorm": "^4.6.2",
     "@uppy/companion": "^3.0.1",
     "bcryptjs": "^2.4.3",
+    "blurhash": "^1.1.4",
     "class-transformer": "^0.3.2",
     "class-validator": "^0.13.1",
     "commander": "^7.0.0",

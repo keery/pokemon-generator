@@ -17,9 +17,12 @@ import {
   PSYCHIC,
 } from "~constants";
 
-const NesButton = () => {
-  const { control } = useFormContext();
-  const type = useWatch({ control, name: "type" });
+const NesButton = ({ noColorChange }) => {
+  let type = "water";
+  if (!noColorChange) {
+    const { control } = useFormContext();
+    type = useWatch({ control, name: "type" });
+  }
   const { setColorMode, colorMode } = useColorMode();
   const [isChecked, setChecked] = useState(colorMode === "dark");
   const electricColor = useBreakpointValue({ base: "#bfa531", xl: "#fbd83b" });
@@ -45,6 +48,12 @@ const NesButton = () => {
     [ELECTRIC]: electricColor,
   };
 
+  const handleIcon = (
+    <Flex alignItems="center" justifyContent="center" h="100%">
+      <Image src="/assets/img/pixel/gameboy.png" w="90%" />
+    </Flex>
+  );
+
   return (
     <Flex>
       <Switch
@@ -54,16 +63,8 @@ const NesButton = () => {
         offColor="#bdbdbd"
         offHandleColor={"#fff"}
         onHandleColor={"#fff"}
-        uncheckedHandleIcon={
-          <Flex alignItems="center" justifyContent="center" h="100%">
-            <Image src="/assets/img/pixel/gameboy.png" w="90%" />
-          </Flex>
-        }
-        checkedHandleIcon={
-          <Flex alignItems="center" justifyContent="center" h="100%">
-            <Image src="/assets/img/pixel/gameboy.png" w="90%" />
-          </Flex>
-        }
+        uncheckedHandleIcon={handleIcon}
+        checkedHandleIcon={handleIcon}
         uncheckedIcon={null}
         checkedIcon={null}
       />

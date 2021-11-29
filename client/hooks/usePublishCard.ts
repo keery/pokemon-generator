@@ -10,7 +10,7 @@ const usePublishCard = (
   options: UseMutationOptions<boolean, Error, FormData> = {}
 ) => {
   return useMutation((payload) => {
-    return client.post("/card/publish", payload);
+    return client.post("/cards/publish", payload);
   }, options);
 };
 
