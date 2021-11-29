@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import useCards from "~hooks/useCards";
 import { Flex, Circle, Box, Container } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Mousewheel, Navigation } from "swiper";
+import SwiperCore, { Mousewheel, Navigation, Keyboard } from "swiper";
 import CardThumbnail from "~components/Gallery/CardThumbnail";
 import CardThumbnailSkeleton from "~components/Gallery/CardThumbnailSkeleton";
 import { useBreakpointValue } from "@chakra-ui/react";
@@ -42,7 +42,7 @@ const Arrow = ({ onClick, direction, isDisabled }) => {
   );
 };
 
-SwiperCore.use([Mousewheel, Navigation]);
+SwiperCore.use([Mousewheel, Navigation, Keyboard]);
 
 const CardSwiper = () => {
   const { isLoading, data } = useCards();
@@ -100,6 +100,7 @@ const CardSwiper = () => {
             spaceBetween={20}
             watchSlidesProgress={true}
             navigation
+            keyboard
             onReachBeginning={() => setExtremity("beginning")}
             onReachEnd={() => {
               if (extremity === null) setExtremity("end");
@@ -131,7 +132,9 @@ const CardSwiper = () => {
           >
             {isLoading ? (
               Array.from(Array(nbSkeleton)).map((n, i) => (
-                <CardThumbnailSkeleton key={`skeleton-swiper-${i}`} />
+                <SwiperSlide key={`skeleton-swiper-${i}`}>
+                  <CardThumbnailSkeleton />
+                </SwiperSlide>
               ))
             ) : (
               <>
