@@ -552,6 +552,27 @@ a {
   transition: color 200ms ease;
 }
 
+.card-swiper {
+  overflow: visible !important;
+  position: static !important;
+}
+
+.card-swiper .swiper-button-next,
+.card-swiper .swiper-button-prev {
+  display: none !important;
+}
+
+@keyframes append-swiper {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media print {
   *,
   .backface {

@@ -13,6 +13,8 @@ import { RecoilRoot } from "recoil";
 import "@uppy/core/dist/style.min.css";
 import "@uppy/dashboard/dist/style.css";
 import "@uppy/drag-drop/dist/style.css";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const content = (
