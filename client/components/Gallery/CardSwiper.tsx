@@ -1,15 +1,13 @@
-import React, { useRef, useState, useMemo, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import useCards from "~hooks/useCards";
 import { Flex, Circle, Box, Container } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Mousewheel, Navigation, Keyboard } from "swiper";
 import CardThumbnail from "~components/Gallery/CardThumbnail";
-import CardModal from "~components/Gallery/CardModal";
 import CardThumbnailSkeleton from "~components/Gallery/CardThumbnailSkeleton";
 import { useBreakpointValue } from "@chakra-ui/react";
 import Prev from "public/assets/img/prev.svg";
 import Next from "public/assets/img/next.svg";
-import { useRouter } from "next/router";
 
 const Arrow = ({ onClick, direction, isDisabled }) => {
   const transform = `translateY(-50%) ${
@@ -53,24 +51,11 @@ const CardSwiper = () => {
   const swiperRef = useRef(null);
   const [extremity, setExtremity] = useState<"beginning" | "end">("beginning");
   const slidesPerView = 3;
-  const router = useRouter();
-
-  const modalIsVisible = useMemo(() => {
-    return !!router.query["cardSlug"] && !!router.query["idCard"];
-  }, [router.query]);
-
-  useEffect(() => {
-    if (modalIsVisible) {
-      swiperRef.current.children[2].style.marginLeft = `${swiperRef.current.swiper.translate}px`;
-    } else {
-      swiperRef.current.children[2].style.marginLeft = `0px`;
-    }
-  }, [modalIsVisible]);
 
   return (
     <Flex pos="relative">
       <Container p={0} margin={0} maxW="100vw" overflow="hidden">
-        <Container className={`${modalIsVisible ? "is-open" : ""}`}>
+        <Container>
           <Flex userSelect="none" pointerEvents="none" pos="relative" ml={10}>
             <Flex
               animation="rotate 7.5s linear infinite"
@@ -116,11 +101,6 @@ const CardSwiper = () => {
             spaceBetween={20}
             navigation
             keyboard
-            onSetTranslate={(s) => {
-              console.log(swiperRef.current.swiper.translate);
-              // console.log("test", s.translate);
-              // console.log(swiperRef);
-            }}
             onReachBeginning={() => setExtremity("beginning")}
             onReachEnd={() => {
               if (extremity === null) setExtremity("end");
@@ -160,14 +140,7 @@ const CardSwiper = () => {
               <>
                 {data.map((card, i) => (
                   <SwiperSlide key={card.id}>
-                    <CardModal card={card}>
-                      <CardThumbnail
-                        card={card}
-                        opacity={0}
-                        userSelect="none"
-                        animation={`append-swiper 500ms ${50 * i}ms forwards`}
-                      />
-                    </CardModal>
+                    <CardThumbnail card={card} layoutPrefix="swiper" />
                   </SwiperSlide>
                 ))}
               </>

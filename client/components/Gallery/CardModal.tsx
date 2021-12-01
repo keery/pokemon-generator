@@ -10,10 +10,11 @@ import { Card } from "~@types/Card";
 export const MotionImage = motion<ImageProps>(Image);
 
 interface Props {
-  card?: Card;
+  card: Card;
+  layoutPrefix?: string;
 }
 
-const CardModal = ({ card }: Props) => {
+const CardModal = ({ card, layoutPrefix = "" }: Props) => {
   return (
     <>
       <CardModalOverlay />
@@ -28,7 +29,7 @@ const CardModal = ({ card }: Props) => {
         m="40px"
       >
         <motion.div
-          layoutId={`card-container-${card.id}`}
+          layoutId={`card-container-${layoutPrefix}${card.id}`}
           transition={{ ease: "linear", duration: 0.3 }}
           style={{
             zIndex: 1000,
@@ -51,7 +52,7 @@ const CardModal = ({ card }: Props) => {
           />
           <AspectRatio
             as={motion.div}
-            layoutId={`card-image-container-${card.id}`}
+            layoutId={`card-image-container-${layoutPrefix}${card.id}`}
             ratio={500 / 700}
             pos="relative"
             h="100%"
@@ -60,7 +61,7 @@ const CardModal = ({ card }: Props) => {
             <MotionImage
               // @ts-ignore
               transition={{ ease: "linear", duration: 0.3 }}
-              layoutId={`card-image-${card.id}`}
+              layoutId={`card-image-${layoutPrefix}${card.id}`}
               style={{
                 position: "absolute",
                 left: "4%",
@@ -84,7 +85,13 @@ const Wrapper = () => {
 
   return (
     <AnimatePresence>
-      {query?.idCard && card && <CardModal card={card} key="card-modal" />}
+      {query?.idCard && card && (
+        <CardModal
+          card={card}
+          layoutPrefix={query?.layoutPrefix as string}
+          key="card-modal"
+        />
+      )}
     </AnimatePresence>
   );
 };

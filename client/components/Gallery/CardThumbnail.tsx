@@ -10,25 +10,29 @@ import { useSetRecoilState } from "recoil";
 
 interface Props {
   card: Card;
+  layoutPrefix?: string;
 }
 
 export const MotionImage = motion<ImageProps>(Image);
 
-const CardThumbnail = ({ card }: Props) => {
+const CardThumbnail = ({ card, layoutPrefix = "" }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
 
   return (
     <LinkBox>
       <LinkOverlay
-        href={`${ROUTE_GALLERY}?cardSlug=${card.slug}&idCard=${card.id}`}
-        as={`${ROUTE_GALLERY}/${card.slug}/${card.id}`}
+        shallow
+        href={`${ROUTE_GALLERY}?cardSlug=${card.slug}&idCard=${card.id}${
+          layoutPrefix !== "" ? `&layoutPrefix=${layoutPrefix}` : ""
+        }`}
+        // as={`${ROUTE_GALLERY}/${card.slug}/${card.id}`}
         _before={{ zIndex: 12 }}
         onClick={() => {
           setCard({ card });
         }}
       />
       <motion.div
-        layoutId={`card-container-${card.id}`}
+        layoutId={`card-container-${layoutPrefix}${card.id}`}
         transition={{ ease: "linear", duration: 0.1 }}
         style={{
           position: "relative",
@@ -38,7 +42,7 @@ const CardThumbnail = ({ card }: Props) => {
       >
         <AspectRatio
           as={motion.div}
-          layoutId={`card-image-container-${card.id}`}
+          layoutId={`card-image-container-${layoutPrefix}${card.id}`}
           ratio={500 / 700}
           pos="relative"
           borderRadius="1.4rem"
@@ -48,7 +52,7 @@ const CardThumbnail = ({ card }: Props) => {
           <MotionImage
             // @ts-ignore
             transition={{ ease: "linear", duration: 0.1 }}
-            layoutId={`card-image-${card.id}`}
+            layoutId={`card-image-${layoutPrefix}${card.id}`}
             style={{
               position: "absolute",
               left: "0",

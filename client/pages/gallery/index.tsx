@@ -41,12 +41,12 @@ const Gallery: NextPage = () => {
           </Text>
         </Heading>
       </Container>
-      {/* <Container>
+      <Container>
         <Text fontWeight="800" pt={20} pb={4} fontSize="2.5rem">
           {t("topMonth")}
         </Text>
       </Container>
-      <CardSwiper /> */}
+      <CardSwiper />
       <Container>
         <Text fontWeight="800" pt={20} pb={4} fontSize="2.5rem">
           {t("lastCreation")}
