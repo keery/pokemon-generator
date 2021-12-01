@@ -21,7 +21,7 @@ import createSlug from 'url-slug'
     type: Card,
   },
   routes: {
-    only: ['getManyBase'],
+    only: ['getManyBase', 'getOneBase'],
   },
 })
 @ApiTags('cards')

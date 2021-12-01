@@ -5,10 +5,10 @@ import {
   SimpleGridProps,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import CardThumbnail from "~components/Gallery/CardThumbnail";
 import CardThumbnailSkeleton from "~components/Gallery/CardThumbnailSkeleton";
 import { Flex, Circle, Text } from "@chakra-ui/react";
 import LikesCounter from "~components/Gallery/LikesCounter";
+import CardThumbnail from "~components/Gallery/CardThumbnail";
 
 const CardList = (props: SimpleGridProps) => {
   const { isLoading, data } = useCards();
@@ -16,14 +16,15 @@ const CardList = (props: SimpleGridProps) => {
 
   return (
     <SimpleGrid columns={4} spacingX={6} spacingY={8} {...props}>
-      {isLoading
-        ? Array.from(Array(nbSkeleton)).map((n, i) => (
-            <CardThumbnailSkeleton key={`skeleton-${i}`} />
-          ))
-        : data.map((card) => (
-            <Flex direction="column" key={card.id}>
-              <CardThumbnail card={card} />
-              <Flex
+      <>
+        {isLoading
+          ? Array.from(Array(nbSkeleton)).map((n, i) => (
+              <CardThumbnailSkeleton key={`skeleton-${i}`} />
+            ))
+          : data.map((card) => (
+              <Flex direction="column" key={card.id}>
+                <CardThumbnail card={card} />
+                {/* <Flex
                 pt={2}
                 px={1}
                 justifyContent="space-between"
@@ -42,9 +43,10 @@ const CardList = (props: SimpleGridProps) => {
                   </Text>
                 </Flex>
                 <LikesCounter />
+              </Flex> */}
               </Flex>
-            </Flex>
-          ))}
+            ))}
+      </>
     </SimpleGrid>
   );
 };

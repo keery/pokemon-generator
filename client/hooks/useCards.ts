@@ -1,6 +1,5 @@
 import { useQuery, UseQueryOptions } from "react-query";
 import { client } from "~api/client";
-import { AxiosResponse } from "axios";
 import { Card } from "~@types/Card";
 
 const useCards = (options: UseQueryOptions<Card[]> = {}) => {

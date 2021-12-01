@@ -4,16 +4,16 @@ import { SSRConfig } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
-const Modal: NextPage = () => {
+const Card: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
     router.push(
-      `/?modal=${router.query?.idModal}`,
-      `/modal/${router.query?.idModal}`,
+      `/gallery/?cardSlug=${router.query?.cardSlug}&idCard=${router.query?.idCard}`,
+      `/gallery/${router.query?.cardSlug}/${router.query?.idCard}`,
       { shallow: true }
     );
-  }, [router.query?.idModal]);
+  }, [router.query?.idCard]);
 
   return <></>;
 };
@@ -23,9 +23,9 @@ export const getServerSideProps: GetServerSideProps<SSRConfig> = async ({
 }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "generator"])),
+      ...(await serverSideTranslations(locale, ["common", "gallery"])),
     },
   };
 };
 
-export default Modal;
+export default Card;

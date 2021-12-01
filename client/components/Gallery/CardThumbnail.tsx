@@ -1,38 +1,65 @@
 import React from "react";
+import { AspectRatio, Image, ImageProps, LinkBox } from "@chakra-ui/react";
 import { Card } from "~@types/Card";
-import { Image, Flex, AspectRatio, AspectRatioProps } from "@chakra-ui/react";
-import { Blurhash } from "react-blurhash";
+import LinkOverlay from "~components/LinkOverlay";
+import CardBlurhash from "~components/Gallery/CardBlurhash";
+import { ROUTE_GALLERY } from "~constants";
+import { motion } from "framer-motion";
+import { cardModalAtom } from "~atoms/card-modal";
+import { useSetRecoilState } from "recoil";
 
-interface Props extends AspectRatioProps {
+interface Props {
   card: Card;
 }
 
-const CardThumbnail = ({ card, ...rest }: Props) => {
+export const MotionImage = motion<ImageProps>(Image);
+
+const CardThumbnail = ({ card }: Props) => {
+  const setCard = useSetRecoilState(cardModalAtom);
+
   return (
-    <AspectRatio ratio={500 / 700} pos="relative" {...rest}>
-      <Image
-        src={card.img}
-        fallback={
-          <Flex
-            pos="absolute"
-            left={0}
-            right={0}
-            top={0}
-            bottom={0}
-            borderRadius="1rem"
-          >
-            <Blurhash
-              hash={card.blurHash}
-              resolutionX={32}
-              resolutionY={32}
-              width="100%"
-              punch={1}
-              height="100%"
-            />
-          </Flex>
-        }
+    <LinkBox>
+      <LinkOverlay
+        href={`${ROUTE_GALLERY}?cardSlug=${card.slug}&idCard=${card.id}`}
+        as={`${ROUTE_GALLERY}/${card.slug}/${card.id}`}
+        _before={{ zIndex: 12 }}
+        onClick={() => {
+          setCard({ card });
+        }}
       />
-    </AspectRatio>
+      <motion.div
+        layoutId={`card-container-${card.id}`}
+        transition={{ ease: "linear", duration: 0.1 }}
+        style={{
+          position: "relative",
+          zIndex: 9,
+          cursor: "pointer",
+        }}
+      >
+        <AspectRatio
+          as={motion.div}
+          layoutId={`card-image-container-${card.id}`}
+          ratio={500 / 700}
+          pos="relative"
+          borderRadius="1.4rem"
+          overflow="hidden"
+          transform="translateZ(0)"
+        >
+          <MotionImage
+            // @ts-ignore
+            transition={{ ease: "linear", duration: 0.1 }}
+            layoutId={`card-image-${card.id}`}
+            style={{
+              position: "absolute",
+              left: "0",
+              top: "0",
+            }}
+            src={card.img}
+            fallback={<CardBlurhash blurhash={card.blurHash} />}
+          />
+        </AspectRatio>
+      </motion.div>
+    </LinkBox>
   );
 };
 

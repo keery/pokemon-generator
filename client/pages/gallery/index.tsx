@@ -6,12 +6,15 @@ import { Container, Heading, Box, Text } from "@chakra-ui/react";
 import CardList from "~components/Gallery/CardList";
 import TitleGradient from "~components/Gallery/TitleGradient";
 import CardSwiper from "~components/Gallery/CardSwiper";
+import CardModal from "~components/Gallery/CardModal";
 import { useTranslation } from "next-i18next";
+import { AnimateSharedLayout } from "framer-motion";
 
 const Gallery: NextPage = () => {
   const { t } = useTranslation("gallery");
   return (
-    <>
+    <AnimateSharedLayout type="crossfade">
+      <CardModal />
       <Container>
         <TitleGradient />
         <Heading
@@ -38,20 +41,19 @@ const Gallery: NextPage = () => {
           </Text>
         </Heading>
       </Container>
-      <Container>
+      {/* <Container>
         <Text fontWeight="800" pt={20} pb={4} fontSize="2.5rem">
           {t("topMonth")}
         </Text>
       </Container>
-      <CardSwiper />
-
+      <CardSwiper /> */}
       <Container>
         <Text fontWeight="800" pt={20} pb={4} fontSize="2.5rem">
           {t("lastCreation")}
         </Text>
         <CardList />
       </Container>
-    </>
+    </AnimateSharedLayout>
   );
 };
 
