@@ -2,6 +2,7 @@ import { Element, Rarity, Select } from "~@types/CardGenerator";
 
 export const ROUTE_CGU = "/general-conditions-use";
 export const ROUTE_GALLERY = "/gallery";
+export const ROUTE_404 = "/404";
 
 export const FIRE = "fire";
 export const GRASS = "grass";

@@ -25,7 +25,7 @@ const CardThumbnail = ({ card, layoutPrefix = "" }: Props) => {
         href={`${ROUTE_GALLERY}?cardSlug=${card.slug}&idCard=${card.id}${
           layoutPrefix !== "" ? `&layoutPrefix=${layoutPrefix}` : ""
         }`}
-        // as={`${ROUTE_GALLERY}/${card.slug}/${card.id}`}
+        as={`${ROUTE_GALLERY}/${card.slug}/${card.id}`}
         _before={{ zIndex: 12 }}
         onClick={() => {
           setCard({ card });
