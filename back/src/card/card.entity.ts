@@ -4,7 +4,9 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm'
+import { Like } from '~like/like.entity'
 import { ApiProperty } from '@nestjs/swagger'
 
 export enum Element {
@@ -78,4 +80,7 @@ export class Card {
 
   @UpdateDateColumn()
   updated_at: Date
+
+  @OneToMany(() => Like, (like) => like.card)
+  likes: Like[]
 }

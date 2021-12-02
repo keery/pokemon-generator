@@ -6,6 +6,8 @@ import CardModalOverlay from "~components/Gallery/CardModalOverlay";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useRecoilValue } from "recoil";
 import { Card } from "~@types/Card";
+import { getSeoCardDescription } from "~utils/card";
+import { NextSeo } from "next-seo";
 
 export const MotionImage = motion<ImageProps>(Image);
 
@@ -17,6 +19,7 @@ interface Props {
 const CardModal = ({ card, layoutPrefix = "" }: Props) => {
   return (
     <>
+      <NextSeo title={card.name} description={getSeoCardDescription(card)} />
       <CardModalOverlay />
       <Box
         className="card-content-container is-open"

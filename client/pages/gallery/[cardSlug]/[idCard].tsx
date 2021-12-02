@@ -7,6 +7,7 @@ import { getCard } from "~hooks/useCard";
 import { ROUTE_404 } from "~constants";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
+import { NextSeo } from "next-seo";
 
 const Card = ({ card }) => {
   const setCard = useSetRecoilState(cardModalAtom);
@@ -23,7 +24,14 @@ const Card = ({ card }) => {
     );
   }, [card.id]);
 
-  return <></>;
+  return (
+    <>
+      <NextSeo
+        title="Simple Usage Example"
+        description="A short description goes here."
+      />
+    </>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps<SSRConfig> = async ({

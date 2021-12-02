@@ -1,4 +1,6 @@
 import { Element } from "~@types/CardGenerator";
+import { Card } from "~@types/Card";
+import { useTranslation } from "next-i18next";
 
 export const printCard = () => {
   window.print();
@@ -72,4 +74,33 @@ export const getPublishData = async (formValues) => {
     formData.append(key, formattedValues[key]);
   });
   return formData;
+};
+
+export const formatAttackSeo = (label: string, values: string[]) => {
+  const formattedValue = values.filter((v) => v !== "").join(" - ");
+
+  if (formattedValue === "") return "";
+
+  return ` ${label}: ${formattedValue}.`;
+};
+
+export const getSeoCardDescription = (card: Card) => {
+  const { t } = useTranslation("gallery");
+
+  const attack1 = formatAttackSeo(t("attack1"), [
+    card.attack1Name,
+    card.attack1Description,
+  ]);
+  const attack2 = formatAttackSeo(t("attack2"), [
+    card.attack2Name,
+    card.attack2Description,
+  ]);
+
+  return `${card.name} ${t("seo.modal.isType")} ${t(card.element)}.${
+    card.description !== ""
+      ? ` ${card.description}${
+          card.description[card.description.length] !== "." ? "." : ""
+        }`
+      : ""
+  }${attack1}${attack2}`;
 };

@@ -1,5 +1,11 @@
 import { ApiTags } from '@nestjs/swagger'
-import { Crud } from '@nestjsx/crud'
+import {
+  Crud,
+  Override,
+  ParsedRequest,
+  CrudController,
+  CrudRequest,
+} from '@nestjsx/crud'
 import { Card } from '~card/card.entity'
 import { CardService } from '~card/card.service'
 import { ImageService } from '~image/image.service'
@@ -12,9 +18,14 @@ import {
   Body,
   HttpException,
   HttpStatus,
+  Req,
 } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import createSlug from 'url-slug'
+import { getIp } from '~utils/ip'
+import { Request } from 'express'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository, getRepository } from 'typeorm'
 
 @Crud({
   model: {
@@ -28,9 +39,15 @@ import createSlug from 'url-slug'
 @Controller('cards')
 export class CardController {
   constructor(
+    @InjectRepository(Card)
+    private cardRepo: Repository<Card>,
     public readonly service: CardService,
     public readonly imgService: ImageService,
   ) {}
+
+  get base(): CrudController<Card> {
+    return this
+  }
 
   @Post('publish')
   @UseInterceptors(FileInterceptor('img'))
@@ -56,5 +73,21 @@ export class CardController {
     card.blurHash = await encodeImageToBlurhash(file)
 
     return this.service.create(card)
+  }
+
+  @Override('getManyBase')
+  async getMany(
+    @ParsedRequest() parsedRequest: CrudRequest,
+    @Req() req: Request,
+  ) {
+    const ip = getIp(req)
+
+    return getRepository(Card)
+      .createQueryBuilder('card')
+      .loadRelationCountAndMap('card.myLikes', 'card.likes', 'myLikes', (qb) =>
+        qb.where('myLikes.ip = :ip', { ip }),
+      )
+      .loadRelationCountAndMap('card.likes', 'card.likes')
+      .getMany()
   }
 }

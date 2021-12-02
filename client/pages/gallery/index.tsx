@@ -9,51 +9,55 @@ import CardSwiper from "~components/Gallery/CardSwiper";
 import CardModal from "~components/Gallery/CardModal";
 import { useTranslation } from "next-i18next";
 import { AnimateSharedLayout } from "framer-motion";
+import { NextSeo } from "next-seo";
 
 const Gallery: NextPage = () => {
   const { t } = useTranslation("gallery");
   return (
-    <AnimateSharedLayout type="crossfade">
-      <CardModal />
-      <Container>
-        <TitleGradient />
-        <Heading
-          as="h1"
-          textAlign="center"
-          color="text"
-          fontSize="3.4rem"
-          fontWeight="300"
-        >
-          <Text>Welcome to the </Text>
-          <Text>
-            card
-            <Box
-              bgImage="url(/assets/img/dash.svg)"
-              bgPos="50% 100%"
-              bgSize="contain"
-              bgRepeat="no-repeat"
-              as="span"
-              fontWeight="500"
-            >
-              {" "}
-              gallery
-            </Box>
+    <>
+      <NextSeo title={t("seo.title")} description={t("seo.description")} />
+      <AnimateSharedLayout type="crossfade">
+        <CardModal />
+        <Container>
+          <TitleGradient />
+          <Heading
+            as="h1"
+            textAlign="center"
+            color="text"
+            fontSize="3.4rem"
+            fontWeight="300"
+          >
+            <Text>Welcome to the </Text>
+            <Text>
+              card
+              <Box
+                bgImage="url(/assets/img/dash.svg)"
+                bgPos="50% 100%"
+                bgSize="contain"
+                bgRepeat="no-repeat"
+                as="span"
+                fontWeight="500"
+              >
+                {" "}
+                gallery
+              </Box>
+            </Text>
+          </Heading>
+        </Container>
+        <Container>
+          <Text fontWeight="800" pt={20} pb={4} fontSize="2.5rem">
+            {t("topMonth")}
           </Text>
-        </Heading>
-      </Container>
-      <Container>
-        <Text fontWeight="800" pt={20} pb={4} fontSize="2.5rem">
-          {t("topMonth")}
-        </Text>
-      </Container>
-      <CardSwiper />
-      <Container>
-        <Text fontWeight="800" pt={20} pb={4} fontSize="2.5rem">
-          {t("lastCreation")}
-        </Text>
-        <CardList />
-      </Container>
-    </AnimateSharedLayout>
+        </Container>
+        <CardSwiper />
+        <Container>
+          <Text fontWeight="800" pt={20} pb={4} fontSize="2.5rem">
+            {t("lastCreation")}
+          </Text>
+          <CardList />
+        </Container>
+      </AnimateSharedLayout>
+    </>
   );
 };
 

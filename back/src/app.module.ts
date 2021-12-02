@@ -5,6 +5,7 @@ import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConne
 import { CardModule } from '~card/card.module'
 import { ImageModule } from '~image/image.module'
 import { MailModule } from './mail/mail.module'
+import { LikeModule } from './like/like.module'
 import { ConsoleModule } from 'nestjs-console'
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { I18nModule, I18nJsonParser } from 'nestjs-i18n'
@@ -44,6 +45,7 @@ import { join } from 'path'
     }),
     CardModule,
     ImageModule,
+    LikeModule,
     MailModule,
     ConsoleModule,
   ],

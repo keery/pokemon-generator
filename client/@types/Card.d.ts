@@ -1,3 +1,5 @@
+import { Element } from "~@types/CardGenerator";
+
 export interface Card {
   id: number;
   name: string;
@@ -12,4 +14,6 @@ export interface Card {
   isPublished: boolean;
   img: string;
   blurHash: string;
+  myLikes?: number;
+  likes?: number;
 }

@@ -12,6 +12,7 @@ import CardThumbnail from "~components/Gallery/CardThumbnail";
 
 const CardList = (props: SimpleGridProps) => {
   const { isLoading, data } = useCards();
+
   const nbSkeleton = useBreakpointValue({ base: 6, sm: 8, md: 12, lg: 16 });
 
   return (
@@ -24,26 +25,26 @@ const CardList = (props: SimpleGridProps) => {
           : data.map((card) => (
               <Flex direction="column" key={card.id}>
                 <CardThumbnail card={card} />
-                {/* <Flex
-                pt={2}
-                px={1}
-                justifyContent="space-between"
-                alignItems="center"
-              >
-                <Flex alignItems="center">
-                  <Circle
-                    size="25px"
-                    bg="linear-gradient(to right top, rgb(6, 249, 168), rgb(168, 6, 249))"
-                    mr={2}
-                    border="2px solid white"
-                    boxShadow="rgb(0 0 0 / 10%) 0px 10px 15px -3px, rgb(0 0 0 / 5%) 0px 4px 6px -2px"
-                  />
-                  <Text fontSize="xs" fontWeight="bold">
-                    Guillaume E.
-                  </Text>
+                <Flex
+                  pt={2}
+                  px={1}
+                  justifyContent="space-between"
+                  alignItems="center"
+                >
+                  <Flex alignItems="center">
+                    <Circle
+                      size="25px"
+                      bg="linear-gradient(to right top, rgb(6, 249, 168), rgb(168, 6, 249))"
+                      mr={2}
+                      border="2px solid white"
+                      boxShadow="rgb(0 0 0 / 10%) 0px 10px 15px -3px, rgb(0 0 0 / 5%) 0px 4px 6px -2px"
+                    />
+                    <Text fontSize="xs" fontWeight="bold">
+                      Guillaume E.
+                    </Text>
+                  </Flex>
+                  <LikesCounter card={card} />
                 </Flex>
-                <LikesCounter />
-              </Flex> */}
               </Flex>
             ))}
       </>
