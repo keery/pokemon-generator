@@ -6,12 +6,13 @@ import { Card } from "~@types/Card";
 interface Props {
   card: Card;
   queryKey: any[];
+  indexPage: number;
 }
 
-const LikesCounter = ({ card, queryKey }: Props) => {
+const LikesCounter = ({ card, queryKey, indexPage }: Props) => {
   return (
     <Flex alignItems="center">
-      <LikeButton card={card} queryKey={queryKey} />
+      <LikeButton card={card} queryKey={queryKey} indexPage={indexPage} />
       <Text
         pl={1}
         fontSize="0.8rem"

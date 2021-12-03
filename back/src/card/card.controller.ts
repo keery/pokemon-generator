@@ -25,7 +25,7 @@ import createSlug from 'url-slug'
 import { getIp } from '~utils/ip'
 import { Request } from 'express'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Repository, getRepository, getConnection } from 'typeorm'
+import { Repository, getConnection } from 'typeorm'
 
 @Crud({
   model: {
@@ -83,6 +83,7 @@ export class CardController {
     const ip = getIp(req)
 
     let orderBy = ''
+
     if (parsedRequest.parsed.sort.length > 0) {
       orderBy = `ORDER BY ${parsedRequest.parsed.sort
         .map(({ field, order }) => {
@@ -90,6 +91,17 @@ export class CardController {
           return `${field} ${order}`
         })
         .join(' ')}`
+    }
+
+    let limit = 'LIMIT 50'
+    if (parsedRequest.parsed.limit) {
+      limit = `LIMIT ${parsedRequest.parsed.limit}`
+
+      if (parsedRequest.parsed.page) {
+        limit += ` OFFSET ${
+          parsedRequest.parsed.limit * parsedRequest.parsed.page
+        }`
+      }
     }
 
     return getConnection().query(`
@@ -101,18 +113,7 @@ export class CardController {
       LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
       GROUP BY card.id
       ${orderBy}
+      ${limit}
       `)
-    // return (
-    // getRepository(Card)
-    //   .createQueryBuilder('card')
-    //   .loadRelationCountAndMap(
-    //     'card.myLikes',
-    //     'card.likes',
-    //     'myLikes',
-    //     (qb) => qb.where('myLikes.ip = :ip', { ip }),
-    //   )
-    // .leftJoinAndSelect('card.likes', 'likes')
-    // .getMany()
-    // )
   }
 }

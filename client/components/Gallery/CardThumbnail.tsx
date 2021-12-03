@@ -1,5 +1,5 @@
 import React from "react";
-import { AspectRatio, Image, ImageProps, LinkBox } from "@chakra-ui/react";
+import { AspectRatio, Image, LinkBox } from "@chakra-ui/react";
 import { Card } from "~@types/Card";
 import LinkOverlay from "~components/LinkOverlay";
 import CardBlurhash from "~components/Gallery/CardBlurhash";
@@ -12,8 +12,6 @@ interface Props {
   card: Card;
   layoutPrefix?: string;
 }
-
-export const MotionImage = motion<ImageProps>(Image);
 
 const CardThumbnail = ({ card, layoutPrefix = "" }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
@@ -49,7 +47,7 @@ const CardThumbnail = ({ card, layoutPrefix = "" }: Props) => {
           overflow="hidden"
           transform="translateZ(0)"
         >
-          <MotionImage
+          <motion.div
             // @ts-ignore
             transition={{ ease: "linear", duration: 0.1 }}
             layoutId={`card-image-${layoutPrefix}${card.id}`}
@@ -58,9 +56,12 @@ const CardThumbnail = ({ card, layoutPrefix = "" }: Props) => {
               left: "0",
               top: "0",
             }}
-            src={card.img}
-            fallback={<CardBlurhash blurhash={card.blurHash} />}
-          />
+          >
+            <Image
+              fallback={<CardBlurhash blurhash={card.blurHash} />}
+              src={card.img}
+            />
+          </motion.div>
         </AspectRatio>
       </motion.div>
     </LinkBox>

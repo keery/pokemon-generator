@@ -1,15 +1,13 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
-import { AspectRatio, Box, ImageProps, Image } from "@chakra-ui/react";
+import { AspectRatio, Box, Image } from "@chakra-ui/react";
 import CardModalOverlay from "~components/Gallery/CardModalOverlay";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useRecoilValue } from "recoil";
 import { Card } from "~@types/Card";
 import { getSeoCardDescription } from "~utils/card";
 import { NextSeo } from "next-seo";
-
-export const MotionImage = motion<ImageProps>(Image);
 
 interface Props {
   card: Card;
@@ -61,7 +59,7 @@ const CardModal = ({ card, layoutPrefix = "" }: Props) => {
             h="100%"
             w="100%"
           >
-            <MotionImage
+            <motion.div
               // @ts-ignore
               transition={{ ease: "linear", duration: 0.3 }}
               layoutId={`card-image-${layoutPrefix}${card.id}`}
@@ -69,12 +67,13 @@ const CardModal = ({ card, layoutPrefix = "" }: Props) => {
                 position: "absolute",
                 left: "4%",
                 top: "10%",
-                width: "auto",
+                width: "fit-content",
                 height: "auto",
                 bottom: "10%",
               }}
-              src={card.img}
-            />
+            >
+              <Image src={card.img} />
+            </motion.div>
           </AspectRatio>
         </motion.div>
       </Box>

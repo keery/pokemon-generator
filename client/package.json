@@ -36,6 +36,7 @@
     "konva": "^8.2.2",
     "lodash.debounce": "^4.0.8",
     "lodash.isequal": "^4.5.0",
+    "lodash.throttle": "^4.1.1",
     "mousetrap": "^1.6.5",
     "next": "^11.1.2",
     "next-i18next": "8.0.0",

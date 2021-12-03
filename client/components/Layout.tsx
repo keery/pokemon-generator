@@ -19,7 +19,11 @@ const Layout = ({ children }: Props) => {
   }, []);
 
   return (
-    <Flex direction="column" h="100%" className={isMacLike}>
+    <Flex
+      direction="column"
+      h={pathname === "/" ? "100%" : "auto"}
+      className={isMacLike}
+    >
       {pathname !== "/" && <Header noColorChange />}
       {children}
     </Flex>

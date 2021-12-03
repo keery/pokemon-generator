@@ -3,38 +3,48 @@ import { Button, ButtonProps, Icon, IconProps, Box } from "@chakra-ui/react";
 import Heart from "public/assets/img/heart.svg";
 import useLike from "~hooks/useLike";
 import { Card } from "~@types/Card";
-import { useQueryClient } from "react-query";
+import { useQueryClient, InfiniteData } from "react-query";
 import { motion } from "framer-motion";
 
 interface Props extends ButtonProps {
   card: Card;
   queryKey: any[];
+  indexPage: number;
 }
 
-const LikeButton = ({ card, queryKey, ...rest }: Props) => {
+const LikeButton = ({ card, queryKey, indexPage, ...rest }: Props) => {
   const queryClient = useQueryClient();
 
   const [isLiked, setLiked] = useState(card?.has_liked > 0);
 
   const { mutate } = useLike({
     onMutate: async () => {
-      const previousValue = queryClient.getQueryData<Card[]>(queryKey);
+      const previousValue =
+        queryClient.getQueryData<InfiniteData<Card[]>>(queryKey);
 
       if (previousValue) {
-        queryClient.setQueryData<Card[]>(queryKey, (old: Card[]) => {
-          const index = old.findIndex((c) => c.id === card.id);
+        queryClient.setQueryData<InfiniteData<Card[]>>(queryKey, (old) => {
+          const page = old.pages[indexPage];
+          const index = page.findIndex((c) => c.id === card.id);
+
           if (index === -1) return old;
 
-          const newList = [...old];
-          newList[index] = {
-            ...newList[index],
-            likes: isLiked ? old[index].likes - 1 : old[index].likes + 1,
+          const newPage = [...page];
+
+          newPage[index] = {
+            ...newPage[index],
+            likes: isLiked ? page[index].likes - 1 : page[index].likes + 1,
             has_liked: isLiked ? 0 : 1,
           };
 
           setLiked(!isLiked);
 
-          return newList;
+          old.pages.splice(indexPage, 1, newPage);
+
+          return {
+            pageParams: old.pageParams,
+            pages: old.pages,
+          };
         });
       }
 
@@ -43,10 +53,13 @@ const LikeButton = ({ card, queryKey, ...rest }: Props) => {
     onError: (
       err,
       variables,
-      context: { previousValue: Card[]; isLiked: boolean }
+      context: { previousValue: InfiniteData<Card[]>; isLiked: boolean }
     ) => {
       if (context?.previousValue) {
-        queryClient.setQueryData<Card[]>(queryKey, context.previousValue);
+        queryClient.setQueryData<InfiniteData<Card[]>>(
+          queryKey,
+          context.previousValue
+        );
         setLiked(context.isLiked);
       }
     },

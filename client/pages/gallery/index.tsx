@@ -54,6 +54,7 @@ const Gallery: NextPage = () => {
           <CardList />
         </Container>
       </AnimateSharedLayout>
+      <Box as="footer" h="400px" mt={20} bgColor="pokeball"></Box>
     </>
   );
 };
