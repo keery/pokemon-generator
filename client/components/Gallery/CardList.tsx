@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useCards from "~hooks/useCards";
+import useCards, { QUERY_KEY } from "~hooks/useCards";
 import {
   SimpleGrid,
   SimpleGridProps,
@@ -48,7 +48,15 @@ const CardList = (props: SimpleGridProps) => {
                         Guillaume E.
                       </Text>
                     </Flex>
-                    <LikesCounter card={card} />
+                    <LikesCounter
+                      card={card}
+                      queryKey={[
+                        QUERY_KEY,
+                        {
+                          sort,
+                        },
+                      ]}
+                    />
                   </Flex>
                 </Flex>
               ))}

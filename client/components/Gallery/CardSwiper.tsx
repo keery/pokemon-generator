@@ -45,7 +45,9 @@ const Arrow = ({ onClick, direction, isDisabled }) => {
 SwiperCore.use([Mousewheel, Navigation, Keyboard]);
 
 const CardSwiper = () => {
-  const { isLoading, data } = useCards();
+  const { isLoading, data } = useCards(null, {
+    sort: "likes,DESC",
+  });
   const text = "TOP 10 RANKING ";
   const nbSkeleton = useBreakpointValue({ base: 6, sm: 8, md: 12, lg: 16 });
   const swiperRef = useRef(null);
@@ -83,17 +85,6 @@ const CardSwiper = () => {
                   </Box>
                 ))}
             </Flex>
-            {/* <Flex
-          width="20px"
-          h="20px"
-          border="2px solid black"
-          borderRadius="100%"
-          pos="absolute"
-          top="50%"
-          left="50%"
-          transform="translateX(-50%) translateY(-50%)"
-          bgColor="black"
-        /> */}
           </Flex>
           <Swiper
             // @ts-ignore

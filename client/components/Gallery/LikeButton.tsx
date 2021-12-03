@@ -8,34 +8,20 @@ import { motion } from "framer-motion";
 
 interface Props extends ButtonProps {
   card: Card;
+  queryKey: any[];
 }
 
-const style: IconProps = {
-  pos: "absolute",
-  top: "50%",
-  left: "50%",
-};
-
-const variants = {
-  active: {
-    opacity: 1,
-  },
-  inactive: {
-    opacity: 0,
-  },
-};
-
-const LikeButton = ({ card, ...rest }: Props) => {
+const LikeButton = ({ card, queryKey, ...rest }: Props) => {
   const queryClient = useQueryClient();
 
   const [isLiked, setLiked] = useState(card?.has_liked > 0);
 
-  const { mutate, isLoading } = useLike({
+  const { mutate } = useLike({
     onMutate: async () => {
-      const previousValue = queryClient.getQueryData<Card[]>(["cards"]);
+      const previousValue = queryClient.getQueryData<Card[]>(queryKey);
 
       if (previousValue) {
-        queryClient.setQueryData<Card[]>(["cards"], (old: Card[]) => {
+        queryClient.setQueryData<Card[]>(queryKey, (old: Card[]) => {
           const index = old.findIndex((c) => c.id === card.id);
           if (index === -1) return old;
 
@@ -43,7 +29,7 @@ const LikeButton = ({ card, ...rest }: Props) => {
           newList[index] = {
             ...newList[index],
             likes: isLiked ? old[index].likes - 1 : old[index].likes + 1,
-            myLikes: isLiked ? 0 : 1,
+            has_liked: isLiked ? 0 : 1,
           };
 
           setLiked(!isLiked);
@@ -60,7 +46,7 @@ const LikeButton = ({ card, ...rest }: Props) => {
       context: { previousValue: Card[]; isLiked: boolean }
     ) => {
       if (context?.previousValue) {
-        queryClient.setQueryData<Card[]>(["cards"], context.previousValue);
+        queryClient.setQueryData<Card[]>(queryKey, context.previousValue);
         setLiked(context.isLiked);
       }
     },
@@ -69,7 +55,6 @@ const LikeButton = ({ card, ...rest }: Props) => {
   return (
     <Box pos="relative">
       <Button
-        // isLoading={isLoading}
         onClick={() => {
           mutate({
             cardId: card.id,
