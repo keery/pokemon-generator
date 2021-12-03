@@ -25,7 +25,7 @@ import createSlug from 'url-slug'
 import { getIp } from '~utils/ip'
 import { Request } from 'express'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Repository, getRepository } from 'typeorm'
+import { Repository, getRepository, getConnection } from 'typeorm'
 
 @Crud({
   model: {
@@ -82,12 +82,37 @@ export class CardController {
   ) {
     const ip = getIp(req)
 
-    return getRepository(Card)
-      .createQueryBuilder('card')
-      .loadRelationCountAndMap('card.myLikes', 'card.likes', 'myLikes', (qb) =>
-        qb.where('myLikes.ip = :ip', { ip }),
-      )
-      .loadRelationCountAndMap('card.likes', 'card.likes')
-      .getMany()
+    let orderBy = ''
+    if (parsedRequest.parsed.sort.length > 0) {
+      orderBy = `ORDER BY ${parsedRequest.parsed.sort
+        .map(({ field, order }) => {
+          if (field === 'random') return 'RANDOM ()'
+          return `${field} ${order}`
+        })
+        .join(' ')}`
+    }
+
+    return getConnection().query(`
+      SELECT card.*, CAST(COUNT(l.id) as INT) as likes,
+      (
+        SELECT CAST(COUNT(*) as INT) AS "cnt" FROM "like" "myLikes" WHERE "myLikes"."ip" = '${ip}' AND card.id = "myLikes"."cardId"
+      ) as has_liked
+      FROM card
+      LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
+      GROUP BY card.id
+      ${orderBy}
+      `)
+    // return (
+    // getRepository(Card)
+    //   .createQueryBuilder('card')
+    //   .loadRelationCountAndMap(
+    //     'card.myLikes',
+    //     'card.likes',
+    //     'myLikes',
+    //     (qb) => qb.where('myLikes.ip = :ip', { ip }),
+    //   )
+    // .leftJoinAndSelect('card.likes', 'likes')
+    // .getMany()
+    // )
   }
 }

@@ -54,7 +54,7 @@ const FieldsAttack = ({ name }) => {
           name={`${name}Type`}
           isClearable
           options={optionsType}
-          iconPath="{{value}}.png"
+          iconPath="1-gen/{{value}}.png"
           control={control}
         />
       </Field>

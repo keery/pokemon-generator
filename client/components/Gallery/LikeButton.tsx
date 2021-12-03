@@ -28,7 +28,7 @@ const variants = {
 const LikeButton = ({ card, ...rest }: Props) => {
   const queryClient = useQueryClient();
 
-  const [isLiked, setLiked] = useState(card?.myLikes > 0);
+  const [isLiked, setLiked] = useState(card?.has_liked > 0);
 
   const { mutate, isLoading } = useLike({
     onMutate: async () => {

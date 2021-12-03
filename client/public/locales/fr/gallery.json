@@ -18,6 +18,13 @@
     "steel" : "Acier",
     "dark" : "Ténebre",
     "attack1" : "Attaque n°1",
-    "attack2" : "Attaque n°2"
+    "attack2" : "Attaque n°2",
+    "filters": {
+      "mostRecent": "Les dernières créations",
+      "mostOld": "Les plus anciennes",
+      "mostVoted": "Les mieux notées",
+      "leastVoted": "Les moins bien notées",
+      "random": "Au hasard"
+    }
   }
   

@@ -51,9 +51,6 @@ const Gallery: NextPage = () => {
         </Container>
         <CardSwiper />
         <Container>
-          <Text fontWeight="800" pt={20} pb={4} fontSize="2.5rem">
-            {t("lastCreation")}
-          </Text>
           <CardList />
         </Container>
       </AnimateSharedLayout>

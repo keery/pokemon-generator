@@ -14,6 +14,6 @@ export interface Card {
   isPublished: boolean;
   img: string;
   blurHash: string;
-  myLikes?: number;
+  has_liked?: number;
   likes?: number;
 }

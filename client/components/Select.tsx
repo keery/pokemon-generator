@@ -56,7 +56,8 @@ const getStyle = (theme, iconPath, colorMode) => {
         cursor: "pointer",
       },
     }),
-    indicatorSeparator: (base) => ({ ...base, backgroundColor: "#cacaca" }),
+    container: (base) => ({ ...base, width: "100%" }),
+    indicatorSeparator: (base) => ({ ...base, backgroundColor: "#bdccde" }),
     singleValue: (base) => ({ ...base, color: "#3b434c", fontWeight: "500" }),
     menu: (base) => ({
       ...base,
@@ -77,7 +78,7 @@ const getStyle = (theme, iconPath, colorMode) => {
                 width: "24px",
                 height: "24px",
                 backgroundSize: "contain",
-                backgroundImage: `url(/assets/img/1-gen/${iconPath.replace(
+                backgroundImage: `url(/assets/img/${iconPath.replace(
                   "{{value}}",
                   value[0].value
                 )})`,
@@ -110,7 +111,7 @@ const getStyle = (theme, iconPath, colorMode) => {
         textTransform: "capitalize",
         transition: "border-color 200ms",
         boxShadow: isFocused ? "0px 0px 9px #a0c2ff !important" : "none",
-        border: isFocused ? "1px solid #fefeff" : "1px solid #cacaca",
+        border: isFocused ? "1px solid #fefeff" : "1px solid #bdccde",
         backgroundColor: "rgb(255 255 255 / 30%)",
         borderRadius: theme.radii.sm,
         height: "40px",
@@ -140,7 +141,7 @@ const getStyle = (theme, iconPath, colorMode) => {
               height: "22px",
               marginRight: "15px",
               backgroundSize: "contain",
-              backgroundImage: `url(/assets/img/1-gen/${iconPath.replace(
+              backgroundImage: `url(/assets/img/${iconPath.replace(
                 "{{value}}",
                 data.value
               )})`,
@@ -154,10 +155,11 @@ const getStyle = (theme, iconPath, colorMode) => {
 
 interface Props {
   name: string;
-  control: Control;
+  control: Control<any>;
   placeholder?: string;
   isClearable?: boolean;
   iconPath?: string;
+  onChange?: (value: any) => void;
   options: Record<string, any>[];
 }
 
@@ -168,6 +170,7 @@ const Select = ({
   placeholder = "",
   iconPath = null,
   isClearable = false,
+  onChange = null,
 }: Props) => {
   const { t } = useTranslation("generator");
   const { colorMode } = useColorMode();
@@ -178,8 +181,11 @@ const Select = ({
   });
   const value = useWatch({ control, name });
 
-  const onChange = (data) => {
+  const onChangeSelect = (data) => {
     field.onChange(data || "");
+    if (onChange) {
+      onChange(data);
+    }
   };
 
   return (
@@ -188,7 +194,7 @@ const Select = ({
       placeholder={placeholder}
       options={options}
       styles={getStyle(theme, iconPath, colorMode)}
-      onChange={onChange}
+      onChange={onChangeSelect}
       isClearable={isClearable}
       menuPortalTarget={document.body}
       menuPlacement="auto"

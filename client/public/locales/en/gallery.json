@@ -18,6 +18,13 @@
     "steel" : "Steel",
     "dark" : "Dark",
     "attack1" : "Attack n°1",
-    "attack2" : "Attack n°2"
+    "attack2" : "Attack n°2",
+    "filters": {
+      "mostRecent": "Most recent cards",
+      "mostOld": "Oldest cards",
+      "mostVoted": "Most liked",
+      "leastVoted": "Least liked",
+      "random": "Random"
+    }
   }
   

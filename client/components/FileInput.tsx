@@ -44,7 +44,7 @@ const FileInput = ({ name }: Props) => {
         height={10}
         width="100%"
         borderRadius="sm"
-        border="1px solid #cacaca"
+        border="1px solid #bdccde"
         overflow="hidden"
         pos="relative"
         bgColor="rgb(255 255 255 / 30%)"

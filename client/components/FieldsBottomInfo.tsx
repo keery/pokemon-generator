@@ -26,7 +26,7 @@ const FieldsBottomInfo = () => {
           name="rarity"
           control={control}
           options={RARITY_OPTIONS}
-          iconPath="rarity-{{value}}.png"
+          iconPath="1-gen/rarity-{{value}}.png"
         />
       </Field>
     </>
