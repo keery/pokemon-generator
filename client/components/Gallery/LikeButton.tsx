@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, ButtonProps, Icon, IconProps, Box } from "@chakra-ui/react";
+import { Button, ButtonProps, Icon, Box } from "@chakra-ui/react";
 import Heart from "public/assets/img/heart.svg";
 import useLike from "~hooks/useLike";
 import { Card } from "~@types/Card";

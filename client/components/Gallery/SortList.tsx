@@ -3,6 +3,7 @@ import Select from "~components/Select";
 import { Flex, Text } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useTranslation } from "next-i18next";
+import TextShadow from "~components/TextShadow";
 
 interface Props {
   onChange: (e: any) => void;
@@ -21,9 +22,13 @@ const SortList = ({ onChange }: Props) => {
 
   return (
     <Flex pt={20} pb={4} alignItems="center" justifyContent="space-between">
-      <Text fontWeight="800" fontSize="2.5rem">
-        {t("lastCreation")}
-      </Text>
+      <TextShadow
+        as="h2"
+        text={t("lastCreation")}
+        fontWeight="800"
+        fontSize="5.8rem"
+        fontFamily="title"
+      />
       <FormProvider {...form}>
         <form>
           <Flex w="300px">

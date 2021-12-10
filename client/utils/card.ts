@@ -1,5 +1,6 @@
 import { Element } from "~@types/CardGenerator";
 import { Card } from "~@types/Card";
+import { ROUTE_GALLERY } from "~constants";
 import { useTranslation } from "next-i18next";
 
 export const printCard = () => {
@@ -103,4 +104,13 @@ export const getSeoCardDescription = (card: Card) => {
         }`
       : ""
   }${attack1}${attack2}`;
+};
+
+export const getHrefCardModal = (card: Card, layoutPrefix: string) => {
+  return {
+    href: `${ROUTE_GALLERY}?cardSlug=${card.slug}&idCard=${card.id}${
+      layoutPrefix !== "" ? `&layoutPrefix=${layoutPrefix}` : ""
+    }`,
+    as: `${ROUTE_GALLERY}/${card.slug}/${card.id}`,
+  };
 };

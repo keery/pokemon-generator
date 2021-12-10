@@ -39,7 +39,7 @@ const CardList = (props: SimpleGridProps) => {
   return (
     <>
       <SortList onChange={setSort} />
-      <SimpleGrid columns={4} spacingX={6} spacingY={8} {...props} ref={ref}>
+      <SimpleGrid columns={4} spacingX={8} spacingY={8} {...props} ref={ref}>
         <>
           {status === "loading" || !data ? (
             Array.from(Array(nbSkeleton)).map((n, i) => (

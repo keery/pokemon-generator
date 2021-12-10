@@ -1,9 +1,9 @@
 import React from "react";
-import { AspectRatio, Image, LinkBox } from "@chakra-ui/react";
+import { AspectRatio, Image, LinkBox, Box } from "@chakra-ui/react";
 import { Card } from "~@types/Card";
 import LinkOverlay from "~components/LinkOverlay";
+import { getHrefCardModal } from "~utils/card";
 import CardBlurhash from "~components/Gallery/CardBlurhash";
-import { ROUTE_GALLERY } from "~constants";
 import { motion } from "framer-motion";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
@@ -15,15 +15,14 @@ interface Props {
 
 const CardThumbnail = ({ card, layoutPrefix = "" }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
+  const { href, as } = getHrefCardModal(card, layoutPrefix);
 
   return (
-    <LinkBox>
+    <LinkBox role="group">
       <LinkOverlay
         shallow
-        href={`${ROUTE_GALLERY}?cardSlug=${card.slug}&idCard=${card.id}${
-          layoutPrefix !== "" ? `&layoutPrefix=${layoutPrefix}` : ""
-        }`}
-        as={`${ROUTE_GALLERY}/${card.slug}/${card.id}`}
+        href={href}
+        as={as}
         _before={{ zIndex: 12 }}
         onClick={() => {
           setCard({ card });
@@ -38,6 +37,27 @@ const CardThumbnail = ({ card, layoutPrefix = "" }: Props) => {
           cursor: "pointer",
         }}
       >
+        <Box
+          pos="absolute"
+          left="50%"
+          top="50%"
+          transition="transform cubic-bezier(.4,0,.2,1) 400ms"
+          transform="translateY(-50%) translateX(-50%) scale(0)"
+          _groupHover={{
+            transform: "translateY(-50%) translateX(-50%) scale(1)",
+          }}
+          w="105%"
+          h="105%"
+        >
+          <Box
+            borderRadius="1.4rem"
+            animation="floatWobble 5s ease-in-out infinite"
+            w="100%"
+            bgColor="pokeball"
+            h="100%"
+            layerStyle="glass"
+          />
+        </Box>
         <AspectRatio
           as={motion.div}
           layoutId={`card-image-container-${layoutPrefix}${card.id}`}

@@ -50,6 +50,7 @@ const CardModal = ({ card, layoutPrefix = "" }: Props) => {
             backgroundColor="blue.100"
             layerStyle="cover"
             animate
+            zIndex="-1"
           />
           <AspectRatio
             as={motion.div}

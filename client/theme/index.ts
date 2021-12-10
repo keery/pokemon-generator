@@ -21,7 +21,7 @@ const theme = extendTheme({
   styles: {
     global: ({ colorMode }) => ({
       body: {
-        background: "white",
+        background: "#FCF5EA",
         fontFamily: colorMode === "dark" ? "nes" : "body",
         fontSize: colorMode === "dark" ? "0.8rem" : "1rem",
       },
@@ -35,6 +35,7 @@ const theme = extendTheme({
     body: "Inter, sans-serif",
     heading: "Inter, serif",
     nes: '"Press Start 2P"',
+    title: "Work Sans",
   },
   fontSizes: {
     xs: "12px",
@@ -50,6 +51,7 @@ const theme = extendTheme({
     main2: "#f4e8fb",
     text: "#3b434c",
     pokeball: "#fe5b54",
+    blueGray: "#bdccde",
   },
   radii: {
     xs: "0.3rem",
@@ -237,6 +239,15 @@ const theme = extendTheme({
       bottom: 0,
       right: 0,
       left: 0,
+    },
+    gradientText: {
+      backgroundImage:
+        "linear-gradient(118deg, rgb(78, 210, 243), rgb(189, 147, 218) 80%, rgb(98, 112, 238))",
+      backgroundClip: "text",
+    },
+    gradient: {
+      backgroundImage:
+        "linear-gradient(118deg, rgb(78, 210, 243), rgb(189, 147, 218) 80%, rgb(98, 112, 238))",
     },
   },
 });
