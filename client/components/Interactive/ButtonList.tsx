@@ -15,9 +15,9 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { motion, MotionStyle } from "framer-motion";
-import { useController, useWatch, Control } from "react-hook-form";
+import { useWatch, Control, useFormContext } from "react-hook-form";
 import Cross from "public/assets/img/cross.svg";
-import { Select } from "~@types/Card";
+import { Select } from "~@types/CardGenerator";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";
@@ -65,7 +65,7 @@ const ButtonList = ({
   icon,
 }: Props) => {
   const isMobile = useBreakpointValue({ base: true, sm: false });
-  const { field } = useController({ control, name });
+  const { setValue } = useFormContext();
   const value = useWatch({ control, name });
   const { isVisible: areaIsVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
@@ -151,7 +151,9 @@ const ButtonList = ({
                   <Image
                     src="/assets/img/pixel/close-circle.png"
                     boxSize="28px"
-                    onClick={() => field.onChange(null)}
+                    onClick={() => {
+                      setValue(name, null);
+                    }}
                   />
                 ) : (
                   <Icon
@@ -161,7 +163,9 @@ const ButtonList = ({
                     color="#c1c1c1"
                     border="1px solid #d8d8d8"
                     transition="box-shadow ease-in-out .1s"
-                    onClick={() => field.onChange(null)}
+                    onClick={() => {
+                      setValue(name, null);
+                    }}
                     p={1}
                   />
                 )}
@@ -184,7 +188,7 @@ const ButtonList = ({
                   whileTap={{ scale: 0.9 }}
                   disabled={isSelected}
                   onClick={() => {
-                    field.onChange(item);
+                    setValue(name, item);
                     if (isMobile) onClose();
                   }}
                 />
