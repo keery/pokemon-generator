@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Button, ButtonProps, Icon, Box } from "@chakra-ui/react";
+import { Button, ButtonProps, Icon, Box, Flex } from "@chakra-ui/react";
 import Heart from "public/assets/img/heart.svg";
 import useLike from "~hooks/useLike";
 import { Card } from "~@types/Card";
 import { useQueryClient, InfiniteData } from "react-query";
 import { motion } from "framer-motion";
+import { useSetRecoilState } from "recoil";
+import { cardModalAtom } from "~atoms/card-modal";
 
 interface Props extends ButtonProps {
   card: Card;
@@ -14,7 +16,7 @@ interface Props extends ButtonProps {
 
 const LikeButton = ({ card, queryKey, indexPage, ...rest }: Props) => {
   const queryClient = useQueryClient();
-
+  const setCard = useSetRecoilState(cardModalAtom);
   const [isLiked, setLiked] = useState(card?.has_liked > 0);
 
   const { mutate } = useLike({
@@ -38,6 +40,16 @@ const LikeButton = ({ card, queryKey, indexPage, ...rest }: Props) => {
           };
 
           setLiked(!isLiked);
+
+          setCard((c) => {
+            return {
+              ...c,
+              card: {
+                ...c.card,
+                likes: isLiked ? c.card.likes - 1 : c.card.likes + 1,
+              },
+            };
+          });
 
           old.pages.splice(indexPage, 1, newPage);
 
@@ -76,44 +88,42 @@ const LikeButton = ({ card, queryKey, indexPage, ...rest }: Props) => {
         minW="0"
         variant="unstyled"
         pos="relative"
-        color={isLiked ? "#ea4c89" : "#9e9ea7"}
+        color="white"
         {...rest}
         cursor="pointer"
         _hover={{
-          border: "0 solid transparent",
-          boxShadow: "0px 2px 6px #d3d3d3!important",
+          border: "1px solid white",
         }}
         _active={{
           transform: "scale(0.9)",
         }}
         transitionDuration="300ms"
-        border={isLiked ? "0 solid transparent" : "1px solid #ccc"}
+        border={isLiked ? "1px solid transparent" : "1px solid #ccc"}
+        borderColor="gray.400"
         display="flex"
-        alignItems="center"
-        justifyContent="center"
-        w="30px"
-        h="30px"
         role="group"
-        borderRadius="100%"
+        borderRadius="0.6rem"
+        p="2rem 1.2rem"
+        fontFamily="title"
+        fontSize="2.6rem"
+        overflow="hidden"
       >
-        <Box layerStyle="cover" overflow="hidden" borderRadius="100%">
+        <Box pos="relative">
           <motion.div
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              transform: "translateX(-50%) translateY(-50%)",
-            }}
             transition={{
               duration: 0.3,
             }}
             initial={{
               opacity: 1,
+              top: "50%",
             }}
             animate={{
-              transform: `translateX(-50%) translateY(-50%) scale(${
-                isLiked ? 4 : 1
-              })`,
+              top: isLiked ? "-100%" : "50%",
+            }}
+            style={{
+              transform: "scale(1) translateY(-50%)",
+              position: "absolute",
+              left: 0,
             }}
           >
             <Icon
@@ -121,135 +131,42 @@ const LikeButton = ({ card, queryKey, indexPage, ...rest }: Props) => {
               transition="color 200ms, transform 200ms"
               _groupHover={{
                 transform: "scale(1.15)",
-                color: "#ea4c89",
               }}
+              color="#ea4c89"
               display="flex"
-              fontSize="13px"
+              fontSize="1.9rem"
               className="heart-icon"
             />
           </motion.div>
-        </Box>
-        {isLiked && (
-          <>
-            <Box layerStyle="cover">
-              <motion.div
-                style={{
-                  backgroundColor: "#fff",
-                  position: "absolute",
-                  left: "50%",
-                  top: "50%",
-                  borderRadius: "100%",
-                  width: "75%",
-                  height: "75%",
-                }}
+          <Flex alignItems="center">
+            {isLiked && (
+              <Flex
+                as={motion.div}
+                pos="relative"
+                transition="margin-top ease-in-out 300ms"
+                color="#ea4c89"
+                justifyContent="center"
+                alignItems="center"
+                fontSize="2.3rem"
+                fontWeight="400"
+                mr="0.7rem"
+                minW="29px"
                 initial={{
-                  transform: "translateX(-50%) translateY(-50%) scale(0)",
+                  marginTop: "100px",
                 }}
                 animate={{
-                  transform: "translateX(-50%) translateY(-50%) scale(1)",
-                }}
-                transition={{
-                  delay: 0.1,
-                  duration: 0.5,
-                }}
-              />
-              <motion.div
-                style={{
-                  backgroundColor: "#ea4c89",
-                  position: "absolute",
-                  left: "50%",
-                  top: "50%",
-                  borderRadius: "100%",
-                  width: "75%",
-                  height: "75%",
-                }}
-                initial={{
-                  transform: "translateX(-50%) translateY(-50%) scale(0)",
-                }}
-                animate={{
-                  transform: "translateX(-50%) translateY(-50%) scale(1.1)",
-                }}
-                transition={{
-                  delay: 0.2,
-                  duration: 0.5,
-                }}
-              />
-              <motion.div
-                style={{
-                  position: "absolute",
-                  left: "50%",
-                  top: "50%",
-                  transform: "translateX(-50%) translateY(-50%)",
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.3,
-                }}
-                initial={{
-                  fontSize: 0,
-                }}
-                animate={{
-                  fontSize: "0.8rem",
+                  marginTop: "0",
                 }}
               >
-                <Icon as={Heart} color="#fff" display="flex" />
-              </motion.div>
+                {card.likes}
+              </Flex>
+            )}
+            <Box fontWeight="200" pos="relative" pl={isLiked ? 0 : "2.5rem"}>
+              {isLiked ? `Like${card.likes > 1 ? "s" : ""}` : "Like"}
             </Box>
-          </>
-        )}
+          </Flex>
+        </Box>
       </Button>
-      {isLiked && (
-        <>
-          <motion.div
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              borderRadius: "100%",
-              backgroundColor: "#fbc9dc",
-              width: "100%",
-              height: "100%",
-              zIndex: -1,
-            }}
-            transition={{
-              duration: 0.6,
-              times: [0, 0.3, 1],
-            }}
-            initial={{
-              opacity: 1,
-              transform: "translateX(-50%) translateY(-50%) scale(0)",
-            }}
-            animate={{
-              opacity: [1, 1, 0],
-              transform: "translateX(-50%) translateY(-50%) scale(1.8)",
-            }}
-          />
-          <motion.div
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              borderRadius: "100%",
-              backgroundColor: "#f9adca",
-              width: "100%",
-              height: "100%",
-              zIndex: -1,
-            }}
-            transition={{
-              duration: 0.6,
-              times: [0, 0.3, 1],
-            }}
-            initial={{
-              opacity: 1,
-              transform: "translateX(-50%) translateY(-50%) scale(0)",
-            }}
-            animate={{
-              opacity: [1, 1, 0],
-              transform: "translateX(-50%) translateY(-50%) scale(1.5)",
-            }}
-          />
-        </>
-      )}
     </Box>
   );
 };

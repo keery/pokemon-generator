@@ -1,9 +1,9 @@
 import React from "react";
-import { AspectRatio, Image, LinkBox, Box } from "@chakra-ui/react";
+import { AspectRatio, LinkBox } from "@chakra-ui/react";
 import { Card } from "~@types/Card";
 import LinkOverlay from "~components/LinkOverlay";
 import { getHrefCardModal } from "~utils/card";
-import CardBlurhash from "~components/Gallery/CardBlurhash";
+import CardImage from "~components/Gallery/CardImage";
 import { motion } from "framer-motion";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
@@ -11,25 +11,37 @@ import { useSetRecoilState } from "recoil";
 interface Props {
   card: Card;
   layoutPrefix?: string;
+  queryKey: any[];
+  indexPage: number;
 }
 
-const CardThumbnail = ({ card, layoutPrefix = "" }: Props) => {
+const CardThumbnail = ({
+  card,
+  queryKey,
+  indexPage,
+  layoutPrefix = "",
+}: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
   const { href, as } = getHrefCardModal(card, layoutPrefix);
 
   return (
-    <LinkBox role="group">
+    <LinkBox
+      role="group"
+      as={motion.div}
+      whileTap={{
+        scale: 0.9,
+      }}
+    >
       <LinkOverlay
         shallow
         href={href}
         as={as}
         _before={{ zIndex: 12 }}
         onClick={() => {
-          setCard({ card });
+          setCard({ card, queryKey, indexPage });
         }}
       />
       <motion.div
-        layoutId={`card-container-${layoutPrefix}${card.id}`}
         transition={{ ease: "linear", duration: 0.1 }}
         style={{
           position: "relative",
@@ -37,7 +49,7 @@ const CardThumbnail = ({ card, layoutPrefix = "" }: Props) => {
           cursor: "pointer",
         }}
       >
-        <Box
+        {/* <Box
           pos="absolute"
           left="50%"
           top="50%"
@@ -57,10 +69,9 @@ const CardThumbnail = ({ card, layoutPrefix = "" }: Props) => {
             h="100%"
             layerStyle="glass"
           />
-        </Box>
+        </Box> */}
         <AspectRatio
           as={motion.div}
-          layoutId={`card-image-container-${layoutPrefix}${card.id}`}
           ratio={500 / 700}
           pos="relative"
           borderRadius="1.4rem"
@@ -70,17 +81,13 @@ const CardThumbnail = ({ card, layoutPrefix = "" }: Props) => {
           <motion.div
             // @ts-ignore
             transition={{ ease: "linear", duration: 0.1 }}
-            layoutId={`card-image-${layoutPrefix}${card.id}`}
             style={{
               position: "absolute",
               left: "0",
               top: "0",
             }}
           >
-            <Image
-              fallback={<CardBlurhash blurhash={card.blurHash} />}
-              src={card.img}
-            />
+            <CardImage card={card} />
           </motion.div>
         </AspectRatio>
       </motion.div>

@@ -12,7 +12,6 @@ const TextShadow = ({ text, ...rest }: Props) => {
     threshold: 0,
     triggerOnce: true,
   });
-  console.log(inView, entry);
 
   return (
     <Text

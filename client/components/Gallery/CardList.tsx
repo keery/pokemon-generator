@@ -50,7 +50,11 @@ const CardList = (props: SimpleGridProps) => {
               {data.pages.map((page, i) =>
                 page.map((card) => (
                   <Flex direction="column" key={card.id}>
-                    <CardThumbnail card={card} />
+                    <CardThumbnail
+                      card={card}
+                      queryKey={[QUERY_KEY, queryParams]}
+                      indexPage={i}
+                    />
                     <Flex
                       pt={2}
                       px={1}
