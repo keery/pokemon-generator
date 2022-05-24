@@ -21,7 +21,8 @@ const theme = extendTheme({
   styles: {
     global: ({ colorMode }) => ({
       body: {
-        background: "#FCF5EA",
+        background:
+          "linear-gradient(45deg,rgba(63, 128, 254, 0.31),rgba(10, 121, 251, 0.16) 45%,rgba(63, 125, 254, 0.42) 71%,rgba(74, 210, 202, 0.3)) fixed",
         fontFamily: colorMode === "dark" ? "nes" : "body",
         fontSize: colorMode === "dark" ? "0.8rem" : "1rem",
       },
