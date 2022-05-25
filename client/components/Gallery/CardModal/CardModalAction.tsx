@@ -20,6 +20,10 @@ const CardModalAction = ({ children, onClick }: Props) => {
       _active={{
         transform: "scale(0.9)",
       }}
+      _hover={{
+        backgroundColor: "#646571",
+        borderColor: "#646571",
+      }}
       transitionDuration="200ms"
     >
       {children}

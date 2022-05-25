@@ -8,6 +8,7 @@ import {
   Flex,
   Heading,
   HStack,
+  Icon,
   VStack,
   Text,
 } from "@chakra-ui/react";
@@ -32,6 +33,8 @@ import Router from "next/router";
 import LikeButton from "~components/Gallery/LikeButton";
 import { QUERY_KEY } from "~hooks/useInfiniteCards";
 import { cardAtom } from "~atoms/card";
+import Heart from "public/assets/img/heart.svg";
+import Report from "public/assets/img/report.svg";
 
 interface Props {
   card: Card;
@@ -42,6 +45,8 @@ interface Props {
 const dateToText = (date) => {
   return format(new Date(date), "dd MMMM yyyy", { locale: fr }).toLowerCase();
 };
+
+const fadeAnimation = "appendFade 300ms forwards";
 
 const CardModal = ({ card, queryKey, indexPage }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
@@ -95,7 +100,12 @@ const CardModal = ({ card, queryKey, indexPage }: Props) => {
           backdropFilter="blur(25px) saturate(180%)"
           backgroundColor="rgb(20 27 40 / 60%)"
         >
-          <Flex justifyContent="space-between" w="100%">
+          <Flex
+            justifyContent="space-between"
+            w="100%"
+            opacity="0"
+            animation={`${fadeAnimation} 200ms`}
+          >
             <Heading
               as="h1"
               fontFamily="title"
@@ -116,8 +126,15 @@ const CardModal = ({ card, queryKey, indexPage }: Props) => {
               h="100%"
               w="65%"
             >
-              <Box>
+              <Box opacity="0" animation={`${fadeAnimation} 300ms`}>
                 <Text>Créé le {dateToText(card.created_at)}</Text>
+                <Flex mt="1rem" alignItems="center">
+                  <LikeButton
+                    card={card}
+                    queryKey={queryKey}
+                    indexPage={indexPage}
+                  />
+                </Flex>
                 <VStack alignItems="flex-start" pt="2rem" spacing="1rem">
                   <CardModalAttribute
                     label="Type"
@@ -143,45 +160,83 @@ const CardModal = ({ card, queryKey, indexPage }: Props) => {
                   />
                 </VStack>
               </Box>
-              <Box>
+              <Box opacity="0" animation={`${fadeAnimation} 400ms`}>
                 <Flex
                   borderBottom="1px solid"
                   borderColor="gray.400"
                   alignItems="center"
                   mb="1.5rem"
                   pb="1.5rem"
-                >
-                  <LikeButton
-                    card={card}
-                    queryKey={queryKey}
-                    indexPage={indexPage}
-                  />
+                ></Flex>
+                <Flex justifyContent="space-between" alignItems="center">
+                  <HStack spacing="1rem">
+                    <CardModalAction onClick={() => null}>
+                      <Print />
+                    </CardModalAction>
+                    <CardModalAction onClick={() => null}>
+                      <Facebook />
+                    </CardModalAction>
+                    <CardModalAction onClick={() => null}>
+                      <Instagram />
+                    </CardModalAction>
+                    <CardModalAction onClick={() => null}>
+                      <Twitter />
+                    </CardModalAction>
+                  </HStack>
+                  <motion.div
+                    style={{
+                      cursor: "pointer",
+                      alignItems: "center",
+                      display: "flex",
+                      backdropFilter: "blur(15px) saturate(180%)",
+                      backgroundColor: "rgb(255 255 255 / 28%)",
+                      padding: "0.6rem 1rem",
+                      borderRadius: "0.8rem",
+                      transitionDuration: "100ms",
+                      transitionTimingFunction: "ease-in-out",
+                      transitionProperty: "transform",
+                    }}
+                    initial={{
+                      scale: 1,
+                    }}
+                    whileTap={{
+                      scale: 0.9,
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                    }}
+                  >
+                    <Icon as={Report} fontSize="1.4rem" />
+                    <Box ml="0.3rem">Report card</Box>
+                  </motion.div>
                 </Flex>
-                <HStack spacing="1rem">
-                  <CardModalAction onClick={() => null}>
-                    <Print />
-                  </CardModalAction>
-                  <CardModalAction onClick={() => null}>
-                    <Facebook />
-                  </CardModalAction>
-                  <CardModalAction onClick={() => null}>
-                    <Instagram />
-                  </CardModalAction>
-                  <CardModalAction onClick={() => null}>
-                    <Twitter />
-                  </CardModalAction>
-                </HStack>
               </Box>
             </Flex>
             <Flex flex={1}>
-              <AspectRatio
-                ratio={500 / 700}
-                pos="relative"
-                w="100%"
-                alignSelf="flex-start"
+              <motion.div
+                style={{
+                  width: "100%",
+                }}
+                initial={{
+                  translateY: "16rem",
+                }}
+                animate={{
+                  translateY: 0,
+                }}
+                transition={{
+                  delay: 0.2,
+                  duration: 0.4,
+                }}
               >
-                <CardImage card={card} />
-              </AspectRatio>
+                <AspectRatio
+                  ratio={500 / 700}
+                  pos="relative"
+                  w="100%"
+                  alignSelf="flex-start"
+                >
+                  <CardImage card={card} />
+                </AspectRatio>
+              </motion.div>
             </Flex>
           </Flex>
         </Flex>

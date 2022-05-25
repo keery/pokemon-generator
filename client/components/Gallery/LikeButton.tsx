@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Button, ButtonProps, Icon, Box, Flex } from "@chakra-ui/react";
+import { ButtonProps, Icon, Box, Flex } from "@chakra-ui/react";
 import Heart from "public/assets/img/heart.svg";
 import useLike from "~hooks/useLike";
 import { Card } from "~@types/Card";
 import { useQueryClient, InfiniteData } from "react-query";
-import { motion } from "framer-motion";
 import { useSetRecoilState } from "recoil";
 import { cardModalAtom } from "~atoms/card-modal";
+import { motion } from "framer-motion";
 
 interface Props extends ButtonProps {
   card: Card;
@@ -78,96 +78,54 @@ const LikeButton = ({ card, queryKey, indexPage, ...rest }: Props) => {
   });
 
   return (
-    <Box pos="relative">
-      <Button
-        onClick={() => {
-          mutate({
-            cardId: card.id,
-          });
-        }}
-        minW="0"
-        variant="unstyled"
-        pos="relative"
-        color="white"
-        {...rest}
-        cursor="pointer"
-        _hover={{
-          border: "1px solid white",
-        }}
-        _active={{
-          transform: "scale(0.9)",
-        }}
-        transitionDuration="300ms"
-        border={isLiked ? "1px solid transparent" : "1px solid #ccc"}
-        borderColor="gray.400"
-        display="flex"
-        role="group"
-        borderRadius="0.6rem"
-        p="2rem 1.2rem"
-        fontFamily="title"
-        fontSize="2.6rem"
-        overflow="hidden"
+    <motion.div
+      style={{
+        display: "inline-flex",
+        borderRadius: "0.8rem",
+        padding: "0.5rem 2.3rem 0.5rem 0.5rem",
+        alignItems: "center",
+        backdropFilter: "blur(15px) saturate(180%)",
+        transitionDuration: "100ms",
+        transitionTimingFunction: "ease-in-out",
+        transitionProperty: "transform",
+        color: "white",
+        cursor: "pointer",
+        backgroundColor: "rgb(255 255 255 / 28%)",
+      }}
+      initial={{
+        scale: 1,
+      }}
+      whileTap={{
+        scale: 0.9,
+      }}
+      whileHover={{
+        scale: 1.05,
+      }}
+      onClick={() => {
+        mutate({
+          cardId: card.id,
+        });
+      }}
+    >
+      <Flex
+        borderRadius="0.8rem"
+        bgColor="myPink"
+        justifyContent="center"
+        alignItems="center"
+        mr="0.9rem"
+        w="2.5rem"
+        h="2.5rem"
+        alignSelf="center"
       >
-        <Box pos="relative">
-          <motion.div
-            transition={{
-              duration: 0.3,
-            }}
-            initial={{
-              opacity: 1,
-              top: "50%",
-            }}
-            animate={{
-              top: isLiked ? "-100%" : "50%",
-            }}
-            style={{
-              transform: "scale(1) translateY(-50%)",
-              position: "absolute",
-              left: 0,
-            }}
-          >
-            <Icon
-              as={Heart}
-              transition="color 200ms, transform 200ms"
-              _groupHover={{
-                transform: "scale(1.15)",
-              }}
-              color="#ea4c89"
-              display="flex"
-              fontSize="1.9rem"
-              className="heart-icon"
-            />
-          </motion.div>
-          <Flex alignItems="center">
-            {isLiked && (
-              <Flex
-                as={motion.div}
-                pos="relative"
-                transition="margin-top ease-in-out 300ms"
-                color="#ea4c89"
-                justifyContent="center"
-                alignItems="center"
-                fontSize="2.3rem"
-                fontWeight="400"
-                mr="0.7rem"
-                minW="29px"
-                initial={{
-                  marginTop: "100px",
-                }}
-                animate={{
-                  marginTop: "0",
-                }}
-              >
-                {card.likes}
-              </Flex>
-            )}
-            <Box fontWeight="200" pos="relative" pl={isLiked ? 0 : "2.5rem"}>
-              {isLiked ? `Like${card.likes > 1 ? "s" : ""}` : "Like"}
-            </Box>
-          </Flex>
+        <Icon as={Heart} />
+      </Flex>
+      <Flex flexDirection="column">
+        <Box>
+          {card.likes}
+          {` like${card.likes > 1 ? "s" : ""}`}
         </Box>
-      </Button>
-    </Box>
+      </Flex>
+    </motion.div>
   );
 };
 

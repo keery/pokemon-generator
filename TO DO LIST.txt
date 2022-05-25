@@ -6,3 +6,4 @@ Faire le nom des auteurs cliquable pour voir toutes les cartes de ce créateur
 Fleche pour switcher entre les cartes depuis la modal
 Raccourci clavier pour fermer modal et pour liker
 Ajouter un badge gagnant/second/troisieme du mois dans la modal
+Animate element lorsquon ouvre la modale

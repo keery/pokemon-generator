@@ -122,6 +122,9 @@ const theme = extendTheme({
     62: "15.5rem",
     64: "16rem",
   },
+  colors: {
+    myPink: "#e94c89",
+  },
   layerStyles: {
     glass: {
       backdropFilter: "blur(4px) saturate(180%)",
