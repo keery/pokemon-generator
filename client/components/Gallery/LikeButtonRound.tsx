@@ -79,7 +79,7 @@ const LikeButtonRound = ({ card, queryKey, indexPage, ...rest }: Props) => {
         minW="0"
         variant="unstyled"
         pos="relative"
-        color={isLiked ? "#ea4c89" : "#9e9ea7"}
+        color={isLiked ? "#f07eaa" : "#9e9ea7"}
         {...rest}
         cursor="pointer"
         _hover={{
@@ -124,7 +124,7 @@ const LikeButtonRound = ({ card, queryKey, indexPage, ...rest }: Props) => {
               transition="color 200ms, transform 200ms"
               _groupHover={{
                 transform: "scale(1.15)",
-                color: "#ea4c89",
+                color: "#f07eaa",
               }}
               display="flex"
               fontSize="0.9rem"
@@ -158,7 +158,7 @@ const LikeButtonRound = ({ card, queryKey, indexPage, ...rest }: Props) => {
               />
               <motion.div
                 style={{
-                  backgroundColor: "#ea4c89",
+                  backgroundColor: "#f07eaa",
                   position: "absolute",
                   left: "50%",
                   top: "50%",

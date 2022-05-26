@@ -82,7 +82,7 @@ const LikeButton = ({ card, queryKey, indexPage, ...rest }: Props) => {
       style={{
         display: "inline-flex",
         borderRadius: "0.8rem",
-        padding: "0.5rem 2.3rem 0.5rem 0.5rem",
+        padding: "0.5rem 1.5rem 0.5rem 0.8rem",
         alignItems: "center",
         backdropFilter: "blur(15px) saturate(180%)",
         transitionDuration: "100ms",
@@ -108,22 +108,25 @@ const LikeButton = ({ card, queryKey, indexPage, ...rest }: Props) => {
       }}
     >
       <Flex
-        borderRadius="0.8rem"
-        bgColor="myPink"
         justifyContent="center"
         alignItems="center"
-        mr="0.9rem"
+        mr="0.4rem"
         w="2.5rem"
         h="2.5rem"
         alignSelf="center"
       >
-        <Icon as={Heart} />
+        <Icon
+          as={Heart}
+          color={isLiked ? "myPink" : "transparent"}
+          w="2.5rem"
+          height="1.5rem"
+          p="0.1rem"
+          strokeWidth="2px"
+          stroke={isLiked ? "myPink" : "white"}
+        />
       </Flex>
-      <Flex flexDirection="column">
-        <Box>
-          {card.likes}
-          {` like${card.likes > 1 ? "s" : ""}`}
-        </Box>
+      <Flex flexDirection="column" fontSize="1.2rem">
+        {isLiked ? "Liked" : "Like"}
       </Flex>
     </motion.div>
   );

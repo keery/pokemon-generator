@@ -57,12 +57,42 @@ export class Card {
   @Column({
     nullable: true,
   })
+  attack1Type: string
+
+  @Column({
+    nullable: true,
+  })
+  attack1Amount: string
+
+  @Column({
+    nullable: true,
+  })
+  attack1Damage: string
+
+  @Column({
+    nullable: true,
+  })
   attack2Name: string
 
   @Column({
     nullable: true,
   })
   attack2Description: string
+
+  @Column({
+    nullable: true,
+  })
+  attack2Type: string
+
+  @Column({
+    nullable: true,
+  })
+  attack2Amount: string
+
+  @Column({
+    nullable: true,
+  })
+  attack2Damage: string
 
   @Column({
     default: false,

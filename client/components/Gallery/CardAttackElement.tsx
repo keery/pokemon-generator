@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Image, Box, StyleProps } from "@chakra-ui/react";
+import { Flex, Image, Box } from "@chakra-ui/react";
 import { Element } from "~@types/CardGenerator";
 import {
   WATER,
@@ -12,58 +12,59 @@ import {
   GRADIENTS,
 } from "~constants";
 
-interface Props extends StyleProps {
+interface Props {
   element: Element;
+  amount: string;
 }
 const path = "/assets/img/1-gen/";
 
-const getElementInfo = (element: Element) => {
+const getElementInfo = (element: Element, amount: number) => {
   switch (element) {
     case FIRE:
       return {
-        img: `${path}fire.png`,
+        img: `${path}${amount}-fire.png`,
         style: {
           backgroundImage: GRADIENTS[FIRE],
         },
       };
     case WATER:
       return {
-        img: `${path}water.png`,
+        img: `${path}${amount}-water.png`,
         style: {
           backgroundImage: GRADIENTS[WATER],
         },
       };
     case FIGHTING:
       return {
-        img: `${path}fighting.png`,
+        img: `${path}${amount}-fighting.png`,
         style: {
           backgroundImage: GRADIENTS[FIGHTING],
         },
       };
     case GRASS:
       return {
-        img: `${path}grass.png`,
+        img: `${path}${amount}-grass.png`,
         style: {
           backgroundImage: GRADIENTS[GRASS],
         },
       };
     case NORMAL:
       return {
-        img: `${path}normal.png`,
+        img: `${path}${amount}-normal.png`,
         style: {
           backgroundImage: GRADIENTS[NORMAL],
         },
       };
     case ELECTRIC:
       return {
-        img: `${path}electric.png`,
+        img: `${path}${amount}-electric.png`,
         style: {
           backgroundImage: GRADIENTS[ELECTRIC],
         },
       };
     case PSYCHIC:
       return {
-        img: `${path}psychic.png`,
+        img: `${path}${amount}-psychic.png`,
         style: {
           backgroundImage: GRADIENTS[PSYCHIC],
         },
@@ -73,8 +74,8 @@ const getElementInfo = (element: Element) => {
   }
 };
 
-const CardElement = ({ element, ...rest }: Props) => {
-  const info = getElementInfo(element);
+const CardAttackElement = ({ element, amount }: Props) => {
+  const info = getElementInfo(element, amount);
 
   if (!info) {
     return null;
@@ -83,22 +84,15 @@ const CardElement = ({ element, ...rest }: Props) => {
   return (
     <Flex
       alignItems="center"
-      borderRadius="2rem"
-      padding="0.2rem 0.8rem 0.2rem 0.3rem"
-      textTransform="capitalize"
-      fontWeight="bold"
-      fontSize="0.8rem"
+      borderRadius="0.8rem"
+      padding="0.9rem"
       backgroundColor="white"
-      color="black"
+      minW="max-content"
       {...style}
-      {...rest}
     >
-      <Image src={img} width="1.4rem" />
-      <Box as="span" pl="0.5rem">
-        {element}
-      </Box>
+      <Image src={img} width="2.6rem" />
     </Flex>
   );
 };
 
-export default CardElement;
+export default CardAttackElement;

@@ -13,19 +13,16 @@ import {
   Text,
 } from "@chakra-ui/react";
 import CardModalOverlay from "~components/Gallery/CardModal/CardModalOverlay";
-import CardModalAction from "~components/Gallery/CardModal/CardModalAction";
+import CardModalAttack from "~components/Gallery/CardModal/CardModalAttack";
 import CardElement from "~components/Gallery/CardElement";
 import CardModalAttribute from "~components/Gallery/CardModal/CardModalAttribute";
+import CardModalActions from "~components/Gallery/CardModal/CardModalActions";
 import CardImage from "~components/Gallery/CardImage";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Card } from "~@types/Card";
 import { getSeoCardDescription } from "~utils/card";
 import { NextSeo } from "next-seo";
-import Print from "public/assets/img/print.svg";
-import Facebook from "public/assets/img/facebook.svg";
-import Twitter from "public/assets/img/twitter.svg";
-import Instagram from "public/assets/img/instagram.svg";
 import format from "date-fns/format";
 import fr from "date-fns/locale/fr";
 import { ROUTE_GALLERY } from "~constants";
@@ -54,7 +51,7 @@ const CardModal = ({ card, queryKey, indexPage }: Props) => {
     setCard({ card: null, queryKey: null, indexPage: null });
     Router.push(ROUTE_GALLERY, null, { shallow: true });
   };
-
+  console.log(card);
   return (
     <>
       <NextSeo title={card.name} description={getSeoCardDescription(card)} />
@@ -116,7 +113,11 @@ const CardModal = ({ card, queryKey, indexPage }: Props) => {
             >
               {card.name}
             </Heading>
-            <CloseButton fontSize="1.9rem" onClick={onClose} />
+            <CloseButton
+              fontSize="1.9rem"
+              onClick={onClose}
+              _hover={{ opacity: 0.6 }}
+            />
           </Flex>
           <Flex w="100%" flex={1}>
             <Flex
@@ -127,36 +128,53 @@ const CardModal = ({ card, queryKey, indexPage }: Props) => {
               w="65%"
             >
               <Box opacity="0" animation={`${fadeAnimation} 300ms`}>
-                <Text>Créé le {dateToText(card.created_at)}</Text>
-                <Flex mt="1rem" alignItems="center">
-                  <LikeButton
-                    card={card}
-                    queryKey={queryKey}
-                    indexPage={indexPage}
-                  />
-                </Flex>
-                <VStack alignItems="flex-start" pt="2rem" spacing="1rem">
+                <Text fontWeight="300">
+                  Créé le {dateToText(card.created_at)}
+                </Text>
+                <HStack
+                  mt="1rem"
+                  pb="2rem"
+                  alignItems="center"
+                  spacing="2rem"
+                  divider={<Box h="3rem" w="1px" borderColor="#a0aebf" />}
+                  justifyContent="space-between"
+                >
                   <CardModalAttribute
                     label="Type"
-                    value={<CardElement element={card.element} />}
+                    value={<CardElement element={card.element} mt="0.2rem" />}
                   />
                   <CardModalAttribute
-                    isAttack
-                    label="Attaque n°1"
-                    value={card.attack1Name ?? card.attack2Name}
+                    label="Health Point"
+                    value={`${card.hp} HP`}
+                  />
+                  <CardModalAttribute label="Likes" value={card.likes ?? 0} />
+                </HStack>
+                {card.description && (
+                  <>
+                    <Text fontWeight="800" mr="0.8rem" fontSize="1.4rem">
+                      Description
+                    </Text>
+                    <Text noOfLines={4} fontWeight="300">
+                      {card.description}
+                    </Text>
+                  </>
+                )}
+                <VStack alignItems="flex-start" pt="2rem" spacing="1rem">
+                  <CardModalAttack
+                    name={card.attack1Name ?? card.attack2Name}
+                    damage={card.attack1Damage ?? card.attack2Damage}
                     description={
                       card.attack1Description ?? card.attack2Description
                     }
+                    type={card.attack1Type ?? card.attack2Type}
+                    amount={card.attack1Amount ?? card.attack2Amount}
                   />
-                  <CardModalAttribute
-                    isAttack
-                    label="Attaque n°2"
-                    value={card.attack2Name}
+                  <CardModalAttack
+                    name={card.attack2Name}
+                    damage={card.attack2Damage}
                     description={card.attack2Description}
-                  />
-                  <CardModalAttribute
-                    label="Description"
-                    description={card.description}
+                    type={card.attack2Type}
+                    amount={card.attack2Amount}
                   />
                 </VStack>
               </Box>
@@ -167,23 +185,15 @@ const CardModal = ({ card, queryKey, indexPage }: Props) => {
                   alignItems="center"
                   mb="1.5rem"
                   pb="1.5rem"
-                ></Flex>
+                />
                 <Flex justifyContent="space-between" alignItems="center">
-                  <HStack spacing="1rem">
-                    <CardModalAction onClick={() => null}>
-                      <Print />
-                    </CardModalAction>
-                    <CardModalAction onClick={() => null}>
-                      <Facebook />
-                    </CardModalAction>
-                    <CardModalAction onClick={() => null}>
-                      <Instagram />
-                    </CardModalAction>
-                    <CardModalAction onClick={() => null}>
-                      <Twitter />
-                    </CardModalAction>
-                  </HStack>
-                  <motion.div
+                  <CardModalActions />
+                  <LikeButton
+                    card={card}
+                    queryKey={queryKey}
+                    indexPage={indexPage}
+                  />
+                  {/* <motion.div
                     style={{
                       cursor: "pointer",
                       alignItems: "center",
@@ -208,7 +218,7 @@ const CardModal = ({ card, queryKey, indexPage }: Props) => {
                   >
                     <Icon as={Report} fontSize="1.4rem" />
                     <Box ml="0.3rem">Report card</Box>
-                  </motion.div>
+                  </motion.div> */}
                 </Flex>
               </Box>
             </Flex>

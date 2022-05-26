@@ -31,8 +31,14 @@ export interface FormatValue {
   element: Element;
   description: string;
   attack1Name: string;
+  attack1Type: string;
+  attack1Amount: string;
+  attack1Damage: string;
   attack1Description: string;
   attack2Name: string;
+  attack2Type: string;
+  attack2Amount: string;
+  attack2Damage: string;
   attack2Description: string;
 }
 
@@ -44,8 +50,14 @@ export const formatValues = (values): FormatValue => {
     description: values.description || "",
     attack1Name: values.attack1Name || "",
     attack1Description: values.attack1Info || "",
+    attack1Type: values.attack1Type?.value || "",
+    attack1Amount: values.attack1Amount?.value || "",
+    attack1Damage: values.attack1Damage?.value || "",
     attack2Name: values.attack2Name || "",
     attack2Description: values.attack2Info || "",
+    attack2Type: values.attack2Type?.value || "",
+    attack2Amount: values.attack2Amount?.value || "",
+    attack2Damage: values.attack2Damage?.value || "",
   };
 };
 

@@ -67,8 +67,14 @@ export class CardController {
     card.description = body.description
     card.attack1Name = body.attack1Name
     card.attack1Description = body.attack1Description
+    card.attack1Type = body.attack1Type
+    card.attack1Amount = body.attack1Amount
+    card.attack1Damage = body.attack1Damage
     card.attack2Name = body.attack2Name
     card.attack2Description = body.attack2Description
+    card.attack2Type = body.attack2Type
+    card.attack2Amount = body.attack2Amount
+    card.attack2Damage = body.attack2Damage
     card.img = `https://drive.google.com/uc?export=view&id=${uploadedFile.data.id}`
     card.blurHash = await encodeImageToBlurhash(file)
 

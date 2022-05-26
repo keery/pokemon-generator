@@ -7,3 +7,10 @@ Fleche pour switcher entre les cartes depuis la modal
 Raccourci clavier pour fermer modal et pour liker
 Ajouter un badge gagnant/second/troisieme du mois dans la modal
 Animate element lorsquon ouvre la modale
+couleur sont partis du generateur sur le texte
+Publier carte sur ecran tablette et mobile
+Obliger utilisateur d'avoir une attaque complète avec tous les champs avant de publier
+use skeleton quand on ouvre la modal via l'url pas en cliquant sur une carte
+Card element n'est pas le bon apres avoir publié
+Bouton publier qui reste de la mauvaise couleur apres avoir changé l'element
+Animation cool lorsqu'on appuie sur like depuis la modal

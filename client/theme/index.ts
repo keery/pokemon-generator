@@ -123,7 +123,7 @@ const theme = extendTheme({
     64: "16rem",
   },
   colors: {
-    myPink: "#e94c89",
+    myPink: "#f07eaa",
   },
   layerStyles: {
     glass: {
@@ -131,9 +131,9 @@ const theme = extendTheme({
       bgColor: "rgb(255 255 255 / 25%)",
       border: "1px solid rgb(255 255 255 / 60%)",
     },
-    glassNoBorder: {
-      backdropFilter: "blur(4px) saturate(180%)",
-      bgColor: "rgb(255 255 255 / 25%)",
+    glassModal: {
+      backdropFilter: "blur(15px) saturate(180%)",
+      backgroundColor: "rgba(255, 255, 255, 0.28)",
     },
     "neuro-flat": {
       backgroundColor: "#e0e0e0",
