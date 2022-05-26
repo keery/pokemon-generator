@@ -2,17 +2,17 @@ import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
 import LikeButtonRound from "~components/Gallery/LikeButtonRound";
 import { Card } from "~@types/Card";
+import { CachedQuery } from "~@types/CachedQuery";
 
 interface Props {
   card: Card;
-  queryKey: any[];
-  indexPage: number;
+  cachedQuery: CachedQuery;
 }
 
-const LikesCounter = ({ card, queryKey, indexPage }: Props) => {
+const LikesCounter = ({ card, cachedQuery }: Props) => {
   return (
     <Flex alignItems="center">
-      <LikeButtonRound card={card} queryKey={queryKey} indexPage={indexPage} />
+      <LikeButtonRound card={card} cachedQuery={cachedQuery} />
       <Text
         pl={1}
         fontSize="0.8rem"

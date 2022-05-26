@@ -53,6 +53,7 @@ const theme = extendTheme({
     text: "#3b434c",
     pokeball: "#fe5b54",
     blueGray: "#bdccde",
+    myPink: "#f07eaa",
   },
   radii: {
     xs: "0.3rem",
@@ -121,9 +122,6 @@ const theme = extendTheme({
     60: "15rem",
     62: "15.5rem",
     64: "16rem",
-  },
-  colors: {
-    myPink: "#f07eaa",
   },
   layerStyles: {
     glass: {

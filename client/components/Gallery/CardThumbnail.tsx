@@ -7,20 +7,15 @@ import CardImage from "~components/Gallery/CardImage";
 import { motion } from "framer-motion";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
+import { CachedQuery } from "~@types/CachedQuery";
 
 interface Props {
   card: Card;
   layoutPrefix?: string;
-  queryKey: any[];
-  indexPage: number;
+  cachedQuery: CachedQuery;
 }
 
-const CardThumbnail = ({
-  card,
-  queryKey,
-  indexPage,
-  layoutPrefix = "",
-}: Props) => {
+const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
   const { href, as } = getHrefCardModal(card, layoutPrefix);
 
@@ -38,7 +33,7 @@ const CardThumbnail = ({
         as={as}
         _before={{ zIndex: 12 }}
         onClick={() => {
-          setCard({ card, queryKey, indexPage });
+          setCard({ card, cachedQuery });
         }}
       />
       <motion.div

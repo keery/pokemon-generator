@@ -3,16 +3,16 @@ import { Button, ButtonProps, Icon, Box } from "@chakra-ui/react";
 import Heart from "public/assets/img/heart.svg";
 import useLike from "~hooks/useLike";
 import { Card } from "~@types/Card";
+import { CachedQuery } from "~@types/CachedQuery";
 import { useQueryClient, InfiniteData } from "react-query";
 import { motion } from "framer-motion";
 
 interface Props extends ButtonProps {
   card: Card;
-  queryKey: any[];
-  indexPage: number;
+  cachedQuery: CachedQuery;
 }
 
-const LikeButtonRound = ({ card, queryKey, indexPage, ...rest }: Props) => {
+const LikeButtonRound = ({ card, cachedQuery, ...rest }: Props) => {
   const queryClient = useQueryClient();
   const [isLiked, setLiked] = useState(card?.has_liked > 0);
 
@@ -22,33 +22,37 @@ const LikeButtonRound = ({ card, queryKey, indexPage, ...rest }: Props) => {
 
   const { mutate } = useLike({
     onMutate: async () => {
-      const previousValue =
-        queryClient.getQueryData<InfiniteData<Card[]>>(queryKey);
+      const previousValue = queryClient.getQueryData<InfiniteData<Card[]>>(
+        cachedQuery.key
+      );
 
       if (previousValue) {
-        queryClient.setQueryData<InfiniteData<Card[]>>(queryKey, (old) => {
-          const page = old.pages[indexPage];
-          const index = page.findIndex((c) => c.id === card.id);
+        queryClient.setQueryData<InfiniteData<Card[]>>(
+          cachedQuery.key,
+          (old) => {
+            const page = old.pages[cachedQuery.indexPage];
+            const index = page.findIndex((c) => c.id === card.id);
 
-          if (index === -1) return old;
+            if (index === -1) return old;
 
-          const newPage = [...page];
+            const newPage = [...page];
 
-          newPage[index] = {
-            ...newPage[index],
-            likes: isLiked ? page[index].likes - 1 : page[index].likes + 1,
-            has_liked: isLiked ? 0 : 1,
-          };
+            newPage[index] = {
+              ...newPage[index],
+              likes: isLiked ? page[index].likes - 1 : page[index].likes + 1,
+              has_liked: isLiked ? 0 : 1,
+            };
 
-          setLiked(!isLiked);
+            setLiked(!isLiked);
 
-          old.pages.splice(indexPage, 1, newPage);
+            old.pages.splice(cachedQuery.indexPage, 1, newPage);
 
-          return {
-            pageParams: old.pageParams,
-            pages: old.pages,
-          };
-        });
+            return {
+              pageParams: old.pageParams,
+              pages: old.pages,
+            };
+          }
+        );
       }
 
       return { previousValue, isLiked };
@@ -60,7 +64,7 @@ const LikeButtonRound = ({ card, queryKey, indexPage, ...rest }: Props) => {
     ) => {
       if (context?.previousValue) {
         queryClient.setQueryData<InfiniteData<Card[]>>(
-          queryKey,
+          cachedQuery.key,
           context.previousValue
         );
         setLiked(context.isLiked);

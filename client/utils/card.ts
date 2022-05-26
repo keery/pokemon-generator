@@ -118,7 +118,7 @@ export const getSeoCardDescription = (card: Card) => {
   }${attack1}${attack2}`;
 };
 
-export const getHrefCardModal = (card: Card, layoutPrefix: string) => {
+export const getHrefCardModal = (card: Card, layoutPrefix: string = "") => {
   return {
     href: `${ROUTE_GALLERY}?cardSlug=${card.slug}&idCard=${card.id}${
       layoutPrefix !== "" ? `&layoutPrefix=${layoutPrefix}` : ""
