@@ -47,7 +47,7 @@ const fadeAnimation = "appendFade 300ms forwards";
 
 const getArrowAnimation = (orderPrev, orderNext) => {
   return {
-    "next-leave": {
+    "prev-leave": {
       transform: "translateX(20rem)",
       opacity: 0,
       transition: {
@@ -59,7 +59,7 @@ const getArrowAnimation = (orderPrev, orderNext) => {
         transform: "translateX(-20rem)",
       },
     },
-    "prev-leave": {
+    "next-leave": {
       transform: "translateX(-20rem)",
       opacity: 0,
       transition: {
@@ -71,7 +71,7 @@ const getArrowAnimation = (orderPrev, orderNext) => {
         transform: "translateX(20rem)",
       },
     },
-    "next-arrive": {
+    "prev-arrive": {
       transform: "translateX(0rem)",
       opacity: 1,
       transition: {
@@ -80,7 +80,7 @@ const getArrowAnimation = (orderPrev, orderNext) => {
         delay: orderNext * 0.15,
       },
     },
-    "prev-arrive": {
+    "next-arrive": {
       transform: "translateX(0rem)",
       opacity: 1,
       transition: {
