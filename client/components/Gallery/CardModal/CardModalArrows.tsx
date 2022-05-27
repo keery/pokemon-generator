@@ -12,6 +12,7 @@ interface Props {
 }
 
 const CardModalArrows = ({ cachedQuery, setAnimation }: Props) => {
+  const [forceDisabled, setForceDisabled] = useState(false);
   const [arrowAnimation, setArrowAnimation] = useState("first");
   const { key, indexCard, indexPage } = cachedQuery;
 
@@ -70,23 +71,27 @@ const CardModalArrows = ({ cachedQuery, setAnimation }: Props) => {
   return (
     <>
       <CardModalArrow
-        isDisabled={isPrevDisabled}
+        isDisabled={forceDisabled || isPrevDisabled}
         onClick={onPrev}
         setModalAnimation={setAnimation}
         arrowAnimation={arrowAnimation}
         setArrowAnimation={setArrowAnimation}
+        setDisabled={setForceDisabled}
         direction="prev"
+        keyboardShortcut={["left"]}
       >
         <Icon as={Prev} transform="translateX(-0.6rem)" />
       </CardModalArrow>
 
       <CardModalArrow
-        isDisabled={isNextDisabled}
+        isDisabled={forceDisabled || isNextDisabled}
         onClick={onNext}
         setModalAnimation={setAnimation}
         setArrowAnimation={setArrowAnimation}
         arrowAnimation={arrowAnimation}
+        setDisabled={setForceDisabled}
         direction="next"
+        keyboardShortcut={["right"]}
       >
         <Icon as={Next} transform="translateX(-0.6rem)" />
       </CardModalArrow>

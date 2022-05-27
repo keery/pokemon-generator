@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@chakra-ui/react";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
 import { getHrefCardModal } from "~utils/card";
 import Router from "next/router";
 import { motion } from "framer-motion";
+import useKeybordShortcut from "~hooks/useKeybordShortcut";
 
 interface Props {
   isDisabled: boolean;
@@ -14,6 +15,8 @@ interface Props {
   arrowAnimation: string;
   onClick: () => any;
   children: React.ReactNode;
+  setDisabled: (isDisabled: boolean) => void;
+  keyboardShortcut: string[];
 }
 
 const CardModalArrow = ({
@@ -24,10 +27,17 @@ const CardModalArrow = ({
   arrowAnimation,
   setArrowAnimation,
   direction,
+  keyboardShortcut,
+  setDisabled,
 }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
 
+  useEffect(() => {
+    if (isDisabled) setDisabled(true);
+  }, [isDisabled]);
+
   const handleClick = () => {
+    setDisabled(true);
     setModalAnimation(`${direction}-leave`);
     setArrowAnimation("leave");
     setTimeout(() => {
@@ -38,7 +48,17 @@ const CardModalArrow = ({
       setModalAnimation(`${direction}-arrive`);
       setArrowAnimation("arrive");
     }, 600);
+
+    setTimeout(() => {
+      setDisabled(false);
+    }, 1000);
   };
+
+  useKeybordShortcut({
+    isDisabled: isDisabled,
+    callback: handleClick,
+    keyboardShortcut,
+  });
 
   return (
     <motion.div
