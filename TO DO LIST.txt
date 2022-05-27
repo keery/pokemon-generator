@@ -3,7 +3,6 @@ Publish card and see collections
 Bouton report pour les cartes
 Traduction card modal
 Faire le nom des auteurs cliquable pour voir toutes les cartes de ce créateur
-Raccourci clavier pour fermer modal et pour liker et utiliser les fleches
 Ajouter un badge gagnant/second/troisieme du mois dans la modal
 Publier carte sur ecran tablette et mobile, pas de bouton
 Obliger utilisateur d'avoir une attaque complète avec tous les champs avant de publier
@@ -13,3 +12,4 @@ Bouton publier qui reste de la mauvaise couleur apres avoir changé l'element
 Animation cool lorsqu'on appuie sur like depuis la modal
 Newsletter, card of the day
 Likes number is not working well when switching card with arrows
+Gerer scroll a l'interieur de la modal si beaucoup de contenu

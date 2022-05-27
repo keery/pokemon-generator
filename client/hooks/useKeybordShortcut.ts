@@ -5,12 +5,12 @@ import { useBreakpointValue } from "@chakra-ui/react";
 interface Props {
   keyboardShortcut: string[];
   callback: () => any;
-  isDisabled: boolean;
+  isDisabled?: boolean;
 }
 
 const useKeybordShortcut = ({
   callback,
-  isDisabled,
+  isDisabled = false,
   keyboardShortcut,
 }: Props) => {
   const isMobile = useBreakpointValue({ base: true, sm: false });

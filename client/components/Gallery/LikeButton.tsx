@@ -19,6 +19,12 @@ const LikeButton = ({ card, cachedQuery, ...rest }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
   const [isLiked, setLiked] = useState(card?.has_liked > 0);
 
+  const onClick = () => {
+    mutate({
+      cardId: card.id,
+    });
+  };
+
   const { mutate } = useLike({
     onMutate: async () => {
       const previousValue = queryClient.getQueryData<InfiniteData<Card[]>>(
@@ -105,11 +111,7 @@ const LikeButton = ({ card, cachedQuery, ...rest }: Props) => {
       whileHover={{
         scale: 1.05,
       }}
-      onClick={() => {
-        mutate({
-          cardId: card.id,
-        });
-      }}
+      onClick={onClick}
     >
       <Flex
         justifyContent="center"

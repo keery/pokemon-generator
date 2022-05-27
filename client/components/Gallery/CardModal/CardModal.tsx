@@ -29,6 +29,7 @@ import fr from "date-fns/locale/fr";
 import { ROUTE_GALLERY } from "~constants";
 import Router from "next/router";
 import LikeButton from "~components/Gallery/LikeButton";
+import useKeybordShortcut from "~hooks/useKeybordShortcut";
 import Heart from "public/assets/img/heart.svg";
 import Report from "public/assets/img/report.svg";
 import { CachedQuery } from "~@types/CachedQuery";
@@ -98,6 +99,11 @@ const CardModal = ({ card, cachedQuery }: Props) => {
     setCard({ card: null, cachedQuery: null });
     Router.push(ROUTE_GALLERY, null, { shallow: true });
   };
+
+  useKeybordShortcut({
+    callback: onClose,
+    keyboardShortcut: ["esc"],
+  });
 
   return (
     <>
