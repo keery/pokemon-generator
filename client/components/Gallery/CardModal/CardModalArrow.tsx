@@ -32,10 +32,6 @@ const CardModalArrow = ({
 }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
 
-  useEffect(() => {
-    if (isDisabled) setDisabled(true);
-  }, [isDisabled]);
-
   const handleClick = () => {
     setDisabled(true);
     setModalAnimation(`${direction}-leave`);
