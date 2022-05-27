@@ -45,7 +45,7 @@ const dateToText = (date) => {
 
 const fadeAnimation = "appendFade 300ms forwards";
 
-const getArrowAnimation = (orderPrev, orderNext) => {
+const getNextPrevAnimation = (orderPrev, orderNext) => {
   return {
     "prev-leave": {
       transform: "translateX(20rem)",
@@ -163,7 +163,7 @@ const CardModal = ({ card, cachedQuery }: Props) => {
               fontWeight="800"
               layerStyle="ellipsis"
               pr="2rem"
-              variants={getArrowAnimation(0, 1)}
+              variants={getNextPrevAnimation(0, 1)}
               animate={animation}
             >
               {card.name}
@@ -182,7 +182,7 @@ const CardModal = ({ card, cachedQuery }: Props) => {
               h="100%"
               w="65%"
               as={motion.div}
-              variants={getArrowAnimation(0, 1)}
+              variants={getNextPrevAnimation(0, 1)}
               animate={animation}
             >
               <Box opacity="0" animation={`${fadeAnimation} 300ms`}>
@@ -242,7 +242,7 @@ const CardModal = ({ card, cachedQuery }: Props) => {
                   pb="1.5rem"
                 />
                 <Flex justifyContent="space-between" alignItems="center">
-                  <CardModalActions />
+                  <CardModalActions card={card} />
                   <LikeButton card={card} cachedQuery={cachedQuery} />
                   {/* <motion.div
                     style={{
@@ -278,7 +278,7 @@ const CardModal = ({ card, cachedQuery }: Props) => {
               flex={1}
               flexDirection="column"
               w="100%"
-              variants={getArrowAnimation(1, 0)}
+              variants={getNextPrevAnimation(1, 0)}
               animate={animation}
             >
               <AspectRatio

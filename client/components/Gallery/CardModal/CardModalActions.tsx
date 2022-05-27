@@ -4,23 +4,78 @@ import CardModalAction from "~components/Gallery/CardModal/CardModalAction";
 import Print from "public/assets/img/print.svg";
 import Facebook from "public/assets/img/facebook.svg";
 import Twitter from "public/assets/img/twitter.svg";
-import Instagram from "public/assets/img/instagram.svg";
+import Email from "public/assets/img/email.svg";
+import { Card } from "~@types/Card";
+import { printCard } from "~utils/card";
 
 enum Actions {
   PRINT = "print",
   TWITTER = "twitter",
   FACEBOOK = "facebook",
-  INSTAGRAM = "instagram",
+  EMAIL = "email",
 }
 
-const CardModalActions = () => {
+interface Props {
+  card: Card;
+}
+
+const CardModalActions = ({ card }: Props) => {
   const [active, setActive] = useState(null);
+
+  const onFacebook = () => {
+    const currentUrl = encodeURIComponent(window.location.href);
+    window.open(
+      `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`,
+      "_ blank"
+    );
+  };
+
+  const onTwitter = () => {
+    const currentUrl = encodeURIComponent(
+      `Check this out! I created ${card.name} my new pokemon card ${window.location.href}`
+    );
+
+    window.open(
+      `https://twitter.com/intent/tweet?text=${currentUrl}`,
+      "_ blank"
+    );
+  };
+
+  const onEmail = () => {
+    const currentUrl = encodeURIComponent(
+      `Check this out! I created ${card.name} my new pokemon card ${window.location.href}`
+    );
+
+    window.open(`mailto:?body=${currentUrl}`);
+  };
+
+  function ImagetoPrint(source) {
+    return (
+      "<html><head><scri" +
+      "pt>function step1(){\n" +
+      "setTimeout('step2()', 10);}\n" +
+      "function step2(){window.print();window.close()}\n" +
+      "</scri" +
+      "pt></head><body onload='step1()'>\n" +
+      '<img style="width:6.3cm;" src=\'' +
+      source +
+      '\' /><img style="width:6.3cm; margin-left:20px;" src="/assets/img/pokemon-card-back.webp" /></body></html>'
+    );
+  }
+
+  const onPrint = () => {
+    const Pagelink = "about:blank";
+    const pwa = window.open(Pagelink, "_new");
+    pwa.document.open();
+    pwa.document.write(ImagetoPrint(card.img));
+    pwa.document.close();
+  };
 
   return (
     <HStack spacing="1rem">
       <CardModalAction
         name={Actions.PRINT}
-        onClick={() => null}
+        onClick={onPrint}
         onHover={setActive}
         isHidden={active !== null && active !== Actions.PRINT}
       >
@@ -28,27 +83,27 @@ const CardModalActions = () => {
       </CardModalAction>
       <CardModalAction
         name={Actions.FACEBOOK}
-        onClick={() => null}
+        onClick={onFacebook}
         onHover={setActive}
         isHidden={active !== null && active !== Actions.FACEBOOK}
       >
         <Facebook />
       </CardModalAction>
       <CardModalAction
-        name={Actions.INSTAGRAM}
-        onClick={() => null}
-        onHover={setActive}
-        isHidden={active !== null && active !== Actions.INSTAGRAM}
-      >
-        <Instagram />
-      </CardModalAction>
-      <CardModalAction
         name={Actions.TWITTER}
-        onClick={() => null}
+        onClick={onTwitter}
         onHover={setActive}
         isHidden={active !== null && active !== Actions.TWITTER}
       >
         <Twitter />
+      </CardModalAction>
+      <CardModalAction
+        name={Actions.EMAIL}
+        onClick={onEmail}
+        onHover={setActive}
+        isHidden={active !== null && active !== Actions.EMAIL}
+      >
+        <Email />
       </CardModalAction>
     </HStack>
   );
