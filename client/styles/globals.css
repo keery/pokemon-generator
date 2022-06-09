@@ -689,6 +689,25 @@ a {
   animation: holoSparkle 12s ease 0s infinite;
 }
 
+.float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    /* box-shadow: 0 55px 35px -20px rgb(0 0 0 / 50%); */
+    transform: translatey(0px);
+  }
+  50% {
+    /* box-shadow: 0 75px 35px -20px rgb(0 0 0 / 50%); */
+    transform: translatey(-20px);
+  }
+  100% {
+    /* box-shadow: 0 55px 35px -20px rgb(0 0 0 / 50%); */
+    transform: translatey(0px);
+  }
+}
+
 @keyframes holoSparkle {
   0%,
   100% {
@@ -774,10 +793,10 @@ a {
   }
 }
 
-.holo-card-container {
+/* .holo-card-container {
   perspective: 2000px;
   transform: translate3d(0.1px, 0.1px, 0.1px);
-}
+} */
 
 @keyframes appendFade {
   0% {

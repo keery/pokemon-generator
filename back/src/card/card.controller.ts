@@ -13,6 +13,7 @@ import { encodeImageToBlurhash } from '~utils/blurhash'
 import {
   Controller,
   Post,
+  Get,
   UseInterceptors,
   UploadedFile,
   Body,
@@ -121,5 +122,12 @@ export class CardController {
       ${orderBy}
       ${limit}
       `)
+  }
+
+  @Get('count')
+  async getCount() {
+    const res = await this.service.countCards()
+    console.log(res)
+    return res
   }
 }

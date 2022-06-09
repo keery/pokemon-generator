@@ -12,4 +12,12 @@ export class CardService extends TypeOrmCrudService<Card> {
   async create(card: Card) {
     return await this.repo.save(card)
   }
+
+  countCards() {
+    return this.repo.count({
+      where: {
+        isPublished: true,
+      },
+    })
+  }
 }

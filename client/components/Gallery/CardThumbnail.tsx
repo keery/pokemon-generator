@@ -1,13 +1,12 @@
 import React from "react";
 import { AspectRatio, LinkBox } from "@chakra-ui/react";
-import { Card } from "~@types/Card";
 import LinkOverlay from "~components/LinkOverlay";
 import { getHrefCardModal } from "~utils/card";
 import CardImage from "~components/Gallery/CardImage";
 import { motion } from "framer-motion";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
-import { CachedQuery } from "~@types/CachedQuery";
+import { CachedQuery, Card } from "~@types";
 
 interface Props {
   card: Card;
@@ -44,27 +43,6 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
           cursor: "pointer",
         }}
       >
-        {/* <Box
-          pos="absolute"
-          left="50%"
-          top="50%"
-          transition="transform cubic-bezier(.4,0,.2,1) 400ms"
-          transform="translateY(-50%) translateX(-50%) scale(0)"
-          _groupHover={{
-            transform: "translateY(-50%) translateX(-50%) scale(1)",
-          }}
-          w="105%"
-          h="105%"
-        >
-          <Box
-            borderRadius="1.4rem"
-            animation="floatWobble 5s ease-in-out infinite"
-            w="100%"
-            bgColor="pokeball"
-            h="100%"
-            layerStyle="glass"
-          />
-        </Box> */}
         <AspectRatio
           as={motion.div}
           ratio={500 / 700}

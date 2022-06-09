@@ -9,5 +9,17 @@
   "backHome": "Retour à l'accueil",
   "cancel": "Annuler",
   "confirm": "Confirmer",
-  "warning": "Avertissement"
+  "warning": "Avertissement",
+  "footer": {
+    "navigation": "Navigation",
+    "menu": {
+      "generator": "Crée ta carte",
+      "gallery": "Galerie",
+      "cgu": "Conditions d'utilisation",
+      "sitemap": "Plan du site"
+    },
+    "description": "{{name}} est une plateforme qui vous permet de créer des cartes Pokémon en laissant parler votre imagination. C'est également une communauté qui permet de visualiser les cartes créées par d'autres utilisateurs alors n'hésite pas à participer toi aussi.",
+    "madeBy": "Développé par",
+    "cardCreated": "cartes créées"
+  }
 }

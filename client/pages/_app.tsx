@@ -9,6 +9,7 @@ import Layout from "~components/Layout";
 import { QueryClientProvider } from "react-query";
 import { appWithTranslation } from "next-i18next";
 import { RecoilRoot } from "recoil";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 import "@uppy/core/dist/style.min.css";
 import "@uppy/dashboard/dist/style.css";
@@ -23,9 +24,11 @@ const App = ({ Component, pageProps }: AppProps) => {
       <QueryClientProvider client={client}>
         <ChakraProvider theme={theme}>
           <RecoilRoot>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <LazyMotion features={domAnimation}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </LazyMotion>
           </RecoilRoot>
         </ChakraProvider>
       </QueryClientProvider>

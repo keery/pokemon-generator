@@ -14,6 +14,8 @@ const Header = ({ noColorChange = false }: Props) => {
 
   return (
     <Container
+      as="header"
+      zIndex={9}
       py={py}
       display="flex"
       justifyContent="space-between"

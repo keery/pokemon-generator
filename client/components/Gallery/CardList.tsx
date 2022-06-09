@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useMemo, useEffect } from "react";
 import useInfiniteCards, { QUERY_KEY } from "~hooks/useInfiniteCards";
 import useScrollBottom from "~hooks/useScrollBottom";
 import {
@@ -7,58 +7,93 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import CardThumbnailSkeleton from "~components/Gallery/CardThumbnailSkeleton";
-import { Flex, Circle, Text } from "@chakra-ui/react";
-import LikesCounter from "~components/Gallery/LikesCounter";
-import CardThumbnail from "~components/Gallery/CardThumbnail";
+import GlassButton from "~components/GlassButton";
+import { Flex, Container } from "@chakra-ui/react";
+import CardScrollAnimationWrapper from "~components/Gallery/CardScrollAnimationWrapper";
 import SortList from "~components/Gallery/SortList";
 import Loader from "~components/Loader";
+import { useTranslation } from "next-i18next";
+
+const AUTO_LOADING_LIMIT = 3;
 
 const CardList = (props: SimpleGridProps) => {
+  const { t } = useTranslation("gallery");
   const ref = useRef(null);
   const [sort, setSort] = useState("created_at,DESC");
-  const nbSkeleton = useBreakpointValue({ base: 6, sm: 8, md: 12, lg: 16 });
+  const [cardHeight, setCardHeight] = useState<number>(0);
+  const [loading, setLoading] = useState<number>(0);
+  const nbCard = useBreakpointValue({ base: 6, sm: 8, md: 12, lg: 15 });
+  const spacingLine = useBreakpointValue({ base: 40 });
   const queryParams = {
     sort,
-    limit: nbSkeleton || 16,
+    limit: nbCard,
   };
 
-  const { status, isFetchingNextPage, data, fetchNextPage } = useInfiniteCards(
-    {
-      enabled: Boolean(nbSkeleton),
-      getNextPageParam: (lastPage, allPages) => {
-        if (lastPage.length === nbSkeleton) return allPages.length;
+  const { status, isFetchingNextPage, data, fetchNextPage, hasNextPage } =
+    useInfiniteCards(
+      {
+        getNextPageParam: (lastPage, allPages) => {
+          if (lastPage.length === nbCard) return allPages.length;
+        },
+        onSuccess: () => {
+          setLoading(loading + 1);
+        },
       },
-    },
-    queryParams
-  );
+      queryParams
+    );
 
-  useScrollBottom(ref, () => {
-    fetchNextPage();
-  });
+  const listOffsetTop = useMemo(() => {
+    if (!ref || !ref.current) return 0;
+    return ref.current.offsetTop - window.innerHeight / 1.15;
+  }, [ref, ref.current]);
+
+  useEffect(() => {
+    const cards = document.getElementsByClassName("CardScrollAnimationWrapper");
+    if (cards && cards.length > 0) {
+      setCardHeight(cards[0].clientHeight);
+    }
+  }, [data]);
+
+  useScrollBottom(ref, fetchNextPage, loading < AUTO_LOADING_LIMIT);
 
   return (
     <>
       <SortList onChange={setSort} />
-      <SimpleGrid columns={4} spacingX={8} spacingY={8} {...props} ref={ref}>
-        <>
-          {status === "loading" || !data ? (
-            Array.from(Array(nbSkeleton)).map((n, i) => (
-              <CardThumbnailSkeleton key={`skeleton-${i}`} />
-            ))
-          ) : (
-            <>
-              {data.pages.map((page, indexPage) =>
-                page.map((card, indexCard) => {
+      <Container mt={6}>
+        <SimpleGrid
+          columns={3}
+          spacingX={8}
+          spacingY={`${spacingLine}px`}
+          {...props}
+          ref={ref}
+        >
+          <>
+            {status === "loading" || !data ? (
+              Array.from(Array(nbCard)).map((n, i) => (
+                <CardThumbnailSkeleton key={`skeleton-${i}`} />
+              ))
+            ) : (
+              <>
+                {data.pages.flat().map((card, index) => {
                   const cachedQuery = {
                     key: [QUERY_KEY, queryParams],
-                    indexPage: indexPage,
-                    indexCard: indexCard,
+                    indexPage: Math.floor(index / nbCard),
+                    indexCard: index % nbCard,
                   };
 
                   return (
                     <Flex direction="column" key={card.id}>
-                      <CardThumbnail card={card} cachedQuery={cachedQuery} />
-                      <Flex
+                      <CardScrollAnimationWrapper
+                        card={card}
+                        cachedQuery={cachedQuery}
+                        listOffsetTop={listOffsetTop}
+                        lineNumber={Math.floor(index / 3)}
+                        spacingLine={spacingLine}
+                        columnNumber={index % 3}
+                        cardHeight={cardHeight}
+                      />
+
+                      {/* <Flex
                         pt={2}
                         px={1}
                         justifyContent="space-between"
@@ -77,15 +112,28 @@ const CardList = (props: SimpleGridProps) => {
                           </Text>
                         </Flex>
                         <LikesCounter card={card} cachedQuery={cachedQuery} />
-                      </Flex>
+                      </Flex> */}
                     </Flex>
                   );
-                })
-              )}
-            </>
-          )}
-        </>
-      </SimpleGrid>
+                })}
+              </>
+            )}
+          </>
+        </SimpleGrid>
+      </Container>
+      {hasNextPage && loading >= AUTO_LOADING_LIMIT && (
+        <GlassButton
+          w="full"
+          mt={10}
+          isLoading={isFetchingNextPage}
+          onClick={() => {
+            setLoading(0);
+            fetchNextPage();
+          }}
+        >
+          {t("loadMoreCards")}
+        </GlassButton>
+      )}
       {isFetchingNextPage && <Loader pt={10} />}
     </>
   );

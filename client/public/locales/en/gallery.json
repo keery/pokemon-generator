@@ -6,7 +6,6 @@
         "isType": "is a pokemon of type"
       }
     },
-    "lastCreation": "Most recent cards",
     "topMonth": "Monthly Top 10",
     "fire" : "Fire",
     "grass" : "Grass",
@@ -23,8 +22,8 @@
       "mostRecent": "Most recent cards",
       "mostOld": "Oldest cards",
       "mostVoted": "Most liked",
-      "leastVoted": "Least liked",
       "random": "Random"
-    }
+    },
+    "loadMoreCards": "Load more cards"
   }
   

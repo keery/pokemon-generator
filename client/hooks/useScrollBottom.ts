@@ -1,22 +1,28 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import throttle from "lodash.throttle";
 
-const useScrollBottom = (ref, callback: () => void) => {
-  const handleScroll = () => {
-    if (!ref.current) return null;
-    const scrollBottom =
-      window.innerHeight + document.documentElement.scrollTop;
-    const gridBottom = ref.current.offsetTop + ref.current.offsetHeight;
-
-    if (scrollBottom > gridBottom) {
-      callback();
-    }
-  };
-
+const useScrollBottom = (
+  ref,
+  callback: () => void,
+  isEnabled: boolean = true
+) => {
   useEffect(() => {
-    window.addEventListener("scroll", throttle(handleScroll, 200));
+    const handleScroll = throttle(() => {
+      if (!isEnabled || !ref.current) return null;
+
+      const scrollBottom =
+        window.innerHeight + document.documentElement.scrollTop;
+      const gridBottom = ref.current.offsetTop + ref.current.offsetHeight;
+
+      if (scrollBottom > gridBottom) {
+        callback();
+      }
+    }, 200);
+
+    window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isEnabled]);
 };
 
 export default useScrollBottom;

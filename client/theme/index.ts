@@ -54,6 +54,11 @@ const theme = extendTheme({
     pokeball: "#fe5b54",
     blueGray: "#bdccde",
     myPink: "#f07eaa",
+    blue: {
+      xs: "#52a4ff",
+      md: "#104ba7",
+      lg: "#1d1741",
+    },
   },
   radii: {
     xs: "0.3rem",
@@ -127,6 +132,11 @@ const theme = extendTheme({
     glass: {
       backdropFilter: "blur(4px) saturate(180%)",
       bgColor: "rgb(255 255 255 / 25%)",
+      border: "1px solid rgb(255 255 255 / 60%)",
+    },
+    glassMd: {
+      backdropFilter: "blur(30px) saturate(180%)",
+      backgroundColor: "rgb(255 255 255 / 50%)",
       border: "1px solid rgb(255 255 255 / 60%)",
     },
     glassModal: {

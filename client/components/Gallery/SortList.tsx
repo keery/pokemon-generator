@@ -1,76 +1,91 @@
-import React from "react";
-import Select from "~components/Select";
-import { Flex, Text } from "@chakra-ui/react";
+import React, { useRef } from "react";
+import SortSelect from "~components/Gallery/SortSelect";
+import { Flex, Box, Container } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useTranslation } from "next-i18next";
-import TextShadow from "~components/TextShadow";
+import Title from "~components/Title";
+import useIntersectionObserver from "~hooks/useIntersectionObserver";
 
 interface Props {
   onChange: (e: any) => void;
 }
 
 const SortList = ({ onChange }: Props) => {
+  const ref = useRef();
   const { t } = useTranslation("gallery");
+
+  const options = [
+    {
+      value: "sort-newest",
+      param: "created_at,DESC",
+      label: t("filters.mostRecent"),
+    },
+    {
+      value: "sort-oldest",
+      param: "created_at,ASC",
+      label: t("filters.mostOld"),
+    },
+    {
+      value: "sort-most-liked",
+      param: "likes,DESC",
+      label: t("filters.mostVoted"),
+    },
+    {
+      value: "random",
+      param: "random,ASC",
+      label: t("filters.random"),
+    },
+  ];
+
+  const isReduced = useIntersectionObserver(ref, {
+    threshold: 1,
+    rootMargin: "-15px 0px 0px 0px",
+  });
+
+  const isSticky = useIntersectionObserver(ref, {
+    threshold: 1,
+    rootMargin: "0px 0px 500px 0px",
+  });
+
   const form = useForm({
     defaultValues: {
-      sort: {
-        value: "sort-newest",
-        label: t("filters.mostRecent"),
-      },
+      sort: options[0],
     },
   });
 
   return (
-    <Flex pt={20} pb={4} alignItems="center" justifyContent="space-between">
-      <TextShadow
-        as="h2"
-        text={t("lastCreation")}
-        fontWeight="800"
-        fontSize="5.8rem"
-        fontFamily="title"
-      />
-      <FormProvider {...form}>
-        <form>
-          <Flex w="300px">
-            <Select
-              name="sort"
-              iconPath={"{{value}}.svg"}
-              control={form.control}
-              onChange={(e) => {
-                onChange(e.param);
-              }}
-              options={[
-                {
-                  value: "sort-newest",
-                  param: "created_at,DESC",
-                  label: t("filters.mostRecent"),
-                },
-                {
-                  value: "sort-oldest",
-                  param: "created_at,ASC",
-                  label: t("filters.mostOld"),
-                },
-                {
-                  value: "sort-most-liked",
-                  param: "likes,DESC",
-                  label: t("filters.mostVoted"),
-                },
-                {
-                  value: "sort-least-liked",
-                  param: "likes,ASC",
-                  label: t("filters.leastVoted"),
-                },
-                {
-                  value: "random",
-                  param: "random,ASC",
-                  label: t("filters.random"),
-                },
-              ]}
-            />
-          </Flex>
-        </form>
-      </FormProvider>
-    </Flex>
+    <>
+      <Box pt={20} />
+      <Flex
+        ref={ref}
+        zIndex={50}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        top="-1px"
+        position="sticky"
+        layerStyle={isSticky ? "glassMd" : ""}
+        border="none"
+      >
+        <Container>
+          <FormProvider {...form}>
+            <form>
+              <Title>
+                <SortSelect
+                  fontSize={isReduced ? "4rem" : "5.8rem"}
+                  name="sort"
+                  control={form.control}
+                  onChange={(e) => {
+                    onChange(e.param);
+                  }}
+                  options={options}
+                />
+              </Title>
+            </form>
+          </FormProvider>
+        </Container>
+      </Flex>
+    </>
   );
 };
 

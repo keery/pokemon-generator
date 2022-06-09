@@ -128,10 +128,20 @@ const CardModal = ({ card, cachedQuery }: Props) => {
           backgroundColor: "rgb(20 27 40 / 60%)",
           borderTopRightRadius: "4rem",
           borderTopLeftRadius: "4rem",
+          color: "white",
         }}
         exit={{ top: "100%", opacity: 0 }}
         transition={{ ease: "easeInOut", duration: 0.4 }}
       >
+        <CloseButton
+          pos="absolute"
+          zIndex={1001}
+          top="2rem"
+          right="3.5rem"
+          fontSize="1.9rem"
+          onClick={onClose}
+          _hover={{ opacity: 0.6 }}
+        />
         <Flex
           as={motion.div}
           style={{
@@ -145,9 +155,9 @@ const CardModal = ({ card, cachedQuery }: Props) => {
             alignItems: "flex-start",
             position: "relative",
             padding: "2rem 3.5rem",
+            maxWidth: "80rem",
             flexDirection: "column",
             gap: 0,
-            color: "white",
           }}
         >
           <Flex
@@ -168,11 +178,6 @@ const CardModal = ({ card, cachedQuery }: Props) => {
             >
               {card.name}
             </Heading>
-            <CloseButton
-              fontSize="1.9rem"
-              onClick={onClose}
-              _hover={{ opacity: 0.6 }}
-            />
           </Flex>
           <Flex w="100%" flex={1}>
             <Flex

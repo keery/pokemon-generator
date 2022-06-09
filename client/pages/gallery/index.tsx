@@ -7,6 +7,7 @@ import CardList from "~components/Gallery/CardList";
 import CardSwiper from "~components/Gallery/CardSwiper";
 import CardModal from "~components/Gallery/CardModal/CardModal";
 import GalleryTop from "~components/Gallery/GalleryTop";
+import WinnerSection from "~components/Gallery/WinnerSection";
 import { useTranslation } from "next-i18next";
 import TextShadow from "~components/TextShadow";
 import { NextSeo } from "next-seo";
@@ -18,7 +19,8 @@ const Gallery: NextPage = () => {
       <NextSeo title={t("seo.title")} description={t("seo.description")} />
       <CardModal />
       <GalleryTop />
-      <Container id="top-10">
+      <WinnerSection />
+      {/* <Container id="top-10">
         <Flex alignItems="center" pt={20} pb={3}>
           <TextShadow
             as="h2"
@@ -29,11 +31,8 @@ const Gallery: NextPage = () => {
           />
         </Flex>
       </Container>
-      <CardSwiper />
-      <Container>
-        <CardList />
-      </Container>
-      <Box as="footer" h="400px" mt={20} bgColor="pokeball"></Box>
+      <CardSwiper /> */}
+      <CardList />
     </>
   );
 };
