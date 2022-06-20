@@ -26,6 +26,7 @@ export const exportCard = () => {
 };
 
 export interface FormatValue {
+  author: string;
   name: string;
   hp: string;
   element: Element;
@@ -44,6 +45,7 @@ export interface FormatValue {
 
 export const formatValues = (values): FormatValue => {
   return {
+    author: values.author,
     name: values.name,
     hp: values.hp.value,
     element: values.type.value,

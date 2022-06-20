@@ -7,7 +7,7 @@ import CardList from "~components/Gallery/CardList";
 import CardSwiper from "~components/Gallery/CardSwiper";
 import CardModal from "~components/Gallery/CardModal/CardModal";
 import GalleryTop from "~components/Gallery/GalleryTop";
-import WinnerSection from "~components/Gallery/WinnerSection";
+import WinnerSection from "~components/Gallery/Winner/WinnerSection";
 import { useTranslation } from "next-i18next";
 import TextShadow from "~components/TextShadow";
 import { NextSeo } from "next-seo";

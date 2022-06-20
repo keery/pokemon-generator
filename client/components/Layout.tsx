@@ -29,7 +29,7 @@ const Layout = ({ children }: Props) => {
         {pathname !== "/" && <Header noColorChange />}
         {children}
       </Flex>
-      <Footer />
+      {pathname !== "/" ? <Footer /> : ""}
     </>
   );
 };

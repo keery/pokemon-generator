@@ -6,16 +6,16 @@ interface Props {
   degree?: number;
 }
 
-const default_text = "Vote to elect a winner";
+const default_text = "Congratulation";
 
-const RotatingWord = ({ text = default_text, degree = 16 }: Props) => {
+const RotatingWord = ({ text = default_text, degree = 26 }: Props) => {
   return (
     <Flex userSelect="none" pointerEvents="none" pos="relative">
       <Flex
         animation="rotate 7.5s linear infinite"
         pos="relative"
-        w="150px"
-        h="150px"
+        w="120px"
+        h="120px"
         layerStyle="glass"
         borderRadius="100%"
         borderColor="black"
@@ -30,7 +30,7 @@ const RotatingWord = ({ text = default_text, degree = 16 }: Props) => {
               as="span"
               textTransform="uppercase"
               pos="absolute"
-              transformOrigin="0 75px"
+              transformOrigin="0 60px"
               top="0"
               left="50%"
               fontWeight="900"

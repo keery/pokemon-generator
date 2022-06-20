@@ -80,7 +80,11 @@ const Card = () => {
   );
 
   const preserveRatioCanva = () => {
-    if (typeof containerRef !== "undefined" && typeof imgRef !== "undefined") {
+    if (
+      typeof containerRef !== "undefined" &&
+      typeof imgRef !== "undefined" &&
+      containerRef.current
+    ) {
       containerRef.current.style.width = `${imgRef.current.width}px`;
       containerRef.current.style.height = `${imgRef.current.height}px`;
     }

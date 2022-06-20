@@ -25,6 +25,9 @@ export class Card {
   id: number
 
   @Column()
+  author: string
+
+  @Column()
   img: string
 
   @Column()

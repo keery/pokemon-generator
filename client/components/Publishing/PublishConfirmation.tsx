@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "~components/Modal";
-import { Flex, Text, Checkbox, Button } from "@chakra-ui/react";
+import { Flex, Text, Checkbox, Button, Input } from "@chakra-ui/react";
 import { useTranslation, Trans } from "next-i18next";
 import Link from "~components/Link";
 import PublishedSuccess from "~components/Publishing/PublishedSuccess";
@@ -10,6 +10,7 @@ import { useFormContext } from "react-hook-form";
 import { getPublishData } from "~utils/card";
 import usePublishCard from "~hooks/usePublishCard";
 import useToast from "~hooks/useToast";
+import Field from "~components/Field";
 
 interface Props {
   children: React.ReactNode;
@@ -19,26 +20,28 @@ interface Props {
 
 const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
   const { t } = useTranslation("generator");
+  const [author, setAuthor] = useState("");
   const [isChecked, setChecked] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [isPublished, setPublished] = useState(false);
   const { getValues } = useFormContext();
+  const { errorToast } = useToast();
+
   const { mutate } = usePublishCard({
     onMutate: () => setLoading(true),
     onSettled: () => setLoading(false),
     onSuccess: () => {
-      // setPublished(true);
-      // setChecked(false);
-      // onClose();
+      setPublished(true);
+      setChecked(false);
+      onClose();
     },
     onError: () => {
       errorToast(t("publishFailed"));
     },
   });
-  const { errorToast } = useToast();
 
   const onSubmit = async () => {
-    const values = await getPublishData(getValues());
+    const values = await getPublishData({ ...getValues(), author });
     await mutate(values);
   };
 
@@ -56,9 +59,20 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
         title={t("publish.confirm.title")}
       >
         <Flex>{t("publish.confirm.desc")}</Flex>
+
+        <Field label={`${t("publish.confirm.author.label")} *`} mt="1rem">
+          <Input
+            isRequired
+            onChange={(e) => setAuthor(e.target.value)}
+            placeholder={t("publish.confirm.author.placeholder")}
+            maxLength={40}
+          />
+        </Field>
+
         <WarningBox my={6} fontSize="0.9rem">
           {t("publish.confirm.warning")}
         </WarningBox>
+
         <Flex bgColor="#f7f7f7" borderRadius="sm" px={6} py={6}>
           <Flex as="label" alignItems="flex-start">
             <Checkbox
@@ -83,7 +97,7 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
         <Flex justifyContent="flex-end" pt={4}>
           <Button
             isLoading={isLoading}
-            isDisabled={!isChecked}
+            isDisabled={!isChecked || author === ""}
             onClick={onSubmit}
           >
             {t("publish.button")}

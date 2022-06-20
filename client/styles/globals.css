@@ -639,20 +639,17 @@ a {
   border-radius: 23px;
 }
 
-.holo-card.active:after,
-.holo-card:hover:after {
+.holo-card.active:after {
   filter: brightness(1) contrast(1);
   opacity: 1;
 }
 
-.holo-card.active,
-.holo-card:hover {
+.holo-card.active {
   animation: none;
   transition: box-shadow 0.1s ease-out;
 }
 
-.holo-card.active:before,
-.holo-card:hover:before {
+.holo-card.active:before {
   animation: none;
   background-image: linear-gradient(
     110deg,
@@ -669,9 +666,7 @@ a {
 }
 
 .holo-card.active:before,
-.holo-card:hover:before,
-.holo-card.active:after,
-.holo-card:hover:after {
+.holo-card.active:after {
   animation: none;
   transition: none;
 }

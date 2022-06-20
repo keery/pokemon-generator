@@ -27,6 +27,10 @@ import { getIp } from '~utils/ip'
 import { Request } from 'express'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository, getConnection } from 'typeorm'
+import startOfWeek from 'date-fns/startOfWeek'
+import endOfWeek from 'date-fns/endOfWeek'
+import format from 'date-fns/format'
+import addDays from 'date-fns/addDays'
 
 @Crud({
   model: {
@@ -62,6 +66,7 @@ export class CardController {
     }
 
     card.slug = createSlug(body.name)
+    card.author = body.author
     card.name = body.name
     card.hp = body.hp
     card.element = body.element
@@ -127,7 +132,28 @@ export class CardController {
   @Get('count')
   async getCount() {
     const res = await this.service.countCards()
-    console.log(res)
     return res
+  }
+
+  @Get('winner')
+  async getWinner() {
+    const date = new Date()
+    const start = format(startOfWeek(date, { weekStartsOn: 1 }), 'yyyy-MM-dd')
+    const end = format(
+      addDays(endOfWeek(date, { weekStartsOn: 1 }), 1),
+      'yyyy-MM-dd',
+    )
+
+    const res = await getConnection().query(`
+    SELECT card.*, CAST(COUNT(l.id) as INT) as likes
+    FROM card
+    LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
+    WHERE l.created_at between '${start}' and '${end}'
+    GROUP BY card.id
+    ORDER BY likes DESC
+    LIMIT 1
+    `)
+
+    return res.length > 0 ? res[0] : null
   }
 }

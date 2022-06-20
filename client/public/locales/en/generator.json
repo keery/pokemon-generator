@@ -86,7 +86,11 @@
             "title": "Confirm publication",
             "desc": "Publish your beautiful card to add it into the galery and to share it with the community, it will be public and eligible for votes",
             "warning": "The card must not contain information that is illegal, disrespectful or likely to infringe the rights of a third party.",
-            "checkbox": "By checking this box, I acknowledge having read and accepted the <a>General Conditions of Use</a>."
+            "checkbox": "By checking this box, I acknowledge having read and accepted the <a>General Conditions of Use</a>.",
+            "author": {
+                "label": "Author name",
+                "placeholder": "Ex: Sacha"
+            }
         },
         "success": {
             "title": "Yeaaaah !",

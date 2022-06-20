@@ -139,6 +139,11 @@ const theme = extendTheme({
       backgroundColor: "rgb(255 255 255 / 50%)",
       border: "1px solid rgb(255 255 255 / 60%)",
     },
+    glassLg: {
+      backdropFilter: "blur(10px) saturate(180%)",
+      backgroundColor: "rgb(255 255 255 / 65%)",
+      border: "1px solid rgb(255 255 255 / 60%)",
+    },
     glassModal: {
       backdropFilter: "blur(15px) saturate(180%)",
       backgroundColor: "rgba(255, 255, 255, 0.28)",

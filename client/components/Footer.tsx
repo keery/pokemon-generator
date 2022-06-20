@@ -104,7 +104,7 @@ const Footer = () => {
 
           {!isLoading && (
             <Flex>
-              <b>{nbCards.toLocaleString()}</b>
+              <b>{Boolean(nbCards) ? nbCards.toLocaleString() : 0}</b>
               <Text ml="0.3rem">{t("footer.cardCreated")}</Text>
               <Image src={LOGO} alt={`Pokeball`} w="1.5rem" ml="0.7rem" />
             </Flex>

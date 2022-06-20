@@ -192,7 +192,7 @@ const CardModal = ({ card, cachedQuery }: Props) => {
             >
               <Box opacity="0" animation={`${fadeAnimation} 300ms`}>
                 <Text fontWeight="300">
-                  Créé le {dateToText(card.created_at)}
+                  Créé le {dateToText(card.created_at)} par <b>{card.author}</b>
                 </Text>
                 <HStack
                   mt="1rem"

@@ -2,6 +2,7 @@ import { Element } from "~@types/CardGenerator";
 
 export interface Card {
   id: number;
+  author: string;
   name: string;
   slug: string;
   hp: string;
