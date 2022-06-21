@@ -88,7 +88,7 @@
             "warning": "The card must not contain information that is illegal, disrespectful or likely to infringe the rights of a third party.",
             "checkbox": "By checking this box, I acknowledge having read and accepted the <a>General Conditions of Use</a>.",
             "author": {
-                "label": "Author name",
+                "label": "Author's name",
                 "placeholder": "Ex: Sacha"
             }
         },

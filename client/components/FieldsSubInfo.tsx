@@ -20,24 +20,17 @@ const FieldsSubInfo = () => {
       <Field label={t("weaknessType")}>
         <Select
           name="weaknessType"
-          control={control}
           options={ELEMENTS_OPTIONS}
           isClearable
           iconPath="1-gen/{{value}}.png"
         />
       </Field>
       <Field label={t("weaknessAmount")}>
-        <Select
-          name="weaknessAmount"
-          control={control}
-          options={WEAKNESS_OPTIONS}
-          isClearable
-        />
+        <Select name="weaknessAmount" options={WEAKNESS_OPTIONS} isClearable />
       </Field>
       <Field label={t("resistanceType")}>
         <Select
           name="resistanceType"
-          control={control}
           options={ELEMENTS_OPTIONS}
           iconPath="1-gen/{{value}}.png"
           isClearable
@@ -46,7 +39,6 @@ const FieldsSubInfo = () => {
       <Field label={t("resistanceAmount")}>
         <Select
           name="resistanceAmount"
-          control={control}
           options={RESISTANCE_OPTIONS}
           isClearable
         />
@@ -54,7 +46,6 @@ const FieldsSubInfo = () => {
       <Field label={t("retreat")}>
         <Select
           name="retreat"
-          control={control}
           options={RETREAT_OPTIONS}
           isClearable
           iconPath="1-gen/normal.png"

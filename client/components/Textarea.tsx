@@ -5,16 +5,15 @@ import {
   useColorMode,
   Box,
 } from "@chakra-ui/react";
-import { Control, useController, useWatch } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 interface Props extends TextareaProps {
-  control: Control;
   name: string;
 }
 
-const Textarea = ({ control, name, ...rest }: Props) => {
-  const { field } = useController({ control, name });
-  const value = useWatch({ control, name });
+const Textarea = ({ name, ...rest }: Props) => {
+  const { watch, setValue } = useFormContext();
+  const value = watch(name);
   const { colorMode } = useColorMode();
 
   return (
@@ -32,7 +31,7 @@ const Textarea = ({ control, name, ...rest }: Props) => {
       <TextareaChakra
         variant={colorMode === "dark" ? "nes" : "outline"}
         name={name}
-        onChange={(e) => field.onChange(e.target.value)}
+        onChange={(e) => setValue(name, e.target.value)}
         value={value}
         {...rest}
       />

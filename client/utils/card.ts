@@ -83,7 +83,6 @@ export const getPublishData = async (formValues) => {
   const formData = new FormData();
   const img = await getImgFromCard();
   const formattedValues = formatValues(formValues);
-
   formData.append("img", img);
   Object.keys(formattedValues).map((key) => {
     formData.append(key, formattedValues[key]);

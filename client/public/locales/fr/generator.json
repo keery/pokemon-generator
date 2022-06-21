@@ -85,7 +85,7 @@
         },
         "confirm": {
             "author": {
-                "label": "Nom de l'auteur",
+                "label": "Nom de l'auteur(e)",
                 "placeholder": "Ex: Sacha"
             },
             "title": "Confirmer la publication",

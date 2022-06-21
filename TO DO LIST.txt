@@ -36,11 +36,12 @@ Voir si je trouve des bonnes idées de filtre supplémentaire pour les cartes
 Voir si les modals pour publier la carte sont belles si on utilise le glassmorphism
 Double tap pour liker carte en mobile
 Tester like bouton dans modal, possible d'avoir -1
-Majuscule a tous les mots sur le choix du filtre type liste
 Compteur pour savoir quand sera la prochaine éléction de carte
 Faire un cron qui s'execute chaque semaine pour ajouter dans une table de bdd le gagnant, et avoir le numero de gagnant et pouvoir toujours afficher le dernier gagnant
-Bug obliger de resize la photo d'une carte a l'upload
+Bug obliger de resize la photo d'une carte a l'upload, faire que la photo déborde de base pour prendre la largeut et hauteur au complet
 L'element qui s'enregistre en bdd n'est pas le bon
+Checker pays auteur carte
+Autoriser seulement les chiffres dans le numéro de collection
 
 --------------------------
 

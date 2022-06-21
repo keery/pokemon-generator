@@ -1,12 +1,7 @@
 import React, { useRef } from "react";
 import { Box, Select } from "@chakra-ui/react";
 import { Select as SelectType } from "~@types/CardGenerator";
-import {
-  Control,
-  useController,
-  useWatch,
-  useFormContext,
-} from "react-hook-form";
+import { Control, useWatch, useFormContext } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";

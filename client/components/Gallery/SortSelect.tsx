@@ -77,12 +77,10 @@ const getStyle = (theme, fontSize) => {
     option: (styles, { isSelected }) => {
       return {
         ...styles,
-        textTransform: "capitalize",
         display: "flex",
         alignItems: "center",
         color: theme.colors.gray[800],
         fontFamily: theme.fonts.title,
-        fontWeight: 800,
         fontSize: "1.3rem",
         backgroundColor: isSelected ? "rgb(81 111 179 / 33%)" : "transparent",
         ":hover": {

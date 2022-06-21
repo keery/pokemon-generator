@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme, useColorMode } from "@chakra-ui/react";
 import ReactSelect from "react-select";
-import { useController, Control, useWatch } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 
@@ -155,7 +155,6 @@ const getStyle = (theme, iconPath, colorMode) => {
 
 interface Props {
   name: string;
-  control: Control<any>;
   placeholder?: string;
   isClearable?: boolean;
   iconPath?: string;
@@ -165,7 +164,6 @@ interface Props {
 
 const Select = ({
   name,
-  control,
   options,
   placeholder = "",
   iconPath = null,
@@ -173,16 +171,13 @@ const Select = ({
   onChange = null,
 }: Props) => {
   const { t } = useTranslation("generator");
+  const { watch, setValue } = useFormContext();
   const { colorMode } = useColorMode();
   const theme = useTheme();
-  const { field } = useController({
-    name,
-    control,
-  });
-  const value = useWatch({ control, name });
+  const value = watch(name);
 
   const onChangeSelect = (data) => {
-    field.onChange(data || "");
+    setValue(name, data || "");
     if (onChange) {
       onChange(data);
     }

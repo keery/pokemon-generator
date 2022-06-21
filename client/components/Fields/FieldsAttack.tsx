@@ -32,22 +32,13 @@ const FieldsAttack = ({ name }) => {
         <Input name={`${name}Name`} id={`field-${name}`} />
       </Field>
       <Field label={t("damage")}>
-        <Select
-          name={`${name}Damage`}
-          options={optionsDamage}
-          control={control}
-          isClearable
-        />
+        <Select name={`${name}Damage`} options={optionsDamage} isClearable />
       </Field>
       <Field label={t("info")}>
-        <Textarea name={`${name}Info`} control={control} />
+        <Textarea name={`${name}Info`} />
       </Field>
       <Field label={t("amount")}>
-        <Select
-          name={`${name}Amount`}
-          options={optionsAmount}
-          control={control}
-        />
+        <Select name={`${name}Amount`} options={optionsAmount} />
       </Field>
       <Field label={t("type")}>
         <Select
@@ -55,7 +46,6 @@ const FieldsAttack = ({ name }) => {
           isClearable
           options={optionsType}
           iconPath="1-gen/{{value}}.png"
-          control={control}
         />
       </Field>
     </>

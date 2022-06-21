@@ -52,6 +52,7 @@ const CardModalAttack = ({
       {damage && (
         <Flex pl="1.5rem" ml="1.5rem" borderLeft="1px solid #a0aebf">
           <Text
+            whiteSpace="nowrap"
             fontSize="2.6rem"
             fontWeight="200"
             alignSelf="center"
