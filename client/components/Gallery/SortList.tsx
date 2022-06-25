@@ -4,7 +4,7 @@ import { Flex, Box, Container } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 import Title from "~components/Title";
-import useIntersectionObserver from "~hooks/useIntersectionObserver";
+import useIsIntersecting from "~hooks/useIsIntersecting";
 
 interface Props {
   onChange: (e: any) => void;
@@ -37,12 +37,12 @@ const SortList = ({ onChange }: Props) => {
     },
   ];
 
-  const isReduced = useIntersectionObserver(ref, {
+  const isReduced = useIsIntersecting(ref, {
     threshold: 1,
     rootMargin: "-15px 0px 0px 0px",
   });
 
-  const isSticky = useIntersectionObserver(ref, {
+  const isSticky = useIsIntersecting(ref, {
     threshold: 1,
     rootMargin: "0px 0px 500px 0px",
   });

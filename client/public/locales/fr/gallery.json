@@ -24,6 +24,20 @@
       "mostVoted": "Les mieux notées",
       "random": "Au hasard"
     },
-    "loadMoreCards": "Voir plus de cartes"
+    "loadMoreCards": "Voir plus de cartes",
+    "winner": {
+      "title": "Gagnant de la semaine",
+      "congratule": "Féliciter le gagnant",
+      "createdBy": "Créée par"
+    },
+    "modal": {
+      "created": "Créée le {{date}} par <b>{{author}}</b>",
+      "description": "Description",
+      "type": "Type",
+      "likes": "Likes",
+      "like": "J'aime",
+      "liked": "J'aime",
+      "shareSocial": "Regardez! J'ai créé {{name}} ma nouvelle carte Pokemon {{href}}"
+    }
   }
   

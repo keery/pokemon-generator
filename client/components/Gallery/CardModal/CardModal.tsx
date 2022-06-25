@@ -33,6 +33,7 @@ import useKeybordShortcut from "~hooks/useKeybordShortcut";
 import Heart from "public/assets/img/heart.svg";
 import Report from "public/assets/img/report.svg";
 import { CachedQuery } from "~@types/CachedQuery";
+import { useTranslation, Trans } from "next-i18next";
 
 interface Props {
   card: Card;
@@ -93,6 +94,7 @@ const getNextPrevAnimation = (orderPrev, orderNext) => {
 };
 
 const CardModal = ({ card, cachedQuery }: Props) => {
+  const { t } = useTranslation("gallery");
   const [animation, setAnimation] = useState("");
   const setCard = useSetRecoilState(cardModalAtom);
   const onClose = () => {
@@ -192,7 +194,16 @@ const CardModal = ({ card, cachedQuery }: Props) => {
             >
               <Box opacity="0" animation={`${fadeAnimation} 300ms`}>
                 <Text fontWeight="300">
-                  Créé le {dateToText(card.created_at)} par <b>{card.author}</b>
+                  <Trans
+                    i18nKey="gallery:modal.created"
+                    values={{
+                      date: dateToText(card.created_at),
+                      author: card.author,
+                    }}
+                    components={{
+                      b: <b />,
+                    }}
+                  />
                 </Text>
                 <HStack
                   mt="1rem"
@@ -203,16 +214,19 @@ const CardModal = ({ card, cachedQuery }: Props) => {
                   justifyContent="space-between"
                 >
                   <CardModalAttribute
-                    label="Type"
+                    label={t("modal.type")}
                     value={<CardElement element={card.element} mt="0.2rem" />}
                   />
                   <CardModalAttribute label="HP" value={card.hp} />
-                  <CardModalAttribute label="Likes" value={card.likes ?? 0} />
+                  <CardModalAttribute
+                    label={t("modal.likes")}
+                    value={card.likes ?? 0}
+                  />
                 </HStack>
                 {card.description && (
                   <>
                     <Text fontWeight="800" mr="0.8rem" fontSize="1.4rem">
-                      Description
+                      {t("modal.description")}
                     </Text>
                     <Text noOfLines={4} fontWeight="300">
                       {card.description}

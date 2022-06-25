@@ -4,6 +4,7 @@ import { ELECTRIC, PSYCHIC, FIGHTING, WATER } from "~constants";
 import { Card } from "~@types/Card";
 import { Element } from "~@types/CardGenerator";
 import { m, useTransform, useViewportScroll } from "framer-motion";
+import { screenPercent } from "~utils/helper";
 
 interface Props {
   winner: Card;
@@ -46,12 +47,13 @@ const WinnerBlobs = ({ winner }: Props) => {
     : "color-dodge";
   const element = winner ? winner.element : WATER;
   const { scrollY } = useViewportScroll();
+  const start = screenPercent(90);
 
-  const x1 = useTransform(scrollY, [700, 800], [-300, 0]);
-  const x2 = useTransform(scrollY, [700, 800], [-200, 0]);
-  const y1 = useTransform(scrollY, [700, 1000], [0, 150]);
-  const y2 = useTransform(scrollY, [700, 1000], [0, 150]);
-  const opacity = useTransform(scrollY, [700, 750], [0, 1]);
+  const x1 = useTransform(scrollY, [start, screenPercent(106)], [-300, 0]);
+  const x2 = useTransform(scrollY, [start, screenPercent(106)], [-200, 0]);
+  const y1 = useTransform(scrollY, [start, screenPercent(117)], [0, 150]);
+  const y2 = useTransform(scrollY, [start, screenPercent(117)], [0, 150]);
+  const opacity = useTransform(scrollY, [start, screenPercent(106)], [0, 1]);
 
   return (
     <>
@@ -67,7 +69,7 @@ const WinnerBlobs = ({ winner }: Props) => {
         mixBlendMode={mixBlendMode}
         background={BLOB_GRADIENTS[element][0]}
         pos="absolute"
-        top="250px"
+        top="50px"
         left="200px"
         borderRadius="36.0512% 63.9488% 65.7321% 34.2679% / 51.0107% 53.7726% 46.2274% 48.9893%"
       />
@@ -83,7 +85,7 @@ const WinnerBlobs = ({ winner }: Props) => {
         mixBlendMode={mixBlendMode}
         background={BLOB_GRADIENTS[element][1]}
         pos="absolute"
-        top="300px"
+        top="100px"
         left="250px"
         borderRadius="56.4253% 43.5747% 33.7529% 66.2471% / 52.5661% 47.8477% 52.1523% 47.4339%"
       />

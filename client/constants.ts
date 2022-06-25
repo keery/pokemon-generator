@@ -147,7 +147,7 @@ export const GRADIENTS: Record<Element, any> = {
   normal:
     "linear-gradient(45deg, rgb(0 0 0 / 31%), rgb(105 108 111 / 28%) 45%, rgb(39 39 39 / 42%) 71%, rgb(61 64 64 / 4%))",
   water:
-    "linear-gradient(45deg, rgba(63, 128, 254, 0.31), rgba(10, 121, 251, 0.16) 45%, rgba(63, 125, 254, 0.42) 71%, rgba(74, 210, 202, 0.3))",
+    "linear-gradient(45deg, rgb(63 128 254 / 37%), rgb(10 121 251 / 30%) 45%, rgb(63 125 254 / 54%) 71%, rgba(74, 210, 202, 0.3))",
   fire: "linear-gradient(45deg, rgb(255 0 0 / 31%), rgb(251 10 10 / 16%) 45%, rgb(254 63 63 / 42%) 71%, rgb(255 140 193 / 30%))",
   grass:
     "linear-gradient(45deg, rgb(76 255 98 / 31%), rgb(0 97 51 / 16%) 45%, rgb(149 255 68 / 42%) 71%, rgb(193 218 54 / 30%))",

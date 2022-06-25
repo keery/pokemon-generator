@@ -8,6 +8,7 @@ import { useSetRecoilState } from "recoil";
 import { cardModalAtom } from "~atoms/card-modal";
 import { motion } from "framer-motion";
 import { CachedQuery } from "~@types/CachedQuery";
+import { useTranslation } from "next-i18next";
 
 interface Props extends ButtonProps {
   card: Card;
@@ -15,6 +16,7 @@ interface Props extends ButtonProps {
 }
 
 const LikeButton = ({ card, cachedQuery, ...rest }: Props) => {
+  const { t } = useTranslation("gallery");
   const queryClient = useQueryClient();
   const setCard = useSetRecoilState(cardModalAtom);
   const [isLiked, setLiked] = useState(card?.has_liked > 0);
@@ -132,7 +134,7 @@ const LikeButton = ({ card, cachedQuery, ...rest }: Props) => {
         />
       </Flex>
       <Flex flexDirection="column" fontSize="1.2rem" userSelect="none">
-        {isLiked ? "Liked" : "Like"}
+        {isLiked ? t("modal.liked") : t("modal.like")}
       </Flex>
     </motion.div>
   );

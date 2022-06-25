@@ -6,7 +6,7 @@ import Facebook from "public/assets/img/facebook.svg";
 import Twitter from "public/assets/img/twitter.svg";
 import Email from "public/assets/img/email.svg";
 import { Card } from "~@types/Card";
-import { printCard } from "~utils/card";
+import { useTranslation } from "next-i18next";
 
 enum Actions {
   PRINT = "print",
@@ -20,6 +20,7 @@ interface Props {
 }
 
 const CardModalActions = ({ card }: Props) => {
+  const { t } = useTranslation("gallery");
   const [active, setActive] = useState(null);
 
   const onFacebook = () => {
@@ -32,7 +33,10 @@ const CardModalActions = ({ card }: Props) => {
 
   const onTwitter = () => {
     const currentUrl = encodeURIComponent(
-      `Check this out! I created ${card.name} my new pokemon card ${window.location.href}`
+      t("modal.shareSocial", {
+        name: card.name,
+        href: window.location.href,
+      })`Check this out! I created ${card.name} my new pokemon card ${window.location.href}`
     );
 
     window.open(

@@ -11,7 +11,7 @@ const GalleryTop = () => {
   return (
     <>
       <WavesBackground />
-      <Box pos="relative">
+      <Box pos="relative" h="100vh">
         <Box fontSize="11rem" fontWeight="800" fontFamily="title">
           {/* <Marquee gradient={false} speed={120}>
             <div>Monthly winner</div>

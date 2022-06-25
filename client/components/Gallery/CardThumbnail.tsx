@@ -1,9 +1,9 @@
 import React from "react";
-import { AspectRatio, LinkBox } from "@chakra-ui/react";
+import { AspectRatio, LinkBox, Box } from "@chakra-ui/react";
 import LinkOverlay from "~components/LinkOverlay";
 import { getHrefCardModal } from "~utils/card";
 import CardImage from "~components/Gallery/CardImage";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
 import { CachedQuery, Card } from "~@types";
@@ -21,7 +21,7 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
   return (
     <LinkBox
       role="group"
-      as={motion.div}
+      as={m.div}
       whileTap={{
         scale: 0.9,
       }}
@@ -35,7 +35,7 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
           setCard({ card, cachedQuery });
         }}
       />
-      <motion.div
+      <m.div
         transition={{ ease: "linear", duration: 0.1 }}
         style={{
           position: "relative",
@@ -44,14 +44,15 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
         }}
       >
         <AspectRatio
-          as={motion.div}
+          as={m.div}
           ratio={500 / 700}
           pos="relative"
           borderRadius="1.4rem"
           overflow="hidden"
           transform="translateZ(0)"
         >
-          <motion.div
+          <Box
+            as={m.div}
             // @ts-ignore
             transition={{ ease: "linear", duration: 0.1 }}
             style={{
@@ -61,9 +62,9 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
             }}
           >
             <CardImage card={card} />
-          </motion.div>
+          </Box>
         </AspectRatio>
-      </motion.div>
+      </m.div>
     </LinkBox>
   );
 };

@@ -1,27 +1,18 @@
-Publish card and see collections
 Bouton report pour les cartes
-Traduction card modal
-Ajouter un nom d'auteur pour signer la carte et l'ajouter dans la modal
 Ajouter un email non obligatoire pour suivre les resultats de popularité de sa carte
 Ajouter un badge gagnant/second/troisieme du mois dans la modal
 Publier carte sur ecran tablette et mobile, pas de bouton
 Obliger utilisateur d'avoir une attaque complète avec tous les champs avant de publier
 use skeleton quand on ouvre la modal via l'url pas en cliquant sur une carte
-Card element n'est pas le bon apres avoir publié
-Bouton publier qui reste de la mauvaise couleur apres avoir changé l'element
 Animation cool lorsqu'on appuie sur like depuis la modal
 Newsletter, card of the day
 Likes number is not working well when switching card with arrows
 Gerer scroll a l'interieur de la modal si beaucoup de contenu
 reduire taille des animations avec https://www.framer.com/docs/guide-reduce-bundle-size/#how-to-reduce-bundle-size
-MotionValues instead of state to update visual properties will also avoid re-renders.: https://www.framer.com/docs/component/##performance
 faire le footer
 Refaire le logo https://dribbble.com/shots/18325875-Logo-Design-For-PokeBall-Gadgets-Electric-machine-logo
-Traduire texte lorsquon partage sur twitter/mail/facebook
 OG Image sur twitter ne marche pas
 checker print sur tous les navigateurs
-Voir pour faire le bouton like comme celui publier en glassmorphism
-faire des changements de couleur au scroll du background
 NFT a vendre pour chaque carte
 bouton remonter en haut dans la liste (voir dribbble)
 trouver un effet au hover sur les cartes (maybe l'effet de brillance comme sur le bouton ou la carte gagnante)
@@ -29,19 +20,17 @@ faire le sitemap
 Faire la page de la carte sans la modal
 FAQ ?
 Page contact
-Faire descendre la carte en presentation en meme temps que le scroll ou une section juste pour la presenter plus bas, a choisir
 Afficher seulement les cartes publiées
 Faire un check que j'utilise bien les balises HTML5
-Voir si je trouve des bonnes idées de filtre supplémentaire pour les cartes
+Voir si je trouve des bonnes idées de filtre supplémentaire pour les cartes (mot clé ?)
 Voir si les modals pour publier la carte sont belles si on utilise le glassmorphism
 Double tap pour liker carte en mobile
 Tester like bouton dans modal, possible d'avoir -1
 Compteur pour savoir quand sera la prochaine éléction de carte
 Faire un cron qui s'execute chaque semaine pour ajouter dans une table de bdd le gagnant, et avoir le numero de gagnant et pouvoir toujours afficher le dernier gagnant
 Bug obliger de resize la photo d'une carte a l'upload, faire que la photo déborde de base pour prendre la largeut et hauteur au complet
-L'element qui s'enregistre en bdd n'est pas le bon
 Checker pays auteur carte
-Autoriser seulement les chiffres dans le numéro de collection
+Faire un menu rapide sur la page gallerie pour switcher rapidement entre les differentes section
 
 --------------------------
 

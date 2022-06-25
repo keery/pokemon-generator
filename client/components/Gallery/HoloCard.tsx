@@ -3,6 +3,7 @@ import { Box, BoxProps } from "@chakra-ui/react";
 import { m, useTransform, useViewportScroll } from "framer-motion";
 import useElementSize from "~hooks/useElementSize";
 import useWinner from "~hooks/useWinner";
+import { screenPercent } from "~utils/helper";
 
 const styleReflects: BoxProps = {
   position: "absolute",
@@ -20,36 +21,69 @@ const HoloCard = () => {
   const { scrollY } = useViewportScroll();
   const ref = useRef();
   const { width, parentWidth } = useElementSize(ref);
-  const { data: winner, isLoading } = useWinner();
+  const { data: winner } = useWinner();
 
-  const y = useTransform(scrollY, [0, 1000], [0, 1000]);
+  const y = useTransform(
+    scrollY,
+    [0, screenPercent(125)],
+    [0, screenPercent(125)]
+  );
   const x = useTransform(
     scrollY,
-    [0, 400, 600],
+    [0, screenPercent(50), screenPercent(75)],
     [0, 0, -(parentWidth / 2 - width)]
   );
-  const z = useTransform(scrollY, [300, 500], [1, 1.15]);
+  const z = useTransform(
+    scrollY,
+    [screenPercent(37), screenPercent(62)],
+    [1, 1.15]
+  );
 
   // Backface
-  const rotateZBackface = useTransform(scrollY, [0, 400, 600], [3, 3, 0]);
-  const rotateXBackface = useTransform(scrollY, [0, 400, 600], [6, 6, 0]);
+  const rotateZBackface = useTransform(
+    scrollY,
+    [0, screenPercent(50), screenPercent(75)],
+    [3, 3, 0]
+  );
+  const rotateXBackface = useTransform(
+    scrollY,
+    [0, screenPercent(50), screenPercent(75)],
+    [6, 6, 0]
+  );
+
   const rotateYBackface = useTransform(
     scrollY,
-    [0, 400, 600, 650, 850],
+    [
+      0,
+      screenPercent(50),
+      screenPercent(75),
+      screenPercent(82),
+      screenPercent(106),
+    ],
     [331, 331, 360, 360, 180]
   );
 
-  const opacity = useTransform(scrollY, [749, 750], [0, 1]);
-  const rotateYFronface = useTransform(scrollY, [0, 650, 850], [180, 180, 0]);
+  const halfRotation = (screenPercent(82) + screenPercent(106)) / 2;
+  const opacity = useTransform(
+    scrollY,
+    [halfRotation, halfRotation + 1],
+    [0, 1]
+  );
+  const rotateYFronface = useTransform(
+    scrollY,
+    [0, screenPercent(82), screenPercent(106)],
+    [180, 180, 0]
+  );
+
   const animationCard = useTransform(scrollY, (value) =>
-    value >= 860 ? "holoCard 12s ease 0s infinite" : ""
+    value >= screenPercent(107) ? "holoCard 12s ease 0s infinite" : ""
   );
 
   const animationGradient = useTransform(scrollY, (value) =>
-    value >= 860 ? "holoGradient 12s ease 0s infinite" : ""
+    value >= screenPercent(107) ? "holoGradient 12s ease 0s infinite" : ""
   );
   const animationSparkle = useTransform(scrollY, (value) =>
-    value >= 860 ? "holoSparkle 12s ease 0s infinite" : ""
+    value >= screenPercent(107) ? "holoSparkle 12s ease 0s infinite" : ""
   );
 
   return (
@@ -152,7 +186,6 @@ const HoloCard = () => {
             <Box
               as={m.div}
               {...styleReflects}
-              // opacity={1}
               backgroundImage='url("https://assets.codepen.io/13471/sparkles.gif"),
               url(https://assets.codepen.io/13471/holo.png),
               linear-gradient(

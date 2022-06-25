@@ -1,57 +1,119 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Flex, Container, Text, Box } from "@chakra-ui/react";
 import { m, useTransform, useViewportScroll } from "framer-motion";
 import { Card } from "~@types/Card";
+import { screenPercent } from "~utils/helper";
+import { GRADIENTS } from "~constants";
 import WinnerBlobs from "./WinnerBlobs";
+import WinnerConfettiButton from "./WinnerConfettiButton";
+import { useTranslation } from "next-i18next";
 
 interface Props {
   winner: Card;
 }
 
 const WinnerGlass = ({ winner }: Props) => {
+  const { t } = useTranslation("gallery");
   const { scrollY } = useViewportScroll();
-  const opacity = useTransform(scrollY, [700, 800], [0, 1]);
-  const y = useTransform(scrollY, [600, 1000], [0, 550]);
-  const yWaves = useTransform(scrollY, [600, 1000], [500, 300]);
+  const ref = useRef();
+
+  const opacity = useTransform(
+    scrollY,
+    [screenPercent(75), screenPercent(107)],
+    [0, 1]
+  );
+  const opacityWaves = useTransform(
+    scrollY,
+    [screenPercent(90), screenPercent(107)],
+    [0, 1]
+  );
+  const opacityBackground = useTransform(
+    scrollY,
+    [
+      screenPercent(70),
+      screenPercent(80),
+      screenPercent(190),
+      screenPercent(200),
+    ],
+    [0, 1, 1, 0]
+  );
+  const y = useTransform(
+    scrollY,
+    [screenPercent(75), screenPercent(107)],
+    [0, 200]
+  );
+  const yWaves = useTransform(
+    scrollY,
+    [screenPercent(75), screenPercent(107)],
+    [400, 200]
+  );
 
   return (
-    <Container>
-      <Box
-        as={m.div}
-        backgroundImage="assets/img/waves/waves.svg"
-        bgRepeat="no-repeat"
-        style={{
-          y: yWaves,
-          opacity,
-        }}
-        pos="absolute"
-        left="0"
-        right="0"
-        top="0"
-        bottom="0"
-      />
-      <WinnerBlobs winner={winner} />
-      <Flex
-        as={m.div}
-        layerStyle="glassLg"
-        w="fit-content"
-        flexDir="column"
-        pos="relative"
-        style={{
-          padding: "1.3rem 8rem 1.3rem 2.4rem",
-          border: "none",
-          borderRadius: "1rem",
-          opacity,
-          y,
-        }}
-      >
-        <Text fontFamily="title" fontWeight="800" fontSize="2rem">
-          Weekly winner 🏆
-        </Text>
-        <Text fontSize="1.2rem">{winner.name}</Text>
-        <Text fontSize="1.2rem">By {winner.name}</Text>
-      </Flex>
-    </Container>
+    <>
+      <Container ref={ref}>
+        <Box
+          as={m.div}
+          pos="fixed"
+          top="0"
+          left="0"
+          right="0"
+          bottom="0"
+          style={{
+            opacity: opacityBackground,
+          }}
+          _before={{
+            content: '""',
+            display: "block",
+            pos: "absolute",
+            left: "0",
+            right: "0",
+            top: "0",
+            bottom: "0",
+            bg: winner ? GRADIENTS[winner.element] : GRADIENTS.water,
+          }}
+        />
+        <m.div
+          style={{
+            backgroundImage: "url(assets/img/waves/waves.svg)",
+            backgroundRepeat: "no-repeat",
+            y: yWaves,
+            opacity: opacityWaves,
+            position: "absolute",
+            left: "0",
+            right: "0",
+            top: "0",
+            bottom: "0",
+          }}
+        />
+        <WinnerBlobs winner={winner} />
+        <Flex
+          as={m.div}
+          layerStyle="glassLg"
+          w="fit-content"
+          flexDir="column"
+          pos="relative"
+          style={{
+            width: "30rem",
+            padding: "1.3rem 2.4rem",
+            border: "none",
+            borderRadius: "1rem",
+            opacity,
+            y,
+          }}
+        >
+          <Text fontFamily="title" fontWeight="800" fontSize="2rem">
+            {t("winner.title")} 🏆
+          </Text>
+          <Text fontSize="1.2rem" layerStyle="ellipsis">
+            {winner.name}
+          </Text>
+          <Text fontSize="1.2rem" layerStyle="ellipsis">
+            {t("winner.createdBy")} <i>{winner.author}</i>
+          </Text>
+          <WinnerConfettiButton winner={winner} />
+        </Flex>
+      </Container>
+    </>
   );
 };
 

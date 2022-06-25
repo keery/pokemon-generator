@@ -5,7 +5,7 @@ import {
   InputProps,
   useColorMode,
 } from "@chakra-ui/react";
-import { Control, useFormContext } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 
 interface Props extends InputProps {
   name: string;

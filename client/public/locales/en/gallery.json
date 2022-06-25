@@ -24,6 +24,20 @@
       "mostVoted": "Most liked",
       "random": "Random"
     },
-    "loadMoreCards": "Load more cards"
+    "loadMoreCards": "Load more cards",
+    "winner": {
+      "title": "Weekly winner",
+      "congratule": "Congratulate winner",
+      "createdBy": "Created by"
+    },
+    "modal": {
+      "created": "Created on {{date}} by <b>{{author}}</b>",
+      "description": "Description",
+      "type": "Type",
+      "likes": "Likes",
+      "like": "Like",
+      "liked": "Liked",
+      "shareSocial": "Check this out! I created {{name}} my new pokemon card {{href}}"
+    }
   }
   

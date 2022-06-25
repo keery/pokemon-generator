@@ -14,8 +14,9 @@ import { NextSeo } from "next-seo";
 
 const Gallery: NextPage = () => {
   const { t } = useTranslation("gallery");
+
   return (
-    <>
+    <Box>
       <NextSeo title={t("seo.title")} description={t("seo.description")} />
       <CardModal />
       <GalleryTop />
@@ -33,7 +34,7 @@ const Gallery: NextPage = () => {
       </Container>
       <CardSwiper /> */}
       <CardList />
-    </>
+    </Box>
   );
 };
 

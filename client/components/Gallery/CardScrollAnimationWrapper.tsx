@@ -34,20 +34,20 @@ const CardScrollAnimationWrapper = ({
   const opacity = useTransform(scrollY, range, [0, 1]);
 
   return (
-    <motion.div
-      style={{
-        y,
-        opacity,
-        flex: 1,
-      }}
-      className="CardScrollAnimationWrapper"
-    >
-      <CardThumbnail
-        card={card}
-        cachedQuery={cachedQuery}
-        layoutPrefix={layoutPrefix}
-      />
-    </motion.div>
+    // <motion.div
+    //   style={{
+    //     y,
+    //     opacity,
+    //     flex: 1,
+    //   }}
+    //   className="CardScrollAnimationWrapper"
+    // >
+    <CardThumbnail
+      card={card}
+      cachedQuery={cachedQuery}
+      layoutPrefix={layoutPrefix}
+    />
+    // </motion.div>
   );
 };
 
