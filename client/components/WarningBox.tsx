@@ -12,10 +12,11 @@ const WarningBox = ({ children, ...rest }) => {
       px={8}
       py={5}
       direction="column"
+      color="#603c01"
       {...rest}
     >
       <Flex alignItems="center" pb={2} fontSize="1.3rem">
-        <Warning />
+        <Warning fill="#603c01" />
         <Text pl={2} fontWeight="bold" fontSize="1.1rem">
           {t("warning")}
         </Text>

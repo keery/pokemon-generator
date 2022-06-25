@@ -158,3 +158,13 @@ export const GRADIENTS: Record<Element, any> = {
   fighting:
     "linear-gradient(45deg, rgb(255 176 108), rgb(255 229 181) 45%, rgb(247 155 60 / 88%) 71%, rgb(202 102 17))",
 };
+
+export const GRADIENTS_COLOR: Record<Element, any> = {
+  water: "#363685",
+  psychic: "#3d194f",
+  electric: "#6e461d",
+  fire: "#5a2626",
+  fighting: "#542d13",
+  grass: "#1e5529",
+  normal: "#000000",
+};

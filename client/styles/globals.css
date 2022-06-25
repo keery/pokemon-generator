@@ -199,11 +199,30 @@ a {
 .uppy-DragDrop-container {
   background-color: transparent !important;
 }
+
 .uppy-DragDrop-inner {
   width: 100%;
   height: 100%;
 }
-
+.chakra-portal .uppy-Dashboard-inner {
+  background-color: transparent;
+}
+.chakra-portal .uppy-DashboardTab-btn,
+.chakra-portal .uppy-Dashboard-AddFiles-title {
+  color: white;
+}
+.chakra-portal .uppy-DashboardTab-btn:hover,
+.chakra-portal .uppy-DashboardTab-btn:active,
+.chakra-portal .uppy-DashboardTab-btn:focus {
+  background-color: rgba(255, 255, 255, 0.28);
+}
+.chakra-portal .uppy-Dashboard-browse {
+  color: #acd6ff;
+}
+.chakra-portal .uppy-Dashboard-browse:hover,
+.chakra-portal .uppy-Dashboard-browse:focus {
+  border-bottom-color: #acd6ff;
+}
 .chakra-ui-dark .uppy-Root {
   font-family: "Press Start 2P";
 }

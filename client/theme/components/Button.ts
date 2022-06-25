@@ -1,3 +1,5 @@
+import { GRADIENTS, GRADIENTS_COLOR } from "~constants";
+
 const Button = {
   baseStyle: {
     fontWeight: "500",
@@ -18,6 +20,85 @@ const Button = {
       borderRadius: "xl",
       _hover: {
         opacity: 0.8,
+      },
+    },
+    outline: {
+      color: "#bad3ff",
+      borderRadius: "xl",
+      bg: "transparent",
+      overflow: "hidden",
+      _hover: {
+        bg: "transparent",
+        _after: {
+          left: "100%",
+        },
+      },
+      _after: {
+        content: '""',
+        position: "absolute",
+        top: 0,
+        left: "-100%",
+        width: "100%",
+        height: "100%",
+        zIndex: 2,
+        background:
+          "linear-gradient( 120deg, transparent, rgba(255,255,255, 0.4), transparent )",
+        transition: "all 650ms",
+      },
+      _active: {
+        bg: "transparent",
+        transform: "scale(0.95)",
+        color: "#bad3ff",
+      },
+    },
+    glass: {
+      bg: "white",
+      color: GRADIENTS_COLOR.water,
+      pos: "relative",
+      overflow: "hidden",
+      borderRadius: "xl",
+      _before: {
+        content: '""',
+        position: "absolute",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        bg: GRADIENTS.water,
+        color: GRADIENTS_COLOR.water,
+        zIndex: 1,
+        borderRadius: "xl",
+      },
+      _after: {
+        content: '""',
+        position: "absolute",
+        top: 0,
+        left: "-100%",
+        width: "100%",
+        height: "100%",
+        zIndex: 2,
+        background:
+          "linear-gradient( 120deg, transparent, rgba(255,255,255, 0.4), transparent )",
+        transition: "all 650ms",
+      },
+      _hover: {
+        boxShadow: "1px 1px 25px 0px rgb(34 34 34 / 11%)",
+        _disabled: {
+          bg: "white",
+        },
+        _after: {
+          left: "100%",
+        },
+      },
+      _disabled: {
+        opacity: 0.6,
+      },
+      _active: {
+        transform: "scale(0.95)",
+        _before: {
+          bg: GRADIENTS.water,
+          color: GRADIENTS_COLOR.water,
+        },
       },
     },
     line: {

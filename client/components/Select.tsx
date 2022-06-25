@@ -5,7 +5,7 @@ import { useFormContext } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 
-const getStyle = (theme, iconPath, colorMode) => {
+const getStyle = (theme, iconPath, colorMode, hasColorInverted) => {
   const before = {
     content: '""',
     display: "inline-block",
@@ -41,9 +41,9 @@ const getStyle = (theme, iconPath, colorMode) => {
       }
       return {
         ...base,
-        color: theme.colors.main,
+        color: hasColorInverted ? "white" : theme.colors.main,
         ":hover": {
-          color: theme.colors.main,
+          color: hasColorInverted ? "white" : theme.colors.main,
         },
       };
     },
@@ -58,7 +58,11 @@ const getStyle = (theme, iconPath, colorMode) => {
     }),
     container: (base) => ({ ...base, width: "100%" }),
     indicatorSeparator: (base) => ({ ...base, backgroundColor: "#bdccde" }),
-    singleValue: (base) => ({ ...base, color: "#3b434c", fontWeight: "500" }),
+    singleValue: (base) => ({
+      ...base,
+      color: hasColorInverted ? "white" : "#3b434c",
+      fontWeight: "500",
+    }),
     menu: (base) => ({
       ...base,
       zIndex: "999",
@@ -158,6 +162,7 @@ interface Props {
   placeholder?: string;
   isClearable?: boolean;
   iconPath?: string;
+  hasColorInverted?: boolean;
   onChange?: (value: any) => void;
   options: Record<string, any>[];
 }
@@ -169,6 +174,7 @@ const Select = ({
   iconPath = null,
   isClearable = false,
   onChange = null,
+  hasColorInverted = false,
 }: Props) => {
   const { t } = useTranslation("generator");
   const { watch, setValue } = useFormContext();
@@ -188,7 +194,7 @@ const Select = ({
       name={name}
       placeholder={placeholder}
       options={options}
-      styles={getStyle(theme, iconPath, colorMode)}
+      styles={getStyle(theme, iconPath, colorMode, hasColorInverted)}
       onChange={onChangeSelect}
       isClearable={isClearable}
       menuPortalTarget={document.body}

@@ -136,8 +136,9 @@ const ModalResizeImg = ({
     onClose();
   };
 
-  const variantRemove = useColorModeValue("solid", "nes-button-red");
-  const variantConfirm = useColorModeValue("solid", "nes-button-blue");
+  const variantRemove = useColorModeValue("outline", "nes-button-red");
+  const variantConfirm = useColorModeValue("glass", "nes-button-blue");
+  const colorDeleteButton = useColorModeValue("#fb6565!important", "white");
   const borderRadius = useColorModeValue("sm", "none");
   const layerStyle = useColorModeValue("", "nes-container");
 
@@ -149,7 +150,7 @@ const ModalResizeImg = ({
       footer={
         <Flex justifyContent="space-between" w="100%">
           <Button
-            colorScheme="red"
+            color={colorDeleteButton}
             cursor="pointer"
             onClick={deleteFile}
             variant={variantRemove}

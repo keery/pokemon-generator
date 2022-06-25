@@ -174,6 +174,7 @@ const CardModal = ({ card, cachedQuery }: Props) => {
               fontSize="4.2rem"
               fontWeight="800"
               layerStyle="ellipsis"
+              pt="0.3rem"
               pr="2rem"
               variants={getNextPrevAnimation(0, 1)}
               animate={animation}

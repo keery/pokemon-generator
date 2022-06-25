@@ -40,7 +40,8 @@ const FormButton = () => {
           height="100%"
           layerStyle="glass"
           border="none"
-          bgColor="rgb(0 0 0 / 52%)"
+          backdropFilter="blur(25px) saturate(180%)"
+          backgroundColor="rgb(20 27 40 / 60%)"
         >
           <DrawerCloseButton
             zIndex={99}

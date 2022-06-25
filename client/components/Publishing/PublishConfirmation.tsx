@@ -73,7 +73,7 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
           {t("publish.confirm.warning")}
         </WarningBox>
 
-        <Flex bgColor="#f7f7f7" borderRadius="sm" px={6} py={6}>
+        <Flex borderRadius="sm" px={6} py={6} layerStyle="glassModal">
           <Flex as="label" alignItems="flex-start">
             <Checkbox
               size="lg"
@@ -88,7 +88,13 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
               <Trans
                 i18nKey="generator:publish.confirm.checkbox"
                 components={{
-                  a: <Link href={ROUTE_CGU} textDecoration="underline" />,
+                  a: (
+                    <Link
+                      href={ROUTE_CGU}
+                      textDecoration="underline"
+                      color="#acd6ff"
+                    />
+                  ),
                 }}
               />
             </Text>
@@ -99,6 +105,7 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
             isLoading={isLoading}
             isDisabled={!isChecked || author === ""}
             onClick={onSubmit}
+            variant="outline"
           >
             {t("publish.button")}
           </Button>

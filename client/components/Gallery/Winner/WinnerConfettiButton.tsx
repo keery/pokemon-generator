@@ -3,22 +3,11 @@ import confetti from "canvas-confetti";
 import { Button, Box } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import { Card } from "~@types/Card";
-import { GRADIENTS } from "~constants";
-import { Element } from "~@types/CardGenerator";
+import { GRADIENTS, GRADIENTS_COLOR } from "~constants";
 
 interface Props {
   winner: Card;
 }
-
-const color: Record<Element, any> = {
-  water: "#363685",
-  psychic: "#3d194f",
-  electric: "#6e461d",
-  fire: "#5a2626",
-  fighting: "#542d13",
-  grass: "#1e5529",
-  normal: "#000000",
-};
 
 const WinnerConfettiButton = ({ winner }: Props) => {
   const { t } = useTranslation("gallery");
@@ -30,7 +19,7 @@ const WinnerConfettiButton = ({ winner }: Props) => {
       width="fit-content"
       mt="1.5rem"
       background={GRADIENTS[winner.element]}
-      color={color[winner.element]}
+      color={GRADIENTS_COLOR[winner.element]}
       onClick={() => {
         confetti({
           zIndex: 10000,

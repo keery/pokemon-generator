@@ -23,7 +23,6 @@ Page contact
 Afficher seulement les cartes publiées
 Faire un check que j'utilise bien les balises HTML5
 Voir si je trouve des bonnes idées de filtre supplémentaire pour les cartes (mot clé ?)
-Voir si les modals pour publier la carte sont belles si on utilise le glassmorphism
 Double tap pour liker carte en mobile
 Tester like bouton dans modal, possible d'avoir -1
 Compteur pour savoir quand sera la prochaine éléction de carte
@@ -31,6 +30,8 @@ Faire un cron qui s'execute chaque semaine pour ajouter dans une table de bdd le
 Bug obliger de resize la photo d'une carte a l'upload, faire que la photo déborde de base pour prendre la largeut et hauteur au complet
 Checker pays auteur carte
 Faire un menu rapide sur la page gallerie pour switcher rapidement entre les differentes section
+Update modal reset card
+Bouton publier dans le formulaire des champs en mobile
 
 --------------------------
 

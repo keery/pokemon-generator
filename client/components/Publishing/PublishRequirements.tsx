@@ -24,7 +24,12 @@ const NAME = "publish-requirements";
 const Requirement = ({ isChecked, text }) => {
   return (
     <Flex alignItems="center">
-      <Checkbox isChecked={isChecked} size="lg" colorScheme="green" />
+      <Checkbox
+        isChecked={isChecked}
+        size="lg"
+        colorScheme="green"
+        cursor="default"
+      />
       <Text pl={3}>{text}</Text>
     </Flex>
   );

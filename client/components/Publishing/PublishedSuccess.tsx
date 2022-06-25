@@ -6,6 +6,7 @@ import { useTranslation } from "next-i18next";
 import Link from "~components/Link";
 import { ROUTE_GALLERY } from "~constants";
 import useResetCard from "~hooks/useResetCard";
+import { GRADIENTS, GRADIENTS_COLOR } from "~constants";
 
 interface Props {
   isOpen: boolean;
@@ -57,7 +58,7 @@ const PublishedSuccess = ({ isOpen, onClose }: Props) => {
         >
           {t("publish.success.createNew")}
         </Button>
-        <Button as={Link} href={ROUTE_GALLERY} width="full">
+        <Button as={Link} href={ROUTE_GALLERY} width="full" variant="glass">
           {t("publish.success.seeGallery")}
         </Button>
       </HStack>

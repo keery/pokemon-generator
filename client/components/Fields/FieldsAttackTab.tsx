@@ -10,6 +10,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import FieldsAttack from "~components/Fields/FieldsAttack";
+import { GRADIENTS_COLOR } from "~constants";
 interface Props {
   defaultIndex?: number;
 }
@@ -19,11 +20,14 @@ const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
   const { t } = useTranslation("generator");
   const fontSize = useColorModeValue("md", "0.65rem");
   const borderRadius = useColorModeValue("xl", "none");
-  const variantActiv = useColorModeValue("solid", "nes-button-blue");
+  const variantActiv = useColorModeValue("glass", "nes-button-blue");
   const variantInactiv = useColorModeValue("line", "nes-button");
+  const colorButtonNotSelected = useColorModeValue("white", "inherit");
   const px = useColorModeValue(null, "0.6rem");
   const selected = useColorModeValue(
-    {},
+    {
+      background: "none",
+    },
     {
       background: "none",
     }
@@ -41,13 +45,16 @@ const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
       onChange={handleTabsChange}
     >
       <TabList>
-        <Tab _selected={selected} p={0}>
+        <Tab _selected={selected} p={0} isSelected>
           <Button
             transition="border-radius 100ms"
             variant={tabIndex === 0 ? variantActiv : variantInactiv}
             fontSize={fontSize}
             borderRadius={borderRadius}
             px={px}
+            color={
+              tabIndex !== 0 ? colorButtonNotSelected : GRADIENTS_COLOR.water
+            }
           >
             {t("attack1")}
           </Button>
@@ -58,6 +65,9 @@ const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
             variant={tabIndex === 1 ? variantActiv : variantInactiv}
             borderRadius={borderRadius}
             px={px}
+            color={
+              tabIndex !== 1 ? colorButtonNotSelected : GRADIENTS_COLOR.water
+            }
           >
             {t("attack2")}
           </Button>
@@ -65,10 +75,10 @@ const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
       </TabList>
       <TabPanels>
         <TabPanel maxH="100%" px={0}>
-          <FieldsAttack name="attack1" />
+          <FieldsAttack name="attack1" hasColorInverted />
         </TabPanel>
         <TabPanel px={0}>
-          <FieldsAttack name="attack2" />
+          <FieldsAttack name="attack2" hasColorInverted />
         </TabPanel>
       </TabPanels>
     </Tabs>
