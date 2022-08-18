@@ -2,7 +2,7 @@
   "name": "back",
   "version": "0.1.0",
   "description": "",
-  "author": "",
+  "author": "Guillaume Esnault",
   "private": true,
   "scripts": {
     "prebuild": "rimraf dist",

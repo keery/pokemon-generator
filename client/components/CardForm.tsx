@@ -144,6 +144,7 @@ const CardForm = () => {
                         px={2}
                         borderRadius="sm"
                         w="100%"
+                        color="white!important"
                       >
                         {header}
                         {colorMode === "dark" ? (

@@ -20,6 +20,26 @@
   font-family: "gstd";
   src: url("/assets/fonts/GillSansStd.otf");
 }
+@font-face {
+  font-family: "tusker";
+  src: url("/assets/fonts/TuskerGrotesk-5700Bold.ttf");
+}
+
+.cartoon {
+  font-family: tusker !important;
+  color: white;
+  text-shadow: 0.04em 0.04em 0 #000;
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 3px;
+}
+
+.cartoon-xs {
+  font-family: tusker !important;
+  color: white;
+  text-shadow: 0.04em 0.04em 0 #000;
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: 1px;
+}
 
 .not-apple-like ::-webkit-scrollbar {
   width: 8px;
@@ -146,6 +166,12 @@ a {
 @keyframes rotate {
   to {
     transform: rotate(-360deg);
+  }
+}
+
+@keyframes rotateCenter {
+  to {
+    transform: rotate(-360deg) translate(-50%, -50%);
   }
 }
 

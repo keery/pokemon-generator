@@ -168,3 +168,5 @@ export const GRADIENTS_COLOR: Record<Element, any> = {
   grass: "#1e5529",
   normal: "#000000",
 };
+
+export const HEADER_HEIGHT = 82;

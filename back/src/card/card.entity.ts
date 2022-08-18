@@ -7,7 +7,6 @@ import {
   OneToMany,
 } from 'typeorm'
 import { Like } from '~like/like.entity'
-import { ApiProperty } from '@nestjs/swagger'
 
 export enum Element {
   FIRE = 'fire',

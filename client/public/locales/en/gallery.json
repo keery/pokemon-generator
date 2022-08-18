@@ -28,7 +28,12 @@
     "winner": {
       "title": "Weekly winner",
       "congratule": "Congratulate winner",
-      "createdBy": "Created by"
+      "createdBy": "Created by",
+      "no": {
+        "title": "We need a winner !",
+        "description": "No one got elected this week, what's going on ? You get the opportunity to choose the weekly winner, or create a card and ask your friends to vote for it",
+        "button": "Create my card"
+      }
     },
     "modal": {
       "created": "Created on {{date}} by <b>{{author}}</b>",

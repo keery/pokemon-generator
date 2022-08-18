@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, useColorModeValue } from "@chakra-ui/react";
 import Logo from "~components/Logo";
+import { HEADER_HEIGHT } from "~constants";
 import NesButton from "~components/NesButton";
 import { useRouter } from "next/router";
 
@@ -20,6 +21,7 @@ const Header = ({ noColorChange = false }: Props) => {
       display="flex"
       justifyContent="space-between"
       alignItems="center"
+      height={HEADER_HEIGHT}
     >
       <Logo />
       {router.pathname === "/" && <NesButton noColorChange={noColorChange} />}

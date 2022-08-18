@@ -32,6 +32,23 @@ Checker pays auteur carte
 Faire un menu rapide sur la page gallerie pour switcher rapidement entre les differentes section
 Update modal reset card
 Bouton publier dans le formulaire des champs en mobile
+Page 404
+
+Faire une animation en mode panneau lumineux design pour montrer le but, bien attirer l'oeil
+Tenter de changer la perspective 
+Intégrer en fond une forme pokemon à peine visible 
+Etre plus explicite, un gagnant par semaine, le plus de like gagne
+Essayer d'appuyer le fait d'avoir envie de gagner, en precisant ce qu'on gagne, ce qu'on gagne c'est seulement
+le titre de gagnant de la semaine
+Ajouter des filtres pour voir tous les anciens gagnants
+Afficher sur la modale d'une carte une mention spécifique pour dire si cette carte a déjà gagné
+Maybe faire la carte holographique aussi
+Plus jouer sur le numéro de la semaine en cours
+Faire une séléction pour les gagnants pour qu'ils puissent gagner un truc
+Petite animation bien calé pour annoncer en mode titre avant le gagnant
+Afficher le nombre d'applaudissement pour le gagnant
+En mode mobile swiper pour faire apparaitre une petite carde vers plus grande et rapeticir le text en meme temps pour faire la transition
+Insister sur le fait de devoir voter
 
 --------------------------
 

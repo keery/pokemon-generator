@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Flex, Container, Text, Box } from "@chakra-ui/react";
+import { Button, Flex, Container, Text, Box } from "@chakra-ui/react";
 import { m, useTransform, useViewportScroll } from "framer-motion";
 import { Card } from "~@types/Card";
 import { screenPercent } from "~utils/helper";
@@ -7,6 +7,8 @@ import { GRADIENTS } from "~constants";
 import WinnerBlobs from "./WinnerBlobs";
 import WinnerConfettiButton from "./WinnerConfettiButton";
 import { useTranslation } from "next-i18next";
+import { ROUTE_GENERATOR } from "~constants";
+import Link from "~components/Link";
 
 interface Props {
   winner: Card;
@@ -101,16 +103,35 @@ const WinnerGlass = ({ winner }: Props) => {
             y,
           }}
         >
-          <Text fontFamily="title" fontWeight="800" fontSize="2rem">
-            {t("winner.title")} 🏆
-          </Text>
-          <Text fontSize="1.2rem" layerStyle="ellipsis">
-            {winner.name}
-          </Text>
-          <Text fontSize="1.2rem" layerStyle="ellipsis">
-            {t("winner.createdBy")} <i>{winner.author}</i>
-          </Text>
-          <WinnerConfettiButton winner={winner} />
+          {winner ? (
+            <>
+              <Text fontFamily="title" fontWeight="800" fontSize="2rem">
+                {t("winner.title")} 🏆
+              </Text>
+              <Text fontSize="1.2rem" layerStyle="ellipsis">
+                {winner.name}
+              </Text>
+              <Text fontSize="1.2rem" layerStyle="ellipsis">
+                {t("winner.createdBy")} <i>{winner.author}</i>
+              </Text>
+              <WinnerConfettiButton winner={winner} />
+            </>
+          ) : (
+            <>
+              <Text fontFamily="title" fontWeight="800" fontSize="2rem">
+                {t("winner.no.title")} 🤨
+              </Text>
+              <Text fontSize="1.2rem">{t("winner.no.description")}</Text>
+              <Button
+                as={Link}
+                href={ROUTE_GENERATOR}
+                variant="glass"
+                mt="1.5rem"
+              >
+                {t("winner.no.button")}
+              </Button>
+            </>
+          )}
         </Flex>
       </Container>
     </>

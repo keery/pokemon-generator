@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button } from "@chakra-ui/react";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";

@@ -28,7 +28,12 @@
     "winner": {
       "title": "Gagnant de la semaine",
       "congratule": "Féliciter le gagnant",
-      "createdBy": "Créée par"
+      "createdBy": "Créée par",
+      "no": {
+        "title": "Pas de gagnant wtf",
+        "description": "Personne n'a été élu gagnant cette semaine. T'as la chance de donner un simple et unique vote pour élire le gagnant, sinon crée ta propre carte et récolte un seul vote",
+        "button": "Créer ma carte"
+      }
     },
     "modal": {
       "created": "Créée le {{date}} par <b>{{author}}</b>",

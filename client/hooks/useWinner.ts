@@ -4,7 +4,9 @@ import { Card } from "~@types/Card";
 import getWeek from "date-fns/getWeek";
 
 export const getWinner = () =>
-  client.get(`/cards/winner`).then((res) => res.data as Card);
+  client.get(`/cards/winner`).then((res) => {
+    return res.data as Card;
+  });
 
 const useWinner = () => {
   const date = new Date();

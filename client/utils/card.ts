@@ -81,6 +81,7 @@ export const getImgFromCard = () => {
 
 export const getPublishData = async (formValues) => {
   const formData = new FormData();
+  console.log(formValues);
   const img = await getImgFromCard();
   const formattedValues = formatValues(formValues);
   formData.append("img", img);
@@ -111,7 +112,7 @@ export const getSeoCardDescription = (card: Card) => {
   ]);
 
   return `${card.name} ${t("seo.modal.isType")} ${t(card.element)}.${
-    card.description !== ""
+    card.description && card.description !== ""
       ? ` ${card.description}${
           card.description[card.description.length] !== "." ? "." : ""
         }`
