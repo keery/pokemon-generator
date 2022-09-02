@@ -6,42 +6,30 @@ import nextSunday from "date-fns/nextSunday";
 import set from "date-fns/set";
 import { utcToZonedTime } from "date-fns-tz";
 import { useCountdown, CountdownTime } from "~hooks/useCountdown";
+import { m, useTransform, useViewportScroll } from "framer-motion";
+import { screenPercent } from "~utils/helper";
 
 const Item = ({ value, label }) => {
   return (
-    <Flex alignItems="center">
-      <Text mr={2}>{value < 10 ? "0" + value : value}</Text>
-      <Text>{label}</Text>
-    </Flex>
-  );
-};
-
-const MarqueeContent = ({ children }) => {
-  return (
-    <>
-      <Circle
-        size="10px"
-        background="linear-gradient(to right, #3390ed, #fba6ff)"
-        mx="2rem"
-        w="8rem"
-        h="0.8rem"
-      />
-      <Text pr={2}>{" Next winner will get elected in "}</Text>
-      <HStack
-        w="fit-content"
-        // py="0.5rem"
-        px={0}
-        borderRadius="1rem"
-        spacing={3}
-        divider={
-          <StackDivider border="none" display="flex" alignItems="center">
-            <Flex>:</Flex>
-          </StackDivider>
-        }
+    <Flex alignItems="center" direction="column">
+      <Flex
+        borderRadius="15px"
+        width="110px"
+        fontSize="70px"
+        fontWeight={700}
+        justifyContent="center"
+        border="none"
+        backgroundColor="rgb(64 77 145 / 34%)"
+        color="#fff"
+        // backdropFilter="blur(3px) saturate(191%)"
+        backdropFilter="blur(3px)"
       >
-        {children}
-      </HStack>
-    </>
+        <Text>{value < 10 ? "0" + value : value}</Text>
+      </Flex>
+      <Text textTransform="uppercase" mt={2}>
+        {label}
+      </Text>
+    </Flex>
   );
 };
 
@@ -75,29 +63,34 @@ const Countdown = () => {
   const now = utcToZonedTime(new Date(), "Europe/Paris");
   const sunday = utcToZonedTime(nextSunday(new Date()), "Europe/Paris");
   const formattedSunday = set(sunday, { hours: 20, minutes: 0, seconds: 0 });
+  const { days, hours, minutes, seconds } = useCountdown(now, formattedSunday);
+  // const content = getContent(countdown);
 
-  const countdown = useCountdown(now, formattedSunday);
+  const { scrollY } = useViewportScroll();
 
-  const content = getContent(countdown);
+  const y = useTransform(
+    scrollY,
+    [screenPercent(50), screenPercent(50), screenPercent(100)],
+    [screenPercent(0), screenPercent(-10), screenPercent(13)]
+  );
 
   return (
     <Flex
-      direction="column"
-      color="white"
-      backgroundColor="rgb(255 255 255 / 17%)"
-      backdropFilter="blur(7px)"
-      pos="absolute"
-      left="0"
-      right="0"
-      bottom={HEADER_HEIGHT * 1.2}
-      py="0.3rem"
-      fontSize="1.5rem"
+      layerStyle="glass"
+      border="none"
+      display="inline-flex"
+      borderRadius="11px"
+      marginLeft="30px"
+      p="20px"
+      position="absolute"
+      top="370px"
     >
-      <Marquee gradient={false} speed={90}>
-        {/* We add MarqueeContent twice to take the entire screen width */}
-        <MarqueeContent>{content}</MarqueeContent>
-        <MarqueeContent>{content}</MarqueeContent>
-      </Marquee>
+      <HStack spacing={4}>
+        <Item key="countdown-day" label="days" value={days} />
+        <Item key="countdown-hour" label="hours" value={hours} />
+        <Item key="countdown-minute" label="minutes" value={minutes} />
+        <Item key="countdown-second" label="seconds" value={seconds} />
+      </HStack>
     </Flex>
   );
 };

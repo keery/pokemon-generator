@@ -60,6 +60,7 @@ const WinnerGlass = ({ winner }: Props) => {
           left="0"
           right="0"
           bottom="0"
+          zIndex={5}
           style={{
             opacity: opacityBackground,
           }}
@@ -78,6 +79,7 @@ const WinnerGlass = ({ winner }: Props) => {
           style={{
             backgroundImage: "url(assets/img/waves/waves.svg)",
             backgroundRepeat: "no-repeat",
+            backgroundSize: "100%",
             y: yWaves,
             opacity: opacityWaves,
             position: "absolute",
@@ -85,6 +87,7 @@ const WinnerGlass = ({ winner }: Props) => {
             right: "0",
             top: "0",
             bottom: "0",
+            zIndex: 9,
           }}
         />
         <WinnerBlobs winner={winner} />
@@ -95,6 +98,7 @@ const WinnerGlass = ({ winner }: Props) => {
           flexDir="column"
           pos="relative"
           style={{
+            zIndex: 18,
             width: "30rem",
             padding: "1.3rem 2.4rem",
             border: "none",

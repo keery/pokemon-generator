@@ -49,6 +49,7 @@ Petite animation bien calé pour annoncer en mode titre avant le gagnant
 Afficher le nombre d'applaudissement pour le gagnant
 En mode mobile swiper pour faire apparaitre une petite carde vers plus grande et rapeticir le text en meme temps pour faire la transition
 Insister sur le fait de devoir voter
+Faire une horloge en glassmorphism maybe forme blanche à l'interieur, et juste ecrire le nombre de temps restants et juste faire un cercle qui s'écoule
 
 --------------------------
 

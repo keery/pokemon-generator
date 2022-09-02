@@ -2,6 +2,7 @@ import React from "react";
 import { Flex, FlexProps } from "@chakra-ui/react";
 import { GRADIENTS } from "~constants";
 import Stripe from "public/assets/img/stripe.svg";
+import Wave3 from "public/assets/img/waves/wave3.svg";
 
 interface SquareProps extends FlexProps {
   delay: string;
@@ -30,7 +31,7 @@ const Square = ({ delay, duration, ...rest }: SquareProps) => {
 const GalleryTopBackground = () => {
   return (
     <>
-      <Flex
+      {/* <Flex
         background="url(/assets/img/waves/wave1.png) center top / 3000px no-repeat"
         height="300px"
         position="absolute"
@@ -48,21 +49,37 @@ const GalleryTopBackground = () => {
         top="320px"
         left="0"
         right="0"
-      />
-      <Flex
+      /> */}
+      {/* <Flex
         position="absolute"
-        top="668px"
-        h="330px"
+        top="80vh"
+        h="80vh"
         left="0"
         right="0"
         backgroundColor="#29244f"
         zIndex={-2}
       />
+      <Flex
+        position="absolute"
+        width="100%"
+        zIndex={4}
+        overflow="hidden"
+        transformOrigin="left top"
+        top="120vh"
+        height="75vh"
+        clipPath="url(#wave3)"
+        background="linear-gradient(rgb(31 31 71 / 29%) -18.72%, rgb(31, 31, 71) 37.6%)"
+      >
+        <Wave3 />
+      </Flex> */}
       <Flex w="450px" h="450px" pos="absolute" top="12%" left="2%">
         <Square
           border="1.5px solid rgba(255, 255, 255, 0.5)"
           delay="0.2s"
           duration="25s"
+          backdropFilter="blur(4px)"
+          backgroundColor="rgb(255 255 255 / 20%)"
+          zIndex={6}
         />
         <Square
           border="1.5px solid rgba(255, 255, 255, 0.4)"

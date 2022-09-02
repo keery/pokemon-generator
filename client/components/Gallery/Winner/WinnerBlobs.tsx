@@ -66,11 +66,12 @@ const WinnerBlobs = ({ winner }: Props) => {
         }}
         w="500px"
         h="500px"
-        mixBlendMode={mixBlendMode}
+        // mixBlendMode={mixBlendMode}
         background={BLOB_GRADIENTS[element][0]}
         pos="absolute"
         top="50px"
         left="200px"
+        zIndex={5}
         borderRadius="36.0512% 63.9488% 65.7321% 34.2679% / 51.0107% 53.7726% 46.2274% 48.9893%"
       />
       <Box
@@ -82,11 +83,12 @@ const WinnerBlobs = ({ winner }: Props) => {
         }}
         w="500px"
         h="500px"
-        mixBlendMode={mixBlendMode}
+        // mixBlendMode={mixBlendMode}
         background={BLOB_GRADIENTS[element][1]}
         pos="absolute"
         top="100px"
         left="250px"
+        zIndex={5}
         borderRadius="56.4253% 43.5747% 33.7529% 66.2471% / 52.5661% 47.8477% 52.1523% 47.4339%"
       />
     </>

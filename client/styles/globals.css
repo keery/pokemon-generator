@@ -662,8 +662,7 @@ a {
 
 .holo-card:after {
   opacity: 1;
-  background-image: url("https://assets.codepen.io/13471/sparkles.gif"),
-    url(https://assets.codepen.io/13471/holo.png),
+  background-image: url("/assets/img/sparkles.gif"), url(/assets/img/holo.webp),
     linear-gradient(
       125deg,
       #ff008450 15%,

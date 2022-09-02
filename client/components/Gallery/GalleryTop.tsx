@@ -12,7 +12,7 @@ const GalleryTop = () => {
   return (
     <>
       <GalleryTopBackground />
-      <Box pos="relative" h="100vh">
+      <Box pos="relative" h="100vh" zIndex={90}>
         {/* <Box fontSize="11rem" fontWeight="800">
           <Marquee gradient={false} speed={120}>
             <Box>Weekly winner</Box>
@@ -54,7 +54,8 @@ const GalleryTop = () => {
               >
                 Make a card to win
               </Text>
-              <Text
+              <Countdown />
+              {/* <Text
                 fontSize="6rem"
                 lineHeight="1.2"
                 fontWeight="800"
@@ -68,7 +69,7 @@ const GalleryTop = () => {
                   pl={5}
                   words={["creative", "stunning", "hilarious"]}
                 />
-              </Text>
+              </Text> */}
               {/* <Button variant="glass">Create a card</Button> */}
               {/* <Text
                 fontSize="6rem"
@@ -151,7 +152,6 @@ const GalleryTop = () => {
             <RotatingWord />
           </Box> */}
         </Container>
-        <Countdown />
       </Box>
     </>
   );
