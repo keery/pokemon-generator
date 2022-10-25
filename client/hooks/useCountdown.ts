@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { utcToZonedTime } from "date-fns-tz";
 
 export interface CountdownTime {
   days: number;
@@ -7,13 +8,16 @@ export interface CountdownTime {
   seconds: number;
 }
 
-export const useCountdown = (ref, now: Date, targetDate: Date) => {
+export const useCountdown = (targetDate: Date) => {
   const countDownDate = targetDate.getTime();
-
-  const [countDown, setCountDown] = useState(countDownDate - now.getTime());
+  const defaultNow = utcToZonedTime(new Date(), "Europe/Paris");
+  const [countDown, setCountDown] = useState(
+    countDownDate - defaultNow.getTime()
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
+      const now = utcToZonedTime(new Date(), "Europe/Paris");
       setCountDown(countDownDate - now.getTime());
     }, 1000);
 

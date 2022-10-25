@@ -44,16 +44,9 @@ const Item = ({ value, label }) => {
 };
 
 const Countdown = () => {
-  const now = utcToZonedTime(new Date(), "Europe/Paris");
   const sunday = utcToZonedTime(nextSunday(new Date()), "Europe/Paris");
   const formattedSunday = set(sunday, { hours: 20, minutes: 0, seconds: 0 });
-  const ref = useRef();
-  const { days, hours, minutes, seconds } = useCountdown(
-    ref,
-    now,
-    formattedSunday
-  );
-
+  const { days, hours, minutes, seconds } = useCountdown(formattedSunday);
   const { scrollY } = useViewportScroll();
 
   const y = useTransform(
@@ -64,7 +57,6 @@ const Countdown = () => {
 
   return (
     <Flex
-      ref={ref}
       border="none"
       display="inline-flex"
       mt="-70px"
