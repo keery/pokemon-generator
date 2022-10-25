@@ -3,6 +3,7 @@ import { AspectRatio, LinkBox, Box } from "@chakra-ui/react";
 import LinkOverlay from "~components/LinkOverlay";
 import { getHrefCardModal } from "~utils/card";
 import CardImage from "~components/Gallery/CardImage";
+import Link from "~components/Link";
 import { m } from "framer-motion";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
@@ -19,28 +20,23 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
   const { href, as } = getHrefCardModal(card, layoutPrefix);
 
   return (
-    <LinkBox
-      role="group"
-      as={m.div}
-      whileTap={{
-        scale: 0.9,
+    <Link
+      shallow
+      as={as}
+      href={href}
+      onClick={() => {
+        setCard({ card, cachedQuery });
       }}
     >
-      <LinkOverlay
-        shallow
-        href={href}
-        as={as}
-        _before={{ zIndex: 12 }}
-        onClick={() => {
-          setCard({ card, cachedQuery });
-        }}
-      />
       <m.div
         transition={{ ease: "linear", duration: 0.1 }}
         style={{
           position: "relative",
           zIndex: 9,
           cursor: "pointer",
+        }}
+        whileTap={{
+          scale: 0.9,
         }}
       >
         <AspectRatio
@@ -65,7 +61,7 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
           </Box>
         </AspectRatio>
       </m.div>
-    </LinkBox>
+    </Link>
   );
 };
 

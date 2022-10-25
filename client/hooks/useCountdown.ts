@@ -7,14 +7,13 @@ export interface CountdownTime {
   seconds: number;
 }
 
-export const useCountdown = (now: Date, targetDate: Date) => {
+export const useCountdown = (ref, now: Date, targetDate: Date) => {
   const countDownDate = targetDate.getTime();
 
   const [countDown, setCountDown] = useState(countDownDate - now.getTime());
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log("ici");
       setCountDown(countDownDate - now.getTime());
     }, 1000);
 

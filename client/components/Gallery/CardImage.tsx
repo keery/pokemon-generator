@@ -10,7 +10,6 @@ interface Props {
 const CardImage = ({ card }: Props) => {
   return (
     <Image
-      id="img-card-modal"
       fallback={<CardBlurhash blurhash={card.blurHash} />}
       src={card.img}
       maxH="100%"

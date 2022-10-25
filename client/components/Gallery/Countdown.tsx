@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Flex, HStack, Text, StackDivider, Circle } from "@chakra-ui/react";
 import Marquee from "react-fast-marquee";
 import { HEADER_HEIGHT } from "~constants";
 import nextSunday from "date-fns/nextSunday";
 import set from "date-fns/set";
 import { utcToZonedTime } from "date-fns-tz";
-import { useCountdown, CountdownTime } from "~hooks/useCountdown";
+import { useCountdown } from "~hooks/useCountdown";
 import { m, useTransform, useViewportScroll } from "framer-motion";
 import { screenPercent } from "~utils/helper";
 
@@ -13,58 +13,46 @@ const Item = ({ value, label }) => {
   return (
     <Flex alignItems="center" direction="column">
       <Flex
-        borderRadius="15px"
-        width="110px"
-        fontSize="70px"
+        // borderRadius="15px"
+        width="115px"
+        fontSize="120px"
         fontWeight={700}
         justifyContent="center"
         border="none"
-        backgroundColor="rgb(64 77 145 / 34%)"
+        // backgroundColor="rgb(64 77 145 / 34%)"
         color="#fff"
+        fontFamily="tusker"
         // backdropFilter="blur(3px) saturate(191%)"
-        backdropFilter="blur(3px)"
+        // backdropFilter="blur(3px)"
       >
         <Text>{value < 10 ? "0" + value : value}</Text>
       </Flex>
-      <Text textTransform="uppercase" mt={2}>
+      <Text
+        textTransform="uppercase"
+        // backdropFilter="blur(3px) saturate(190%)"
+        mt="-24px"
+        color="white"
+        fontWeight="700"
+        // backgroundColor="#6976915c"
+        padding="1px 10px"
+        borderRadius="7px"
+      >
         {label}
       </Text>
     </Flex>
   );
 };
 
-const getContent = ({ days, hours, minutes, seconds }: CountdownTime) => {
-  const content = [];
-
-  if (days > 0) {
-    content.push(<Item key="countdown-day" label="days" value={days} />);
-  }
-
-  if (hours > 0) {
-    content.push(<Item key="countdown-hour" label="hours" value={hours} />);
-  }
-
-  if (minutes > 0) {
-    content.push(
-      <Item key="countdown-minute" label="minutes" value={minutes} />
-    );
-  }
-
-  if (seconds > 0) {
-    content.push(
-      <Item key="countdown-second" label="seconds" value={seconds} />
-    );
-  }
-
-  return content;
-};
-
 const Countdown = () => {
   const now = utcToZonedTime(new Date(), "Europe/Paris");
   const sunday = utcToZonedTime(nextSunday(new Date()), "Europe/Paris");
   const formattedSunday = set(sunday, { hours: 20, minutes: 0, seconds: 0 });
-  const { days, hours, minutes, seconds } = useCountdown(now, formattedSunday);
-  // const content = getContent(countdown);
+  const ref = useRef();
+  const { days, hours, minutes, seconds } = useCountdown(
+    ref,
+    now,
+    formattedSunday
+  );
 
   const { scrollY } = useViewportScroll();
 
@@ -76,16 +64,29 @@ const Countdown = () => {
 
   return (
     <Flex
-      layerStyle="glass"
+      ref={ref}
       border="none"
       display="inline-flex"
-      borderRadius="11px"
-      marginLeft="30px"
-      p="20px"
+      mt="-70px"
       position="absolute"
       top="370px"
     >
-      <HStack spacing={4}>
+      <HStack
+        spacing={4}
+        divider={
+          <StackDivider
+            border="none"
+            display="flex"
+            alignItems="center"
+            fontSize="55px"
+            margin="0"
+            marginLeft="8px!important"
+            marginRight="9px!important"
+          >
+            <Flex color="white">:</Flex>
+          </StackDivider>
+        }
+      >
         <Item key="countdown-day" label="days" value={days} />
         <Item key="countdown-hour" label="hours" value={hours} />
         <Item key="countdown-minute" label="minutes" value={minutes} />

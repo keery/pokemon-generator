@@ -50,9 +50,9 @@ const GalleryTop = () => {
                 mt={6}
                 pt={6}
                 alignSelf="end"
-                color="#fff6f6"
+                color="white"
               >
-                Make a card to win
+                Next winner elected in
               </Text>
               <Countdown />
               {/* <Text
