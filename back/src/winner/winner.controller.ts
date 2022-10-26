@@ -27,4 +27,14 @@ export class WinnerController {
   async elect() {
     return this.service.electWinner()
   }
+
+  @Get('clap')
+  async clap() {
+    return this.service.clapWinner()
+  }
+
+  @Get('/')
+  async getWinner() {
+    return this.service.getWinner()
+  }
 }

@@ -152,7 +152,7 @@ const HoloCard = () => {
           borderRadius="1.3rem"
           className="holo-card"
           position="relative"
-          bgImage={winner?.img || "none"}
+          bgImage={winner?.card?.img || "none"}
           zIndex="10"
           transition="box-shadow 0.2s ease"
           willChange="transform, filter"
@@ -165,9 +165,9 @@ const HoloCard = () => {
             animation: animationCard,
           }}
           onClick={() => {
-            const { as, href } = getHrefCardModal(winner);
+            const { as, href } = getHrefCardModal(winner.card);
             Router.push(href, as, { shallow: true });
-            setCard({ card: winner, cachedQuery: null });
+            setCard({ card: winner.card, cachedQuery: null });
           }}
           cursor={winner ? "pointer" : "auto"}
         >
@@ -235,7 +235,6 @@ const HoloCard = () => {
           />
         </Box>
       </Box>
-      {/* )} */}
     </m.div>
   );
 };

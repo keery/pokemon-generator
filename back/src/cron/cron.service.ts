@@ -10,7 +10,7 @@ export class CronService {
 
   @Cron('0 20 * * 0')
   electWinner() {
-    this.logger.debug('Called when the second is 45')
+    this.logger.debug('New winner got elected !')
     this.winnerService.electWinner()
   }
 }

@@ -47,7 +47,7 @@ const getStyle = (theme, fontSize) => {
       transform: "none",
       fontWeight: "800",
       fontSize,
-      lineHeight: 1,
+      lineHeight: 1.2,
       textTransform: "none",
       fontFamily: theme.fonts.title,
       maxWidth: "100%",

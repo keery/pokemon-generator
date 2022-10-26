@@ -1,4 +1,5 @@
 import {
+  Column,
   CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
@@ -11,6 +12,11 @@ import { Card } from '~card/card.entity'
 export class Winner {
   @PrimaryGeneratedColumn()
   id: number
+
+  @Column({
+    default: 0,
+  })
+  clap: number
 
   @CreateDateColumn()
   created_at: Date

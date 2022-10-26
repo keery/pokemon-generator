@@ -14,7 +14,7 @@ export class WinnerService extends TypeOrmCrudService<Winner> {
     super(repo)
   }
 
-  async getWinner() {
+  async getWinnerToElect() {
     const date = new Date()
     const start = format(startOfWeek(date, { weekStartsOn: 1 }), 'yyyy-MM-dd')
     const end = format(
@@ -50,8 +50,20 @@ export class WinnerService extends TypeOrmCrudService<Winner> {
     return null
   }
 
+  getWinner() {
+    return this.repo.findOne({
+      join: {
+        alias: 'c',
+        leftJoinAndSelect: { users: 'c.card' },
+      },
+      order: {
+        id: 'DESC',
+      },
+    })
+  }
+
   async electWinner() {
-    const winner = await this.getWinner()
+    const winner = await this.getWinnerToElect()
 
     if (!winner) {
       throw new HttpException('No winner found', HttpStatus.BAD_REQUEST)
@@ -80,6 +92,14 @@ export class WinnerService extends TypeOrmCrudService<Winner> {
 
     return this.repo.save({
       card: winner,
+    })
+  }
+
+  async clapWinner() {
+    const winner = await this.getWinner()
+    console.log(winner)
+    return this.repo.update(winner.id, {
+      clap: winner.clap + 1,
     })
   }
 }

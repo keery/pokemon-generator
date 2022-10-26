@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Button, Flex, Container, Text, Box } from "@chakra-ui/react";
 import { m, useTransform, useViewportScroll } from "framer-motion";
-import { Card } from "~@types/Card";
+import { Winner } from "~@types/Winner";
 import { screenPercent } from "~utils/helper";
 import { GRADIENTS } from "~constants";
 import WinnerBlobs from "./WinnerBlobs";
@@ -11,7 +11,7 @@ import { ROUTE_GENERATOR } from "~constants";
 import Link from "~components/Link";
 
 interface Props {
-  winner: Card;
+  winner: Winner;
 }
 
 const WinnerGlass = ({ winner }: Props) => {
@@ -72,7 +72,7 @@ const WinnerGlass = ({ winner }: Props) => {
             right: "0",
             top: "0",
             bottom: "0",
-            bg: winner ? GRADIENTS[winner.element] : GRADIENTS.water,
+            bg: winner ? GRADIENTS[winner.card.element] : GRADIENTS.water,
           }}
         />
         <m.div
@@ -90,7 +90,7 @@ const WinnerGlass = ({ winner }: Props) => {
             zIndex: 9,
           }}
         />
-        <WinnerBlobs winner={winner} />
+        <WinnerBlobs winner={winner.card} />
         <Flex
           as={m.div}
           layerStyle="glassLg"
@@ -113,10 +113,10 @@ const WinnerGlass = ({ winner }: Props) => {
                 {t("winner.title")} 🏆
               </Text>
               <Text fontSize="1.2rem" layerStyle="ellipsis">
-                {winner.name}
+                {winner.card.name}
               </Text>
               <Text fontSize="1.2rem" layerStyle="ellipsis">
-                {t("winner.createdBy")} <i>{winner.author}</i>
+                {t("winner.createdBy")} <i>{winner.card.author}</i>
               </Text>
               <WinnerConfettiButton winner={winner} />
             </>

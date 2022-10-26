@@ -20,7 +20,8 @@
     "attack2" : "Attack n°2",
     "filters": {
       "mostRecent": "Most recent cards",
-      "mostOld": "Oldest cards",
+      "recentWinner": "Most recent winners",
+      "oldWinner": "Oldest winners",
       "mostVoted": "Most liked",
       "random": "Random"
     },

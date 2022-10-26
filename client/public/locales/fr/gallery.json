@@ -20,7 +20,8 @@
     "attack2" : "Attaque n°2",
     "filters": {
       "mostRecent": "Les dernières créations",
-      "mostOld": "Les plus anciennes",
+      "recentWinner": "Les derniers gagnants",
+      "oldWinner": "Les premiers gagnants",
       "mostVoted": "Les mieux notées",
       "random": "Au hasard"
     },

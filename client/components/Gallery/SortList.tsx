@@ -21,9 +21,14 @@ const SortList = ({ onChange }: Props) => {
       label: t("filters.mostRecent"),
     },
     {
-      value: "sort-oldest",
-      param: "created_at,ASC",
-      label: t("filters.mostOld"),
+      value: "sort-recent-winner",
+      param: "winner,DESC",
+      label: t("filters.recentWinner"),
+    },
+    {
+      value: "sort-old-winner",
+      param: "winner,ASC",
+      label: t("filters.oldWinner"),
     },
     {
       value: "sort-most-liked",

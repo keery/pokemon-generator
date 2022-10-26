@@ -2,18 +2,43 @@ import React, { useState } from "react";
 import confetti from "canvas-confetti";
 import { Button, Box } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
-import { Card } from "~@types/Card";
+import { Winner } from "~@types/Winner";
+import { getKey } from "~hooks/useWinner";
+import useClapWinner from "~hooks/useClapWinner";
 import { GRADIENTS } from "~constants";
+import { useQueryClient } from "react-query";
 
 interface Props {
-  winner: Card;
+  winner: Winner;
 }
 
 const WinnerConfettiButton = ({ winner }: Props) => {
   const { t } = useTranslation("gallery");
   const [isLoading, setLoading] = useState(false);
+  const queryClient = useQueryClient();
+  const { refetch } = useClapWinner();
 
-  const gradient = GRADIENTS[winner.element] || GRADIENTS.water;
+  const gradient = GRADIENTS[winner.card.element] || GRADIENTS.water;
+
+  const onClick = () => {
+    confetti({
+      zIndex: 10000,
+      particleCount: 150,
+      spread: 90,
+    });
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    refetch();
+    queryClient.setQueryData(getKey(), (prev: Winner) => {
+      return {
+        ...winner,
+        clap: prev.clap + 1,
+      };
+    });
+  };
 
   return (
     <Button
@@ -22,17 +47,7 @@ const WinnerConfettiButton = ({ winner }: Props) => {
       mt="1.5rem"
       background={gradient}
       color={gradient}
-      onClick={() => {
-        confetti({
-          zIndex: 10000,
-          particleCount: 150,
-          spread: 90,
-        });
-        setLoading(true);
-        setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-      }}
+      onClick={onClick}
       padding="1.4rem 1.6rem"
       borderRadius="0.6rem"
       overflow="hidden"
@@ -58,6 +73,7 @@ const WinnerConfettiButton = ({ winner }: Props) => {
       }}
     >
       {t("winner.congratule")}
+      {` (${winner.clap})`}
       <Box fontSize="1.2rem" ml="0.8rem">
         🎉
       </Box>

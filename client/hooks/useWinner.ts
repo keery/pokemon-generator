@@ -1,18 +1,22 @@
 import { useQuery } from "react-query";
 import { client } from "~api/client";
-import { Card } from "~@types/Card";
+import { Winner } from "~@types/Winner";
 import getWeek from "date-fns/getWeek";
 
 export const getWinner = () =>
-  client.get(`/cards/winner`).then((res) => {
-    return res.data as Card;
+  client.get(`/winners`).then((res) => {
+    return res.data as Winner;
   });
 
-const useWinner = () => {
+export const getKey = () => {
   const date = new Date();
   const week = getWeek(date);
 
-  return useQuery(["winner", week], () => getWinner());
+  return ["winner", week];
+};
+
+const useWinner = () => {
+  return useQuery(getKey(), () => getWinner());
 };
 
 export default useWinner;

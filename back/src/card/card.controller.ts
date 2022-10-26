@@ -27,10 +27,6 @@ import { getIp } from '~utils/ip'
 import { Request } from 'express'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository, getConnection } from 'typeorm'
-import startOfWeek from 'date-fns/startOfWeek'
-import endOfWeek from 'date-fns/endOfWeek'
-import format from 'date-fns/format'
-import addDays from 'date-fns/addDays'
 
 @Crud({
   model: {
@@ -95,14 +91,21 @@ export class CardController {
     const ip = getIp(req)
 
     let orderBy = ''
+    let groupBy = ''
+    let winners = ''
 
     if (parsedRequest.parsed.sort.length > 0) {
-      orderBy = `ORDER BY ${parsedRequest.parsed.sort
+      orderBy = parsedRequest.parsed.sort
         .map(({ field, order }) => {
           if (field === 'random') return 'RANDOM ()'
+          else if (field === 'winner') {
+            groupBy = ', w.created_at'
+            winners = 'INNER JOIN "winner" "w" on card.id = "w"."cardId"'
+            return `w.created_at ${order}`
+          }
           return `${field} ${order}`
         })
-        .join(' ')}`
+        .join(' ')
     }
 
     let limit = 'LIMIT 50'
@@ -123,9 +126,10 @@ export class CardController {
       ) as has_liked
       FROM card
       LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
+      ${winners}
       WHERE card."isPublished" = true
-      GROUP BY card.id
-      ${orderBy}
+      GROUP BY card.id ${groupBy}
+      ${orderBy !== '' ? `ORDER BY ${orderBy}` : ''}
       ${limit}
       `)
   }
@@ -134,26 +138,5 @@ export class CardController {
   async getCount() {
     const res = await this.service.countCards()
     return res
-  }
-
-  @Get('winner')
-  async getWinner() {
-    // return this.service.getWinner()
-    // const date = new Date()
-    // const start = format(startOfWeek(date, { weekStartsOn: 1 }), 'yyyy-MM-dd')
-    // const end = format(
-    //   addDays(endOfWeek(date, { weekStartsOn: 1 }), 1),
-    //   'yyyy-MM-dd',
-    // )
-    // const res = await getConnection().query(`
-    // SELECT card.*, CAST(COUNT(l.id) as INT) as likes
-    // FROM card
-    // LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
-    // WHERE l.created_at between '${start}' and '${end}'
-    // GROUP BY card.id
-    // ORDER BY likes DESC
-    // LIMIT 1
-    // `)
-    // return res.length > 0 ? res[0] : null
   }
 }
