@@ -30,8 +30,8 @@
       "congratule": "Congratulate winner",
       "createdBy": "Created by",
       "no": {
-        "title": "We need a winner !",
-        "description": "No one got elected this week, what's going on ? You get the opportunity to choose the weekly winner, or create a card and ask your friends to vote for it",
+        "title": "No winner",
+        "description": "No one got elected this week, no card received any like or has been created. Create your own and get elected on next election!",
         "button": "Create my card"
       }
     },

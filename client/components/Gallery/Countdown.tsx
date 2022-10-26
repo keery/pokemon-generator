@@ -13,27 +13,21 @@ const Item = ({ value, label }) => {
   return (
     <Flex alignItems="center" direction="column">
       <Flex
-        // borderRadius="15px"
         width="115px"
         fontSize="120px"
         fontWeight={700}
         justifyContent="center"
         border="none"
-        // backgroundColor="rgb(64 77 145 / 34%)"
         color="#fff"
         fontFamily="tusker"
-        // backdropFilter="blur(3px) saturate(191%)"
-        // backdropFilter="blur(3px)"
       >
         <Text>{value < 10 ? "0" + value : value}</Text>
       </Flex>
       <Text
         textTransform="uppercase"
-        // backdropFilter="blur(3px) saturate(190%)"
         mt="-24px"
         color="white"
         fontWeight="700"
-        // backgroundColor="#6976915c"
         padding="1px 10px"
         borderRadius="7px"
       >

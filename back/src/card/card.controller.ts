@@ -123,6 +123,7 @@ export class CardController {
       ) as has_liked
       FROM card
       LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
+      WHERE card."isPublished" = true
       GROUP BY card.id
       ${orderBy}
       ${limit}
@@ -137,23 +138,22 @@ export class CardController {
 
   @Get('winner')
   async getWinner() {
-    const date = new Date()
-    const start = format(startOfWeek(date, { weekStartsOn: 1 }), 'yyyy-MM-dd')
-    const end = format(
-      addDays(endOfWeek(date, { weekStartsOn: 1 }), 1),
-      'yyyy-MM-dd',
-    )
-
-    const res = await getConnection().query(`
-    SELECT card.*, CAST(COUNT(l.id) as INT) as likes
-    FROM card
-    LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
-    WHERE l.created_at between '${start}' and '${end}'
-    GROUP BY card.id
-    ORDER BY likes DESC
-    LIMIT 1
-    `)
-
-    return res.length > 0 ? res[0] : null
+    // return this.service.getWinner()
+    // const date = new Date()
+    // const start = format(startOfWeek(date, { weekStartsOn: 1 }), 'yyyy-MM-dd')
+    // const end = format(
+    //   addDays(endOfWeek(date, { weekStartsOn: 1 }), 1),
+    //   'yyyy-MM-dd',
+    // )
+    // const res = await getConnection().query(`
+    // SELECT card.*, CAST(COUNT(l.id) as INT) as likes
+    // FROM card
+    // LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
+    // WHERE l.created_at between '${start}' and '${end}'
+    // GROUP BY card.id
+    // ORDER BY likes DESC
+    // LIMIT 1
+    // `)
+    // return res.length > 0 ? res[0] : null
   }
 }

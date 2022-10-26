@@ -30,8 +30,8 @@
       "congratule": "Féliciter le gagnant",
       "createdBy": "Créée par",
       "no": {
-        "title": "Pas de gagnant wtf",
-        "description": "Personne n'a été élu gagnant cette semaine. T'as la chance de donner un simple et unique vote pour élire le gagnant, sinon crée ta propre carte et récolte un seul vote",
+        "title": "Pas de gagnant",
+        "description": "Personne n'a été élu gagnant cette semaine. Aucune carte n'a reçu de j'aime ou a été créé au cours de la semaine. Tente ta chance pour la prochaine élection !",
         "button": "Créer ma carte"
       }
     },

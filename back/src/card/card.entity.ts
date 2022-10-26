@@ -7,6 +7,7 @@ import {
   OneToMany,
 } from 'typeorm'
 import { Like } from '~like/like.entity'
+import { Winner } from '~winner/winner.entity'
 
 export enum Element {
   FIRE = 'fire',
@@ -97,7 +98,7 @@ export class Card {
   attack2Damage: string
 
   @Column({
-    default: false,
+    default: true,
   })
   isPublished: boolean
 
@@ -115,4 +116,7 @@ export class Card {
 
   @OneToMany(() => Like, (like) => like.card)
   likes: Like[]
+
+  @OneToMany(() => Winner, (winner) => winner.card)
+  winners: Winner[]
 }

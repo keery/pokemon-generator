@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
+import { ScheduleModule } from '@nestjs/schedule'
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
 import { CardModule } from '~card/card.module'
+import { WinnerModule } from '~winner/winner.module'
 import { ImageModule } from '~image/image.module'
+import { CronModule } from '~cron/cron.module'
 import { MailModule } from './mail/mail.module'
 import { LikeModule } from './like/like.module'
 import { ConsoleModule } from 'nestjs-console'
@@ -43,7 +46,10 @@ import { join } from 'path'
         watch: process.env.NODE_ENV === 'dev',
       },
     }),
+    ScheduleModule.forRoot(),
+    CronModule,
     CardModule,
+    WinnerModule,
     ImageModule,
     LikeModule,
     MailModule,

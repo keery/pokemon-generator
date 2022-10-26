@@ -20,7 +20,6 @@ faire le sitemap
 Faire la page de la carte sans la modal
 FAQ ?
 Page contact
-Afficher seulement les cartes publiées
 Faire un check que j'utilise bien les balises HTML5
 Voir si je trouve des bonnes idées de filtre supplémentaire pour les cartes (mot clé ?)
 Double tap pour liker carte en mobile
@@ -33,6 +32,7 @@ Faire un menu rapide sur la page gallerie pour switcher rapidement entre les dif
 Update modal reset card
 Bouton publier dans le formulaire des champs en mobile
 Page 404
+Gérer la publication des cartes
 
 Faire une animation en mode panneau lumineux design pour montrer le but, bien attirer l'oeil
 Tenter de changer la perspective 
@@ -51,6 +51,8 @@ En mode mobile swiper pour faire apparaitre une petite carde vers plus grande et
 Insister sur le fait de devoir voter
 Faire une horloge en glassmorphism maybe forme blanche à l'interieur, et juste ecrire le nombre de temps restants et juste faire un cercle qui s'écoule
 Check effet carte envoyé par Julien
+Position image sur la carte après upload, faire en sorte de ne pas avoir à la bouger du tout
+Enlever filtre les plus anciennes
 
 --------------------------
 
