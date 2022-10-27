@@ -93,6 +93,7 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
                       href={ROUTE_CGU}
                       textDecoration="underline"
                       color="#acd6ff"
+                      isExternal
                     />
                   ),
                 }}

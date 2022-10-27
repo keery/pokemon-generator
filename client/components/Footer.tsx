@@ -35,10 +35,10 @@ const menu = [
     name: "footer.menu.cgu",
     href: ROUTE_CGU,
   },
-  {
-    name: "footer.menu.sitemap",
-    href: ROUTE_SITEMAP,
-  },
+  // {
+  //   name: "footer.menu.sitemap",
+  //   href: ROUTE_SITEMAP,
+  // },
 ];
 
 const date = new Date();

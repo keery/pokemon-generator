@@ -45,6 +45,7 @@ Insister sur le fait de devoir voter
 Check effet carte envoyé par Julien
 Position image sur la carte après upload, faire en sorte de ne pas avoir à la bouger du tout
 Checker OG page carte
+Gérer le tout en mobile
 
 --------------------------
 
