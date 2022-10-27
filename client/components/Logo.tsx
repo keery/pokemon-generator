@@ -13,14 +13,14 @@ import { LOGO } from "~constants";
 
 interface Props {
   noLink?: boolean;
+  color?: string;
 }
 
-const Logo = ({ noLink = false }: Props) => {
+const Logo = ({ noLink = false, color = "text" }: Props) => {
   const { colorMode } = useColorMode();
   const fontFamily = useColorModeValue("body", "nes");
   const fontSize = useColorModeValue("1rem", "0.7rem");
   const mt = useColorModeValue(0, "0.5rem");
-  const ml = useColorModeValue(4, 0);
 
   const logo = (
     <Flex alignItems="center">
@@ -37,7 +37,7 @@ const Logo = ({ noLink = false }: Props) => {
       <Heading
         as="h1"
         fontWeight="800"
-        color="text"
+        color={color}
         pl={3}
         lineHeight={0}
         fontFamily={fontFamily}
@@ -60,7 +60,6 @@ const Logo = ({ noLink = false }: Props) => {
 
   return (
     <Link
-      ml={ml}
       href="/"
       display="inline-block"
       _hover={{

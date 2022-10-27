@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Header = ({ noColorChange = false }: Props) => {
-  const py = useColorModeValue(4, 0);
+  const py = useColorModeValue(10, 0);
   const router = useRouter();
 
   return (

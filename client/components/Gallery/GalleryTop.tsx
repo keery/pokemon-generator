@@ -7,8 +7,11 @@ import RotatingWord from "~components/RotatingWord";
 import GalleryTopBackground from "~components/Gallery/GalleryTopBackground";
 import SpanGradient from "~components/SpanGradient";
 import { GRADIENTS } from "~constants";
+import { useTranslation } from "next-i18next";
 
 const GalleryTop = () => {
+  const { t } = useTranslation("gallery");
+
   return (
     <>
       <GalleryTopBackground />
@@ -20,27 +23,14 @@ const GalleryTop = () => {
           </Marquee>
         </Box> */}
         <Container pos="relative" zIndex={6}>
-          {/* <TitleGradient /> */}
           <Flex alignItems="center" justifyContent="space-between">
             <Flex
               direction="column"
-              maxW="500px"
+              maxW="560px"
               alignSelf="baseline"
               w="full"
               mt={8}
             >
-              {/* <Text
-                fontSize="10rem"
-                lineHeight="1"
-                pb={2}
-                fontWeight="800"
-                fontFamily="title"
-                // borderTop="1px solid black"
-                width="fit-content"
-              >
-                Gallery
-              </Text> */}
-
               <Text
                 fontSize="6rem"
                 lineHeight="1.2"
@@ -52,7 +42,7 @@ const GalleryTop = () => {
                 alignSelf="end"
                 color="white"
               >
-                Next winner elected in
+                {t("nextWinner")}
               </Text>
               <Countdown />
               {/* <Text

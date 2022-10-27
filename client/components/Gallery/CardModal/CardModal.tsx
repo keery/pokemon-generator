@@ -8,7 +8,8 @@ import {
   Flex,
   Heading,
   HStack,
-  Icon,
+  Container,
+  useTheme,
   VStack,
   Text,
 } from "@chakra-ui/react";
@@ -93,10 +94,197 @@ const getNextPrevAnimation = (orderPrev, orderNext) => {
   };
 };
 
-const CardModal = ({ card, cachedQuery }: Props) => {
+export const modalStyles = {
+  height: "calc(100% - 3rem)",
+  borderTopRightRadius: "4rem",
+  borderTopLeftRadius: "4rem",
+  color: "white",
+};
+
+export const CardModalContent = ({ card, animation, cachedQuery }) => {
   const { t } = useTranslation("gallery");
+
+  return (
+    <Flex
+      as={motion.div}
+      style={{
+        zIndex: 1000,
+        pointerEvents: "auto",
+        overflow: "hidden",
+        width: "100%",
+        height: "100%",
+        margin: "0 auto",
+        display: "flex",
+        paddingTop: "2rem",
+        paddingBottom: "1.6rem",
+        alignItems: "flex-start",
+        position: "relative",
+        maxWidth: "80rem",
+        flexDirection: "column",
+        gap: 0,
+      }}
+    >
+      <Container>
+        <Flex
+          justifyContent="space-between"
+          w="100%"
+          opacity="0"
+          animation={`${fadeAnimation} 200ms`}
+        >
+          <Heading
+            as={motion.h1}
+            fontFamily="title"
+            fontSize="4.2rem"
+            fontWeight="800"
+            layerStyle="ellipsis"
+            pt="0.3rem"
+            pr="2rem"
+            variants={getNextPrevAnimation(0, 1)}
+            animate={animation}
+          >
+            {card.name}
+          </Heading>
+        </Flex>
+        <Flex w="100%" flex={1}>
+          <Flex
+            direction="column"
+            pr="7rem"
+            justifyContent="space-between"
+            h="auto"
+            w="65%"
+            as={motion.div}
+            variants={getNextPrevAnimation(0, 1)}
+            animate={animation}
+          >
+            <Box opacity="0" animation={`${fadeAnimation} 300ms`}>
+              <Text fontWeight="300">
+                <Trans
+                  i18nKey="gallery:modal.created"
+                  values={{
+                    date: dateToText(card.created_at),
+                    author: card.author,
+                  }}
+                  components={{
+                    b: <b />,
+                  }}
+                />
+              </Text>
+              <HStack
+                mt="1rem"
+                pb="2rem"
+                alignItems="center"
+                spacing="2rem"
+                divider={<Box h="3rem" w="1px" borderColor="#a0aebf" />}
+                justifyContent="space-between"
+              >
+                <CardModalAttribute
+                  label={t("modal.type")}
+                  value={<CardElement element={card.element} mt="0.2rem" />}
+                />
+                <CardModalAttribute label="HP" value={card.hp} />
+                <CardModalAttribute
+                  label={t("modal.likes")}
+                  value={card.likes ?? 0}
+                />
+              </HStack>
+              {card.description && (
+                <>
+                  <Text fontWeight="800" mr="0.8rem" fontSize="1.4rem">
+                    {t("modal.description")}
+                  </Text>
+                  <Text noOfLines={4} fontWeight="300">
+                    {card.description}
+                  </Text>
+                </>
+              )}
+              <VStack alignItems="flex-start" pt="2rem" spacing="1rem">
+                <CardModalAttack
+                  name={card.attack1Name ?? card.attack2Name}
+                  damage={card.attack1Damage ?? card.attack2Damage}
+                  description={
+                    card.attack1Description ?? card.attack2Description
+                  }
+                  type={card.attack1Type ?? card.attack2Type}
+                  amount={card.attack1Amount ?? card.attack2Amount}
+                />
+                <CardModalAttack
+                  name={card.attack2Name}
+                  damage={card.attack2Damage}
+                  description={card.attack2Description}
+                  type={card.attack2Type}
+                  amount={card.attack2Amount}
+                />
+              </VStack>
+            </Box>
+            <Box opacity="0" animation={`${fadeAnimation} 400ms`}>
+              <Flex
+                borderBottom="1px solid"
+                borderColor="gray.400"
+                alignItems="center"
+                mb="1.5rem"
+                pb="1.5rem"
+              />
+              <Flex justifyContent="space-between" alignItems="center">
+                <CardModalActions card={card} />
+                <LikeButton card={card} cachedQuery={cachedQuery} />
+                {/* <motion.div
+                    style={{
+                      cursor: "pointer",
+                      alignItems: "center",
+                      display: "flex",
+                      backdropFilter: "blur(15px) saturate(180%)",
+                      backgroundColor: "rgb(255 255 255 / 28%)",
+                      padding: "0.6rem 1rem",
+                      borderRadius: "0.8rem",
+                      transitionDuration: "100ms",
+                      transitionTimingFunction: "ease-in-out",
+                      transitionProperty: "transform",
+                    }}
+                    initial={{
+                      scale: 1,
+                    }}
+                    whileTap={{
+                      scale: 0.9,
+                    }}
+                    whileHover={{
+                      scale: 1.05,
+                    }}
+                  >
+                    <Icon as={Report} fontSize="1.4rem" />
+                    <Box ml="0.3rem">Report card</Box>
+                  </motion.div> */}
+              </Flex>
+            </Box>
+          </Flex>
+          <Flex
+            as={motion.div}
+            flex={1}
+            flexDirection="column"
+            w="100%"
+            variants={getNextPrevAnimation(1, 0)}
+            animate={animation}
+          >
+            <AspectRatio
+              opacity="0"
+              animation={`${fadeAnimation} 300ms`}
+              ratio={500 / 700}
+              pos="relative"
+              w="100%"
+              alignSelf="flex-start"
+            >
+              <CardImage card={card} />
+            </AspectRatio>
+          </Flex>
+        </Flex>
+      </Container>
+    </Flex>
+  );
+};
+
+const CardModal = ({ card, cachedQuery }: Props) => {
   const [animation, setAnimation] = useState("");
   const setCard = useSetRecoilState(cardModalAtom);
+  const theme = useTheme();
   const onClose = () => {
     setCard({ card: null, cachedQuery: null });
     Router.push(ROUTE_GALLERY, null, { shallow: true });
@@ -125,12 +313,8 @@ const CardModal = ({ card, cachedQuery }: Props) => {
           position: "fixed",
           left: "0",
           right: "0",
-          height: "calc(100% - 3rem)",
-          backdropFilter: "blur(25px) saturate(180%)",
-          backgroundColor: "rgb(20 27 40 / 60%)",
-          borderTopRightRadius: "4rem",
-          borderTopLeftRadius: "4rem",
-          color: "white",
+          ...modalStyles,
+          ...theme.layerStyles.darkBlur,
         }}
         exit={{ top: "100%", opacity: 0 }}
         transition={{ ease: "easeInOut", duration: 0.4 }}
@@ -144,176 +328,11 @@ const CardModal = ({ card, cachedQuery }: Props) => {
           onClick={onClose}
           _hover={{ opacity: 0.6 }}
         />
-        <Flex
-          as={motion.div}
-          style={{
-            zIndex: 1000,
-            pointerEvents: "auto",
-            overflow: "hidden",
-            width: "100%",
-            height: "100%",
-            margin: "0 auto",
-            display: "flex",
-            alignItems: "flex-start",
-            position: "relative",
-            padding: "2rem 3.5rem",
-            maxWidth: "80rem",
-            flexDirection: "column",
-            gap: 0,
-          }}
-        >
-          <Flex
-            justifyContent="space-between"
-            w="100%"
-            opacity="0"
-            animation={`${fadeAnimation} 200ms`}
-          >
-            <Heading
-              as={motion.h1}
-              fontFamily="title"
-              fontSize="4.2rem"
-              fontWeight="800"
-              layerStyle="ellipsis"
-              pt="0.3rem"
-              pr="2rem"
-              variants={getNextPrevAnimation(0, 1)}
-              animate={animation}
-            >
-              {card.name}
-            </Heading>
-          </Flex>
-          <Flex w="100%" flex={1}>
-            <Flex
-              direction="column"
-              pr="7rem"
-              justifyContent="space-between"
-              h="100%"
-              w="65%"
-              as={motion.div}
-              variants={getNextPrevAnimation(0, 1)}
-              animate={animation}
-            >
-              <Box opacity="0" animation={`${fadeAnimation} 300ms`}>
-                <Text fontWeight="300">
-                  <Trans
-                    i18nKey="gallery:modal.created"
-                    values={{
-                      date: dateToText(card.created_at),
-                      author: card.author,
-                    }}
-                    components={{
-                      b: <b />,
-                    }}
-                  />
-                </Text>
-                <HStack
-                  mt="1rem"
-                  pb="2rem"
-                  alignItems="center"
-                  spacing="2rem"
-                  divider={<Box h="3rem" w="1px" borderColor="#a0aebf" />}
-                  justifyContent="space-between"
-                >
-                  <CardModalAttribute
-                    label={t("modal.type")}
-                    value={<CardElement element={card.element} mt="0.2rem" />}
-                  />
-                  <CardModalAttribute label="HP" value={card.hp} />
-                  <CardModalAttribute
-                    label={t("modal.likes")}
-                    value={card.likes ?? 0}
-                  />
-                </HStack>
-                {card.description && (
-                  <>
-                    <Text fontWeight="800" mr="0.8rem" fontSize="1.4rem">
-                      {t("modal.description")}
-                    </Text>
-                    <Text noOfLines={4} fontWeight="300">
-                      {card.description}
-                    </Text>
-                  </>
-                )}
-                <VStack alignItems="flex-start" pt="2rem" spacing="1rem">
-                  <CardModalAttack
-                    name={card.attack1Name ?? card.attack2Name}
-                    damage={card.attack1Damage ?? card.attack2Damage}
-                    description={
-                      card.attack1Description ?? card.attack2Description
-                    }
-                    type={card.attack1Type ?? card.attack2Type}
-                    amount={card.attack1Amount ?? card.attack2Amount}
-                  />
-                  <CardModalAttack
-                    name={card.attack2Name}
-                    damage={card.attack2Damage}
-                    description={card.attack2Description}
-                    type={card.attack2Type}
-                    amount={card.attack2Amount}
-                  />
-                </VStack>
-              </Box>
-              <Box opacity="0" animation={`${fadeAnimation} 400ms`}>
-                <Flex
-                  borderBottom="1px solid"
-                  borderColor="gray.400"
-                  alignItems="center"
-                  mb="1.5rem"
-                  pb="1.5rem"
-                />
-                <Flex justifyContent="space-between" alignItems="center">
-                  <CardModalActions card={card} />
-                  <LikeButton card={card} cachedQuery={cachedQuery} />
-                  {/* <motion.div
-                    style={{
-                      cursor: "pointer",
-                      alignItems: "center",
-                      display: "flex",
-                      backdropFilter: "blur(15px) saturate(180%)",
-                      backgroundColor: "rgb(255 255 255 / 28%)",
-                      padding: "0.6rem 1rem",
-                      borderRadius: "0.8rem",
-                      transitionDuration: "100ms",
-                      transitionTimingFunction: "ease-in-out",
-                      transitionProperty: "transform",
-                    }}
-                    initial={{
-                      scale: 1,
-                    }}
-                    whileTap={{
-                      scale: 0.9,
-                    }}
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                  >
-                    <Icon as={Report} fontSize="1.4rem" />
-                    <Box ml="0.3rem">Report card</Box>
-                  </motion.div> */}
-                </Flex>
-              </Box>
-            </Flex>
-            <Flex
-              as={motion.div}
-              flex={1}
-              flexDirection="column"
-              w="100%"
-              variants={getNextPrevAnimation(1, 0)}
-              animate={animation}
-            >
-              <AspectRatio
-                opacity="0"
-                animation={`${fadeAnimation} 300ms`}
-                ratio={500 / 700}
-                pos="relative"
-                w="100%"
-                alignSelf="flex-start"
-              >
-                <CardImage card={card} />
-              </AspectRatio>
-            </Flex>
-          </Flex>
-        </Flex>
+        <CardModalContent
+          card={card}
+          animation={animation}
+          cachedQuery={cachedQuery}
+        />
         {cachedQuery && (
           <CardModalArrows
             cachedQuery={cachedQuery}

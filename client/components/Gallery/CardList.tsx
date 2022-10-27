@@ -59,7 +59,7 @@ const CardList = (props: SimpleGridProps) => {
   return (
     <>
       <SortList onChange={setSort} />
-      <Container mt={6}>
+      <Container mt={6} pb={10}>
         <SimpleGrid
           columns={3}
           spacingX={8}

@@ -117,7 +117,7 @@ export const getSeoCardDescription = (card: Card) => {
           card.description[card.description.length] !== "." ? "." : ""
         }`
       : ""
-  }${attack1}${attack2}`;
+  }${attack1}${attack2} ${t("seo.modal.madeBy", { author: card.author })}`;
 };
 
 export const getHrefCardModal = (card: Card, layoutPrefix: string = "") => {

@@ -3,10 +3,11 @@
       "title": "Gallery",
       "description": "Consult all pokemon cards from the community all around the world. Vote for your favorites cards or even share the cards you made and who knows you might be the next most amazing card.",
       "modal": {
-        "isType": "is a pokemon of type"
+        "isType": "is a pokemon of type",
+        "madeBy": "Card made by {{author}}"
       }
     },
-    "topMonth": "Monthly Top 10",
+    "nextWinner": "Next winner elected in",
     "fire" : "Fire",
     "grass" : "Grass",
     "water" : "Water",
@@ -44,6 +45,12 @@
       "like": "Like",
       "liked": "Liked",
       "shareSocial": "Check this out! I created {{name}} my new pokemon card {{href}}"
+    },
+    "countdown": {
+      "days": "days",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds"
     }
   }
   

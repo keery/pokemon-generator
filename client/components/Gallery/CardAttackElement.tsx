@@ -84,7 +84,7 @@ const CardAttackElement = ({ element, amount }: Props) => {
   return (
     <Flex
       alignItems="center"
-      borderRadius="0.8rem"
+      borderRadius="0.6rem"
       padding="0.9rem"
       backgroundColor="white"
       minW="max-content"

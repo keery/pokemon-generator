@@ -43,8 +43,6 @@ const menu = [
 
 const date = new Date();
 
-const colorTextFooter = "#636363";
-
 const Footer = () => {
   const { t } = useTranslation("common");
   const { pathname } = useRouter();
@@ -53,16 +51,16 @@ const Footer = () => {
   return (
     <Box
       as="footer"
-      backgroundColor="white"
-      mt="3rem"
       pos="relative"
       overflow="hidden"
-      color={colorTextFooter}
+      color="white"
+      layerStyle="darkBlur"
+      zIndex={10}
     >
       <Container pt="3rem" pos="relative" zIndex={9}>
         <Flex justifyContent="space-between">
           <Flex direction="column">
-            <Logo noLink />
+            <Logo noLink color="white" />
             <Text mt="1rem" fontSize="0.9rem" maxW="26rem">
               {t("footer.description", {
                 name: process.env.NEXT_PUBLIC_APP_NAME,
@@ -70,7 +68,7 @@ const Footer = () => {
             </Text>
           </Flex>
           <VStack flexDirection="column" alignItems="flex-end">
-            <Text fontWeight="800" color="text" fontSize="1.9em">
+            <Text fontWeight="800" fontSize="1.9em">
               {t("footer.navigation")}
             </Text>
             {menu.map(({ name, href }) => (
@@ -78,7 +76,7 @@ const Footer = () => {
                 key={name}
                 href={href}
                 fontWeight={pathname === href ? "bold" : 400}
-                color={colorTextFooter}
+                color="white"
               >
                 {t(name)}
               </Link>
@@ -89,7 +87,7 @@ const Footer = () => {
           justifyContent="space-between"
           alignItems="center"
           borderTop="1px solid"
-          borderColor="rgb(0 0 0 / 8%)"
+          borderColor="gray.400"
           paddingY="1.8rem"
           mt="1.8rem"
           fontSize="sm"

@@ -33,8 +33,8 @@ const CardModalAction = ({
         transform: "scale(0.9)",
       }}
       _hover={{
-        backgroundColor: "#646571",
-        borderColor: "#646571",
+        backgroundColor: "pokeball",
+        borderColor: "pokeball",
       }}
       transitionDuration="200ms"
     >

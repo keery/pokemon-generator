@@ -3,10 +3,11 @@
       "title": "Galerie",
       "description": "Retrouve toutes les cartes créées par la communauté provenant des quatres coins du globe. Vote pour tes cartes préférées ou partage même les cartes que tu as créé, et qui sait tu seras peut être le prochain à être élu meilleure carte.",
       "modal": {
-        "isType": "est un pokemon de type"
+        "isType": "est un pokemon de type",
+        "madeBy": "Carte créée par {{author}}"
       }
     },
-    "topMonth": "Top 10 du mois",
+    "nextWinner": "Prochain gagnant dans",
     "fire" : "Feu",
     "grass" : "Herbe",
     "water" : "Eau",
@@ -44,6 +45,12 @@
       "like": "J'aime",
       "liked": "J'aime",
       "shareSocial": "Regardez! J'ai créé {{name}} ma nouvelle carte Pokemon {{href}}"
+    },
+    "countdown": {
+      "days": "jours",
+      "hours": "heures",
+      "minutes": "minutes",
+      "seconds": "secondes"
     }
   }
   

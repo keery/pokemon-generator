@@ -1,13 +1,12 @@
-import React, { useRef } from "react";
-import { Flex, HStack, Text, StackDivider, Circle } from "@chakra-ui/react";
-import Marquee from "react-fast-marquee";
-import { HEADER_HEIGHT } from "~constants";
+import React from "react";
+import { Flex, HStack, Text, StackDivider } from "@chakra-ui/react";
 import nextSunday from "date-fns/nextSunday";
 import set from "date-fns/set";
 import { utcToZonedTime } from "date-fns-tz";
 import { useCountdown } from "~hooks/useCountdown";
-import { m, useTransform, useViewportScroll } from "framer-motion";
+import { useTransform, useViewportScroll } from "framer-motion";
 import { screenPercent } from "~utils/helper";
+import { useTranslation } from "next-i18next";
 
 const Item = ({ value, label }) => {
   return (
@@ -38,6 +37,7 @@ const Item = ({ value, label }) => {
 };
 
 const Countdown = () => {
+  const { t } = useTranslation("gallery");
   const sunday = utcToZonedTime(nextSunday(new Date()), "Europe/Paris");
   const formattedSunday = set(sunday, { hours: 20, minutes: 0, seconds: 0 });
   const { days, hours, minutes, seconds } = useCountdown(formattedSunday);
@@ -73,10 +73,18 @@ const Countdown = () => {
           </StackDivider>
         }
       >
-        <Item key="countdown-day" label="days" value={days} />
-        <Item key="countdown-hour" label="hours" value={hours} />
-        <Item key="countdown-minute" label="minutes" value={minutes} />
-        <Item key="countdown-second" label="seconds" value={seconds} />
+        <Item key="countdown-day" label={t("countdown.days")} value={days} />
+        <Item key="countdown-hour" label={t("countdown.hours")} value={hours} />
+        <Item
+          key="countdown-minute"
+          label={t("countdown.minutes")}
+          value={minutes}
+        />
+        <Item
+          key="countdown-second"
+          label={t("countdown.seconds")}
+          value={seconds}
+        />
       </HStack>
     </Flex>
   );
