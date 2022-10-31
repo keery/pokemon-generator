@@ -9,7 +9,6 @@ const useIntersectionObserver = (
     const observer = new IntersectionObserver(([e]) => {
       const res = e.intersectionRatio < 1;
 
-      console.log(e);
       // callback();
 
       // if (isIntersecting !== res) {

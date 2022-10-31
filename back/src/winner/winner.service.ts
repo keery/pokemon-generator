@@ -14,6 +14,18 @@ export class WinnerService extends TypeOrmCrudService<Winner> {
     super(repo)
   }
 
+  getWinner() {
+    return this.repo.findOne({
+      join: {
+        alias: 'c',
+        leftJoinAndSelect: { users: 'c.card' },
+      },
+      order: {
+        id: 'DESC',
+      },
+    })
+  }
+
   async getWinnerToElect() {
     const date = new Date()
     const start = format(startOfWeek(date, { weekStartsOn: 1 }), 'yyyy-MM-dd')
@@ -47,19 +59,13 @@ export class WinnerService extends TypeOrmCrudService<Winner> {
       return firstCreated[0]
     }
 
-    return null
-  }
+    const lastWinner = await this.getWinner()
 
-  getWinner() {
-    return this.repo.findOne({
-      join: {
-        alias: 'c',
-        leftJoinAndSelect: { users: 'c.card' },
-      },
-      order: {
-        id: 'DESC',
-      },
-    })
+    if (lastWinner) {
+      return lastWinner.card
+    }
+
+    return null
   }
 
   async electWinner() {
@@ -97,7 +103,6 @@ export class WinnerService extends TypeOrmCrudService<Winner> {
 
   async clapWinner() {
     const winner = await this.getWinner()
-    console.log(winner)
     return this.repo.update(winner.id, {
       clap: winner.clap + 1,
     })

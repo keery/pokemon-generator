@@ -69,6 +69,10 @@ const getStyle = (theme, iconPath, colorMode, hasColorInverted) => {
       backgroundColor: "rgb(99 98 98 / 83%)",
       backdropFilter: "blur(159px) saturate(160%)",
     }),
+    input: (base) => ({
+      ...base,
+      color: hasColorInverted ? "white" : base.color,
+    }),
     control: (styles, { getValue, isFocused }) => {
       const value = getValue();
 
@@ -128,7 +132,6 @@ const getStyle = (theme, iconPath, colorMode, hasColorInverted) => {
     option: (styles, { data, isSelected }) => {
       return {
         ...styles,
-        textTransform: "capitalize",
         display: "flex",
         alignItems: "center",
         color: "white",

@@ -18,7 +18,7 @@ const CardModalOverlay = ({ onClose }: Props) => {
       style={{
         cursor: "pointer",
         pointerEvents: "auto",
-        zIndex: 1000,
+        zIndex: 800,
         position: "fixed",
         background: "rgb(0 0 0 / 33%)",
         willChange: "opacity",

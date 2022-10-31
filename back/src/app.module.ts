@@ -8,6 +8,7 @@ import { WinnerModule } from '~winner/winner.module'
 import { ImageModule } from '~image/image.module'
 import { CronModule } from '~cron/cron.module'
 import { MailModule } from './mail/mail.module'
+import { ReportModule } from './report/report.module'
 import { LikeModule } from './like/like.module'
 import { ConsoleModule } from 'nestjs-console'
 import { ServeStaticModule } from '@nestjs/serve-static'
@@ -51,6 +52,7 @@ import { join } from 'path'
     CardModule,
     WinnerModule,
     ImageModule,
+    ReportModule,
     LikeModule,
     MailModule,
     ConsoleModule,

@@ -29,10 +29,9 @@ import format from "date-fns/format";
 import fr from "date-fns/locale/fr";
 import { ROUTE_GALLERY } from "~constants";
 import Router from "next/router";
+import ReportButton from "~components/Gallery/CardModal/ReportButton";
 import LikeButton from "~components/Gallery/LikeButton";
 import useKeybordShortcut from "~hooks/useKeybordShortcut";
-import Heart from "public/assets/img/heart.svg";
-import Report from "public/assets/img/report.svg";
 import { CachedQuery } from "~@types/CachedQuery";
 import { useTranslation, Trans } from "next-i18next";
 
@@ -226,33 +225,8 @@ export const CardModalContent = ({ card, animation, cachedQuery }) => {
               />
               <Flex justifyContent="space-between" alignItems="center">
                 <CardModalActions card={card} />
+                <ReportButton card={card} />
                 <LikeButton card={card} cachedQuery={cachedQuery} />
-                {/* <motion.div
-                    style={{
-                      cursor: "pointer",
-                      alignItems: "center",
-                      display: "flex",
-                      backdropFilter: "blur(15px) saturate(180%)",
-                      backgroundColor: "rgb(255 255 255 / 28%)",
-                      padding: "0.6rem 1rem",
-                      borderRadius: "0.8rem",
-                      transitionDuration: "100ms",
-                      transitionTimingFunction: "ease-in-out",
-                      transitionProperty: "transform",
-                    }}
-                    initial={{
-                      scale: 1,
-                    }}
-                    whileTap={{
-                      scale: 0.9,
-                    }}
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                  >
-                    <Icon as={Report} fontSize="1.4rem" />
-                    <Box ml="0.3rem">Report card</Box>
-                  </motion.div> */}
               </Flex>
             </Box>
           </Flex>
@@ -309,7 +283,7 @@ const CardModal = ({ card, cachedQuery }: Props) => {
           top: "3rem",
         }}
         style={{
-          zIndex: 9000,
+          zIndex: 900,
           position: "fixed",
           left: "0",
           right: "0",

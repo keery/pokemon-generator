@@ -8,6 +8,7 @@ import {
 } from 'typeorm'
 import { Like } from '~like/like.entity'
 import { Winner } from '~winner/winner.entity'
+import { Report } from '~report/report.entity'
 
 export enum Element {
   FIRE = 'fire',
@@ -119,4 +120,7 @@ export class Card {
 
   @OneToMany(() => Winner, (winner) => winner.card)
   winners: Winner[]
+
+  @OneToMany(() => Report, (report) => report.card)
+  reports: Winner[]
 }

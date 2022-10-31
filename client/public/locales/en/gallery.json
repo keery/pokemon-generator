@@ -8,6 +8,7 @@
       }
     },
     "nextWinner": "Next winner elected in",
+
     "fire" : "Fire",
     "grass" : "Grass",
     "water" : "Water",
@@ -44,7 +45,21 @@
       "likes": "Likes",
       "like": "Like",
       "liked": "Liked",
-      "shareSocial": "Check this out! I created {{name}} my new pokemon card {{href}}"
+      "shareSocial": "Check this out! I created {{name}} my new pokemon card {{href}}",
+      "report": {
+        "button": "Report",
+        "title": "Report card {{name}}",
+        "description": "If you determine that this card contains inappropriate content you can report it. After reporting, the moderation will determine as soon as possible if the quality of its content is abusive, if so the card will be permanently removed from the site.",
+        "label": "Select a reason",
+        "choice1": "Nudity / Sexual nature",
+        "choice2": "Inciting hatred",
+        "choice3": "Harassment",
+        "choice4": "Personal information disclosure",
+        "other": "Other",
+        "labelOther": "Add details to your report",
+        "success": "Your report has been sent successfully",
+        "error": "An error occured trying to send your report"
+      }
     },
     "countdown": {
       "days": "days",

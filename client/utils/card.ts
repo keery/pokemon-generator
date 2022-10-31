@@ -81,7 +81,6 @@ export const getImgFromCard = () => {
 
 export const getPublishData = async (formValues) => {
   const formData = new FormData();
-  console.log(formValues);
   const img = await getImgFromCard();
   const formattedValues = formatValues(formValues);
   formData.append("img", img);

@@ -1,4 +1,3 @@
-Bouton report pour les cartes
 Ajouter un email non obligatoire pour suivre les resultats de popularité de sa carte
 Ajouter le nombre de fois qu'une carte a gagné dans la modal
 Publier carte sur ecran tablette et mobile, pas de bouton
@@ -12,7 +11,6 @@ faire le footer
 Refaire le logo https://dribbble.com/shots/18325875-Logo-Design-For-PokeBall-Gadgets-Electric-machine-logo
 OG Image sur twitter ne marche pas
 checker print sur tous les navigateurs
-NFT a vendre pour chaque carte
 bouton remonter en haut dans la liste (voir dribbble)
 trouver un effet au hover sur les cartes (maybe l'effet de brillance comme sur le bouton ou la carte gagnante)
 faire le sitemap
@@ -46,6 +44,9 @@ Check effet carte envoyé par Julien
 Position image sur la carte après upload, faire en sorte de ne pas avoir à la bouger du tout
 Checker OG page carte
 Gérer le tout en mobile
+Enregistrer IP apres publication
+Créer un email pour l'app pokemon
+Envoyer email quand un report est créé
 
 --------------------------
 

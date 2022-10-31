@@ -20,6 +20,7 @@ interface Props extends ModalProps {
   children: React.ReactNode;
   footer?: JSX.Element;
   withCloseButton?: boolean;
+  isUrlChanging?: boolean;
 }
 
 const Modal = ({
@@ -31,6 +32,7 @@ const Modal = ({
   withCloseButton = false,
   footer,
   isOpen = false,
+  isUrlChanging = true,
   ...rest
 }: Props) => {
   const router = useRouter();
@@ -53,7 +55,13 @@ const Modal = ({
       {button}
       <ModalChakra
         isOpen={router.query?.modal === name || isOpen}
-        onClose={() => closeModalWithUrl(onClose)}
+        onClose={() => {
+          if (isUrlChanging) {
+            closeModalWithUrl(onClose);
+          } else {
+            onClose();
+          }
+        }}
         isCentered
         {...rest}
         scrollBehavior="inside"
@@ -69,7 +77,12 @@ const Modal = ({
           backgroundColor="rgb(20 27 40 / 60%)"
         >
           {title && (
-            <ModalHeader fontSize={headerFontsize} fontWeight="800">
+            <ModalHeader
+              fontSize={headerFontsize}
+              fontWeight="800"
+              noOfLines={3}
+              maxH="135px"
+            >
               {title}
             </ModalHeader>
           )}
