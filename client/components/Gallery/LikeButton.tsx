@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ButtonProps, Icon, Flex } from "@chakra-ui/react";
 import Heart from "public/assets/img/heart.svg";
-import useLike from "~hooks/useLike";
+import useLike, { State } from "~hooks/useLike";
 import { Card } from "~@types/Card";
 import { useQueryClient, InfiniteData } from "react-query";
 import { useSetRecoilState } from "recoil";
@@ -9,6 +9,7 @@ import { cardModalAtom } from "~atoms/card-modal";
 import { motion } from "framer-motion";
 import { CachedQuery } from "~@types/CachedQuery";
 import { useTranslation } from "next-i18next";
+import { QUERY_KEY } from "~hooks/useCard";
 
 interface Props extends ButtonProps {
   card: Card;
@@ -21,14 +22,13 @@ const LikeButton = ({ card, cachedQuery, ...rest }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
   const [isLiked, setLiked] = useState(card?.has_liked > 0);
 
-  const onClick = () => {
-    mutate({
-      cardId: card.id,
-    });
-  };
+  useEffect(() => {
+    setLiked(card.has_liked > 0);
+  }, [card.id]);
 
   const { mutate } = useLike({
     onMutate: async () => {
+      if (!cachedQuery) return;
       const previousValue = queryClient.getQueryData<InfiniteData<Card[]>>(
         cachedQuery.key
       );
@@ -87,7 +87,21 @@ const LikeButton = ({ card, cachedQuery, ...rest }: Props) => {
         setLiked(context.isLiked);
       }
     },
+    onSuccess: (res) => {
+      setLiked(res.state === State.LIKED);
+
+      queryClient.setQueryData<Card>([QUERY_KEY, card.id], {
+        ...card,
+        likes: res.nb,
+      });
+    },
   });
+
+  const onClick = async () => {
+    mutate({
+      cardId: card.id,
+    });
+  };
 
   return (
     <motion.div

@@ -46,7 +46,11 @@ const CardModalAttack = ({
           >
             {name}
           </Text>
-          {description && <Text noOfLines={4}>{description}</Text>}
+          {description && (
+            <Text noOfLines={4} wordBreak="break-word">
+              {description}
+            </Text>
+          )}
         </Flex>
       </Flex>
       {damage && (

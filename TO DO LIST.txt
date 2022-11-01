@@ -1,11 +1,8 @@
 Ajouter un email non obligatoire pour suivre les resultats de popularité de sa carte
 Ajouter le nombre de fois qu'une carte a gagné dans la modal
 Publier carte sur ecran tablette et mobile, pas de bouton
-use skeleton quand on ouvre la modal via l'url pas en cliquant sur une carte
 Animation cool lorsqu'on appuie sur like depuis la modal
 Newsletter, card of the day
-Likes number is not working well when switching card with arrows
-Gerer scroll a l'interieur de la modal si beaucoup de contenu
 reduire taille des animations avec https://www.framer.com/docs/guide-reduce-bundle-size/#how-to-reduce-bundle-size
 faire le footer
 Refaire le logo https://dribbble.com/shots/18325875-Logo-Design-For-PokeBall-Gadgets-Electric-machine-logo
@@ -19,7 +16,6 @@ Page contact
 Faire un check que j'utilise bien les balises HTML5
 Voir si je trouve des bonnes idées de filtre supplémentaire pour les cartes (mot clé ?)
 Double tap pour liker carte en mobile
-Tester like bouton dans modal, possible d'avoir -1
 Bug obliger de resize la photo d'une carte a l'upload, faire que la photo déborde de base pour prendre la largeut et hauteur au complet
 Checker pays auteur carte
 Faire un menu rapide sur la page gallerie pour switcher rapidement entre les differentes section
@@ -30,14 +26,11 @@ Gérer la publication des cartes
 
 Faire une animation en mode panneau lumineux design pour montrer le but, bien attirer l'oeil
 Tenter de changer la perspective 
-Intégrer en fond une forme pokemon à peine visible 
 Etre plus explicite, un gagnant par semaine, le plus de like gagne
 Essayer d'appuyer le fait d'avoir envie de gagner, en precisant ce qu'on gagne, ce qu'on gagne c'est seulement
 le titre de gagnant de la semaine
 Afficher sur la modale d'une carte une mention spécifique pour dire si cette carte a déjà gagné
-Maybe faire la carte holographique aussi
 Plus jouer sur le numéro de la semaine en cours
-Faire une séléction pour les gagnants pour qu'ils puissent gagner un truc
 Petite animation bien calé pour annoncer en mode titre avant le gagnant
 Insister sur le fait de devoir voter
 Check effet carte envoyé par Julien
@@ -47,6 +40,7 @@ Gérer le tout en mobile
 Enregistrer IP apres publication
 Créer un email pour l'app pokemon
 Envoyer email quand un report est créé
+Faire un menu pour changer de page
 
 --------------------------
 

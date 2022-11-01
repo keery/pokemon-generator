@@ -5,9 +5,14 @@ interface Payload {
   cardId: number;
 }
 
+export enum State {
+  LIKED = "liked",
+  DISLIKED = "disliked",
+}
+
 interface Response {
   nb: number;
-  state: "liked" | "disliked";
+  state: State.LIKED | State.DISLIKED;
 }
 
 const useLike = (

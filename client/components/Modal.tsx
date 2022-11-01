@@ -82,6 +82,7 @@ const Modal = ({
               fontWeight="800"
               noOfLines={3}
               maxH="135px"
+              overflow="inherit"
             >
               {title}
             </ModalHeader>

@@ -61,7 +61,7 @@ const ReportButton = ({ card }: Props) => {
       isUrlChanging={false}
       button={
         <Button
-          as={motion.div}
+          as={motion.button}
           style={{
             alignItems: "center",
             display: "flex",

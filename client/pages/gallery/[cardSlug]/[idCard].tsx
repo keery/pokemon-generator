@@ -11,8 +11,15 @@ import {
   modalStyles,
 } from "~components/Gallery/CardModal/CardModal";
 import { getSeoCardDescription } from "~utils/card";
+import useCard from "~hooks/useCard";
 
-const Card = ({ card }) => {
+const Card = ({ initialData }) => {
+  const { data: card } = useCard(initialData.id, {
+    initialData,
+    // Error with like button without
+    cacheTime: 0,
+  });
+
   return (
     <>
       <NextSeo title={card.name} description={getSeoCardDescription(card)} />
@@ -26,7 +33,12 @@ const Card = ({ card }) => {
         filter="blur(50px)"
       />
       <Box style={modalStyles} layerStyle="darkBlur">
-        <CardModalContent card={card} cachedQuery={null} animation={""} />
+        <CardModalContent
+          card={card}
+          cachedQuery={null}
+          animation={""}
+          isPage
+        />
         <Container>
           <Box borderBottom="1px solid" borderColor="gray.400" />
         </Container>
@@ -45,7 +57,7 @@ export const getServerSideProps: GetServerSideProps<SSRConfig> = async ({
     return {
       props: {
         ...(await serverSideTranslations(locale, ["common", "gallery"])),
-        card,
+        initialData: card,
       },
     };
   } catch (e) {

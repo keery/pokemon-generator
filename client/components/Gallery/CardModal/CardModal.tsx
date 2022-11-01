@@ -38,6 +38,7 @@ import { useTranslation, Trans } from "next-i18next";
 interface Props {
   card: Card;
   cachedQuery: CachedQuery;
+  isPage?: boolean;
 }
 
 const dateToText = (date) => {
@@ -100,7 +101,7 @@ export const modalStyles = {
   color: "white",
 };
 
-export const CardModalContent = ({ card, animation, cachedQuery }) => {
+export const CardModalContent = ({ card, animation, cachedQuery, isPage }) => {
   const { t } = useTranslation("gallery");
 
   return (
@@ -123,7 +124,7 @@ export const CardModalContent = ({ card, animation, cachedQuery }) => {
         gap: 0,
       }}
     >
-      <Container>
+      <Container display="flex" flexDirection="column" h="100%">
         <Flex
           justifyContent="space-between"
           w="100%"
@@ -144,7 +145,12 @@ export const CardModalContent = ({ card, animation, cachedQuery }) => {
             {card.name}
           </Heading>
         </Flex>
-        <Flex w="100%" flex={1}>
+        <Flex
+          w="100%"
+          flex={1}
+          opacity="0"
+          animation={`${fadeAnimation} 300ms`}
+        >
           <Flex
             direction="column"
             pr="7rem"
@@ -155,66 +161,75 @@ export const CardModalContent = ({ card, animation, cachedQuery }) => {
             variants={getNextPrevAnimation(0, 1)}
             animate={animation}
           >
-            <Box opacity="0" animation={`${fadeAnimation} 300ms`}>
-              <Text fontWeight="300">
-                <Trans
-                  i18nKey="gallery:modal.created"
-                  values={{
-                    date: dateToText(card.created_at),
-                    author: card.author,
-                  }}
-                  components={{
-                    b: <b />,
-                  }}
-                />
-              </Text>
-              <HStack
-                mt="1rem"
-                pb="2rem"
-                alignItems="center"
-                spacing="2rem"
-                divider={<Box h="3rem" w="1px" borderColor="#a0aebf" />}
-                justifyContent="space-between"
+            <Flex direction="column" flex={1}>
+              <Box>
+                <Text fontWeight="300">
+                  <Trans
+                    i18nKey="gallery:modal.created"
+                    values={{
+                      date: dateToText(card.created_at),
+                      author: card.author,
+                    }}
+                    components={{
+                      b: <b />,
+                    }}
+                  />
+                </Text>
+                <HStack
+                  mt="1rem"
+                  pb="2rem"
+                  alignItems="center"
+                  spacing="2rem"
+                  divider={<Box h="3rem" w="1px" borderColor="#a0aebf" />}
+                  justifyContent="space-between"
+                >
+                  <CardModalAttribute
+                    label={t("modal.type")}
+                    value={<CardElement element={card.element} mt="0.2rem" />}
+                  />
+                  <CardModalAttribute label="HP" value={card.hp} />
+                  <CardModalAttribute
+                    label={t("modal.likes")}
+                    value={card.likes ?? 0}
+                  />
+                </HStack>
+              </Box>
+              <Flex
+                direction="column"
+                overflowY={isPage ? "unset" : "auto"}
+                height={isPage ? "auto" : "0"}
+                flex="1 1 0"
               >
-                <CardModalAttribute
-                  label={t("modal.type")}
-                  value={<CardElement element={card.element} mt="0.2rem" />}
-                />
-                <CardModalAttribute label="HP" value={card.hp} />
-                <CardModalAttribute
-                  label={t("modal.likes")}
-                  value={card.likes ?? 0}
-                />
-              </HStack>
-              {card.description && (
-                <>
-                  <Text fontWeight="800" mr="0.8rem" fontSize="1.4rem">
-                    {t("modal.description")}
-                  </Text>
-                  <Text noOfLines={4} fontWeight="300">
-                    {card.description}
-                  </Text>
-                </>
-              )}
-              <VStack alignItems="flex-start" pt="2rem" spacing="1rem">
-                <CardModalAttack
-                  name={card.attack1Name ?? card.attack2Name}
-                  damage={card.attack1Damage ?? card.attack2Damage}
-                  description={
-                    card.attack1Description ?? card.attack2Description
-                  }
-                  type={card.attack1Type ?? card.attack2Type}
-                  amount={card.attack1Amount ?? card.attack2Amount}
-                />
-                <CardModalAttack
-                  name={card.attack2Name}
-                  damage={card.attack2Damage}
-                  description={card.attack2Description}
-                  type={card.attack2Type}
-                  amount={card.attack2Amount}
-                />
-              </VStack>
-            </Box>
+                {card.description && (
+                  <Box>
+                    <Text fontWeight="800" mr="0.8rem" fontSize="1.4rem">
+                      {t("modal.description")}
+                    </Text>
+                    <Text noOfLines={4} fontWeight="300">
+                      {card.description}
+                    </Text>
+                  </Box>
+                )}
+                <VStack alignItems="flex-start" pt="2rem" spacing="1rem">
+                  <CardModalAttack
+                    name={card.attack1Name ?? card.attack2Name}
+                    damage={card.attack1Damage ?? card.attack2Damage}
+                    description={
+                      card.attack1Description ?? card.attack2Description
+                    }
+                    type={card.attack1Type ?? card.attack2Type}
+                    amount={card.attack1Amount ?? card.attack2Amount}
+                  />
+                  <CardModalAttack
+                    name={card.attack2Name}
+                    damage={card.attack2Damage}
+                    description={card.attack2Description}
+                    type={card.attack2Type}
+                    amount={card.attack2Amount}
+                  />
+                </VStack>
+              </Flex>
+            </Flex>
             <Box opacity="0" animation={`${fadeAnimation} 400ms`}>
               <Flex
                 borderBottom="1px solid"

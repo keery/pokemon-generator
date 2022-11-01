@@ -597,6 +597,15 @@ a {
   transition: color 200ms ease;
 }
 
+.notFull #like-heart {
+  stroke: white;
+  fill: transparent;
+}
+.isFull #like-heart {
+  stroke: #f07eaa;
+  fill: #f07eaa;
+}
+
 .card-swiper {
   overflow: visible !important;
   position: static !important;

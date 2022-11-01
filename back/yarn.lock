@@ -811,10 +811,10 @@
   resolved "https://registry.yarnpkg.com/@sqltools/formatter/-/formatter-1.2.2.tgz#9390a8127c0dcba61ebd7fdcc748655e191bdd68"
   integrity sha512-/5O7Fq6Vnv8L6ucmPjaWbVG1XkP4FO+w5glqfkIsq3Xw4oyNAdJddbnYodNDAfjVUvo/rrSCTom4kAND7T1o5Q==
 
-"@supercharge/request-ip@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@supercharge/request-ip/-/request-ip-1.1.2.tgz#be9083aa50d3c6fc200f3ed5919e0b9c13fc8842"
-  integrity sha512-mtryG/uiSIVT0ga8A/F9hNEuBSbDxW7/m9PEtxIHqdkE/vr766m17mtLPhrXA4q4T+Qw44+33mg3Rtkl7o+OvQ==
+"@supercharge/request-ip@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@supercharge/request-ip/-/request-ip-1.2.0.tgz#b8a8164322e09de3fa9b6f556885795c4841a7d4"
+  integrity sha512-wlt6JW69MHqLY2M6Sm/jVyCojNRKq2CBvwH0Hbx24SFhDQQGkgEjeKxVutDxHSyrWixFaOSLXC27euzxijhyMQ==
 
 "@tootallnate/once@1":
   version "1.1.2"

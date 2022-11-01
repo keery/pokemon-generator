@@ -83,6 +83,11 @@ export class CardController {
     return this.service.create(card)
   }
 
+  @Get('count')
+  async getCount() {
+    return this.service.countCards()
+  }
+
   @Override('getManyBase')
   async getMany(
     @ParsedRequest() parsedRequest: CrudRequest,
@@ -134,9 +139,25 @@ export class CardController {
       `)
   }
 
-  @Get('count')
-  async getCount() {
-    const res = await this.service.countCards()
-    return res
+  @Override('getOneBase')
+  async getOne(
+    @ParsedRequest() parsedRequest: CrudRequest,
+    @Req() req: Request,
+  ) {
+    const ip = getIp(req)
+
+    const res = await getConnection().query(`
+      SELECT card.*, CAST(COUNT(l.id) as INT) as likes,
+      (
+        SELECT CAST(COUNT(*) as INT) AS "cnt" FROM "like" "myLikes" WHERE "myLikes"."ip" = '${ip}' AND card.id = "myLikes"."cardId"
+      ) as has_liked
+      FROM card
+      LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
+      
+       WHERE card.id = ${req.params.id}
+      GROUP BY card.id
+      `)
+
+    return res.length > 0 ? res[0] : null
   }
 }
