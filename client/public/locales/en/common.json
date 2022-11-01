@@ -10,14 +10,16 @@
   "cancel": "Cancel",
   "confirm": "Confirm",
   "warning": "Warning",
+  "menu": {
+    "open": "Open menu",
+    "close": "Close menu",
+    "generator": "Create your card",
+    "gallery": "Gallery",
+    "cgu": "General conditions of use",
+    "sitemap": "Sitemap"
+  },
   "footer": {
     "navigation": "Menu",
-    "menu": {
-      "generator": "Create your card",
-      "gallery": "Gallery",
-      "cgu": "General conditions of use",
-      "sitemap": "Sitemap"
-    },
     "description": "{{name}} is an application to make your own card from your wonderful imagination. It's also a large community where you can share your cards and see the ones made by other users so feel free to participate as well.",
     "madeBy": "Development by",
     "cardCreated": "cards made"

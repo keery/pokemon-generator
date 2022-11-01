@@ -4,7 +4,6 @@ import { useFormContext } from "react-hook-form";
 import Select from "~components/Select";
 import Field from "~components/Field";
 import {
-  ELEMENTS,
   WEAKNESS_OPTIONS,
   RESISTANCE_OPTIONS,
   RETREAT_OPTIONS,

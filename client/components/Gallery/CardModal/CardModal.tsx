@@ -134,8 +134,8 @@ export const CardModalContent = ({ card, animation, cachedQuery, isPage }) => {
           <Heading
             as={motion.h1}
             fontFamily="title"
-            fontSize="4.2rem"
             fontWeight="800"
+            fontSize="4.2rem"
             layerStyle="ellipsis"
             pt="0.3rem"
             pr="2rem"

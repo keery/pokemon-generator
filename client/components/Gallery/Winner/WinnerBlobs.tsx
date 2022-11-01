@@ -42,9 +42,9 @@ const BLOB_GRADIENTS: Record<Element, string[]> = {
 };
 
 const WinnerBlobs = ({ winner }: Props) => {
-  const mixBlendMode = [ELECTRIC, PSYCHIC, FIGHTING].includes(winner.element)
-    ? "unset"
-    : "color-dodge";
+  // const mixBlendMode = [ELECTRIC, PSYCHIC, FIGHTING].includes(winner.element)
+  //   ? "unset"
+  //   : "color-dodge";
   const element = winner ? winner.element : WATER;
   const { scrollY } = useViewportScroll();
   const start = screenPercent(90);

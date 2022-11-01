@@ -123,7 +123,7 @@ const WinnerGlass = ({ winner }: Props) => {
           ) : (
             <>
               <Text fontFamily="title" fontWeight="800" fontSize="2rem">
-                {t("winner.no.title")} 🤨
+                {t("winner.no.title")}
               </Text>
               <Text fontSize="1.2rem">{t("winner.no.description")}</Text>
               <Button

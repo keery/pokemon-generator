@@ -32,8 +32,8 @@
       "congratule": "Féliciter le gagnant",
       "createdBy": "Créée par",
       "no": {
-        "title": "Pas de gagnant",
-        "description": "Personne n'a été élu gagnant cette semaine. Aucune carte n'a reçu de j'aime ou a été créé au cours de la semaine. Tente ta chance pour la prochaine élection !",
+        "title": "Pas encore de gagnant",
+        "description": "Personne n'a été élu gagnant cette semaine. Le prochain gagnant sera élu en fin de semaine lorsque le décompte sera terminé.",
         "button": "Créer ma carte"
       }
     },

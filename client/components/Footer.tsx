@@ -24,15 +24,15 @@ import useCardsCount from "~hooks/useCardsCount";
 
 const menu = [
   {
-    name: "footer.menu.generator",
+    name: "menu.generator",
     href: ROUTE_GENERATOR,
   },
   {
-    name: "footer.menu.gallery",
+    name: "menu.gallery",
     href: ROUTE_GALLERY,
   },
   {
-    name: "footer.menu.cgu",
+    name: "menu.cgu",
     href: ROUTE_CGU,
   },
   // {

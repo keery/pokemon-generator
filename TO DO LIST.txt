@@ -40,7 +40,6 @@ Gérer le tout en mobile
 Enregistrer IP apres publication
 Créer un email pour l'app pokemon
 Envoyer email quand un report est créé
-Faire un menu pour changer de page
 
 --------------------------
 
