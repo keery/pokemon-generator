@@ -30,10 +30,14 @@ import fr from "date-fns/locale/fr";
 import { ROUTE_GALLERY } from "~constants";
 import Router from "next/router";
 import ReportButton from "~components/Gallery/CardModal/ReportButton";
-import LikeButton from "~components/Gallery/LikeButton";
 import useKeybordShortcut from "~hooks/useKeybordShortcut";
 import { CachedQuery } from "~@types/CachedQuery";
 import { useTranslation, Trans } from "next-i18next";
+import dynamic from "next/dynamic";
+
+const LikeButton = dynamic(() => import("~components/Gallery/LikeButton"), {
+  ssr: false,
+});
 
 interface Props {
   card: Card;
