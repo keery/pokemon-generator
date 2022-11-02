@@ -22,6 +22,7 @@ import FieldsSubInfo from "~components/FieldsSubInfo";
 import FieldsBottomInfo from "~components/FieldsBottomInfo";
 import Logo from "~components/Logo";
 import NesButton from "~components/NesButton";
+import PublishButton from "~components/Publishing/PublishButton";
 
 const CardForm = () => {
   const { t } = useTranslation("generator");
@@ -110,59 +111,65 @@ const CardForm = () => {
           borderRadius={{ base: "none", xl: borderRadius }}
           px={{ base: 2, lg: 4 }}
           pt={{ base: 10, xl: pt }}
-          pb={{ base: 0, xl: 8 }}
+          pb={{ base: 0, xl: 4 }}
           direction="column"
           zIndex={10}
+          justifyContent="space-between"
         >
-          {isDesktop && (
-            <Flex alignItems="center" justifyContent="space-between">
-              <Logo />
-              <NesButton />
-            </Flex>
-          )}
-          <Accordion
-            defaultIndex={[0, 1, 2, 3, 4, 5]}
-            overflowY="scroll"
-            allowMultiple
-            allowToggle
-            mt={{ base: 0, xl: mt }}
-            w="100%"
-            color="#3b434c"
-          >
-            {Form.map(({ id, header, fields }) => (
-              <AccordionItem border="none" mt={4} key={id}>
-                {({ isExpanded }) => (
-                  <>
-                    <AccordionButton
-                      justifyContent="space-between"
-                      textAlign="left"
-                      py={0}
-                      px={2}
-                      borderRadius="sm"
-                      w="100%"
-                    >
-                      {header}
-                      {colorMode === "dark" ? (
-                        <Image
-                          src="/assets/img/pixel/chevron.png"
-                          w="20px"
-                          transition="transform ease-in-out 200ms"
-                          transform={isExpanded ? null : "rotate(180deg)"}
-                        />
-                      ) : (
-                        <AccordionIcon
-                          color={{ base: "white", xl: "#3b434c" }}
-                        />
-                      )}
-                    </AccordionButton>
-                    <AccordionPanel px={0}>
-                      <CardFieldsGroup>{fields}</CardFieldsGroup>
-                    </AccordionPanel>
-                  </>
-                )}
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <Flex direction="column" flexGrow={1} h="1%">
+            {isDesktop && (
+              <Flex alignItems="center" justifyContent="space-between">
+                <Logo />
+                <NesButton noColorChange={false} />
+              </Flex>
+            )}
+            <Accordion
+              defaultIndex={[0, 1, 2, 3, 4, 5]}
+              overflowY="scroll"
+              allowMultiple
+              allowToggle
+              mt={{ base: 0, xl: mt }}
+              w="100%"
+              color="#3b434c"
+              borderRadius="sm"
+            >
+              {Form.map(({ id, header, fields }) => (
+                <AccordionItem border="none" mt={4} key={id}>
+                  {({ isExpanded }) => (
+                    <>
+                      <AccordionButton
+                        justifyContent="space-between"
+                        textAlign="left"
+                        py={0}
+                        px={2}
+                        borderRadius="sm"
+                        w="100%"
+                        color="white!important"
+                      >
+                        {header}
+                        {colorMode === "dark" ? (
+                          <Image
+                            src="/assets/img/pixel/chevron.png"
+                            w="20px"
+                            transition="transform ease-in-out 200ms"
+                            transform={isExpanded ? null : "rotate(180deg)"}
+                          />
+                        ) : (
+                          <AccordionIcon
+                            color={{ base: "white", xl: "#3b434c" }}
+                          />
+                        )}
+                      </AccordionButton>
+                      <AccordionPanel px={0}>
+                        <CardFieldsGroup>{fields}</CardFieldsGroup>
+                      </AccordionPanel>
+                    </>
+                  )}
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </Flex>
+          <PublishButton />
         </Flex>
       </Flex>
     </Flex>

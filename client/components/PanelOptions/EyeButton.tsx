@@ -105,6 +105,7 @@ const EyeButtonHelp = ({ icon, setHelpVisible }) => {
 const EyeButton = () => {
   const { t } = useTranslation("generator");
   const [{ isVisible }, setArea] = useRecoilState(areaAtom);
+  const [isDisabled, setDisabled] = useState(false);
   const isMobile = useBreakpointValue({ base: true, xl: false });
   const [isHelpVisible, setHelpVisible] = useState(true);
   const isDontShowAgain = localStorage.getItem(KEY_CACHE) || null;
@@ -136,12 +137,14 @@ const EyeButton = () => {
       keyboard_shortcut={["ctrl", "h"]}
     />
   );
-
   useEffect(() => {
-    if (isMobile) {
+    if (isMobile && !isDisabled) {
       setArea((s) => ({ ...s, isVisible: true }));
     }
-  }, [isMobile]);
+    if (typeof isMobile !== "undefined" && !isDisabled) {
+      setDisabled(true);
+    }
+  }, [isMobile, setDisabled, isDisabled]);
 
   return (
     <>

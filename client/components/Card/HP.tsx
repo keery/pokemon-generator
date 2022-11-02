@@ -1,7 +1,7 @@
 import React from "react";
 import { useWatch } from "react-hook-form";
 import { Text } from "react-konva";
-import { Select } from "~@types/Card";
+import { Select } from "~constants";
 
 const HP = ({ control }) => {
   const hp: Select<string> = useWatch({

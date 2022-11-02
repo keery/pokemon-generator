@@ -57,6 +57,7 @@
     "importPicture" : "Import a picture",
     "fileTooBig": "Image file is too big ({{max}}Mo maximum)",
     "uploadFailed": "Image downloading has failed",
+    "publishFailed": "An error occurred while publishing",
     "colorBg": "Background color",
     "choosePicture": "Choose an image",
     "pictureAdded": "Image added",
@@ -70,5 +71,35 @@
     "dontDisplay": "Don't show again",
     "resizeImg" : "Resize image",
     "firstEdition": "First edition",
-    "1edition": "1st edition"
+    "1edition": "1st edition",
+    "publish": {  
+        "button": "Publish my card",
+        "requirements": {
+            "title": "Publishing requirements",
+            "desc": "In order to publish your card, it must comply with few requirements:",
+            "name": "Write a name",
+            "hp": "Select a HP value",
+            "photo": "Add a main photo",
+            "attack": "To have one attack at least"
+        },
+        "confirm": {
+            "title": "Confirm publication",
+            "desc": "Publish your beautiful card to add it into the galery and to share it with the community, it will be public and eligible for votes",
+            "warning": "The card must not contain information that is illegal, disrespectful or likely to infringe the rights of a third party.",
+            "checkbox": "By checking this box, I acknowledge having read and accepted the <a>General Conditions of Use</a>.",
+            "author": {
+                "label": "Author's name",
+                "placeholder": "Ex: Sacha"
+            }
+        },
+        "success": {
+            "title": "Yeaaaah !",
+            "desc": "Congratulation your card has been published successfully.",
+            "thanks": "Thank you for contributing and being part of the community.",
+            "review": "To prevent offensive card from being uploaded, every cards are subject to a review. This review can take up to 48 hours, but it's usually faster.",
+            "email": "Once our review is done you will receive an email, if your card is approved you will be able to find it in the gallery.",
+            "createNew": "Create new card",
+            "seeGallery": "See gallery"
+        }
+    }
 }

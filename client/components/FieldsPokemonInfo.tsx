@@ -22,15 +22,14 @@ const FieldsPokemonInfo = () => {
         <Select
           name="type"
           options={ELEMENTS_OPTIONS}
-          control={control}
-          iconPath="{{value}}.png"
+          iconPath="1-gen/{{value}}.png"
         />
       </Field>
       <Field label={t("picture")}>
         <FileInput name="mainImage" />
       </Field>
       <Field label="HP">
-        <Select name="hp" options={HP_OPTIONS} control={control} isClearable />
+        <Select name="hp" options={HP_OPTIONS} isClearable />
       </Field>
       <FieldsLengthWeight control={control} />
       <Checkbox

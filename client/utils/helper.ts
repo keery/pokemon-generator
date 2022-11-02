@@ -31,3 +31,8 @@ export const closeModalWithUrl = (close: () => void): void => {
   Router.push(`/`, undefined, { shallow: true });
   close();
 };
+
+export const screenPercent = (percent: number) => {
+  const windowHeight = typeof window !== "undefined" ? window.innerHeight : 0;
+  return (windowHeight * percent) / 100;
+};

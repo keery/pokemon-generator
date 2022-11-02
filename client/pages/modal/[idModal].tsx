@@ -4,7 +4,7 @@ import { SSRConfig } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 
-const Home: NextPage = () => {
+const Modal: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -28,4 +28,4 @@ export const getServerSideProps: GetServerSideProps<SSRConfig> = async ({
   };
 };
 
-export default Home;
+export default Modal;

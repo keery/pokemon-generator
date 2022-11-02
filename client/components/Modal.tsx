@@ -14,22 +14,26 @@ import { useRouter } from "next/router";
 import { closeModalWithUrl } from "~utils/helper";
 
 interface Props extends Omit<ModalProps, "isOpen"> {
-  name: string;
-  title?: string;
-  button?: React.ReactElement;
+  name?: string;
+  title?: string | JSX.Element;
+  button?: React.ReactElement | React.ReactNode;
   children: React.ReactNode;
   footer?: JSX.Element;
   withCloseButton?: boolean;
+  isUrlChanging?: boolean;
+  isOpen?: boolean;
 }
 
 const Modal = ({
-  name,
+  name = "",
   onClose,
   button = null,
   children,
   title,
   withCloseButton = false,
   footer,
+  isOpen = false,
+  isUrlChanging = true,
   ...rest
 }: Props) => {
   const router = useRouter();
@@ -43,7 +47,7 @@ const Modal = ({
   );
 
   const headerFontsize = useColorModeValue(
-    { base: "md", sm: "lg", md: "xl" },
+    { base: "md", sm: "lg", md: "1.6rem" },
     { base: "xs", sm: "sm", md: "md" }
   );
 
@@ -51,8 +55,14 @@ const Modal = ({
     <>
       {button}
       <ModalChakra
-        isOpen={router.query?.modal === name}
-        onClose={() => closeModalWithUrl(onClose)}
+        isOpen={router.query?.modal === name || isOpen}
+        onClose={() => {
+          if (isUrlChanging) {
+            closeModalWithUrl(onClose);
+          } else {
+            onClose();
+          }
+        }}
         isCentered
         {...rest}
         scrollBehavior="inside"
@@ -63,13 +73,22 @@ const Modal = ({
           w="96%"
           maxH="95vh"
           {...style}
-          color="text"
-          bgColor="white"
+          color="white"
+          backdropFilter="blur(25px) saturate(180%)"
+          backgroundColor="rgb(20 27 40 / 60%)"
         >
           {title && (
-            <ModalHeader fontSize={headerFontsize}>{title}</ModalHeader>
+            <ModalHeader
+              fontSize={headerFontsize}
+              fontWeight="800"
+              noOfLines={3}
+              maxH="135px"
+              overflow="inherit"
+            >
+              {title}
+            </ModalHeader>
           )}
-          {withCloseButton && <ModalCloseButton color="text" zIndex={9} />}
+          {withCloseButton && <ModalCloseButton color="white" zIndex={9} />}
           <ModalBody>{children}</ModalBody>
           {footer && <ModalFooter>{footer}</ModalFooter>}
         </ModalContent>

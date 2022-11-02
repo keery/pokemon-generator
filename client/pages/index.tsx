@@ -33,17 +33,10 @@ const Home: NextPage = () => {
 
   const isFormVisible = useBreakpointValue({ base: false, xl: true });
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
   return (
     <FormProvider {...form}>
       {!isFormVisible && <Header />}
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        style={{ height: "100%", overflow: "hidden" }}
-      >
+      <form style={{ height: "100%", overflow: "hidden" }}>
         <BackgroundBlur control={form.control} />
         <Container h="100%" py={6}>
           <Stack

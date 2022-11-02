@@ -1,4 +1,13 @@
-import { Element, Rarity, Select } from "~@types/Card";
+import { Element, Rarity } from "~@types/CardGenerator";
+
+export const ROUTE_GENERATOR = "/";
+export const ROUTE_CGU = "/terms-of-use";
+export const ROUTE_GALLERY = "/gallery";
+export const ROUTE_SITEMAP = "/sitemap";
+export const ROUTE_404 = "/404";
+export const ROUTE_PORTFOLIO = "https://guillaumeesnault.fr/";
+
+export const LOGO = "/assets/img/pokeball.png";
 
 export const FIRE = "fire";
 export const GRASS = "grass";
@@ -17,6 +26,11 @@ export const ELEMENTS: Element[] = [
   FIGHTING,
   NORMAL,
 ];
+
+export interface Select<T> {
+  label?: string | number;
+  value?: T;
+}
 
 export const ELEMENTS_OPTIONS: Select<string>[] = ELEMENTS.map((el) => ({
   value: el,
@@ -133,3 +147,31 @@ export const STAGE_OPTIONS: Select<string>[] = [
   { value: STAGE_ONE, label: "Stage 1" },
   { value: STAGE_TWO, label: "Stage 2" },
 ];
+
+export const GRADIENTS: Record<Element, any> = {
+  normal:
+    "linear-gradient(45deg, rgb(0 0 0 / 31%), rgb(105 108 111 / 28%) 45%, rgb(39 39 39 / 42%) 71%, rgb(61 64 64 / 4%))",
+  water:
+    "linear-gradient(45deg, rgb(63 128 254 / 37%), rgb(10 121 251 / 30%) 45%, rgb(63 125 254 / 54%) 71%, rgba(74, 210, 202, 0.3))",
+  fire: "linear-gradient(45deg, rgb(255 0 0 / 31%), rgb(251 10 10 / 16%) 45%, rgb(254 63 63 / 42%) 71%, rgb(255 140 193 / 30%))",
+  grass:
+    "linear-gradient(45deg, rgb(76 255 98 / 31%), rgb(0 97 51 / 16%) 45%, rgb(149 255 68 / 42%) 71%, rgb(193 218 54 / 30%))",
+  electric:
+    "linear-gradient(45deg, rgb(253 219 96), rgb(247 238 194) 45%, rgb(255 241 146) 71%, rgb(255 214 99))",
+  psychic:
+    "linear-gradient(45deg, rgb(205 170 250), rgb(196 193 251) 45%, rgb(209 151 236) 71%, rgb(157 166 244))",
+  fighting:
+    "linear-gradient(45deg, rgb(255 176 108), rgb(255 229 181) 45%, rgb(247 155 60 / 88%) 71%, rgb(202 102 17))",
+};
+
+export const GRADIENTS_COLOR: Record<Element, any> = {
+  water: "#363685",
+  psychic: "#3d194f",
+  electric: "#6e461d",
+  fire: "#5a2626",
+  fighting: "#542d13",
+  grass: "#1e5529",
+  normal: "#000000",
+};
+
+export const HEADER_HEIGHT = 82;

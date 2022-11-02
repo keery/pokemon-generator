@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useFormContext } from "react-hook-form";
 import { DAMAGE_CHOICES, ATTACK_AMOUNT_CHOICES, ELEMENTS } from "~constants";
 import Select from "~components/Select";
 import Field from "~components/Field";
@@ -22,9 +21,8 @@ const optionsAmount = ATTACK_AMOUNT_CHOICES.map((el) => ({
   label: el,
 }));
 
-const FieldsAttack = ({ name }) => {
+const FieldsAttack = ({ name, hasColorInverted = false }) => {
   const { t } = useTranslation("generator");
-  const { control } = useFormContext();
 
   return (
     <>
@@ -35,18 +33,18 @@ const FieldsAttack = ({ name }) => {
         <Select
           name={`${name}Damage`}
           options={optionsDamage}
-          control={control}
           isClearable
+          hasColorInverted={hasColorInverted}
         />
       </Field>
       <Field label={t("info")}>
-        <Textarea name={`${name}Info`} control={control} />
+        <Textarea name={`${name}Info`} />
       </Field>
       <Field label={t("amount")}>
         <Select
           name={`${name}Amount`}
           options={optionsAmount}
-          control={control}
+          hasColorInverted={hasColorInverted}
         />
       </Field>
       <Field label={t("type")}>
@@ -54,8 +52,8 @@ const FieldsAttack = ({ name }) => {
           name={`${name}Type`}
           isClearable
           options={optionsType}
-          iconPath="{{value}}.png"
-          control={control}
+          iconPath="1-gen/{{value}}.png"
+          hasColorInverted={hasColorInverted}
         />
       </Field>
     </>

@@ -1,11 +1,12 @@
 import React from "react";
 import { useTheme, useColorMode } from "@chakra-ui/react";
 import ReactSelect from "react-select";
-import { useController, Control, useWatch } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
+import { Select as SelectOption } from "~constants";
 
-const getStyle = (theme, iconPath, colorMode) => {
+const getStyle = (theme, iconPath, colorMode, hasColorInverted) => {
   const before = {
     content: '""',
     display: "inline-block",
@@ -41,9 +42,9 @@ const getStyle = (theme, iconPath, colorMode) => {
       }
       return {
         ...base,
-        color: theme.colors.main,
+        color: hasColorInverted ? "white" : theme.colors.main,
         ":hover": {
-          color: theme.colors.main,
+          color: hasColorInverted ? "white" : theme.colors.main,
         },
       };
     },
@@ -56,13 +57,22 @@ const getStyle = (theme, iconPath, colorMode) => {
         cursor: "pointer",
       },
     }),
-    indicatorSeparator: (base) => ({ ...base, backgroundColor: "#cacaca" }),
-    singleValue: (base) => ({ ...base, color: "#3b434c", fontWeight: "500" }),
+    container: (base) => ({ ...base, width: "100%" }),
+    indicatorSeparator: (base) => ({ ...base, backgroundColor: "#bdccde" }),
+    singleValue: (base) => ({
+      ...base,
+      color: hasColorInverted ? "white" : "#3b434c",
+      fontWeight: "500",
+    }),
     menu: (base) => ({
       ...base,
       zIndex: "999",
       backgroundColor: "rgb(99 98 98 / 83%)",
       backdropFilter: "blur(159px) saturate(160%)",
+    }),
+    input: (base) => ({
+      ...base,
+      color: hasColorInverted ? "white" : base.color,
     }),
     control: (styles, { getValue, isFocused }) => {
       const value = getValue();
@@ -77,7 +87,7 @@ const getStyle = (theme, iconPath, colorMode) => {
                 width: "24px",
                 height: "24px",
                 backgroundSize: "contain",
-                backgroundImage: `url(/assets/img/1-gen/${iconPath.replace(
+                backgroundImage: `url(/assets/img/${iconPath.replace(
                   "{{value}}",
                   value[0].value
                 )})`,
@@ -110,7 +120,7 @@ const getStyle = (theme, iconPath, colorMode) => {
         textTransform: "capitalize",
         transition: "border-color 200ms",
         boxShadow: isFocused ? "0px 0px 9px #a0c2ff !important" : "none",
-        border: isFocused ? "1px solid #fefeff" : "1px solid #cacaca",
+        border: isFocused ? "1px solid #fefeff" : "1px solid #bdccde",
         backgroundColor: "rgb(255 255 255 / 30%)",
         borderRadius: theme.radii.sm,
         height: "40px",
@@ -123,7 +133,6 @@ const getStyle = (theme, iconPath, colorMode) => {
     option: (styles, { data, isSelected }) => {
       return {
         ...styles,
-        textTransform: "capitalize",
         display: "flex",
         alignItems: "center",
         color: "white",
@@ -140,7 +149,7 @@ const getStyle = (theme, iconPath, colorMode) => {
               height: "22px",
               marginRight: "15px",
               backgroundSize: "contain",
-              backgroundImage: `url(/assets/img/1-gen/${iconPath.replace(
+              backgroundImage: `url(/assets/img/${iconPath.replace(
                 "{{value}}",
                 data.value
               )})`,
@@ -154,32 +163,34 @@ const getStyle = (theme, iconPath, colorMode) => {
 
 interface Props {
   name: string;
-  control: Control;
   placeholder?: string;
   isClearable?: boolean;
   iconPath?: string;
-  options: Record<string, any>[];
+  hasColorInverted?: boolean;
+  onChange?: (value: any) => void;
+  options: SelectOption<string | number>[];
 }
 
 const Select = ({
   name,
-  control,
   options,
   placeholder = "",
   iconPath = null,
   isClearable = false,
+  onChange = null,
+  hasColorInverted = false,
 }: Props) => {
   const { t } = useTranslation("generator");
+  const { watch, setValue } = useFormContext();
   const { colorMode } = useColorMode();
   const theme = useTheme();
-  const { field } = useController({
-    name,
-    control,
-  });
-  const value = useWatch({ control, name });
+  const value = watch(name);
 
-  const onChange = (data) => {
-    field.onChange(data || "");
+  const onChangeSelect = (data) => {
+    setValue(name, data || "");
+    if (onChange) {
+      onChange(data);
+    }
   };
 
   return (
@@ -187,8 +198,8 @@ const Select = ({
       name={name}
       placeholder={placeholder}
       options={options}
-      styles={getStyle(theme, iconPath, colorMode)}
-      onChange={onChange}
+      styles={getStyle(theme, iconPath, colorMode, hasColorInverted)}
+      onChange={onChangeSelect}
       isClearable={isClearable}
       menuPortalTarget={document.body}
       menuPlacement="auto"

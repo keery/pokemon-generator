@@ -2,7 +2,7 @@ const Textarea = {
   variants: {
     outline: {
       bgColor: "rgb(255 255 255 / 30%)",
-      borderColor: "#cacaca",
+      borderColor: "#bdccde",
       borderRadius: "sm",
       maxH: "180px",
       minH: "110px",

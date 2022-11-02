@@ -20,7 +20,7 @@ const FieldsEvolution = () => {
   return (
     <>
       <Field label={t("stage")}>
-        <Select name="stage" options={STAGE_OPTIONS} control={control} />
+        <Select name="stage" options={STAGE_OPTIONS} />
       </Field>
       <Field label={t("name")} isDisabled={stage.value === BASIC}>
         <Input name="nameEvolution" type="text" />

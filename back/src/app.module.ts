@@ -1,10 +1,15 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
-// import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
-// import { CardModule } from '~card/card.module'
+import { ScheduleModule } from '@nestjs/schedule'
+import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
+import { CardModule } from '~card/card.module'
+import { WinnerModule } from '~winner/winner.module'
 import { ImageModule } from '~image/image.module'
+import { CronModule } from '~cron/cron.module'
 import { MailModule } from './mail/mail.module'
+import { ReportModule } from './report/report.module'
+import { LikeModule } from './like/like.module'
 import { ConsoleModule } from 'nestjs-console'
 import { ServeStaticModule } from '@nestjs/serve-static'
 import { I18nModule, I18nJsonParser } from 'nestjs-i18n'
@@ -17,23 +22,23 @@ import { join } from 'path'
       rootPath: join(__dirname, '..', 'public'),
     }),
     ConfigModule.forRoot(),
-    // TypeOrmModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   inject: [ConfigService],
-    // useFactory: async (config: ConfigService) => {
-    //   return {
-    //     // type: 'postgres',
-    //     // host: config.get('POSTGRESQL_ADDON_HOST'),
-    //     // port: Number(config.get('POSTGRESQL_ADDON_PORT')),
-    //     // username: config.get('POSTGRESQL_ADDON_USER'),
-    //     // password: config.get('POSTGRESQL_ADDON_PASSWORD'),
-    //     // database: config.get('POSTGRESQL_ADDON_DB'),
-    //     entities: [__dirname + '/**/*.entity{.ts,.js}'],
-    //     synchronize: true,
-    //     logging: process.env.NODE_ENV === 'dev',
-    //   } as PostgresConnectionOptions
-    // },
-    // }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (config: ConfigService) => {
+        return {
+          type: 'postgres',
+          host: config.get('POSTGRESQL_ADDON_HOST'),
+          port: Number(config.get('POSTGRESQL_ADDON_PORT')),
+          username: config.get('POSTGRESQL_ADDON_USER'),
+          password: config.get('POSTGRESQL_ADDON_PASSWORD'),
+          database: config.get('POSTGRESQL_ADDON_DB'),
+          entities: [__dirname + '/**/*.entity{.ts,.js}'],
+          synchronize: true,
+          logging: process.env.NODE_ENV === 'dev',
+        } as PostgresConnectionOptions
+      },
+    }),
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       parser: I18nJsonParser,
@@ -42,8 +47,13 @@ import { join } from 'path'
         watch: process.env.NODE_ENV === 'dev',
       },
     }),
-    // CardModule,
+    ScheduleModule.forRoot(),
+    CronModule,
+    CardModule,
+    WinnerModule,
     ImageModule,
+    ReportModule,
+    LikeModule,
     MailModule,
     ConsoleModule,
   ],

@@ -1,0 +1,44 @@
+{
+    "title": "Terms of use",
+    "update": "(last update {{date}})",
+    "line1": "The purpose of these “terms of use” is to provide a legal framework for the terms of provision of the services of the website and their use by the “User”. The general conditions of use must be accepted by any User wishing to access the site. They constitute the contract between the site and the User. Access to the site by the User signifies acceptance of these general conditions of use. We reserve the right to unilaterally modify the content of these T & Cs at any time.",
+    "mention": {
+        "title": "Legal Notice",
+        "text": "In accordance with the law \"IT et liberties\" of January 6, 1978 modified in 2004, you benefit from a right of access and of correction to the information which concerns you, which you can exert by addressing to {{app_name}} whose co-ordinates are below.\nYou can also, for legitimate reasons, oppose the treatment of the data concerning you.",
+        "line1": "{{app_name}} is the property of {{name}}",
+        "email": "Email",
+        "host": "{{app_name}} is hosted by {{host}} whose registered office is located at 2 rue Kellermann - 59100 Roubaix - France."
+    },
+    "art1": {
+        "title": "Article 1 : Presentation",
+        "text":"{{app_name}} is a free french internet website, accessible for everybody. All costs incurred by the User to access the service (computer hardware, software, Internet connection, etc.) are at their expense."
+    },
+    "art2": {
+        "title": "Article 2 : Personal data",
+        "text": "Information used are author name when you publish a card, this name can be your real name or a nickname, we also use IP address in order to respect these conditions. Regarding law « IT and liberties » from 6th january updated on 2004, you have the right to access and rectify information concerning you, which you can exercise by contacting {{email}}."
+    },
+    "art3": {
+        "title": "Article 3 : Published content",
+        "text": "Your images must not: \n- contain no character inciting to hatred, \n- contain no defamatory character, \n- contain no threatening character, \n- contain no illegal character or going against any law in any way, \n- contain no sexual character (erotic, pornographic, obscene or provocative poses, ...) apart from the dedicated headings, \n- contain no personal information (name, address, e-mail, telephone...). The use that you will make of the services will not have to be: commercial, dishonest (intended not to respect the rules specific to each service). \nYou commit yourself, by the use of this service, not to publish contents not conforming to the royalties or the licenses of exploitation.\nYou commit yourself not to post contents in connection with the use of fraudulent, pirate, or counterfeit contents. \nYou commit yourselves not to post contents not respecting the French legislation in force.\nYou commit yourselves finally, on the honor, not to contravene the two points raised by abusing the use of our policy on the contents."
+    },
+    "art4": {
+        "title": "Article 4 : Report system",
+        "text": "In case of problem, you have the possibility of using our alert system it will be available from a button \"Report\" on the card page. It should be noted that the button is available on the page associated with the image and not directly on the link of the image concerned."
+    },
+    "art5": {
+        "title": "Article 5 : Sanction for non-compliance with the terms of use",
+        "text": "In case of non-respect of the rules, here are the possible sanctions:\n- Deletion of the incriminated images,\n- Reporting to the competent authorities."
+    },
+    "art6": {
+        "title": "Article 6 : Responsibilities",
+        "text": "The moderation after publication does not allow {{app_name}} to be held responsible for the published images.\n{{app_name}} undertakes to intervene in the event of alarm as soon as possible.\nAny image contravening the rules hereafter, the law or any other code of conduct, engages only the responsibility of their author. \nAlthough controlled as well as possible, with a will to optimize the deadlines and the conditions of control on the contents, by right holders of the forum, the term \"moderation\" does not mean that {{app_name}} or the right holders {{url}} have a total control on the images. \nAny user who feels that an image sent is objectionable is encouraged to contact us immediately by e-mail or using the alert tool provided. \nIn order to optimize the control over the content, {{app_name}} is authorized to delete, modify, move, any image that would be judged as contravening the proper functioning of the site, without prior notice, to delete, modify or suspend any member account or to delegate these rights to certain members, groups, defining the term \"rightful claimants\" raised. \nIn order to respect the present conditions of use, IP addresses are recorded. In view of the role assigned to them, the rightful owners of {{app_name}} are not required to justify their actions. If a dispute seems necessary, it must be done by email."
+    },
+    "art7": {
+        "title": "Article 7 : Applicable Law",
+        "text": "Any contribution on the {{url}} site is governed by the Intellectual Property Code. Each user remains the owner of his images. By publishing contributions, you authorize the company {{app_name}} to reference the content of your contributions on the various search engines. You renounce to sue the company {{app_name}} following a problem or damage caused by another user in violation of the general conditions of use."
+    },
+    "art8": {
+        "title": "Article 8 : Cookies",
+        "text": "The site {{url}} is required to record cookies on your browser in order to keep your browsing preferences and to carry out statistics (Google Analytics). You can oppose this recording via the preferences of your browser."
+    }
+}

@@ -15,7 +15,7 @@ const FieldsBottomInfo = () => {
   return (
     <>
       <Field label={t("description")}>
-        <Textarea name="description" control={control} />
+        <Textarea name="description" />
       </Field>
       <Field label={t("illustrator")}>
         <Input name="illustrator" />
@@ -24,9 +24,8 @@ const FieldsBottomInfo = () => {
       <Field label={t("rarity")}>
         <Select
           name="rarity"
-          control={control}
           options={RARITY_OPTIONS}
-          iconPath="rarity-{{value}}.png"
+          iconPath="1-gen/rarity-{{value}}.png"
         />
       </Field>
     </>

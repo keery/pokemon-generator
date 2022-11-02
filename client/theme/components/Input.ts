@@ -5,7 +5,7 @@ const Input = {
       field: {
         borderRadius: "sm",
         bgColor: "rgb(255 255 255 / 30%)",
-        borderColor: "#cacaca",
+        borderColor: "#bdccde",
         _hover: {
           borderColor: "#77b2f5",
         },

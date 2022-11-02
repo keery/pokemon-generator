@@ -2,7 +2,6 @@ import React from "react";
 import OptionButton from "~components/PanelOptions/OptionButton";
 import Prev from "public/assets/img/prev.svg";
 import Next from "public/assets/img/next.svg";
-
 import { useTranslation } from "next-i18next";
 import { useRecoilState } from "recoil";
 import { historyAtom } from "~atoms/history";

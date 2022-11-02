@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   HStack,
@@ -17,7 +17,7 @@ import {
 import { motion, MotionStyle } from "framer-motion";
 import { useWatch, Control, useFormContext } from "react-hook-form";
 import Cross from "public/assets/img/cross.svg";
-import { Select } from "~@types/CardGenerator";
+import { Select } from "~constants";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";

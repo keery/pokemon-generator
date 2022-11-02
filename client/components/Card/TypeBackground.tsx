@@ -1,7 +1,8 @@
 import React from "react";
 import { useWatch } from "react-hook-form";
 import ImageCanvas from "~components/Card/ImageCanvas";
-import { Select, Element, Stage } from "~@types/Card";
+import { Element, Stage } from "~@types/CardGenerator";
+import { Select } from "~constants";
 
 const TypeBackground = ({ control }) => {
   const [type, stage]: [Select<Element>, Select<Stage>] = useWatch({

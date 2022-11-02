@@ -1,3 +1,55 @@
-Theme retro
-Share on social networks
-Publish card and see collections
+Ajouter un email non obligatoire pour suivre les resultats de popularité de sa carte
+Ajouter le nombre de fois qu'une carte a gagné dans la modal
+Publier carte sur ecran tablette et mobile, pas de bouton
+Animation cool lorsqu'on appuie sur like depuis la modal
+Newsletter, card of the day
+reduire taille des animations avec https://www.framer.com/docs/guide-reduce-bundle-size/#how-to-reduce-bundle-size
+faire le footer
+Refaire le logo https://dribbble.com/shots/18325875-Logo-Design-For-PokeBall-Gadgets-Electric-machine-logo
+OG Image sur twitter ne marche pas
+checker print sur tous les navigateurs
+bouton remonter en haut dans la liste (voir dribbble)
+trouver un effet au hover sur les cartes (maybe l'effet de brillance comme sur le bouton ou la carte gagnante)
+faire le sitemap
+FAQ ?
+Page contact
+Faire un check que j'utilise bien les balises HTML5
+Voir si je trouve des bonnes idées de filtre supplémentaire pour les cartes (mot clé ?)
+Double tap pour liker carte en mobile
+Bug obliger de resize la photo d'une carte a l'upload, faire que la photo déborde de base pour prendre la largeut et hauteur au complet
+Checker pays auteur carte
+Faire un menu rapide sur la page gallerie pour switcher rapidement entre les differentes section
+Update modal reset card
+Bouton publier dans le formulaire des champs en mobile
+Page 404
+Gérer la publication des cartes
+
+Faire une animation en mode panneau lumineux design pour montrer le but, bien attirer l'oeil
+Tenter de changer la perspective 
+Etre plus explicite, un gagnant par semaine, le plus de like gagne
+Essayer d'appuyer le fait d'avoir envie de gagner, en precisant ce qu'on gagne, ce qu'on gagne c'est seulement
+le titre de gagnant de la semaine
+Afficher sur la modale d'une carte une mention spécifique pour dire si cette carte a déjà gagné
+Plus jouer sur le numéro de la semaine en cours
+Petite animation bien calé pour annoncer en mode titre avant le gagnant
+Insister sur le fait de devoir voter
+Check effet carte envoyé par Julien
+Position image sur la carte après upload, faire en sorte de ne pas avoir à la bouger du tout
+Checker OG page carte
+Gérer le tout en mobile
+Enregistrer IP apres publication
+Créer un email pour l'app pokemon
+Envoyer email quand un report est créé
+
+--------------------------
+
+Idée parallax:
+Faire 2 ou 4 par ligne, et faire un effet ou tout ne scroll pas à la même vitesse, 
+ceux qui vont etre au milieu de l'ecran vont rester plus longtemps qui meme a etre scale un peu, et que ceux qui s'en vont de l'ecran 
+partent smooth envolé vers le haut maybe retrecit un peu, soit en mode roulette, soit en mode vraiment parallax les cartes viennent et partent de partout
+https://www.youtube.com/watch?v=tyyM6_90ZN0&ab_channel=Thingsmade
+https://www.apple.com/iphone-13-pro/
+tres interessant https://www.framer.com/docs/gestures/#viewport
+
+Idées design:
+https://medium.muz.li/ui-interactions-of-the-week-314-72eb77f42517

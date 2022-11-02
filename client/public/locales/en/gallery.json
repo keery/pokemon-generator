@@ -1,0 +1,71 @@
+{
+    "seo": {
+      "title": "Gallery",
+      "description": "Consult all pokemon cards from the community all around the world. Vote for your favorites cards or even share the cards you made and who knows you might be the next most amazing card.",
+      "modal": {
+        "isType": "is a pokemon of type",
+        "madeBy": "Card made by {{author}}"
+      }
+    },
+    "nextWinner": "Next winner elected in",
+
+    "fire" : "Fire",
+    "grass" : "Grass",
+    "water" : "Water",
+    "electric" : "Electric",
+    "psychic" : "Psychic",
+    "fighting" : "Fighting",
+    "normal" : "Normal",
+    "steel" : "Steel",
+    "dark" : "Dark",
+    "attack1" : "Attack n°1",
+    "attack2" : "Attack n°2",
+    "filters": {
+      "mostRecent": "Most recent cards",
+      "recentWinner": "Most recent winners",
+      "oldWinner": "Oldest winners",
+      "mostVoted": "Most liked",
+      "random": "Random"
+    },
+    "loadMoreCards": "Load more cards",
+    "winner": {
+      "title": "Weekly winner",
+      "congratule": "Congratulate winner",
+      "createdBy": "Created by",
+      "no": {
+        "title": "No winner yet",
+        "description": "No one got elected this week. Next winner will get elected by the end of the week when the countdown will be over",
+        "button": "Create my card"
+      }
+    },
+    "modal": {
+      "created": "Created on {{date}} by <b>{{author}}</b>",
+      "description": "Description",
+      "type": "Type",
+      "likes": "Likes",
+      "like": "Like",
+      "liked": "Liked",
+      "shareSocial": "Check this out! I created {{name}} my new pokemon card {{href}}",
+      "report": {
+        "button": "Report",
+        "title": "Report card {{name}}",
+        "description": "If you determine that this card contains inappropriate content you can report it. After reporting, the moderation will determine as soon as possible if the quality of its content is abusive, if so the card will be permanently removed from the site.",
+        "label": "Select a reason",
+        "choice1": "Nudity / Sexual nature",
+        "choice2": "Inciting hatred",
+        "choice3": "Harassment",
+        "choice4": "Personal information disclosure",
+        "other": "Other",
+        "labelOther": "Add details to your report",
+        "success": "Your report has been sent successfully",
+        "error": "An error occured trying to send your report"
+      }
+    },
+    "countdown": {
+      "days": "days",
+      "hours": "hours",
+      "minutes": "minutes",
+      "seconds": "seconds"
+    }
+  }
+  

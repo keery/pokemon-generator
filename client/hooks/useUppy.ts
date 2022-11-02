@@ -10,10 +10,10 @@ import French from "@uppy/locales/lib/fr_FR";
 import Spanish from "@uppy/locales/lib/es_ES";
 import { useUppy as useUppyReact } from "@uppy/react";
 import { useTranslation } from "next-i18next";
-import axios from "axios";
 import useToast from "~hooks/useToast";
 import { useFormContext } from "react-hook-form";
 import { CARD_DEFAULT_STATE } from "~data/card";
+import { client } from "~api/client";
 
 const getUppyTranslations = (locale) => {
   switch (locale) {
@@ -81,13 +81,10 @@ const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
         }
       })
       .on("upload-success", (file, response) => {
-        axios
-          .get(
-            `${process.env.NEXT_PUBLIC_API_URL}/image/tmp/get/${response.body.url}`,
-            {
-              responseType: "blob",
-            }
-          )
+        client
+          .get(`/image/tmp/get/${response.body.url}`, {
+            responseType: "blob",
+          })
           .then((res) => {
             const reader = new FileReader();
             reader.onload = function (e) {

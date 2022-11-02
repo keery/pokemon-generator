@@ -21,7 +21,8 @@ const theme = extendTheme({
   styles: {
     global: ({ colorMode }) => ({
       body: {
-        background: "white",
+        background:
+          "linear-gradient(45deg,rgba(63, 128, 254, 0.31),rgba(10, 121, 251, 0.16) 45%,rgba(63, 125, 254, 0.42) 71%,rgba(74, 210, 202, 0.3)) fixed",
         fontFamily: colorMode === "dark" ? "nes" : "body",
         fontSize: colorMode === "dark" ? "0.8rem" : "1rem",
       },
@@ -35,6 +36,7 @@ const theme = extendTheme({
     body: "Inter, sans-serif",
     heading: "Inter, serif",
     nes: '"Press Start 2P"',
+    title: "Work Sans",
   },
   fontSizes: {
     xs: "12px",
@@ -50,6 +52,13 @@ const theme = extendTheme({
     main2: "#f4e8fb",
     text: "#3b434c",
     pokeball: "#fe5b54",
+    blueGray: "#bdccde",
+    myPink: "#f07eaa",
+    blue: {
+      xs: "#52a4ff",
+      md: "#104ba7",
+      lg: "#1d1741",
+    },
   },
   radii: {
     xs: "0.3rem",
@@ -125,6 +134,20 @@ const theme = extendTheme({
       bgColor: "rgb(255 255 255 / 25%)",
       border: "1px solid rgb(255 255 255 / 60%)",
     },
+    glassMd: {
+      backdropFilter: "blur(30px) saturate(180%)",
+      backgroundColor: "rgb(255 255 255 / 50%)",
+      border: "1px solid rgb(255 255 255 / 60%)",
+    },
+    glassLg: {
+      backdropFilter: "blur(10px) saturate(180%)",
+      backgroundColor: "rgb(255 255 255 / 65%)",
+      border: "1px solid rgb(255 255 255 / 60%)",
+    },
+    glassModal: {
+      backdropFilter: "blur(15px) saturate(180%)",
+      backgroundColor: "rgba(255, 255, 255, 0.28)",
+    },
     "neuro-flat": {
       backgroundColor: "#e0e0e0",
       boxShadow: "5px 5px 10px #cccccc, -5px -5px 10px #f4f4f4",
@@ -150,7 +173,6 @@ const theme = extendTheme({
       borderWidth: "4px",
       borderColor: "black",
       borderImageSource: `url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8" ?><svg version="1.1" width="8" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M3 1 h1 v1 h-1 z M4 1 h1 v1 h-1 z M2 2 h1 v1 h-1 z M5 2 h1 v1 h-1 z M1 3 h1 v1 h-1 z M6 3 h1 v1 h-1 z M1 4 h1 v1 h-1 z M6 4 h1 v1 h-1 z M2 5 h1 v1 h-1 z M5 5 h1 v1 h-1 z M3 6 h1 v1 h-1 z M4 6 h1 v1 h-1 z" fill="rgb(33,37,41)" /></svg>')`,
-      // backgroundColor: "white",
     },
     "nes-container-dark": {
       borderImageSlice: 3,
@@ -231,6 +253,26 @@ const theme = extendTheme({
         boxShadow: "0px 0px 9px #a0c2ff",
         borderColor: "#fff",
       },
+    },
+    cover: {
+      position: "absolute",
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0,
+    },
+    gradient: {
+      backgroundImage:
+        "linear-gradient(118deg, rgb(78, 210, 243), rgb(189, 147, 218) 80%, rgb(98, 112, 238))",
+    },
+    ellipsis: {
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+    },
+    darkBlur: {
+      backdropFilter: "blur(25px) saturate(180%)",
+      backgroundColor: "rgb(20 27 40 / 60%)",
     },
   },
 });
