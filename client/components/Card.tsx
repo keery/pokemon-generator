@@ -138,6 +138,7 @@ const Card = () => {
         h="100%"
         display="inline-flex"
         pos="relative"
+        transition="padding 200ms ease-in-out"
         py={isVisible && !isMobile ? 14 : 0}
         px={isVisible && !isMobile ? 30 : 0}
       >
