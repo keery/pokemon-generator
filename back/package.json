@@ -41,7 +41,7 @@
     "@nestjsx/crud": "^4.6.2",
     "@nestjsx/crud-typeorm": "^4.6.2",
     "@supercharge/request-ip": "^1.2.0",
-    "@uppy/companion": "^3.0.1",
+    "@uppy/companion": "^3.3.1",
     "bcryptjs": "^2.4.3",
     "blurhash": "^1.1.4",
     "class-transformer": "^0.3.2",
