@@ -20,11 +20,11 @@ const LikeButton = ({ card, cachedQuery, ...rest }: Props) => {
   const { t } = useTranslation("gallery");
   const queryClient = useQueryClient();
   const setCard = useSetRecoilState(cardModalAtom);
-  const [isLiked, setLiked] = useState(card?.has_liked > 0);
+  const [isLiked, setLiked] = useState(false);
 
   useEffect(() => {
     setLiked(card.has_liked > 0);
-  }, [card.id]);
+  }, [card.id, card.has_liked]);
 
   const { mutate } = useLike({
     onMutate: async () => {
