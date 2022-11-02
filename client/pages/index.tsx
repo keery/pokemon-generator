@@ -1,10 +1,17 @@
 import React from "react";
 import { GetServerSideProps, NextPage } from "next";
-import { Stack, Container, Flex, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Stack,
+  Container,
+  Flex,
+  useBreakpointValue,
+  Box,
+} from "@chakra-ui/react";
 import { SSRConfig } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import BackgroundBlur from "~components/BackgroundBlur";
 import CardForm from "~components/CardForm";
+import Nav from "~components/Nav";
 import ModalUppy from "~components/ModalUppy";
 import Header from "~components/Header";
 import { CARD_DEFAULT_STATE } from "~data/card";
@@ -36,6 +43,18 @@ const Home: NextPage = () => {
   return (
     <FormProvider {...form}>
       {!isFormVisible && <Header />}
+      {isFormVisible && (
+        <Box
+          zIndex={100}
+          pos="absolute"
+          top={4}
+          right={12}
+          display="flex"
+          justifyContent="flex-end"
+        >
+          <Nav />
+        </Box>
+      )}
       <form style={{ height: "100%", overflow: "hidden" }}>
         <BackgroundBlur control={form.control} />
         <Container h="100%" py={6}>

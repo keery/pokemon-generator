@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, useColorModeValue } from "@chakra-ui/react";
+import { Container, useColorModeValue, HStack } from "@chakra-ui/react";
 import Logo from "~components/Logo";
 import { HEADER_HEIGHT } from "~constants";
 import NesButton from "~components/NesButton";
@@ -25,8 +25,10 @@ const Header = ({ noColorChange = false }: Props) => {
       height={HEADER_HEIGHT}
     >
       <Logo />
-      <Nav />
-      {router.pathname === "/" && <NesButton noColorChange={noColorChange} />}
+      <HStack alignItems="center" spacing={6}>
+        {router.pathname === "/" && <NesButton noColorChange={noColorChange} />}
+        <Nav />
+      </HStack>
     </Container>
   );
 };

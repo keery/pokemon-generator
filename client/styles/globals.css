@@ -56,10 +56,10 @@
 }
 
 ::-moz-selection {
-  background: rgb(43 134 197);
+  background: #516fb3;
 }
 ::selection {
-  background: rgb(43 134 197);
+  background: #516fb3;
   color: #fff;
 }
 

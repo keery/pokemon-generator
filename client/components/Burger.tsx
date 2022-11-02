@@ -13,7 +13,7 @@ const Line = ({ isOpen, ...rest }: LineProps) => {
       top="0"
       width="100%"
       height="2px"
-      bgColor={isOpen ? "white" : "text"}
+      bgColor={isOpen ? "white" : "main"}
       transition="0.3s all ease-in-out"
       {...rest}
     />
@@ -32,11 +32,10 @@ const Burger = ({ onClick, isOpen }: Props) => {
     <Button
       title={isOpen ? t("menu.close") : t("menu.open")}
       role="group"
-      position="absolute"
-      top="35px"
-      right="5vw"
-      width="38px"
-      height="20px"
+      padding="0.9rem 0.5rem"
+      overflow="hidden"
+      height="50px"
+      width="50px"
       onClick={onClick}
       variant="unstyled"
       display="flex"
@@ -44,6 +43,8 @@ const Burger = ({ onClick, isOpen }: Props) => {
       flexDirection="column"
       alignItems="flex-end"
       zIndex={10}
+      layerStyle="glass"
+      borderRadius="100%"
     >
       <Line
         _groupHover={{
