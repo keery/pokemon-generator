@@ -25,7 +25,7 @@ const Header = ({ noColorChange = false }: Props) => {
       height={HEADER_HEIGHT}
     >
       <Logo />
-      {/* <Nav /> */}
+      <Nav />
       {router.pathname === "/" && <NesButton noColorChange={noColorChange} />}
     </Container>
   );

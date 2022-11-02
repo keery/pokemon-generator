@@ -169,7 +169,7 @@ const CardForm = () => {
               ))}
             </Accordion>
           </Flex>
-          {/* <PublishButton /> */}
+          <PublishButton />
         </Flex>
       </Flex>
     </Flex>
