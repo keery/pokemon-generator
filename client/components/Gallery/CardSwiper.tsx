@@ -102,7 +102,11 @@ const CardSwiper = () => {
                 {data &&
                   data.map((card, i) => (
                     <SwiperSlide key={card.id}>
-                      <CardThumbnail card={card} layoutPrefix="swiper" />
+                      <CardThumbnail
+                        card={card}
+                        layoutPrefix="swiper"
+                        cachedQuery={null}
+                      />
                     </SwiperSlide>
                   ))}
               </>

@@ -62,6 +62,7 @@ const WinnerGlass = ({ winner }: Props) => {
           bottom="0"
           zIndex={5}
           style={{
+            // @ts-ignore
             opacity: opacityBackground,
           }}
           _before={{
@@ -103,6 +104,7 @@ const WinnerGlass = ({ winner }: Props) => {
             padding: "1.3rem 2.4rem",
             border: "none",
             borderRadius: "1rem",
+            // @ts-ignore
             opacity,
             y,
           }}

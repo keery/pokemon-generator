@@ -13,7 +13,7 @@ import {
 import { useRouter } from "next/router";
 import { closeModalWithUrl } from "~utils/helper";
 
-interface Props extends ModalProps {
+interface Props extends Omit<ModalProps, "isOpen"> {
   name?: string;
   title?: string | JSX.Element;
   button?: React.ReactElement | React.ReactNode;
@@ -21,6 +21,7 @@ interface Props extends ModalProps {
   footer?: JSX.Element;
   withCloseButton?: boolean;
   isUrlChanging?: boolean;
+  isOpen?: boolean;
 }
 
 const Modal = ({

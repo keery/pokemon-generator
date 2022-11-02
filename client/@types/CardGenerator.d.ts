@@ -1,5 +1,5 @@
 import { RgbaColor } from "react-colorful";
-import { BASIC, STAGE_ONE, STAGE_TWO } from "~constants";
+import { BASIC, STAGE_ONE, STAGE_TWO, Select } from "~constants";
 
 export type Element =
   | "fire"
@@ -12,11 +12,6 @@ export type Element =
 
 export type Rarity = "common" | "uncommon" | "rare";
 export type Stage = "basic" | "stage1" | "stage2";
-
-export interface Select<T> {
-  label?: string | number;
-  value?: T;
-}
 
 export interface IAttack {
   name: string;

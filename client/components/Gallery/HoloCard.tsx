@@ -136,6 +136,7 @@ const HoloCard = () => {
           x,
           z,
           rotateY: rotateYFronface,
+          // @ts-ignore
           opacity,
           position: "absolute",
           top: 0,
@@ -162,6 +163,7 @@ const HoloCard = () => {
           backgroundPosition="50% 50%"
           transformOrigin="center"
           style={{
+            // @ts-ignore
             animation: animationCard,
           }}
           onClick={() => {
@@ -203,6 +205,7 @@ const HoloCard = () => {
             zIndex="1"
             borderRadius="23px"
             style={{
+              // @ts-ignore
               animation: animationGradient,
             }}
           />
@@ -230,6 +233,7 @@ const HoloCard = () => {
             opacity="0.75"
             borderRadius="23px"
             style={{
+              // @ts-ignore
               animation: animationSparkle,
             }}
           />

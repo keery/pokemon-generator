@@ -13,9 +13,9 @@
   "menu": {
     "open": "Open menu",
     "close": "Close menu",
-    "generator": "Create your card",
+    "generator": "Create card",
     "gallery": "Gallery",
-    "cgu": "General conditions of use",
+    "cgu": "Terms of use",
     "sitemap": "Sitemap"
   },
   "footer": {

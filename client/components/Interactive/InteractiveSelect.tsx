@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Box, Select } from "@chakra-ui/react";
-import { Select as SelectType } from "~@types/CardGenerator";
+import { Select as SelectOption } from "~constants";
 import { Control, useWatch, useFormContext } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
@@ -15,7 +15,7 @@ interface Props {
   control: Control;
   className?: string;
   icon: JSX.Element;
-  choices: SelectType<any>[];
+  choices: SelectOption<any>[];
   hasEmptyOption?: boolean;
 }
 

@@ -1,6 +1,5 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
-import { ELECTRIC, PSYCHIC, FIGHTING, WATER } from "~constants";
+import { WATER } from "~constants";
 import { Card } from "~@types/Card";
 import { Element } from "~@types/CardGenerator";
 import { m, useTransform, useViewportScroll } from "framer-motion";
@@ -42,9 +41,6 @@ const BLOB_GRADIENTS: Record<Element, string[]> = {
 };
 
 const WinnerBlobs = ({ winner }: Props) => {
-  // const mixBlendMode = [ELECTRIC, PSYCHIC, FIGHTING].includes(winner.element)
-  //   ? "unset"
-  //   : "color-dodge";
   const element = winner ? winner.element : WATER;
   const { scrollY } = useViewportScroll();
   const start = screenPercent(90);
@@ -57,39 +53,38 @@ const WinnerBlobs = ({ winner }: Props) => {
 
   return (
     <>
-      <Box
-        as={m.div}
+      <m.div
         style={{
           x: x1,
           y: y1,
           opacity,
+          width: "500px",
+          height: "500px",
+          background: BLOB_GRADIENTS[element][0],
+          position: "absolute",
+          top: "50px",
+          left: "200px",
+          zIndex: 5,
+          borderRadius:
+            "36.0512% 63.9488% 65.7321% 34.2679% / 51.0107% 53.7726% 46.2274% 48.9893%",
         }}
-        w="500px"
-        h="500px"
-        // mixBlendMode={mixBlendMode}
-        background={BLOB_GRADIENTS[element][0]}
-        pos="absolute"
-        top="50px"
-        left="200px"
-        zIndex={5}
-        borderRadius="36.0512% 63.9488% 65.7321% 34.2679% / 51.0107% 53.7726% 46.2274% 48.9893%"
       />
-      <Box
-        as={m.div}
+      <m.div
         style={{
           x: x2,
           y: y2,
           opacity,
+          width: "500px",
+          height: "500px",
+          background: BLOB_GRADIENTS[element][1],
+          position: "absolute",
+          top: "100px",
+          left: "250px",
+          zIndex: 5,
+
+          borderRadius:
+            "56.4253% 43.5747% 33.7529% 66.2471% / 52.5661% 47.8477% 52.1523% 47.4339%",
         }}
-        w="500px"
-        h="500px"
-        // mixBlendMode={mixBlendMode}
-        background={BLOB_GRADIENTS[element][1]}
-        pos="absolute"
-        top="100px"
-        left="250px"
-        zIndex={5}
-        borderRadius="56.4253% 43.5747% 33.7529% 66.2471% / 52.5661% 47.8477% 52.1523% 47.4339%"
       />
     </>
   );

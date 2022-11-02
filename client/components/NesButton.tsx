@@ -18,7 +18,7 @@ import {
 } from "~constants";
 
 const NesButton = ({ noColorChange }) => {
-  let type = "water";
+  let type = { value: "water" };
   if (!noColorChange) {
     const { control } = useFormContext();
     type = useWatch({ control, name: "type" });

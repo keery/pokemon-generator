@@ -1,7 +1,7 @@
 import React from "react";
 import { useWatch } from "react-hook-form";
 import ImageCanvas from "~components/Card/ImageCanvas";
-import { Select } from "~@types/CardGenerator";
+import { Select } from "~constants";
 
 const Retreat = ({ control }) => {
   const retreat: Select<number> = useWatch({

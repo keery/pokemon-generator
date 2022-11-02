@@ -1,9 +1,14 @@
 import { useMutation, UseMutationOptions } from "react-query";
 import { client } from "~api/client";
-import { FormatValue } from "~utils/card";
+
+interface Payload {
+  reason: string;
+  description: string;
+  card: { id: number };
+}
 
 const useCreateReport = (
-  options: UseMutationOptions<boolean, Error, FormData> = {}
+  options: UseMutationOptions<boolean, Error, Payload> = {}
 ) => {
   return useMutation((payload) => {
     return client.post("/reports", payload);

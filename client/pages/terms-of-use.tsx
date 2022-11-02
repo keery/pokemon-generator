@@ -8,7 +8,14 @@ import { Heading, Text, Link, Container, Box, VStack } from "@chakra-ui/react";
 export const Article = ({ title, description }) => {
   return (
     <Box>
-      <Heading as="h2" fontSize="1.8rem" color="text" fontWeight="300" mb={2}>
+      <Heading
+        as="h2"
+        fontSize="1.8rem"
+        color="text"
+        fontWeight="800"
+        fontFamily="title"
+        mb={2}
+      >
         {title}
       </Heading>
       <Text whiteSpace="break-spaces">{description}</Text>
@@ -23,7 +30,7 @@ const CGU: NextPage = () => {
     <Container pb={8} mt={8}>
       <VStack spacing={6} alignItems="flex-start">
         <Box>
-          <Heading as="h1" color="text" fontWeight="300">
+          <Heading as="h1" color="text" fontWeight="800" fontFamily="title">
             {t("title")}
           </Heading>
           <Text fontSize="sm" mb="1rem">
@@ -32,7 +39,13 @@ const CGU: NextPage = () => {
           <Text>{t("line1")}</Text>
         </Box>
         <Box>
-          <Heading as="h2" color="text" fontWeight="300" fontSize="1.8rem">
+          <Heading
+            as="h2"
+            color="text"
+            fontWeight="800"
+            fontFamily="title"
+            fontSize="1.8rem"
+          >
             {t("mention.title")}
           </Heading>
           <Text whiteSpace="break-spaces">

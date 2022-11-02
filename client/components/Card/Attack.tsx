@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, Group } from "react-konva";
-import { Select } from "~@types/CardGenerator";
+import { Select } from "~constants";
 import ImageCanvas from "./ImageCanvas";
 
 const global = {

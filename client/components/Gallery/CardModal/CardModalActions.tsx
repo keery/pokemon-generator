@@ -32,12 +32,13 @@ const CardModalActions = ({ card }: Props) => {
   };
 
   const onTwitter = () => {
-    const currentUrl = encodeURIComponent(
-      t("modal.shareSocial", {
+    const currentUrl = encodeURIComponent(`
+      ${t("modal.shareSocial", {
         name: card.name,
         href: window.location.href,
-      })`Check this out! I created ${card.name} my new pokemon card ${window.location.href}`
-    );
+      })} Check this out! I created ${card.name} my new pokemon card ${
+      window.location.href
+    }`);
 
     window.open(
       `https://twitter.com/intent/tweet?text=${currentUrl}`,

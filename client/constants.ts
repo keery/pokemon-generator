@@ -1,7 +1,7 @@
-import { Element, Rarity, Select } from "~@types/CardGenerator";
+import { Element, Rarity } from "~@types/CardGenerator";
 
 export const ROUTE_GENERATOR = "/";
-export const ROUTE_CGU = "/general-conditions-use";
+export const ROUTE_CGU = "/terms-of-use";
 export const ROUTE_GALLERY = "/gallery";
 export const ROUTE_SITEMAP = "/sitemap";
 export const ROUTE_404 = "/404";
@@ -26,6 +26,11 @@ export const ELEMENTS: Element[] = [
   FIGHTING,
   NORMAL,
 ];
+
+export interface Select<T> {
+  label?: string | number;
+  value?: T;
+}
 
 export const ELEMENTS_OPTIONS: Select<string>[] = ELEMENTS.map((el) => ({
   value: el,

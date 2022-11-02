@@ -10,6 +10,7 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import Select from "~components/Select";
+import { Select as SelectOption } from "~constants";
 import { Card } from "~@types/Card";
 import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
@@ -48,7 +49,13 @@ const ReportButton = ({ card }: Props) => {
     },
   });
 
-  const onSubmit = ({ reason, description }) => {
+  const onSubmit = ({
+    reason,
+    description,
+  }: {
+    reason: SelectOption<string>;
+    description: string;
+  }) => {
     mutate({ reason: reason.value, description, card: { id: card.id } });
   };
 
@@ -124,23 +131,23 @@ const ReportButton = ({ card }: Props) => {
               options={[
                 {
                   value: "nudity",
-                  label: t("modal.report.choice1"),
+                  label: t("modal.report.choice1") as string,
                 },
                 {
                   value: "inciting_hatred",
-                  label: t("modal.report.choice2"),
+                  label: t("modal.report.choice2") as string,
                 },
                 {
                   value: "harassment",
-                  label: t("modal.report.choice3"),
+                  label: t("modal.report.choice3") as string,
                 },
                 {
                   value: "personal_information",
-                  label: t("modal.report.choice4"),
+                  label: t("modal.report.choice4") as string,
                 },
                 {
                   value: OTHER,
-                  label: t("modal.report.other"),
+                  label: t("modal.report.other") as string,
                 },
               ]}
             />

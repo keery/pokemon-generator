@@ -101,7 +101,12 @@ export const modalStyles = {
   color: "white",
 };
 
-export const CardModalContent = ({ card, animation, cachedQuery, isPage }) => {
+export const CardModalContent = ({
+  card,
+  animation,
+  cachedQuery,
+  isPage = false,
+}) => {
   const { t } = useTranslation("gallery");
 
   return (

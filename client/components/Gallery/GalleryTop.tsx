@@ -5,7 +5,6 @@ import HoloCard from "~components/Gallery/HoloCard";
 import Countdown from "~components/Gallery/Countdown";
 import RotatingWord from "~components/RotatingWord";
 import GalleryTopBackground from "~components/Gallery/GalleryTopBackground";
-import SpanGradient from "~components/SpanGradient";
 import { GRADIENTS } from "~constants";
 import { useTranslation } from "next-i18next";
 

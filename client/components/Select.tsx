@@ -4,6 +4,7 @@ import ReactSelect from "react-select";
 import { useFormContext } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
+import { Select as SelectOption } from "~constants";
 
 const getStyle = (theme, iconPath, colorMode, hasColorInverted) => {
   const before = {
@@ -167,7 +168,7 @@ interface Props {
   iconPath?: string;
   hasColorInverted?: boolean;
   onChange?: (value: any) => void;
-  options: Record<string, any>[];
+  options: SelectOption<string | number>[];
 }
 
 const Select = ({

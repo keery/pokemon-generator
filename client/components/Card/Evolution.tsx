@@ -4,7 +4,8 @@ import EvolutionImage from "./EvolutionImage";
 import EvolutionName from "./EvolutionName";
 import ImageCanvas from "./ImageCanvas";
 import { BASIC } from "~constants";
-import { Select, Stage } from "~@types/CardGenerator";
+import { Stage } from "~@types/CardGenerator";
+import { Select } from "~constants";
 
 const Evolution = ({
   control,
