@@ -1,5 +1,6 @@
 import { Injectable, OnModuleInit, Logger } from '@nestjs/common'
 import companion = require('@uppy/companion')
+import fs from 'fs'
 
 @Injectable()
 export class UppyService implements OnModuleInit {
@@ -16,6 +17,12 @@ export class UppyService implements OnModuleInit {
   }
 
   private initializeCompanionServer() {
+    const dir = './tmp'
+
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir)
+    }
+
     this.logger.verbose(`Initializing Companion Server.`)
     const options = {
       providerOptions: {
