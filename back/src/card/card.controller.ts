@@ -145,6 +145,7 @@ export class CardController {
     @Req() req: Request,
   ) {
     const ip = getIp(req)
+    console.log('My ip on get', ip)
 
     const res = await getConnection().query(`
       SELECT card.*, CAST(COUNT(l.id) as INT) as likes,

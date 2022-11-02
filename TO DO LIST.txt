@@ -1,3 +1,5 @@
+generator.pokemon.card@gmail.com
+
 Ajouter un email non obligatoire pour suivre les resultats de popularité de sa carte
 Ajouter le nombre de fois qu'une carte a gagné dans la modal
 Publier carte sur ecran tablette et mobile, pas de bouton
