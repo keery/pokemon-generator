@@ -4,8 +4,6 @@ import nextSunday from "date-fns/nextSunday";
 import set from "date-fns/set";
 import { utcToZonedTime } from "date-fns-tz";
 import { useCountdown } from "~hooks/useCountdown";
-import { useTransform, useViewportScroll } from "framer-motion";
-import { screenPercent } from "~utils/helper";
 import { useTranslation } from "next-i18next";
 
 const Item = ({ value, label }) => {
@@ -41,13 +39,6 @@ const Countdown = () => {
   const sunday = utcToZonedTime(nextSunday(new Date()), "Europe/Paris");
   const formattedSunday = set(sunday, { hours: 20, minutes: 0, seconds: 0 });
   const { days, hours, minutes, seconds } = useCountdown(formattedSunday);
-  const { scrollY } = useViewportScroll();
-
-  const y = useTransform(
-    scrollY,
-    [screenPercent(50), screenPercent(50), screenPercent(100)],
-    [screenPercent(0), screenPercent(-10), screenPercent(13)]
-  );
 
   return (
     <Flex

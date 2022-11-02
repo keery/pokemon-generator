@@ -14,8 +14,9 @@ const Link = (props: Props) => {
   const { children, href, as, shallow = false, ...rest } = props;
 
   return (
-    <NextLink passHref href={href} shallow={shallow} as={t(as as string)}>
+    <NextLink href={href} shallow={shallow} as={t(as as string)}>
       <ChakraLink
+        as="span"
         color="main"
         fontWeight="bold"
         {...rest}

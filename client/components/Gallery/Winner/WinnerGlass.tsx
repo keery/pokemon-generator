@@ -133,6 +133,7 @@ const WinnerGlass = ({ winner }: Props) => {
                 href={ROUTE_GENERATOR}
                 variant="glass"
                 mt="1.5rem"
+                w="100%"
               >
                 {t("winner.no.button")}
               </Button>

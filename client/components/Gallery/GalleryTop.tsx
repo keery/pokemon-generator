@@ -2,11 +2,15 @@ import React from "react";
 import { Container, Heading, Text, Box, Flex, Button } from "@chakra-ui/react";
 import TitleGradient from "~components/Gallery/TitleGradient";
 import HoloCard from "~components/Gallery/HoloCard";
-import Countdown from "~components/Gallery/Countdown";
 import RotatingWord from "~components/RotatingWord";
 import GalleryTopBackground from "~components/Gallery/GalleryTopBackground";
 import { GRADIENTS } from "~constants";
 import { useTranslation } from "next-i18next";
+import dynamic from "next/dynamic";
+
+const Countdown = dynamic(() => import("~components/Gallery/Countdown"), {
+  ssr: false,
+});
 
 const GalleryTop = () => {
   const { t } = useTranslation("gallery");
