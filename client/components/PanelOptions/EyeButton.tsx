@@ -54,7 +54,7 @@ const EyeButtonHelp = ({ icon, setHelpVisible }) => {
       </PopoverTrigger>
       <Portal>
         <Overlay />
-        <PopoverContent zIndex={110} bgColor="white" borderRadius="sm">
+        <PopoverContent zIndex={110} borderRadius="sm">
           <Box
             pos="absolute"
             right="102.9%"

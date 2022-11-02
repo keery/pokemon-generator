@@ -25,6 +25,12 @@ export class Card {
   @PrimaryGeneratedColumn()
   id: number
 
+  @Column({
+    nullable: true,
+    default: '::1',
+  })
+  ip: string
+
   @Column()
   author: string
 

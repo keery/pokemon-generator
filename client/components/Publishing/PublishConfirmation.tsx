@@ -66,6 +66,8 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
             onChange={(e) => setAuthor(e.target.value)}
             placeholder={t("publish.confirm.author.placeholder")}
             maxLength={40}
+            color="white"
+            _placeholder={{ color: "inherit" }}
           />
         </Field>
 

@@ -39,10 +39,10 @@ Check effet carte envoyé par Julien
 Position image sur la carte après upload, faire en sorte de ne pas avoir à la bouger du tout
 Checker OG page carte
 Gérer le tout en mobile
-Enregistrer IP apres publication
 Créer un email pour l'app pokemon
 Envoyer email quand un report est créé
 Changer design aide pour voir les zones lors de la premiere fois qu'on lance l'app
+Impossible de resize image lorsque l'oeil est activé
 
 
 --------------------------

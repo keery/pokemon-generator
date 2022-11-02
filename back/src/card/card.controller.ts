@@ -52,7 +52,11 @@ export class CardController {
 
   @Post('publish')
   @UseInterceptors(FileInterceptor('img'))
-  async publishCard(@UploadedFile() file: any, @Body() body: any) {
+  async publishCard(
+    @UploadedFile() file: any,
+    @Body() body: any,
+    @Req() req: Request,
+  ) {
     const card = new Card()
 
     const uploadedFile = await this.imgService.uploadFile(file)
@@ -62,6 +66,7 @@ export class CardController {
     }
 
     card.slug = createSlug(body.name)
+    card.ip = getIp(req)
     card.author = body.author
     card.name = body.name
     card.hp = body.hp
@@ -140,12 +145,8 @@ export class CardController {
   }
 
   @Override('getOneBase')
-  async getOne(
-    @ParsedRequest() parsedRequest: CrudRequest,
-    @Req() req: Request,
-  ) {
+  async getOne(@Req() req: Request) {
     const ip = getIp(req)
-    console.log('My ip on get', ip)
 
     const res = await getConnection().query(`
       SELECT card.*, CAST(COUNT(l.id) as INT) as likes,
