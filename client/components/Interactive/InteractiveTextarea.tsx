@@ -59,7 +59,6 @@ const InteractiveTextarea = ({
           py={0.5}
           variant="unstyled"
           name={name}
-          type="text"
           fontSize={`${fontSize}px`}
           fontFamily={fontFamily}
           onChange={(event) => field.onChange(event.target.value)}

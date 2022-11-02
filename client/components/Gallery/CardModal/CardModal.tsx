@@ -351,6 +351,7 @@ const Wrapper = () => {
   }, [card]);
 
   return (
+    // @ts-ignore
     <AnimatePresence>
       {query.idCard && card && (
         <CardModal card={card} cachedQuery={cachedQuery} key="card-modal" />

@@ -16,8 +16,6 @@ const FileInputPixel = ({ onClick, deleteFile, value }: Props) => {
   return (
     <Box>
       <Button
-        direction="column"
-        justifyContent="center"
         height={10}
         width="100%"
         variant={Boolean(value) ? "nes-button-red" : "nes-button"}

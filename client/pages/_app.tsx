@@ -23,6 +23,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <AppHead />
       <QueryClientProvider client={client}>
         <ChakraProvider theme={theme}>
+          {/* @ts-ignore */}
           <RecoilRoot>
             <LazyMotion features={domAnimation}>
               <Layout>

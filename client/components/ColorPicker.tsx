@@ -48,8 +48,7 @@ const ColorPicker = () => {
               <Box h="100%" w="100%" p={1}>
                 <Square
                   bgColor={getRgbaColor(field.value)}
-                  h="100%"
-                  w="100%"
+                  size="100%"
                   borderRadius="100%"
                   border={border}
                   borderWidth={{ base: "3px", sm: "4px" }}

@@ -18,6 +18,7 @@ interface Item {
 
 interface Props extends PopoverProps {
   items: Item[];
+  children: React.ReactNode;
 }
 
 const PressMenu = ({ items, isOpen, onClose, children }: Props) => {
