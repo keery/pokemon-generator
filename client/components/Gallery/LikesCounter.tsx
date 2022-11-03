@@ -11,18 +11,17 @@ interface Props {
 
 const LikesCounter = ({ card, cachedQuery }: Props) => {
   return (
-    <Flex alignItems="center">
-      <LikeButtonRound card={card} cachedQuery={cachedQuery} />
+    <Flex alignItems="center" pl={5}>
       <Text
-        pl={1}
-        fontSize="0.8rem"
-        fontWeight="bold"
-        color="#3d3d4e"
+        pr={3}
+        color="white"
+        fontSize="1.2rem"
         minW="15px"
         textAlign="right"
       >
         {card.likes}
       </Text>
+      <LikeButtonRound card={card} cachedQuery={cachedQuery} />
     </Flex>
   );
 };

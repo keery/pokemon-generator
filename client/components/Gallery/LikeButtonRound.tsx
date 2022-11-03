@@ -83,180 +83,52 @@ const LikeButtonRound = ({ card, cachedQuery, ...rest }: Props) => {
         minW="0"
         variant="unstyled"
         pos="relative"
-        color={isLiked ? "#f07eaa" : "#9e9ea7"}
+        color={"white"}
         {...rest}
         cursor="pointer"
-        _hover={{
-          border: "0 solid transparent",
-          boxShadow: "0px 2px 6px #d3d3d3!important",
-        }}
         _active={{
           transform: "scale(0.9)",
         }}
         transitionDuration="300ms"
-        border={isLiked ? "0 solid transparent" : "1px solid #ccc"}
+        border={"1px solid white"}
         display="flex"
         alignItems="center"
         justifyContent="center"
-        w="30px"
-        h="30px"
+        w="2.6rem"
+        h="2.6rem"
         role="group"
         borderRadius="100%"
+        data-component-name="LikeButtonRound"
       >
-        <Box layerStyle="cover" overflow="hidden" borderRadius="100%">
-          <motion.div
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              transform: "translateX(-50%) translateY(-50%)",
+        <Box overflow="hidden" layerStyle="cover" borderRadius="100%">
+          <Box
+            sx={{
+              '[data-component-name="LikeButtonRound"]:hover &': {
+                opacity: 1,
+              },
             }}
-            transition={{
-              duration: 0.3,
-            }}
-            initial={{
-              opacity: 1,
-            }}
-            animate={{
-              transform: `translateX(-50%) translateY(-50%) scale(${
-                isLiked ? 4 : 1
-              })`,
-            }}
-          >
-            <Icon
-              as={Heart}
-              transition="color 200ms, transform 200ms"
-              _groupHover={{
-                transform: "scale(1.15)",
-                color: "#f07eaa",
-              }}
-              display="flex"
-              fontSize="0.9rem"
-              className="heart-icon"
-            />
-          </motion.div>
+            transition="opacity 200ms ease-in-out"
+            borderRadius="100%"
+            layerStyle="cover"
+            opacity={isLiked ? 1 : 0}
+            filter="blur(4px)"
+            boxShadow="rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, rgb(250 112 154) 8px 8px 0px 0px inset, rgb(120 75 160) 16px 16px 0px 0px inset, rgb(43 134 197) 35px 35px 0px 0px inset"
+          />
         </Box>
-        {isLiked && (
-          <>
-            <Box layerStyle="cover">
-              <motion.div
-                style={{
-                  backgroundColor: "#fff",
-                  position: "absolute",
-                  left: "50%",
-                  top: "50%",
-                  borderRadius: "100%",
-                  width: "75%",
-                  height: "75%",
-                }}
-                initial={{
-                  transform: "translateX(-50%) translateY(-50%) scale(0)",
-                }}
-                animate={{
-                  transform: "translateX(-50%) translateY(-50%) scale(1)",
-                }}
-                transition={{
-                  delay: 0.1,
-                  duration: 0.5,
-                }}
-              />
-              <motion.div
-                style={{
-                  backgroundColor: "#f07eaa",
-                  position: "absolute",
-                  left: "50%",
-                  top: "50%",
-                  borderRadius: "100%",
-                  width: "75%",
-                  height: "75%",
-                }}
-                initial={{
-                  transform: "translateX(-50%) translateY(-50%) scale(0)",
-                }}
-                animate={{
-                  transform: "translateX(-50%) translateY(-50%) scale(1.1)",
-                }}
-                transition={{
-                  delay: 0.2,
-                  duration: 0.5,
-                }}
-              />
-              <motion.div
-                style={{
-                  position: "absolute",
-                  left: "50%",
-                  top: "50%",
-                  transform: "translateX(-50%) translateY(-50%)",
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.3,
-                }}
-                initial={{
-                  fontSize: 0,
-                }}
-                animate={{
-                  fontSize: "0.8rem",
-                }}
-              >
-                <Icon as={Heart} color="#fff" display="flex" />
-              </motion.div>
-            </Box>
-          </>
-        )}
+        <Icon
+          as={Heart}
+          transition="color 200ms, transform 200ms"
+          sx={{
+            '[data-component-name="LikeButtonRound"]:hover &': {
+              transform: "scale(1.15)",
+            },
+          }}
+          display="flex"
+          fontSize="1rem"
+          className="heart-icon"
+          zIndex="9"
+        />
       </Button>
-      {isLiked && (
-        <>
-          <motion.div
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              borderRadius: "100%",
-              backgroundColor: "#fbc9dc",
-              width: "100%",
-              height: "100%",
-              zIndex: -1,
-            }}
-            transition={{
-              duration: 0.6,
-              times: [0, 0.3, 1],
-            }}
-            initial={{
-              opacity: 1,
-              transform: "translateX(-50%) translateY(-50%) scale(0)",
-            }}
-            animate={{
-              opacity: [1, 1, 0],
-              transform: "translateX(-50%) translateY(-50%) scale(1.8)",
-            }}
-          />
-          <motion.div
-            style={{
-              position: "absolute",
-              left: "50%",
-              top: "50%",
-              borderRadius: "100%",
-              backgroundColor: "#f9adca",
-              width: "100%",
-              height: "100%",
-              zIndex: -1,
-            }}
-            transition={{
-              duration: 0.6,
-              times: [0, 0.3, 1],
-            }}
-            initial={{
-              opacity: 1,
-              transform: "translateX(-50%) translateY(-50%) scale(0)",
-            }}
-            animate={{
-              opacity: [1, 1, 0],
-              transform: "translateX(-50%) translateY(-50%) scale(1.5)",
-            }}
-          />
-        </>
-      )}
     </Box>
   );
 };

@@ -8,6 +8,7 @@
       }
     },
     "nextWinner": "Prochain gagnant dans",
+    "madeBy": "Par {{name}}",
     "fire" : "Feu",
     "grass" : "Herbe",
     "water" : "Eau",

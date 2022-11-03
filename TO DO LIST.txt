@@ -11,7 +11,6 @@ Refaire le logo https://dribbble.com/shots/18325875-Logo-Design-For-PokeBall-Gad
 OG Image sur twitter ne marche pas
 checker print sur tous les navigateurs
 bouton remonter en haut dans la liste (voir dribbble)
-trouver un effet au hover sur les cartes (maybe l'effet de brillance comme sur le bouton ou la carte gagnante)
 faire le sitemap
 FAQ ?
 Page contact
@@ -42,6 +41,7 @@ Envoyer email quand un report est créé
 Changer design aide pour voir les zones lors de la premiere fois qu'on lance l'app
 Impossible de resize image lorsque l'oeil est activé
 Attendre image soit chargé avant de pouvoir publier
+Faire un decorateur nest js pour recuperer l'ip
 
 --------------------------
 

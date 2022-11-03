@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AspectRatio, Box } from "@chakra-ui/react";
 import { getHrefCardModal } from "~utils/card";
 import CardImage from "~components/Gallery/CardImage";
@@ -18,9 +18,15 @@ interface Props {
 const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
   const { href, as } = getHrefCardModal(card, layoutPrefix);
+  const [isVisible, setVisible] = useState(true);
 
   return (
-    <Box pos="relative">
+    <Box
+      pos="relative"
+      overflow="hidden"
+      borderBottomRadius="1.2rem"
+      role="group"
+    >
       <Link
         shallow
         as={as}
@@ -38,6 +44,12 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
           }}
           whileTap={{
             scale: 0.9,
+          }}
+          onTapStart={() => setVisible(false)}
+          onTap={() => {
+            setTimeout(() => {
+              setVisible(true);
+            }, 1000);
           }}
         >
           <AspectRatio
@@ -63,7 +75,9 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
           </AspectRatio>
         </m.div>
       </Link>
-      {/* <CardThumbnailGlass card={card} /> */}
+      {isVisible && (
+        <CardThumbnailGlass card={card} cachedQuery={cachedQuery} />
+      )}
     </Box>
   );
 };

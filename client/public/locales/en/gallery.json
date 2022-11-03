@@ -8,7 +8,7 @@
       }
     },
     "nextWinner": "Next winner elected in",
-
+    "madeBy": "By {{name}}",
     "fire" : "Fire",
     "grass" : "Grass",
     "water" : "Water",
