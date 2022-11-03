@@ -62,7 +62,7 @@ const EvolutionImage = ({
         name="evolvePicture"
         onDragEnd={updateImgPos}
         onTransformEnd={updateScale}
-        getImgSize={updateImgSize}
+        updateImgSize={updateImgSize}
         draggable
         prefixPath=""
         clipWidth={61}
