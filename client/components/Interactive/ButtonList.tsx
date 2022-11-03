@@ -88,7 +88,7 @@ const ButtonList = ({
   );
 
   return (
-    <Box role="group" className="ButtonList">
+    <Box role="group" className="ButtonList" zIndex={9}>
       <Box onClick={onOpen}>{icon}</Box>
       <Popover placement="top" isOpen={isOpen} onClose={onClose}>
         <PopoverTrigger>
@@ -145,7 +145,12 @@ const ButtonList = ({
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                style={{ outline: "none" }}
+                style={{
+                  outline: "none",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+                onClick={(e) => e.preventDefault()}
               >
                 {colorMode === "dark" ? (
                   <Image
