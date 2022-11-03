@@ -187,6 +187,9 @@ const Select = ({
   const value = watch(name);
 
   const onChangeSelect = (data) => {
+    // Block value that are not in options
+    if (!options.some(({ value }) => data.value === value)) return;
+
     setValue(name, data || "");
     if (onChange) {
       onChange(data);
