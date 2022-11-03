@@ -92,27 +92,6 @@ const CardList = (props: SimpleGridProps) => {
                         columnNumber={index % 3}
                         cardHeight={cardHeight}
                       />
-
-                      {/* <Flex
-                        pt={2}
-                        px={1}
-                        justifyContent="space-between"
-                        alignItems="center"
-                      >
-                        <Flex alignItems="center">
-                          <Circle
-                            size="25px"
-                            bg="linear-gradient(to right top, rgb(6, 249, 168), rgb(168, 6, 249))"
-                            mr={2}
-                            border="2px solid white"
-                            boxShadow="rgb(0 0 0 / 10%) 0px 10px 15px -3px, rgb(0 0 0 / 5%) 0px 4px 6px -2px"
-                          />
-                          <Text fontSize="xs" fontWeight="bold">
-                            Guillaume E.
-                          </Text>
-                        </Flex>
-                        <LikesCounter card={card} cachedQuery={cachedQuery} />
-                      </Flex> */}
                     </Flex>
                   );
                 })}

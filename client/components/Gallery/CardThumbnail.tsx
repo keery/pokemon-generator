@@ -1,8 +1,8 @@
 import React from "react";
-import { AspectRatio, LinkBox, Box } from "@chakra-ui/react";
-import LinkOverlay from "~components/LinkOverlay";
+import { AspectRatio, Box } from "@chakra-ui/react";
 import { getHrefCardModal } from "~utils/card";
 import CardImage from "~components/Gallery/CardImage";
+import CardThumbnailGlass from "~components/Gallery/CardThumbnailGlass";
 import Link from "~components/Link";
 import { m } from "framer-motion";
 import { cardModalAtom } from "~atoms/card-modal";
@@ -20,48 +20,51 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
   const { href, as } = getHrefCardModal(card, layoutPrefix);
 
   return (
-    <Link
-      shallow
-      as={as}
-      href={href}
-      onClick={() => {
-        setCard({ card, cachedQuery });
-      }}
-    >
-      <m.div
-        transition={{ ease: "linear", duration: 0.1 }}
-        style={{
-          position: "relative",
-          zIndex: 9,
-          cursor: "pointer",
-        }}
-        whileTap={{
-          scale: 0.9,
+    <Box pos="relative">
+      <Link
+        shallow
+        as={as}
+        href={href}
+        onClick={() => {
+          setCard({ card, cachedQuery });
         }}
       >
-        <AspectRatio
-          as={m.div}
-          ratio={500 / 700}
-          pos="relative"
-          borderRadius="1.4rem"
-          overflow="hidden"
-          transform="translateZ(0)"
+        <m.div
+          transition={{ ease: "linear", duration: 0.1 }}
+          style={{
+            position: "relative",
+            zIndex: 9,
+            cursor: "pointer",
+          }}
+          whileTap={{
+            scale: 0.9,
+          }}
         >
-          <Box
+          <AspectRatio
             as={m.div}
-            // @ts-ignore
-            transition={{ ease: "linear", duration: 0.1 }}
-            style={{
-              position: "absolute",
-              left: "0",
-              top: "0",
-            }}
+            ratio={500 / 700}
+            pos="relative"
+            borderRadius="1.4rem"
+            overflow="hidden"
+            transform="translateZ(0)"
           >
-            <CardImage card={card} />
-          </Box>
-        </AspectRatio>
-      </m.div>
-    </Link>
+            <Box
+              as={m.div}
+              // @ts-ignore
+              transition={{ ease: "linear", duration: 0.1 }}
+              style={{
+                position: "absolute",
+                left: "0",
+                top: "0",
+              }}
+            >
+              <CardImage card={card} />
+            </Box>
+          </AspectRatio>
+        </m.div>
+      </Link>
+      {/* <CardThumbnailGlass card={card} /> */}
+    </Box>
   );
 };
 

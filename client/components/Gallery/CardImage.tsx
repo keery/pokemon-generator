@@ -13,6 +13,7 @@ const CardImage = ({ card }: Props) => {
       fallback={<CardBlurhash blurhash={card.blurHash} />}
       src={card.img}
       maxH="100%"
+      referrerPolicy="no-referrer"
     />
   );
 };

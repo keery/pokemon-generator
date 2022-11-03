@@ -86,6 +86,7 @@ const Menu = ({ setOpen, isOpen }) => {
         >
           {links.map(({ href, label }, i) => (
             <Flex
+              key={href}
               as="li"
               className="menu-item"
               alignItems="center"
