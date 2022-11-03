@@ -120,21 +120,21 @@ const CardList = (props: SimpleGridProps) => {
             )}
           </>
         </SimpleGrid>
+        {hasNextPage && loading >= AUTO_LOADING_LIMIT && (
+          <GlassButton
+            w="full"
+            mt={10}
+            isLoading={isFetchingNextPage}
+            onClick={() => {
+              setLoading(0);
+              fetchNextPage();
+            }}
+          >
+            {t("loadMoreCards")}
+          </GlassButton>
+        )}
       </Container>
-      {hasNextPage && loading >= AUTO_LOADING_LIMIT && (
-        <GlassButton
-          w="full"
-          mt={10}
-          isLoading={isFetchingNextPage}
-          onClick={() => {
-            setLoading(0);
-            fetchNextPage();
-          }}
-        >
-          {t("loadMoreCards")}
-        </GlassButton>
-      )}
-      {isFetchingNextPage && <Loader pt={10} />}
+      {isFetchingNextPage && <Loader py={10} />}
     </>
   );
 };

@@ -26,10 +26,10 @@ const Loader = ({ text, isCentered, size = "xl", ...rest }: Props) => {
           </Text>
         )}
         <Spinner
-          thickness="2px"
+          thickness="3px"
           speed="0.65s"
-          emptyColor="gray.200"
-          color="main"
+          emptyColor="new.pink"
+          color="new.blue"
           size={size}
         />
       </Flex>

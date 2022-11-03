@@ -59,6 +59,11 @@ const theme = extendTheme({
       md: "#104ba7",
       lg: "#1d1741",
     },
+    new: {
+      pink: "rgb(250 112 154)",
+      purple: "rgb(120 75 160)",
+      blue: "rgb(43 134 197)",
+    },
   },
   radii: {
     xs: "0.3rem",
