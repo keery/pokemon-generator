@@ -18,7 +18,6 @@ Page contact
 Faire un check que j'utilise bien les balises HTML5
 Voir si je trouve des bonnes idées de filtre supplémentaire pour les cartes (mot clé ?)
 Double tap pour liker carte en mobile
-Bug obliger de resize la photo d'une carte a l'upload, faire que la photo déborde de base pour prendre la largeut et hauteur au complet
 Checker pays auteur carte
 Faire un menu rapide sur la page gallerie pour switcher rapidement entre les differentes section
 Update modal reset card
@@ -36,7 +35,6 @@ Plus jouer sur le numéro de la semaine en cours
 Petite animation bien calé pour annoncer en mode titre avant le gagnant
 Insister sur le fait de devoir voter
 Check effet carte envoyé par Julien
-Position image sur la carte après upload, faire en sorte de ne pas avoir à la bouger du tout
 Checker OG page carte
 Gérer le tout en mobile
 Créer un email pour l'app pokemon

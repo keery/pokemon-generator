@@ -79,7 +79,7 @@ const MainImage = ({
         onTransformEnd={updateScale}
         isTransformable
         isSelected={isSelected}
-        getImgSize={updateImgSize}
+        updateImgSize={updateImgSize}
         onSelect={onSelect}
         clipWidth={381}
         clipHeight={271}

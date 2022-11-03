@@ -31,10 +31,11 @@ export function calculateAspectRatioFit(
   if (maxWidth / resizedWidth === maxHeight / resizedHeight) {
     return { width: resizedWidth, height: resizedHeight };
   }
+
   if (axe === "height") {
-    return { width: resizedWidth, height: maxHeight };
+    return { width: maxWidth, height: resizedHeight };
   }
   if (axe === "width") {
-    return { width: maxWidth, height: resizedHeight };
+    return { width: resizedWidth, height: maxHeight };
   }
 }

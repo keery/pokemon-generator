@@ -94,8 +94,6 @@ const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
               uppy.reset();
 
               // Reset transformation values
-              setValue(`${fieldName}X`, CARD_DEFAULT_STATE[`${fieldName}X`]);
-              setValue(`${fieldName}Y`, CARD_DEFAULT_STATE[`${fieldName}Y`]);
               setValue(
                 `${fieldName}ScaleX`,
                 CARD_DEFAULT_STATE[`${fieldName}ScaleX`]

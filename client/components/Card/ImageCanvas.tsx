@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { Image as KonvaImage, Transformer, Group } from "react-konva";
 import useImage from "use-image";
 import { calculateAspectRatioFit, getCenter, getDistance } from "~utils/image";
+import { useFormContext } from "react-hook-form";
+import { CARD_DEFAULT_STATE } from "~data/card";
 
 interface Props {
   src: string;
@@ -25,7 +27,7 @@ interface Props {
   clipX?: number;
   noClip?: boolean;
   onSelect?: () => void;
-  getImgSize?: (name: string, width: number, height: number) => void;
+  updateImgSize?: (name: string, width: number, height: number) => void;
   isSelected?: boolean;
   onMouseEnter?: (e: any) => void;
   onMouseLeave?: (e: any) => void;
@@ -62,7 +64,7 @@ const ImageCanvas = ({
   onSelect = null,
   isSelected = false,
   onTransformEnd = null,
-  getImgSize = null,
+  updateImgSize = null,
   noClip = false,
   onMouseEnter = null,
   onMouseLeave = null,
@@ -71,6 +73,7 @@ const ImageCanvas = ({
   const trRef = useRef(null);
   const imgRef = useRef(null);
   const [image] = useImage(`${prefixPath}${src}`, "anonymous");
+  const { setValue } = useFormContext();
 
   useEffect(() => {
     if (isSelected && isTransformable && !!trRef.current && !!imgRef) {
@@ -88,7 +91,13 @@ const ImageCanvas = ({
         maxHeight
       );
 
-      if (getImgSize) getImgSize(name, newWidth, newHeight);
+      if (updateImgSize) updateImgSize(name, newWidth, newHeight);
+      setValue(
+        `${name}X`,
+        -(newWidth / 2) + clipWidth / 2 - CARD_DEFAULT_STATE[`${name}X`]
+      );
+      setValue(`${name}Y`, -(newHeight / 2) + clipHeight / 2);
+
       setSize([newWidth, newHeight]);
     }
   }, [image, width, height]);
@@ -118,8 +127,8 @@ const ImageCanvas = ({
           scaleY={scaleY}
           rotation={rotation}
           draggable={draggable}
-          onDragEnd={onDragEnd}
           isSelected={isSelected}
+          onDragEnd={onDragEnd}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
           onClick={() => {

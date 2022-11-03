@@ -63,8 +63,10 @@ const FieldsLengthWeight = ({ control }: Props) => {
         <InputGroup {...inputGroupStyle} alignItems="center">
           <Input name="weight" borderRightRadius="none" {...inputStyle} />
           <InputRightAddon
+            height="2.5rem"
+            padding="0 0.6rem"
             children="lbs"
-            color="white"
+            color="main"
             borderRightRadius="sm"
             bg="rgb(255 255 255 / 30%)"
             fontWeight="500"
