@@ -29,7 +29,7 @@
     },
     "loadMoreCards": "Load more cards",
     "winner": {
-      "title": "Weekly winner",
+      "title": "Weekly winner #{{weekNb}}",
       "congratule": "Congratulate winner",
       "createdBy": "Created by",
       "no": {

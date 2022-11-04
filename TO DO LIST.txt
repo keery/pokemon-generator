@@ -23,17 +23,14 @@ Bouton publier dans le formulaire des champs en mobile
 Page 404
 Gérer la publication des cartes
 
-Faire une animation en mode panneau lumineux design pour montrer le but, bien attirer l'oeil
 Tenter de changer la perspective 
 Etre plus explicite, un gagnant par semaine, le plus de like gagne
 Essayer d'appuyer le fait d'avoir envie de gagner, en precisant ce qu'on gagne, ce qu'on gagne c'est seulement
 le titre de gagnant de la semaine
 Afficher sur la modale d'une carte une mention spécifique pour dire si cette carte a déjà gagné
-Plus jouer sur le numéro de la semaine en cours
 Petite animation bien calé pour annoncer en mode titre avant le gagnant
 Insister sur le fait de devoir voter
 Check effet carte envoyé par Julien
-Checker OG page carte
 Gérer le tout en mobile
 Créer un email pour l'app pokemon
 Envoyer email quand un report est créé
