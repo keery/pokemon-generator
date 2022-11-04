@@ -11,13 +11,26 @@ import TextShadow from "~components/TextShadow";
 import GalleryTop from "~components/Gallery/GalleryTop";
 import { useTranslation } from "next-i18next";
 import { NextSeo } from "next-seo";
+import { ROUTE_GALLERY } from "~constants";
 
 const Gallery: NextPage = () => {
   const { t } = useTranslation("gallery");
 
   return (
     <Box>
-      <NextSeo title={t("seo.title")} description={t("seo.description")} />
+      <NextSeo
+        title={t("seo.title")}
+        description={t("seo.description")}
+        openGraph={{
+          title: t("seo.title"),
+          type: "website",
+          url: process.env.NEXT_PUBLIC_URL + process.env.ROUTE_GALLERY,
+        }}
+        twitter={{
+          site: process.env.NEXT_PUBLIC_URL + process.env.ROUTE_GALLERY,
+          cardType: "summary_large_image",
+        }}
+      />
       <CardModal />
       <GalleryTop />
       <WinnerSection />

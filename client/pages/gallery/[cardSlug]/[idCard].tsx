@@ -22,7 +22,30 @@ const Card = ({ initialData }) => {
 
   return (
     <>
-      <NextSeo title={card.name} description={getSeoCardDescription(card)} />
+      <NextSeo
+        title={card.name}
+        description={getSeoCardDescription(card)}
+        openGraph={{
+          title: card.name,
+          type: "website",
+          url: process.env.NEXT_PUBLIC_URL,
+          // site_name: NAME,
+          images: [
+            {
+              type: "image/jpg",
+              url: card.img,
+              width: 500,
+              height: 500,
+              alt: card.name,
+            },
+          ],
+        }}
+        // twitter={{
+        //   handle: NAME.toLowerCase(),
+        //   site: process.env.NEXT_PUBLIC_URL,
+        //   cardType: "summary_large_image",
+        // }}
+      />
       <Square
         pos="absolute"
         left="5vh"

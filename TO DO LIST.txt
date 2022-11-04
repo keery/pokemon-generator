@@ -8,7 +8,6 @@ Newsletter, card of the day
 reduire taille des animations avec https://www.framer.com/docs/guide-reduce-bundle-size/#how-to-reduce-bundle-size
 faire le footer
 Refaire le logo https://dribbble.com/shots/18325875-Logo-Design-For-PokeBall-Gadgets-Electric-machine-logo
-OG Image sur twitter ne marche pas
 checker print sur tous les navigateurs
 bouton remonter en haut dans la liste (voir dribbble)
 faire le sitemap
