@@ -7,14 +7,15 @@ export interface Props
   extends Omit<LinkProps, "href" | "as">,
     Pick<NextLinkProps, "href" | "as"> {
   shallow?: boolean;
+  style?: any;
 }
 
 const Link = (props: Props) => {
   const { t } = useTranslation();
-  const { children, href, as, shallow = false, ...rest } = props;
+  const { children, href, as, shallow = false, style = {}, ...rest } = props;
 
   return (
-    <NextLink href={href} shallow={shallow} as={t(as as string)}>
+    <NextLink href={href} shallow={shallow} as={t(as as string)} style={style}>
       <ChakraLink
         as="span"
         color="main"

@@ -96,8 +96,8 @@
             "title": "Yeaaaah !",
             "desc": "Congratulation your card has been published successfully.",
             "thanks": "Thank you for contributing and being part of the community.",
-            "review": "To prevent offensive card from being uploaded, every cards are subject to a review. This review can take up to 48 hours, but it's usually faster.",
-            "email": "Once our review is done you will receive an email, if your card is approved you will be able to find it in the gallery.",
+            "review": "To prevent offensive card from being uploaded, every cards are subject to a review.",
+            "email": "Once your card is approved it will be available from the gallery",
             "createNew": "Create new card",
             "seeGallery": "See gallery"
         }

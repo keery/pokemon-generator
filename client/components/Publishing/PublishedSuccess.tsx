@@ -6,7 +6,6 @@ import { useTranslation } from "next-i18next";
 import Link from "~components/Link";
 import { ROUTE_GALLERY } from "~constants";
 import useResetCard from "~hooks/useResetCard";
-import { GRADIENTS, GRADIENTS_COLOR } from "~constants";
 
 interface Props {
   isOpen: boolean;
@@ -15,10 +14,11 @@ interface Props {
 
 const PublishedSuccess = ({ isOpen, onClose }: Props) => {
   const { t } = useTranslation("generator");
-  const resetCard = useResetCard(onClose);
+  const resetCard = useResetCard();
 
   useEffect(() => {
     if (isOpen) {
+      resetCard();
       confetti({
         zIndex: 10000,
         particleCount: 150,
@@ -47,18 +47,18 @@ const PublishedSuccess = ({ isOpen, onClose }: Props) => {
       <Text mt={2}>{t("publish.success.review")}</Text>
       <Text>{t("publish.success.email")}</Text>
       <Text mt={2}>{t("publish.success.thanks")}</Text>
-      <HStack spacing={4} alignItems="center" mt={4}>
-        <Button
-          width="full"
-          onClick={() => {
-            resetCard();
-          }}
-          variant="outline"
-          borderRadius="xl"
-        >
+      <HStack spacing={4} alignItems="center" mt={4} justifyContent="center">
+        <Button variant="outline" borderRadius="xl" onClick={onClose} flex={1}>
           {t("publish.success.createNew")}
         </Button>
-        <Button as={Link} href={ROUTE_GALLERY} width="full" variant="glass">
+
+        <Button
+          as={Link}
+          href={ROUTE_GALLERY}
+          variant="glass"
+          style={{ flex: 1 }}
+          w="100%"
+        >
           {t("publish.success.seeGallery")}
         </Button>
       </HStack>

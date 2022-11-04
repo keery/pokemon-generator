@@ -18,7 +18,7 @@ const CardModalAttack = ({
   description,
   damage,
 }: Props) => {
-  if (!name || !amount || !type) return null;
+  if (!name) return null;
   return (
     <Flex
       layerStyle="glassModal"

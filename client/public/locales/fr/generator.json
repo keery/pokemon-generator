@@ -97,8 +97,8 @@
             "title": "Yeaaaah !",
             "desc": "Félicitation ta carte a été publié.",
             "thanks": "Merci de contribuer, tu fais désormais partie de la communauté.",
-            "review": "Pour empêcher toutes les cartes avec du contenu indésirable d'être ajoutées, toutes les cartes sont passées en revue. Cet examen peut prendre jusqu'à 48 heures, mais en général est bien plus rapide.",
-            "email": "Une fois vérifié tu recevras un email, si ta carte est approuvée tu pourras alors la retrouver directement dans la gallerie.",
+            "review": "Pour empêcher toutes les cartes avec du contenu indésirable d'être ajoutées, toutes les cartes sont passées en revue.",
+            "email": "Une fois vérifié ta carte sera disponible depuis la gallerie",
             "createNew": "Créer une autre carte",
             "seeGallery": "Voir la gallerie"
         }
