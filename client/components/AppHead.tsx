@@ -3,8 +3,6 @@ import NextHead from "next/head";
 import { useTranslation } from "next-i18next";
 import { DefaultSeo } from "next-seo";
 
-const NAME = "Pokemon Generator";
-
 const AppHead = () => {
   const { t } = useTranslation();
   return (
@@ -81,26 +79,26 @@ const AppHead = () => {
         />
       </NextHead>
       <DefaultSeo
-        titleTemplate={`%s | ${NAME}`}
+        titleTemplate={`%s | ${process.env.NEXT_PUBLIC_APP_NAME}`}
         defaultTitle={t("seo.title")}
         description={t("seo.description")}
         openGraph={{
           title: t("seo.title"),
           type: "website",
           url: process.env.NEXT_PUBLIC_URL,
-          site_name: NAME,
+          site_name: process.env.NEXT_PUBLIC_APP_NAME,
           images: [
             {
               type: "image/jpg",
               url: process.env.NEXT_PUBLIC_URL + "/assets/img/og-cover.jpg",
               width: 500,
               height: 500,
-              alt: `${NAME} logo`,
+              alt: `${process.env.NEXT_PUBLIC_APP_NAME} logo`,
             },
           ],
         }}
         twitter={{
-          handle: NAME.toLowerCase(),
+          handle: process.env.NEXT_PUBLIC_APP_NAME.toLowerCase(),
           site: process.env.NEXT_PUBLIC_URL,
           cardType: "summary_large_image",
         }}

@@ -26,25 +26,19 @@ const Card = ({ initialData }) => {
         title={card.name}
         description={getSeoCardDescription(card)}
         openGraph={{
-          title: card.name,
+          title: `${card.name} | ${process.env.NEXT_PUBLIC_APP_NAME}`,
           type: "website",
           url: process.env.NEXT_PUBLIC_URL,
-          // site_name: NAME,
           images: [
             {
               type: "image/jpg",
               url: card.img,
-              width: 500,
-              height: 500,
+              width: 340,
+              height: 380,
               alt: card.name,
             },
           ],
         }}
-        // twitter={{
-        //   handle: NAME.toLowerCase(),
-        //   site: process.env.NEXT_PUBLIC_URL,
-        //   cardType: "summary_large_image",
-        // }}
       />
       <Square
         pos="absolute"

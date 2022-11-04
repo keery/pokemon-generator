@@ -1,7 +1,7 @@
 {
     "seo": {
       "title": "Gallery",
-      "description": "Consult all pokemon cards from the community all around the world. Vote for your favorites cards or even share the cards you made and who knows you might be the next most amazing card.",
+      "description": "Consult all pokemon cards from the community all around the world. Vote for your favorite cards or even share cards you made and who knows you might be the next weekly winner.",
       "modal": {
         "isType": "is a pokemon of type",
         "madeBy": "Card made by {{author}}"
