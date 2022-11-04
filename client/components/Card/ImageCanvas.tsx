@@ -4,6 +4,8 @@ import useImage from "use-image";
 import { calculateAspectRatioFit, getCenter, getDistance } from "~utils/image";
 import { useFormContext } from "react-hook-form";
 import { CARD_DEFAULT_STATE } from "~data/card";
+import { useRecoilState } from "recoil";
+import { cardImgAtom } from "~atoms/card-img";
 
 interface Props {
   src: string;
@@ -72,8 +74,9 @@ const ImageCanvas = ({
   const [size, setSize] = useState([width, height]);
   const trRef = useRef(null);
   const imgRef = useRef(null);
-  const [image] = useImage(`${prefixPath}${src}`, "anonymous");
+  const [image, status] = useImage(`${prefixPath}${src}`, "anonymous");
   const { setValue } = useFormContext();
+  const [{ isLoading }, setImgLoading] = useRecoilState(cardImgAtom);
 
   useEffect(() => {
     if (isSelected && isTransformable && !!trRef.current && !!imgRef) {
@@ -81,6 +84,16 @@ const ImageCanvas = ({
       trRef.current.getLayer().batchDraw();
     }
   }, [isSelected, trRef, imgRef, isTransformable]);
+
+  useEffect(() => {
+    if (status === "loading") {
+      setImgLoading({ isLoading: true });
+    } else {
+      if (isLoading) {
+        setImgLoading({ isLoading: false });
+      }
+    }
+  }, [status]);
 
   useEffect(() => {
     if (image && maxHeight && maxWidth && !width && !height) {
@@ -92,6 +105,7 @@ const ImageCanvas = ({
       );
 
       if (updateImgSize) updateImgSize(name, newWidth, newHeight);
+
       setValue(
         `${name}X`,
         -(newWidth / 2) + clipWidth / 2 - CARD_DEFAULT_STATE[`${name}X`]

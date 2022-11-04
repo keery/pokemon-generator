@@ -6,6 +6,8 @@ import { GRADIENTS } from "~constants";
 import useAttacks from "~hooks/useAttacks";
 import PublishRequirements from "~components/Publishing/PublishRequirements";
 import PublishConfirmation from "~components/Publishing/PublishConfirmation";
+import { useRecoilValue } from "recoil";
+import { cardImgAtom } from "~atoms/card-img";
 
 const PublishButton = () => {
   const { t } = useTranslation("generator");
@@ -21,6 +23,7 @@ const PublishButton = () => {
   const isNameValid = name.trim() !== "";
   const isHpValid = Boolean(hp);
   const isPhotoValid = Boolean(mainImage);
+  const { isLoading } = useRecoilValue(cardImgAtom);
 
   const isDisabled = useMemo(() => {
     return (
@@ -50,7 +53,7 @@ const PublishButton = () => {
       <PublishConfirmation onClose={onClose} isOpen={isOpen}>
         <Button
           onClick={onOpen}
-          isDisabled={isDisabled}
+          isDisabled={isDisabled || isLoading}
           borderRadius="sm"
           w="full"
           background={GRADIENTS[type.value]}

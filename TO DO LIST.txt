@@ -23,7 +23,6 @@ Bouton publier dans le formulaire des champs en mobile
 Page 404
 Gérer la publication des cartes
 
-Tenter de changer la perspective 
 Etre plus explicite, un gagnant par semaine, le plus de like gagne
 Essayer d'appuyer le fait d'avoir envie de gagner, en precisant ce qu'on gagne, ce qu'on gagne c'est seulement
 le titre de gagnant de la semaine
@@ -36,7 +35,6 @@ Créer un email pour l'app pokemon
 Envoyer email quand un report est créé
 Changer design aide pour voir les zones lors de la premiere fois qu'on lance l'app
 Impossible de resize image lorsque l'oeil est activé
-Attendre image soit chargé avant de pouvoir publier
 
 --------------------------
 
