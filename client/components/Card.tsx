@@ -139,8 +139,9 @@ const Card = () => {
         display="inline-flex"
         pos="relative"
         transition="padding 200ms ease-in-out"
-        py={isVisible && !isMobile ? 14 : 0}
-        px={isVisible && !isMobile ? 30 : 0}
+        // Add padding to display card area label only if eyes is on, only on desktop and if no img is selected
+        py={isVisible && !isMobile && card.selectedImg === null ? 14 : 0}
+        px={isVisible && !isMobile && card.selectedImg === null ? 30 : 0}
       >
         <Image
           alt="Card shape"
