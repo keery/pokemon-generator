@@ -124,7 +124,7 @@ const Menu = ({ setOpen, isOpen }) => {
               )}
               <Link
                 href={href}
-                onClick={() => setOpen(false)}
+                onClick={() => (router.route !== href ? setOpen(false) : null)}
                 fontFamily="title"
                 fontWeight="800"
                 color="white"

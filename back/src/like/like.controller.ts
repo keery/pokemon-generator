@@ -1,6 +1,6 @@
 import { ApiTags } from '@nestjs/swagger'
 import { LikeService } from '~like/like.service'
-import { getIp } from '~utils/ip'
+import { Ip } from '~decorators/ip'
 import {
   Controller,
   Post,
@@ -17,9 +17,8 @@ export class LikeController {
   constructor(public readonly service: LikeService) {}
 
   @Post('toggle')
-  async toggle(@Req() req: Request, @Body() body: any) {
+  async toggle(@Req() req: Request, @Body() body: any, @Ip() ip: string) {
     try {
-      const ip = getIp(req)
       const isExists = await this.service.findOne({ ip, card: body.cardId })
 
       let action: Promise<any>

@@ -9,9 +9,8 @@ import {
 } from '@nestjsx/crud'
 import { Report } from '~report/report.entity'
 import { ReportService } from '~report/report.service'
-import { Controller, Req } from '@nestjs/common'
-import { getIp } from '~utils/ip'
-import { Request } from 'express'
+import { Controller } from '@nestjs/common'
+import { Ip } from '~decorators/ip'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 
@@ -39,10 +38,10 @@ export class ReportController {
   @Override('createOneBase')
   createOne(
     @ParsedRequest() parsedReq: CrudRequest,
-    @Req() req: Request,
     @ParsedBody() dto: Report,
+    @Ip() ip: string,
   ) {
-    dto.ip = getIp(req)
+    dto.ip = ip
     return this.base.createOneBase(parsedReq, dto)
   }
 }

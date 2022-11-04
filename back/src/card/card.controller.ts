@@ -8,6 +8,7 @@ import {
 } from '@nestjsx/crud'
 import { Card } from '~card/card.entity'
 import { CardService } from '~card/card.service'
+import { Ip } from '~decorators/ip'
 import { ImageService } from '~image/image.service'
 import { encodeImageToBlurhash } from '~utils/blurhash'
 import {
@@ -23,7 +24,6 @@ import {
 } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
 import createSlug from 'url-slug'
-import { getIp } from '~utils/ip'
 import { Request } from 'express'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository, getConnection } from 'typeorm'
@@ -55,7 +55,7 @@ export class CardController {
   async publishCard(
     @UploadedFile() file: any,
     @Body() body: any,
-    @Req() req: Request,
+    @Ip() ip: string,
   ) {
     const card = new Card()
 
@@ -66,7 +66,7 @@ export class CardController {
     }
 
     card.slug = createSlug(body.name)
-    card.ip = getIp(req)
+    card.ip = ip
     card.author = body.author
     card.name = body.name
     card.hp = body.hp
@@ -94,12 +94,7 @@ export class CardController {
   }
 
   @Override('getManyBase')
-  async getMany(
-    @ParsedRequest() parsedRequest: CrudRequest,
-    @Req() req: Request,
-  ) {
-    const ip = getIp(req)
-
+  async getMany(@ParsedRequest() parsedRequest: CrudRequest, @Ip() ip: string) {
     let orderBy = ''
     let groupBy = ''
     let winners = ''
@@ -145,9 +140,7 @@ export class CardController {
   }
 
   @Override('getOneBase')
-  async getOne(@Req() req: Request) {
-    const ip = getIp(req)
-
+  async getOne(@Req() req: Request, @Ip() ip: string) {
     const res = await getConnection().query(`
       SELECT card.*, CAST(COUNT(l.id) as INT) as likes,
       (
