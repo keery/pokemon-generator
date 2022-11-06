@@ -125,6 +125,11 @@ const SortSelect = ({
     if (onChange) {
       onChange(data);
     }
+
+    const topList = document.getElementById("top-list");
+    topList.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   return (

@@ -65,7 +65,7 @@ const SortList = ({ onChange }: Props) => {
 
   return (
     <>
-      <Box pt={20} />
+      <Box mt={20} id="top-list" />
       <Flex
         ref={ref}
         zIndex={50}

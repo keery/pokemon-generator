@@ -35,9 +35,8 @@ Envoyer email quand un report est créé
 Changer design aide pour voir les zones lors de la premiere fois qu'on lance l'app
 Pas de like visible lorsqu'on clique sur le gagnant
 tester sur firefox
-Faire remonter en haut de la liste lorsqu'on change de filtre 
 Bouton pour report des bugs
-Filtre les mieux notés de la semaine
+
 --------------------------
 
 Idée parallax:
