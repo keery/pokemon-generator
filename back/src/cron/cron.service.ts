@@ -8,7 +8,9 @@ export class CronService {
 
   constructor(private readonly winnerService: WinnerService) {}
 
-  @Cron('0 20 * * 0')
+  @Cron('0 20 * * 0', {
+    timeZone: 'Europe/Paris',
+  })
   electWinner() {
     this.logger.debug('New winner got elected !')
     this.winnerService.electWinner()
