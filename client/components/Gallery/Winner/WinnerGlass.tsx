@@ -112,7 +112,7 @@ const WinnerGlass = ({ winner }: Props) => {
           {winner ? (
             <>
               <Text fontFamily="title" fontWeight="800" fontSize="2rem">
-                {t("winner.title", { weekNb: winner.card.id })} 🏆
+                {t("winner.title", { weekNb: winner.id })} 🏆
               </Text>
               <Text fontSize="1.2rem" layerStyle="ellipsis">
                 {winner.card.name}
