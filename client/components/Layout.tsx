@@ -1,14 +1,24 @@
-import React, { useMemo } from "react";
-import { Flex } from "@chakra-ui/react";
+import React, { useMemo, useEffect } from "react";
+import { Flex, useColorMode } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import Header from "~components/Header";
 import Footer from "~components/Footer";
+import { ROUTE_GENERATOR } from "~constants";
+
 interface Props {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: Props) => {
   const { pathname } = useRouter();
+  const { setColorMode, colorMode } = useColorMode();
+
+  useEffect(() => {
+    if (pathname !== ROUTE_GENERATOR && colorMode === "dark") {
+      setColorMode("light");
+    }
+  }, [pathname]);
+
   const isMacLike = useMemo(() => {
     if (
       typeof navigator !== "undefined" &&
@@ -23,13 +33,13 @@ const Layout = ({ children }: Props) => {
     <>
       <Flex
         direction="column"
-        h={pathname === "/" ? "100%" : "auto"}
+        h={pathname === ROUTE_GENERATOR ? "100%" : "auto"}
         className={isMacLike}
       >
-        {pathname !== "/" && <Header noColorChange />}
+        {pathname !== ROUTE_GENERATOR && <Header noColorChange />}
         {children}
       </Flex>
-      {pathname !== "/" ? <Footer /> : ""}
+      {pathname !== ROUTE_GENERATOR ? <Footer /> : ""}
     </>
   );
 };
