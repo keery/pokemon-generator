@@ -16,7 +16,6 @@ Page contact
 Faire un check que j'utilise bien les balises HTML5
 Voir si je trouve des bonnes idées de filtre supplémentaire pour les cartes (mot clé ?)
 Double tap pour liker carte en mobile
-Checker pays auteur carte
 Faire un menu rapide sur la page gallerie pour switcher rapidement entre les differentes section
 Update modal reset card
 Bouton publier dans le formulaire des champs en mobile
@@ -34,6 +33,9 @@ Gérer le tout en mobile
 Créer un email pour l'app pokemon
 Envoyer email quand un report est créé
 Changer design aide pour voir les zones lors de la premiere fois qu'on lance l'app
+Pas de like visible lorsqu'on clique sur le gagnant
+tester sur firefox
+Faire remonter en haut de la liste lorsqu'on change de filtre 
 
 --------------------------
 
