@@ -30,11 +30,12 @@ export const useCountdown = (targetDate: Date) => {
 const getReturnValues = (countDown): CountdownTime => {
   // calculate time left
   const days = Math.floor(countDown / (1000 * 60 * 60 * 24));
+
   const hours = Math.floor(
     (countDown % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
   );
   const minutes = Math.floor((countDown % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((countDown % (1000 * 60)) / 1000);
 
-  return { days: days === 7 ? 0 : 7, hours, minutes, seconds };
+  return { days: days === 7 ? 0 : days, hours, minutes, seconds };
 };
