@@ -2,10 +2,7 @@ import { Injectable, HttpException, HttpStatus } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { TypeOrmCrudService } from '@nestjsx/crud-typeorm'
 import { Winner } from '~winner/winner.entity'
-import startOfWeek from 'date-fns/startOfWeek'
-import endOfWeek from 'date-fns/endOfWeek'
-import format from 'date-fns/format'
-import addDays from 'date-fns/addDays'
+import { getElectionRange } from '~utils/getElectionRange'
 import differenceInDays from 'date-fns/differenceInDays'
 
 @Injectable()
@@ -27,13 +24,7 @@ export class WinnerService extends TypeOrmCrudService<Winner> {
   }
 
   async getWinnerToElect() {
-    const date = new Date()
-    const start = format(startOfWeek(date, { weekStartsOn: 1 }), 'yyyy-MM-dd')
-    const end = format(
-      addDays(endOfWeek(date, { weekStartsOn: 1 }), 1),
-      'yyyy-MM-dd',
-    )
-
+    const { start, end } = getElectionRange()
     const mostLiked = await this.repo.query(`
     SELECT card.*, CAST(COUNT(l.id) as INT) as likes
     FROM card

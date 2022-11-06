@@ -36,6 +36,11 @@ const SortList = ({ onChange }: Props) => {
       label: t("filters.mostVoted"),
     },
     {
+      value: "sort-most-liked-week",
+      param: "sort-most-liked-week,DESC",
+      label: t("filters.mostVotedWeek"),
+    },
+    {
       value: "random",
       param: "random,ASC",
       label: t("filters.random"),

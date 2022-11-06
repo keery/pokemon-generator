@@ -27,6 +27,15 @@ import createSlug from 'url-slug'
 import { Request } from 'express'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository, getConnection } from 'typeorm'
+import { getElectionRange } from '~utils/getElectionRange'
+
+const getHasLiked = (ip: string) => {
+  return `
+      (
+        SELECT CAST(COUNT(*) as INT) AS "cnt" FROM "like" "myLikes" WHERE "myLikes"."ip" = '${ip}' AND card.id = "myLikes"."cardId"
+      ) as has_liked
+  `
+}
 
 @Crud({
   model: {
@@ -95,20 +104,30 @@ export class CardController {
 
   @Override('getManyBase')
   async getMany(@ParsedRequest() parsedRequest: CrudRequest, @Ip() ip: string) {
+    let select = ''
     let orderBy = ''
     let groupBy = ''
     let winners = ''
+    let andWhere = ''
 
     if (parsedRequest.parsed.sort.length > 0) {
       orderBy = parsedRequest.parsed.sort
         .map(({ field, order }) => {
-          if (field === 'random') return 'RANDOM ()'
-          else if (field === 'winner') {
-            groupBy = ', w.created_at'
-            winners = 'INNER JOIN "winner" "w" on card.id = "w"."cardId"'
-            return `w.created_at ${order}`
+          switch (field) {
+            case 'random':
+              return 'RANDOM ()'
+            case 'sort-most-liked-week':
+              const { start, end } = getElectionRange()
+              select = ', CAST(COUNT(l.id) as INT) as likes'
+              andWhere = `AND l.created_at between '${start}' and '${end}'`
+              return `likes DESC`
+            case 'winner':
+              groupBy = ', w.created_at'
+              winners = 'INNER JOIN "winner" "w" on card.id = "w"."cardId"'
+              return `w.created_at ${order}`
+            default:
+              return `${field} ${order}`
           }
-          return `${field} ${order}`
         })
         .join(' ')
     }
@@ -125,14 +144,13 @@ export class CardController {
     }
 
     return getConnection().query(`
-      SELECT card.*, CAST(COUNT(l.id) as INT) as likes,
-      (
-        SELECT CAST(COUNT(*) as INT) AS "cnt" FROM "like" "myLikes" WHERE "myLikes"."ip" = '${ip}' AND card.id = "myLikes"."cardId"
-      ) as has_liked
+      SELECT card.*, CAST(COUNT(l.id) as INT) as likes, ${getHasLiked(
+        ip,
+      )} ${select}
       FROM card
       LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
       ${winners}
-      WHERE card."isPublished" = true
+      WHERE card."isPublished" = true ${andWhere}
       GROUP BY card.id ${groupBy}
       ${orderBy !== '' ? `ORDER BY ${orderBy}` : ''}
       ${limit}
@@ -142,10 +160,7 @@ export class CardController {
   @Override('getOneBase')
   async getOne(@Req() req: Request, @Ip() ip: string) {
     const res = await getConnection().query(`
-      SELECT card.*, CAST(COUNT(l.id) as INT) as likes,
-      (
-        SELECT CAST(COUNT(*) as INT) AS "cnt" FROM "like" "myLikes" WHERE "myLikes"."ip" = '${ip}' AND card.id = "myLikes"."cardId"
-      ) as has_liked
+      SELECT card.*, CAST(COUNT(l.id) as INT) as likes, ${getHasLiked(ip)}
       FROM card
       LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
       

@@ -25,6 +25,7 @@
       "recentWinner": "Most recent winners",
       "oldWinner": "Oldest winners",
       "mostVoted": "Most liked",
+      "mostVotedWeek": "Most liked this week",
       "random": "Random"
     },
     "loadMoreCards": "Load more cards",
