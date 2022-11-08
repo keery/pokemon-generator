@@ -7,6 +7,7 @@ import { Card } from '~card/card.entity'
 
 @Module({
   imports: [TypeOrmModule.forFeature([Card])],
+  exports: [CardService],
   providers: [CardService, ImageService],
   controllers: [CardController],
 })

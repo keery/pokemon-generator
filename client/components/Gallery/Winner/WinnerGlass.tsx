@@ -78,7 +78,7 @@ const WinnerGlass = ({ winner }: Props) => {
         />
         <m.div
           style={{
-            backgroundImage: "url(assets/img/waves/waves.svg)",
+            backgroundImage: "url(/assets/img/waves/waves.svg)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "100%",
             y: yWaves,

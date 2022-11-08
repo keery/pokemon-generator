@@ -8,14 +8,21 @@ import { m } from "framer-motion";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
 import { CachedQuery, Card } from "~@types";
+import { MutateLikeFunction } from "~@types/MutateLikeFunction";
 
 interface Props {
   card: Card;
   layoutPrefix?: string;
   cachedQuery: CachedQuery;
+  onMutate: MutateLikeFunction;
 }
 
-const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
+const CardThumbnail = ({
+  card,
+  cachedQuery,
+  layoutPrefix = "",
+  onMutate,
+}: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
   const { href, as } = getHrefCardModal(card, layoutPrefix);
   const [isVisible, setVisible] = useState(true);
@@ -32,7 +39,7 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
         as={as}
         href={href}
         onClick={() => {
-          setCard({ card, cachedQuery });
+          setCard({ card, cachedQuery, onMutate });
         }}
       >
         <m.div
@@ -76,7 +83,11 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
         </m.div>
       </Link>
       {isVisible && (
-        <CardThumbnailGlass card={card} cachedQuery={cachedQuery} />
+        <CardThumbnailGlass
+          card={card}
+          cachedQuery={cachedQuery}
+          onMutate={onMutate}
+        />
       )}
     </Box>
   );

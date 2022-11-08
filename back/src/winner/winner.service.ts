@@ -11,16 +11,17 @@ export class WinnerService extends TypeOrmCrudService<Winner> {
     super(repo)
   }
 
-  getWinner() {
-    return this.repo.findOne({
-      join: {
-        alias: 'c',
-        leftJoinAndSelect: { users: 'c.card' },
-      },
-      order: {
-        id: 'DESC',
-      },
-    })
+  async getWinner() {
+    return this.repo
+      .createQueryBuilder('winner')
+      .addSelect('card')
+      .addSelect('CAST(COUNT(like.id) as INT)', 'likes')
+      .leftJoin('winner.card', 'card')
+      .leftJoin('card.likes', 'like')
+      .loadRelationCountAndMap('card.likes', 'card.likes')
+      .groupBy('winner.id, card.id')
+      .orderBy('winner.id', 'DESC')
+      .getOne()
   }
 
   async getWinnerToElect() {

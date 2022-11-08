@@ -110,6 +110,11 @@ export class Card {
   isPublished: boolean
 
   @Column({
+    nullable: true,
+  })
+  hasLiked: boolean
+
+  @Column({
     type: 'enum',
     enum: Element,
   })

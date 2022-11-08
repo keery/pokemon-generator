@@ -8,69 +8,41 @@ import { useSetRecoilState } from "recoil";
 import { cardModalAtom } from "~atoms/card-modal";
 import { motion } from "framer-motion";
 import { CachedQuery } from "~@types/CachedQuery";
+import { MutateLikeFunction } from "~@types/MutateLikeFunction";
 import { useTranslation } from "next-i18next";
 import { QUERY_KEY } from "~hooks/useCard";
 
 interface Props extends ButtonProps {
   card: Card;
   cachedQuery: CachedQuery;
+  onMutate: MutateLikeFunction;
 }
 
-const LikeButton = ({ card, cachedQuery, ...rest }: Props) => {
+const LikeButton = ({ card, cachedQuery, onMutate, ...rest }: Props) => {
   const { t } = useTranslation("gallery");
   const queryClient = useQueryClient();
   const setCard = useSetRecoilState(cardModalAtom);
   const [isLiked, setLiked] = useState(false);
 
   useEffect(() => {
-    setLiked(card.has_liked > 0);
-  }, [card.id, card.has_liked]);
+    setLiked(card.hasLiked);
+  }, [card.id, card.hasLiked]);
 
   const { mutate } = useLike({
     onMutate: async () => {
+      setCard((c) => {
+        return {
+          ...c,
+          card: {
+            ...c.card,
+            likes: isLiked ? c.card.likes - 1 : c.card.likes + 1,
+          },
+        };
+      });
       if (!cachedQuery) return;
-      const previousValue = queryClient.getQueryData<InfiniteData<Card[]>>(
-        cachedQuery.key
-      );
+      const previousValue = onMutate(isLiked, queryClient, cachedQuery, card);
 
-      if (previousValue) {
-        queryClient.setQueryData<InfiniteData<Card[]>>(
-          cachedQuery.key,
-          (old) => {
-            const page = old.pages[cachedQuery.indexPage];
-            const index = page.findIndex((c) => c.id === card.id);
-
-            if (index === -1) return old;
-
-            const newPage = [...page];
-
-            newPage[index] = {
-              ...newPage[index],
-              likes: isLiked ? page[index].likes - 1 : page[index].likes + 1,
-              has_liked: isLiked ? 0 : 1,
-            };
-
-            setLiked(!isLiked);
-
-            setCard((c) => {
-              return {
-                ...c,
-                card: {
-                  ...c.card,
-                  likes: isLiked ? c.card.likes - 1 : c.card.likes + 1,
-                },
-              };
-            });
-
-            old.pages.splice(cachedQuery.indexPage, 1, newPage);
-
-            return {
-              pageParams: old.pageParams,
-              pages: old.pages,
-            };
-          }
-        );
-      }
+      setLiked(!isLiked);
 
       return { previousValue, isLiked };
     },

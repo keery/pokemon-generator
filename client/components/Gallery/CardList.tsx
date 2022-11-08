@@ -9,10 +9,11 @@ import {
 import CardThumbnailSkeleton from "~components/Gallery/CardThumbnailSkeleton";
 import GlassButton from "~components/GlassButton";
 import { Flex, Container } from "@chakra-ui/react";
-import CardScrollAnimationWrapper from "~components/Gallery/CardScrollAnimationWrapper";
+import CardThumbnail from "~components/Gallery/CardThumbnail";
 import SortList from "~components/Gallery/SortList";
 import Loader from "~components/Loader";
 import { useTranslation } from "next-i18next";
+import { setCardListData } from "~utils/setCardListData";
 
 const AUTO_LOADING_LIMIT = 3;
 
@@ -83,14 +84,10 @@ const CardList = (props: SimpleGridProps) => {
 
                   return (
                     <Flex direction="column" key={card.id}>
-                      <CardScrollAnimationWrapper
+                      <CardThumbnail
                         card={card}
                         cachedQuery={cachedQuery}
-                        listOffsetTop={listOffsetTop}
-                        lineNumber={Math.floor(index / 3)}
-                        spacingLine={spacingLine}
-                        columnNumber={index % 3}
-                        cardHeight={cardHeight}
+                        onMutate={setCardListData}
                       />
                     </Flex>
                   );

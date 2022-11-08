@@ -31,7 +31,9 @@ import { ROUTE_GALLERY } from "~constants";
 import Router from "next/router";
 import ReportButton from "~components/Gallery/CardModal/ReportButton";
 import useKeybordShortcut from "~hooks/useKeybordShortcut";
+import { setCardListData } from "~utils/setCardListData";
 import { CachedQuery } from "~@types/CachedQuery";
+import { MutateLikeFunction } from "~@types/MutateLikeFunction";
 import { useTranslation, Trans } from "next-i18next";
 import dynamic from "next/dynamic";
 
@@ -42,6 +44,7 @@ const LikeButton = dynamic(() => import("~components/Gallery/LikeButton"), {
 interface Props {
   card: Card;
   cachedQuery: CachedQuery;
+  onMutate: MutateLikeFunction;
   isPage?: boolean;
 }
 
@@ -109,6 +112,7 @@ export const CardModalContent = ({
   card,
   animation,
   cachedQuery,
+  onMutate,
   isPage = false,
 }) => {
   const { t } = useTranslation("gallery");
@@ -250,7 +254,11 @@ export const CardModalContent = ({
               <Flex justifyContent="space-between" alignItems="center">
                 <CardModalActions card={card} />
                 <ReportButton card={card} />
-                <LikeButton card={card} cachedQuery={cachedQuery} />
+                <LikeButton
+                  card={card}
+                  cachedQuery={cachedQuery}
+                  onMutate={onMutate}
+                />
               </Flex>
             </Box>
           </Flex>
@@ -279,12 +287,12 @@ export const CardModalContent = ({
   );
 };
 
-const CardModal = ({ card, cachedQuery }: Props) => {
+const CardModal = ({ card, cachedQuery, onMutate }: Props) => {
   const [animation, setAnimation] = useState("");
   const setCard = useSetRecoilState(cardModalAtom);
   const theme = useTheme();
   const onClose = () => {
-    setCard({ card: null, cachedQuery: null });
+    setCard({ card: null, cachedQuery: null, onMutate: null });
     Router.push(ROUTE_GALLERY, null, { shallow: true });
   };
 
@@ -330,8 +338,9 @@ const CardModal = ({ card, cachedQuery }: Props) => {
           card={card}
           animation={animation}
           cachedQuery={cachedQuery}
+          onMutate={onMutate}
         />
-        {cachedQuery && (
+        {cachedQuery && cachedQuery?.indexPage && (
           <CardModalArrows
             cachedQuery={cachedQuery}
             setAnimation={setAnimation}
@@ -344,7 +353,7 @@ const CardModal = ({ card, cachedQuery }: Props) => {
 
 const Wrapper = () => {
   const { query } = useRouter();
-  const { card, cachedQuery } = useRecoilValue(cardModalAtom);
+  const { card, cachedQuery, onMutate } = useRecoilValue(cardModalAtom);
 
   useEffect(() => {
     if (card) {
@@ -358,7 +367,12 @@ const Wrapper = () => {
     // @ts-ignore
     <AnimatePresence>
       {query.idCard && card && (
-        <CardModal card={card} cachedQuery={cachedQuery} key="card-modal" />
+        <CardModal
+          card={card}
+          cachedQuery={cachedQuery}
+          onMutate={onMutate}
+          key="card-modal"
+        />
       )}
     </AnimatePresence>
   );

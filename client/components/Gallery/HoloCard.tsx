@@ -2,11 +2,12 @@ import React, { useRef } from "react";
 import { Box, BoxProps } from "@chakra-ui/react";
 import { m, useTransform, useViewportScroll } from "framer-motion";
 import useElementSize from "~hooks/useElementSize";
-import useWinner from "~hooks/useWinner";
+import useWinner, { getKey } from "~hooks/useWinner";
 import { screenPercent } from "~utils/helper";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
 import { getHrefCardModal } from "~utils/card";
+import { setWinnerData } from "~utils/setWinnerData";
 import Router from "next/router";
 
 const styleReflects: BoxProps = {
@@ -169,7 +170,13 @@ const HoloCard = () => {
           onClick={() => {
             const { as, href } = getHrefCardModal(winner.card);
             Router.push(href, as, { shallow: true });
-            setCard({ card: winner.card, cachedQuery: null });
+            setCard({
+              card: winner.card,
+              cachedQuery: {
+                key: getKey(),
+              },
+              onMutate: setWinnerData,
+            });
           }}
           cursor={winner ? "pointer" : "auto"}
         >
@@ -212,8 +219,7 @@ const HoloCard = () => {
           <Box
             as={m.div}
             {...styleReflects}
-            backgroundImage='url("/assets/sparkles.gif"),
-              url(/assets/holo.webp),
+            backgroundImage="
               linear-gradient(
                 125deg,
                 #ff008450 15%,
@@ -222,7 +228,7 @@ const HoloCard = () => {
                 #00ff8a20 60%,
                 #00cfff40 70%,
                 #cc4cfa50 85%
-              );'
+              );"
             backgroundPosition="50% 50%"
             backgroundSize="160%"
             backgroundBlendMode="overlay"

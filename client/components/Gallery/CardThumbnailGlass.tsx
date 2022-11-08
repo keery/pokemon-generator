@@ -1,15 +1,16 @@
 import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
-import { Card, CachedQuery } from "~@types";
+import { Card, CachedQuery, MutateLikeFunction } from "~@types";
 import LikesCounter from "~components/Gallery/LikesCounter";
 import { useTranslation } from "next-i18next";
 
 interface Props {
   card: Card;
   cachedQuery: CachedQuery;
+  onMutate: MutateLikeFunction;
 }
 
-const CardThumbnailGlass = ({ card, cachedQuery }: Props) => {
+const CardThumbnailGlass = ({ card, cachedQuery, onMutate }: Props) => {
   const { t } = useTranslation("gallery");
 
   return (
@@ -40,7 +41,7 @@ const CardThumbnailGlass = ({ card, cachedQuery }: Props) => {
         </Text>
       </Flex>
 
-      <LikesCounter card={card} cachedQuery={cachedQuery} />
+      <LikesCounter card={card} cachedQuery={cachedQuery} onMutate={onMutate} />
     </Flex>
   );
 };

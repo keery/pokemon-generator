@@ -31,9 +31,9 @@ import { getElectionRange } from '~utils/getElectionRange'
 
 const getHasLiked = (ip: string) => {
   return `
-      (
-        SELECT CAST(COUNT(*) as INT) AS "cnt" FROM "like" "myLikes" WHERE "myLikes"."ip" = '${ip}' AND card.id = "myLikes"."cardId"
-      ) as has_liked
+    CASE WHEN (
+      SELECT CAST(COUNT(*) as INT) AS "cnt" FROM "like" "myLikes" WHERE "myLikes"."ip" = '${ip}' AND card.id = "myLikes"."cardId"
+    ) > 0 then TRUE else FALSE end as "hasLiked"
   `
 }
 
@@ -159,15 +159,9 @@ export class CardController {
 
   @Override('getOneBase')
   async getOne(@Req() req: Request, @Ip() ip: string) {
-    const res = await getConnection().query(`
-      SELECT card.*, CAST(COUNT(l.id) as INT) as likes, ${getHasLiked(ip)}
-      FROM card
-      LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
-      
-       WHERE card.id = ${req.params.id}
-      GROUP BY card.id
-      `)
+    const card = await this.service.getCard(req.params.id)
+    const hasLiked = await this.service.hasBeenLiked(card, ip)
 
-    return res.length > 0 ? res[0] : null
+    return { ...card, hasLiked }
   }
 }
