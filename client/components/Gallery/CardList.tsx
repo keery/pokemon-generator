@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import useInfiniteCards, { QUERY_KEY } from "~hooks/useInfiniteCards";
 import useScrollBottom from "~hooks/useScrollBottom";
 import {
@@ -13,7 +13,6 @@ import CardThumbnail from "~components/Gallery/CardThumbnail";
 import SortList from "~components/Gallery/SortList";
 import Loader from "~components/Loader";
 import { useTranslation } from "next-i18next";
-import { setCardListData } from "~utils/setCardListData";
 
 const AUTO_LOADING_LIMIT = 3;
 
@@ -21,7 +20,6 @@ const CardList = (props: SimpleGridProps) => {
   const { t } = useTranslation("gallery");
   const ref = useRef(null);
   const [sort, setSort] = useState("created_at,DESC");
-  const [cardHeight, setCardHeight] = useState<number>(0);
   const [loading, setLoading] = useState<number>(0);
   const nbCard = useBreakpointValue({ base: 6, sm: 8, md: 12, lg: 15 });
   const spacingLine = useBreakpointValue({ base: 40 });
@@ -42,18 +40,6 @@ const CardList = (props: SimpleGridProps) => {
       },
       queryParams
     );
-
-  const listOffsetTop = useMemo(() => {
-    if (!ref || !ref.current) return 0;
-    return ref.current.offsetTop - window.innerHeight / 1.15;
-  }, [ref, ref.current]);
-
-  useEffect(() => {
-    const cards = document.getElementsByClassName("CardScrollAnimationWrapper");
-    if (cards && cards.length > 0) {
-      setCardHeight(cards[0].clientHeight);
-    }
-  }, [data]);
 
   useScrollBottom(ref, fetchNextPage, loading < AUTO_LOADING_LIMIT);
 
@@ -84,11 +70,7 @@ const CardList = (props: SimpleGridProps) => {
 
                   return (
                     <Flex direction="column" key={card.id}>
-                      <CardThumbnail
-                        card={card}
-                        cachedQuery={cachedQuery}
-                        onMutate={setCardListData}
-                      />
+                      <CardThumbnail card={card} cachedQuery={cachedQuery} />
                     </Flex>
                   );
                 })}

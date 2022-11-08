@@ -44,7 +44,6 @@ const LikeButton = dynamic(() => import("~components/Gallery/LikeButton"), {
 interface Props {
   card: Card;
   cachedQuery: CachedQuery;
-  onMutate: MutateLikeFunction;
   isPage?: boolean;
 }
 
@@ -108,13 +107,7 @@ export const modalStyles = {
   color: "white",
 };
 
-export const CardModalContent = ({
-  card,
-  animation,
-  cachedQuery,
-  onMutate,
-  isPage = false,
-}) => {
+export const CardModalContent = ({ card, animation, isPage = false }) => {
   const { t } = useTranslation("gallery");
 
   return (
@@ -254,11 +247,7 @@ export const CardModalContent = ({
               <Flex justifyContent="space-between" alignItems="center">
                 <CardModalActions card={card} />
                 <ReportButton card={card} />
-                <LikeButton
-                  card={card}
-                  cachedQuery={cachedQuery}
-                  onMutate={onMutate}
-                />
+                <LikeButton card={card} />
               </Flex>
             </Box>
           </Flex>
@@ -287,7 +276,7 @@ export const CardModalContent = ({
   );
 };
 
-const CardModal = ({ card, cachedQuery, onMutate }: Props) => {
+const CardModal = ({ card, cachedQuery }: Props) => {
   const [animation, setAnimation] = useState("");
   const setCard = useSetRecoilState(cardModalAtom);
   const theme = useTheme();
@@ -334,12 +323,7 @@ const CardModal = ({ card, cachedQuery, onMutate }: Props) => {
           onClick={onClose}
           _hover={{ opacity: 0.6 }}
         />
-        <CardModalContent
-          card={card}
-          animation={animation}
-          cachedQuery={cachedQuery}
-          onMutate={onMutate}
-        />
+        <CardModalContent card={card} animation={animation} />
         {cachedQuery && cachedQuery?.indexPage && (
           <CardModalArrows
             cachedQuery={cachedQuery}
@@ -367,12 +351,7 @@ const Wrapper = () => {
     // @ts-ignore
     <AnimatePresence>
       {query.idCard && card && (
-        <CardModal
-          card={card}
-          cachedQuery={cachedQuery}
-          onMutate={onMutate}
-          key="card-modal"
-        />
+        <CardModal card={card} cachedQuery={cachedQuery} key="card-modal" />
       )}
     </AnimatePresence>
   );

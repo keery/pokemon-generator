@@ -4,7 +4,7 @@ import Heart from "public/assets/img/heart.svg";
 import useLike, { State } from "~hooks/useLike";
 import { Card } from "~@types/Card";
 import { useQueryClient, InfiniteData } from "react-query";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { cardModalAtom } from "~atoms/card-modal";
 import { motion } from "framer-motion";
 import { CachedQuery } from "~@types/CachedQuery";
@@ -14,14 +14,12 @@ import { QUERY_KEY } from "~hooks/useCard";
 
 interface Props extends ButtonProps {
   card: Card;
-  cachedQuery: CachedQuery;
-  onMutate: MutateLikeFunction;
 }
 
-const LikeButton = ({ card, cachedQuery, onMutate, ...rest }: Props) => {
+const LikeButton = ({ card, ...rest }: Props) => {
   const { t } = useTranslation("gallery");
   const queryClient = useQueryClient();
-  const setCard = useSetRecoilState(cardModalAtom);
+  const [{ cachedQuery, onMutate }, setCard] = useRecoilState(cardModalAtom);
   const [isLiked, setLiked] = useState(false);
 
   useEffect(() => {

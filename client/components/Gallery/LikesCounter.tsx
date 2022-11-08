@@ -1,15 +1,14 @@
 import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
 import LikeButtonRound from "~components/Gallery/LikeButtonRound";
-import { Card, CachedQuery, MutateLikeFunction } from "~@types";
+import { Card, CachedQuery } from "~@types";
 
 interface Props {
   card: Card;
   cachedQuery: CachedQuery;
-  onMutate: MutateLikeFunction;
 }
 
-const LikesCounter = ({ card, cachedQuery, onMutate }: Props) => {
+const LikesCounter = ({ card, cachedQuery }: Props) => {
   return (
     <Flex alignItems="center" pl={5}>
       <Text
@@ -21,11 +20,7 @@ const LikesCounter = ({ card, cachedQuery, onMutate }: Props) => {
       >
         {card.likes}
       </Text>
-      <LikeButtonRound
-        card={card}
-        cachedQuery={cachedQuery}
-        onMutate={onMutate}
-      />
+      <LikeButtonRound card={card} cachedQuery={cachedQuery} />
     </Flex>
   );
 };

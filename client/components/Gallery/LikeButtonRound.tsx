@@ -5,15 +5,14 @@ import useLike from "~hooks/useLike";
 import { Card } from "~@types/Card";
 import { CachedQuery } from "~@types/CachedQuery";
 import { useQueryClient, InfiniteData } from "react-query";
-import { MutateLikeFunction } from "~@types/MutateLikeFunction";
+import { setCardListData } from "~utils/setCardListData";
 
 interface Props extends ButtonProps {
   card: Card;
   cachedQuery: CachedQuery;
-  onMutate: MutateLikeFunction;
 }
 
-const LikeButtonRound = ({ card, cachedQuery, onMutate, ...rest }: Props) => {
+const LikeButtonRound = ({ card, cachedQuery, ...rest }: Props) => {
   const queryClient = useQueryClient();
   const [isLiked, setLiked] = useState(card.hasLiked);
 
@@ -24,7 +23,12 @@ const LikeButtonRound = ({ card, cachedQuery, onMutate, ...rest }: Props) => {
   const { mutate } = useLike({
     onMutate: async () => {
       if (!cachedQuery) return;
-      const previousValue = onMutate(isLiked, queryClient, cachedQuery, card);
+      const previousValue = setCardListData(
+        isLiked,
+        queryClient,
+        cachedQuery,
+        card
+      );
 
       setLiked(!isLiked);
 
