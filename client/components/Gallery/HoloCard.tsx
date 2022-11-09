@@ -100,6 +100,7 @@ const HoloCard = () => {
         position: "relative",
         perspective: "2000px",
         transform: "translate3d(0.1px, 0.1px, 0.1px)",
+        transformStyle: "preserve-3d",
       }}
     >
       <Box

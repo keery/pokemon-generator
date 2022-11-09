@@ -192,7 +192,8 @@ const ButtonList = ({
                   whileHover={{ scale: isSelected ? 1 : 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   disabled={isSelected}
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     setValue(name, item);
                     if (isMobile) onClose();
                   }}

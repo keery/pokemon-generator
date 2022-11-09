@@ -29,7 +29,6 @@ const GalleryTop = () => {
           <Flex alignItems="center" justifyContent="space-between">
             <Flex
               direction="column"
-              maxW="560px"
               alignSelf="baseline"
               w="full"
               mt={8}

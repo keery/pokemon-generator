@@ -26,6 +26,7 @@ Etre plus explicite, un gagnant par semaine, le plus de like gagne
 Essayer d'appuyer le fait d'avoir envie de gagner, en precisant ce qu'on gagne, ce qu'on gagne c'est seulement
 le titre de gagnant de la semaine
 Afficher sur la modale d'une carte une mention spécifique pour dire si cette carte a déjà gagné
+Faire un menu mobile pour avoir toutes les actions en bas de l'écran, qu'on puisse le faire coulisser
 Petite animation bien calé pour annoncer en mode titre avant le gagnant
 Insister sur le fait de devoir voter
 Check effet carte envoyé par Julien
@@ -33,9 +34,8 @@ Gérer le tout en mobile
 Créer un email pour l'app pokemon
 Envoyer email quand un report est créé
 Changer design aide pour voir les zones lors de la premiere fois qu'on lance l'app
-Pas de like visible lorsqu'on clique sur le gagnant
-tester sur firefox
 Bouton pour report des bugs
+Eye area se réactive automatiquement tout le temps
 
 --------------------------
 

@@ -7,7 +7,7 @@
         "madeBy": "Carte créée par {{author}}"
       }
     },
-    "nextWinner": "Prochain gagnant dans",
+    "nextWinner": "Prochain gagnant\ndans",
     "madeBy": "Par {{name}}",
     "fire" : "Feu",
     "grass" : "Herbe",
