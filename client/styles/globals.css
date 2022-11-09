@@ -919,18 +919,11 @@ a {
 }
 
 .close #menu {
-  transition: all ease-in-out 0.3s 0.2s;
+  transition: all ease-in-out 1.5s 0.4s;
   width: 0;
   height: 0;
 }
 
-#menu .wrapper {
-  width: 100%;
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  transform: translateY(-50%);
-}
 #menu .wrapper .label-menu {
   border-bottom: 1px solid white;
   opacity: 0;
@@ -938,9 +931,6 @@ a {
   transform: translateX(-30px) rotate(-90deg);
   color: white;
   display: inline-block;
-  position: absolute;
-  top: 3rem;
-  left: calc(5vw - 19px);
   font-size: 1rem;
 }
 
@@ -969,21 +959,4 @@ a {
 }
 .open #menu .menu-credit {
   transition-delay: 1.4s;
-}
-
-.open #menu .menu-overlay {
-  transform: translateX(-50%) translateY(-50%) scale(3);
-}
-.open #menu .menu-circle {
-  transform: translateX(-50%) translateY(-50%) scale(2);
-  box-shadow: 1px 1px 0px rgb(255 255 255 / 51%);
-}
-
-.close #menu .menu-overlay {
-  transform: translateX(-50%) translateY(-50%) scale(0);
-}
-.close #menu .menu-circle {
-  transform: translateX(-150%) translateY(-150%) scale(0);
-  transition-delay: 0 !important;
-  transition-delay: 0s;
 }

@@ -7,7 +7,7 @@ export interface Props
   extends Omit<LinkProps, "href" | "as">,
     Pick<NextLinkProps, "href" | "as"> {
   shallow?: boolean;
-  style?: any;
+  style?: React.CSSProperties;
 }
 
 const Link = (props: Props) => {

@@ -87,7 +87,9 @@ const theme = extendTheme({
   },
   textStyles: {},
   breakpoints: {},
-  gradient: {},
+  gradient: {
+    main: "linear-gradient(to right, #c6ffdd, #fbd786, #f7797d)",
+  },
   space: {
     full: "-1.5rem",
     px: "1px",

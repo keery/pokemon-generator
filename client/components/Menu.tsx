@@ -2,7 +2,15 @@ import React from "react";
 import Link from "~components/Link";
 import { ROUTE_GALLERY, ROUTE_GENERATOR, ROUTE_CGU } from "~constants";
 import { useTranslation } from "next-i18next";
-import { Box, Text, VStack, Circle, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  VStack,
+  Circle,
+  Flex,
+  useTheme,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 const links = [
@@ -23,6 +31,8 @@ const links = [
 const Menu = ({ setOpen, isOpen }) => {
   const { t } = useTranslation("common");
   const router = useRouter();
+  const theme = useTheme();
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
     <Box
@@ -47,13 +57,32 @@ const Menu = ({ setOpen, isOpen }) => {
         backgroundColor="rgb(20 27 40 / 60%)"
         paddingBottom="100%"
         top="0"
+        sx={{
+          ".open #menu &": {
+            transform: {
+              base: "translateX(-50%) translateY(-50%) scale(6)",
+              md: "translateX(-50%) translateY(-50%) scale(3)",
+            },
+          },
+          ".close #menu &": {
+            transform: "translateX(-50%) translateY(-50%) scale(0)",
+          },
+        }}
       />
       <Box
+        display={{
+          base: "none",
+          md: "block",
+        }}
         onClick={() => setOpen(false)}
         top="0"
         bottom="0"
         pos="absolute"
-        left="60%"
+        left={{
+          base: "100%",
+          md: "80%",
+          lg: "65%",
+        }}
         right="0"
         zIndex={50}
       />
@@ -66,23 +95,96 @@ const Menu = ({ setOpen, isOpen }) => {
         left="0"
         borderRadius="100%"
         transition="transform 0.5s 0.15s ease-in-out, box-shadow 0.4s 0.6s ease-in-out"
-        width="60%"
-        paddingBottom="60%"
+        width={{
+          base: "100%",
+          md: "80%",
+          lg: "65%",
+        }}
+        paddingBottom={{
+          base: "100%",
+          md: "80%",
+          lg: "65%",
+        }}
+        maxW="1550px"
         top="50%"
         backdropFilter="blur(4px) saturate(180%)"
         backgroundColor="rgb(20 27 40 / 60%)"
         boxShadow="0 0 0 transparent"
+        sx={{
+          ".open #menu &": {
+            transform: {
+              base: "translateX(-50%) translateY(-50%) scale(6)",
+              md: "translateX(-50%) translateY(-50%) scale(2)",
+            },
+            boxShadow: "1px 1px 0px rgb(255 255 255 / 51%)",
+          },
+          ".close #menu &": {
+            transform: "translateX(-150%) translateY(-150%) scale(0)",
+            transitionDelay: "0!important",
+          },
+        }}
       />
-      <Box className="wrapper">
-        <Text className="label-menu">MENU</Text>
+      <Box
+        className="wrapper"
+        width="100%"
+        position="absolute"
+        zIndex="10"
+        top={{
+          base: "0",
+          md: "50%",
+        }}
+        height={{
+          base: "100%",
+          md: "auto",
+        }}
+        transform={{
+          base: "translateY(0)",
+          md: "translateY(-50%)",
+        }}
+      >
+        <Text
+          className="label-menu"
+          position="absolute"
+          left={{
+            base: "calc(3vw - 19px)",
+            lg: "calc(5vw - 19px)",
+          }}
+          top={{
+            base: "2rem",
+            md: "2.2rem",
+            lg: "2.5rem",
+            xl: "3rem",
+          }}
+        >
+          MENU
+        </Text>
         <VStack
-          w="60%"
+          width={{
+            base: "100%",
+            md: "80%",
+            lg: "65%",
+          }}
           as="ul"
-          alignItems="flex-start"
-          pl="8%"
+          alignItems={{
+            base: "center",
+            md: "flex-start",
+          }}
+          pl={{
+            base: "0",
+            md: "8%",
+          }}
           fontFamily="title"
-          fontSize="5rem"
+          fontSize={{
+            base: "2.6rem",
+            sm: "3rem",
+            md: "4rem",
+            lg: "4.4rem",
+            xl: "5rem",
+          }}
           color="text"
+          justifyContent="center"
+          height="100%"
+          px={1}
         >
           {links.map(({ href, label }, i) => (
             <Flex
@@ -91,9 +193,11 @@ const Menu = ({ setOpen, isOpen }) => {
               className="menu-item"
               alignItems="center"
               role="group"
+              transform="translateX(-34px)"
             >
               {router.route === href ? (
                 <Circle
+                  display={{ base: "none", md: "block" }}
                   border="1px solid white"
                   size="30px"
                   pos="relative"
@@ -105,11 +209,12 @@ const Menu = ({ setOpen, isOpen }) => {
                     w="100%"
                     h="100%"
                     filter="blur(4px)"
-                    boxShadow="rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, rgb(250 112 154) 8px 8px 0px 0px inset, rgb(120 75 160) 12px 12px 0px 0px inset, rgb(43 134 197) 18px 18px 0px 0px inset"
+                    boxShadow="rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, #c6ffdd 8px 8px 0px 0px inset, #fbd786 12px 12px 0px 0px inset, #f7797d 18px 18px 0px 0px inset"
                   />
                 </Circle>
               ) : (
                 <Circle
+                  display={{ base: "none", md: "block" }}
                   opacity={0}
                   border="1px solid white"
                   size="30px"
@@ -127,7 +232,22 @@ const Menu = ({ setOpen, isOpen }) => {
                 onClick={() => (router.route !== href ? setOpen(false) : null)}
                 fontFamily="title"
                 fontWeight="800"
+                display="inline-block"
+                textAlign="center"
                 color="white"
+                lineHeight="1"
+                sx={
+                  isMobile && {
+                    backgroundColor: "white",
+                    backgroundImage:
+                      router.route === href ? theme.gradient.main : null,
+                    _hover: {
+                      backgroundImage: theme.gradient.main,
+                    },
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }
+                }
                 _hover={{
                   textDecoration: "none",
                 }}
@@ -145,7 +265,10 @@ const Menu = ({ setOpen, isOpen }) => {
         textTransform="uppercase"
         pos="absolute"
         bottom="1.5rem"
-        left="5%"
+        left={{
+          base: "3%",
+          lg: "5%",
+        }}
         zIndex={10}
         color="white"
       >
