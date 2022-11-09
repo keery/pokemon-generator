@@ -50,12 +50,7 @@ const Card = ({ initialData }) => {
         filter="blur(50px)"
       />
       <Box style={modalStyles} layerStyle="darkBlur">
-        <CardModalContent
-          card={card}
-          cachedQuery={null}
-          animation={""}
-          isPage
-        />
+        <CardModalContent card={card} animation={""} isPage />
         <Container>
           <Box borderBottom="1px solid" borderColor="gray.400" />
         </Container>
