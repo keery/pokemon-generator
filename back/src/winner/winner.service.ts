@@ -26,11 +26,17 @@ export class WinnerService extends TypeOrmCrudService<Winner> {
 
   async getWinnerToElect() {
     const { start, end } = getElectionRange()
+    const currentWinner = await this.getWinner()
+
+    const andWhere = currentWinner
+      ? `AND card.id != ${currentWinner.card.id}`
+      : ''
+
     const mostLiked = await this.repo.query(`
     SELECT card.*, CAST(COUNT(l.id) as INT) as likes
     FROM card
     LEFT OUTER JOIN "like" "l" on card.id = "l"."cardId"
-    WHERE l.created_at between '${start}' and '${end}'
+    WHERE l.created_at between '${start}' and '${end}' ${andWhere}
     GROUP BY card.id
     ORDER BY likes DESC
     LIMIT 1
