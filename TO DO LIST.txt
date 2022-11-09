@@ -35,7 +35,6 @@ Créer un email pour l'app pokemon
 Envoyer email quand un report est créé
 Changer design aide pour voir les zones lors de la premiere fois qu'on lance l'app
 Bouton pour report des bugs
-Eye area se réactive automatiquement tout le temps
 
 --------------------------
 
