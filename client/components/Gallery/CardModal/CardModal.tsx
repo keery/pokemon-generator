@@ -31,9 +31,7 @@ import { ROUTE_GALLERY } from "~constants";
 import Router from "next/router";
 import ReportButton from "~components/Gallery/CardModal/ReportButton";
 import useKeybordShortcut from "~hooks/useKeybordShortcut";
-import { setCardListData } from "~utils/setCardListData";
 import { CachedQuery } from "~@types/CachedQuery";
-import { MutateLikeFunction } from "~@types/MutateLikeFunction";
 import { useTranslation, Trans } from "next-i18next";
 import dynamic from "next/dynamic";
 
@@ -324,7 +322,7 @@ const CardModal = ({ card, cachedQuery }: Props) => {
           _hover={{ opacity: 0.6 }}
         />
         <CardModalContent card={card} animation={animation} />
-        {cachedQuery && cachedQuery?.indexPage && (
+        {cachedQuery && typeof cachedQuery?.indexPage !== "undefined" && (
           <CardModalArrows
             cachedQuery={cachedQuery}
             setAnimation={setAnimation}
@@ -337,7 +335,7 @@ const CardModal = ({ card, cachedQuery }: Props) => {
 
 const Wrapper = () => {
   const { query } = useRouter();
-  const { card, cachedQuery, onMutate } = useRecoilValue(cardModalAtom);
+  const { card, cachedQuery } = useRecoilValue(cardModalAtom);
 
   useEffect(() => {
     if (card) {
