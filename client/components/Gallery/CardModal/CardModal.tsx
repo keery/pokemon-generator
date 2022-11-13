@@ -245,7 +245,7 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
               <Flex justifyContent="space-between" alignItems="center">
                 <CardModalActions card={card} />
                 <ReportButton card={card} />
-                <LikeButton card={card} />
+                <LikeButton card={card} isPage={isPage} />
               </Flex>
             </Box>
           </Flex>

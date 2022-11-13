@@ -7,16 +7,15 @@ import { useQueryClient, InfiniteData } from "react-query";
 import { useRecoilState } from "recoil";
 import { cardModalAtom } from "~atoms/card-modal";
 import { motion } from "framer-motion";
-import { CachedQuery } from "~@types/CachedQuery";
-import { MutateLikeFunction } from "~@types/MutateLikeFunction";
 import { useTranslation } from "next-i18next";
 import { QUERY_KEY } from "~hooks/useCard";
 
 interface Props extends ButtonProps {
   card: Card;
+  isPage: boolean;
 }
 
-const LikeButton = ({ card, ...rest }: Props) => {
+const LikeButton = ({ card, isPage, ...rest }: Props) => {
   const { t } = useTranslation("gallery");
   const queryClient = useQueryClient();
   const [{ cachedQuery, onMutate }, setCard] = useRecoilState(cardModalAtom);
@@ -28,15 +27,17 @@ const LikeButton = ({ card, ...rest }: Props) => {
 
   const { mutate } = useLike({
     onMutate: async () => {
-      setCard((c) => {
-        return {
-          ...c,
-          card: {
-            ...c.card,
-            likes: isLiked ? c.card.likes - 1 : c.card.likes + 1,
-          },
-        };
-      });
+      if (!isPage) {
+        setCard((c) => {
+          return {
+            ...c,
+            card: {
+              ...c.card,
+              likes: isLiked ? c.card.likes - 1 : c.card.likes + 1,
+            },
+          };
+        });
+      }
       if (!cachedQuery) return;
       const previousValue = onMutate(isLiked, queryClient, cachedQuery, card);
 
