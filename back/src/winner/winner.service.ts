@@ -86,7 +86,7 @@ export class WinnerService extends TypeOrmCrudService<Winner> {
         new Date(lastWinner.created_at),
       )
 
-      if (diffDays <= 6) {
+      if (diffDays < 6) {
         throw new HttpException(
           `Last winner got elected less than 7 days ago (${diffDays} days ago)`,
           HttpStatus.METHOD_NOT_ALLOWED,
