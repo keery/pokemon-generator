@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ButtonProps, Icon, Flex } from "@chakra-ui/react";
 import Heart from "public/assets/img/heart.svg";
 import useLike, { State } from "~hooks/useLike";
+import Button from "~components/Button";
 import { Card } from "~@types/Card";
 import { useQueryClient, InfiniteData } from "react-query";
 import { useRecoilState } from "recoil";
@@ -75,30 +76,13 @@ const LikeButton = ({ card, isPage, ...rest }: Props) => {
   };
 
   return (
-    <motion.div
-      style={{
-        display: "inline-flex",
-        borderRadius: "0.8rem",
-        padding: "0.5rem 1.5rem 0.5rem 0.8rem",
-        alignItems: "center",
-        backdropFilter: "blur(15px) saturate(180%)",
-        transitionDuration: "100ms",
-        transitionTimingFunction: "ease-in-out",
-        transitionProperty: "transform",
-        color: "white",
-        cursor: "pointer",
-        backgroundColor: "rgb(255 255 255 / 28%)",
-      }}
-      initial={{
-        scale: 1,
-      }}
-      whileTap={{
-        scale: 0.9,
-      }}
-      whileHover={{
-        scale: 1.05,
-      }}
+    <Button
       onClick={onClick}
+      layerColors={["new.1", "new.4", "new.3"]}
+      color="white"
+      p="0 1.7rem 0 1rem"
+      display="flex"
+      hasNoText
     >
       <Flex
         justifyContent="center"
@@ -110,18 +94,18 @@ const LikeButton = ({ card, isPage, ...rest }: Props) => {
       >
         <Icon
           as={Heart}
-          color={isLiked ? "myPink" : "transparent"}
+          color={isLiked ? "new.4" : "transparent"}
           w="2.5rem"
           height="1.5rem"
           p="0.1rem"
           strokeWidth="2px"
-          stroke={isLiked ? "myPink" : "white"}
+          stroke={isLiked ? "new.4" : "white"}
         />
       </Flex>
       <Flex flexDirection="column" fontSize="1.2rem" userSelect="none">
         {isLiked ? t("modal.liked") : t("modal.like")}
       </Flex>
-    </motion.div>
+    </Button>
   );
 };
 

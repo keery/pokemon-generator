@@ -47,11 +47,6 @@ const SortList = ({ onChange }: Props) => {
     },
   ];
 
-  const isReduced = useIsIntersecting(ref, {
-    threshold: 1,
-    rootMargin: "-15px 0px 0px 0px",
-  });
-
   const isSticky = useIsIntersecting(ref, {
     threshold: 1,
     rootMargin: "0px 0px 500px 0px",
@@ -74,7 +69,7 @@ const SortList = ({ onChange }: Props) => {
         justifyContent="space-between"
         top="-1px"
         position="sticky"
-        layerStyle={isSticky ? "glassLg" : ""}
+        layerStyle={isSticky ? "darkBlur" : ""}
         border="none"
       >
         <Container>
@@ -82,7 +77,7 @@ const SortList = ({ onChange }: Props) => {
             <form>
               <Title>
                 <SortSelect
-                  fontSize={isReduced ? "4rem" : "5.8rem"}
+                  fontSize={"4rem"}
                   name="sort"
                   control={form.control}
                   onChange={(e) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 import { SSRConfig } from "next-i18next";
-import { Box, Square, Container } from "@chakra-ui/react";
+import { Box, Flex, Container, useTheme } from "@chakra-ui/react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getCard } from "~hooks/useCard";
 import { ROUTE_404 } from "~constants";
@@ -12,6 +12,7 @@ import {
 } from "~components/Gallery/CardModal/CardModal";
 import { getSeoCardDescription } from "~utils/card";
 import useCard from "~hooks/useCard";
+import Blob from "public/assets/img/blob.svg";
 
 const Card = ({ initialData }) => {
   const { data: card } = useCard(initialData.id, {
@@ -19,6 +20,8 @@ const Card = ({ initialData }) => {
     // Error with like button without
     cacheTime: 0,
   });
+
+  const theme = useTheme();
 
   return (
     <>
@@ -40,16 +43,29 @@ const Card = ({ initialData }) => {
           ],
         }}
       />
-      <Square
+      {/* <Circle
         pos="absolute"
         left="5vh"
         top="15vh"
         opacity={0.8}
-        boxShadow="rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, rgb(250 112 154) 100px 100px 0px 0px inset, rgb(120 75 160) 200px 200px 0px 0px inset, rgb(43 134 197) 300px 300px 0px 0px inset"
+        boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new["2"]} 100px 100px 0px 0px inset, ${theme.colors.new["1"]} 200px 200px 0px 0px inset, ${theme.colors.new["3"]} 300px 300px 0px 0px inset`}
         size="400px"
         filter="blur(50px)"
-      />
-      <Box style={modalStyles} layerStyle="darkBlur">
+      /> */}
+      <Flex
+        className="rotate"
+        position="absolute"
+        zIndex="0"
+        width="1000px"
+        height="1000px"
+        left="50%"
+        top="50%"
+        filter="blur(70px)"
+        opacity="0.3"
+      >
+        <Blob />
+      </Flex>
+      <Box style={modalStyles}>
         <CardModalContent card={card} animation={""} isPage />
         <Container>
           <Box borderBottom="1px solid" borderColor="gray.400" />

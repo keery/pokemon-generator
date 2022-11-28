@@ -14,25 +14,20 @@ const CardThumbnailGlass = ({ card, cachedQuery }: Props) => {
 
   return (
     <Flex
-      backgroundColor="rgb(20 27 40 / 60%)"
-      backdropFilter="blur(8px)"
-      pos="absolute"
-      bottom="0"
-      left="0"
-      right="0"
-      zIndex={10}
       border="none"
       justifyContent="space-between"
       color="white"
-      p="1rem 1.5rem"
-      transition="opacity ease-in-out 200ms"
-      opacity="0"
-      _groupHover={{
-        opacity: "1",
-      }}
+      p="0.3rem 0.4rem"
     >
       <Flex direction="column" maxW="70%">
-        <Text fontWeight="bold" mb={1} fontSize="1.4rem" layerStyle="ellipsis">
+        <Text
+          fontWeight="bold"
+          mb={0.5}
+          fontSize="1.4rem"
+          layerStyle="ellipsis"
+          lineHeight="1"
+          marginTop="0.3rem"
+        >
           {card.name}
         </Text>
         <Text fontSize="0.8rem" layerStyle="ellipsis">

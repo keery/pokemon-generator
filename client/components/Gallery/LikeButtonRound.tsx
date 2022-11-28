@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, ButtonProps, Icon, Box } from "@chakra-ui/react";
+import { Button, ButtonProps, Icon, Box, useTheme } from "@chakra-ui/react";
 import Heart from "public/assets/img/heart.svg";
 import useLike from "~hooks/useLike";
 import { Card } from "~@types/Card";
@@ -15,6 +15,7 @@ interface Props extends ButtonProps {
 const LikeButtonRound = ({ card, cachedQuery, ...rest }: Props) => {
   const queryClient = useQueryClient();
   const [isLiked, setLiked] = useState(card.hasLiked);
+  const theme = useTheme();
 
   useEffect(() => {
     setLiked(card.hasLiked);
@@ -89,15 +90,17 @@ const LikeButtonRound = ({ card, cachedQuery, ...rest }: Props) => {
             layerStyle="cover"
             opacity={isLiked ? 1 : 0}
             filter="blur(4px)"
-            boxShadow="rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, rgb(250 112 154) 8px 8px 0px 0px inset, rgb(120 75 160) 16px 16px 0px 0px inset, rgb(43 134 197) 35px 35px 0px 0px inset"
+            boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new[1]} 8px 8px 0px 0px inset, ${theme.colors.new[3]} 16px 16px 0px 0px inset, ${theme.colors.new[4]} 35px 35px 0px 0px inset`}
           />
         </Box>
         <Icon
+          fill={"white"}
           as={Heart}
-          transition="color 200ms, transform 200ms"
+          transition="color 200ms, transform 200ms, fill 200ms"
           sx={{
             '[data-component-name="LikeButtonRound"]:hover &': {
               transform: "scale(1.15)",
+              fill: "white",
             },
           }}
           display="flex"

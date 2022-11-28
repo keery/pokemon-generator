@@ -6,17 +6,16 @@ import {
   Box,
   useDisclosure,
   Text,
-  Button,
   HStack,
 } from "@chakra-ui/react";
 import Select from "~components/Select";
 import { Select as SelectOption } from "~constants";
 import { Card } from "~@types/Card";
-import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
 import Report from "public/assets/img/report.svg";
 import Modal from "~components/Modal";
 import Field from "~components/Field";
+import Button from "~components/Button";
 import Textarea from "~components/Textarea";
 import { useForm, FormProvider } from "react-hook-form";
 import useCreateReport from "~hooks/useCreateReport";
@@ -68,33 +67,9 @@ const ReportButton = ({ card }: Props) => {
       isUrlChanging={false}
       button={
         <Button
-          as={motion.button}
-          style={{
-            alignItems: "center",
-            display: "flex",
-            transitionDuration: "100ms",
-            transitionTimingFunction: "ease-in-out",
-            transitionProperty: "transform",
-            borderRadius: "0.8rem",
-            padding: "0.5rem 1.5rem 0.5rem 0.8rem",
-            fontSize: "1.2rem",
-            border: "1px solid",
-            borderColor: "#A0AEC0",
-            backgroundColor: "transparent",
-            height: "auto",
-          }}
-          _hover={{
-            opacity: "auto",
-          }}
-          initial={{
-            scale: 1,
-          }}
-          whileTap={{
-            scale: 0.9,
-          }}
-          whileHover={{
-            scale: 1.05,
-          }}
+          variant="outline"
+          fontSize="1.2rem"
+          p="0 1.7rem 0 1rem"
           onClick={() => {
             if (!isDisabled) {
               onOpen();
@@ -161,7 +136,13 @@ const ReportButton = ({ card }: Props) => {
             <Button variant="outline" isDisabled={isLoading} onClick={onClose}>
               {t("common:cancel")}
             </Button>
-            <Button variant="glass" type="submit" isLoading={isLoading}>
+            <Button
+              variant="glass"
+              type="submit"
+              isLoading={isLoading}
+              layerColors={["new.1", "new.4", "new.3"]}
+              color="white"
+            >
               {t("common:confirm")}
             </Button>
           </HStack>

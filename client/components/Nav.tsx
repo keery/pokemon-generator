@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Burger from "~components/Burger";
 import Menu from "~components/Menu";
 import { Box } from "@chakra-ui/react";
@@ -9,6 +9,14 @@ const Nav = () => {
   const toggle = useCallback(() => {
     setOpen(!isOpen);
   }, [isOpen, setOpen]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "inherit";
+    }
+  }, [isOpen]);
 
   return (
     <Box className={isOpen ? "open" : "close"}>

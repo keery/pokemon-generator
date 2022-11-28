@@ -8,25 +8,22 @@ import { useTranslation } from "next-i18next";
 
 const Item = ({ value, label }) => {
   return (
-    <Flex alignItems="center" direction="column">
-      <Flex
-        width="115px"
-        fontSize="120px"
-        fontWeight={700}
-        justifyContent="center"
-        border="none"
-        color="#fff"
-        fontFamily="tusker"
-      >
+    <Flex
+      alignItems="center"
+      direction="column"
+      textShadow="0 0 7px rgb(73 73 73 / 41%)"
+      width="9rem"
+    >
+      <Flex justifyContent="center" border="none">
         <Text>{value < 10 ? "0" + value : value}</Text>
       </Flex>
       <Text
         textTransform="uppercase"
-        mt="-24px"
         color="white"
         fontWeight="700"
         padding="1px 10px"
         borderRadius="7px"
+        fontSize="0.8rem"
       >
         {label}
       </Text>
@@ -41,13 +38,7 @@ const Countdown = () => {
   const { days, hours, minutes, seconds } = useCountdown(formattedSunday);
 
   return (
-    <Flex
-      border="none"
-      display="inline-flex"
-      mt="-70px"
-      position="absolute"
-      top="370px"
-    >
+    <Flex border="none" display="inline-flex" transform="translateX(4rem)">
       <HStack
         spacing={4}
         divider={

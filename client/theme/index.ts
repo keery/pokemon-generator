@@ -21,8 +21,6 @@ const theme = extendTheme({
   styles: {
     global: ({ colorMode }) => ({
       body: {
-        background:
-          "linear-gradient(45deg,rgba(63, 128, 254, 0.31),rgba(10, 121, 251, 0.16) 45%,rgba(63, 125, 254, 0.42) 71%,rgba(74, 210, 202, 0.3)) fixed",
         fontFamily: colorMode === "dark" ? "nes" : "body",
         fontSize: colorMode === "dark" ? "0.8rem" : "1rem",
       },
@@ -33,10 +31,10 @@ const theme = extendTheme({
     }),
   },
   fonts: {
-    body: "Inter, sans-serif",
-    heading: "Inter, serif",
+    body: "matter, sans-serif",
+    heading: "matter, serif",
     nes: '"Press Start 2P"',
-    title: "Work Sans",
+    title: "CabinetGrotesk",
   },
   fontSizes: {
     xs: "12px",
@@ -48,21 +46,19 @@ const theme = extendTheme({
     "3xl": "2.15rem",
   },
   colors: {
-    main: "#516fb3",
-    main2: "#f4e8fb",
+    black: "#404040",
+    main: "#9a9cea",
     text: "#3b434c",
-    pokeball: "#fe5b54",
-    blueGray: "#bdccde",
-    myPink: "#f07eaa",
     blue: {
       xs: "#52a4ff",
       md: "#104ba7",
       lg: "#1d1741",
     },
     new: {
-      pink: "rgb(250 112 154)",
-      purple: "rgb(120 75 160)",
-      blue: "rgb(43 134 197)",
+      1: "#9a9cea",
+      2: "#a2b9ee",
+      3: "#a2dcee",
+      4: "#ffd074",
     },
   },
   radii: {
@@ -88,7 +84,7 @@ const theme = extendTheme({
   textStyles: {},
   breakpoints: {},
   gradient: {
-    main: "linear-gradient(to right, #c6ffdd, #fbd786, #f7797d)",
+    main: "linear-gradient(to right, #adeee2, #a2dcee, #9a9cea)",
   },
   space: {
     full: "-1.5rem",
@@ -138,8 +134,8 @@ const theme = extendTheme({
   layerStyles: {
     glass: {
       backdropFilter: "blur(4px) saturate(180%)",
-      bgColor: "rgb(255 255 255 / 25%)",
-      border: "1px solid rgb(255 255 255 / 60%)",
+      bgColor: "rgb(255 255 255 / 40%)",
+      border: "1px solid rgba( 255, 255, 255, 0.18 )",
     },
     glassMd: {
       backdropFilter: "blur(30px) saturate(180%)",
@@ -147,9 +143,8 @@ const theme = extendTheme({
       border: "1px solid rgb(255 255 255 / 60%)",
     },
     glassLg: {
-      backdropFilter: "blur(10px) saturate(180%)",
-      backgroundColor: "rgb(255 255 255 / 65%)",
-      border: "1px solid rgb(255 255 255 / 60%)",
+      backdropFilter: "blur(5px)",
+      backgroundColor: "rgb(255 255 255 / 45%)",
     },
     glassModal: {
       backdropFilter: "blur(15px) saturate(180%)",

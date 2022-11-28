@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Modal from "~components/Modal";
-import { Flex, Text, Checkbox, Button, Input } from "@chakra-ui/react";
+import { Flex, Text, Checkbox, Input } from "@chakra-ui/react";
 import { useTranslation, Trans } from "next-i18next";
 import Link from "~components/Link";
 import PublishedSuccess from "~components/Publishing/PublishedSuccess";
 import WarningBox from "~components/WarningBox";
+import Button from "~components/Button";
 import { ROUTE_CGU } from "~constants";
 import { useFormContext } from "react-hook-form";
 import { getPublishData } from "~utils/card";
@@ -94,7 +95,7 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
                     <Link
                       href={ROUTE_CGU}
                       textDecoration="underline"
-                      color="#acd6ff"
+                      color="new.2"
                       isExternal
                     />
                   ),
@@ -108,7 +109,10 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
             isLoading={isLoading}
             isDisabled={!isChecked || author === ""}
             onClick={onSubmit}
-            variant="outline"
+            fontSize="1rem"
+            height="3.5rem"
+            layerColors={["new.1", "new.4", "new.3"]}
+            color="white"
           >
             {t("publish.button")}
           </Button>

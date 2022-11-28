@@ -11,7 +11,7 @@ export const Article = ({ title, description }) => {
       <Heading
         as="h2"
         fontSize="1.8rem"
-        color="text"
+        color="white"
         fontWeight="800"
         fontFamily="title"
         mb={2}
@@ -27,13 +27,13 @@ const CGU: NextPage = () => {
   const { t } = useTranslation("cgu");
 
   return (
-    <Container pb={8} mt={8}>
+    <Container pb={8} mt={8} color="white" pos="relative">
       <VStack spacing={6} alignItems="flex-start">
         <Box>
-          <Heading as="h1" color="text" fontWeight="800" fontFamily="title">
+          <Heading as="h1" fontWeight="800" fontFamily="title" color="white">
             {t("title")}
           </Heading>
-          <Text fontSize="sm" mb="1rem">
+          <Text fontSize="xs" mb="1rem">
             {t("update", { date: "27/10/2022" })}
           </Text>
           <Text>{t("line1")}</Text>
@@ -41,10 +41,10 @@ const CGU: NextPage = () => {
         <Box>
           <Heading
             as="h2"
-            color="text"
             fontWeight="800"
             fontFamily="title"
             fontSize="1.8rem"
+            color="white"
           >
             {t("mention.title")}
           </Heading>
@@ -60,7 +60,7 @@ const CGU: NextPage = () => {
           <Text>
             {`${t("mention.email")}: `}
             <Link
-              color="blue.600"
+              color="new.1"
               href={`mailto:${process.env.NEXT_PUBLIC_OWNER_EMAIL}`}
             >
               {process.env.NEXT_PUBLIC_OWNER_EMAIL}

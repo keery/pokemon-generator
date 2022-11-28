@@ -51,17 +51,16 @@ const PublishRequirements = ({
       withCloseButton
       button={
         <Box
-          className="help-ico"
           onClick={() => openModalWithUrl(NAME, onOpen)}
-          bgColor="main"
+          pos="relative"
+          className="help-ico"
+          alignSelf="center"
+          marginLeft="0.7rem"
+          bgColor="new.1"
           borderRadius="full"
-          pos="absolute"
-          top="5px"
-          transform="translateY(-50%) translateX(50%)"
-          right="5px"
           color="white"
           cursor="pointer"
-          fontSize="1.3rem"
+          fontSize="1.9rem"
           zIndex="4"
           transition="transform 200ms, opacity 100ms"
           _before={{
@@ -79,7 +78,6 @@ const PublishRequirements = ({
             zIndex: -1,
           }}
           _hover={{
-            transform: "scale(1.2) translateY(-50%) translateX(50%)",
             _before: {
               opacity: 1,
               animation: "wave 1s infinite",

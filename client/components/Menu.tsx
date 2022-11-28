@@ -155,6 +155,9 @@ const Menu = ({ setOpen, isOpen }) => {
             lg: "2.5rem",
             xl: "3rem",
           }}
+          color="new.3"
+          borderColor="new.3"
+          borderBottom="1px solid"
         >
           MENU
         </Text>
@@ -209,7 +212,7 @@ const Menu = ({ setOpen, isOpen }) => {
                     w="100%"
                     h="100%"
                     filter="blur(4px)"
-                    boxShadow="rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, #c6ffdd 8px 8px 0px 0px inset, #fbd786 12px 12px 0px 0px inset, #f7797d 18px 18px 0px 0px inset"
+                    boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new[1]} 8px 8px 0px 0px inset, ${theme.colors.new[3]} 12px 12px 0px 0px inset, ${theme.colors.new[4]} 18px 18px 0px 0px inset`}
                   />
                 </Circle>
               ) : (
@@ -270,7 +273,7 @@ const Menu = ({ setOpen, isOpen }) => {
           lg: "5%",
         }}
         zIndex={10}
-        color="white"
+        color="new.3"
       >
         © {process.env.NEXT_PUBLIC_APP_NAME}
       </Box>

@@ -131,7 +131,6 @@ const InteractiveIcon = ({
         fontSize={fontSize}
         alignItems="center"
         borderRadius="sm"
-        boxShadow="1px 1px 4px #a99d9d"
         cursor="pointer"
         onClick={onClick}
         transition="all ease-in-out 200ms"

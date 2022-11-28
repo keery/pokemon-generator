@@ -6,7 +6,7 @@ const WarningBox = ({ children, ...rest }) => {
   const { t } = useTranslation("common");
   return (
     <Flex
-      bgColor="#ffd48a"
+      bgColor="new.4"
       borderLeft="5px solid #8a5700"
       borderRadius="5px"
       px={8}

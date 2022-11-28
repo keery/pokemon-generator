@@ -4,6 +4,7 @@ import { Card } from "~@types/Card";
 import { Element } from "~@types/CardGenerator";
 import { m, useTransform, useViewportScroll } from "framer-motion";
 import { screenPercent } from "~utils/helper";
+import { END_ROTATION, START_ROTATION } from "~components/Gallery/HoloCard";
 
 interface Props {
   winner: Card;
@@ -43,13 +44,34 @@ const BLOB_GRADIENTS: Record<Element, string[]> = {
 const WinnerBlobs = ({ winner }: Props) => {
   const element = winner ? winner.element : WATER;
   const { scrollY } = useViewportScroll();
-  const start = screenPercent(90);
+  const start = screenPercent(START_ROTATION);
 
-  const x1 = useTransform(scrollY, [start, screenPercent(106)], [-300, 0]);
-  const x2 = useTransform(scrollY, [start, screenPercent(106)], [-200, 0]);
-  const y1 = useTransform(scrollY, [start, screenPercent(117)], [0, 150]);
-  const y2 = useTransform(scrollY, [start, screenPercent(117)], [0, 150]);
-  const opacity = useTransform(scrollY, [start, screenPercent(106)], [0, 1]);
+  const x1 = useTransform(
+    scrollY,
+    [start, screenPercent(END_ROTATION)],
+    [-300, 0]
+  );
+  const x2 = useTransform(
+    scrollY,
+    [start, screenPercent(END_ROTATION)],
+    [-200, 0]
+  );
+  const y = 70;
+  const y1 = useTransform(
+    scrollY,
+    [0, start, screenPercent(END_ROTATION + 20)],
+    [screenPercent(y), screenPercent(y), screenPercent(y + 40)]
+  );
+  const y2 = useTransform(
+    scrollY,
+    [0, start, screenPercent(END_ROTATION + 20)],
+    [screenPercent(y), screenPercent(y), screenPercent(y + 40)]
+  );
+  const opacity = useTransform(
+    scrollY,
+    [start, screenPercent(END_ROTATION)],
+    [0, 1]
+  );
 
   return (
     <>
@@ -62,7 +84,7 @@ const WinnerBlobs = ({ winner }: Props) => {
           height: "500px",
           background: BLOB_GRADIENTS[element][0],
           position: "absolute",
-          top: "50px",
+          top: "0",
           left: "200px",
           zIndex: 5,
           borderRadius:
@@ -78,10 +100,9 @@ const WinnerBlobs = ({ winner }: Props) => {
           height: "500px",
           background: BLOB_GRADIENTS[element][1],
           position: "absolute",
-          top: "100px",
+          top: "0",
           left: "250px",
           zIndex: 5,
-
           borderRadius:
             "56.4253% 43.5747% 33.7529% 66.2471% / 52.5661% 47.8477% 52.1523% 47.4339%",
         }}

@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Button, BoxProps } from "@chakra-ui/react";
+import { Box, BoxProps } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
+import Button from "~components/Button";
 
 interface LineProps extends BoxProps {
   isOpen: boolean;
@@ -12,8 +13,8 @@ const Line = ({ isOpen, ...rest }: LineProps) => {
       left="0"
       top="0"
       width="100%"
-      height="2px"
-      bgColor={isOpen ? "white" : "main"}
+      height="1.5px"
+      bgColor={"white"}
       transition="0.3s all ease-in-out"
       {...rest}
     />
@@ -31,20 +32,18 @@ const Burger = ({ onClick, isOpen }: Props) => {
   return (
     <Button
       title={isOpen ? t("menu.close") : t("menu.open")}
-      role="group"
-      padding="0.9rem 0.5rem"
-      overflow="hidden"
+      padding="1.2rem 0.9rem"
       height="50px"
       width="50px"
       onClick={onClick}
-      variant="unstyled"
       display="flex"
       justifyContent="space-between"
       flexDirection="column"
       alignItems="flex-end"
       zIndex={10}
-      layerStyle="glass"
       borderRadius="100%"
+      hasNoText
+      layerColors={["new.2", "new.4", "new.3"]}
     >
       <Line
         _groupHover={{

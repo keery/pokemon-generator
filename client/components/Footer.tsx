@@ -35,10 +35,6 @@ const menu = [
     name: "menu.cgu",
     href: ROUTE_CGU,
   },
-  // {
-  //   name: "footer.menu.sitemap",
-  //   href: ROUTE_SITEMAP,
-  // },
 ];
 
 const date = new Date();
@@ -54,7 +50,8 @@ const Footer = () => {
       pos="relative"
       overflow="hidden"
       color="white"
-      layerStyle="darkBlur"
+      // backdropFilter="blur(4px) saturate(180%)"
+      // backgroundColor="rgb(20 27 40 / 60%)"
       zIndex={10}
     >
       <Container pt="3rem" pos="relative" zIndex={9}>
@@ -95,14 +92,21 @@ const Footer = () => {
           <Text>
             © {date.getFullYear()} {process.env.NEXT_PUBLIC_APP_NAME}.{" "}
             {t("footer.madeBy")}{" "}
-            <ChakraLink href={ROUTE_PORTFOLIO} isExternal fontWeight="bold">
+            <ChakraLink
+              href={ROUTE_PORTFOLIO}
+              isExternal
+              fontWeight="bold"
+              color="new.2"
+            >
               Guillaume Esnault
             </ChakraLink>
           </Text>
 
           {!isLoading && (
-            <Flex>
-              <b>{Boolean(nbCards) ? nbCards.toLocaleString() : 0}</b>
+            <Flex alignItems="center">
+              <Box as="b" color="new.4">
+                {Boolean(nbCards) ? nbCards.toLocaleString() : 0}
+              </Box>
               <Text ml="0.3rem">{t("footer.cardCreated")}</Text>
               <Image src={LOGO} alt={`Pokeball`} w="1.5rem" ml="0.7rem" />
             </Flex>

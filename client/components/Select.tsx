@@ -42,9 +42,9 @@ const getStyle = (theme, iconPath, colorMode, hasColorInverted) => {
       }
       return {
         ...base,
-        color: hasColorInverted ? "white" : theme.colors.main,
+        color: hasColorInverted ? "white" : theme.colors.new[1],
         ":hover": {
-          color: hasColorInverted ? "white" : theme.colors.main,
+          color: hasColorInverted ? "white" : theme.colors.new[1],
         },
       };
     },

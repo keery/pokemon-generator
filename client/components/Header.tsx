@@ -1,28 +1,32 @@
 import React from "react";
-import { Container, useColorModeValue, HStack } from "@chakra-ui/react";
+import {
+  Container,
+  useColorModeValue,
+  HStack,
+  ContainerProps,
+} from "@chakra-ui/react";
 import Logo from "~components/Logo";
-import { HEADER_HEIGHT } from "~constants";
 import NesButton from "~components/NesButton";
 import Nav from "~components/Nav";
 import { useRouter } from "next/router";
 
-interface Props {
+interface Props extends ContainerProps {
   noColorChange?: boolean;
 }
 
-const Header = ({ noColorChange = false }: Props) => {
-  const py = useColorModeValue(10, 0);
+const Header = ({ noColorChange = false, ...rest }: Props) => {
+  const py = useColorModeValue(4, 0);
   const router = useRouter();
 
   return (
     <Container
       as="header"
-      zIndex={100}
+      zIndex={1001}
       py={py}
       display="flex"
       justifyContent="space-between"
       alignItems="center"
-      height={HEADER_HEIGHT}
+      {...rest}
     >
       <Logo />
       <HStack alignItems="center" spacing={6}>

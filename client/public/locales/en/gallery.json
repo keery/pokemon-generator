@@ -7,7 +7,9 @@
         "madeBy": "Card made by {{author}}"
       }
     },
-    "nextWinner": "Next winner elected in",
+    "nextWinner": "next winner",
+    "electedIn": "elected in",
+    "topCta": "Make a card",
     "madeBy": "By {{name}}",
     "fire" : "Fire",
     "grass" : "Grass",
@@ -31,6 +33,15 @@
     "loadMoreCards": "Load more cards",
     "winner": {
       "title": "Weekly winner #{{weekNb}}",
+      "how": {
+        "title": "How does it work ?",
+        "1": "The card that receives the",
+        "2": "highest like number",
+        "3": "during the",
+        "4": "current week",
+        "5": "before the end of the countdown will be elected",
+        "6": "weekly winner"
+      },
       "congratule": "Congratulate winner",
       "createdBy": "Created by",
       "no": {
