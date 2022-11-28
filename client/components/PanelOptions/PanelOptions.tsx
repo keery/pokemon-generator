@@ -38,7 +38,7 @@ const PanelOptions = () => {
     >
       <Stack
         direction={{ base: "row", sm: "column" }}
-        borderRadius="sm"
+        borderRadius={{ base: "none", sm: "sm" }}
         layerStyle={colorMode === "dark" ? "nes-container" : "glass"}
         p={colorMode === "dark" ? 0 : 1.5}
         spacing={{ base: 0, sm: 4 }}

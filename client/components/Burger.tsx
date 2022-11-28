@@ -43,6 +43,7 @@ const Burger = ({ onClick, isOpen }: Props) => {
       alignItems="flex-end"
       zIndex={10}
       borderRadius="100%"
+      cursor="pointer"
       hasNoText
       layerColors={["new.2", "new.4", "new.3"]}
     >

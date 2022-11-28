@@ -44,7 +44,6 @@ const InteractiveLayer = () => {
   const { isTiny } = useAttacks(control);
   const card = useRecoilValue(cardAtom);
   const isBasicStage = useMemo(() => stage.value === BASIC, [stage]);
-  const { colorMode } = useColorMode();
 
   return (
     <Box

@@ -6,6 +6,7 @@ import {
   Flex,
   useBreakpointValue,
   Box,
+  useTheme,
 } from "@chakra-ui/react";
 import { SSRConfig } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -30,6 +31,8 @@ const Home: NextPage = () => {
     typeof window !== "undefined"
       ? localStorage.getItem(process.env.NEXT_PUBLIC_KEY_CACHE)
       : null;
+
+  const theme = useTheme();
 
   const form = useForm({
     defaultValues: cachedCard
@@ -57,7 +60,12 @@ const Home: NextPage = () => {
       )}
       <form style={{ height: "100%", overflow: "hidden" }}>
         <BackgroundBlur control={form.control} />
-        <Container h="100%" py={6}>
+        <Container
+          h="100%"
+          pt={6}
+          pb={{ base: 0, sm: 6 }}
+          px={{ ...theme.components.Container.baseStyle.px, sm: 2, base: 0 }}
+        >
           <Stack
             direction={{ base: "column-reverse", sm: "row" }}
             justifyContent="center"
@@ -72,9 +80,10 @@ const Home: NextPage = () => {
               flex={2}
               alignItems="center"
               justifyContent="center"
-              height="100%"
+              height={{ base: "90%", sm: "100%" }}
               borderRadius="md"
               pb={{ base: 4, sm: 0 }}
+              px={{ base: 2, sm: 0 }}
             >
               <Card />
             </Flex>

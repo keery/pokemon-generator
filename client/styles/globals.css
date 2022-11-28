@@ -335,14 +335,14 @@ a {
 }
 
 .InteractiveSelect option {
-  color: #516fb3;
+  color: #9a9cea;
 }
 
 .drag-drop > div {
   width: 100%;
 }
 .uppy-DragDrop-arrow {
-  fill: #516fb3 !important;
+  fill: #9a9cea !important;
 }
 .uppy-DragDrop--isDragDropSupported {
   border: none !important;
