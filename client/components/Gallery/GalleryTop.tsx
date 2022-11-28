@@ -51,6 +51,8 @@ const GalleryTop = () => {
                     as={Link}
                     href={ROUTE_GENERATOR}
                     transform="translateX(2rem)"
+                    height="4rem"
+                    fontSize="1.3rem"
                   >
                     {t("topCta")}
                   </Button>

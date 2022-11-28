@@ -119,7 +119,7 @@ const CardForm = () => {
           <Flex direction="column" flexGrow={1} h="1%">
             {isDesktop && (
               <Flex alignItems="center" justifyContent="space-between">
-                <Logo />
+                <Logo color="black" />
                 <NesButton noColorChange={false} />
               </Flex>
             )}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, Text, Container } from "@chakra-ui/react";
+import { Box, Text, Container } from "@chakra-ui/react";
 import WinnerGlass from "~components/Gallery/Winner/WinnerGlass";
 import useWinner from "~hooks/useWinner";
 import { useTranslation } from "next-i18next";

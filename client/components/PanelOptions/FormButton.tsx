@@ -36,13 +36,7 @@ const FormButton = () => {
         keyboard_shortcut={["ctrl", "f"]}
       />
       <Drawer placement="bottom" size="full" isOpen={isOpen} onClose={onClose}>
-        <DrawerContent
-          height="100%"
-          layerStyle="glass"
-          border="none"
-          backdropFilter="blur(25px) saturate(180%)"
-          backgroundColor="rgb(20 27 40 / 60%)"
-        >
+        <DrawerContent height="100%" border="none" layerStyle="darkBlur">
           <DrawerCloseButton
             zIndex={99}
             color="white"

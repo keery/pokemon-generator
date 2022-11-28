@@ -68,7 +68,7 @@ const FileInput = ({ name }: Props) => {
           left={Boolean(value) ? 0 : "calc(100% - 38px)"}
           top="50%"
           transform="translateY(-50%)"
-          bgColor="text"
+          bgColor="new.1"
           borderRadius="sm"
           h="38px"
           w="38px"
@@ -86,7 +86,7 @@ const FileInput = ({ name }: Props) => {
           w="100%"
           left={Boolean(value) ? "19px" : "calc(100% - 19px)"}
           transition="left ease-in-out 0.5s"
-          bgColor="text"
+          bgColor="new.1"
           pl="3rem"
           color="white"
           fontWeight="bold"

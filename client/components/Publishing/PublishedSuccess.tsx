@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import Modal from "~components/Modal";
-import { Flex, Image, Text, Button, HStack } from "@chakra-ui/react";
+import { Flex, Image, Text, HStack } from "@chakra-ui/react";
 import confetti from "canvas-confetti";
 import { useTranslation } from "next-i18next";
 import Link from "~components/Link";
+import Button from "~components/Button";
 import { ROUTE_GALLERY } from "~constants";
 import useResetCard from "~hooks/useResetCard";
 
@@ -48,16 +49,17 @@ const PublishedSuccess = ({ isOpen, onClose }: Props) => {
       <Text>{t("publish.success.email")}</Text>
       <Text mt={2}>{t("publish.success.thanks")}</Text>
       <HStack spacing={4} alignItems="center" mt={4} justifyContent="center">
-        <Button variant="outline" borderRadius="xl" onClick={onClose} flex={1}>
+        <Button onClick={onClose} flex={1} variant="outline">
           {t("publish.success.createNew")}
         </Button>
 
         <Button
           as={Link}
           href={ROUTE_GALLERY}
-          variant="glass"
           style={{ flex: 1 }}
           w="100%"
+          layerColors={["new.1", "new.4", "new.3"]}
+          color="white"
         >
           {t("publish.success.seeGallery")}
         </Button>

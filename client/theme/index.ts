@@ -46,12 +46,9 @@ const theme = extendTheme({
     "3xl": "2.15rem",
   },
   colors: {
-    main: "#516fb3",
-    main2: "#f4e8fb",
+    black: "#404040",
+    main: "#9a9cea",
     text: "#3b434c",
-    pokeball: "#fe5b54",
-    blueGray: "#bdccde",
-    myPink: "#f07eaa",
     blue: {
       xs: "#52a4ff",
       md: "#104ba7",
@@ -137,8 +134,8 @@ const theme = extendTheme({
   layerStyles: {
     glass: {
       backdropFilter: "blur(4px) saturate(180%)",
-      bgColor: "rgb(255 255 255 / 25%)",
-      border: "1px solid rgb(255 255 255 / 60%)",
+      bgColor: "rgb(255 255 255 / 40%)",
+      border: "1px solid rgba( 255, 255, 255, 0.18 )",
     },
     glassMd: {
       backdropFilter: "blur(30px) saturate(180%)",

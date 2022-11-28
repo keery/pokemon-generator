@@ -50,8 +50,8 @@ const Footer = () => {
       pos="relative"
       overflow="hidden"
       color="white"
-      backdropFilter="blur(4px) saturate(180%)"
-      backgroundColor="rgb(20 27 40 / 60%)"
+      // backdropFilter="blur(4px) saturate(180%)"
+      // backgroundColor="rgb(20 27 40 / 60%)"
       zIndex={10}
     >
       <Container pt="3rem" pos="relative" zIndex={9}>
@@ -65,7 +65,7 @@ const Footer = () => {
             </Text>
           </Flex>
           <VStack flexDirection="column" alignItems="flex-end">
-            <Text fontWeight="800" fontSize="1.9em" color="new.1">
+            <Text fontWeight="800" fontSize="1.9em">
               {t("footer.navigation")}
             </Text>
             {menu.map(({ name, href }) => (

@@ -17,7 +17,7 @@ const Bg = ({ type, isSelected }) => {
       right={0}
       top={0}
       bottom={0}
-      zIndex={-1}
+      zIndex={0}
       transition="opacity 1000ms"
       bgImage={GRADIENTS[type]}
       opacity={isSelected ? 1 : 0}
@@ -32,11 +32,11 @@ const BackgroundBlur = ({ control }: Props) => {
   });
 
   return (
-    <>
+    <Box layerStyle="cover" bgColor="white">
       {Object.keys(GRADIENTS).map((type) => (
         <Bg key={type} type={type} isSelected={selectedType.value === type} />
       ))}
-    </>
+    </Box>
   );
 };
 

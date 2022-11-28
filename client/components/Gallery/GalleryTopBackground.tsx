@@ -21,7 +21,7 @@ const CardBackground = (props: ParallaxYProps) => {
 
 const GalleryTopBackground = () => {
   return (
-    <Flex layerStyle="cover">
+    <Flex pos="absolute" left="0" top="0" right="0" h="100vh">
       <Flex
         className="rotate"
         position="absolute"
@@ -35,7 +35,6 @@ const GalleryTopBackground = () => {
       >
         <Blob />
       </Flex>
-
       <CardBackground
         input={[0, screenPercent(125)]}
         output={[screenPercent(-33), screenPercent(10)]}

@@ -82,7 +82,7 @@ const WinnerBlobs = ({ winner }: Props) => {
           opacity,
           width: "500px",
           height: "500px",
-          background: BLOB_GRADIENTS["fighting"][0],
+          background: BLOB_GRADIENTS[element][0],
           position: "absolute",
           top: "0",
           left: "200px",
@@ -98,12 +98,11 @@ const WinnerBlobs = ({ winner }: Props) => {
           opacity,
           width: "500px",
           height: "500px",
-          background: BLOB_GRADIENTS["fighting"][1],
+          background: BLOB_GRADIENTS[element][1],
           position: "absolute",
           top: "0",
           left: "250px",
           zIndex: 5,
-
           borderRadius:
             "56.4253% 43.5747% 33.7529% 66.2471% / 52.5661% 47.8477% 52.1523% 47.4339%",
         }}

@@ -22,7 +22,7 @@ const Header = ({ noColorChange = false, ...rest }: Props) => {
   return (
     <Container
       as="header"
-      zIndex={100}
+      zIndex={1001}
       py={py}
       display="flex"
       justifyContent="space-between"

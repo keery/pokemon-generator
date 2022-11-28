@@ -189,6 +189,16 @@ body {
   color: #313131;
   background-color: #1d1d1f !important;
 }
+body::before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  backdrop-filter: blur(25px) saturate(180%);
+  background-color: rgb(20 27 40 / 60%);
+}
 
 html,
 body,

@@ -5,9 +5,8 @@ import { useTranslation } from "next-i18next";
 import { Winner } from "~@types/Winner";
 import { getKey } from "~hooks/useWinner";
 import useClapWinner from "~hooks/useClapWinner";
-import { GRADIENTS } from "~constants";
 import { useQueryClient } from "react-query";
-import Button from "~components/Button";
+import ElementButton from "~components/ElementButton";
 
 interface Props {
   winner: Winner;
@@ -18,8 +17,6 @@ const WinnerConfettiButton = ({ winner }: Props) => {
   const [isLoading, setLoading] = useState(false);
   const queryClient = useQueryClient();
   const { refetch } = useClapWinner();
-
-  const gradient = GRADIENTS[winner.card.element] || GRADIENTS.water;
 
   const onClick = () => {
     confetti({
@@ -42,16 +39,15 @@ const WinnerConfettiButton = ({ winner }: Props) => {
   };
 
   return (
-    <Button
+    <ElementButton
+      element={winner.card.element}
       isDisabled={isLoading}
       mt="1.5rem"
-      layerColors={["new.4", "new.1", "new.1"]}
-      // background={gradient}
-      // color={gradient}
       onClick={onClick}
       hasNoText
       fontSize="1rem"
       w="fit-content"
+      pr={isLoading ? "2.5rem" : "0.7rem"}
     >
       {t("winner.congratule")}
       {isLoading ? (
@@ -64,13 +60,13 @@ const WinnerConfettiButton = ({ winner }: Props) => {
           padding="0.6rem 1.1rem"
           borderRadius="1.6rem"
         >
-          <Box as="span" mr="0.6rem">
+          <Box as="span" mr="0.6rem" color="black">
             {winner.clap}
           </Box>
           🎉
         </Box>
       )}
-    </Button>
+    </ElementButton>
   );
 };
 

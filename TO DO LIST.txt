@@ -40,11 +40,7 @@ Faire un menu rapide sur la page gallerie pour switcher rapidement entre les dif
 
 faire le footer
 Animation GalleryTop lorsqu'on arrive sur la page gallery
-Limite en largeur sur le nom de la carte pokemon pour que ca ne depasse pas sur les hp
-Faire les boutons
 Gérer le tout en mobile
-Supprimer GlassButton
-Possibiliter de scroll horizontal dans la gallerie
 
 --------------------------
 

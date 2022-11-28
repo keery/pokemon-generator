@@ -43,7 +43,7 @@ const Burger = ({ onClick, isOpen }: Props) => {
       zIndex={10}
       borderRadius="100%"
       hasNoText
-      layerColors={["new.1", "new.4", "new.3"]}
+      layerColors={["new.2", "new.4", "new.3"]}
     >
       <Line
         _groupHover={{

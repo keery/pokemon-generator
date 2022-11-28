@@ -82,7 +82,7 @@ const WinnerGlass = ({ winner }: Props) => {
           left="0"
           right="0"
           bottom="0"
-          zIndex={0}
+          zIndex={2}
           style={{
             // @ts-ignore
             opacity: opacityBackground,
@@ -96,8 +96,7 @@ const WinnerGlass = ({ winner }: Props) => {
             top: "0",
             bottom: "0",
             zIndex: 2,
-            bg: winner ? GRADIENTS.fire : GRADIENTS.water,
-            // bg: winner ? GRADIENTS[winner.card.element] : GRADIENTS.water,
+            bg: winner ? GRADIENTS[winner.card.element] : GRADIENTS.water,
           }}
           _after={{
             content: '""',
@@ -107,21 +106,7 @@ const WinnerGlass = ({ winner }: Props) => {
             right: "0",
             top: "0",
             bottom: "0",
-            bg: GRADIENTS.water,
-          }}
-        />
-        <Box
-          as={m.div}
-          pos="fixed"
-          bgColor="white"
-          top="0"
-          left="0"
-          right="0"
-          bottom="0"
-          zIndex={0}
-          style={{
-            // @ts-ignore
-            opacity: opacityBackground,
+            bg: "white",
           }}
         />
         <m.div
