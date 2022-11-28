@@ -78,10 +78,11 @@ const Button = ({
       {hasNoText ? (
         <>{children}</>
       ) : (
-        <Box pos="relative" zIndex={1}>
+        <Box pos="relative" zIndex={1} overflow="hidden">
           <Box
             as="span"
-            display="inline-block"
+            display="inline-flex"
+            alignItems="center"
             _groupHover={{
               opacity: 0,
               transform: "translateY(-70%)",
@@ -102,6 +103,8 @@ const Button = ({
             top="0"
             left="0"
             opacity="0"
+            display="inline-flex"
+            alignItems="center"
             transform="translateY(70%)"
             _groupHover={{
               opacity: 1,

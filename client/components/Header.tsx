@@ -6,7 +6,6 @@ import {
   ContainerProps,
 } from "@chakra-ui/react";
 import Logo from "~components/Logo";
-import { HEADER_HEIGHT } from "~constants";
 import NesButton from "~components/NesButton";
 import Nav from "~components/Nav";
 import { useRouter } from "next/router";
