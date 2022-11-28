@@ -110,12 +110,12 @@ const LikeButton = ({ card, isPage, ...rest }: Props) => {
       >
         <Icon
           as={Heart}
-          color={isLiked ? "myPink" : "transparent"}
+          color={isLiked ? "new.1" : "transparent"}
           w="2.5rem"
           height="1.5rem"
           p="0.1rem"
           strokeWidth="2px"
-          stroke={isLiked ? "myPink" : "white"}
+          stroke={isLiked ? "new.1" : "white"}
         />
       </Flex>
       <Flex flexDirection="column" fontSize="1.2rem" userSelect="none">

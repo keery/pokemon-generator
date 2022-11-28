@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Button, Flex, Container, Text, Box } from "@chakra-ui/react";
+import { Flex, Container, Text, Box } from "@chakra-ui/react";
 import { m, useTransform, useViewportScroll } from "framer-motion";
 import { Winner } from "~@types/Winner";
 import { screenPercent } from "~utils/helper";
@@ -9,6 +9,8 @@ import WinnerConfettiButton from "./WinnerConfettiButton";
 import { useTranslation } from "next-i18next";
 import { ROUTE_GENERATOR } from "~constants";
 import Link from "~components/Link";
+import { END_ROTATION, START_ROTATION } from "~components/Gallery/HoloCard";
+import Button from "~components/Button";
 
 interface Props {
   winner: Winner;
@@ -19,35 +21,55 @@ const WinnerGlass = ({ winner }: Props) => {
   const { scrollY } = useViewportScroll();
   const ref = useRef();
 
+  // Text
   const opacity = useTransform(
     scrollY,
-    [screenPercent(75), screenPercent(107)],
-    [0, 1]
-  );
-  const opacityWaves = useTransform(
-    scrollY,
-    [screenPercent(90), screenPercent(107)],
-    [0, 1]
-  );
-  const opacityBackground = useTransform(
-    scrollY,
-    [
-      screenPercent(70),
-      screenPercent(80),
-      screenPercent(190),
-      screenPercent(200),
-    ],
-    [0, 1, 1, 0]
+    [0, screenPercent(START_ROTATION), screenPercent(END_ROTATION)],
+    [0, 0, 1]
   );
   const y = useTransform(
     scrollY,
-    [screenPercent(75), screenPercent(107)],
-    [0, 200]
+    [
+      screenPercent(START_ROTATION),
+      screenPercent(END_ROTATION),
+      screenPercent(END_ROTATION + 20),
+    ],
+    [0, screenPercent(55), screenPercent(75)]
   );
+
+  // Waves
   const yWaves = useTransform(
     scrollY,
-    [screenPercent(75), screenPercent(107)],
-    [400, 200]
+    [
+      0,
+      screenPercent(START_ROTATION),
+      screenPercent(END_ROTATION),
+      screenPercent(END_ROTATION + 20),
+    ],
+    [
+      screenPercent(150),
+      screenPercent(150),
+      screenPercent(80),
+      screenPercent(100),
+    ]
+  );
+  const opacityWaves = useTransform(
+    scrollY,
+    [screenPercent(START_ROTATION), screenPercent(END_ROTATION)],
+    [0, 1]
+  );
+
+  // Background
+  const opacityBackground = useTransform(
+    scrollY,
+    [
+      0,
+      screenPercent(START_ROTATION - 5),
+      screenPercent(END_ROTATION - 10),
+      screenPercent(END_ROTATION + 40),
+      screenPercent(END_ROTATION + 50),
+    ],
+    [0, 0, 1, 1, 0]
   );
 
   return (
@@ -73,12 +95,38 @@ const WinnerGlass = ({ winner }: Props) => {
             right: "0",
             top: "0",
             bottom: "0",
-            bg: winner ? GRADIENTS[winner.card.element] : GRADIENTS.water,
+            zIndex: 2,
+            bg: winner ? GRADIENTS.fire : GRADIENTS.water,
+            // bg: winner ? GRADIENTS[winner.card.element] : GRADIENTS.water,
+          }}
+          _after={{
+            content: '""',
+            display: "block",
+            pos: "absolute",
+            left: "0",
+            right: "0",
+            top: "0",
+            bottom: "0",
+            bg: GRADIENTS.water,
+          }}
+        />
+        <Box
+          as={m.div}
+          pos="fixed"
+          bgColor="white"
+          top="0"
+          left="0"
+          right="0"
+          bottom="0"
+          zIndex={0}
+          style={{
+            // @ts-ignore
+            opacity: opacityBackground,
           }}
         />
         <m.div
           style={{
-            backgroundImage: "url(/assets/img/waves/waves.svg)",
+            backgroundImage: "url(/assets/img/waves.svg)",
             backgroundRepeat: "no-repeat",
             backgroundSize: "100%",
             y: yWaves,
@@ -128,13 +176,7 @@ const WinnerGlass = ({ winner }: Props) => {
                 {t("winner.no.title")}
               </Text>
               <Text fontSize="1.2rem">{t("winner.no.description")}</Text>
-              <Button
-                as={Link}
-                href={ROUTE_GENERATOR}
-                variant="glass"
-                mt="1.5rem"
-                w="100%"
-              >
+              <Button as={Link} href={ROUTE_GENERATOR} mt="1.5rem">
                 {t("winner.no.button")}
               </Button>
             </>

@@ -24,14 +24,14 @@ const getStyle = (theme, fontSize) => {
       width: "fit-content",
       height: "100%",
       alignSelf: "center",
-      color: theme.colors.gray[800],
+      color: "white",
     }),
     dropdownIndicator: (base) => ({
       ...base,
-      color: theme.colors.gray[800],
+      color: theme.colors.new["4"],
       cursor: "pointer",
       ":hover": {
-        color: theme.colors.pokeball,
+        color: theme.colors.new["4"],
       },
       svg: {
         width: "40px",
@@ -42,7 +42,7 @@ const getStyle = (theme, fontSize) => {
     input: (base) => ({ ...base }),
     singleValue: (base) => ({
       ...base,
-      color: theme.colors.gray[800],
+      color: "white",
       position: "static",
       transform: "none",
       fontWeight: "800",
@@ -56,7 +56,7 @@ const getStyle = (theme, fontSize) => {
     }),
     menu: (base) => ({
       ...base,
-      ...theme.layerStyles.glassMd,
+      ...theme.layerStyles.darkBlur,
       zIndex: 999,
     }),
     control: (styles) => {
@@ -79,7 +79,7 @@ const getStyle = (theme, fontSize) => {
         ...styles,
         display: "flex",
         alignItems: "center",
-        color: theme.colors.gray[800],
+        color: "white",
         fontFamily: theme.fonts.title,
         fontSize: "1.3rem",
         backgroundColor: isSelected ? "rgb(81 111 179 / 33%)" : "transparent",

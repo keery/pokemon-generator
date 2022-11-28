@@ -7,7 +7,9 @@
         "madeBy": "Carte créée par {{author}}"
       }
     },
-    "nextWinner": "Prochain gagnant\ndans",
+    "nextWinner": "prochain gagnant",
+    "electedIn": "élu dans",
+    "topCta": "Créer une carte",
     "madeBy": "Par {{name}}",
     "fire" : "Feu",
     "grass" : "Herbe",
@@ -31,6 +33,15 @@
     "loadMoreCards": "Voir plus de cartes",
     "winner": {
       "title": "Gagnant semaine #{{weekNb}}",
+      "how": {
+        "title": "Comment ça fonctionne ?",
+        "1": "La carte qui reçoit",
+        "2": "le plus de j'aime",
+        "3": "pendant",
+        "4": "la semaine en cours",
+        "5": "avant la fin du décompte sera élu",
+        "6": "gagnant de la semaine"
+      },
       "congratule": "Féliciter le gagnant",
       "createdBy": "Créée par",
       "no": {

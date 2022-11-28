@@ -74,7 +74,7 @@ const SortList = ({ onChange }: Props) => {
         justifyContent="space-between"
         top="-1px"
         position="sticky"
-        layerStyle={isSticky ? "glassLg" : ""}
+        layerStyle={isSticky ? "darkBlur" : ""}
         border="none"
       >
         <Container>

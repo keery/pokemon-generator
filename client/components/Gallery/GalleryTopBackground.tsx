@@ -1,86 +1,86 @@
 import React from "react";
-import { Flex, FlexProps } from "@chakra-ui/react";
-import { GRADIENTS } from "~constants";
-import Stripe from "public/assets/img/stripe.svg";
-import Wave3 from "public/assets/img/waves/wave3.svg";
+import { Flex } from "@chakra-ui/react";
+import Blob from "public/assets/img/blob.svg";
+import { screenPercent } from "~utils/helper";
+import ParallaxY, { ParallaxYProps } from "~components/ParallaxY";
 
-interface SquareProps extends FlexProps {
-  delay: string;
-  duration: string;
-}
-
-const Square = ({ delay, duration, ...rest }: SquareProps) => {
+const CardBackground = (props: ParallaxYProps) => {
   return (
-    <Flex
-      w="450px"
-      h="450px"
-      pos="absolute"
-      borderRadius="80px"
-      animation={`rotate ${duration} ${delay} infinite linear`}
-      transition="all 2s cubic-bezier(0.075, 0.82, 0.165, 1) 0s"
-      _groupHover={{
-        boxShadow: "rgb(255 255 255 / 4%) 0px 300px 200px inset",
-        border: "1px solid rgba(49, 18, 156, 0.8)",
-      }}
-      zIndex={1}
-      {...rest}
+    <ParallaxY
+      position="absolute"
+      top="50%"
+      left="50%"
+      bgSize="cover"
+      borderRadius="1.1rem"
+      bgPos="center"
+      zIndex={10}
+      {...props}
     />
   );
 };
 
 const GalleryTopBackground = () => {
   return (
-    <Flex w="450px" h="450px" pos="absolute" top="12%" left="2%">
-      <Square
-        border="1.5px solid rgba(255, 255, 255, 0.5)"
-        delay="0.2s"
-        duration="25s"
-        backdropFilter="blur(4px)"
-        backgroundColor="rgb(255 255 255 / 20%)"
-        zIndex={6}
+    <Flex layerStyle="cover">
+      <Flex
+        className="rotate"
+        position="absolute"
+        zIndex="0"
+        width="1000px"
+        height="1000px"
+        left="50%"
+        top="50%"
+        filter="blur(70px)"
+        opacity="0.5"
+      >
+        <Blob />
+      </Flex>
+
+      <CardBackground
+        input={[0, screenPercent(125)]}
+        output={[screenPercent(-33), screenPercent(10)]}
+        style={{
+          x: "calc(-50% - 24.8rem)",
+          rotate: "-8.26deg",
+        }}
+        height="10rem"
+        width="11.95rem"
+        bgImage="/assets/img/gallery-top/pokeball-purple.webp"
       />
-      <Square
-        border="1.5px solid rgba(255, 255, 255, 0.4)"
-        delay="0.4s"
-        duration="25s"
+      <CardBackground
+        input={[0, screenPercent(125)]}
+        output={[screenPercent(-33), screenPercent(1)]}
+        style={{
+          x: "calc(-50% + 26rem)",
+          rotate: "7.54deg",
+        }}
+        height="23.5rem"
+        width="16.55rem"
+        bgImage="/assets/img/gallery-top/mew.webp"
       />
-      <Square
-        border="1px solid rgba(255, 255, 255, 0.4)"
-        delay="0.6s"
-        duration="25s"
+      <CardBackground
+        input={[0, screenPercent(125)]}
+        output={[screenPercent(13), screenPercent(-20)]}
+        style={{
+          x: "calc(-50% - 10rem)",
+          rotate: "-5.27deg",
+        }}
+        bgImage="/assets/img/gallery-top/florizare.webp"
+        height="25.5rem"
+        width="19.65rem"
       />
-      <Square
-        border="0.75px solid rgba(255, 255, 255, 0.3)"
-        delay="0.8s"
-        duration="25s"
-      />
-      <Square
-        border="0.5px solid rgba(255, 255, 255, 0.3)"
-        delay="1s"
-        duration="25s"
-      />
-      <Square
-        border="0.5px solid rgba(255, 255, 255, 0.2)"
-        delay="1.2s"
-        duration="25s"
-      />
-      <Square
-        border="0.5px solid rgba(255, 255, 255, 0.2)"
-        delay="1.4s"
-        duration="25s"
-      />
-      <Square
-        border="0.5px solid rgba(255, 255, 255, 0.1)"
-        delay="1.6s"
-        duration="25s"
-      />
-      <Square
-        animation="none"
-        delay="0.2s"
-        duration="25s"
-        boxShadow="rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, rgb(250 112 154) 100px 100px 0px 0px inset, rgb(120 75 160) 200px 200px 0px 0px inset, rgb(43 134 197) 300px 300px 0px 0px inset"
-        filter="blur(50px)"
-        zIndex={0}
+      <CardBackground
+        input={[0, screenPercent(125)]}
+        output={[screenPercent(13), screenPercent(-3)]}
+        style={{
+          x: "calc(-50% + 13rem)",
+          rotate: "7.79deg",
+          scale: "0.35",
+        }}
+        height="555px"
+        width="400px"
+        borderRadius="3rem"
+        bgImage="https://cdn.dribbble.com/users/1147613/screenshots/15390615/media/0197f9d885df23a6ab039eedebc40f5b.png?compress=1&resize=1600x1200&vertical=top"
       />
     </Flex>
   );

@@ -6,17 +6,15 @@ Publier carte sur ecran tablette et mobile, pas de bouton
 Animation cool lorsqu'on appuie sur like depuis la modal
 Newsletter, card of the day
 reduire taille des animations avec https://www.framer.com/docs/guide-reduce-bundle-size/#how-to-reduce-bundle-size
-faire le footer
 Refaire le logo https://dribbble.com/shots/18325875-Logo-Design-For-PokeBall-Gadgets-Electric-machine-logo
 checker print sur tous les navigateurs
 bouton remonter en haut dans la liste (voir dribbble)
 faire le sitemap
-FAQ ?
+FAQ ? (peut on être élu plusieurs fois d'affilés, qu'est ce qu'on gagne, ou retrouver tous les gagnants ? + faire un lien vers la page gallerie avec le param directement dans l'url pour voir tous les gagnants)
 Page contact
 Faire un check que j'utilise bien les balises HTML5
 Voir si je trouve des bonnes idées de filtre supplémentaire pour les cartes (mot clé ?)
 Double tap pour liker carte en mobile
-Faire un menu rapide sur la page gallerie pour switcher rapidement entre les differentes section
 Update modal reset card
 Bouton publier dans le formulaire des champs en mobile
 Page 404
@@ -28,13 +26,25 @@ le titre de gagnant de la semaine
 Afficher sur la modale d'une carte une mention spécifique pour dire si cette carte a déjà gagné
 Faire un menu mobile pour avoir toutes les actions en bas de l'écran, qu'on puisse le faire coulisser
 Petite animation bien calé pour annoncer en mode titre avant le gagnant
-Insister sur le fait de devoir voter
-Check effet carte envoyé par Julien
-Gérer le tout en mobile
 Créer un email pour l'app pokemon
 Envoyer email quand un report est créé
 Changer design aide pour voir les zones lors de la premiere fois qu'on lance l'app
-Bouton pour report des bugs
+lbs dans la modal apparait en bleu
+Traduire le site en italien, allemand et espagnol
+Faire en sorte qu'on peut faire un lien vers la page gallerie avec un paramètre pour changer le filtre sur les cartes
+Référencement traduit en francais
+Précharger des cartes avant le scroll pour avoir du contenu en référencement sur la page
+
+Check effet carte envoyé par Julien
+Faire un menu rapide sur la page gallerie pour switcher rapidement entre les differentes section
+
+faire le footer
+Animation GalleryTop lorsqu'on arrive sur la page gallery
+Limite en largeur sur le nom de la carte pokemon pour que ca ne depasse pas sur les hp
+Faire les boutons
+Gérer le tout en mobile
+Supprimer GlassButton
+Possibiliter de scroll horizontal dans la gallerie
 
 --------------------------
 

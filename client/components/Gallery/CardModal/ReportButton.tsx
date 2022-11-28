@@ -78,6 +78,7 @@ const ReportButton = ({ card }: Props) => {
             borderRadius: "0.8rem",
             padding: "0.5rem 1.5rem 0.5rem 0.8rem",
             fontSize: "1.2rem",
+            fontWeight: "400",
             border: "1px solid",
             borderColor: "#A0AEC0",
             backgroundColor: "transparent",

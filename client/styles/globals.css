@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@300;400;500;600;700;800&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @font-face {
   font-family: "pokename";
   src: url("/assets/fonts/GillSansStd-BoldCondensed.otf");
@@ -20,25 +18,142 @@
   font-family: "gstd";
   src: url("/assets/fonts/GillSansStd.otf");
 }
+
+/* Font Matter */
 @font-face {
-  font-family: "tusker";
-  src: url("/assets/fonts/TuskerGrotesk-5700Bold.ttf");
+  font-family: "matter";
+  src: url("/assets/fonts/matter-font/Matter-Regular.otf");
+  font-style: normal;
+}
+@font-face {
+  font-family: "matter";
+  src: url("/assets/fonts/matter-font/Matter-Light.otf");
+  font-style: normal;
+  font-weight: 200;
+}
+@font-face {
+  font-family: "matter";
+  src: url("/assets/fonts/matter-font/Matter-Medium.otf");
+  font-style: normal;
+  font-weight: 500;
+}
+@font-face {
+  font-family: "matter";
+  src: url("/assets/fonts/matter-font/Matter-Bold.otf");
+  font-style: normal;
+  font-weight: bold;
 }
 
-.cartoon {
-  font-family: tusker !important;
-  color: white;
-  text-shadow: 0.04em 0.04em 0 #000;
-  -webkit-text-stroke-color: #000;
-  -webkit-text-stroke-width: 3px;
+@font-face {
+  font-family: "wild";
+  src: url("/assets/fonts/wild-world.otf");
+  font-style: normal;
+}
+@font-face {
+  font-family: "olive";
+  src: url("/assets/fonts/antique-olive/AntiqueOliveBold.ttf");
+  font-style: bold;
 }
 
-.cartoon-xs {
-  font-family: tusker !important;
-  color: white;
-  text-shadow: 0.04em 0.04em 0 #000;
-  -webkit-text-stroke-color: #000;
-  -webkit-text-stroke-width: 1px;
+/* CabinetGrotesk */
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Thin.woff2")
+      format("woff2"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Thin.woff") format("woff"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Thin.ttf")
+      format("truetype");
+  font-weight: 100;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Extralight.woff2")
+      format("woff2"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Extralight.woff")
+      format("woff"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Extralight.ttf")
+      format("truetype");
+  font-weight: 200;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Light.woff2")
+      format("woff2"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Light.woff") format("woff"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Light.ttf")
+      format("truetype");
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Regular.woff2")
+      format("woff2"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Regular.woff")
+      format("woff"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Regular.ttf")
+      format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Medium.woff2")
+      format("woff2"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Medium.woff")
+      format("woff"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Medium.ttf")
+      format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Bold.woff2")
+      format("woff2"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Bold.woff") format("woff"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Bold.ttf")
+      format("truetype");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Extrabold.woff2")
+      format("woff2"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Extrabold.woff")
+      format("woff"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Extrabold.ttf")
+      format("truetype");
+  font-weight: 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CabinetGrotesk";
+  src: url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Black.woff2")
+      format("woff2"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Black.woff") format("woff"),
+    url("/assets/fonts/CabinetGrotesk/CabinetGrotesk-Black.ttf")
+      format("truetype");
+  font-weight: 900;
+  font-display: swap;
+  font-style: normal;
 }
 
 .not-apple-like ::-webkit-scrollbar {
@@ -56,10 +171,10 @@
 }
 
 ::-moz-selection {
-  background: #516fb3;
+  background: #9a9cea;
 }
 ::selection {
-  background: #516fb3;
+  background: #9a9cea;
   color: #fff;
 }
 
@@ -72,6 +187,7 @@ body {
   padding: 0;
   margin: 0;
   color: #313131;
+  background-color: #1d1d1f !important;
 }
 
 html,
@@ -925,11 +1041,9 @@ a {
 }
 
 #menu .wrapper .label-menu {
-  border-bottom: 1px solid white;
   opacity: 0;
   transition: all ease-in-out 0.2s;
   transform: translateX(-30px) rotate(-90deg);
-  color: white;
   display: inline-block;
   font-size: 1rem;
 }
@@ -959,4 +1073,18 @@ a {
 }
 .open #menu .menu-credit {
   transition-delay: 1.4s;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translateX(-50%) translateY(-50%) rotate(0);
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(-50%) rotate(360deg);
+  }
+}
+
+.rotate {
+  animation: rotate 60s infinite;
 }

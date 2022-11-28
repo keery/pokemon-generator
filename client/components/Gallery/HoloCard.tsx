@@ -22,6 +22,9 @@ const styleReflects: BoxProps = {
   transition: "all 0.33s ease",
 };
 
+export const START_ROTATION = 150;
+export const END_ROTATION = 170;
+
 const HoloCard = () => {
   const setCard = useSetRecoilState(cardModalAtom);
   const { scrollY } = useViewportScroll();
@@ -31,13 +34,18 @@ const HoloCard = () => {
 
   const y = useTransform(
     scrollY,
-    [0, screenPercent(125)],
-    [0, screenPercent(125)]
+    [0, screenPercent(110), screenPercent(END_ROTATION + 20)],
+    [screenPercent(25), screenPercent(25), screenPercent(105)]
   );
   const x = useTransform(
     scrollY,
-    [0, screenPercent(50), screenPercent(75)],
-    [0, 0, -(parentWidth / 2 - width)]
+    [0, screenPercent(100), screenPercent(START_ROTATION)],
+    [
+      screenPercent(-150),
+      screenPercent(-150),
+      screenPercent(30),
+      // -(parentWidth / 2 - width),
+    ]
   );
   const z = useTransform(
     scrollY,
@@ -45,31 +53,14 @@ const HoloCard = () => {
     [1, 1.15]
   );
 
-  // Backface
-  const rotateZBackface = useTransform(
-    scrollY,
-    [0, screenPercent(50), screenPercent(75)],
-    [3, 3, 0]
-  );
-  const rotateXBackface = useTransform(
-    scrollY,
-    [0, screenPercent(50), screenPercent(75)],
-    [6, 6, 0]
-  );
-
   const rotateYBackface = useTransform(
     scrollY,
-    [
-      0,
-      screenPercent(50),
-      screenPercent(75),
-      screenPercent(82),
-      screenPercent(106),
-    ],
-    [331, 331, 360, 360, 180]
+    [0, screenPercent(START_ROTATION), screenPercent(END_ROTATION)],
+    [0, 0, 180]
   );
 
-  const halfRotation = (screenPercent(82) + screenPercent(106)) / 2;
+  const halfRotation =
+    (screenPercent(START_ROTATION) + screenPercent(END_ROTATION)) / 2;
   const opacity = useTransform(
     scrollY,
     [halfRotation, halfRotation + 1],
@@ -77,29 +68,36 @@ const HoloCard = () => {
   );
   const rotateYFronface = useTransform(
     scrollY,
-    [0, screenPercent(82), screenPercent(106)],
-    [180, 180, 0]
+    [0, screenPercent(START_ROTATION), screenPercent(END_ROTATION)],
+    [-180, -180, 0]
   );
 
   const animationCard = useTransform(scrollY, (value) =>
-    value >= screenPercent(107) ? "holoCard 12s ease 0s infinite" : ""
+    value >= screenPercent(END_ROTATION) ? "holoCard 12s ease 0s infinite" : ""
   );
 
   const animationGradient = useTransform(scrollY, (value) =>
-    value >= screenPercent(107) ? "holoGradient 12s ease 0s infinite" : ""
+    value >= screenPercent(END_ROTATION)
+      ? "holoGradient 12s ease 0s infinite"
+      : ""
   );
   const animationSparkle = useTransform(scrollY, (value) =>
-    value >= screenPercent(107) ? "holoSparkle 12s ease 0s infinite" : ""
+    value >= screenPercent(END_ROTATION)
+      ? "holoSparkle 12s ease 0s infinite"
+      : ""
   );
 
   return (
     <m.div
       ref={ref}
-      className="holo-card-container float"
+      className="holo-card-container"
       style={{
-        position: "relative",
         perspective: "2000px",
-        transform: "translate3d(0.1px, 0.1px, 0.1px)",
+        position: "absolute",
+        zIndex: 10,
+        top: "0",
+        left: "50%",
+        transform: "translate3d(0.1px, 0.1px, 0.1px) translateX(-50%)",
         transformStyle: "preserve-3d",
       }}
     >
@@ -108,16 +106,13 @@ const HoloCard = () => {
         style={{
           touchAction: "none",
           width: "400px",
+          paddingTop: "138.75%",
           y,
           x,
-          z,
-          rotateX: rotateXBackface,
-          rotateZ: rotateZBackface,
           rotateY: rotateYBackface,
           backfaceVisibility: "hidden",
         }}
-        h="555px"
-        borderRadius="1.3rem"
+        borderRadius="0.4rem"
         className="holo-card"
         position="relative"
         bgImage="/assets/img/pokemon-card-back.webp"

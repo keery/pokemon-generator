@@ -7,11 +7,11 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import CardThumbnailSkeleton from "~components/Gallery/CardThumbnailSkeleton";
-import GlassButton from "~components/GlassButton";
 import { Flex, Container } from "@chakra-ui/react";
 import CardThumbnail from "~components/Gallery/CardThumbnail";
 import SortList from "~components/Gallery/SortList";
 import Loader from "~components/Loader";
+import Button from "~components/Button";
 import { useTranslation } from "next-i18next";
 
 const AUTO_LOADING_LIMIT = 3;
@@ -46,9 +46,9 @@ const CardList = (props: SimpleGridProps) => {
   return (
     <>
       <SortList onChange={setSort} />
-      <Container mt={6} pb={10}>
+      <Container mt={6} pb={10} pos="relative" zIndex={9}>
         <SimpleGrid
-          columns={3}
+          columns={{ base: 1, sm: 2, lg: 3 }}
           spacingX={8}
           spacingY={`${spacingLine}px`}
           {...props}
@@ -79,17 +79,17 @@ const CardList = (props: SimpleGridProps) => {
           </>
         </SimpleGrid>
         {hasNextPage && loading >= AUTO_LOADING_LIMIT && (
-          <GlassButton
-            w="full"
-            mt={10}
-            isLoading={isFetchingNextPage}
-            onClick={() => {
-              setLoading(0);
-              fetchNextPage();
-            }}
-          >
-            {t("loadMoreCards")}
-          </GlassButton>
+          <Container textAlign="center" mt={10}>
+            <Button
+              isLoading={isFetchingNextPage}
+              onClick={() => {
+                setLoading(0);
+                fetchNextPage();
+              }}
+            >
+              {t("loadMoreCards")}
+            </Button>
+          </Container>
         )}
       </Container>
       {isFetchingNextPage && <Loader py={10} />}

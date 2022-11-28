@@ -46,18 +46,12 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
           whileTap={{
             scale: 0.9,
           }}
-          onTapStart={() => setVisible(false)}
-          onTap={() => {
-            setTimeout(() => {
-              setVisible(true);
-            }, 1000);
-          }}
         >
           <AspectRatio
             as={m.div}
             ratio={500 / 700}
             pos="relative"
-            borderRadius="1.4rem"
+            borderRadius="15px"
             overflow="hidden"
             transform="translateZ(0)"
           >
@@ -76,9 +70,8 @@ const CardThumbnail = ({ card, cachedQuery, layoutPrefix = "" }: Props) => {
           </AspectRatio>
         </m.div>
       </Link>
-      {isVisible && (
-        <CardThumbnailGlass card={card} cachedQuery={cachedQuery} />
-      )}
+
+      <CardThumbnailGlass card={card} cachedQuery={cachedQuery} />
     </Box>
   );
 };

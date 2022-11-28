@@ -1,10 +1,10 @@
 import React from "react";
-import { Container, Heading, Text, Box, Flex, Button } from "@chakra-ui/react";
-import TitleGradient from "~components/Gallery/TitleGradient";
-import HoloCard from "~components/Gallery/HoloCard";
-import RotatingWord from "~components/RotatingWord";
+import { Container, HStack, Text, Flex, Box } from "@chakra-ui/react";
+
 import GalleryTopBackground from "~components/Gallery/GalleryTopBackground";
-import { GRADIENTS } from "~constants";
+import Link from "~components/Link";
+import Button from "~components/Button";
+import { ROUTE_GENERATOR } from "~constants";
 import { useTranslation } from "next-i18next";
 import dynamic from "next/dynamic";
 
@@ -18,133 +18,49 @@ const GalleryTop = () => {
   return (
     <>
       <GalleryTopBackground />
-      <Box pos="relative" h="100vh" zIndex={90}>
-        {/* <Box fontSize="11rem" fontWeight="800">
-          <Marquee gradient={false} speed={120}>
-            <Box>Weekly winner</Box>
-            <Box bgColor="black" h=".4rem" w="10rem" margin="0 3rem" />
-          </Marquee>
-        </Box> */}
+      <Flex pos="relative" h="100vh" zIndex={90} alignItems="center">
         <Container pos="relative" zIndex={6}>
           <Flex alignItems="center" justifyContent="space-between">
             <Flex
-              direction="column"
-              alignSelf="baseline"
               w="full"
               mt={8}
+              fontSize="6.7rem"
+              lineHeight="1"
+              fontWeight="900"
+              color="white"
+              fontFamily="CabinetGrotesk"
+              pos="relative"
+              justifyContent="center"
             >
-              <Text
-                fontSize="6rem"
-                lineHeight="1.2"
-                fontWeight="800"
-                fontFamily="tusker"
-                width="fit-content"
-                mt={6}
-                pt={6}
-                alignSelf="end"
-                color="white"
-              >
-                {t("nextWinner")}
-              </Text>
-              <Countdown />
-              {/* <Text
-                fontSize="6rem"
-                lineHeight="1.2"
-                fontWeight="800"
-                fontFamily="tusker"
-                width="fit-content"
-                display="flex"
-                color="#fff6f6"
-              >
-                Be
-                <SpanGradient
-                  pl={5}
-                  words={["creative", "stunning", "hilarious"]}
-                />
-              </Text> */}
-              {/* <Button variant="glass">Create a card</Button> */}
-              {/* <Text
-                fontSize="6rem"
-                lineHeight="1"
-                py={2}
-                fontWeight="800"
-                fontFamily="title"
-                borderTop="1px solid black"
-                width="fit-content"
-                pt={6}
-                mt={6}
-                alignSelf="end"
-              >
-                Publish
-              </Text> */}
-              {/* Next winner might be you */}
-              {/* <Text fontSize="2rem" lineHeight="1.1" fontFamily="title" pt={6}>
-                Next winner in
-              </Text>
-              <Text
-                fontFamily="title"
-                fontSize="9rem"
-                fontWeight="800"
-                lineHeight="1.1"
-                pt={6}
-              >
-                01:27
-              </Text> */}
-              {/* <Flex pt={6}>
-              <Button
-                borderRadius="sm"
-                w="full"
-                background={GRADIENTS.water}
-                fontSize="md"
-                color="main"
-                backdropFilter="blur(4px) saturate(180%)"
-                bgColor="rgb(255 255 255 / 0%)"
-                border="1px solid rgb(255 255 255 / 60%)"
-                height="55px"
-                textTransform="uppercase"
-                fontWeight="600"
-                letterSpacing="1.5px"
-                overflow="hidden"
-                transition="all 200ms"
-                _active={{
-                  bgColor: "white",
-                  transform: "scale(0.95)",
-                }}
-                _before={{
-                  content: '""',
-                  position: "absolute",
-                  top: 0,
-                  left: "-100%",
-                  width: "100%",
-                  height: "100%",
-                  background:
-                    "linear-gradient( 120deg, transparent, rgba(255,255,255, 0.4), transparent )",
-                  transition: "all 650ms",
-                }}
-                _hover={{
-                  boxShadow: "1px 1px 25px 0px rgb(34 34 34 / 11%)",
-                  _before: {
-                    left: "100%",
-                  },
-                }}
-              >
-                Let's start voting !
-              </Button>
-            </Flex> */}
+              <Flex direction="column" zIndex={2}>
+                <Text
+                  alignSelf="center"
+                  textShadow="0 0 7px rgb(73 73 73 / 41%)"
+                >
+                  {t("nextWinner")}
+                </Text>
+                <HStack
+                  transform="translateX(-4rem)"
+                  alignItems="center"
+                  spacing={10}
+                >
+                  <Text textShadow="0 0 7px rgb(73 73 73 / 41%)">
+                    {t("electedIn")}
+                  </Text>
+                  <Button
+                    as={Link}
+                    href={ROUTE_GENERATOR}
+                    transform="translateX(2rem)"
+                  >
+                    {t("topCta")}
+                  </Button>
+                </HStack>
+                <Countdown />
+              </Flex>
             </Flex>
-
-            <HoloCard />
           </Flex>
-          {/* <Box
-            pos="absolute"
-            bottom="0"
-            left="0"
-            transform="translateX(50%) translateY(-20%)"
-          >
-            <RotatingWord />
-          </Box> */}
         </Container>
-      </Box>
+      </Flex>
     </>
   );
 };

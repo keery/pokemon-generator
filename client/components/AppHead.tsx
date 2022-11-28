@@ -67,6 +67,12 @@ const AppHead = () => {
         />
         <link
           rel="preload"
+          href="/assets/fonts/matter-font/Matter-Medium.otf"
+          as="font"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
           href="/assets/fonts/gill-sans-bold-extra-condensed.ttf"
           as="font"
           crossOrigin="anonymous"
