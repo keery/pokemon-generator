@@ -13,11 +13,11 @@ const Layout = ({ children }: Props) => {
   const { pathname } = useRouter();
   const { setColorMode, colorMode } = useColorMode();
 
-  // useEffect(() => {
-  //   if (pathname !== ROUTE_GENERATOR && colorMode === "dark") {
-  //     setColorMode("light");
-  //   }
-  // }, [pathname]);
+  useEffect(() => {
+    if (pathname !== ROUTE_GENERATOR && colorMode === "dark") {
+      setColorMode("light");
+    }
+  }, [pathname]);
 
   const isMacLike = useMemo(() => {
     if (
