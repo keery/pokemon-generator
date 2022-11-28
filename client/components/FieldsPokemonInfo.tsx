@@ -31,7 +31,7 @@ const FieldsPokemonInfo = () => {
       <Field label="HP">
         <Select name="hp" options={HP_OPTIONS} isClearable />
       </Field>
-      <FieldsLengthWeight control={control} />
+      <FieldsLengthWeight />
       <Checkbox
         name="firstEdition"
         control={control}
