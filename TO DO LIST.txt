@@ -41,6 +41,7 @@ Faire un menu rapide sur la page gallerie pour switcher rapidement entre les dif
 faire le footer
 Animation GalleryTop lorsqu'on arrive sur la page gallery
 Gérer le tout en mobile
+Effet de shade derriere la souris ou des ombres 
 
 --------------------------
 

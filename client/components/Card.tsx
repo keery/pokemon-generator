@@ -191,16 +191,7 @@ const Card = () => {
                 <Layer ref={layerRef}>
                   <ColorBackground control={control} />
                   <TypeBackground control={control} />
-                  <Evolution
-                    control={control}
-                    updateImgPos={updateImgPos}
-                    isSelected={card.selectedImg === "evolvePicture"}
-                    updateScale={updateScale}
-                    updateImgSize={updateImgSize}
-                    onSelect={() =>
-                      setCard({ ...card, selectedImg: "evolvePicture" })
-                    }
-                  />
+
                   <Name control={control} stage={stage} />
                   <HP control={control} />
                   <MainImage
@@ -211,6 +202,16 @@ const Card = () => {
                     updateImgSize={updateImgSize}
                     onSelect={() =>
                       setCard({ ...card, selectedImg: "mainImage" })
+                    }
+                  />
+                  <Evolution
+                    control={control}
+                    updateImgPos={updateImgPos}
+                    isSelected={card.selectedImg === "evolvePicture"}
+                    updateScale={updateScale}
+                    updateImgSize={updateImgSize}
+                    onSelect={() =>
+                      setCard({ ...card, selectedImg: "evolvePicture" })
                     }
                   />
                   <FirstEdition control={control} />
