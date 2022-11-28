@@ -54,8 +54,7 @@ const OptionButton = ({
         onClick(e);
         onClose();
       }}
-      // color="new.1"
-      color="#898bd5"
+      color="new.1"
       aria-label="icon"
       borderRadius="sm"
       bgColor="transparent"

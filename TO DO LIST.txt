@@ -3,7 +3,6 @@ generator.pokemon.card@gmail.com
 Ajouter un email non obligatoire pour suivre les resultats de popularité de sa carte
 Ajouter le nombre de fois qu'une carte a gagné dans la modal
 Publier carte sur ecran tablette et mobile, pas de bouton
-Animation cool lorsqu'on appuie sur like depuis la modal
 Newsletter, card of the day
 reduire taille des animations avec https://www.framer.com/docs/guide-reduce-bundle-size/#how-to-reduce-bundle-size
 Refaire le logo https://dribbble.com/shots/18325875-Logo-Design-For-PokeBall-Gadgets-Electric-machine-logo
@@ -29,7 +28,6 @@ Petite animation bien calé pour annoncer en mode titre avant le gagnant
 Créer un email pour l'app pokemon
 Envoyer email quand un report est créé
 Changer design aide pour voir les zones lors de la premiere fois qu'on lance l'app
-lbs dans la modal apparait en bleu
 Traduire le site en italien, allemand et espagnol
 Faire en sorte qu'on peut faire un lien vers la page gallerie avec un paramètre pour changer le filtre sur les cartes
 Référencement traduit en francais

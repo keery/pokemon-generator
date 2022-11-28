@@ -8,6 +8,7 @@ import {
 import Logo from "~components/Logo";
 import NesButton from "~components/NesButton";
 import Nav from "~components/Nav";
+import { ROUTE_GENERATOR } from "~constants";
 import { useRouter } from "next/router";
 
 interface Props extends ContainerProps {
@@ -28,9 +29,11 @@ const Header = ({ noColorChange = false, ...rest }: Props) => {
       alignItems="center"
       {...rest}
     >
-      <Logo />
+      <Logo color={router.pathname === ROUTE_GENERATOR ? "black" : "white"} />
       <HStack alignItems="center" spacing={6}>
-        {router.pathname === "/" && <NesButton noColorChange={noColorChange} />}
+        {router.pathname === ROUTE_GENERATOR && (
+          <NesButton noColorChange={noColorChange} />
+        )}
         <Nav />
       </HStack>
     </Container>

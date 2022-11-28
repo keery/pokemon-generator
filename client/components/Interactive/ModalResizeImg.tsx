@@ -1,8 +1,9 @@
 import React, { useState, useMemo, useEffect } from "react";
 import Modal from "~components/Modal";
-import { Button, AspectRatio, Flex, useColorModeValue } from "@chakra-ui/react";
+import { AspectRatio, Flex, useColorModeValue } from "@chakra-ui/react";
 import { Layer, Stage, Group, Line } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
+import Button from "~components/Button";
 import { useWatch, useFormContext } from "react-hook-form";
 import { useTranslation } from "next-i18next";
 
@@ -151,9 +152,11 @@ const ModalResizeImg = ({
         <Flex justifyContent="space-between" w="100%">
           <Button
             color={colorDeleteButton}
+            borderColor={colorDeleteButton}
             cursor="pointer"
             onClick={deleteFile}
             variant={variantRemove}
+            h="3rem"
           >
             {t("remove")}
           </Button>
@@ -163,6 +166,9 @@ const ModalResizeImg = ({
               cursor="pointer"
               onClick={onSubmit}
               variant={variantConfirm}
+              layerColors={["new.1", "new.4", "new.3"]}
+              color="white"
+              h="3rem"
             >
               {t("common:confirm")}
             </Button>

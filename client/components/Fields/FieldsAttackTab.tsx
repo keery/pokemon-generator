@@ -10,28 +10,23 @@ import {
   Button,
 } from "@chakra-ui/react";
 import FieldsAttack from "~components/Fields/FieldsAttack";
-import { GRADIENTS_COLOR } from "~constants";
+
 interface Props {
   defaultIndex?: number;
 }
+
+const selected = {
+  background: "none",
+};
 
 const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
   const [tabIndex, setTabIndex] = React.useState(defaultIndex);
   const { t } = useTranslation("generator");
   const fontSize = useColorModeValue("md", "0.65rem");
-  const borderRadius = useColorModeValue("xl", "none");
-  const variantActiv = useColorModeValue("glass", "nes-button-blue");
+  const borderRadius = useColorModeValue("2rem", "none");
+  const variantActiv = useColorModeValue("solid", "nes-button-blue");
   const variantInactiv = useColorModeValue("line", "nes-button");
-  const colorButtonNotSelected = useColorModeValue("white", "inherit");
   const px = useColorModeValue(null, "0.6rem");
-  const selected = useColorModeValue(
-    {
-      background: "none",
-    },
-    {
-      background: "none",
-    }
-  );
 
   const handleTabsChange = (index) => {
     setTabIndex(index);
@@ -52,9 +47,7 @@ const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
             fontSize={fontSize}
             borderRadius={borderRadius}
             px={px}
-            color={
-              tabIndex !== 0 ? colorButtonNotSelected : GRADIENTS_COLOR.water
-            }
+            color={"white"}
           >
             {t("attack1")}
           </Button>
@@ -65,9 +58,7 @@ const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
             variant={tabIndex === 1 ? variantActiv : variantInactiv}
             borderRadius={borderRadius}
             px={px}
-            color={
-              tabIndex !== 1 ? colorButtonNotSelected : GRADIENTS_COLOR.water
-            }
+            color={"white"}
           >
             {t("attack2")}
           </Button>

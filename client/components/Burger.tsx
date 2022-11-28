@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, BoxProps } from "@chakra-ui/react";
+import { Box, BoxProps, Circle } from "@chakra-ui/react";
 import { useTranslation } from "next-i18next";
 import Button from "~components/Button";
 
@@ -31,10 +31,11 @@ const Burger = ({ onClick, isOpen }: Props) => {
 
   return (
     <Button
+      as={Circle}
       title={isOpen ? t("menu.close") : t("menu.open")}
       padding="1.2rem 0.9rem"
-      height="50px"
-      width="50px"
+      width="3.2rem"
+      height="3.2rem"
       onClick={onClick}
       display="flex"
       justifyContent="space-between"

@@ -11,6 +11,7 @@ import {
 import { useTranslation } from "next-i18next";
 import Print from "public/assets/img/print.svg";
 import Download from "public/assets/img/download.svg";
+import Reduce from "public/assets/img/reduce.svg";
 import ColorPicker from "~components/ColorPicker";
 import OptionButton from "~components/PanelOptions/OptionButton";
 import ResetButton from "~components/PanelOptions/ResetButton";
@@ -18,11 +19,8 @@ import EyeButton from "~components/PanelOptions/EyeButton";
 import FormButton from "~components/PanelOptions/FormButton";
 import PrevNextButtons from "./PrevNextButtons";
 import { exportCard, printCard } from "~utils/card";
-import { areaAtom } from "~atoms/area";
-import { useRecoilState } from "recoil";
 
 const PanelOptions = () => {
-  const [{ isVisible }, setArea] = useRecoilState(areaAtom);
   const { t } = useTranslation("generator");
   const hasDivider = useBreakpointValue({ base: true, sm: false });
   const { colorMode } = useColorMode();

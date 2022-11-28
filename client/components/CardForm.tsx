@@ -130,7 +130,6 @@ const CardForm = () => {
               allowToggle
               mt={{ base: 0, xl: mt }}
               w="100%"
-              color="#3b434c"
               borderRadius="sm"
             >
               {Form.map(({ id, header, fields }) => (
@@ -156,7 +155,7 @@ const CardForm = () => {
                           />
                         ) : (
                           <AccordionIcon
-                            color={{ base: "white", xl: "#3b434c" }}
+                            color={{ base: "white", xl: "black" }}
                           />
                         )}
                       </AccordionButton>

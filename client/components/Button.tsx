@@ -44,12 +44,14 @@ const Button = ({
   hasNoText = false,
   layerColors = ["new.4", "new.1", "new.3"],
   variant,
+  h = "3.5rem",
+  height = null,
   ...rest
 }: Props) => {
   return (
     <ChakraButton
       fontSize="1rem"
-      height="3.5rem"
+      height={height || h}
       px="2.5rem"
       borderRadius="2rem"
       letterSpacing="-.03em"

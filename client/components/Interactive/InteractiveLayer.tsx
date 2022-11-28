@@ -225,7 +225,7 @@ const InteractiveLayer = () => {
         inputTarget="field-species"
         labelTarget="field-species-label"
         noRadius
-        fields={<FieldsLengthWeight control={control} />}
+        fields={<FieldsLengthWeight isModal />}
         icon={
           <InteractiveIcon
             placement="right"

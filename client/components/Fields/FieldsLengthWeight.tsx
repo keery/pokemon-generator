@@ -7,13 +7,12 @@ import {
 import Field from "~components/Field";
 import Input from "~components/Input";
 import { useTranslation } from "next-i18next";
-import { Control } from "react-hook-form";
 
 interface Props {
-  control: Control;
+  isModal?: boolean;
 }
 
-const FieldsLengthWeight = ({ control }: Props) => {
+const FieldsLengthWeight = ({ isModal = false }: Props) => {
   const { t } = useTranslation("generator");
   const inputGroupStyle = useColorModeValue(
     {},
@@ -47,7 +46,7 @@ const FieldsLengthWeight = ({ control }: Props) => {
       mr: "4px",
       fontSize: "xs",
       height: "100%",
-      bgColor: "#209cee",
+      bgColor: "new.1",
     }
   );
 
@@ -66,7 +65,7 @@ const FieldsLengthWeight = ({ control }: Props) => {
             height="2.5rem"
             padding="0 0.6rem"
             children="lbs"
-            color="main"
+            color={isModal ? "white" : "main"}
             borderRightRadius="sm"
             bg="rgb(255 255 255 / 30%)"
             fontWeight="500"

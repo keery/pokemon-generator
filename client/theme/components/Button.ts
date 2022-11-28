@@ -17,9 +17,15 @@ const Button = {
   },
   variants: {
     solid: {
-      borderRadius: "xl",
+      bgColor: "new.1",
+      borderRadius: "2rem",
+      color: "white",
       _hover: {
+        bgColor: "new.1",
         opacity: 0.8,
+      },
+      _active: {
+        bgColor: "new.1",
       },
     },
     outline: {

@@ -19,7 +19,8 @@ interface Props {
 const Logo = ({ noLink = false, color = "white" }: Props) => {
   const { colorMode } = useColorMode();
   const fontFamily = useColorModeValue("body", "nes");
-  const fontSize = useColorModeValue("1rem", "0.7rem");
+  const fontSize1 = useColorModeValue("1.2rem", "0.8rem");
+  const fontSize2 = useColorModeValue("1.9rem", "1.1rem");
   const mt = useColorModeValue(0, "0.5rem");
 
   const logo = (
@@ -41,13 +42,12 @@ const Logo = ({ noLink = false, color = "white" }: Props) => {
         pl={3}
         lineHeight={0}
         fontFamily={fontFamily}
-        fontSize={fontSize}
       >
-        <Text as="span" fontSize="1.2em" lineHeight="1">
+        <Text as="span" fontSize={fontSize1} lineHeight="1">
           Pokemon card
         </Text>
         <br />
-        <Text as="div" fontSize="1.9em" lineHeight="1" mt={mt}>
+        <Text as="div" fontSize={fontSize2} lineHeight="1" mt={mt}>
           Generator
         </Text>
       </Heading>
