@@ -13,7 +13,17 @@ const WinnerSection = () => {
 
   return (
     <>
-      <Box height="210vh" pt="3.9rem" as="section" pos="relative">
+      <Box
+        height="210vh"
+        pt={{ base: 0, lg: "3.9rem" }}
+        transform={{
+          base: "translateY(-7rem)",
+          sm: "translateY(-3rem)",
+          md: "none",
+        }}
+        as="section"
+        pos="relative"
+      >
         <ParallaxY
           input={[screenPercent(0), screenPercent(90), screenPercent(120)]}
           output={[0, 0, screenPercent(-30)]}

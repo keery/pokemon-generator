@@ -124,8 +124,8 @@ const GalleryTopBackground = () => {
         className="rotate"
         position="absolute"
         zIndex="0"
-        width="1000px"
-        height="1000px"
+        width={{ base: "550px", sm: "650px", md: "900px", lg: "1000px" }}
+        height={{ base: "550px", sm: "650px", md: "900px", lg: "1000px" }}
         left="50%"
         top="50%"
         filter="blur(70px)"
