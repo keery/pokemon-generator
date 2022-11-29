@@ -5,7 +5,7 @@ import { useController, Control, useWatch } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 
-const getStyle = (theme, fontSize, dropdown) => {
+const getStyle = (theme, fontSize, dropdown, lineHeight) => {
   return {
     menuPortal: (base) => ({ ...base, zIndex: 9999 }),
     clearIndicator: () => ({
@@ -47,7 +47,7 @@ const getStyle = (theme, fontSize, dropdown) => {
       transform: "none",
       fontWeight: "800",
       fontSize,
-      lineHeight: 1.2,
+      lineHeight,
       textTransform: "none",
       fontFamily: theme.fonts.title,
       maxWidth: "100%",
@@ -120,6 +120,7 @@ const SortSelect = ({
   const value = useWatch({ control, name });
   const fontSize = useBreakpointValue({ base: "2rem", sm: "3rem", md: "4rem" });
   const dropdown = useBreakpointValue({ base: "26px", sm: "30px", md: "40px" });
+  const lineHeight = useBreakpointValue({ base: 2, md: 1.2 });
 
   const onChangeSelect = (data) => {
     field.onChange(data || "");
@@ -139,7 +140,7 @@ const SortSelect = ({
       name={name}
       placeholder={placeholder}
       options={options}
-      styles={getStyle(theme, fontSize, dropdown)}
+      styles={getStyle(theme, fontSize, dropdown, lineHeight)}
       onChange={onChangeSelect}
       isSearchable={false}
       isClearable={isClearable}
