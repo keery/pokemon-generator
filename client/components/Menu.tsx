@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import Link from "~components/Link";
+import useSafariBackdropFilter from "~hooks/useSafariBackdropFilter";
 import { ROUTE_GALLERY, ROUTE_GENERATOR, ROUTE_CGU } from "~constants";
 import { useTranslation } from "next-i18next";
 import {
@@ -29,10 +30,13 @@ const links = [
 ];
 
 const Menu = ({ setOpen, isOpen }) => {
+  const ref = useRef(null);
   const { t } = useTranslation("common");
   const router = useRouter();
   const theme = useTheme();
   const isMobile = useBreakpointValue({ base: true, md: false });
+
+  useSafariBackdropFilter(ref, isOpen);
 
   return (
     <Box
@@ -88,9 +92,10 @@ const Menu = ({ setOpen, isOpen }) => {
       />
       {/* Circle shape on left */}
       <Box
+        ref={ref}
         className="menu-circle"
         zIndex={9}
-        transform={`translateX(-50%) translateY(-50%) scale(0)`}
+        // transform={`translateX(-50%) translateY(-50%) scale(0)`}
         position="absolute"
         left="0"
         borderRadius="100%"
