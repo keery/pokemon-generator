@@ -12,7 +12,7 @@ const Item = ({ value, label }) => {
       alignItems="center"
       direction="column"
       textShadow="0 0 7px rgb(73 73 73 / 41%)"
-      width="9rem"
+      width={{ base: "3.8rem", sm: "5.2rem", md: "7rem", lg: "9rem" }}
     >
       <Flex justifyContent="center" border="none">
         <Text>{value < 10 ? "0" + value : value}</Text>
@@ -23,7 +23,7 @@ const Item = ({ value, label }) => {
         fontWeight="700"
         padding="1px 10px"
         borderRadius="7px"
-        fontSize="0.8rem"
+        fontSize={{ base: "0.7rem", sm: "0.8rem" }}
       >
         {label}
       </Text>
@@ -38,7 +38,14 @@ const Countdown = () => {
   const { days, hours, minutes, seconds } = useCountdown(formattedSunday);
 
   return (
-    <Flex border="none" display="inline-flex" transform="translateX(4rem)">
+    <Flex
+      border="none"
+      display="inline-flex"
+      transform={{
+        base: "translateX(0rem)",
+        md: "translateX(4rem)",
+      }}
+    >
       <HStack
         spacing={4}
         divider={
@@ -46,7 +53,7 @@ const Countdown = () => {
             border="none"
             display="flex"
             alignItems="center"
-            fontSize="55px"
+            fontSize={{ base: "1.6rem", sm: "2rem", md: "3rem" }}
             margin="0"
             marginLeft="8px!important"
             marginRight="9px!important"

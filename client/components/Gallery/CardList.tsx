@@ -22,7 +22,7 @@ const CardList = (props: SimpleGridProps) => {
   const [sort, setSort] = useState("created_at,DESC");
   const [loading, setLoading] = useState<number>(0);
   const nbCard = useBreakpointValue({ base: 6, sm: 8, md: 12, lg: 15 });
-  const spacingLine = useBreakpointValue({ base: 40 });
+  const spacingLine = useBreakpointValue({ base: 14, sm: 20, lg: 40 });
   const queryParams = {
     sort,
     limit: nbCard,

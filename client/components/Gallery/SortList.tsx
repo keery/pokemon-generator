@@ -77,7 +77,6 @@ const SortList = ({ onChange }: Props) => {
             <form>
               <Title>
                 <SortSelect
-                  fontSize={"4rem"}
                   name="sort"
                   control={form.control}
                   onChange={(e) => {

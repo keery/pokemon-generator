@@ -1,5 +1,11 @@
 import React from "react";
-import { Container, HStack, Text, Flex, Box } from "@chakra-ui/react";
+import {
+  Container,
+  HStack,
+  Text,
+  Flex,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 
 import GalleryTopBackground from "~components/Gallery/GalleryTopBackground";
 import Link from "~components/Link";
@@ -12,8 +18,32 @@ const Countdown = dynamic(() => import("~components/Gallery/Countdown"), {
   ssr: false,
 });
 
+const CTA = () => {
+  const { t } = useTranslation("gallery");
+  return (
+    <Button
+      as={Link}
+      href={ROUTE_GENERATOR}
+      transform={{
+        base: "translateX(0rem)",
+        md: "translateX(2rem)",
+      }}
+      mt={{
+        base: "3rem",
+        md: "0rem",
+      }}
+      height="4rem"
+      fontSize="1.3rem"
+      textDecoration="none!important"
+    >
+      {t("topCta")}
+    </Button>
+  );
+};
+
 const GalleryTop = () => {
   const { t } = useTranslation("gallery");
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
     <>
@@ -24,41 +54,47 @@ const GalleryTop = () => {
             <Flex
               w="full"
               mt={8}
-              fontSize="6.7rem"
-              lineHeight="1"
+              fontSize={{
+                base: "2.5rem",
+                sm: "3.6rem",
+                md: "5rem",
+                lg: "6.7rem",
+              }}
+              lineHeight={{ base: "1.2", md: "1" }}
               fontWeight="900"
               color="white"
               fontFamily="CabinetGrotesk"
               pos="relative"
               justifyContent="center"
             >
-              <Flex direction="column" zIndex={2}>
+              <Flex
+                direction="column"
+                zIndex={2}
+                alignItems={{ base: "center", md: "flex-start" }}
+              >
                 <Text
                   alignSelf="center"
                   textShadow="0 0 7px rgb(73 73 73 / 41%)"
+                  textAlign="center"
                 >
                   {t("nextWinner")}
                 </Text>
                 <HStack
-                  transform="translateX(-4rem)"
+                  transform={{
+                    base: "translateX(0rem)",
+                    md: "translateX(-2.5rem)",
+                    lg: "translateX(-4rem)",
+                  }}
                   alignItems="center"
                   spacing={10}
                 >
                   <Text textShadow="0 0 7px rgb(73 73 73 / 41%)">
                     {t("electedIn")}
                   </Text>
-                  <Button
-                    as={Link}
-                    href={ROUTE_GENERATOR}
-                    transform="translateX(2rem)"
-                    height="4rem"
-                    fontSize="1.3rem"
-                    textDecoration="none!important"
-                  >
-                    {t("topCta")}
-                  </Button>
+                  {!isMobile && <CTA />}
                 </HStack>
                 <Countdown />
+                {isMobile && <CTA />}
               </Flex>
             </Flex>
           </Flex>

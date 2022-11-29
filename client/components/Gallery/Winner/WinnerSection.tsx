@@ -24,19 +24,26 @@ const WinnerSection = () => {
             color="white"
             display="flex"
             mt={30}
+            px={{ base: 4, sm: 10 }}
             justifyContent="center"
+            flexDirection={{ base: "column", md: "row" }}
           >
             <Text
               whiteSpace="pre"
               color="new.2"
               fontSize="0.9rem"
               pt={1}
+              pb={{ base: 5, md: 0 }}
               fontWeight="600"
               textTransform="uppercase"
             >
               {t("winner.how.title")}
             </Text>
-            <Text pl={10} maxWidth="38rem" fontSize="1.6rem">
+            <Text
+              pl={{ base: 0, md: 10 }}
+              maxWidth="38rem"
+              fontSize={{ base: "1.4rem", sm: "1.6rem" }}
+            >
               {t("winner.how.1")}{" "}
               <Box as="span" color="new.4">
                 {t("winner.how.2")}

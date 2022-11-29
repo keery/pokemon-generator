@@ -1,11 +1,11 @@
 import React from "react";
-import { useTheme } from "@chakra-ui/react";
+import { useTheme, useBreakpointValue } from "@chakra-ui/react";
 import ReactSelect from "react-select";
 import { useController, Control, useWatch } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 
-const getStyle = (theme, fontSize) => {
+const getStyle = (theme, fontSize, dropdown) => {
   return {
     menuPortal: (base) => ({ ...base, zIndex: 9999 }),
     clearIndicator: () => ({
@@ -34,8 +34,8 @@ const getStyle = (theme, fontSize) => {
         color: theme.colors.new["4"],
       },
       svg: {
-        width: "40px",
-        height: "40px",
+        width: dropdown,
+        height: dropdown,
       },
     }),
     indicatorSeparator: () => ({ display: "none" }),
@@ -107,7 +107,6 @@ const SortSelect = ({
   name,
   control,
   options,
-  fontSize,
   placeholder = "",
   isClearable = false,
   onChange = null,
@@ -119,6 +118,8 @@ const SortSelect = ({
     control,
   });
   const value = useWatch({ control, name });
+  const fontSize = useBreakpointValue({ base: "2rem", sm: "3rem", md: "4rem" });
+  const dropdown = useBreakpointValue({ base: "26px", sm: "30px", md: "40px" });
 
   const onChangeSelect = (data) => {
     field.onChange(data || "");
@@ -138,7 +139,7 @@ const SortSelect = ({
       name={name}
       placeholder={placeholder}
       options={options}
-      styles={getStyle(theme, fontSize)}
+      styles={getStyle(theme, fontSize, dropdown)}
       onChange={onChangeSelect}
       isSearchable={false}
       isClearable={isClearable}
