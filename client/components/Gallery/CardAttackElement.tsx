@@ -90,7 +90,7 @@ const CardAttackElement = ({ element, amount }: Props) => {
       minW="max-content"
       {...style}
     >
-      <Image src={img} width="2.6rem" />
+      <Image src={img} width={{ base: "1.9rem", md: "2.6rem" }} />
     </Flex>
   );
 };

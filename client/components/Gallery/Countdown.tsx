@@ -12,7 +12,7 @@ const Item = ({ value, label }) => {
       alignItems="center"
       direction="column"
       textShadow="0 0 7px rgb(73 73 73 / 41%)"
-      width={{ base: "3.8rem", sm: "5.2rem", md: "7rem", lg: "9rem" }}
+      width={{ base: "3.35rem", sm: "5.2rem", md: "7rem", lg: "9rem" }}
     >
       <Flex justifyContent="center" border="none">
         <Text>{value < 10 ? "0" + value : value}</Text>

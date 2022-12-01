@@ -77,7 +77,12 @@ const CardModalActions = ({ card }: Props) => {
   };
 
   return (
-    <HStack spacing="1rem">
+    <HStack
+      spacing={{
+        base: "0.5rem",
+        md: "1rem",
+      }}
+    >
       <CardModalAction
         name={Actions.PRINT}
         onClick={onPrint}

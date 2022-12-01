@@ -21,23 +21,26 @@ const Countdown = dynamic(() => import("~components/Gallery/Countdown"), {
 const CTA = () => {
   const { t } = useTranslation("gallery");
   return (
-    <Button
-      as={Link}
-      href={ROUTE_GENERATOR}
-      transform={{
-        base: "translateX(0rem)",
-        md: "translateX(2rem)",
-      }}
+    <Flex
       mt={{
         base: "3rem",
-        md: "0rem",
+        md: "0",
       }}
-      height="4rem"
-      fontSize="1.3rem"
-      textDecoration="none!important"
     >
-      {t("topCta")}
-    </Button>
+      <Button
+        as={Link}
+        href={ROUTE_GENERATOR}
+        transform={{
+          base: "translateX(0rem)",
+          md: "translateX(2rem)",
+        }}
+        height="4rem"
+        fontSize="1.3rem"
+        textDecoration="none!important"
+      >
+        {t("topCta")}
+      </Button>
+    </Flex>
   );
 };
 

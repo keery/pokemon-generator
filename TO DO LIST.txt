@@ -32,6 +32,7 @@ Traduire le site en italien, allemand et espagnol
 Faire en sorte qu'on peut faire un lien vers la page gallerie avec un paramètre pour changer le filtre sur les cartes
 Référencement traduit en francais
 Précharger des cartes avant le scroll pour avoir du contenu en référencement sur la page
+Transition page même effet que le bouton, layer même couleur horizontal
 
 Check effet carte envoyé par Julien
 Faire un menu rapide sur la page gallerie pour switcher rapidement entre les differentes section
@@ -40,6 +41,8 @@ faire le footer
 Animation GalleryTop lorsqu'on arrive sur la page gallery
 Gérer le tout en mobile
 Effet de shade derriere la souris ou des ombres 
+Flèche page gallerie pour dire qu'on peut descendre
+Voir si j'affiche le menu en sticky
 
 --------------------------
 

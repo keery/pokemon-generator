@@ -1,8 +1,7 @@
 import React from "react";
-import { Flex, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 import { Element } from "~@types/CardGenerator";
 import CardAttackElement from "~components/Gallery/CardAttackElement";
-import CardModalAttackMobile from "~components/Gallery/CardModal/CardModalAttackMobile";
 
 interface Props {
   type: Element;
@@ -12,28 +11,13 @@ interface Props {
   damage: string;
 }
 
-const CardModalAttack = ({
+const CardModalAttackMobile = ({
   type,
   amount,
   name,
   description,
   damage,
 }: Props) => {
-  const isMobile = useBreakpointValue({ base: true, lg: false });
-
-  if (!name) return null;
-
-  if (isMobile)
-    return (
-      <CardModalAttackMobile
-        type={type}
-        amount={amount}
-        name={name}
-        description={description}
-        damage={damage}
-      />
-    );
-
   return (
     <Flex
       layerStyle="glassModal"
@@ -42,25 +26,23 @@ const CardModalAttack = ({
       borderRadius="0.8rem"
       width="100%"
     >
-      <Flex height="fit-content">
-        <CardAttackElement element={type} amount={amount} />
-      </Flex>
-      <Flex
-        justifyContent="space-between"
-        alignItems="center"
-        ml="1.5rem"
-        flex="1"
-      >
-        <Flex flexDirection="column" w="100%">
+      <Flex flexDir="column">
+        <Flex alignItems="center">
+          <Flex height="fit-content">
+            <CardAttackElement element={type} amount={amount} />
+          </Flex>
           <Text
             fontWeight="800"
-            mr="0.8rem"
+            ml="0.8rem"
             fontSize="1.4rem"
             wordBreak="break-word"
             noOfLines={2}
           >
             {name}
           </Text>
+        </Flex>
+
+        <Flex flexDirection="column" w="100%" mt=".5rem">
           {description && (
             <Text noOfLines={{ base: 10, lg: 4 }} wordBreak="break-word">
               {description}
@@ -72,10 +54,16 @@ const CardModalAttack = ({
         <Flex pl="1.5rem" ml="1.5rem" borderLeft="1px solid #a0aebf">
           <Text
             whiteSpace="nowrap"
-            fontSize="2.6rem"
+            fontSize={{
+              base: "2.2rem",
+              md: "2.6rem",
+            }}
             fontWeight="200"
             alignSelf="center"
-            w="4.5rem"
+            w={{
+              base: "3.4rem",
+              md: "4.5rem",
+            }}
             textAlign="center"
           >
             {damage}
@@ -86,4 +74,4 @@ const CardModalAttack = ({
   );
 };
 
-export default CardModalAttack;
+export default CardModalAttackMobile;

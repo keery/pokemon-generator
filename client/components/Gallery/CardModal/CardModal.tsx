@@ -12,6 +12,7 @@ import {
   useTheme,
   VStack,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import CardModalOverlay from "~components/Gallery/CardModal/CardModalOverlay";
 import CardModalAttack from "~components/Gallery/CardModal/CardModalAttack";
@@ -24,9 +25,8 @@ import { cardModalAtom } from "~atoms/card-modal";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Card } from "~@types/Card";
 import { getSeoCardDescription } from "~utils/card";
+import { dateToText } from "~utils/helper";
 import { NextSeo } from "next-seo";
-import format from "date-fns/format";
-import fr from "date-fns/locale/fr";
 import { ROUTE_GALLERY } from "~constants";
 import Router from "next/router";
 import ReportButton from "~components/Gallery/CardModal/ReportButton";
@@ -44,10 +44,6 @@ interface Props {
   cachedQuery: CachedQuery;
   isPage?: boolean;
 }
-
-const dateToText = (date) => {
-  return format(new Date(date), "dd MMMM yyyy", { locale: fr }).toLowerCase();
-};
 
 const fadeAnimation = "appendFade 300ms forwards";
 
@@ -106,7 +102,8 @@ export const modalStyles = {
 };
 
 export const CardModalContent = ({ card, animation, isPage = false }) => {
-  const { t } = useTranslation("gallery");
+  const { t, i18n } = useTranslation("gallery");
+  const isMobile = useBreakpointValue({ base: true, lg: false });
 
   return (
     <Flex
@@ -134,20 +131,44 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
           w="100%"
           opacity="0"
           animation={`${fadeAnimation} 200ms`}
+          alignSelf="center"
+          alignItems={{
+            base: "flex-start",
+            sm: "center",
+          }}
+          flexDir={{
+            base: "column",
+            sm: "row",
+          }}
         >
           <Heading
             as={motion.h1}
             fontFamily="title"
             fontWeight="800"
-            fontSize="4.2rem"
+            fontSize={{
+              base: "2.7rem",
+              sm: "3.8rem",
+              md: "4.2rem",
+            }}
             layerStyle="ellipsis"
             pt="0.3rem"
-            pr="2rem"
+            pr={{
+              base: 0,
+              sm: "2rem",
+            }}
+            lineHeight={{
+              base: "0.9",
+              md: "1",
+              lg: "1.33",
+            }}
+            mb={{ base: 2, sm: 0 }}
             variants={getNextPrevAnimation(0, 1)}
             animate={animation}
+            width={{ base: "100%", sm: "auto" }}
           >
             {card.name}
           </Heading>
+          {isMobile && <LikeButton card={card} isPage={isPage} minW="8rem" />}
         </Flex>
         <Flex
           w="100%"
@@ -157,28 +178,61 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
         >
           <Flex
             direction="column"
-            pr="7rem"
+            pr={{
+              base: 0,
+              lg: "7rem",
+            }}
             justifyContent="space-between"
             h="auto"
-            w="65%"
+            w={{
+              base: "100%",
+              lg: "65%",
+            }}
             as={motion.div}
             variants={getNextPrevAnimation(0, 1)}
             animate={animation}
           >
             <Flex direction="column" flex={1}>
-              <Box>
-                <Text fontWeight="300">
-                  <Trans
-                    i18nKey="gallery:modal.created"
-                    values={{
-                      date: dateToText(card.created_at),
-                      author: card.author,
+              <Flex direction="column">
+                {!isMobile && (
+                  <Text fontWeight="300">
+                    <Trans
+                      i18nKey="gallery:modal.created"
+                      values={{
+                        date: dateToText(card.created_at, i18n.language),
+                        author: card.author,
+                      }}
+                      components={{
+                        b: <b />,
+                      }}
+                    />
+                  </Text>
+                )}
+                {isMobile && (
+                  <Flex
+                    my={{
+                      base: 3,
+                      md: 8,
                     }}
-                    components={{
-                      b: <b />,
-                    }}
-                  />
-                </Text>
+                    as={motion.div}
+                    variants={getNextPrevAnimation(1, 0)}
+                    animate={animation}
+                    w="100%"
+                    alignSelf="center"
+                    maxW="30rem"
+                  >
+                    <AspectRatio
+                      opacity="0"
+                      animation={`${fadeAnimation} 300ms`}
+                      ratio={500 / 700}
+                      pos="relative"
+                      w="100%"
+                      alignSelf="flex-start"
+                    >
+                      <CardImage card={card} />
+                    </AspectRatio>
+                  </Flex>
+                )}
                 <HStack
                   mt="1rem"
                   pb="2rem"
@@ -197,19 +251,33 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
                     value={card.likes ?? 0}
                   />
                 </HStack>
-              </Box>
+              </Flex>
               <Flex
                 direction="column"
                 overflowY={isPage ? "unset" : "auto"}
                 height={isPage ? "auto" : "0"}
                 flex="1 1 0"
               >
+                {isMobile && (
+                  <Text fontWeight="300" mb={3}>
+                    <Trans
+                      i18nKey="gallery:modal.created"
+                      values={{
+                        date: dateToText(card.created_at, i18n.language),
+                        author: card.author,
+                      }}
+                      components={{
+                        b: <b />,
+                      }}
+                    />
+                  </Text>
+                )}
                 {card.description && (
                   <Box>
                     <Text fontWeight="800" mr="0.8rem" fontSize="1.4rem">
                       {t("modal.description")}
                     </Text>
-                    <Text noOfLines={4} fontWeight="300">
+                    <Text noOfLines={{ base: 0, md: 4 }} fontWeight="300">
                       {card.description}
                     </Text>
                   </Box>
@@ -245,29 +313,31 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
               <Flex justifyContent="space-between" alignItems="center">
                 <CardModalActions card={card} />
                 <ReportButton card={card} />
-                <LikeButton card={card} isPage={isPage} />
+                {!isMobile && <LikeButton card={card} isPage={isPage} />}
               </Flex>
             </Box>
           </Flex>
-          <Flex
-            as={motion.div}
-            flex={1}
-            flexDirection="column"
-            w="100%"
-            variants={getNextPrevAnimation(1, 0)}
-            animate={animation}
-          >
-            <AspectRatio
-              opacity="0"
-              animation={`${fadeAnimation} 300ms`}
-              ratio={500 / 700}
-              pos="relative"
+          {!isMobile && (
+            <Flex
+              as={motion.div}
+              flex={1}
+              flexDirection="column"
               w="100%"
-              alignSelf="flex-start"
+              variants={getNextPrevAnimation(1, 0)}
+              animate={animation}
             >
-              <CardImage card={card} />
-            </AspectRatio>
-          </Flex>
+              <AspectRatio
+                opacity="0"
+                animation={`${fadeAnimation} 300ms`}
+                ratio={500 / 700}
+                pos="relative"
+                w="100%"
+                alignSelf="flex-start"
+              >
+                <CardImage card={card} />
+              </AspectRatio>
+            </Flex>
+          )}
         </Flex>
       </Container>
     </Flex>
