@@ -53,7 +53,7 @@ const Card = ({ initialData }) => {
         filter="blur(50px)"
       /> */}
       <Flex
-        position="absolute"
+        position="fixed"
         overflow="hidden"
         zIndex="0"
         width="100vw"

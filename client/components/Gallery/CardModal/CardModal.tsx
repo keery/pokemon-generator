@@ -313,7 +313,14 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
                 mb="1.5rem"
                 pb="1.5rem"
               />
-              <Flex justifyContent="space-between" alignItems="center">
+              <Flex
+                justifyContent="space-between"
+                alignItems="center"
+                flexDirection={{
+                  base: "column",
+                  lg: "row",
+                }}
+              >
                 <CardModalActions card={card} />
                 <ReportButton card={card} />
                 {!isMobile && <LikeButton card={card} isPage={isPage} />}
