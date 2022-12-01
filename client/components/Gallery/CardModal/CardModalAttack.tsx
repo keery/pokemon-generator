@@ -41,6 +41,7 @@ const CardModalAttack = ({
       padding="1rem 1.5rem 1rem 1rem"
       borderRadius="0.8rem"
       width="100%"
+      justifyContent="space-between"
     >
       <Flex height="fit-content">
         <CardAttackElement element={type} amount={amount} />

@@ -237,7 +237,10 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
                   mt="1rem"
                   pb="2rem"
                   alignItems="center"
-                  spacing="2rem"
+                  spacing={{
+                    base: "1rem",
+                    sm: "2rem",
+                  }}
                   divider={<Box h="3rem" w="1px" borderColor="#a0aebf" />}
                   justifyContent="space-between"
                 >

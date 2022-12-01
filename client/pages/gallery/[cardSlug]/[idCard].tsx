@@ -53,17 +53,26 @@ const Card = ({ initialData }) => {
         filter="blur(50px)"
       /> */}
       <Flex
-        className="rotate"
         position="absolute"
+        overflow="hidden"
         zIndex="0"
-        width="1000px"
-        height="1000px"
-        left="50%"
-        top="50%"
-        filter="blur(70px)"
-        opacity="0.3"
+        width="100vw"
+        height="100vh"
+        left="0"
+        top="0"
       >
-        <Blob />
+        <Flex
+          className="rotate"
+          position="absolute"
+          width="1000px"
+          height="1000px"
+          left="50%"
+          top="50%"
+          filter="blur(70px)"
+          opacity="0.3"
+        >
+          <Blob />
+        </Flex>
       </Flex>
       <Box style={modalStyles}>
         <CardModalContent card={card} animation={""} isPage />
