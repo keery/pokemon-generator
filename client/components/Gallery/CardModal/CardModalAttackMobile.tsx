@@ -29,12 +29,11 @@ const CardModalAttackMobile = ({
     >
       <Flex flexDir="column">
         <Flex alignItems="center">
-          <Flex height="fit-content">
+          <Flex height="fit-content" mr="0.8rem">
             <CardAttackElement element={type} amount={amount} />
           </Flex>
           <Text
             fontWeight="800"
-            ml="0.8rem"
             fontSize="1.4rem"
             wordBreak="break-word"
             noOfLines={2}
