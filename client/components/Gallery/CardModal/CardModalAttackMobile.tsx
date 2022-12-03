@@ -29,7 +29,7 @@ const CardModalAttackMobile = ({
     >
       <Flex flexDir="column">
         <Flex alignItems="center">
-          <Flex height="fit-content" mr="0.8rem">
+          <Flex height="fit-content" mr={type ? "0.8rem" : 0}>
             <CardAttackElement element={type} amount={amount} />
           </Flex>
           <Text
@@ -42,13 +42,17 @@ const CardModalAttackMobile = ({
           </Text>
         </Flex>
 
-        <Flex flexDirection="column" w="100%" mt=".5rem">
-          {description && (
-            <Text noOfLines={{ base: 10, lg: 4 }} wordBreak="break-word">
+        {description && (
+          <Flex flexDirection="column" w="100%">
+            <Text
+              noOfLines={{ base: 10, lg: 4 }}
+              wordBreak="break-word"
+              mt=".5rem"
+            >
               {description}
             </Text>
-          )}
-        </Flex>
+          </Flex>
+        )}
       </Flex>
       {damage && (
         <Flex pl="1.5rem" ml="1.5rem" borderLeft="1px solid #a0aebf">
