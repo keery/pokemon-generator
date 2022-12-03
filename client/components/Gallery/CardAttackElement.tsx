@@ -19,6 +19,7 @@ interface Props {
 const path = "/assets/img/1-gen/";
 
 const getElementInfo = (element: Element, amount: string) => {
+  if (!amount) return null;
   switch (element) {
     case FIRE:
       return {
