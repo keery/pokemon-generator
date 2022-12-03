@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@chakra-ui/react";
+import { Button, useBreakpointValue } from "@chakra-ui/react";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
 import { getHrefCardModal } from "~utils/card";
@@ -31,6 +31,7 @@ const CardModalArrow = ({
   setDisabled,
 }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   const handleClick = () => {
     setDisabled(true);
@@ -65,6 +66,7 @@ const CardModalArrow = ({
         left: direction === "prev" ? 0 : "auto",
         right: direction === "next" ? 0 : "auto",
         translateY: "-50%",
+        display: isMobile ? "none" : "block",
       }}
       initial={{
         opacity: 0,

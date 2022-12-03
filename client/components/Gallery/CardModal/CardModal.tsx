@@ -31,6 +31,7 @@ import { ROUTE_GALLERY } from "~constants";
 import Router from "next/router";
 import ReportButton from "~components/Gallery/CardModal/ReportButton";
 import useKeybordShortcut from "~hooks/useKeybordShortcut";
+import useModalStyles from "~hooks/useModalStyles";
 import { CachedQuery } from "~@types/CachedQuery";
 import { useTranslation, Trans } from "next-i18next";
 import dynamic from "next/dynamic";
@@ -94,16 +95,10 @@ const getNextPrevAnimation = (orderPrev, orderNext) => {
   };
 };
 
-export const modalStyles = {
-  height: "calc(100% - 3rem)",
-  borderTopRightRadius: "4rem",
-  borderTopLeftRadius: "4rem",
-  color: "white",
-};
-
 export const CardModalContent = ({ card, animation, isPage = false }) => {
   const { t, i18n } = useTranslation("gallery");
   const isMobile = useBreakpointValue({ base: true, lg: false });
+  const overflow = useBreakpointValue({ base: "auto", lg: "hidden" });
 
   return (
     <Flex
@@ -111,7 +106,7 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
       style={{
         zIndex: 1000,
         pointerEvents: "auto",
-        overflow: "hidden",
+        overflow,
         width: "100%",
         height: "100%",
         margin: "0 auto",
@@ -168,7 +163,12 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
           >
             {card.name}
           </Heading>
-          {isMobile && <LikeButton card={card} isPage={isPage} minW="8rem" />}
+          <LikeButton
+            card={card}
+            isPage={isPage}
+            minW="8.5rem"
+            mr={{ base: 0, lg: "3.6rem" }}
+          />
         </Flex>
         <Flex
           w="100%"
@@ -180,13 +180,13 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
             direction="column"
             pr={{
               base: 0,
-              lg: "7rem",
+              lg: "1rem",
             }}
             justifyContent="space-between"
             h="auto"
             w={{
               base: "100%",
-              lg: "65%",
+              lg: "58%",
             }}
             as={motion.div}
             variants={getNextPrevAnimation(0, 1)}
@@ -257,8 +257,8 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
               </Flex>
               <Flex
                 direction="column"
-                overflowY={isPage ? "unset" : "auto"}
-                height={isPage ? "auto" : "0"}
+                overflowY={isPage ? "unset" : { lg: "auto", base: "inherit" }}
+                height={isPage ? "auto" : { lg: "0", base: "auto" }}
                 flex="1 1 0"
               >
                 {isMobile && (
@@ -317,13 +317,13 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
                 justifyContent="space-between"
                 alignItems="center"
                 flexDirection={{
-                  base: "column",
+                  base: "column-reverse",
                   lg: "row",
                 }}
+                pb={!isPage ? { base: 10, lg: 0 } : 0}
               >
                 <CardModalActions card={card} />
                 <ReportButton card={card} />
-                {!isMobile && <LikeButton card={card} isPage={isPage} />}
               </Flex>
             </Box>
           </Flex>
@@ -342,7 +342,8 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
                 ratio={500 / 700}
                 pos="relative"
                 w="100%"
-                alignSelf="flex-start"
+                alignSelf="flex-end"
+                maxW="400px"
               >
                 <CardImage card={card} />
               </AspectRatio>
@@ -362,6 +363,7 @@ const CardModal = ({ card, cachedQuery }: Props) => {
     setCard({ card: null, cachedQuery: null, onMutate: null });
     Router.push(ROUTE_GALLERY, null, { shallow: true });
   };
+  const modalStyles = useModalStyles();
 
   useKeybordShortcut({
     callback: onClose,
@@ -395,9 +397,22 @@ const CardModal = ({ card, cachedQuery }: Props) => {
         <CloseButton
           pos="absolute"
           zIndex={1001}
-          top="2rem"
-          right="3.5rem"
-          fontSize="1.9rem"
+          top={{
+            base: "0.7rem",
+            lg: "3.8rem",
+          }}
+          right={{
+            base: "0.9rem",
+            lg: "3.5rem",
+          }}
+          fontSize={{
+            base: "0.8rem",
+            lg: "1.9rem",
+          }}
+          bgColor={{
+            base: "#696b6e",
+            lg: "transparent",
+          }}
           onClick={onClose}
           _hover={{ opacity: 0.6 }}
         />

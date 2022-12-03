@@ -83,6 +83,7 @@ const LikeButton = ({ card, isPage, ...rest }: Props) => {
       p="0 1.7rem 0 1rem"
       display="flex"
       hasNoText
+      {...rest}
     >
       <Flex
         justifyContent="center"

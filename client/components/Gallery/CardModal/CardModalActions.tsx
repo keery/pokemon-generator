@@ -82,7 +82,7 @@ const CardModalActions = ({ card }: Props) => {
         base: "0.5rem",
         md: "1rem",
       }}
-      mb={{
+      mt={{
         base: 4,
         lg: 0,
       }}

@@ -6,15 +6,14 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { getCard } from "~hooks/useCard";
 import { ROUTE_404 } from "~constants";
 import { NextSeo } from "next-seo";
-import {
-  CardModalContent,
-  modalStyles,
-} from "~components/Gallery/CardModal/CardModal";
+import { CardModalContent } from "~components/Gallery/CardModal/CardModal";
 import { getSeoCardDescription } from "~utils/card";
 import useCard from "~hooks/useCard";
+import useModalStyles from "~hooks/useModalStyles";
 import Blob from "public/assets/img/blob.svg";
 
 const Card = ({ initialData }) => {
+  const modalStyles = useModalStyles();
   const { data: card } = useCard(initialData.id, {
     initialData,
     // Error with like button without
