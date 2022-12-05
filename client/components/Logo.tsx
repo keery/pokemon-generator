@@ -18,7 +18,7 @@ interface Props {
 
 const Logo = ({ noLink = false, color = "white" }: Props) => {
   const { colorMode } = useColorMode();
-  const fontFamily = useColorModeValue("body", "nes");
+  const fontFamily = useColorModeValue("title", "nes");
   const fontSize1 = useColorModeValue("1.2rem", "0.8rem");
   const fontSize2 = useColorModeValue("1.9rem", "1.1rem");
   const mt = useColorModeValue(0, "0.5rem");

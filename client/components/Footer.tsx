@@ -55,17 +55,48 @@ const Footer = () => {
       zIndex={10}
     >
       <Container pt="3rem" pos="relative" zIndex={9}>
-        <Flex justifyContent="space-between">
+        <Flex
+          justifyContent="space-between"
+          flexDirection={{
+            base: "column",
+            md: "row",
+          }}
+        >
           <Flex direction="column">
             <Logo noLink color="white" />
-            <Text mt="1rem" fontSize="0.9rem" maxW="26rem">
+            <Text
+              mt="1rem"
+              fontSize="0.9rem"
+              maxW={{
+                base: "100%",
+                md: "26rem",
+              }}
+            >
               {t("footer.description", {
                 name: process.env.NEXT_PUBLIC_APP_NAME,
               })}
             </Text>
           </Flex>
-          <VStack flexDirection="column" alignItems="flex-end">
-            <Text fontWeight="800" fontSize="1.9em">
+          <VStack
+            flexDirection="column"
+            alignItems={{
+              base: "center",
+              md: "flex-end",
+            }}
+            alignSelf="center"
+            mt={{ base: 10, md: 0 }}
+            fontSize={{
+              base: "1.9rem",
+              md: "1rem",
+            }}
+          >
+            <Text
+              fontWeight="800"
+              fontSize="1.2em"
+              fontFamily="title"
+              color="new.3"
+              textTransform="uppercase"
+            >
               {t("footer.navigation")}
             </Text>
             {menu.map(({ name, href }) => (
@@ -88,6 +119,10 @@ const Footer = () => {
           paddingY="1.8rem"
           mt="1.8rem"
           fontSize="sm"
+          flexDir={{
+            base: "column-reverse",
+            md: "row",
+          }}
         >
           <Text>
             © {date.getFullYear()} {process.env.NEXT_PUBLIC_APP_NAME}.{" "}
@@ -103,7 +138,14 @@ const Footer = () => {
           </Text>
 
           {!isLoading && (
-            <Flex alignItems="center">
+            <Flex
+              alignItems="center"
+              mb={{ base: "1rem", md: 0 }}
+              fontSize={{
+                base: "1.5rem",
+                md: "1rem",
+              }}
+            >
               <Box as="b" color="new.4">
                 {Boolean(nbCards) ? nbCards.toLocaleString() : 0}
               </Box>
