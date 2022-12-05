@@ -167,7 +167,7 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
             card={card}
             isPage={isPage}
             minW="8.5rem"
-            mr={{ base: 0, lg: "3.6rem" }}
+            mr={{ base: 0, lg: "3.6rem", xl: 0 }}
           />
         </Flex>
         <Flex
