@@ -73,102 +73,100 @@ const WinnerGlass = ({ winner }: Props) => {
   );
 
   return (
-    <>
-      <Container ref={ref}>
-        <Box
-          as={m.div}
-          pos="fixed"
-          top="0"
-          left="0"
-          right="0"
-          bottom="0"
-          zIndex={2}
-          style={{
-            // @ts-ignore
-            opacity: opacityBackground,
-          }}
-          _before={{
-            content: '""',
-            display: "block",
-            pos: "absolute",
-            left: "0",
-            right: "0",
-            top: "0",
-            bottom: "0",
-            zIndex: 2,
-            bg: winner ? GRADIENTS[winner.card.element] : GRADIENTS.water,
-          }}
-          _after={{
-            content: '""',
-            display: "block",
-            pos: "absolute",
-            left: "0",
-            right: "0",
-            top: "0",
-            bottom: "0",
-            bg: "white",
-          }}
-        />
-        <m.div
-          style={{
-            backgroundImage: "url(/assets/img/waves.svg)",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "100%",
-            y: yWaves,
-            opacity: opacityWaves,
-            position: "absolute",
-            left: "0",
-            right: "0",
-            top: "0",
-            bottom: "0",
-            zIndex: 9,
-          }}
-        />
-        <WinnerBlobs winner={winner.card} />
-        <Flex
-          as={m.div}
-          layerStyle="glassLg"
-          w="fit-content"
-          flexDir="column"
-          pos="relative"
-          style={{
-            zIndex: 18,
-            width: "30rem",
-            padding: "1.3rem 2.4rem",
-            border: "none",
-            borderRadius: "1rem",
-            // @ts-ignore
-            opacity,
-            y,
-          }}
-        >
-          {winner ? (
-            <>
-              <Text fontFamily="title" fontWeight="800" fontSize="2rem">
-                {t("winner.title", { weekNb: winner.id })} 🏆
-              </Text>
-              <Text fontSize="1.2rem" layerStyle="ellipsis">
-                {winner.card.name}
-              </Text>
-              <Text fontSize="1.2rem" layerStyle="ellipsis">
-                {t("winner.createdBy")} <i>{winner.card.author}</i>
-              </Text>
-              <WinnerConfettiButton winner={winner} />
-            </>
-          ) : (
-            <>
-              <Text fontFamily="title" fontWeight="800" fontSize="2rem">
-                {t("winner.no.title")}
-              </Text>
-              <Text fontSize="1.2rem">{t("winner.no.description")}</Text>
-              <Button as={Link} href={ROUTE_GENERATOR} mt="1.5rem">
-                {t("winner.no.button")}
-              </Button>
-            </>
-          )}
-        </Flex>
-      </Container>
-    </>
+    <Container ref={ref}>
+      <Box
+        as={m.div}
+        pos="fixed"
+        top="0"
+        left="0"
+        right="0"
+        bottom="0"
+        zIndex={2}
+        style={{
+          // @ts-ignore
+          opacity: opacityBackground,
+        }}
+        _before={{
+          content: '""',
+          display: "block",
+          pos: "absolute",
+          left: "0",
+          right: "0",
+          top: "0",
+          bottom: "0",
+          zIndex: 2,
+          bg: winner ? GRADIENTS[winner.card.element] : GRADIENTS.water,
+        }}
+        _after={{
+          content: '""',
+          display: "block",
+          pos: "absolute",
+          left: "0",
+          right: "0",
+          top: "0",
+          bottom: "0",
+          bg: "white",
+        }}
+      />
+      <m.div
+        style={{
+          backgroundImage: "url(/assets/img/waves.svg)",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100%",
+          y: yWaves,
+          opacity: opacityWaves,
+          position: "absolute",
+          left: "0",
+          right: "0",
+          top: "0",
+          bottom: "0",
+          zIndex: 9,
+        }}
+      />
+      <WinnerBlobs winner={winner.card} />
+      <Flex
+        as={m.div}
+        layerStyle="glassLg"
+        w="fit-content"
+        flexDir="column"
+        pos="relative"
+        style={{
+          zIndex: 18,
+          width: "30rem",
+          padding: "1.3rem 2.4rem",
+          border: "none",
+          borderRadius: "1rem",
+          // @ts-ignore
+          opacity,
+          y,
+        }}
+      >
+        {winner ? (
+          <>
+            <Text fontFamily="title" fontWeight="800" fontSize="2rem">
+              {t("winner.title", { weekNb: winner.id })} 🏆
+            </Text>
+            <Text fontSize="1.2rem" layerStyle="ellipsis">
+              {winner.card.name}
+            </Text>
+            <Text fontSize="1.2rem" layerStyle="ellipsis">
+              {t("winner.createdBy")} <i>{winner.card.author}</i>
+            </Text>
+            <WinnerConfettiButton winner={winner} />
+          </>
+        ) : (
+          <>
+            <Text fontFamily="title" fontWeight="800" fontSize="2rem">
+              {t("winner.no.title")}
+            </Text>
+            <Text fontSize="1.2rem">{t("winner.no.description")}</Text>
+            <Button as={Link} href={ROUTE_GENERATOR} mt="1.5rem">
+              {t("winner.no.button")}
+            </Button>
+          </>
+        )}
+      </Flex>
+    </Container>
   );
 };
 

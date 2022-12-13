@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Text, Container } from "@chakra-ui/react";
+import { Box, Text, Container, useBreakpointValue } from "@chakra-ui/react";
 import WinnerGlass from "~components/Gallery/Winner/WinnerGlass";
+import WinnerGlassMobile from "~components/Gallery/Winner/WinnerGlassMobile";
 import useWinner from "~hooks/useWinner";
 import { useTranslation } from "next-i18next";
 import ParallaxY from "~components/ParallaxY";
@@ -10,12 +11,14 @@ import HoloCard from "~components/Gallery/HoloCard";
 const WinnerSection = () => {
   const { data: winner, isLoading } = useWinner();
   const { t } = useTranslation("gallery");
+  const isMobile = useBreakpointValue({ base: true, lg: false });
 
   return (
     <>
       <Box
-        height="210vh"
+        height={{ base: "auto", lg: "210vh" }}
         pt={{ base: 0, lg: "3.9rem" }}
+        pb={{ base: 8, lg: 0 }}
         transform={{
           base: "translateY(-7rem)",
           sm: "translateY(-3rem)",
@@ -34,7 +37,7 @@ const WinnerSection = () => {
             color="white"
             display="flex"
             mt={30}
-            px={{ base: 4, sm: 10 }}
+            px={{ base: 4, md: 10 }}
             justifyContent="center"
             flexDirection={{ base: "column", md: "row" }}
           >
@@ -70,8 +73,15 @@ const WinnerSection = () => {
             </Text>
           </Container>
         </ParallaxY>
-        <HoloCard />
-        {!isLoading && <WinnerGlass winner={winner} />}
+        {!isLoading &&
+          (isMobile ? (
+            <WinnerGlassMobile winner={winner} />
+          ) : (
+            <>
+              <HoloCard />
+              <WinnerGlass winner={winner} />
+            </>
+          ))}
       </Box>
     </>
   );

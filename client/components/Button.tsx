@@ -50,6 +50,7 @@ const Button = ({
 }: Props) => {
   return (
     <ChakraButton
+      textDecoration="none!important"
       fontSize="1rem"
       height={height || h}
       px="2.5rem"
