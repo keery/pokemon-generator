@@ -54,7 +54,7 @@ const Footer = () => {
       // backgroundColor="rgb(20 27 40 / 60%)"
       zIndex={10}
     >
-      <Container pt="3rem" pos="relative" zIndex={9}>
+      <Container py="3rem" pos="relative" zIndex={9}>
         <Flex
           justifyContent="space-between"
           flexDirection={{
@@ -153,6 +153,28 @@ const Footer = () => {
               <Image src={LOGO} alt={`Pokeball`} w="1.5rem" ml="0.7rem" />
             </Flex>
           )}
+        </Flex>
+        <script
+          type="text/javascript"
+          src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js"
+          data-name="bmc-button"
+          data-slug="cardpokemon"
+          data-color="#ffd074"
+          data-emoji=""
+          data-font="Cookie"
+          data-text="Buy me a coffee"
+          data-outline-color="#000000"
+          data-font-color="#000000"
+          data-coffee-color="#FFDD00"
+        ></script>
+        <Flex justifyContent="flex-end">
+          <a href="https://www.buymeacoffee.com/cardpokemon" target="_blank">
+            <img
+              src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png"
+              alt="Buy Me A Coffee"
+              style={{ height: "60px", width: "217px" }}
+            />
+          </a>
         </Flex>
       </Container>
     </Box>

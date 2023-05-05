@@ -45,6 +45,8 @@ Flèche page gallerie pour dire qu'on peut descendre
 Voir si j'affiche le menu en sticky
 Faire un robots.txt
 Animer bouton like dans CardModal lorsqu'on utilise les fleches
+Nom de carte toujours trop long
+Migrer back jikiki
 
 --------------------------
 
