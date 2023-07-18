@@ -25,9 +25,11 @@ export default class CustomDocument extends Document {
           <script
             dangerouslySetInnerHTML={{
               __html: `
-              window.dataLayer = window.dataLayer || []; function gtag()
-              {dataLayer.push(arguments)}
-              gtag('js', new Date()); gtag('config', 'UA-156027849-1');
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', 'G-TKR2QFCVJV');
           `,
             }}
           />
