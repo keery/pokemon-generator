@@ -29,7 +29,7 @@ export default class CustomDocument extends Document {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
             
-              gtag('config', 'G-TKR2QFCVJV');
+              gtag('config', 'G-63N1ZFYVNM');
           `,
             }}
           />
