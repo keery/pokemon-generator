@@ -27,9 +27,8 @@ async function bootstrap() {
       saveUninitialized: false,
     }),
   )
-  const HOST = '0.0.0.0'
 
-  const server = await app.listen(process.env.PORT || 3002, HOST)
+  const server = await app.listen(process.env.PORT || 3002, process.env.HOS)
   companion.socket(server)
 }
 bootstrap()
