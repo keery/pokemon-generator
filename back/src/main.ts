@@ -6,8 +6,6 @@ import companion from '@uppy/companion'
 import session from 'express-session'
 import { AppModule } from './app.module'
 
-const PORT = process.env.PORT || 3002
-
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
   app.enableCors({
@@ -30,7 +28,7 @@ async function bootstrap() {
     }),
   )
 
-  const server = await app.listen(PORT)
+  const server = await app.listen(process.env.PORT || 3002)
   companion.socket(server)
 }
 bootstrap()
