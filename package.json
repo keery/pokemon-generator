@@ -5,11 +5,11 @@
     "i": "yarn install",
     "install": "yarn client:install && yarn server:install",
     "client:install": "cd client && yarn",
-    "server:install": "cd server && yarn",
-    "server:dev": "cd server && yarn start",
-    "server:build": "cd server && yarn build",
-    "server:start": "cd server && yarn start",
-    "client:dev": "cd client && yarn start",
+    "server:install": "cd back && yarn",
+    "server:dev": "cd back && yarn start",
+    "server:build": "cd back && yarn build",
+    "server:start": "cd back && yarn start",
+    "client:dev": "cd client && yarn dev",
     "client:build": "cd client && yarn build",
     "client:start": "cd client && yarn start"
   }
