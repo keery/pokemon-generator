@@ -170,7 +170,7 @@ const Card = () => {
               ? "0px 15px 15px rgb(0 0 0 / 0%)"
               : "0px 15px 15px rgb(0 0 0 / 19%)"
           }
-          borderRadius="4rem"
+          borderRadius="1.6rem"
         >
           <Box className="card-container" overflow="visible!important">
             <Backface />

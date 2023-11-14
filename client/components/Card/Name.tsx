@@ -23,7 +23,7 @@ const Name = ({ control, stage }: Props) => {
       fontSize={31}
       y={52}
       x={stage.value === BASIC ? 50 : 135}
-      width={270}
+      width={stage.value === BASIC ? 270 : 190}
       wrap="none"
     />
   );

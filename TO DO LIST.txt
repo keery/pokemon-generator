@@ -45,8 +45,10 @@ Flèche page gallerie pour dire qu'on peut descendre
 Voir si j'affiche le menu en sticky
 Faire un robots.txt
 Animer bouton like dans CardModal lorsqu'on utilise les fleches
-Nom de carte toujours trop long
-Migrer back jikiki
+Fix design mobile
+Ajouter une bannière sur le consentement des datas
+Sur mobile quand je suis par exemple sur le champ description, lorsque jecris ca zoom, mais ca n'unzoom pas au blur
+Changer la taille de l'ombre derriere la carte, quand la carte met longtemps à charger c'est pas tres beau
 
 --------------------------
 
