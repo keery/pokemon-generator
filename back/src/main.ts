@@ -28,7 +28,13 @@ async function bootstrap() {
     }),
   )
 
-  const server = await app.listen(process.env.PORT || 3002, process.env.HOST)
+  const PORT = process.env.PORT || 3002
+  console.log(`Port is ${PORT}`)
+  const server = await app.listen(PORT, () => {
+    console.log(`Our app is running on port ${PORT}`)
+  })
+
+  // const server = await app.listen(process.env.PORT || 3002, process.env.HOST)
   companion.socket(server)
 }
 bootstrap()
