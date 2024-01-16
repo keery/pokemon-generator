@@ -36,6 +36,9 @@ const FrontHoloCard = ({
 }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
 
+  const urlParams = new URLSearchParams(winner?.card?.img);
+  const cardId = urlParams.get("id");
+
   return (
     <>
       <Box
@@ -44,7 +47,12 @@ const FrontHoloCard = ({
         borderRadius="1.3rem"
         className="holo-card"
         position="relative"
-        bgImage={winner?.card?.img || "none"}
+        bgImage={
+          cardId
+            ? `https://drive.google.com/thumbnail?id=${cardId}&sz=w1000`
+            : "none"
+        }
+        // bgImage={winner?.card?.img || "none"}
         zIndex="10"
         transition="box-shadow 0.2s ease"
         willChange="transform, filter"
