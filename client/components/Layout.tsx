@@ -19,22 +19,11 @@ const Layout = ({ children }: Props) => {
     }
   }, [pathname]);
 
-  const isMacLike = useMemo(() => {
-    if (
-      typeof navigator !== "undefined" &&
-      /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)
-    ) {
-      return "not-apple-like";
-    }
-    return "";
-  }, []);
-
   return (
     <>
       <Flex
         direction="column"
         h={pathname === ROUTE_GENERATOR ? "100%" : "auto"}
-        className={isMacLike}
       >
         {pathname !== ROUTE_GENERATOR && (
           <Header

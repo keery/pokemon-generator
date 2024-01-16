@@ -20,7 +20,7 @@ export default class CustomDocument extends Document {
         <Head>
           <script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=UA-156027849-1"
+            src="https://www.googletagmanager.com/gtag/js?id=G-63N1ZFYVNM"
           />
           <script
             dangerouslySetInnerHTML={{
