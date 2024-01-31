@@ -31,9 +31,11 @@ const Header = ({ noColorChange = false, ...rest }: Props) => {
     >
       <Logo color={router.pathname === ROUTE_GENERATOR ? "black" : "white"} />
       <HStack alignItems="center" spacing={6}>
+        {/* 
+        TODO: make NES mode perfectly clean
         {router.pathname === ROUTE_GENERATOR && (
           <NesButton noColorChange={noColorChange} />
-        )}
+        )} */}
         <Nav />
       </HStack>
     </Container>

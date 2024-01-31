@@ -29,7 +29,7 @@ const InteractiveInput = ({
   fontSize,
   fontFamily = "pokename",
   control,
-  prefix,
+  prefix = "",
   icon,
   fullWidth,
   ...rest
@@ -81,12 +81,12 @@ const InteractiveInput = ({
           }}
           onChange={(event) => {
             field.onChange(
-              !!prefix
-                ? event.target.value.replace(prefix, "")
-                : event.target.value
+              event.target.value.trim() == prefix.trim()
+                ? ""
+                : event.target.value.replace(prefix, "")
             );
           }}
-          value={value !== "" && prefix ? prefix + value : value}
+          value={value !== "" ? `${prefix}${value}` : ""}
           name={name}
           autoComplete="off"
           pos="absolute"

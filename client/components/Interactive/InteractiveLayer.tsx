@@ -453,6 +453,7 @@ const InteractiveLayer = () => {
         control={control}
         prefix="Illus. "
         fullWidth={105}
+        pl="1px"
         icon={
           <InteractiveIcon
             placement="bottom"

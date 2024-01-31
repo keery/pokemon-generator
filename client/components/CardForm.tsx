@@ -120,7 +120,9 @@ const CardForm = () => {
             {isDesktop && (
               <Flex alignItems="center" justifyContent="space-between">
                 <Logo color="black" />
-                <NesButton noColorChange={false} />
+                {/* 
+                TODO: make NES mode perfectly clean
+                <NesButton noColorChange={false} /> */}
               </Flex>
             )}
             <Accordion
