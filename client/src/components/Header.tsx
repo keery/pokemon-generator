@@ -1,0 +1,45 @@
+import React from "react";
+import {
+  Container,
+  useColorModeValue,
+  HStack,
+  ContainerProps,
+} from "@chakra-ui/react";
+import Logo from "~src/components/Logo";
+import NesButton from "~src/components/NesButton";
+import Nav from "~src/components/Nav";
+import { ROUTE_GENERATOR } from "~constants";
+import usePathname from "~hooks/usePathname";
+
+interface Props extends ContainerProps {
+  noColorChange?: boolean;
+}
+
+const Header = ({ noColorChange = false, ...rest }: Props) => {
+  const py = useColorModeValue(4, 0);
+  const pathname = usePathname();
+
+  return (
+    <Container
+      as="header"
+      zIndex={1001}
+      py={py}
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      {...rest}
+    >
+      <Logo color={pathname === ROUTE_GENERATOR ? "black" : "white"} />
+      <HStack alignItems="center" spacing={6}>
+        {/* 
+        TODO: make NES mode perfectly clean
+        {router.pathname === ROUTE_GENERATOR && (
+          <NesButton noColorChange={noColorChange} />
+        )} */}
+        <Nav />
+      </HStack>
+    </Container>
+  );
+};
+
+export default Header;

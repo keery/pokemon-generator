@@ -1,7 +1,7 @@
 import { Element } from "~@types/CardGenerator";
 import { Card } from "~@types/Card";
 import { ROUTE_GALLERY } from "~constants";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 export const printCard = () => {
   window.print();
@@ -99,7 +99,7 @@ export const formatAttackSeo = (label: string, values: string[]) => {
 };
 
 export const getSeoCardDescription = (card: Card) => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations("gallery");
 
   const attack1 = formatAttackSeo(t("attack1"), [
     card.attack1Name,

@@ -9,18 +9,17 @@ import Url from "@uppy/url";
 import French from "@uppy/locales/lib/fr_FR";
 import Spanish from "@uppy/locales/lib/es_ES";
 import { useUppy as useUppyReact } from "@uppy/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import useToast from "~hooks/useToast";
 import { useFormContext } from "react-hook-form";
 import { CARD_DEFAULT_STATE } from "~data/card";
 import { client } from "~api/client";
+import { useLocale } from "next-intl";
 
 const getUppyTranslations = (locale) => {
   switch (locale) {
     case "fr":
       return French;
-    case "es":
-      return Spanish;
     default:
       return false;
   }
@@ -37,14 +36,15 @@ interface Params {
 
 const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
   const { setValue } = useFormContext();
-  const { t, i18n } = useTranslation("generator");
+  const t = useTranslations("generator");
   const { errorToast } = useToast();
+  const locale = useLocale();
 
   const uppy = useUppyReact(() => {
     const instance = new Uppy({
       id,
       autoProceed: true,
-      locale: getUppyTranslations(i18n.language),
+      locale: getUppyTranslations(locale),
       debug: true,
       allowMultipleUploads: false,
       restrictions: {

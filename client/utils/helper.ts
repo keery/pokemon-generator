@@ -1,8 +1,9 @@
 import { RgbaColor } from "react-colorful";
-import Router from "next/router";
+import { useRouter } from "next/navigation";
 import format from "date-fns/format";
 import fr from "date-fns/locale/fr";
 import en from "date-fns/locale/en-GB";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 export const getRgbaColor = (color: RgbaColor): string => {
   return `rgba(${color.r}, ${color.g}, ${color.b}, ${
@@ -21,17 +22,24 @@ export const observeFieldResize = (
   }).observe(field);
 };
 
-export const setUrlModal = (name: string) => {
-  Router.push(`/?modal=${name}`, `modal/${name}`, { shallow: true });
+export const setUrlModal = (name: string, router: AppRouterInstance) => {
+  // router.push({ pathname: "/modal/[idModal]", query: { idModal: name } },{ shallow: true }));
+  router.push(`modal`);
 };
 
-export const openModalWithUrl = (name: string, open: () => void): void => {
-  setUrlModal(name);
-  open();
+export const openModalWithUrl = (
+  name: string,
+  open: () => void,
+  router: AppRouterInstance
+): void => {
+  router.push("/fr/modal/species");
+  // setUrlModal(name, router);
+  // open();
 };
 
 export const closeModalWithUrl = (close: () => void): void => {
-  Router.push(`/`, undefined, { shallow: true });
+  const router = useRouter();
+  router.push(`/`, undefined, { shallow: true });
   close();
 };
 

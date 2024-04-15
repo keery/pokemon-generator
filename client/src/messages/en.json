@@ -1,0 +1,256 @@
+{
+    "menu": {
+        "open": "Open menu",
+        "close": "Close menu",
+        "generator": "Create card",
+        "gallery": "Gallery",
+        "cgu": "Terms of use",
+        "sitemap": "Sitemap"
+    },
+    "footer": {
+      "navigation": "Menu",
+      "description": "Make custom Pokemon cards with our easy-to-use generator! Choose design options and select any information from a Pokemon card. Share your creations and view others in our community including all levels of trainers. Create unique cards and take your Pokemon training to the next level!",
+      "madeBy": "Development by",
+      "cardCreated": "cards made",
+      "menu": {
+        "generator": "Create card",
+        "gallery": "Gallery",
+        "cgu": "Terms of use",
+        "sitemap": "Sitemap"
+      }
+    },
+    "generator": {
+        "basic": "Basic",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "fire" : "Fire",
+        "grass" : "Grass",
+        "water" : "Water",
+        "electric" : "Electric",
+        "psychic" : "Psychic",
+        "fighting" : "Fighting",
+        "normal" : "Normal",
+        "steel" : "Steel",
+        "dark" : "Dark",
+        "basicInfo" : "Information",
+        "common" : "Common",
+        "uncommon" : "Uncommun",
+        "rare" : "Rare",
+        "name" : "Name",
+        "nameEvolve" : "Evolution name",
+        "type" : "Type",
+        "picture" : "Photo",
+        "pictureEvolve" : "Evolution photo",
+        "species" : "Speciality",
+        "length" : "Length",
+        "weight" : "Weight",
+        "stage" : "Stage",
+        "evolution" : "Evolution",
+        "damage" : "Damage",
+        "info" : "Info",
+        "details" : "Details",
+        "description" : "Description",
+        "illustrator" : "Illustrator",
+        "collectionNumber" : "Collection number",
+        "collectionNb" : "N° collection",
+        "rarity" : "Rarity",
+        "weaknessResistanceRetreat" : "Weakness, resistance, retreat",
+        "weakness" : "Weakness",
+        "resistance" : "Resistance",
+        "amount" : "Amount",
+        "weaknessType" : "Weakness element",
+        "weaknessAmount" : "Weakness amount",
+        "resistanceType" : "Resistance element",
+        "resistanceAmount" : "Resistance amount",
+        "weakAmount" : "Weakness amount",
+        "resAmount" : "Resistance amount",
+        "retreat" : "Retreat",
+        "attack1" : "Attack n°1",
+        "attack2" : "Attack n°2",
+        "additionalInformation" : "Card footer",
+        "confirmReset" : "Do you really want to reset your card ? All changes will be lost",
+        "resetTitle": "Reset card",
+        "downloadCard" : "Download",
+        "printCard" : "Print",
+        "showZone" : "Show areas",
+        "hideZone" : "Hide areas",
+        "saveCard" : "Save",
+        "resetCard" : "Reset",
+        "shareCard" : "Share to your friends",
+        "openForm": "Open form",
+        "importPicture" : "Import a picture",
+        "fileTooBig": "Image file is too big ({max}Mo maximum)",
+        "uploadFailed": "Image downloading has failed",
+        "publishFailed": "An error occurred while publishing",
+        "colorBg": "Background color",
+        "choosePicture": "Choose an image",
+        "pictureAdded": "Image added",
+        "removePicture": "Remove image",
+        "remove": "Delete",
+        "resize": "Resize",
+        "prev" : "Undo",
+        "next" : "Redo",
+        "help": "Help",
+        "eyeButtonHelp": "Show interactive areas",
+        "dontDisplay": "Don't show again",
+        "resizeImg" : "Resize image",
+        "firstEdition": "First edition",
+        "1edition": "1st edition",
+        "publish": {  
+            "button": "Publish my card",
+            "requirements": {
+                "title": "Publishing requirements",
+                "desc": "In order to publish your card, it must comply with few requirements:",
+                "name": "Write a name",
+                "hp": "Select a HP value",
+                "photo": "Add a main photo",
+                "attack": "To have one attack at least"
+            },
+            "confirm": {
+                "title": "Confirm publication",
+                "desc": "Publish your beautiful card to add it into the galery and to share it with the community, it will be public and eligible for votes",
+                "warning": "The card must not contain information that is illegal, disrespectful or likely to infringe the rights of a third party.",
+                "checkbox": "By checking this box, I acknowledge having read and accepted the <a>General Conditions of Use</a>.",
+                "author": {
+                    "label": "Author's name",
+                    "placeholder": "Ex: Sacha"
+                }
+            },
+            "success": {
+                "title": "Yeaaaah !",
+                "desc": "Congratulation your card has been published successfully.",
+                "thanks": "Thank you for contributing and being part of the community.",
+                "review": "To prevent offensive card from being uploaded, every cards are subject to a review.",
+                "email": "Once your card is approved it will be available from the gallery",
+                "createNew": "Create new card",
+                "seeGallery": "See gallery"
+            }
+        }
+    },
+    "gallery":{
+        "seo": {
+          "title": "Gallery",
+          "description": "Consult all pokemon cards from the community all around the world. Vote for your favorite cards or even share cards you made and who knows you might be the next weekly winner.",
+          "modal": {
+            "isType": "is a pokemon of type",
+            "madeBy": "Card made by {author}"
+          }
+        },
+        "nextWinner": "next winner",
+        "electedIn": "elected in",
+        "topCta": "Make a card",
+        "madeBy": "By {name}",
+        "fire" : "Fire",
+        "grass" : "Grass",
+        "water" : "Water",
+        "electric" : "Electric",
+        "psychic" : "Psychic",
+        "fighting" : "Fighting",
+        "normal" : "Normal",
+        "steel" : "Steel",
+        "dark" : "Dark",
+        "attack1" : "Attack n°1",
+        "attack2" : "Attack n°2",
+        "filters": {
+          "mostRecent": "Most recent cards",
+          "recentWinner": "Most recent winners",
+          "oldWinner": "Oldest winners",
+          "mostVoted": "Most liked",
+          "mostVotedWeek": "Most liked this week",
+          "random": "Random"
+        },
+        "loadMoreCards": "Load more cards",
+        "winner": {
+          "title": "Weekly winner #{weekNb}",
+          "how": {
+            "title": "How does it work ?",
+            "1": "The card that receives the",
+            "2": "highest like number",
+            "3": "during the",
+            "4": "current week",
+            "5": "before the end of the countdown will be elected",
+            "6": "weekly winner"
+          },
+          "congratule": "Congratulate winner",
+          "createdBy": "Created by",
+          "no": {
+            "title": "No winner yet",
+            "description": "No one got elected this week. Next winner will get elected by the end of the week when the countdown will be over",
+            "button": "Create my card"
+          }
+        },
+        "modal": {
+          "created": "Created on {date} by <b>{author}</b>",
+          "description": "Description",
+          "type": "Type",
+          "likes": "Likes",
+          "like": "Like",
+          "liked": "Liked",
+          "shareSocial": "Check this out! I created {name} my new pokemon card {href}",
+          "report": {
+            "button": "Report",
+            "title": "Report card {name}",
+            "description": "If you determine that this card contains inappropriate content you can report it. After reporting, the moderation will determine as soon as possible if the quality of its content is abusive, if so the card will be permanently removed from the site.",
+            "label": "Select a reason",
+            "choice1": "Nudity / Sexual nature",
+            "choice2": "Inciting hatred",
+            "choice3": "Harassment",
+            "choice4": "Personal information disclosure",
+            "other": "Other",
+            "labelOther": "Add details to your report",
+            "success": "Your report has been sent successfully",
+            "error": "An error occured trying to send your report"
+          }
+        },
+        "countdown": {
+          "days": "days",
+          "hours": "hours",
+          "minutes": "minutes",
+          "seconds": "seconds"
+        }
+    },
+    "cgu": {
+        "title": "Terms of use",
+        "update": "(last update {date})",
+        "line1": "The purpose of these “terms of use” is to provide a legal framework for the terms of provision of the services of the website and their use by the “User”. The general conditions of use must be accepted by any User wishing to access the site. They constitute the contract between the site and the User. Access to the site by the User signifies acceptance of these general conditions of use. We reserve the right to unilaterally modify the content of these T & Cs at any time.",
+        "mention": {
+            "title": "Legal Notice",
+            "text": "In accordance with the law \"IT et liberties\" of January 6, 1978 modified in 2004, you benefit from a right of access and of correction to the information which concerns you, which you can exert by addressing to {app_name} whose co-ordinates are below.\nYou can also, for legitimate reasons, oppose the treatment of the data concerning you.",
+            "line1": "{app_name} is the property of {name}",
+            "email": "Email",
+            "host": "{app_name} is hosted by {host} whose registered office is located at 2 rue Kellermann - 59100 Roubaix - France."
+        },
+        "art1": {
+            "title": "Article 1 : Presentation",
+            "text":"{app_name} is a free french internet website, accessible for everybody. All costs incurred by the User to access the service (computer hardware, software, Internet connection, etc.) are at their expense."
+        },
+        "art2": {
+            "title": "Article 2 : Personal data",
+            "text": "Information used are author name when you publish a card, this name can be your real name or a nickname, we also use IP address in order to respect these conditions. Regarding law « IT and liberties » from 6th january updated on 2004, you have the right to access and rectify information concerning you, which you can exercise by contacting {email}."
+        },
+        "art3": {
+            "title": "Article 3 : Published content",
+            "text": "Your images must not: \n- contain no character inciting to hatred, \n- contain no defamatory character, \n- contain no threatening character, \n- contain no illegal character or going against any law in any way, \n- contain no sexual character (erotic, pornographic, obscene or provocative poses, ...) apart from the dedicated headings, \n- contain no personal information (name, address, e-mail, telephone...). The use that you will make of the services will not have to be: commercial, dishonest (intended not to respect the rules specific to each service). \nYou commit yourself, by the use of this service, not to publish contents not conforming to the royalties or the licenses of exploitation.\nYou commit yourself not to post contents in connection with the use of fraudulent, pirate, or counterfeit contents. \nYou commit yourselves not to post contents not respecting the French legislation in force.\nYou commit yourselves finally, on the honor, not to contravene the two points raised by abusing the use of our policy on the contents."
+        },
+        "art4": {
+            "title": "Article 4 : Report system",
+            "text": "In case of problem, you have the possibility of using our alert system it will be available from a button \"Report\" on the card page. It should be noted that the button is available on the page associated with the image and not directly on the link of the image concerned."
+        },
+        "art5": {
+            "title": "Article 5 : Sanction for non-compliance with the terms of use",
+            "text": "In case of non-respect of the rules, here are the possible sanctions:\n- Deletion of the incriminated images,\n- Reporting to the competent authorities."
+        },
+        "art6": {
+            "title": "Article 6 : Responsibilities",
+            "text": "The moderation after publication does not allow {app_name} to be held responsible for the published images.\n{app_name} undertakes to intervene in the event of alarm as soon as possible.\nAny image contravening the rules hereafter, the law or any other code of conduct, engages only the responsibility of their author. \nAlthough controlled as well as possible, with a will to optimize the deadlines and the conditions of control on the contents, by right holders of the forum, the term \"moderation\" does not mean that {app_name} or the right holders {url} have a total control on the images. \nAny user who feels that an image sent is objectionable is encouraged to contact us immediately by e-mail or using the alert tool provided. \nIn order to optimize the control over the content, {app_name} is authorized to delete, modify, move, any image that would be judged as contravening the proper functioning of the site, without prior notice, to delete, modify or suspend any member account or to delegate these rights to certain members, groups, defining the term \"rightful claimants\" raised. \nIn order to respect the present conditions of use, IP addresses are recorded. In view of the role assigned to them, the rightful owners of {app_name} are not required to justify their actions. If a dispute seems necessary, it must be done by email."
+        },
+        "art7": {
+            "title": "Article 7 : Applicable Law",
+            "text": "Any contribution on the {url} site is governed by the Intellectual Property Code. Each user remains the owner of his images. By publishing contributions, you authorize the company {app_name} to reference the content of your contributions on the various search engines. You renounce to sue the company {app_name} following a problem or damage caused by another user in violation of the general conditions of use."
+        },
+        "art8": {
+            "title": "Article 8 : Cookies",
+            "text": "The site {url} is required to record cookies on your browser in order to keep your browsing preferences and to carry out statistics (Google Analytics). You can oppose this recording via the preferences of your browser."
+        }
+    }
+}

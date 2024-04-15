@@ -1,7 +1,9 @@
-const { i18n } = require("./next-i18next.config");
+const createNextIntlPlugin = require("next-intl/plugin");
 
-module.exports = {
-  i18n,
+const withNextIntl = createNextIntlPlugin();
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -18,7 +20,35 @@ module.exports = {
       ],
     });
 
+    config.externals = [...config.externals, { canvas: "canvas" }]; // required to make Konva & react-konva work
+
     return config;
   },
-  devtool: "inline-source-map",
 };
+
+module.exports = withNextIntl(nextConfig);
+
+// const { i18n } = require("./i18n.config");
+
+// module.exports = {
+//   i18n,
+//   // webpack(config) {
+//   //   config.module.rules.push({
+//   //     test: /\.svg$/,
+//   //     use: [
+//   //       {
+//   //         loader: "@svgr/webpack",
+//   //         options: {
+//   //           svgo: false,
+//   //           svgoConfig: {
+//   //             plugins: [{ removeViewBox: false }],
+//   //           },
+//   //         },
+//   //       },
+//   //     ],
+//   //   });
+
+//   //   return config;
+//   // },
+//   devtool: "inline-source-map",
+// };
