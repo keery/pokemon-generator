@@ -36,6 +36,8 @@ import { join } from 'path'
           entities: [__dirname + '/**/*.entity{.ts,.js}'],
           synchronize: true,
           logging: process.env.NODE_ENV === 'dev',
+          sslmode: 'require',
+          ssl: true,
         } as PostgresConnectionOptions
       },
     }),
