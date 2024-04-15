@@ -19,7 +19,6 @@ Bouton publier dans le formulaire des champs en mobile
 Page 404
 Gérer la publication des cartes
 
-Etre plus explicite, un gagnant par semaine, le plus de like gagne
 Essayer d'appuyer le fait d'avoir envie de gagner, en precisant ce qu'on gagne, ce qu'on gagne c'est seulement
 le titre de gagnant de la semaine
 Afficher sur la modale d'une carte une mention spécifique pour dire si cette carte a déjà gagné
@@ -50,6 +49,7 @@ Ajouter une bannière sur le consentement des datas
 Sur mobile quand je suis par exemple sur le champ description, lorsque jecris ca zoom, mais ca n'unzoom pas au blur
 Bug report si l'app s'arrête
 Fix lien img sur CardImage and FrontHoloCard
+Possibilty from user to report bug
 
 --------------------------
 
