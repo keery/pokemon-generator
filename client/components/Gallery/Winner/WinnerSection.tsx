@@ -13,6 +13,8 @@ const WinnerSection = () => {
   const { t } = useTranslation("gallery");
   const isMobile = useBreakpointValue({ base: true, lg: false });
 
+  if (!winner) return null;
+
   return (
     <>
       <Box
