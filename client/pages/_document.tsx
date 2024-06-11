@@ -33,6 +33,11 @@ export default class CustomDocument extends Document {
           `,
             }}
           />
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6372871022983337"
+            crossOrigin="anonymous"
+          />
         </Head>
         <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
