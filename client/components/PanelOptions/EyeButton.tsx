@@ -106,7 +106,7 @@ const EyeButton = () => {
   const { t } = useTranslation("generator");
   const [{ isVisible }, setArea] = useRecoilState(areaAtom);
   const isMobile = useBreakpointValue({ base: true, xl: false });
-  const [isHelpVisible, setHelpVisible] = useState(true);
+  const [isHelpVisible, setHelpVisible] = useState(false);
   const isDontShowAgain = localStorage.getItem(KEY_CACHE) || null;
   const { colorMode } = useColorMode();
 
@@ -144,11 +144,12 @@ const EyeButton = () => {
   return (
     <>
       <Box pos="relative">
-        {!isMobile && isHelpVisible && isDontShowAgain !== VALUE_CACHE ? (
+        {Button}
+        {/* {!isMobile && isHelpVisible && isDontShowAgain !== VALUE_CACHE ? (
           <EyeButtonHelp icon={Button} setHelpVisible={setHelpVisible} />
         ) : (
           Button
-        )}
+        )} */}
       </Box>
     </>
   );
