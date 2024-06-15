@@ -64,8 +64,8 @@ const Home: NextPage = () => {
       <form style={{ height: "85vh", overflow: "hidden" }}>
         <BackgroundBlur control={form.control} />
         <Container
-          h="100%"
-          pt={6}
+          h={{ base: "90%", sm: "100%" }}
+          pt={{ base: 0, sm: 6 }}
           pb={{ base: 0, sm: 6 }}
           px={{ ...theme.components.Container.baseStyle.px, sm: 2, base: 0 }}
         >
