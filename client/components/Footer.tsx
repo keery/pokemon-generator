@@ -50,8 +50,11 @@ const Footer = ({ isGeneratorPage = false }) => {
       pos="relative"
       overflow="hidden"
       color={isGeneratorPage ? "text" : "white"}
-      // backdropFilter="blur(4px) saturate(180%)"
-      // backgroundColor="rgb(20 27 40 / 60%)"
+      layerStyle={isGeneratorPage ? "glass" : "none"}
+      backgroundColor={isGeneratorPage ? "rgb(255 255 255 / 60%)" : "none"}
+      mt="8"
+      borderTopRadius="60px"
+      borderTop={isGeneratorPage ? "1px solid white" : "none"}
       zIndex={10}
     >
       <Container py="3rem" pos="relative" zIndex={9}>

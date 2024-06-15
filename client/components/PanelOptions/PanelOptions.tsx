@@ -32,7 +32,8 @@ const PanelOptions = () => {
       alignItems="flex-start"
       alignSelf={{ base: "center", xl: "flex-start" }}
       direction="column"
-      pos="relative"
+      pos={{ base: "fixed", sm: "relative" }}
+      bottom="0"
       zIndex={9}
       w={{ base: "100%", sm: "auto" }}
     >
