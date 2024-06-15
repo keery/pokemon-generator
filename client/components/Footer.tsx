@@ -39,7 +39,7 @@ const menu = [
 
 const date = new Date();
 
-const Footer = () => {
+const Footer = ({ isGeneratorPage = false }) => {
   const { t } = useTranslation("common");
   const { pathname } = useRouter();
   const { data: nbCards, isLoading } = useCardsCount();
@@ -49,7 +49,7 @@ const Footer = () => {
       as="footer"
       pos="relative"
       overflow="hidden"
-      color="white"
+      color={isGeneratorPage ? "text" : "white"}
       // backdropFilter="blur(4px) saturate(180%)"
       // backgroundColor="rgb(20 27 40 / 60%)"
       zIndex={10}
@@ -63,7 +63,7 @@ const Footer = () => {
           }}
         >
           <Flex direction="column">
-            <Logo noLink color="white" />
+            <Logo noLink color={isGeneratorPage ? "text" : "white"} />
             <Text
               mt="1rem"
               fontSize="0.9rem"
@@ -104,7 +104,7 @@ const Footer = () => {
                 key={name}
                 href={href}
                 fontWeight={pathname === href ? "bold" : 400}
-                color="white"
+                color={isGeneratorPage ? "text" : "white"}
               >
                 {t(name)}
               </Link>

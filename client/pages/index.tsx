@@ -3,6 +3,7 @@ import { GetServerSideProps, NextPage } from "next";
 import {
   Stack,
   Container,
+  Heading,
   Flex,
   useBreakpointValue,
   Box,
@@ -19,6 +20,7 @@ import { CARD_DEFAULT_STATE } from "~data/card";
 import { decrypt } from "~utils/cache";
 import { useForm, FormProvider } from "react-hook-form";
 import dynamic from "next/dynamic";
+import { useTranslation } from "next-i18next";
 
 const Card = dynamic(() => import("~components/Card"), { ssr: false });
 const PanelOptions = dynamic(
@@ -33,6 +35,7 @@ const Home: NextPage = () => {
       : null;
 
   const theme = useTheme();
+  const { t } = useTranslation("generator");
 
   const form = useForm({
     defaultValues: cachedCard
@@ -58,7 +61,7 @@ const Home: NextPage = () => {
           <Nav />
         </Box>
       )}
-      <form style={{ height: "100%", overflow: "hidden" }}>
+      <form style={{ height: "85vh", overflow: "hidden" }}>
         <BackgroundBlur control={form.control} />
         <Container
           h="100%"
@@ -96,6 +99,22 @@ const Home: NextPage = () => {
           isDesktop={isFormVisible}
         />
       </form>
+      <Container as="section" pos="relative">
+        <Heading as="h2" mb="4" pt="12">
+          {t("googleads.title")}
+        </Heading>
+        <p>{t("googleads.description")}</p>
+        <Heading as="h3" mb="4" mt="6">
+          {t("googleads.features")}
+        </Heading>
+        <Stack>
+          <li>{t("googleads.item1")}</li>
+          <li>{t("googleads.item2")}</li>
+          <li>{t("googleads.item3")}</li>
+          <li>{t("googleads.item4")}</li>
+        </Stack>
+        <p>{t("googleads.lasttext")}</p>
+      </Container>
     </FormProvider>
   );
 };

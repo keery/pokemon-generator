@@ -13,7 +13,7 @@ const Line = ({ isOpen, ...rest }: LineProps) => {
       left="0"
       top="0"
       width="100%"
-      height="1.5px"
+      height="1px"
       bgColor={"white"}
       transition="0.3s all ease-in-out"
       {...rest}

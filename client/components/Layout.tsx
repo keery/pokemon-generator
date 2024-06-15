@@ -36,7 +36,8 @@ const Layout = ({ children }: Props) => {
         )}
         {children}
       </Flex>
-      {pathname !== ROUTE_GENERATOR ? <Footer /> : ""}
+      <Footer isGeneratorPage={pathname === ROUTE_GENERATOR} />
+      {/* {pathname !== ROUTE_GENERATOR ? <Footer /> : ""} */}
     </>
   );
 };
