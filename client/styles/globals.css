@@ -206,6 +206,10 @@ body,
   /* height: 100%; */
 }
 
+#__next {
+  overflow: hidden;
+}
+
 *:focus {
   box-shadow: none !important;
   outline: none;

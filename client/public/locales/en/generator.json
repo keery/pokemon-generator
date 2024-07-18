@@ -84,7 +84,7 @@
         },
         "confirm": {
             "title": "Confirm publication",
-            "desc": "Publish your beautiful card to add it into the galery and to share it with the community, it will be public and eligible for votes",
+            "desc": "Publish your card to add it into the galery and to share it with the community, it will be <b>public and visible</b> to every users",
             "warning": "The card must not contain information that is illegal, disrespectful or likely to infringe the rights of a third party.",
             "checkbox": "By checking this box, I acknowledge having read and accepted the <a>General Conditions of Use</a>.",
             "author": {
@@ -99,7 +99,7 @@
             "review": "To prevent offensive card from being uploaded, every cards are subject to a review.",
             "email": "Once your card is approved it will be available from the gallery",
             "createNew": "Create new card",
-            "seeGallery": "See gallery"
+            "seeGallery": "Visit gallery"
         }
     },
     "googleads": {

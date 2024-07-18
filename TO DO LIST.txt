@@ -50,6 +50,7 @@ Ajouter une bannière sur le consentement des datas
 Sur mobile quand je suis par exemple sur le champ description, lorsque jecris ca zoom, mais ca n'unzoom pas au blur
 Bug report si l'app s'arrête
 Fix lien img sur CardImage and FrontHoloCard
+Page contact
 
 --------------------------
 

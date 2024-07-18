@@ -13,8 +13,6 @@ const WinnerSection = () => {
   const { t } = useTranslation("gallery");
   const isMobile = useBreakpointValue({ base: true, lg: false });
 
-  if (!winner) return null;
-
   return (
     <>
       <Box
@@ -76,6 +74,7 @@ const WinnerSection = () => {
           </Container>
         </ParallaxY>
         {!isLoading &&
+          winner &&
           (isMobile ? (
             <WinnerGlassMobile winner={winner} />
           ) : (

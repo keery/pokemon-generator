@@ -130,6 +130,7 @@ const Menu = ({ setOpen, isOpen }) => {
         }}
       />
       <Box
+        as="nav"
         className="wrapper"
         width="100%"
         position="absolute"

@@ -1,0 +1,26 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://card-pokemon.com</loc>
+    <xhtml:link
+      rel="alternate"
+      hreflang="fr"
+      href="https://card-pokemon.com/fr"/>
+    <lastmod>2024-07-18T11:21:04.456Z</lastmod>
+  </url>
+  <url>
+    <loc>https://card-pokemon.com/gallery</loc>
+    <xhtml:link
+      rel="alternate"
+      hreflang="fr"
+      href="https://card-pokemon.com/fr/gallery"/>
+    <lastmod>2024-07-18T11:21:04.456Z</lastmod>
+  </url>
+  <url>
+    <loc>https://card-pokemon.com/terms-of-use</loc>
+    <xhtml:link
+      rel="alternate"
+      hreflang="fr"
+      href="https://card-pokemon.com/fr/terms-of-use"/>
+    <lastmod>2024-07-18T11:21:04.456Z</lastmod>
+  </url>
+</urlset>

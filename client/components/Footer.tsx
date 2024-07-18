@@ -102,16 +102,24 @@ const Footer = ({ isGeneratorPage = false }) => {
             >
               {t("footer.navigation")}
             </Text>
-            {menu.map(({ name, href }) => (
-              <Link
-                key={name}
-                href={href}
-                fontWeight={pathname === href ? "bold" : 400}
-                color={isGeneratorPage ? "text" : "white"}
-              >
-                {t(name)}
-              </Link>
-            ))}
+            <VStack
+              as="nav"
+              alignItems={{
+                base: "center",
+                md: "flex-end",
+              }}
+            >
+              {menu.map(({ name, href }) => (
+                <Link
+                  key={name}
+                  href={href}
+                  fontWeight={pathname === href ? "bold" : 400}
+                  color={isGeneratorPage ? "text" : "white"}
+                >
+                  {t(name)}
+                </Link>
+              ))}
+            </VStack>
           </VStack>
         </Flex>
         <Flex

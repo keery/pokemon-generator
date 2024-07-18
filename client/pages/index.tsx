@@ -61,7 +61,7 @@ const Home: NextPage = () => {
           <Nav />
         </Box>
       )}
-      <form style={{ height: "85vh", overflow: "hidden" }}>
+      <form style={{ height: "85vh" }}>
         <BackgroundBlur control={form.control} />
         <Container
           h={{ base: "90%", sm: "100%" }}

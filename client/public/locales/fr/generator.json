@@ -89,7 +89,7 @@
                 "placeholder": "Ex: Sacha"
             },
             "title": "Confirmer la publication",
-            "desc": "Publiez votre carte pour l'ajouter dans la galerie et la partager avec la communauté, cela la rendra publique et éligible aux votes.",
+            "desc": "Publiez votre carte pour l'ajouter dans la galerie et la partager avec la communauté, cela la rendra <b>publique et visible à tous les utilisateurs</b>",
             "warning": "La carte ne doit pas contenir d'informations illégal, irrespectueuse ou susceptible de porter atteinte aux droits d’un tiers.",
             "checkbox": "En cochant cette case, je reconnais avoir pris connaissance et accepte les <a>conditions générales d'utilisation</a>."
         },

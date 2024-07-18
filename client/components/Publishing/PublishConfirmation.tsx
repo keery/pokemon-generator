@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "~components/Modal";
-import { Flex, Text, Checkbox, Input } from "@chakra-ui/react";
+import { Flex, Text, Checkbox, Input, Box } from "@chakra-ui/react";
 import { useTranslation, Trans } from "next-i18next";
 import Link from "~components/Link";
 import PublishedSuccess from "~components/Publishing/PublishedSuccess";
@@ -59,7 +59,14 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
         button={<Flex w="100%">{children}</Flex>}
         title={t("publish.confirm.title")}
       >
-        <Flex>{t("publish.confirm.desc")}</Flex>
+        <Box>
+          <Trans
+            i18nKey="generator:publish.confirm.desc"
+            components={{
+              b: <b />,
+            }}
+          />
+        </Box>
 
         <Field label={`${t("publish.confirm.author.label")} *`} mt="1rem">
           <Input

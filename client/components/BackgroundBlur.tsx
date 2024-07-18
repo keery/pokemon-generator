@@ -32,7 +32,7 @@ const BackgroundBlur = ({ control }: Props) => {
   });
 
   return (
-    <Box layerStyle="cover" bgColor="white">
+    <Box layerStyle="coverFixed" bgColor="white">
       {Object.keys(GRADIENTS).map((type) => (
         <Bg key={type} type={type} isSelected={selectedType.value === type} />
       ))}

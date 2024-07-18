@@ -135,7 +135,7 @@ const theme = extendTheme({
     glass: {
       backdropFilter: "blur(4px) saturate(180%)",
       bgColor: "rgb(255 255 255 / 40%)",
-      border: "1px solid rgba( 255, 255, 255, 0.18 )",
+      border: "1px solid rgba( 255, 255, 255, 0.7 )",
     },
     glassMd: {
       backdropFilter: "blur(30px) saturate(180%)",
@@ -258,6 +258,13 @@ const theme = extendTheme({
     },
     cover: {
       position: "absolute",
+      top: 0,
+      bottom: 0,
+      right: 0,
+      left: 0,
+    },
+    coverFixed: {
+      position: "fixed",
       top: 0,
       bottom: 0,
       right: 0,
