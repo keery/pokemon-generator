@@ -9,7 +9,7 @@ import Logo from "~components/Logo";
 import NesButton from "~components/NesButton";
 import Nav from "~components/Nav";
 import { ROUTE_GENERATOR } from "~constants";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 
 interface Props extends ContainerProps {
   noColorChange?: boolean;
@@ -17,7 +17,7 @@ interface Props extends ContainerProps {
 
 const Header = ({ noColorChange = false, ...rest }: Props) => {
   const py = useColorModeValue(4, 0);
-  const router = useRouter();
+  const pathname = usePathname();
 
   return (
     <Container
@@ -29,7 +29,7 @@ const Header = ({ noColorChange = false, ...rest }: Props) => {
       alignItems="center"
       {...rest}
     >
-      <Logo color={router.pathname === ROUTE_GENERATOR ? "black" : "white"} />
+      <Logo color={pathname === ROUTE_GENERATOR ? "black" : "white"} />
       <HStack alignItems="center" spacing={6}>
         {/* 
         TODO: make NES mode perfectly clean

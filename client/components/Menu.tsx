@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Link from "~components/Link";
 import useSafariBackdropFilter from "~hooks/useSafariBackdropFilter";
 import { ROUTE_GALLERY, ROUTE_GENERATOR, ROUTE_CGU } from "~constants";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import {
   Box,
   Text,
@@ -12,7 +12,7 @@ import {
   useTheme,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import usePathname from "~hooks/usePathname";
 
 const links = [
   {
@@ -31,8 +31,8 @@ const links = [
 
 const Menu = ({ setOpen, isOpen }) => {
   const ref = useRef(null);
-  const { t } = useTranslation("common");
-  const router = useRouter();
+  const t = useTranslations();
+  const pathname = usePathname();
   const theme = useTheme();
   const isMobile = useBreakpointValue({ base: true, md: false });
 
@@ -204,7 +204,7 @@ const Menu = ({ setOpen, isOpen }) => {
               role="group"
               transform="translateX(-34px)"
             >
-              {router.route === href ? (
+              {pathname === href ? (
                 <Circle
                   display={{ base: "none", md: "block" }}
                   border="1px solid white"
@@ -238,7 +238,7 @@ const Menu = ({ setOpen, isOpen }) => {
               )}
               <Link
                 href={href}
-                onClick={() => (router.route !== href ? setOpen(false) : null)}
+                onClick={() => (pathname !== href ? setOpen(false) : null)}
                 fontFamily="title"
                 fontWeight="800"
                 display="inline-block"
@@ -249,7 +249,7 @@ const Menu = ({ setOpen, isOpen }) => {
                   isMobile && {
                     backgroundColor: "white",
                     backgroundImage:
-                      router.route === href ? theme.gradient.main : null,
+                      pathname === href ? theme.gradient.main : null,
                     _hover: {
                       backgroundImage: theme.gradient.main,
                     },

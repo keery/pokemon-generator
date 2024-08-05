@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Button } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 interface Props {
   name: string;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const FileInputPixel = ({ onClick, deleteFile, value }: Props) => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
 
   return (
     <Box>

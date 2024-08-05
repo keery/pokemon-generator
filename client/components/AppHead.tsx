@@ -1,10 +1,10 @@
 import React from "react";
 import NextHead from "next/head";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { DefaultSeo } from "next-seo";
 
 const AppHead = () => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   return (
     <>
       <NextHead>

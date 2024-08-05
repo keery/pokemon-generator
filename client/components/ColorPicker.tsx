@@ -13,14 +13,14 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { useController, useFormContext } from "react-hook-form";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { getRgbaColor } from "~utils/helper";
 import dynamic from "next/dynamic";
 import OptionButton from "~components/PanelOptions/OptionButton";
 
 const ColorPicker = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const { control } = useFormContext();
   const { field } = useController({
     name: "bgColor",

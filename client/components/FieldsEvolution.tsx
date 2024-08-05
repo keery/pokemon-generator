@@ -10,7 +10,7 @@ import dynamic from "next/dynamic";
 const Field = dynamic(() => import("~components/Field"), { ssr: false });
 
 const FieldsEvolution = () => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const { control } = useFormContext();
   const stage = useWatch({
     control,

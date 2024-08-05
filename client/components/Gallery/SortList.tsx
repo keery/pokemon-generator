@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import SortSelect from "~components/Gallery/SortSelect";
 import { Flex, Box, Container } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import Title from "~components/Title";
 import useIsIntersecting from "~hooks/useIsIntersecting";
 

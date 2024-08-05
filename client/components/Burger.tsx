@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, BoxProps, Circle } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import Button from "~components/Button";
 
 interface LineProps extends BoxProps {
@@ -27,7 +27,7 @@ interface Props {
 }
 
 const Burger = ({ onClick, isOpen }: Props) => {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
 
   return (
     <Button

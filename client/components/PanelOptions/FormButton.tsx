@@ -1,6 +1,6 @@
 import React from "react";
 import Form from "public/assets/img/form.svg";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import OptionButton from "~components/PanelOptions/OptionButton";
 import { useBreakpointValue } from "@chakra-ui/react";
 import {
@@ -15,7 +15,7 @@ import {
 import CardForm from "~components/CardForm";
 
 const FormButton = () => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const isVisible = useBreakpointValue({ base: true, xl: false });
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode } = useColorMode();

@@ -8,7 +8,7 @@ import {
   useColorModeValue,
   Image,
 } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import Print from "public/assets/img/print.svg";
 import Download from "public/assets/img/download.svg";
 import Reduce from "public/assets/img/reduce.svg";
@@ -21,7 +21,7 @@ import PrevNextButtons from "./PrevNextButtons";
 import { exportCard, printCard } from "~utils/card";
 
 const PanelOptions = () => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const hasDivider = useBreakpointValue({ base: true, sm: false });
   const { colorMode } = useColorMode();
   const transform = useColorModeValue("translateX(0)", "translateX(-4px)");

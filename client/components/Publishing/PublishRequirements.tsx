@@ -10,7 +10,7 @@ import {
   Checkbox,
   VStack,
 } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 interface Props {
   isAttackValid: boolean;
@@ -41,7 +41,7 @@ const PublishRequirements = ({
   isNameValid,
   isPhotoValid,
 }: Props) => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const { onClose, onOpen } = useDisclosure();
 
   return (

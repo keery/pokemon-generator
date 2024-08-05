@@ -9,7 +9,7 @@ import { RARITY_OPTIONS } from "~constants";
 import FieldsCollection from "~components/Fields/FieldsCollection";
 
 const FieldsBottomInfo = () => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const { control } = useFormContext();
 
   return (

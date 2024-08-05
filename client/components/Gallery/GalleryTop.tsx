@@ -11,7 +11,7 @@ import GalleryTopBackground from "~components/Gallery/GalleryTopBackground";
 import Link from "~components/Link";
 import Button from "~components/Button";
 import { ROUTE_GENERATOR } from "~constants";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 
 const Countdown = dynamic(() => import("~components/Gallery/Countdown"), {

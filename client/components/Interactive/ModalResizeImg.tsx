@@ -5,7 +5,7 @@ import { Layer, Stage, Group, Line } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
 import Button from "~components/Button";
 import { useWatch, useFormContext } from "react-hook-form";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 interface Props {
   name: string;
@@ -45,7 +45,7 @@ const ModalResizeImg = ({
   const paddingX = (width - widthImgArea) / 2;
   const paddingY = (height - heightImgArea) / 2;
   const { control, setValue } = useFormContext();
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
 
   const [
     picture,

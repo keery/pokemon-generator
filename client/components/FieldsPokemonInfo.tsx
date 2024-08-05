@@ -10,7 +10,7 @@ import Input from "~components/Input";
 import { ELEMENTS_OPTIONS, HP_OPTIONS } from "~constants";
 
 const FieldsPokemonInfo = () => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const { control } = useFormContext();
 
   return (

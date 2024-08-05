@@ -1,9 +1,9 @@
 import { Flex, Text } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import Warning from "public/assets/img/warning.svg";
 
 const WarningBox = ({ children, ...rest }) => {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
   return (
     <Flex
       bgColor="new.4"

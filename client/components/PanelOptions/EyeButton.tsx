@@ -17,7 +17,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 import OptionButton from "~components/PanelOptions/OptionButton";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { areaAtom } from "~atoms/area";
 import { useRecoilState } from "recoil";
 import { useBreakpointValue } from "@chakra-ui/react";
@@ -39,7 +39,7 @@ const Overlay = () => (
 );
 
 const EyeButtonHelp = ({ icon, setHelpVisible }) => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const onClose = () => setHelpVisible(false);
 
   const dontShowAgain = useCallback(() => {
@@ -103,7 +103,7 @@ const EyeButtonHelp = ({ icon, setHelpVisible }) => {
 };
 
 const EyeButton = () => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const [{ isVisible }, setArea] = useRecoilState(areaAtom);
   const isMobile = useBreakpointValue({ base: true, xl: false });
   const [isHelpVisible, setHelpVisible] = useState(false);

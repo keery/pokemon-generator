@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, AspectRatio, Container, Box, Text } from "@chakra-ui/react";
 import FrontHoloCard from "~components/Gallery/FrontHoloCard";
 import { Winner } from "~@types/Winner";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import Link from "~components/Link";
 import Button from "~components/Button";
 import { ROUTE_GENERATOR } from "~constants";

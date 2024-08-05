@@ -6,14 +6,14 @@ import {
 } from "@chakra-ui/react";
 import Field from "~components/Field";
 import Input from "~components/Input";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 interface Props {
   isModal?: boolean;
 }
 
 const FieldsLengthWeight = ({ isModal = false }: Props) => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const inputGroupStyle = useColorModeValue(
     {},
     {

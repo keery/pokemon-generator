@@ -3,7 +3,7 @@ import { Box, Text, Container, useBreakpointValue } from "@chakra-ui/react";
 import WinnerGlass from "~components/Gallery/Winner/WinnerGlass";
 import WinnerGlassMobile from "~components/Gallery/Winner/WinnerGlassMobile";
 import useWinner from "~hooks/useWinner";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import ParallaxY from "~components/ParallaxY";
 import { screenPercent } from "~utils/helper";
 import HoloCard from "~components/Gallery/HoloCard";

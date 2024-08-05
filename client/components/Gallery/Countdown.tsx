@@ -4,7 +4,7 @@ import nextSunday from "date-fns/nextSunday";
 import set from "date-fns/set";
 import { utcToZonedTime } from "date-fns-tz";
 import { useCountdown } from "~hooks/useCountdown";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 const Item = ({ value, label }) => {
   return (

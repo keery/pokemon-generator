@@ -11,7 +11,7 @@ import {
 } from "~constants";
 
 const FieldsSubInfo = () => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const { control } = useFormContext();
 
   return (

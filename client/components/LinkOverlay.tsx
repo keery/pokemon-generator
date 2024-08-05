@@ -4,7 +4,7 @@ import {
   LinkOverlayProps,
 } from "@chakra-ui/react";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 export interface Props
   extends Omit<LinkOverlayProps, "href" | "as">,

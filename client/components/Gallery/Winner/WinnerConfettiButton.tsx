@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Spinner } from "@chakra-ui/react";
 import confetti from "canvas-confetti";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { Winner } from "~@types/Winner";
 import { getKey } from "~hooks/useWinner";
 import useClapWinner from "~hooks/useClapWinner";

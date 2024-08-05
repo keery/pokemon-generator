@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Box } from "@chakra-ui/react";
 import Field from "~components/Field";
 import Input from "~components/Input";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { Control } from "react-hook-form";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 const FieldsCollection = ({ control }: Props) => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
 
   return (
     <>

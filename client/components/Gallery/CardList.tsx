@@ -12,7 +12,7 @@ import CardThumbnail from "~components/Gallery/CardThumbnail";
 import SortList from "~components/Gallery/SortList";
 import Loader from "~components/Loader";
 import Button from "~components/Button";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 const AUTO_LOADING_LIMIT = 3;
 

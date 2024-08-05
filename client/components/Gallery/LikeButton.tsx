@@ -8,7 +8,7 @@ import { useQueryClient, InfiniteData } from "react-query";
 import { useRecoilState } from "recoil";
 import { cardModalAtom } from "~atoms/card-modal";
 import { motion } from "framer-motion";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { QUERY_KEY } from "~hooks/useCard";
 
 interface Props extends ButtonProps {

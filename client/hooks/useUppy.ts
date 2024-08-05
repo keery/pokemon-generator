@@ -9,7 +9,7 @@ import Url from "@uppy/url";
 import French from "@uppy/locales/lib/fr_FR";
 import Spanish from "@uppy/locales/lib/es_ES";
 import { useUppy as useUppyReact } from "@uppy/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import useToast from "~hooks/useToast";
 import { useFormContext } from "react-hook-form";
 import { CARD_DEFAULT_STATE } from "~data/card";

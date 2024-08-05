@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Modal from "~components/Modal";
 import { Flex, Image, Text, HStack } from "@chakra-ui/react";
 import confetti from "canvas-confetti";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import Link from "~components/Link";
 import Button from "~components/Button";
 import { ROUTE_GALLERY } from "~constants";
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const PublishedSuccess = ({ isOpen, onClose }: Props) => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const resetCard = useResetCard();
 
   useEffect(() => {

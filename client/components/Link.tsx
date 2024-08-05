@@ -1,7 +1,8 @@
+"use client";
 import React from "react";
-import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
-import NextLink, { LinkProps as NextLinkProps } from "next/link";
-import { useTranslation } from "next-i18next";
+import { LinkProps as NextLinkProps } from "next/link";
+import { Link as NextLink, LinkProps } from "@chakra-ui/next-js";
+import { useTranslations } from "next-intl";
 
 export interface Props
   extends Omit<LinkProps, "href" | "as">,
@@ -11,22 +12,22 @@ export interface Props
 }
 
 const Link = (props: Props) => {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const { children, href, as, shallow = false, style = {}, ...rest } = props;
 
   return (
-    <NextLink href={href} shallow={shallow} as={t(as as string)} style={style}>
-      <ChakraLink
-        as="span"
-        color="main"
-        fontWeight="bold"
-        {...rest}
-        _focus={{
-          outline: "none",
-        }}
-      >
-        {children}
-      </ChakraLink>
+    <NextLink
+      href={href}
+      shallow={shallow}
+      style={style}
+      color="main"
+      fontWeight="bold"
+      {...rest}
+      _focus={{
+        outline: "none",
+      }}
+    >
+      {children}
     </NextLink>
   );
 };

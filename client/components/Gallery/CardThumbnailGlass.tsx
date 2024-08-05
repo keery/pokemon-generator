@@ -2,7 +2,7 @@ import React from "react";
 import { Flex, Text } from "@chakra-ui/react";
 import { Card, CachedQuery } from "~@types";
 import LikesCounter from "~components/Gallery/LikesCounter";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 interface Props {
   card: Card;

@@ -10,11 +10,11 @@ import {
   useColorModeValue,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
   const cancelRef = useRef();
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const contentStyle = useColorModeValue(
     {},
     { layerStyle: "nes-container", padding: "0rem 0.5rem" }

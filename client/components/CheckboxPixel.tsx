@@ -1,7 +1,7 @@
 import React from "react";
 import { Flex, Box, useRadio, useRadioGroup, HStack } from "@chakra-ui/react";
 import { Control, useController } from "react-hook-form";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 interface Props {
   control: Control;
@@ -58,7 +58,7 @@ const Radio = (props) => {
 };
 
 const CheckboxPixel = ({ control, name }: Props) => {
-  const { t } = useTranslation("common");
+  const t = useTranslations();
   const { field } = useController({ control, name });
 
   const { getRootProps, getRadioProps } = useRadioGroup({

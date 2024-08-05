@@ -1,6 +1,7 @@
-import React, { useMemo, useEffect } from "react";
+"use client";
+import React, { useEffect } from "react";
 import { Flex, useColorMode } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import Header from "~components/Header";
 import Footer from "~components/Footer";
 import { ROUTE_GENERATOR, ROUTE_GALLERY } from "~constants";
@@ -10,7 +11,7 @@ interface Props {
 }
 
 const Layout = ({ children }: Props) => {
-  const { pathname } = useRouter();
+  const pathname = usePathname();
   const { setColorMode, colorMode } = useColorMode();
 
   useEffect(() => {

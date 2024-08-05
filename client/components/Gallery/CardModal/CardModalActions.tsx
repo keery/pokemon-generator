@@ -6,7 +6,7 @@ import Facebook from "public/assets/img/facebook.svg";
 import Twitter from "public/assets/img/twitter.svg";
 import Email from "public/assets/img/email.svg";
 import { Card } from "~@types/Card";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 enum Actions {
   PRINT = "print",

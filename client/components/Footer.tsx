@@ -18,8 +18,8 @@ import {
   ROUTE_SITEMAP,
   LOGO,
 } from "~constants";
-import { useRouter } from "next/router";
-import { useTranslation } from "react-i18next";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import useCardsCount from "~hooks/useCardsCount";
 
 const menu = [
@@ -40,8 +40,8 @@ const menu = [
 const date = new Date();
 
 const Footer = ({ isGeneratorPage = false }) => {
-  const { t } = useTranslation("common");
-  const { pathname } = useRouter();
+  const t = useTranslations();
+  const pathname = usePathname();
   const { data: nbCards, isLoading } = useCardsCount();
 
   return (

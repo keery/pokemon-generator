@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { Flex, useDisclosure } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { useFormContext } from "react-hook-form";
 import { GRADIENTS } from "~constants";
 import ElementButton from "~components/ElementButton";
@@ -11,7 +11,7 @@ import { useRecoilValue } from "recoil";
 import { cardImgAtom } from "~atoms/card-img";
 
 const PublishButton = () => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const { control, watch } = useFormContext();
   const [type, name, hp, mainImage] = watch([
     "type",

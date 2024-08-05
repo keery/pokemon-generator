@@ -4,7 +4,7 @@ import Upload from "public/assets/img/upload.svg";
 import Check from "public/assets/img/check.svg";
 import dynamic from "next/dynamic";
 import { useFormContext, useWatch } from "react-hook-form";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import FileInputPixel from "~components/FileInputPixel";
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const FileInput = ({ name }: Props) => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const { setValue, control } = useFormContext();
   const { colorMode } = useColorMode();
   const value = useWatch({

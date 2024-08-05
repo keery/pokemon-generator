@@ -12,7 +12,7 @@ import {
   useColorMode,
   Image,
 } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import CardFormHeader from "~components/CardFormHeader";
 import CardFieldsGroup from "~components/CardFieldsGroup";
 import FieldsPokemonInfo from "~components/FieldsPokemonInfo";

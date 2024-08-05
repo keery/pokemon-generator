@@ -20,7 +20,7 @@ interface Props {
 }
 
 const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const [author, setAuthor] = useState("");
   const [isChecked, setChecked] = useState(false);
   const [isLoading, setLoading] = useState(false);

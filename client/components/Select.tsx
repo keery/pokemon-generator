@@ -3,7 +3,7 @@ import { useTheme, useColorMode } from "@chakra-ui/react";
 import ReactSelect from "react-select";
 import { useFormContext } from "react-hook-form";
 import dynamic from "next/dynamic";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { Select as SelectOption } from "~constants";
 
 const getStyle = (theme, iconPath, colorMode, hasColorInverted) => {
@@ -180,7 +180,7 @@ const Select = ({
   onChange = null,
   hasColorInverted = false,
 }: Props) => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const { watch, setValue } = useFormContext();
   const { colorMode } = useColorMode();
   const theme = useTheme();

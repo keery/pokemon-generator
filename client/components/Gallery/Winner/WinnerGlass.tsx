@@ -6,7 +6,7 @@ import { screenPercent } from "~utils/helper";
 import { GRADIENTS } from "~constants";
 import WinnerBlobs from "./WinnerBlobs";
 import WinnerConfettiButton from "./WinnerConfettiButton";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { ROUTE_GENERATOR } from "~constants";
 import Link from "~components/Link";
 import { END_ROTATION, START_ROTATION } from "~components/Gallery/HoloCard";

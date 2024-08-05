@@ -29,13 +29,13 @@ import Add from "public/assets/img/add.svg";
 import Stage from "public/assets/img/stage.svg";
 import HP from "public/assets/img/hp.svg";
 import Pokeball from "public/assets/img/pokeball.svg";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import useAttacks from "~hooks/useAttacks";
 import { cardAtom } from "~atoms/card";
 import { useRecoilValue } from "recoil";
 
 const InteractiveLayer = () => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const { control } = useFormContext();
   const stage = useWatch({
     control,

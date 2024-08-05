@@ -11,7 +11,7 @@ import {
 import Select from "~components/Select";
 import { Select as SelectOption } from "~constants";
 import { Card } from "~@types/Card";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import Report from "public/assets/img/report.svg";
 import Modal from "~components/Modal";
 import Field from "~components/Field";

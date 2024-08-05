@@ -3,7 +3,7 @@ import { useTheme, useBreakpointValue } from "@chakra-ui/react";
 import ReactSelect from "react-select";
 import { useController, Control, useWatch } from "react-hook-form";
 import dynamic from "next/dynamic";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 const getStyle = (theme, fontSize, dropdown, lineHeight) => {
   return {

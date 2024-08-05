@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useCallback, memo } from "react";
 import Reset from "public/assets/img/reset.svg";
 import { useColorMode, Image } from "@chakra-ui/react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import { useWatch, useFormContext } from "react-hook-form";
 import ConfirmReset from "~components/ConfirmReset";
 import OptionButton from "~components/PanelOptions/OptionButton";
@@ -10,7 +10,7 @@ import { CARD_DEFAULT_STATE } from "~data/card";
 import useResetCard from "~hooks/useResetCard";
 
 const ResetButton = () => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const [isOpen, setOpen] = useState(false);
   const { control } = useFormContext();
   const formValues = useWatch({

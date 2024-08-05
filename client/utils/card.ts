@@ -1,7 +1,7 @@
 import { Element } from "~@types/CardGenerator";
 import { Card } from "~@types/Card";
 import { ROUTE_GALLERY } from "~constants";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 
 export const printCard = () => {
   window.print();

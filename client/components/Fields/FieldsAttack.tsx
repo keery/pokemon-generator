@@ -22,7 +22,7 @@ const optionsAmount = ATTACK_AMOUNT_CHOICES.map((el) => ({
 }));
 
 const FieldsAttack = ({ name, hasColorInverted = false }) => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
 
   return (
     <>

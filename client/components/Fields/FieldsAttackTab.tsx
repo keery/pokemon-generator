@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "next-i18next";
+import { useTranslations } from "next-intl";
 import {
   Tabs,
   TabList,
@@ -21,7 +21,7 @@ const selected = {
 
 const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
   const [tabIndex, setTabIndex] = React.useState(defaultIndex);
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const fontSize = useColorModeValue("md", "0.65rem");
   const borderRadius = useColorModeValue("2rem", "none");
   const variantActiv = useColorModeValue("solid", "nes-button-blue");
