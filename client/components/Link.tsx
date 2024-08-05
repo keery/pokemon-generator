@@ -12,10 +12,24 @@ export interface Props
 
 const Link = (props: Props) => {
   const { t } = useTranslation();
-  const { children, href, as, shallow = false, style = {}, ...rest } = props;
+  const {
+    children,
+    href,
+    as,
+    shallow = false,
+    style = {},
+    isExternal,
+    ...rest
+  } = props;
 
   return (
-    <NextLink href={href} shallow={shallow} as={t(as as string)} style={style}>
+    <NextLink
+      href={href}
+      shallow={shallow}
+      as={t(as as string)}
+      style={style}
+      target={isExternal ? "_blank" : "_self"}
+    >
       <ChakraLink
         as="span"
         color="main"

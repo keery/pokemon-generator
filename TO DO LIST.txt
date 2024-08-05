@@ -51,6 +51,7 @@ Sur mobile quand je suis par exemple sur le champ description, lorsque jecris ca
 Bug report si l'app s'arrête
 Fix lien img sur CardImage and FrontHoloCard
 Page contact
+loading when we click on like button
 
 --------------------------
 

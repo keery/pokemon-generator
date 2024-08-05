@@ -13,6 +13,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import Instagram from "public/assets/img/instagram.svg";
 
 const links = [
   {
@@ -268,10 +269,13 @@ const Menu = ({ setOpen, isOpen }) => {
         </VStack>
       </Box>
 
-      <Box
-        className="menu-credit"
-        fontSize="1rem"
-        textTransform="uppercase"
+      <Link
+        href={process.env.NEXT_PUBLIC_INSTAGRAM_URL}
+        isExternal
+        _hover={{
+          color: "new.4",
+        }}
+        display="block"
         pos="absolute"
         bottom="1.5rem"
         left={{
@@ -279,10 +283,18 @@ const Menu = ({ setOpen, isOpen }) => {
           lg: "5%",
         }}
         zIndex={10}
-        color="new.3"
       >
-        © {process.env.NEXT_PUBLIC_APP_NAME}
-      </Box>
+        <Flex
+          className="menu-credit"
+          fontSize="1rem"
+          textTransform="uppercase"
+          color="new.3"
+          alignItems="center"
+          textDecoration="underline"
+        >
+          <Instagram /> <Box pl={2}>{t("follow")}</Box>
+        </Flex>
+      </Link>
     </Box>
   );
 };
