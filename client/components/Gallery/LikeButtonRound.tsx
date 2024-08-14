@@ -89,12 +89,12 @@ const LikeButtonRound = ({ card, cachedQuery, ...rest }: Props) => {
             borderRadius="100%"
             layerStyle="cover"
             opacity={isLiked ? 1 : 0}
-            filter="blur(4px)"
-            boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new[1]} 8px 8px 0px 0px inset, ${theme.colors.new[3]} 16px 16px 0px 0px inset, ${theme.colors.new[4]} 35px 35px 0px 0px inset`}
+            boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new[4]} 7px 7px 0px 0px inset, ${theme.colors.new[1]} 14px 14px 0px 0px inset, ${theme.colors.new[2]} 21px 21px 0px 0px inset, ${theme.colors.new[3]} 28px 28px 0px 0px inset`}
           />
         </Box>
         <Icon
           fill={"white"}
+          stroke="new.1"
           as={Heart}
           transition="color 200ms, transform 200ms, fill 200ms"
           sx={{

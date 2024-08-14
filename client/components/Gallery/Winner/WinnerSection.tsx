@@ -1,5 +1,11 @@
 import React from "react";
-import { Box, Text, Container, useBreakpointValue } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Container,
+  useBreakpointValue,
+  Heading,
+} from "@chakra-ui/react";
 import WinnerGlass from "~components/Gallery/Winner/WinnerGlass";
 import WinnerGlassMobile from "~components/Gallery/Winner/WinnerGlassMobile";
 import useWinner from "~hooks/useWinner";
@@ -27,6 +33,7 @@ const WinnerSection = () => {
         as="section"
         pos="relative"
       >
+        <Heading as="h1"></Heading>
         <ParallaxY
           input={[screenPercent(0), screenPercent(90), screenPercent(120)]}
           output={[0, 0, screenPercent(-30)]}
@@ -34,6 +41,7 @@ const WinnerSection = () => {
           pos="relative"
         >
           <Container
+            as="section"
             color="white"
             display="flex"
             mt={30}
@@ -42,6 +50,7 @@ const WinnerSection = () => {
             flexDirection={{ base: "column", md: "row" }}
           >
             <Text
+              as="h2"
               whiteSpace="pre"
               color="new.2"
               fontSize="0.9rem"

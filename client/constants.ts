@@ -7,7 +7,7 @@ export const ROUTE_SITEMAP = "/sitemap";
 export const ROUTE_404 = "/404";
 export const ROUTE_PORTFOLIO = "https://guillaumeesnault.fr/";
 
-export const LOGO = "/assets/img/pokeball.png";
+export const LOGO = "/assets/img/logo-pokemon-card-generator.svg";
 
 export const FIRE = "fire";
 export const GRASS = "grass";

@@ -218,8 +218,7 @@ const Menu = ({ setOpen, isOpen }) => {
                     borderRadius="100%"
                     w="100%"
                     h="100%"
-                    filter="blur(4px)"
-                    boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new[1]} 8px 8px 0px 0px inset, ${theme.colors.new[3]} 12px 12px 0px 0px inset, ${theme.colors.new[4]} 18px 18px 0px 0px inset`}
+                    boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new[4]} 5px 5px 0px 0px inset, ${theme.colors.new[1]} 10px 10px 0px 0px inset, ${theme.colors.new[2]} 15px 15px 0px 0px inset, ${theme.colors.new[3]} 20px 20px 0px 0px inset`}
                   />
                 </Circle>
               ) : (
@@ -288,7 +287,7 @@ const Menu = ({ setOpen, isOpen }) => {
           className="menu-credit"
           fontSize="1rem"
           textTransform="uppercase"
-          color="new.3"
+          color="new.4"
           alignItems="center"
           textDecoration="underline"
         >

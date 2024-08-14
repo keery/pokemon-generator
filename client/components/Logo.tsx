@@ -35,13 +35,13 @@ const Logo = ({ noLink = false, color = "white" }: Props) => {
         />
       )}
 
-      <Heading
-        as="h1"
+      <Text
         fontWeight="800"
         color={color}
         pl={3}
         lineHeight={0}
         fontFamily={fontFamily}
+        mt={1}
       >
         <Text as="span" fontSize={fontSize1} lineHeight="1">
           Pokemon card
@@ -50,7 +50,7 @@ const Logo = ({ noLink = false, color = "white" }: Props) => {
         <Text as="div" fontSize={fontSize2} lineHeight="1" mt={mt}>
           Generator
         </Text>
-      </Heading>
+      </Text>
     </Flex>
   );
 

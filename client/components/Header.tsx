@@ -3,10 +3,10 @@ import {
   Container,
   useColorModeValue,
   HStack,
+  Flex,
   ContainerProps,
 } from "@chakra-ui/react";
 import Logo from "~components/Logo";
-import NesButton from "~components/NesButton";
 import Nav from "~components/Nav";
 import { ROUTE_GENERATOR } from "~constants";
 import { useRouter } from "next/router";
@@ -29,13 +29,16 @@ const Header = ({ noColorChange = false, ...rest }: Props) => {
       alignItems="center"
       {...rest}
     >
-      <Logo color={router.pathname === ROUTE_GENERATOR ? "black" : "white"} />
+      <Flex
+        border="1px solid rgb(255 255 255 / 46%)"
+        px={6}
+        py={2}
+        borderRadius="1rem"
+        layerStyle={"glass"}
+      >
+        <Logo color={router.pathname === ROUTE_GENERATOR ? "black" : "white"} />
+      </Flex>
       <HStack alignItems="center" spacing={6}>
-        {/* 
-        TODO: make NES mode perfectly clean
-        {router.pathname === ROUTE_GENERATOR && (
-          <NesButton noColorChange={noColorChange} />
-        )} */}
         <Nav />
       </HStack>
     </Container>

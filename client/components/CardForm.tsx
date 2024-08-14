@@ -119,7 +119,18 @@ const CardForm = () => {
           <Flex direction="column" flexGrow={1} h="1%">
             {isDesktop && (
               <Flex alignItems="center" justifyContent="space-between">
-                <Logo color="black" />
+                <Flex
+                  border="1px solid rgb(255 255 255 / 46%)"
+                  px={6}
+                  py={2}
+                  borderRadius="1rem"
+                  bgColor={{
+                    base: "rgb(255 255 255 / 82%)",
+                    xl: "rgb(255 255 255 / 33%)",
+                  }}
+                >
+                  <Logo color="black" />
+                </Flex>
                 {/* 
                 TODO: make NES mode perfectly clean
                 <NesButton noColorChange={false} /> */}

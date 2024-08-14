@@ -100,11 +100,11 @@ const Home: NextPage = () => {
         />
       </form>
       <Container as="section" pos="relative">
-        <Heading as="h2" mb="4" pt="12">
+        <Heading as="h1" mb="4" pt="12">
           {t("googleads.title")}
         </Heading>
         <p>{t("googleads.description")}</p>
-        <Heading as="h3" mb="4" mt="6">
+        <Heading as="h2" mb="4" mt="6">
           {t("googleads.features")}
         </Heading>
         <Stack>

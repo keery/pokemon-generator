@@ -5,6 +5,7 @@ import {
   Text,
   Flex,
   useBreakpointValue,
+  Heading,
 } from "@chakra-ui/react";
 
 import GalleryTopBackground from "~components/Gallery/GalleryTopBackground";
@@ -75,6 +76,20 @@ const GalleryTop = () => {
                 zIndex={2}
                 alignItems={{ base: "center", md: "flex-start" }}
               >
+                <Heading
+                  as="h1"
+                  fontSize={{
+                    base: "xl",
+                    sm: "2xl",
+                    md: "3xl",
+                  }}
+                  alignSelf="center"
+                  textShadow="0 0 7px rgb(73 73 73 / 41%)"
+                  textAlign="center"
+                  color="new.3"
+                >
+                  {t("h1")}
+                </Heading>
                 <Text
                   alignSelf="center"
                   textShadow="0 0 7px rgb(73 73 73 / 41%)"
