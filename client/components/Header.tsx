@@ -19,6 +19,10 @@ const Header = ({ noColorChange = false, ...rest }: Props) => {
   const py = useColorModeValue(4, 0);
   const router = useRouter();
 
+  const logo = (
+    <Logo color={router.pathname === ROUTE_GENERATOR ? "black" : "white"} />
+  );
+
   return (
     <Container
       as="header"
@@ -29,15 +33,19 @@ const Header = ({ noColorChange = false, ...rest }: Props) => {
       alignItems="center"
       {...rest}
     >
-      <Flex
-        border="1px solid rgb(255 255 255 / 46%)"
-        px={6}
-        py={2}
-        borderRadius="1rem"
-        layerStyle={"glass"}
-      >
-        <Logo color={router.pathname === ROUTE_GENERATOR ? "black" : "white"} />
-      </Flex>
+      {!noColorChange ? (
+        <Flex
+          border="1px solid rgb(255 255 255 / 46%)"
+          px={6}
+          py={2}
+          borderRadius="1rem"
+          layerStyle={"glass"}
+        >
+          {logo}
+        </Flex>
+      ) : (
+        <>{logo}</>
+      )}
       <HStack alignItems="center" spacing={6}>
         <Nav />
       </HStack>
