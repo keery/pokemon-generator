@@ -206,9 +206,9 @@ body,
   /* height: 100%; */
 }
 
-#__next {
+/* #__next {
   overflow: hidden;
-}
+} */
 
 *:focus {
   box-shadow: none !important;

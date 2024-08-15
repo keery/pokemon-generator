@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Flex, useColorMode } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import Header from "~components/Header";
@@ -24,6 +24,7 @@ const Layout = ({ children }: Props) => {
       <Flex
         direction="column"
         h={pathname === ROUTE_GENERATOR ? "100%" : "auto"}
+        overflow={pathname === ROUTE_GENERATOR ? "hidden" : "none"}
       >
         {pathname !== ROUTE_GENERATOR && (
           <Header
@@ -37,7 +38,6 @@ const Layout = ({ children }: Props) => {
         {children}
       </Flex>
       <Footer isGeneratorPage={pathname === ROUTE_GENERATOR} />
-      {/* {pathname !== ROUTE_GENERATOR ? <Footer /> : ""} */}
     </>
   );
 };
