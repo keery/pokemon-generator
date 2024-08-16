@@ -33,7 +33,7 @@ import ReportButton from "~components/Gallery/CardModal/ReportButton";
 import useKeybordShortcut from "~hooks/useKeybordShortcut";
 import useModalStyles from "~hooks/useModalStyles";
 import { CachedQuery } from "~@types/CachedQuery";
-import { useTranslation, Trans } from "next-i18next";
+import { useTranslations, useLocale } from "next-intl";
 import dynamic from "next/dynamic";
 
 const LikeButton = dynamic(() => import("~components/Gallery/LikeButton"), {
@@ -96,7 +96,8 @@ const getNextPrevAnimation = (orderPrev, orderNext) => {
 };
 
 export const CardModalContent = ({ card, animation, isPage = false }) => {
-  const { t, i18n } = useTranslation("gallery");
+  const t = useTranslations();
+  const locale = useLocale();
   const isMobile = useBreakpointValue({ base: true, lg: false });
   const overflow = useBreakpointValue({ base: "auto", lg: "hidden" });
 
@@ -196,16 +197,20 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
               <Flex direction="column">
                 {!isMobile && (
                   <Text fontWeight="300">
-                    <Trans
+                    {/* TODO: verify ex Trans tag */}
+                    {t.markup("modal.created", {
+                      b: (chunks) => `<b>${chunks}</b>`,
+                      date: dateToText(card.created_at, locale),
+                      author: card.author,
+                    })}
+                    {/* <Trans
                       i18nKey="gallery:modal.created"
                       values={{
-                        date: dateToText(card.created_at, i18n.language),
-                        author: card.author,
                       }}
                       components={{
                         b: <b />,
                       }}
-                    />
+                    /> */}
                   </Text>
                 )}
                 {isMobile && (
@@ -263,16 +268,22 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
               >
                 {isMobile && (
                   <Text fontWeight="300" mb={3}>
-                    <Trans
+                    {/* TODO: same verify here */}
+                    {t.markup("modal.created", {
+                      b: (chunks) => `<b>${chunks}</b>`,
+                      date: dateToText(card.created_at, locale),
+                      author: card.author,
+                    })}
+                    {/* <Trans
                       i18nKey="gallery:modal.created"
                       values={{
-                        date: dateToText(card.created_at, i18n.language),
+                        date: dateToText(card.created_at, locale),
                         author: card.author,
                       }}
                       components={{
                         b: <b />,
                       }}
-                    />
+                    /> */}
                   </Text>
                 )}
                 {card.description && (

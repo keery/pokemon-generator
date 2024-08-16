@@ -134,7 +134,7 @@ const ReportButton = ({ card }: Props) => {
           )}
           <HStack justifyContent="flex-end" mt={2} spacing={2}>
             <Button variant="outline" isDisabled={isLoading} onClick={onClose}>
-              {t("common:cancel")}
+              {t("cancel")}
             </Button>
             <Button
               variant="glass"
@@ -143,7 +143,7 @@ const ReportButton = ({ card }: Props) => {
               layerColors={["new.1", "new.4", "new.3"]}
               color="white"
             >
-              {t("common:confirm")}
+              {t("confirm")}
             </Button>
           </HStack>
         </form>

@@ -57,10 +57,10 @@ const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
               ref={cancelRef}
               onClick={() => setOpen(false)}
             >
-              {t("common:cancel")}
+              {t("cancel")}
             </Button>
             <Button onClick={confirm} ml={3} cursor="pointer" variant={variant}>
-              {t("common:confirm")}
+              {t("confirm")}
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

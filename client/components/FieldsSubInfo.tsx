@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import { useFormContext } from "react-hook-form";
 import Select from "~components/Select";
 import Field from "~components/Field";
@@ -25,7 +25,12 @@ const FieldsSubInfo = () => {
         />
       </Field>
       <Field label={t("weaknessAmount")}>
-        <Select name="weaknessAmount" options={WEAKNESS_OPTIONS} isClearable />
+        <Select
+          name="weaknessAmount"
+          options={WEAKNESS_OPTIONS}
+          isClearable
+          isTranslated={false}
+        />
       </Field>
       <Field label={t("resistanceType")}>
         <Select
@@ -40,6 +45,7 @@ const FieldsSubInfo = () => {
           name="resistanceAmount"
           options={RESISTANCE_OPTIONS}
           isClearable
+          isTranslated={false}
         />
       </Field>
       <Field label={t("retreat")}>
@@ -48,6 +54,7 @@ const FieldsSubInfo = () => {
           options={RETREAT_OPTIONS}
           isClearable
           iconPath="1-gen/normal.png"
+          isTranslated={false}
         />
       </Field>
     </>

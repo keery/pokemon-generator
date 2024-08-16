@@ -15,10 +15,9 @@ import {
   ROUTE_GALLERY,
   ROUTE_GENERATOR,
   ROUTE_CGU,
-  ROUTE_SITEMAP,
   LOGO,
 } from "~constants";
-import { usePathname } from "next/navigation";
+import usePathname from "~hooks/usePathname";
 import { useTranslations } from "next-intl";
 import useCardsCount from "~hooks/useCardsCount";
 

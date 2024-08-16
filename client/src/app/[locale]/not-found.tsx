@@ -2,7 +2,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import Link from "~components/Link";
 import { useTranslations } from "next-intl";
 
-export default function Custom404() {
+export default function Custom404(test) {
   const t = useTranslations();
   return (
     <Flex

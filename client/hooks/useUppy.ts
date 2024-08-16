@@ -9,7 +9,7 @@ import Url from "@uppy/url";
 import French from "@uppy/locales/lib/fr_FR";
 import Spanish from "@uppy/locales/lib/es_ES";
 import { useUppy as useUppyReact } from "@uppy/react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import useToast from "~hooks/useToast";
 import { useFormContext } from "react-hook-form";
 import { CARD_DEFAULT_STATE } from "~data/card";
@@ -37,14 +37,15 @@ interface Params {
 
 const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
   const { setValue } = useFormContext();
-  const { t, i18n } = useTranslation("generator");
+  const t = useTranslations();
+  const locale = useLocale();
   const { errorToast } = useToast();
 
   const uppy = useUppyReact(() => {
     const instance = new Uppy({
       id,
       autoProceed: true,
-      locale: getUppyTranslations(i18n.language),
+      locale: getUppyTranslations(locale),
       debug: true,
       allowMultipleUploads: false,
       restrictions: {

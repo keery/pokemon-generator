@@ -170,7 +170,7 @@ const ModalResizeImg = ({
               color="white"
               h="3rem"
             >
-              {t("common:confirm")}
+              {t("confirm")}
             </Button>
           </Flex>
         </Flex>

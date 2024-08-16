@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import { useFormContext, useWatch } from "react-hook-form";
 import FileInput from "~components/FileInput";
 import Select from "~components/Select";
@@ -20,7 +20,7 @@ const FieldsEvolution = () => {
   return (
     <>
       <Field label={t("stage")}>
-        <Select name="stage" options={STAGE_OPTIONS} />
+        <Select name="stage" options={STAGE_OPTIONS} isTranslated={false} />
       </Field>
       <Field label={t("name")} isDisabled={stage.value === BASIC}>
         <Input name="nameEvolution" type="text" />

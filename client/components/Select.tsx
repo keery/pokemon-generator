@@ -169,6 +169,7 @@ interface Props {
   hasColorInverted?: boolean;
   onChange?: (value: any) => void;
   options: SelectOption<string | number>[];
+  isTranslated?: boolean;
 }
 
 const Select = ({
@@ -179,6 +180,7 @@ const Select = ({
   isClearable = false,
   onChange = null,
   hasColorInverted = false,
+  isTranslated = true,
 }: Props) => {
   const t = useTranslations();
   const { watch, setValue } = useFormContext();
@@ -207,7 +209,7 @@ const Select = ({
       isClearable={isClearable}
       menuPortalTarget={document.body}
       menuPlacement="auto"
-      formatOptionLabel={({ label }) => t(label)}
+      formatOptionLabel={({ label }) => (isTranslated ? t(label) : label)}
       value={value}
       // menuIsOpen
     />

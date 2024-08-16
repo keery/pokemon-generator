@@ -9,7 +9,7 @@ import Logo from "~components/Logo";
 import NesButton from "~components/NesButton";
 import Nav from "~components/Nav";
 import { ROUTE_GENERATOR } from "~constants";
-import { usePathname } from "next/navigation";
+import usePathname from "~hooks/usePathname";
 
 interface Props extends ContainerProps {
   noColorChange?: boolean;

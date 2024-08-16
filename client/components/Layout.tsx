@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { Flex, useColorMode } from "@chakra-ui/react";
-import { usePathname } from "next/navigation";
+import usePathname from "~hooks/usePathname";
 import Header from "~components/Header";
 import Footer from "~components/Footer";
 import { ROUTE_GENERATOR, ROUTE_GALLERY } from "~constants";

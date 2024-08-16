@@ -10,7 +10,7 @@ import {
   ModalFooter,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 import { closeModalWithUrl } from "~utils/helper";
 
 interface Props extends Omit<ModalProps, "isOpen"> {
@@ -36,7 +36,8 @@ const Modal = ({
   isUrlChanging = true,
   ...rest
 }: Props) => {
-  const router = useRouter();
+  const searchParams = useSearchParams();
+  const modal = searchParams.get("modal");
   const style = useColorModeValue(
     {},
     {
@@ -55,7 +56,7 @@ const Modal = ({
     <>
       {button}
       <ModalChakra
-        isOpen={router.query?.modal === name || isOpen}
+        isOpen={modal === name || isOpen}
         onClose={() => {
           if (isUrlChanging) {
             closeModalWithUrl(onClose);

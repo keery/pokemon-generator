@@ -13,6 +13,7 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import usePathname from "~hooks/usePathname";
+import Instagram from "public/assets/img/instagram.svg";
 
 const links = [
   {
@@ -217,8 +218,7 @@ const Menu = ({ setOpen, isOpen }) => {
                     borderRadius="100%"
                     w="100%"
                     h="100%"
-                    filter="blur(4px)"
-                    boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new[1]} 8px 8px 0px 0px inset, ${theme.colors.new[3]} 12px 12px 0px 0px inset, ${theme.colors.new[4]} 18px 18px 0px 0px inset`}
+                    boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new[4]} 5px 5px 0px 0px inset, ${theme.colors.new[1]} 10px 10px 0px 0px inset, ${theme.colors.new[2]} 15px 15px 0px 0px inset, ${theme.colors.new[3]} 20px 20px 0px 0px inset`}
                   />
                 </Circle>
               ) : (
@@ -245,6 +245,7 @@ const Menu = ({ setOpen, isOpen }) => {
                 textAlign="center"
                 color="white"
                 lineHeight="1"
+                py={6}
                 sx={
                   isMobile && {
                     backgroundColor: "white",
@@ -268,10 +269,13 @@ const Menu = ({ setOpen, isOpen }) => {
         </VStack>
       </Box>
 
-      <Box
-        className="menu-credit"
-        fontSize="1rem"
-        textTransform="uppercase"
+      <Link
+        href={process.env.NEXT_PUBLIC_INSTAGRAM_URL}
+        isExternal
+        _hover={{
+          color: "new.4",
+        }}
+        display="block"
         pos="absolute"
         bottom="1.5rem"
         left={{
@@ -279,10 +283,18 @@ const Menu = ({ setOpen, isOpen }) => {
           lg: "5%",
         }}
         zIndex={10}
-        color="new.3"
       >
-        © {process.env.NEXT_PUBLIC_APP_NAME}
-      </Box>
+        <Flex
+          className="menu-credit"
+          fontSize="1rem"
+          textTransform="uppercase"
+          color="new.4"
+          alignItems="center"
+          textDecoration="underline"
+        >
+          <Instagram /> <Box pl={2}>{t("follow")}</Box>
+        </Flex>
+      </Link>
     </Box>
   );
 };

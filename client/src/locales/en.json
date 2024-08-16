@@ -87,8 +87,6 @@
       "normal" : "Normal",
       "steel" : "Steel",
       "dark" : "Dark",
-      "attack1" : "Attack n°1",
-      "attack2" : "Attack n°2",
       "filters": {
         "mostRecent": "Most recent cards",
         "recentWinner": "Most recent winners",
@@ -117,6 +115,7 @@
           "button": "Create my card"
         }
       },
+      "follow": "Join our community on Instagram!",
       "modal": {
         "created": "Created on {{date}} by <b>{{author}}</b>",
         "description": "Description",
@@ -146,15 +145,6 @@
         "minutes": "minutes",
         "seconds": "seconds"
       },
-      "fire" : "Fire",
-    "grass" : "Grass",
-    "water" : "Water",
-    "electric" : "Electric",
-    "psychic" : "Psychic",
-    "fighting" : "Fighting",
-    "normal" : "Normal",
-    "steel" : "Steel",
-    "dark" : "Dark",
     "basicInfo" : "Informations",
     "common" : "Common",
     "uncommon" : "Uncommun",
@@ -168,6 +158,7 @@
     "length" : "Length",
     "weight" : "Weight",
     "stage" : "Stage",
+    "basic" : "Basic",
     "evolution" : "Evolution",
     "damage" : "Damage",
     "info" : "Info",

@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import { DAMAGE_CHOICES, ATTACK_AMOUNT_CHOICES, ELEMENTS } from "~constants";
 import Select from "~components/Select";
 import Field from "~components/Field";
@@ -35,6 +35,7 @@ const FieldsAttack = ({ name, hasColorInverted = false }) => {
           options={optionsDamage}
           isClearable
           hasColorInverted={hasColorInverted}
+          isTranslated={false}
         />
       </Field>
       <Field label={t("info")}>
@@ -45,6 +46,7 @@ const FieldsAttack = ({ name, hasColorInverted = false }) => {
           name={`${name}Amount`}
           options={optionsAmount}
           hasColorInverted={hasColorInverted}
+          isTranslated={false}
         />
       </Field>
       <Field label={t("type")}>

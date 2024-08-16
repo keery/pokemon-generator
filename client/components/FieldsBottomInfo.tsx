@@ -1,5 +1,5 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import { useFormContext } from "react-hook-form";
 import Select from "~components/Select";
 import Textarea from "~components/Textarea";

@@ -1,7 +1,8 @@
+"use client";
 import React, { useEffect } from "react";
 import Modal from "~components/Modal";
 import { Flex, Image, Text, HStack } from "@chakra-ui/react";
-import confetti from "canvas-confetti";
+// import confetti from "canvas-confetti";
 import { useTranslations } from "next-intl";
 import Link from "~components/Link";
 import Button from "~components/Button";
@@ -20,11 +21,12 @@ const PublishedSuccess = ({ isOpen, onClose }: Props) => {
   useEffect(() => {
     if (isOpen) {
       resetCard();
-      confetti({
-        zIndex: 10000,
-        particleCount: 150,
-        spread: 90,
-      });
+      // TODO: bring back the confetti
+      // confetti({
+      //   zIndex: 10000,
+      //   particleCount: 150,
+      //   spread: 90,
+      // });
     }
   }, [isOpen]);
 

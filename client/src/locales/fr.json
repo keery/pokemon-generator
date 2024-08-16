@@ -78,17 +78,6 @@
       "electedIn": "élu dans",
       "topCta": "Créer une carte",
       "madeBy": "Par {{name}}",
-      "fire" : "Feu",
-      "grass" : "Herbe",
-      "water" : "Eau",
-      "electric" : "Électrique",
-      "psychic" : "Psy",
-      "fighting" : "Combat",
-      "normal" : "Normal",
-      "steel" : "Acier",
-      "dark" : "Ténebre",
-      "attack1" : "Attaque n°1",
-      "attack2" : "Attaque n°2",
       "filters": {
         "mostRecent": "Les dernières créations",
         "recentWinner": "Les derniers gagnants",
@@ -117,6 +106,7 @@
           "button": "Créer ma carte"
         }
       },
+      "follow": "Suivre notre communauté sur Instagram !",
       "modal": {
         "created": "Créée le {{date}} par <b>{{author}}</b>",
         "description": "Description",
@@ -167,6 +157,7 @@
     "species" : "Spécialité",
     "length" : "Taille",
     "weight" : "Poids",
+    "basic" : "Basic",
     "stage" : "Stage",
     "evolution" : "Évolution",
     "damage" : "Dommage",

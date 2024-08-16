@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "~components/Modal";
 import { Flex, Text, Checkbox, Input, Box } from "@chakra-ui/react";
-import { useTranslation, Trans } from "next-i18next";
+import { useTranslations } from "next-intl";
 import Link from "~components/Link";
 import PublishedSuccess from "~components/Publishing/PublishedSuccess";
 import WarningBox from "~components/WarningBox";
@@ -60,12 +60,16 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
         title={t("publish.confirm.title")}
       >
         <Box>
-          <Trans
+          {/* TODO: verify because old Trans tag */}
+          {t.markup("publish.confirm.desc", {
+            b: (chunks) => `<b>${chunks}</b>`,
+          })}
+          {/* <Trans
             i18nKey="generator:publish.confirm.desc"
             components={{
               b: <b />,
             }}
-          />
+          /> */}
         </Box>
 
         <Field label={`${t("publish.confirm.author.label")} *`} mt="1rem">
@@ -95,19 +99,19 @@ const PublishConfirmation = ({ children, onClose, isOpen }: Props) => {
               onChange={(e) => setChecked(e.target.checked)}
             />
             <Text pl={4}>
-              <Trans
-                i18nKey="generator:publish.confirm.checkbox"
-                components={{
-                  a: (
-                    <Link
-                      href={ROUTE_CGU}
-                      textDecoration="underline"
-                      color="new.2"
-                      isExternal
-                    />
-                  ),
-                }}
-              />
+              {/* TODO: check rendering */}
+              {t.rich("publish.confirm.checkbox", {
+                a: (chunks) => (
+                  <Link
+                    href={ROUTE_CGU}
+                    textDecoration="underline"
+                    color="new.2"
+                    isExternal
+                  >
+                    {chunks}
+                  </Link>
+                ),
+              })}
             </Text>
           </Flex>
         </Flex>

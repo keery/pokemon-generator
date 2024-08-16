@@ -25,7 +25,7 @@ import NesButton from "~components/NesButton";
 import PublishButton from "~components/Publishing/PublishButton";
 
 const CardForm = () => {
-  const { t } = useTranslation("generator");
+  const t = useTranslations();
   const isDesktop = useBreakpointValue({ base: false, xl: true });
   const layerStyle = useColorModeValue("glass", "nes-container");
   const borderRadius = useColorModeValue("md", "none");
@@ -129,7 +129,6 @@ const CardForm = () => {
               defaultIndex={[0, 1, 2, 3, 4, 5]}
               overflowY="scroll"
               allowMultiple
-              allowToggle
               mt={{ base: 0, xl: mt }}
               w="100%"
               borderRadius="sm"

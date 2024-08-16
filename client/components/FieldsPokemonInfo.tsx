@@ -1,7 +1,7 @@
 import React from "react";
 import Field from "~components/Field";
 import { useFormContext } from "react-hook-form";
-import { useTranslation } from "react-i18next";
+import { useTranslations } from "next-intl";
 import Select from "~components/Select";
 import Checkbox from "~components/Checkbox";
 import FileInput from "~components/FileInput";
@@ -29,7 +29,12 @@ const FieldsPokemonInfo = () => {
         <FileInput name="mainImage" />
       </Field>
       <Field label="HP">
-        <Select name="hp" options={HP_OPTIONS} isClearable />
+        <Select
+          name="hp"
+          options={HP_OPTIONS}
+          isClearable
+          isTranslated={false}
+        />
       </Field>
       <FieldsLengthWeight />
       <Checkbox

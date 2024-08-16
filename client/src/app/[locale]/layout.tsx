@@ -3,7 +3,8 @@ import React from "react";
 
 import AppHead from "~components/AppHead";
 import Layout from "~components/Layout";
-import { NextIntlClientProvider, useMessages } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 
 import { Providers } from "./providers";
 import { locales } from "~src/locales";
@@ -25,7 +26,7 @@ export async function generateStaticParams() {
   return locales.map((lng) => ({ lng }));
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
   children,
@@ -36,7 +37,7 @@ export default function RootLayout({
     lng: string;
   };
 }) {
-  const messages = useMessages();
+  const messages = await getMessages();
 
   return (
     <html lang={lng}>
