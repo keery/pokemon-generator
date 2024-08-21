@@ -1,12 +1,12 @@
+"use client";
 import React from "react";
-import { useTheme, useColorMode } from "@chakra-ui/react";
+import { useTheme } from "@chakra-ui/react";
 import ReactSelect from "react-select";
 import { useFormContext } from "react-hook-form";
-import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { Select as SelectOption } from "~constants";
 
-const getStyle = (theme, iconPath, colorMode, hasColorInverted) => {
+const getStyle = (theme, iconPath, hasColorInverted) => {
   const before = {
     content: '""',
     display: "inline-block",
@@ -19,27 +19,6 @@ const getStyle = (theme, iconPath, colorMode, hasColorInverted) => {
   return {
     menuPortal: (base) => ({ ...base, zIndex: 9999 }),
     dropdownIndicator: (base) => {
-      if (colorMode === "dark") {
-        return {
-          color: "transparent",
-          ":after": {
-            content: "''",
-            width: "3px",
-            height: "3px",
-            color: "#212529",
-            cursor: "pointer",
-            boxShadow:
-              "3px 3px, 6px 3px, 9px 3px, 12px 3px, 15px 3px, 18px 3px, 21px 3px, 3px 6px, 6px 6px, 9px 6px, 12px 6px, 15px 6px, 18px 6px, 21px 6px, 6px 9px, 9px 9px, 12px 9px, 15px 9px, 18px 9px, 6px 12px, 9px 12px, 12px 12px, 15px 12px, 18px 12px, 9px 15px, 12px 15px, 15px 15px, 12px 18px",
-            position: "absolute",
-            top: "calc(50% - 12px)",
-            right: "30px",
-            pointerEvents: "none",
-          },
-          ":hover:after": {
-            color: "#5f6060",
-          },
-        };
-      }
       return {
         ...base,
         color: hasColorInverted ? "white" : theme.colors.new[1],
@@ -94,25 +73,6 @@ const getStyle = (theme, iconPath, colorMode, hasColorInverted) => {
               },
             }
           : {};
-      if (colorMode === "dark") {
-        return {
-          ...styles,
-          ...theme.layerStyles["nes-input"],
-          height: "40px",
-          padding: 0,
-          ...iconPreview,
-          ":after": {
-            content: "''",
-            position: "absolute",
-            zIndex: "-1",
-            left: "-4px",
-            top: "-4px",
-            right: "-4px",
-            bottom: "-4px",
-            backgroundColor: "white",
-          },
-        };
-      }
 
       return {
         ...styles,
@@ -184,7 +144,6 @@ const Select = ({
 }: Props) => {
   const t = useTranslations();
   const { watch, setValue } = useFormContext();
-  const { colorMode } = useColorMode();
   const theme = useTheme();
   const value = watch(name);
 
@@ -204,7 +163,7 @@ const Select = ({
       name={name}
       placeholder={placeholder}
       options={options}
-      styles={getStyle(theme, iconPath, colorMode, hasColorInverted)}
+      styles={getStyle(theme, iconPath, hasColorInverted)}
       onChange={onChangeSelect}
       isClearable={isClearable}
       menuPortalTarget={document.body}
@@ -216,6 +175,4 @@ const Select = ({
   );
 };
 
-export default dynamic(() => Promise.resolve(Select), {
-  ssr: false,
-});
+export default Select;

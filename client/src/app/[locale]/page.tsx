@@ -12,21 +12,15 @@ import {
 } from "@chakra-ui/react";
 import BackgroundBlur from "~components/BackgroundBlur";
 import CardForm from "~components/CardForm";
+import Card from "~components/Card";
 import Nav from "~components/Nav";
 import ModalUppy from "~components/ModalUppy";
+import PanelOptions from "~components/PanelOptions/PanelOptions";
 import Header from "~components/Header";
 import { CARD_DEFAULT_STATE } from "~data/card";
 import { decrypt } from "~utils/cache";
 import { useTranslations } from "next-intl";
 import { useForm, FormProvider } from "react-hook-form";
-
-import dynamic from "next/dynamic";
-
-const Card = dynamic(() => import("~components/Card"), { ssr: false });
-const PanelOptions = dynamic(
-  () => import("~components/PanelOptions/PanelOptions"),
-  { ssr: false }
-);
 
 const Home: NextPage = () => {
   const cachedCard =
@@ -100,11 +94,11 @@ const Home: NextPage = () => {
         />
       </form>
       <Container as="section" pos="relative">
-        <Heading as="h2" mb="4" pt="12">
+        <Heading as="h1" mb="4" pt="12">
           {t("googleads.title")}
         </Heading>
         <p>{t("googleads.description")}</p>
-        <Heading as="h3" mb="4" mt="6">
+        <Heading as="h2" mb="4" mt="6">
           {t("googleads.features")}
         </Heading>
         <Stack>

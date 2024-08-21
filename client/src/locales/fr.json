@@ -1,21 +1,21 @@
 {
     "title": "Conditions générales d’utilisation",
-    "update": "(Mise à jour le {{date}})",
+    "update": "(Mise à jour le {date})",
     "line1": "Les présentes « conditions générales d’utilisation » ont pour objet l’encadrement juridique des modalités de mise à disposition des services du site internet et leur utilisation par « l’Utilisateur ». Les conditions générales d’utilisation doivent être acceptées par tout Utilisateur souhaitant accéder au site. Elles constituent le contrat entre le site et l’Utilisateur. L’accès au site par l’Utilisateur signifie son acceptation des présentes conditions générales d’utilisation. Nous nous réservons le droit de modifier unilatéralement et à tout moment le contenu des présentes CGU.",
     "mention": {
         "title": "Mentions Légales",
-        "text": "Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de rectification aux informations qui vous concernent, que vous pouvez exercer en vous adressant à {{app_name}} dont les coordonnées sont ci-dessous.\nVous pouvez également, pour des motifs légitimes, vous opposer au traitement des données vous concernant.",
-        "line1": "{{app_name}} est la propriété de {{name}}",
+        "text": "Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de rectification aux informations qui vous concernent, que vous pouvez exercer en vous adressant à {app_name} dont les coordonnées sont ci-dessous.\nVous pouvez également, pour des motifs légitimes, vous opposer au traitement des données vous concernant.",
+        "line1": "{app_name} est la propriété de {name}",
         "email": "Mèl",
-        "host": "{{app_name}} est hébergé par {{host}} dont le siège social est situé 2 rue Kellermann - 59100 Roubaix - France."
+        "host": "{app_name} est hébergé par {host} dont le siège social est situé 2 rue Kellermann - 59100 Roubaix - France."
     },
     "art1": {
         "title": "Article 1 : Présentation.",
-        "text":"{{app_name}} est un site Internet français gratuit, ouvert à tous. Les frais relatifs à l'accès au site (connexion Internet et équipements informatiques) quels qu'ils soient, sont à la charge de l'utilisateur."
+        "text":"{app_name} est un site Internet français gratuit, ouvert à tous. Les frais relatifs à l'accès au site (connexion Internet et équipements informatiques) quels qu'ils soient, sont à la charge de l'utilisateur."
     },
     "art2": {
         "title": "Article 2 : Données personnelles.",
-        "text": "Les informations utilisés au sein de l'application sont un nom d'auteur lors de la publication d'une carte qui peut être fictif ou réel, ainsi que l'IP de l'utilisateur afin d'améliorer l'expérience utilisateur au sein de l'application. Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de rectification aux informations qui vous concernent, que vous pouvez exercer en vous adressant à {{email}}."
+        "text": "Les informations utilisés au sein de l'application sont un nom d'auteur lors de la publication d'une carte qui peut être fictif ou réel, ainsi que l'IP de l'utilisateur afin d'améliorer l'expérience utilisateur au sein de l'application. Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de rectification aux informations qui vous concernent, que vous pouvez exercer en vous adressant à {email}."
     },
     "art3": {
         "title": "Article 3 : Contenu de vos participations.",
@@ -31,15 +31,15 @@
     },
     "art6": {
         "title": "Article 6 : Responsabilités",
-        "text": "La modération a posteriori ne permet pas à {{app_name}} d'être tenu responsable des images publiées.\n{{app_name}} s'engage à intervenir en cas d'alerte dans les plus brefs délais.\nTout image contrevenant aux règles ci-présentes, à la loi ou à tout autre code de conduite, n'engage que la responsabilité de leur auteur.\nBien que contrôlé au mieux, avec une volonté d'optimiser les délais et les conditions de contrôle sur le contenu, par des ayants droit du forum, le terme \"modération\" ne signifie pas que {{app_name}} ou les ayants droit {{url}} disposent d'un contrôle total sur les images.\nN'importe quel utilisateur qui estime qu'une image envoyée est répréhensible, est encouragé à nous contacter immédiatement par e-mail ou à l'aide de l'outil d'alerte mis à disposition.\nDans ce souci d'optimisation du contrôle sur le contenu, {{app_name}} s'autorise à supprimer, modifier, déplacer, tout image qui serait jugée contrevenant au bon fonctionnement du site, sans préavis, à supprimer, modifier ou suspendre tout compte de membre ou à déléguer ces droits à certains membres, groupes, définissant le terme \"ayants droit\" suscité.\nAfin de respecter les présentes conditions d'utilisation, les adresses IPs sont enregistrées.\nDans l'optique du rôle qui leur est assigné, les ayants droit de {{app_name}} ne sont pas tenus de justifier leurs actions. Si une contestation semble nécessaire, celle-ci devra se faire obligatoirement par email."
+        "text": "La modération a posteriori ne permet pas à {app_name} d'être tenu responsable des images publiées.\n{app_name} s'engage à intervenir en cas d'alerte dans les plus brefs délais.\nTout image contrevenant aux règles ci-présentes, à la loi ou à tout autre code de conduite, n'engage que la responsabilité de leur auteur.\nBien que contrôlé au mieux, avec une volonté d'optimiser les délais et les conditions de contrôle sur le contenu, par des ayants droit du forum, le terme \"modération\" ne signifie pas que {app_name} ou les ayants droit {url} disposent d'un contrôle total sur les images.\nN'importe quel utilisateur qui estime qu'une image envoyée est répréhensible, est encouragé à nous contacter immédiatement par e-mail ou à l'aide de l'outil d'alerte mis à disposition.\nDans ce souci d'optimisation du contrôle sur le contenu, {app_name} s'autorise à supprimer, modifier, déplacer, tout image qui serait jugée contrevenant au bon fonctionnement du site, sans préavis, à supprimer, modifier ou suspendre tout compte de membre ou à déléguer ces droits à certains membres, groupes, définissant le terme \"ayants droit\" suscité.\nAfin de respecter les présentes conditions d'utilisation, les adresses IPs sont enregistrées.\nDans l'optique du rôle qui leur est assigné, les ayants droit de {app_name} ne sont pas tenus de justifier leurs actions. Si une contestation semble nécessaire, celle-ci devra se faire obligatoirement par email."
     },
     "art7": {
         "title": "Article 7 : Droit Applicable",
-        "text": "Toute contribution sur le site {{url}} est régie par le Code de la propriété Intellectuelle. Chaque utilisateur restant le propriétaire de ses images. En publiant des contributions, vous autorisez la société {{app_name}} à référencer le contenu de vos contributions sur les différents moteurs de recherche. Vous renoncez à poursuivre la société {{app_name}} suite à un problème ou dommage causé par un autre utilisateur en violation des conditions générales d'utilisation."
+        "text": "Toute contribution sur le site {url} est régie par le Code de la propriété Intellectuelle. Chaque utilisateur restant le propriétaire de ses images. En publiant des contributions, vous autorisez la société {app_name} à référencer le contenu de vos contributions sur les différents moteurs de recherche. Vous renoncez à poursuivre la société {app_name} suite à un problème ou dommage causé par un autre utilisateur en violation des conditions générales d'utilisation."
     },
     "art8": {
         "title": "Article 8 : Cookies",
-        "text": "Le site {{url}} est amené à enregistrer des cookies sur votre navigateur afin de conserver vos préférences de navigation et pour réaliser des statistiques (Google Analytics).\nVous pouvez vous opposer à cet enregistrement via les préférences de votre navigateur."
+        "text": "Le site {url} est amené à enregistrer des cookies sur votre navigateur afin de conserver vos préférences de navigation et pour réaliser des statistiques (Google Analytics).\nVous pouvez vous opposer à cet enregistrement via les préférences de votre navigateur."
     },
     "seo": {
         "title": "Crée ta carte pokemon | Pokemon Card Generator",
@@ -71,13 +71,13 @@
         "description": "Retrouve toutes les cartes créées par la communauté provenant des quatres coins du globe. Vote pour tes cartes préférées ou partage même les cartes que tu as créé, et qui sait tu seras peut être le prochain à être élu meilleure carte.",
         "modal": {
           "isType": "est un pokemon de type",
-          "madeBy": "Carte créée par {{author}}"
+          "madeBy": "Carte créée par {author}"
         }
       },
       "nextWinner": "prochain gagnant",
       "electedIn": "élu dans",
       "topCta": "Créer une carte",
-      "madeBy": "Par {{name}}",
+      "madeBy": "Par {name}",
       "filters": {
         "mostRecent": "Les dernières créations",
         "recentWinner": "Les derniers gagnants",
@@ -88,7 +88,7 @@
       },
       "loadMoreCards": "Voir plus de cartes",
       "winner": {
-        "title": "Gagnant semaine #{{weekNb}}",
+        "title": "Gagnant semaine #{weekNb}",
         "how": {
           "title": "Comment ça fonctionne ?",
           "1": "La carte qui reçoit",
@@ -108,16 +108,16 @@
       },
       "follow": "Suivre notre communauté sur Instagram !",
       "modal": {
-        "created": "Créée le {{date}} par <b>{{author}}</b>",
+        "created": "Créée le {date} par <b>{author}</b>",
         "description": "Description",
         "type": "Type",
         "likes": "Likes",
         "like": "J'aime",
         "liked": "J'aime",
-        "shareSocial": "Regardez! J'ai créé {{name}} ma nouvelle carte Pokemon {{href}}",
+        "shareSocial": "Regardez! J'ai créé {name} ma nouvelle carte Pokemon {href}",
         "report": {
           "button": "Signaler",
-          "title": "Signaler carte {{name}}",
+          "title": "Signaler carte {name}",
           "description": "Si vous déterminé que cette carte contient du contenu inapproprié vous pouvez la signaler. Après signalement la modération déterminera dans les plus bref délais si la qualité de son contenu est abusif, le cas échéant la carte sera supprimée définitivement du site.",
           "label": "Veuillez sélectionner une raison",
           "choice1": "Nudité / Caractère sexuel",
@@ -194,7 +194,7 @@
     "openForm": "Ouvrir le formulaire",
     "news" : "De nombreuses fonctionnalités arrivent bientôt ! La possibilité de dessiner vos cartes à l'aide d'outils, enregistrer vos cartes directement sur votre compte, une application mobile afin de pouvoir créer vos propres cartes où vous le souhaitez, et bien plus, restez à l'écoute.",
     "importPicture" : "Importer une photo",
-    "fileTooBig": "L'image est trop volumineuse ({{max}}Mo maximum)",
+    "fileTooBig": "L'image est trop volumineuse ({max}Mo maximum)",
     "uploadFailed": "Le téléchargement de l'image a échoué",
     "publishFailed": "Une erreur est survenue lors de la publication",
     "colorBg": "Couleur de fond",

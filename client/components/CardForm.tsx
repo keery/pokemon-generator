@@ -8,9 +8,6 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  useColorModeValue,
-  useColorMode,
-  Image,
 } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
 import CardFormHeader from "~components/CardFormHeader";
@@ -21,17 +18,11 @@ import FieldsAttack from "~components/Fields/FieldsAttack";
 import FieldsSubInfo from "~components/FieldsSubInfo";
 import FieldsBottomInfo from "~components/FieldsBottomInfo";
 import Logo from "~components/Logo";
-import NesButton from "~components/NesButton";
 import PublishButton from "~components/Publishing/PublishButton";
 
 const CardForm = () => {
   const t = useTranslations();
   const isDesktop = useBreakpointValue({ base: false, xl: true });
-  const layerStyle = useColorModeValue("glass", "nes-container");
-  const borderRadius = useColorModeValue("md", "none");
-  const pt = useColorModeValue(8, 2);
-  const mt = useColorModeValue(10, 7);
-  const { colorMode } = useColorMode();
 
   const Form = [
     {
@@ -107,10 +98,10 @@ const CardForm = () => {
           top={0}
           flex={1}
           height="100%"
-          layerStyle={isDesktop ? layerStyle : ""}
-          borderRadius={{ base: "none", xl: borderRadius }}
+          layerStyle={isDesktop ? "glass" : ""}
+          borderRadius={{ base: "none", xl: "md" }}
           px={{ base: 2, lg: 4 }}
-          pt={{ base: 10, xl: pt }}
+          pt={{ base: 10, xl: 8 }}
           pb={{ base: 0, xl: 4 }}
           direction="column"
           zIndex={10}
@@ -119,17 +110,28 @@ const CardForm = () => {
           <Flex direction="column" flexGrow={1} h="1%">
             {isDesktop && (
               <Flex alignItems="center" justifyContent="space-between">
-                <Logo color="black" />
+                <Flex
+                  border="1px solid rgb(255 255 255 / 46%)"
+                  px={6}
+                  py={2}
+                  borderRadius="1rem"
+                  bgColor={{
+                    base: "rgb(255 255 255 / 82%)",
+                    xl: "rgb(255 255 255 / 33%)",
+                  }}
+                >
+                  <Logo color="black" />
+                </Flex>
                 {/* 
-                TODO: make NES mode perfectly clean
-                <NesButton noColorChange={false} /> */}
+              TODO: make NES mode perfectly clean
+              <NesButton noColorChange={false} /> */}
               </Flex>
             )}
             <Accordion
               defaultIndex={[0, 1, 2, 3, 4, 5]}
               overflowY="scroll"
               allowMultiple
-              mt={{ base: 0, xl: mt }}
+              mt={{ base: 0, xl: 10 }}
               w="100%"
               borderRadius="sm"
             >
@@ -147,18 +149,7 @@ const CardForm = () => {
                         color="white!important"
                       >
                         {header}
-                        {colorMode === "dark" ? (
-                          <Image
-                            src="/assets/img/pixel/chevron.png"
-                            w="20px"
-                            transition="transform ease-in-out 200ms"
-                            transform={isExpanded ? null : "rotate(180deg)"}
-                          />
-                        ) : (
-                          <AccordionIcon
-                            color={{ base: "white", xl: "black" }}
-                          />
-                        )}
+                        <AccordionIcon color={{ base: "white", xl: "black" }} />
                       </AccordionButton>
                       <AccordionPanel px={0}>
                         <CardFieldsGroup>{fields}</CardFieldsGroup>

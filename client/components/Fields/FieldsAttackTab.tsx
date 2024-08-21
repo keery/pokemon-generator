@@ -6,7 +6,6 @@ import {
   TabPanels,
   Tab,
   TabPanel,
-  useColorModeValue,
   Button,
 } from "@chakra-ui/react";
 import FieldsAttack from "~components/Fields/FieldsAttack";
@@ -18,15 +17,12 @@ interface Props {
 const selected = {
   background: "none",
 };
+const variantActiv = "solid";
+const variantInactiv = "line";
 
 const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
   const [tabIndex, setTabIndex] = React.useState(defaultIndex);
   const t = useTranslations();
-  const fontSize = useColorModeValue("md", "0.65rem");
-  const borderRadius = useColorModeValue("2rem", "none");
-  const variantActiv = useColorModeValue("solid", "nes-button-blue");
-  const variantInactiv = useColorModeValue("line", "nes-button");
-  const px = useColorModeValue(null, "0.6rem");
 
   const handleTabsChange = (index) => {
     setTabIndex(index);
@@ -40,24 +36,24 @@ const FieldsAttackTab = ({ defaultIndex = 0 }: Props) => {
       onChange={handleTabsChange}
     >
       <TabList>
-        <Tab _selected={selected} p={0} isSelected>
+        <Tab _selected={selected} p={0} as="div">
           <Button
             transition="border-radius 100ms"
             variant={tabIndex === 0 ? variantActiv : variantInactiv}
-            fontSize={fontSize}
-            borderRadius={borderRadius}
-            px={px}
+            fontSize="md"
+            borderRadius={"2rem"}
+            px={null}
             color={"white"}
           >
             {t("attack1")}
           </Button>
         </Tab>
-        <Tab _selected={selected}>
+        <Tab _selected={selected} as="div">
           <Button
-            fontSize={fontSize}
+            fontSize="md"
             variant={tabIndex === 1 ? variantActiv : variantInactiv}
-            borderRadius={borderRadius}
-            px={px}
+            borderRadius={"2rem"}
+            px={null}
             color={"white"}
           >
             {t("attack2")}

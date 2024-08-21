@@ -7,8 +7,6 @@ import {
   Box,
   BoxProps,
   useBreakpointValue,
-  useColorModeValue,
-  useColorMode,
 } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
@@ -34,7 +32,6 @@ const getPlacement = (
   linePos: number,
   isSecondLine: boolean
 ) => {
-  const { colorMode } = useColorMode();
   switch (placement) {
     case "bottom":
       return {
@@ -69,7 +66,7 @@ const getPlacement = (
         },
         line: {
           ...LINE,
-          top: `${linePos + (colorMode === "dark" ? 0.4 : 0)}%`,
+          top: `${linePos + 0}%`,
           left: isSecondLine ? "-8%" : "-2%",
           w: `${lineLength}%`,
           h: "2px",
@@ -82,7 +79,7 @@ const getPlacement = (
         },
         line: {
           ...LINE,
-          top: `${linePos + (colorMode === "dark" ? 0.4 : 0)}%`,
+          top: `${linePos + 0}%`,
           right: isSecondLine ? "-8%" : "-2%",
           w: `${lineLength}%`,
           h: "2px",
@@ -109,13 +106,6 @@ const InteractiveIcon = ({
   );
   const { isVisible } = useRecoilValue(areaAtom);
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const fontSize = useColorModeValue("0.7rem", "0.5rem");
-  const fontWeight = useColorModeValue("bold", "400");
-  const color = useColorModeValue("main", "text");
-  const style = useColorModeValue(
-    { layerStyle: "glass" },
-    { layerStyle: "nes-container", p: 0.5, bgColor: "white" }
-  );
 
   if (!isVisible || isMobile) return null;
 
@@ -125,10 +115,10 @@ const InteractiveIcon = ({
       <Flex
         {...button}
         pos="absolute"
-        color={color}
+        color={"main"}
         px={2}
         py={1}
-        fontSize={fontSize}
+        fontSize={"0.7rem"}
         alignItems="center"
         borderRadius="sm"
         cursor="pointer"
@@ -137,13 +127,13 @@ const InteractiveIcon = ({
         _hover={{
           bgColor: "rgb(255 255 255 / 70%)",
         }}
-        {...style}
+        layerStyle="glass"
         {...rest}
       >
         {!!label && (
           <Text
             pr={2}
-            fontWeight={fontWeight}
+            fontWeight={"bold"}
             whiteSpace="nowrap"
             userSelect="none"
           >
@@ -157,7 +147,7 @@ const InteractiveIcon = ({
           icon={icon}
           aria-label="Field icon"
           bgColor="transparent"
-          color={color}
+          color={"main"}
           _hover={{
             bgColor: "transparent",
           }}

@@ -1,7 +1,6 @@
 import {
   FormLabel,
   FormControl,
-  useColorModeValue,
   FormControlProps,
   FormLabelProps,
 } from "@chakra-ui/react";
@@ -23,14 +22,11 @@ const Field = ({
   labelProps = {},
   ...rest
 }: Props) => {
-  const fontWeight = useColorModeValue("600", "400");
-  const textTransform = useColorModeValue("uppercase", "inherit");
-
   return (
     <FormControl py={2} layerStyle={isDisabled ? "disabled" : "none"} {...rest}>
       <FormLabel
-        fontWeight={fontWeight}
-        textTransform={textTransform}
+        fontWeight={600}
+        textTransform={"uppercase"}
         fontSize="13px"
         id={id}
         {...labelProps}

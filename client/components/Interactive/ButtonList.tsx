@@ -9,10 +9,8 @@ import {
   Popover,
   PopoverTrigger,
   PopoverContent,
+  useDisclosure,
   useBreakpointValue,
-  useColorMode,
-  useColorModeValue,
-  Image,
 } from "@chakra-ui/react";
 import { motion, MotionStyle } from "framer-motion";
 import { useWatch, Control, useFormContext } from "react-hook-form";
@@ -69,23 +67,7 @@ const ButtonList = ({
   const value = useWatch({ control, name });
   const { isVisible: areaIsVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
-  const [isOpen, setIsOpen] = useState(false);
-  const onOpen = () => setIsOpen(true);
-  const onClose = () => setIsOpen(false);
-  const { colorMode } = useColorMode();
-  const style = useColorModeValue(
-    {
-      layerStyle: "glass",
-      borderRadius: "sm",
-      bgColor: "rgb(255 255 255 / 60%)",
-    },
-    {
-      layerStyle: "nes-container",
-      bgColor: "white",
-      borderRadius: "none",
-      p: 0,
-    }
-  );
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Box role="group" className="ButtonList" zIndex={9}>
@@ -117,7 +99,7 @@ const ButtonList = ({
                 {...stylePreview}
                 bgImage={
                   Boolean(value)
-                    ? `assets/img/1-gen/${prefix}${value.value}.png)`
+                    ? `assets/img/1-gen/${prefix}${value.value}.png`
                     : null
                 }
                 w="100%"
@@ -126,7 +108,14 @@ const ButtonList = ({
             </AspectRatio>
           </Box>
         </PopoverTrigger>
-        <PopoverContent border="none" w="auto" background="none" {...style}>
+        <PopoverContent
+          border="none"
+          w="auto"
+          background="none"
+          layerStyle="glass"
+          borderRadius="sm"
+          bgColor="rgb(255 255 255 / 60%)"
+        >
           <HStack
             spacing=".5rem"
             p="10px 20px"
@@ -152,28 +141,18 @@ const ButtonList = ({
                 }}
                 onClick={(e) => e.preventDefault()}
               >
-                {colorMode === "dark" ? (
-                  <Image
-                    src="/assets/img/pixel/close-circle.png"
-                    boxSize="28px"
-                    onClick={() => {
-                      setValue(name, null);
-                    }}
-                  />
-                ) : (
-                  <Icon
-                    as={Cross}
-                    bgColor="#fff"
-                    {...(styleEl as ChakraProps)}
-                    color="#c1c1c1"
-                    border="1px solid #d8d8d8"
-                    transition="box-shadow ease-in-out .1s"
-                    onClick={() => {
-                      setValue(name, null);
-                    }}
-                    p={1}
-                  />
-                )}
+                <Icon
+                  as={Cross}
+                  bgColor="#fff"
+                  {...(styleEl as ChakraProps)}
+                  color="#c1c1c1"
+                  border="1px solid #d8d8d8"
+                  transition="box-shadow ease-in-out .1s"
+                  onClick={() => {
+                    setValue(name, null);
+                  }}
+                  p={1}
+                />
               </motion.button>
             )}
             {options.map((item) => {

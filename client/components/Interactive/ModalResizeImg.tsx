@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from "react";
 import Modal from "~components/Modal";
-import { AspectRatio, Flex, useColorModeValue } from "@chakra-ui/react";
+import { AspectRatio, Flex } from "@chakra-ui/react";
 import { Layer, Stage, Group, Line } from "react-konva";
 import ImageCanvas from "~components/Card/ImageCanvas";
 import Button from "~components/Button";
@@ -137,12 +137,6 @@ const ModalResizeImg = ({
     onClose();
   };
 
-  const variantRemove = useColorModeValue("outline", "nes-button-red");
-  const variantConfirm = useColorModeValue("glass", "nes-button-blue");
-  const colorDeleteButton = useColorModeValue("#fb6565!important", "white");
-  const borderRadius = useColorModeValue("sm", "none");
-  const layerStyle = useColorModeValue("", "nes-container");
-
   return (
     <Modal
       title={t("resizeImg")}
@@ -151,11 +145,11 @@ const ModalResizeImg = ({
       footer={
         <Flex justifyContent="space-between" w="100%">
           <Button
-            color={colorDeleteButton}
-            borderColor={colorDeleteButton}
+            color={"#fb6565!important"}
+            borderColor={"#fb6565!important"}
             cursor="pointer"
             onClick={deleteFile}
-            variant={variantRemove}
+            variant="outline"
             h="3rem"
           >
             {t("remove")}
@@ -165,7 +159,7 @@ const ModalResizeImg = ({
               ml={3}
               cursor="pointer"
               onClick={onSubmit}
-              variant={variantConfirm}
+              variant={"glass"}
               layerColors={["new.1", "new.4", "new.3"]}
               color="white"
               h="3rem"
@@ -180,10 +174,9 @@ const ModalResizeImg = ({
       <AspectRatio
         ratio={width / height}
         className="resize-stage"
-        borderRadius={borderRadius}
+        borderRadius={"sm"}
         overflow="hidden"
         transform="translateZ(1)"
-        layerStyle={layerStyle}
       >
         <Stage width={width} height={height}>
           <Layer>

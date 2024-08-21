@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Webcam from "@uppy/webcam";
 import Instagram from "@uppy/instagram";
 import Facebook from "@uppy/facebook";
@@ -8,12 +9,10 @@ import Uppy from "@uppy/core";
 import Url from "@uppy/url";
 import French from "@uppy/locales/lib/fr_FR";
 import Spanish from "@uppy/locales/lib/es_ES";
-import { useUppy as useUppyReact } from "@uppy/react";
 import { useTranslations, useLocale } from "next-intl";
 import useToast from "~hooks/useToast";
 import { useFormContext } from "react-hook-form";
 import { CARD_DEFAULT_STATE } from "~data/card";
-import { client } from "~api/client";
 
 const getUppyTranslations = (locale) => {
   switch (locale) {
@@ -41,8 +40,8 @@ const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
   const locale = useLocale();
   const { errorToast } = useToast();
 
-  const uppy = useUppyReact(() => {
-    const instance = new Uppy({
+  const [uppy] = useState(() =>
+    new Uppy({
       id,
       autoProceed: true,
       locale: getUppyTranslations(locale),
@@ -82,39 +81,32 @@ const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
         }
       })
       .on("upload-success", (file, response) => {
-        client
-          .get(`/image/tmp/get/${response.body.url}`, {
-            responseType: "blob",
-          })
-          .then((res) => {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-              if (onSuccess) onSuccess();
+        try {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            if (onSuccess) onSuccess();
 
-              setValue(fieldName, e.target.result);
-              uppy.reset();
+            setValue(fieldName, e.target.result);
+            uppy.cancelAll();
 
-              // Reset transformation values
-              setValue(
-                `${fieldName}ScaleX`,
-                CARD_DEFAULT_STATE[`${fieldName}ScaleX`]
-              );
-              setValue(
-                `${fieldName}ScaleY`,
-                CARD_DEFAULT_STATE[`${fieldName}ScaleY`]
-              );
-            };
-            reader.readAsDataURL(res.data);
-          })
-          .catch(() => {
-            if (onError) onError();
-            uppy.reset();
-            errorToast(t("uploadFailed"));
-          });
-      });
-
-    return instance;
-  });
+            // Reset transformation values
+            setValue(
+              `${fieldName}ScaleX`,
+              CARD_DEFAULT_STATE[`${fieldName}ScaleX`]
+            );
+            setValue(
+              `${fieldName}ScaleY`,
+              CARD_DEFAULT_STATE[`${fieldName}ScaleY`]
+            );
+          };
+          reader.readAsDataURL(file.data);
+        } catch (e) {
+          if (onError) onError();
+          uppy.cancelAll();
+          errorToast(t("uploadFailed"));
+        }
+      })
+  );
 
   return uppy;
 };

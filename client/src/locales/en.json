@@ -1,21 +1,21 @@
 {
     "title": "Terms of use",
-    "update": "(last update {{date}})",
+    "update": "(last update {date})",
     "line1": "The purpose of these “terms of use” is to provide a legal framework for the terms of provision of the services of the website and their use by the “User”. The general conditions of use must be accepted by any User wishing to access the site. They constitute the contract between the site and the User. Access to the site by the User signifies acceptance of these general conditions of use. We reserve the right to unilaterally modify the content of these T & Cs at any time.",
     "mention": {
         "title": "Legal Notice",
-        "text": "In accordance with the law \"IT et liberties\" of January 6, 1978 modified in 2004, you benefit from a right of access and of correction to the information which concerns you, which you can exert by addressing to {{app_name}} whose co-ordinates are below.\nYou can also, for legitimate reasons, oppose the treatment of the data concerning you.",
-        "line1": "{{app_name}} is the property of {{name}}",
+        "text": "In accordance with the law \"IT et liberties\" of January 6, 1978 modified in 2004, you benefit from a right of access and of correction to the information which concerns you, which you can exert by addressing to {app_name} whose co-ordinates are below.\nYou can also, for legitimate reasons, oppose the treatment of the data concerning you.",
+        "line1": "{app_name} is the property of {name}",
         "email": "Email",
-        "host": "{{app_name}} is hosted by {{host}} whose registered office is located at 2 rue Kellermann - 59100 Roubaix - France."
+        "host": "{app_name} is hosted by {host} whose registered office is located at 2 rue Kellermann - 59100 Roubaix - France."
     },
     "art1": {
         "title": "Article 1 : Presentation",
-        "text":"{{app_name}} is a free french internet website, accessible for everybody. All costs incurred by the User to access the service (computer hardware, software, Internet connection, etc.) are at their expense."
+        "text":"{app_name} is a free french internet website, accessible for everybody. All costs incurred by the User to access the service (computer hardware, software, Internet connection, etc.) are at their expense."
     },
     "art2": {
         "title": "Article 2 : Personal data",
-        "text": "Information used are author name when you publish a card, this name can be your real name or a nickname, we also use IP address in order to respect these conditions. Regarding law « IT and liberties » from 6th january updated on 2004, you have the right to access and rectify information concerning you, which you can exercise by contacting {{email}}."
+        "text": "Information used are author name when you publish a card, this name can be your real name or a nickname, we also use IP address in order to respect these conditions. Regarding law « IT and liberties » from 6th january updated on 2004, you have the right to access and rectify information concerning you, which you can exercise by contacting {email}."
     },
     "art3": {
         "title": "Article 3 : Published content",
@@ -31,15 +31,15 @@
     },
     "art6": {
         "title": "Article 6 : Responsibilities",
-        "text": "The moderation after publication does not allow {{app_name}} to be held responsible for the published images.\n{{app_name}} undertakes to intervene in the event of alarm as soon as possible.\nAny image contravening the rules hereafter, the law or any other code of conduct, engages only the responsibility of their author. \nAlthough controlled as well as possible, with a will to optimize the deadlines and the conditions of control on the contents, by right holders of the forum, the term \"moderation\" does not mean that {{app_name}} or the right holders {{url}} have a total control on the images. \nAny user who feels that an image sent is objectionable is encouraged to contact us immediately by e-mail or using the alert tool provided. \nIn order to optimize the control over the content, {{app_name}} is authorized to delete, modify, move, any image that would be judged as contravening the proper functioning of the site, without prior notice, to delete, modify or suspend any member account or to delegate these rights to certain members, groups, defining the term \"rightful claimants\" raised. \nIn order to respect the present conditions of use, IP addresses are recorded. In view of the role assigned to them, the rightful owners of {{app_name}} are not required to justify their actions. If a dispute seems necessary, it must be done by email."
+        "text": "The moderation after publication does not allow {app_name} to be held responsible for the published images.\n{app_name} undertakes to intervene in the event of alarm as soon as possible.\nAny image contravening the rules hereafter, the law or any other code of conduct, engages only the responsibility of their author. \nAlthough controlled as well as possible, with a will to optimize the deadlines and the conditions of control on the contents, by right holders of the forum, the term \"moderation\" does not mean that {app_name} or the right holders {url} have a total control on the images. \nAny user who feels that an image sent is objectionable is encouraged to contact us immediately by e-mail or using the alert tool provided. \nIn order to optimize the control over the content, {app_name} is authorized to delete, modify, move, any image that would be judged as contravening the proper functioning of the site, without prior notice, to delete, modify or suspend any member account or to delegate these rights to certain members, groups, defining the term \"rightful claimants\" raised. \nIn order to respect the present conditions of use, IP addresses are recorded. In view of the role assigned to them, the rightful owners of {app_name} are not required to justify their actions. If a dispute seems necessary, it must be done by email."
     },
     "art7": {
         "title": "Article 7 : Applicable Law",
-        "text": "Any contribution on the {{url}} site is governed by the Intellectual Property Code. Each user remains the owner of his images. By publishing contributions, you authorize the company {{app_name}} to reference the content of your contributions on the various search engines. You renounce to sue the company {{app_name}} following a problem or damage caused by another user in violation of the general conditions of use."
+        "text": "Any contribution on the {url} site is governed by the Intellectual Property Code. Each user remains the owner of his images. By publishing contributions, you authorize the company {app_name} to reference the content of your contributions on the various search engines. You renounce to sue the company {app_name} following a problem or damage caused by another user in violation of the general conditions of use."
     },
     "art8": {
         "title": "Article 8 : Cookies",
-        "text": "The site {{url}} is required to record cookies on your browser in order to keep your browsing preferences and to carry out statistics (Google Analytics). You can oppose this recording via the preferences of your browser."
+        "text": "The site {url} is required to record cookies on your browser in order to keep your browsing preferences and to carry out statistics (Google Analytics). You can oppose this recording via the preferences of your browser."
     },
     "seo": {
         "title": "Create your own pokemon card | Pokemon Card Generator",
@@ -71,13 +71,13 @@
         "description": "Consult all pokemon cards from the community all around the world. Vote for your favorite cards or even share cards you made and who knows you might be the next weekly winner.",
         "modal": {
           "isType": "is a pokemon of type",
-          "madeBy": "Card made by {{author}}"
+          "madeBy": "Card made by {author}"
         }
       },
       "nextWinner": "next winner",
       "electedIn": "elected in",
       "topCta": "Make a card",
-      "madeBy": "By {{name}}",
+      "madeBy": "By {name}",
       "fire" : "Fire",
       "grass" : "Grass",
       "water" : "Water",
@@ -97,7 +97,7 @@
       },
       "loadMoreCards": "Load more cards",
       "winner": {
-        "title": "Weekly winner #{{weekNb}}",
+        "title": "Weekly winner #{weekNb}",
         "how": {
           "title": "How does it work ?",
           "1": "The card that receives the",
@@ -117,16 +117,16 @@
       },
       "follow": "Join our community on Instagram!",
       "modal": {
-        "created": "Created on {{date}} by <b>{{author}}</b>",
+        "created": "Created on {date} by <b>{author}</b>",
         "description": "Description",
         "type": "Type",
         "likes": "Likes",
         "like": "Like",
         "liked": "Liked",
-        "shareSocial": "Check this out! I created {{name}} my new pokemon card {{href}}",
+        "shareSocial": "Check this out! I created {name} my new pokemon card {href}",
         "report": {
           "button": "Report",
-          "title": "Report card {{name}}",
+          "title": "Report card {name}",
           "description": "If you determine that this card contains inappropriate content you can report it. After reporting, the moderation will determine as soon as possible if the quality of its content is abusive, if so the card will be permanently removed from the site.",
           "label": "Select a reason",
           "choice1": "Nudity / Sexual nature",
@@ -193,7 +193,7 @@
     "shareCard" : "Share to your friends",
     "openForm": "Open form",
     "importPicture" : "Import a picture",
-    "fileTooBig": "Image file is too big ({{max}}Mo maximum)",
+    "fileTooBig": "Image file is too big ({max}Mo maximum)",
     "uploadFailed": "Image downloading has failed",
     "publishFailed": "An error occurred while publishing",
     "colorBg": "Background color",

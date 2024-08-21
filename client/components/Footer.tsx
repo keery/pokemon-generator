@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import Logo from "~components/Logo";
 import Link from "~components/Link";
+import Button from "~components/Button";
+import Instagram from "public/assets/img/instagram.svg";
 import {
   ROUTE_PORTFOLIO,
   ROUTE_GALLERY,
@@ -66,19 +68,18 @@ const Footer = ({ isGeneratorPage = false }) => {
         >
           <Flex direction="column">
             <Logo noLink color={isGeneratorPage ? "text" : "white"} />
-            <Text
-              mt="1rem"
-              fontSize="0.9rem"
-              maxW={{
-                base: "100%",
-                md: "26rem",
-              }}
-            >
-              {t("footer.description", {
-                name: process.env.NEXT_PUBLIC_APP_NAME,
-              })}
-            </Text>
+            <Flex pt={6} justifyContent="center">
+              <Link href={process.env.NEXT_PUBLIC_INSTAGRAM_URL}>
+                <Button>
+                  <Instagram />
+                  <Box pl={2} fontWeight="bold">
+                    {t("follow")}
+                  </Box>
+                </Button>
+              </Link>
+            </Flex>
           </Flex>
+
           <VStack
             flexDirection="column"
             alignItems={{
@@ -96,7 +97,7 @@ const Footer = ({ isGeneratorPage = false }) => {
               fontWeight="800"
               fontSize="1.2em"
               fontFamily="title"
-              color="new.3"
+              color={isGeneratorPage ? "new.1" : "new.3"}
               textTransform="uppercase"
             >
               {t("footer.navigation")}
@@ -122,13 +123,23 @@ const Footer = ({ isGeneratorPage = false }) => {
           </VStack>
         </Flex>
         <Flex
+          borderTop="1px solid"
+          borderBottom="1px solid"
+          borderColor="gray.400"
+          mt="2rem"
+        >
+          <Text my="1rem" fontSize="0.9rem">
+            {t("footer.description", {
+              name: process.env.NEXT_PUBLIC_APP_NAME,
+            })}
+          </Text>
+        </Flex>
+        <Flex
           justifyContent="space-between"
           alignItems="center"
-          borderTop="1px solid"
-          borderColor="gray.400"
-          paddingY="1.8rem"
           mt="1.8rem"
           fontSize="sm"
+          fontWeight="bold"
           flexDir={{
             base: "column-reverse",
             md: "row",
@@ -141,7 +152,7 @@ const Footer = ({ isGeneratorPage = false }) => {
               href={ROUTE_PORTFOLIO}
               isExternal
               fontWeight="bold"
-              color="new.2"
+              color={isGeneratorPage ? "new.1" : "new.2"}
             >
               Guillaume Esnault
             </ChakraLink>

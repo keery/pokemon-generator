@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, Flex, useColorMode } from "@chakra-ui/react";
+import { Box, Text, Flex, useTheme } from "@chakra-ui/react";
 import Upload from "public/assets/img/upload.svg";
 import Check from "public/assets/img/check.svg";
 import dynamic from "next/dynamic";
@@ -14,7 +14,7 @@ interface Props {
 const FileInput = ({ name }: Props) => {
   const t = useTranslations();
   const { setValue, control } = useFormContext();
-  const { colorMode } = useColorMode();
+  const theme = useTheme();
   const value = useWatch({
     name,
     control,
@@ -25,16 +25,6 @@ const FileInput = ({ name }: Props) => {
   };
 
   const onClick = () => document.getElementById(name).click();
-
-  if (colorMode === "dark")
-    return (
-      <FileInputPixel
-        name={name}
-        onClick={onClick}
-        deleteFile={deleteFile}
-        value={value}
-      />
-    );
 
   return (
     <Box>
@@ -76,7 +66,11 @@ const FileInput = ({ name }: Props) => {
           transition="left ease-in-out 0.5s"
           zIndex="1"
           p=".7rem"
+          overflow="hidden"
         >
+          <Box
+            boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new[4]} 5px 5px 0px 0px inset, ${theme.colors.new[1]} 10px 10px 0px 0px inset, ${theme.colors.new[2]} 15px 15px 0px 0px inset, ${theme.colors.new[3]} 20px 20px 0px 0px inset`}
+          />
           {Boolean(value) ? <Check /> : <Upload />}
         </Box>
         <Box

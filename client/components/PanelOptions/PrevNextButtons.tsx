@@ -5,23 +5,15 @@ import Next from "public/assets/img/next.svg";
 import { useTranslations } from "next-intl";
 import { useRecoilState } from "recoil";
 import { historyAtom } from "~atoms/history";
-import { Image, useColorMode } from "@chakra-ui/react";
 
 const PrevNextButtons = () => {
   const t = useTranslations();
   const [historyState, setHistoryState] = useRecoilState(historyAtom);
-  const { colorMode } = useColorMode();
 
   return (
     <>
       <OptionButton
-        icon={
-          colorMode === "dark" ? (
-            <Image src="/assets/img/pixel/arrow-left.png" boxSize="24px" />
-          ) : (
-            <Prev />
-          )
-        }
+        icon={<Prev />}
         onClick={() => {
           setHistoryState((h) => ({
             ...h,
@@ -34,13 +26,7 @@ const PrevNextButtons = () => {
         keyboard_shortcut={["ctrl", "z"]}
       />
       <OptionButton
-        icon={
-          colorMode === "dark" ? (
-            <Image src="/assets/img/pixel/arrow-right.png" boxSize="24px" />
-          ) : (
-            <Next />
-          )
-        }
+        icon={<Next />}
         onClick={() => {
           setHistoryState((h) => ({
             ...h,

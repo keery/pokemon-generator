@@ -200,16 +200,6 @@ body::before {
   background-color: rgb(20 27 40 / 60%);
 }
 
-html,
-body,
-#__next {
-  /* height: 100%; */
-}
-
-#__next {
-  overflow: hidden;
-}
-
 *:focus {
   box-shadow: none !important;
   outline: none;
@@ -588,6 +578,9 @@ a {
   background-color: #e7e7e7;
 }
 
+.is-evolve-picture .uppy-Root {
+  height: 100%;
+}
 .is-evolve-picture .uppy-DragDrop-inner {
   padding: 0 !important;
 }

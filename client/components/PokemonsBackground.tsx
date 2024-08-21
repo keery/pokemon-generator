@@ -1,11 +1,5 @@
-import React, { useState, useEffect, useMemo } from "react";
-import {
-  Image,
-  Box,
-  ResponsiveValue,
-  useColorModeValue,
-  useColorMode,
-} from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
+import { Image, Box, ResponsiveValue } from "@chakra-ui/react";
 import { useWatch, Control } from "react-hook-form";
 import { Element } from "~@types/CardGenerator";
 import { Select } from "~constants";
@@ -23,152 +17,149 @@ interface BgPokemon {
   left?: string | ResponsiveValue<string>;
   maxHeight?: string | ResponsiveValue<string>;
 }
+const path = "/assets/img/bg/";
 
 const PokemonsBackground = ({ control }: Props) => {
-  const path = useColorModeValue("/assets/img/bg/", "/assets/img/bg/pixel/");
-  const { colorMode } = useColorMode();
-  const pokemons: Record<Element, BgPokemon[]> = useMemo(
-    () => ({
-      water: [
-        {
-          src: "pokemon-water-1.webp",
-          transform: colorMode === "dark" ? "rotate(0deg)" : "rotate(20deg)",
-          right: colorMode === "dark" ? "105%" : null,
-          height: "35vh",
-          maxHeight: "240px",
-        },
-        {
-          src: "pokemon-water-2.webp",
-          height: "60vh",
-          maxHeight: colorMode === "dark" ? "350px" : "475px",
-        },
-        {
-          src: "pokemon-water-3.webp",
-          height: "25vh",
-          maxHeight: "200px",
-        },
-      ],
-      psychic: [
-        {
-          src: "pokemon-psychic-1.webp",
-          transform: colorMode === "dark" ? null : "rotate(20deg)",
-          right: colorMode === "dark" ? "105%" : null,
-          height: "30vh",
-          maxHeight: "240px",
-        },
-        {
-          src: "pokemon-psychic-2.webp",
-          transform: "rotateY(180deg)",
-          height: "40vh",
-          maxHeight: "305px",
-        },
-        {
-          src: "pokemon-psychic-3.webp",
-          height: "30vh",
-          maxHeight: "255px",
-        },
-      ],
-      normal: [
-        {
-          src: "pokemon-normal-1.webp",
-          transform: colorMode === "dark" ? null : "rotate(20deg)",
-          right: colorMode === "dark" ? "105%" : null,
-          height: "34vh",
-          maxHeight: "270px",
-        },
-        {
-          src: "pokemon-normal-4.webp",
-          height: "55vh",
-          maxHeight: "440px",
-          left: colorMode === "dark" ? "90%" : null,
-        },
-        {
-          src: "pokemon-normal-3.webp",
-          height: "25vh",
-          maxHeight: "190px",
-          left: "110%",
-        },
-      ],
-      fire: [
-        {
-          src: "pokemon-fire-1.webp",
-          transform: colorMode === "dark" ? null : "translateX(-28px)",
-          right: colorMode === "dark" ? "105%" : "100%",
-          height: "35vh",
-          maxHeight: "260px",
-        },
-        {
-          src: "pokemon-fire-2.webp",
-          height: "45vh",
-          maxHeight: "340px",
-        },
-        {
-          src: "pokemon-fire-3.webp",
-          height: "35vh",
-          maxHeight: "250px",
-        },
-      ],
-      fighting: [
-        {
-          src: "pokemon-fighting-1.webp",
-          height: "35vh",
-          maxHeight: "260px",
-          right: "103%",
-        },
-        {
-          src: "pokemon-fighting-3.webp",
-          left: colorMode === "dark" ? "105%" : { base: "80%", xl: "93%" },
-          height: "50vh",
-          maxHeight: "380px",
-        },
-        {
-          src: "pokemon-fighting-4.webp",
-          height: "25vh",
-          maxHeight: "180px",
-        },
-      ],
-      electric: [
-        {
-          src: "pokemon-electric-1.webp",
-          transform: colorMode === "dark" ? null : "rotateZ(55deg)",
-          height: "45vh",
-          maxHeight: "270px",
-        },
-        {
-          src: "pokemon-electric-3.webp",
-          height: "50vh",
-          maxHeight: "380px",
-          transform: colorMode === "dark" ? "translateX(-15%)" : null,
-        },
-        {
-          src: "pokemon-electric-2.webp",
-          height: "30vh",
-          maxHeight: "180px",
-        },
-      ],
-      grass: [
-        {
-          src: "pokemon-grass-2.webp",
-          transform: "rotateY(180deg) ",
-          height: "50vh",
-          maxHeight: "370px",
-          right: "103%",
-          top: "10%",
-        },
-        {
-          src: "pokemon-grass-1.webp",
-          height: "45vh",
-          maxHeight: "300px",
-        },
-        {
-          src: "pokemon-grass-3.webp",
-          height: "30vh",
-          maxHeight: "220px",
-        },
-      ],
-    }),
-    [colorMode]
-  );
+  const pokemons: Record<Element, BgPokemon[]> = {
+    water: [
+      {
+        src: "pokemon-water-1.webp",
+        transform: "rotate(20deg)",
+        right: null,
+        height: "35vh",
+        maxHeight: "240px",
+      },
+      {
+        src: "pokemon-water-2.webp",
+        height: "60vh",
+        maxHeight: "475px",
+      },
+      {
+        src: "pokemon-water-3.webp",
+        height: "25vh",
+        maxHeight: "200px",
+      },
+    ],
+    psychic: [
+      {
+        src: "pokemon-psychic-1.webp",
+        transform: "rotate(20deg)",
+        right: null,
+        height: "30vh",
+        maxHeight: "240px",
+      },
+      {
+        src: "pokemon-psychic-2.webp",
+        transform: "rotateY(180deg)",
+        height: "40vh",
+        maxHeight: "305px",
+      },
+      {
+        src: "pokemon-psychic-3.webp",
+        height: "30vh",
+        maxHeight: "255px",
+      },
+    ],
+    normal: [
+      {
+        src: "pokemon-normal-1.webp",
+        transform: "rotate(20deg)",
+        right: null,
+        height: "34vh",
+        maxHeight: "270px",
+      },
+      {
+        src: "pokemon-normal-4.webp",
+        height: "55vh",
+        maxHeight: "440px",
+        left: null,
+      },
+      {
+        src: "pokemon-normal-3.webp",
+        height: "25vh",
+        maxHeight: "190px",
+        left: "110%",
+      },
+    ],
+    fire: [
+      {
+        src: "pokemon-fire-1.webp",
+        transform: "translateX(-28px)",
+        right: "100%",
+        height: "35vh",
+        maxHeight: "260px",
+      },
+      {
+        src: "pokemon-fire-2.webp",
+        height: "45vh",
+        maxHeight: "340px",
+      },
+      {
+        src: "pokemon-fire-3.webp",
+        height: "35vh",
+        maxHeight: "250px",
+      },
+    ],
+    fighting: [
+      {
+        src: "pokemon-fighting-1.webp",
+        height: "35vh",
+        maxHeight: "260px",
+        right: "103%",
+      },
+      {
+        src: "pokemon-fighting-3.webp",
+        left: { base: "80%", xl: "93%" },
+        height: "50vh",
+        maxHeight: "380px",
+      },
+      {
+        src: "pokemon-fighting-4.webp",
+        height: "25vh",
+        maxHeight: "180px",
+      },
+    ],
+    electric: [
+      {
+        src: "pokemon-electric-1.webp",
+        transform: "rotateZ(55deg)",
+        height: "45vh",
+        maxHeight: "270px",
+      },
+      {
+        src: "pokemon-electric-3.webp",
+        height: "50vh",
+        maxHeight: "380px",
+        transform: null,
+      },
+      {
+        src: "pokemon-electric-2.webp",
+        height: "30vh",
+        maxHeight: "180px",
+      },
+    ],
+    grass: [
+      {
+        src: "pokemon-grass-2.webp",
+        transform: "rotateY(180deg) ",
+        height: "50vh",
+        maxHeight: "370px",
+        right: "103%",
+        top: "10%",
+      },
+      {
+        src: "pokemon-grass-1.webp",
+        height: "45vh",
+        maxHeight: "300px",
+      },
+      {
+        src: "pokemon-grass-3.webp",
+        height: "30vh",
+        maxHeight: "220px",
+      },
+    ],
+  };
+
   const selectedType: Select<Element> = useWatch({
     control,
     name: "type",

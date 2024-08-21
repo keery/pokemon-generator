@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Flex,
-  Box,
-  useDisclosure,
-  useBreakpointValue,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Flex, Box, useDisclosure, useBreakpointValue } from "@chakra-ui/react";
 import { Control, useFormContext, useWatch } from "react-hook-form";
 import InteractiveIcon, {
   Props as InteractiveIconProps,
@@ -17,7 +11,7 @@ import { areaAtom } from "~atoms/area";
 import { useRecoilValue } from "recoil";
 import { DragDrop } from "@uppy/react";
 import useUppy from "~hooks/useUppy";
-import { openModalWithUrl, closeModalWithUrl } from "~utils/helper";
+import useModalWithUrl from "~hooks/useModalWithUrl";
 import ModalResizeImg from "~components/Interactive/ModalResizeImg";
 import ModalResizeImgButton from "~components/Interactive/ModalResizeImgButton";
 
@@ -61,8 +55,12 @@ const InteractiveFile = ({
     id: `${name}-interactive`,
     fieldName: name,
   });
-  const borderRadius = useColorModeValue("100%", "none");
   const onDelete = () => setValue(name, null);
+  const { onCloseModalWithUrl, onOpenModalWithUrl } = useModalWithUrl({
+    name: `resize-${name}`,
+    onOpen: onClose,
+    onClose,
+  });
 
   return (
     <Box role="group">
@@ -71,7 +69,7 @@ const InteractiveFile = ({
           icon={<Delete fill="#fe5b54" fontSize="1.7rem" />}
           {...icon}
           p={0}
-          borderRadius={borderRadius}
+          borderRadius={"100%"}
           label={""}
           onClick={onDelete}
         />
@@ -133,7 +131,7 @@ const InteractiveFile = ({
         isMobile && (
           <>
             <ModalResizeImgButton
-              onOpen={() => openModalWithUrl(`resize-${name}`, onClose)}
+              onOpen={onOpenModalWithUrl}
               onDelete={onDelete}
               left={`${x}%`}
               top={`${y}%`}
@@ -144,7 +142,7 @@ const InteractiveFile = ({
             <ModalResizeImg
               name={name}
               modalName={`resize-${name}`}
-              onClose={() => closeModalWithUrl(onClose)}
+              onClose={onCloseModalWithUrl}
               resizeModalConf={resizeModalConf}
             />
           </>

@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect } from "react";
-import { Flex, useColorMode } from "@chakra-ui/react";
+import React from "react";
+import { Flex } from "@chakra-ui/react";
 import usePathname from "~hooks/usePathname";
 import Header from "~components/Header";
 import Footer from "~components/Footer";
@@ -12,19 +12,13 @@ interface Props {
 
 const Layout = ({ children }: Props) => {
   const pathname = usePathname();
-  const { setColorMode, colorMode } = useColorMode();
-
-  useEffect(() => {
-    if (pathname !== ROUTE_GENERATOR && colorMode === "dark") {
-      setColorMode("light");
-    }
-  }, [pathname]);
 
   return (
     <>
       <Flex
         direction="column"
         h={pathname === ROUTE_GENERATOR ? "100%" : "auto"}
+        overflow={pathname === ROUTE_GENERATOR ? "hidden" : "none"}
       >
         {pathname !== ROUTE_GENERATOR && (
           <Header

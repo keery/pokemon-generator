@@ -1,6 +1,5 @@
 import React from "react";
 import Modal from "~components/Modal";
-import { openModalWithUrl } from "~utils/helper";
 import Help from "public/assets/img/help-circle.svg";
 import {
   Box,
@@ -11,6 +10,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
+import useModalWithUrl from "~hooks/useModalWithUrl";
 
 interface Props {
   isAttackValid: boolean;
@@ -43,6 +43,7 @@ const PublishRequirements = ({
 }: Props) => {
   const t = useTranslations();
   const { onClose, onOpen } = useDisclosure();
+  const { onOpenModalWithUrl } = useModalWithUrl({ name: NAME, onOpen });
 
   return (
     <Modal
@@ -51,7 +52,7 @@ const PublishRequirements = ({
       withCloseButton
       button={
         <Box
-          onClick={() => openModalWithUrl(NAME, onOpen)}
+          onClick={onOpenModalWithUrl}
           pos="relative"
           className="help-ico"
           alignSelf="center"

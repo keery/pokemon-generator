@@ -1,5 +1,5 @@
 import { RgbaColor } from "react-colorful";
-import Router from "next/router";
+
 import format from "date-fns/format";
 import fr from "date-fns/locale/fr";
 import en from "date-fns/locale/en-GB";
@@ -19,20 +19,6 @@ export const observeFieldResize = (
     if (!field) return;
     field.style.fontSize = (field.clientWidth / fullWidth) * fontSize + "px";
   }).observe(field);
-};
-
-export const setUrlModal = (name: string) => {
-  Router.push(`/?modal=${name}`, `modal/${name}`, { shallow: true });
-};
-
-export const openModalWithUrl = (name: string, open: () => void): void => {
-  setUrlModal(name);
-  open();
-};
-
-export const closeModalWithUrl = (close: () => void): void => {
-  Router.push(`/`, undefined, { shallow: true });
-  close();
 };
 
 export const screenPercent = (percent: number) => {

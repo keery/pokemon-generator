@@ -5,7 +5,6 @@ Ajouter le nombre de fois qu'une carte a gagné dans la modal
 Publier carte sur ecran tablette et mobile, pas de bouton
 Newsletter, card of the day
 reduire taille des animations avec https://www.framer.com/docs/guide-reduce-bundle-size/#how-to-reduce-bundle-size
-Refaire le logo https://dribbble.com/shots/18325875-Logo-Design-For-PokeBall-Gadgets-Electric-machine-logo
 checker print sur tous les navigateurs
 bouton remonter en haut dans la liste (voir dribbble)
 faire le sitemap
@@ -64,3 +63,13 @@ tres interessant https://www.framer.com/docs/gestures/#viewport
 
 Idées design:
 https://medium.muz.li/ui-interactions-of-the-week-314-72eb77f42517
+
+
+
+Migration Todolist:
+hover main image card
+url instagram
+to check why ButtonList doesnt close
+little lighthouse check up
+couleur background modal reset
+impression est cassé

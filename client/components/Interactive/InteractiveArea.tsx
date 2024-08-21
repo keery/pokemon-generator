@@ -1,10 +1,10 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useTheme, Box, BoxProps, useDisclosure } from "@chakra-ui/react";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";
 import Modal from "~components/Interactive/ModalInteractiveArea";
-import { openModalWithUrl } from "~utils/helper";
+import useModalWithUrl from "~hooks/useModalWithUrl";
 
 interface Props extends BoxProps {
   name: string;
@@ -36,13 +36,10 @@ const InteractiveArea = ({
   const { isVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
   const { onOpen, onClose } = useDisclosure();
-
-  const onClick = useCallback(() => {
-    openModalWithUrl(name, onOpen);
-  }, [name]);
+  const { onOpenModalWithUrl } = useModalWithUrl({ name, onOpen });
 
   return (
-    <Box role="group" onClick={onClick}>
+    <Box role="group" onClick={onOpenModalWithUrl}>
       <Modal name={name} onClose={onClose}>
         {fields}
       </Modal>

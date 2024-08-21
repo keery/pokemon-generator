@@ -1,3 +1,4 @@
+"use client";
 import React, { useRef, useCallback, useEffect } from "react";
 import { Layer, Group, Stage } from "react-konva";
 import { useFormContext, useWatch } from "react-hook-form";

@@ -4,14 +4,10 @@ import {
   Flex,
   StackDivider,
   useBreakpointValue,
-  useColorMode,
-  useColorModeValue,
-  Image,
 } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
 import Print from "public/assets/img/print.svg";
 import Download from "public/assets/img/download.svg";
-import Reduce from "public/assets/img/reduce.svg";
 import ColorPicker from "~components/ColorPicker";
 import OptionButton from "~components/PanelOptions/OptionButton";
 import ResetButton from "~components/PanelOptions/ResetButton";
@@ -23,8 +19,6 @@ import { exportCard, printCard } from "~utils/card";
 const PanelOptions = () => {
   const t = useTranslations();
   const hasDivider = useBreakpointValue({ base: true, sm: false });
-  const { colorMode } = useColorMode();
-  const transform = useColorModeValue("translateX(0)", "translateX(-4px)");
 
   return (
     <Flex
@@ -40,10 +34,10 @@ const PanelOptions = () => {
       <Stack
         direction={{ base: "row", sm: "column" }}
         borderRadius={{ base: "none", sm: "sm" }}
-        layerStyle={colorMode === "dark" ? "nes-container" : "glass"}
-        p={colorMode === "dark" ? 0 : 1.5}
+        layerStyle={"glass"}
+        p={1.5}
         spacing={{ base: 0, sm: 4 }}
-        transform={{ base: transform, sm: "translateX(0)" }}
+        transform={"translateX(0)"}
         pos="relative"
         w="100%"
         justifyContent="space-between"
@@ -52,25 +46,13 @@ const PanelOptions = () => {
       >
         <FormButton />
         <OptionButton
-          icon={
-            colorMode === "dark" ? (
-              <Image src="/assets/img/pixel/download.png" boxSize="24px" />
-            ) : (
-              <Download />
-            )
-          }
+          icon={<Download />}
           onClick={exportCard}
           label={t("downloadCard")}
           keyboard_shortcut={["ctrl", "d"]}
         />
         <OptionButton
-          icon={
-            colorMode === "dark" ? (
-              <Image src="/assets/img/pixel/print.png" boxSize="24px" />
-            ) : (
-              <Print />
-            )
-          }
+          icon={<Print />}
           onClick={() => {
             printCard();
           }}

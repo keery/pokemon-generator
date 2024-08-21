@@ -1,8 +1,7 @@
 import React from "react";
-import { Switch, SwitchProps, useColorModeValue } from "@chakra-ui/react";
+import { Switch, SwitchProps } from "@chakra-ui/react";
 import { Control, useController, useWatch } from "react-hook-form";
 import Field from "~components/Field";
-import CheckboxPixel from "~components/CheckboxPixel";
 
 interface Props extends SwitchProps {
   control: Control;
@@ -13,9 +12,6 @@ interface Props extends SwitchProps {
 const Checkbox = ({ control, name, label, ...rest }: Props) => {
   const { field } = useController({ control, name });
   const isChecked = useWatch({ control, name });
-  const isNesMode = useColorModeValue(false, true);
-  const flexDirection = useColorModeValue("row", "column");
-  const alignItems = useColorModeValue("center", "flex-start");
 
   return (
     <Field
@@ -23,22 +19,23 @@ const Checkbox = ({ control, name, label, ...rest }: Props) => {
       label={label}
       display="flex"
       justifyContent="space-between"
-      alignItems={alignItems}
+      alignItems={"center"}
       labelProps={{ mb: 0 }}
-      flexDirection={flexDirection}
+      flexDirection={"row"}
+      sx={{
+        ".chakra-switch .chakra-switch__track": {
+          background: "new.1",
+        },
+      }}
     >
-      {isNesMode ? (
-        <CheckboxPixel control={control} name={name} />
-      ) : (
-        <Switch
-          isChecked={isChecked}
-          id={name}
-          name={name}
-          onChange={(e) => field.onChange(e.target.checked)}
-          size="lg"
-          {...rest}
-        />
-      )}
+      <Switch
+        isChecked={isChecked}
+        id={name}
+        name={name}
+        onChange={(e) => field.onChange(e.target.checked)}
+        size="lg"
+        {...rest}
+      />
     </Field>
   );
 };

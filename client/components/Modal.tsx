@@ -8,10 +8,9 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalFooter,
-  useColorModeValue,
 } from "@chakra-ui/react";
-import { useSearchParams } from "next/navigation";
-import { closeModalWithUrl } from "~utils/helper";
+import { useRouter, useSearchParams } from "next/navigation";
+import useModalWithUrl from "~hooks/useModalWithUrl";
 
 interface Props extends Omit<ModalProps, "isOpen"> {
   name?: string;
@@ -36,21 +35,10 @@ const Modal = ({
   isUrlChanging = true,
   ...rest
 }: Props) => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const modal = searchParams.get("modal");
-  const style = useColorModeValue(
-    {},
-    {
-      layerStyle: "nes-container",
-      borderRadius: "none",
-      px: "0",
-    }
-  );
-
-  const headerFontsize = useColorModeValue(
-    { base: "md", sm: "lg", md: "1.6rem" },
-    { base: "xs", sm: "sm", md: "md" }
-  );
+  const { onCloseModalWithUrl } = useModalWithUrl({ name, onClose });
 
   return (
     <>
@@ -59,7 +47,7 @@ const Modal = ({
         isOpen={modal === name || isOpen}
         onClose={() => {
           if (isUrlChanging) {
-            closeModalWithUrl(onClose);
+            onCloseModalWithUrl();
           } else {
             onClose();
           }
@@ -73,14 +61,13 @@ const Modal = ({
           py={5}
           w="96%"
           maxH="95vh"
-          {...style}
           color="white"
           backdropFilter="blur(25px) saturate(180%)"
           backgroundColor="rgb(20 27 40 / 60%)"
         >
           {title && (
             <ModalHeader
-              fontSize={headerFontsize}
+              fontSize={{ base: "md", sm: "lg", md: "1.6rem" }}
               fontWeight="800"
               noOfLines={3}
               maxH="135px"

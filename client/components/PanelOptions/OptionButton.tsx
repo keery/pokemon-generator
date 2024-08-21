@@ -9,7 +9,6 @@ import {
   Box,
   useBreakpointValue,
   useDisclosure,
-  useColorMode,
 } from "@chakra-ui/react";
 import Mousetrap from "mousetrap";
 
@@ -30,7 +29,6 @@ const OptionButton = ({
 }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isMobile = useBreakpointValue({ base: true, sm: false });
-  const { colorMode } = useColorMode();
 
   useEffect(() => {
     if (isMobile) return;
@@ -80,7 +78,7 @@ const OptionButton = ({
     return (
       <Tooltip
         isOpen={isOpen}
-        hasArrow={colorMode === "light"}
+        hasArrow
         shouldWrapChildren
         label={
           <Flex alignItems="center">
@@ -88,7 +86,7 @@ const OptionButton = ({
             {keyboard_shortcut.map((key, index) => (
               <Fragment key={key}>
                 {index > 0 ? (
-                  <Box px={0.5} pb={colorMode === "light" ? 0.5 : 0}>
+                  <Box px={0.5} pb={0.5}>
                     +
                   </Box>
                 ) : (
