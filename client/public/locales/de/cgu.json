@@ -1,0 +1,44 @@
+{
+    "title": "Allgemeine Geschäftsbedingungen",
+    "update": "(letzte Aktualisierung {{date}})",
+    "line1": "Zweck dieser “Geschäftsbedingungen“ ist es, einen rechtlichen Rahmen für die Bereitstellungsbedingungen der Dienstleistungen der Website und deren Nutzung durch den “Benutzer“ bereitzustellen. Die allgemeinen Nutzungsbedingungen müssen von jedem Benutzer, der auf die Website zugreifen möchte, akzeptiert werden. Sie bilden den Vertrag zwischen der Website und dem Benutzer. Der Zugriff auf die Website durch den Benutzer bedeutet die Annahme dieser allgemeinen Nutzungsbedingungen. Wir behalten uns das Recht vor, den Inhalt dieser AGB jederzeit einseitig zu ändern.",
+    "mention": {
+        "title": "Rechtliche Hinweise",
+        "text": "Gemäß dem Gesetz \"Informatik und Freiheiten\" vom 6. Januar 1978, geändert im Jahr 2004, haben Sie das Recht auf Zugang und Berichtigung der Informationen, die Sie betreffen. Dieses Recht können Sie ausüben, indem Sie sich an {{app_name}} wenden, dessen Kontaktdaten unten angegeben sind.\nSie können sich auch aus berechtigten Gründen der Verarbeitung Ihrer Daten widersetzen.",
+        "line1": "{{app_name}} ist Eigentum von {{name}}",
+        "email": "E-Mail",
+        "host": "{{app_name}} wird von {{host}} gehostet, dessen eingetragener Firmensitz sich in 2 rue Kellermann – 59100 Roubaix – Frankreich befindet."
+    },
+    "art1": {
+        "title": "Artikel 1 : Präsentation",
+        "text":"{{app_name}} ist eine kostenlose französische Internet-Website, die für jeden zugänglich ist. Alle Kosten, die dem Benutzer für den Zugriff auf den Dienst entstehen (Computerhardware, Software, Internetverbindung usw.), gehen zu seinen Lasten."
+    },
+    "art2": {
+        "title": "Artikel 2 : Personenbezogene Daten",
+        "text": "Information used are author name when you publish a card, this name can be your real name or a nickname, we also use IP address in order to respect these conditions. Regarding law « IT and liberties » from 6th january updated on 2004, you have the right to access and rectify information concerning you, which you can exercise by contacting {{email}}."
+    },
+    "art3": {
+        "title": "Artikel 3 : Veröffentlichter Inhalt",
+        "text": "Ihre Bilder dürfen nicht: \n- Inhalte enthalten, die zu Hass aufrufen, \n- verleumderischen Charakter haben, \n- bedrohlichen Charakter haben, \n- illegale Inhalte enthalten oder in irgendeiner Weise gegen geltendes Recht verstoßen, \n- sexuelle Inhalte enthalten (erotisch, pornografisch, obszön oder provokante Posen usw.), außer in den dafür vorgesehenen Bereichen, \n- persönliche Informationen enthalten (Name, Adresse, E-Mail, Telefon ...). \n- Die Nutzung der Dienste darf nicht kommerziell oder unehrlich sein (mit dem Ziel, die spezifischen Regeln jedes Dienstes zu missachten). \n- Sie verpflichten sich, durch die Nutzung dieses Dienstes, keine Inhalte zu veröffentlichen, die nicht den Urheberrechten oder Lizenzvereinbarungen entsprechen. \n- Sie verpflichten sich, keine Inhalte zu posten, die in Verbindung mit der Nutzung von betrügerischen, illegalen oder gefälschten Inhalten stehen. \n- Sie verpflichten sich, keine Inhalte zu veröffentlichen, die nicht der geltenden französischen Gesetzgebung entsprechen. \n- Sie verpflichten sich schließlich ehrenhaft, die beiden oben genannten Punkte nicht zu verletzen, indem Sie unsere Richtlinien für Inhalte missbrauchen."
+    },
+    "art4": {
+        "title": "Artikel 4 : Berichtssystem",
+        "text": "Im Falle eines Problems haben Sie die Möglichkeit, unser Alarmsystem zu nutzen. Es ist über einen 'Melden'-Button auf der Kartenseite verfügbar. Es ist zu beachten, dass der Button auf der Seite, die mit dem Bild verknüpft ist, verfügbar ist und nicht direkt auf dem Link des betreffenden Bildes."
+    },
+    "art5": {
+        "title": "Artikel 5 : Sanktion bei Nichteinhaltung der Nutzungsbedingungen",
+        "text": "Bei Nichteinhaltung der Regeln sind folgende Sanktionen möglich:\n- Löschung der beanstandeten Bilder,\n- Meldung an die zuständigen Behörden."
+    },
+    "art6": {
+        "title": "Artikel 6 : Aufgaben",
+        "text": "Die Moderation nach der Veröffentlichung entbindet {{app_name}} von der Verantwortung für die veröffentlichten Bilder. \n{{app_name}} verpflichtet sich, im Alarmfall so schnell wie möglich einzugreifen. \nJedes Bild, das gegen die nachstehenden Regeln, das Gesetz oder einen anderen Verhaltenskodex verstößt, liegt in der Verantwortung seines Urhebers. \nObwohl die Inhalte so gut wie möglich kontrolliert werden, um die Fristen und Kontrollbedingungen zu optimieren, bedeutet der Begriff 'Moderation' nicht, dass {{app_name}} oder die Rechteinhaber von {{url}} die vollständige Kontrolle über die Bilder haben. \nJeder Benutzer, der ein anstößiges Bild bemerkt, wird ermutigt, uns sofort per E-Mail oder über das bereitgestellte Alarmsystem zu kontaktieren. \nUm die Kontrolle über die Inhalte zu optimieren, ist {{app_name}} berechtigt, Bilder zu löschen, zu ändern oder zu verschieben, die als störend für das ordnungsgemäße Funktionieren der Website angesehen werden, ohne vorherige Ankündigung; ebenso ist {{app_name}} berechtigt, jedes Benutzerkonto zu löschen, zu ändern oder zu sperren oder diese Rechte bestimmten Mitgliedern oder Gruppen zu delegieren, die als 'rechtmäßige Anspruchsberechtigte' bezeichnet werden. \nZur Einhaltung dieser Nutzungsbedingungen werden IP-Adressen aufgezeichnet. Angesichts der ihnen zugewiesenen Rolle sind die Rechteinhaber von {{app_name}} nicht verpflichtet, ihre Handlungen zu rechtfertigen. Falls ein Streit notwendig erscheint, muss dieser per E-Mail erfolgen."
+    },
+    "art7": {
+        "title": "Artikel 7 : Geltendes Recht",
+        "text": "Jeder Beitrag auf der Website {{url}} unterliegt dem Urheberrechtsgesetz. Jeder Benutzer bleibt Eigentümer seiner Bilder. Durch das Veröffentlichen von Beiträgen autorisieren Sie das Unternehmen {{app_name}}, den Inhalt Ihrer Beiträge in den verschiedenen Suchmaschinen zu referenzieren. Sie verzichten darauf, das Unternehmen {{app_name}} im Falle eines Problems oder Schadens, der durch einen anderen Benutzer in Verletzung der allgemeinen Nutzungsbedingungen verursacht wurde, zu verklagen."
+    },
+    "art8": {
+        "title": "Artikel 8 : Cookies",
+        "text": "Die Website {{url}} ist verpflichtet, Cookies in Ihrem Browser zu speichern, um Ihre Browsing-Präferenzen zu behalten und Statistiken (Google Analytics) zu erstellen. Sie können dieser Speicherung über die Einstellungen Ihres Browsers widersprechen."
+    }
+}

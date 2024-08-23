@@ -1,0 +1,29 @@
+{
+  "seo": {
+    "title": "Erstelle deine eigene Pokemon-Karte | Pokemon Card Generator",
+    "description": "Erstelle deine eigene individuelle Pokémon-Karte, drucke sie aus und teile sie mit all deinen Freunden. Importiere Fotos direkt aus deinen sozialen Medien, sowie Instagram, Facebook, Google Drive oder mache sogar ein Selfie mit deiner Kamera"
+  },
+  "yes": "Ja",
+  "no": "Nein",
+  "close": "Schließen",
+  "backHome": "Zurück zu home",
+  "cancel": "Abbrechen",
+  "confirm": "Bestätigen",
+  "warning": "Achtung",
+  "menu": {
+    "span": "Menü",
+    "open": "Menü öffnen",
+    "close": "Menü schließen",
+    "generator": "Karte erstellen",
+    "gallery": "Galerie",
+    "cgu": "AGB",
+    "sitemap": "Sitemap"
+  },
+  "footer": {
+    "navigation": "Menü",
+    "description": "Erstelle individuelle Pokémon-Karten mit unserem nutzerfreundlichen Generator! Wähle Designoptionen und Informationen beliebiger Pokemon-Karten. Teile deine Kreationen und schaue dir andere von unserer Community erstellten Karten an. Kreiere einzigartige Karten und bringe dein Pokémon-Training auf das nächste Level!",
+    "madeBy": "Entwickelt von",
+    "cardCreated": "erstellte Karten"
+  },
+  "follow": "Folge uns auf Instagram!"
+}

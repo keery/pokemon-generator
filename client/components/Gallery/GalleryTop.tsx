@@ -61,8 +61,9 @@ const GalleryTop = () => {
               fontSize={{
                 base: "2.5rem",
                 sm: "3.6rem",
-                md: "5rem",
-                lg: "6.7rem",
+                md: "4.5rem",
+                lg: "6.2rem",
+                xl: "6.7rem",
               }}
               lineHeight={{ base: "1.2", md: "1" }}
               fontWeight="900"

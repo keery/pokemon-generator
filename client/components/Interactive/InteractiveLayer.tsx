@@ -18,7 +18,7 @@ import {
   STAGE_OPTIONS,
   RARITY_OPTIONS,
 } from "~constants";
-import { Box, useColorMode } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import FieldsCollection from "~components/Fields/FieldsCollection";
 import FieldsLengthWeight from "~components/Fields/FieldsLengthWeight";
 import FieldsAttackTab from "~components/Fields/FieldsAttackTab";
@@ -182,11 +182,12 @@ const InteractiveLayer = () => {
         choices={HP_OPTIONS}
         className="hp"
         control={control}
+        isTranslated
         icon={
           <InteractiveIcon
             placement="top"
             left="77%"
-            label="HP"
+            label={t("hp")}
             icon={<HP />}
             lineLength={8.8}
             linePos={80}

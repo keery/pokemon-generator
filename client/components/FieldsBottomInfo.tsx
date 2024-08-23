@@ -26,6 +26,7 @@ const FieldsBottomInfo = () => {
           name="rarity"
           options={RARITY_OPTIONS}
           iconPath="1-gen/rarity-{{value}}.png"
+          isTranslated
         />
       </Field>
     </>

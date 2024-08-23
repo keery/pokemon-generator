@@ -8,6 +8,7 @@ import Uppy from "@uppy/core";
 import Url from "@uppy/url";
 import French from "@uppy/locales/lib/fr_FR";
 import Spanish from "@uppy/locales/lib/es_ES";
+import German from "@uppy/locales/lib/de_DE";
 import { useUppy as useUppyReact } from "@uppy/react";
 import { useTranslation } from "next-i18next";
 import useToast from "~hooks/useToast";
@@ -19,8 +20,8 @@ const getUppyTranslations = (locale) => {
   switch (locale) {
     case "fr":
       return French;
-    case "es":
-      return Spanish;
+    case "de":
+      return German;
     default:
       return false;
   }

@@ -165,8 +165,9 @@ const Menu = ({ setOpen, isOpen }) => {
           color="new.3"
           borderColor="new.3"
           borderBottom="1px solid"
+          textTransform="uppercase"
         >
-          MENU
+          {t("menu.span")}
         </Text>
         <VStack
           width={{

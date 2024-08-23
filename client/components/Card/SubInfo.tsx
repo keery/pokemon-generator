@@ -10,7 +10,7 @@ const HP = ({ control }) => {
 
   const pokemonInfo = useMemo(() => {
     let info = "";
-    if (species !== "") info += `${species} Pokémon`;
+    if (species !== "") info += `${species} Pokemon`;
     if (species !== "" && (length !== "" || weight !== "")) info += ". ";
     if (length !== "") info += `Length: ${length}`;
     if (length !== "" && weight !== "") info += ", ";

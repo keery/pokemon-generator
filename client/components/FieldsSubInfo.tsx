@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { useFormContext } from "react-hook-form";
 import Select from "~components/Select";
 import Field from "~components/Field";
 import {
@@ -12,7 +11,6 @@ import {
 
 const FieldsSubInfo = () => {
   const { t } = useTranslation("generator");
-  const { control } = useFormContext();
 
   return (
     <>
@@ -22,6 +20,7 @@ const FieldsSubInfo = () => {
           options={ELEMENTS_OPTIONS}
           isClearable
           iconPath="1-gen/{{value}}.png"
+          isTranslated
         />
       </Field>
       <Field label={t("weaknessAmount")}>
@@ -33,6 +32,7 @@ const FieldsSubInfo = () => {
           options={ELEMENTS_OPTIONS}
           iconPath="1-gen/{{value}}.png"
           isClearable
+          isTranslated
         />
       </Field>
       <Field label={t("resistanceAmount")}>

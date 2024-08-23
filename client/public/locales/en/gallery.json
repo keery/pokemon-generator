@@ -1,13 +1,13 @@
 {
     "seo": {
       "title": "Gallery",
-      "description": "Consult all pokemon cards from the community all around the world. Vote for your favorite cards or even share cards you made and who knows you might be the next weekly winner.",
+      "description": "Explore pokemon cards from our community all around the world. Vote for your favorite cards or share cards you made. Who knows, you might be the next weekly winner.",
       "modal": {
         "isType": "is a pokemon of type",
         "madeBy": "Card made by {{author}}"
       }
     },
-    "h1": "Cards made by the community",
+    "h1": "Cards made by our community",
     "nextWinner": "next winner",
     "electedIn": "elected in",
     "topCta": "Make a card",
@@ -37,17 +37,18 @@
       "how": {
         "title": "How does it work ?",
         "1": "The card that receives the",
-        "2": "highest like number",
+        "2": "most likes",
         "3": "during the",
         "4": "current week",
         "5": "before the end of the countdown will be elected",
-        "6": "weekly winner"
+        "6": "weekly winner",
+        "7": ""
       },
       "congratule": "Congratulate winner",
       "createdBy": "Created by",
       "no": {
         "title": "No winner yet",
-        "description": "No one got elected this week. Next winner will get elected by the end of the week when the countdown will be over",
+        "description": "No one got elected this week. Next winner will get elected by the end of the week when the countdown is over",
         "button": "Create my card"
       }
     },
@@ -58,11 +59,11 @@
       "likes": "Likes",
       "like": "Like",
       "liked": "Liked",
-      "shareSocial": "Check this out! I created {{name}} my new pokemon card {{href}}",
+      "shareSocial": "Check this out! I created {{name}}, my new pokemon card {{href}}",
       "report": {
         "button": "Report",
         "title": "Report card {{name}}",
-        "description": "If you determine that this card contains inappropriate content you can report it. After reporting, the moderation will determine as soon as possible if the quality of its content is abusive, if so the card will be permanently removed from the site.",
+        "description": "If you determine that this card contains inappropriate content you can report it. After reporting, the moderation will determine as soon as possible if the content is abusive. If so, the card will be permanently removed from the site.",
         "label": "Select a reason",
         "choice1": "Nudity / Sexual nature",
         "choice2": "Inciting hatred",

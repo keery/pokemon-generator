@@ -1,0 +1,85 @@
+{
+    "seo": {
+      "title": "Galerie",
+      "description": "Entdecke alle Pokémon-Karten unserer weltweiten Community. Stimme für deine Lieblingskarten ab oder teile die von dir erstellten Karten. Wer weiß, vielleicht bist du der nächste  Gewinner der Woche.",
+      "modal": {
+        "isType": "ist ein Pokemon des Types",
+        "madeBy": "Karte erstellt von {{author}}"
+      }
+    },
+    "h1": "Karten unserer Community",
+    "nextWinner": "Wahl zum nächsten",
+    "electedIn": "gewinner in",
+    "topCta": "Erstelle eine Karte",
+    "madeBy": "Von {{name}}",
+    "fire" : "Feuer",
+    "grass" : "Pflanze",
+    "water" : "Wasser",
+    "electric" : "Elektro",
+    "psychic" : "Psycho",
+    "fighting" : "Kampf",
+    "normal" : "Normal",
+    "steel" : "Stahl",
+    "dark" : "Unlicht",
+    "attack1" : "Attacke n°1",
+    "attack2" : "Attacke n°2",
+    "filters": {
+      "mostRecent": "Neueste Karten",
+      "recentWinner": "Bisherige Gewinner",
+      "oldWinner": "Älteste Gewinner",
+      "mostVoted": "Meist geliked",
+      "mostVotedWeek": "Top-Karten der Woche",
+      "random": "Zufällig"
+    },
+    "loadMoreCards": "Mehr Karten laden",
+    "winner": {
+      "title": "Gewinner der Woche #{{weekNb}}",
+      "how": {
+        "title": "So funktioniert's",
+        "1": "Die Karte, die",
+        "2": "in einer Woche",
+        "3": "die",
+        "4": "meisten Likes",
+        "5": "bekommt, wird am Ende des Countdowns zum",
+        "6": "Gewinner der Woche",
+        "7": " gewählt"
+      },
+      "congratule": "Gratuliere dem Gewinner",
+      "createdBy": "Erstellt von",
+      "no": {
+        "title": "Noch kein Gewinner",
+        "description": "Diese Woche gibt es kein Ergebnis. Der nächste Gewinner wird am Ende der Woche, wenn der Countdown abgelaufen ist, gewählt.",
+        "button": "Erstelle meine Karte"
+      }
+    },
+    "modal": {
+      "created": "Erstellt von <b>{{author}}</b> am {{date}}",
+      "description": "Beschreibung",
+      "type": "Typ",
+      "likes": "Likes",
+      "like": "Like",
+      "liked": "Geliked",
+      "shareSocial": "Guck mal! Ich habe meine neue Pokemon-Karte {{name}} erstellt {{href}}.",
+      "report": {
+        "button": "Melden",
+        "title": "Karte melden {{name}}",
+        "description": "Wenn du findest, dass diese Karte unangemessene Inhalte enthält, kannst du dies melden. Nach der Meldung werden wir so schnell wie möglich feststellen, ob der Inhalt beleidigend ist. Wenn dies der Fall ist, wird die Karte dauerhaft von der Webseite entfernt.",
+        "label": "Wähle einen Grund",
+        "choice1": "Nacktheit / Sexueller Inhalt",
+        "choice2": "Anstiftung zum Hass",
+        "choice3": "Mobbing",
+        "choice4": "Bekanntmachung persönlicher Daten",
+        "other": "Andere",
+        "labelOther": "Beschreibe die Details deiner Meldung",
+        "success": "Deine Meldung wurde verschickt",
+        "error": "Das Senden deiner Meldung ist fehlgeschlagen"
+      }
+    },
+    "countdown": {
+      "days": "Tage",
+      "hours": "Stunden",
+      "minutes": "Minuten",
+      "seconds": "Sekunden"
+    }
+  }
+  

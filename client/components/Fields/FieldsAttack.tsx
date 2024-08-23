@@ -54,6 +54,7 @@ const FieldsAttack = ({ name, hasColorInverted = false }) => {
           options={optionsType}
           iconPath="1-gen/{{value}}.png"
           hasColorInverted={hasColorInverted}
+          isTranslated
         />
       </Field>
     </>

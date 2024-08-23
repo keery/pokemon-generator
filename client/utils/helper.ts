@@ -3,6 +3,7 @@ import Router from "next/router";
 import format from "date-fns/format";
 import fr from "date-fns/locale/fr";
 import en from "date-fns/locale/en-GB";
+import de from "date-fns/locale/de";
 
 export const getRgbaColor = (color: RgbaColor): string => {
   return `rgba(${color.r}, ${color.g}, ${color.b}, ${
@@ -43,6 +44,7 @@ export const screenPercent = (percent: number) => {
 const locales = {
   fr,
   en,
+  de,
 };
 
 export const dateToText = (date, language) => {

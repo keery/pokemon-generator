@@ -11,6 +11,7 @@
   "confirm": "Confirmer",
   "warning": "Avertissement",
   "menu": {
+    "span": "Menu",
     "open": "Ouvrir menu",
     "close": "Fermer menu",
     "generator": "Crée ta carte",

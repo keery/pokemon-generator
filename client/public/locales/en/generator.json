@@ -8,9 +8,14 @@
     "normal" : "Normal",
     "steel" : "Steel",
     "dark" : "Dark",
-    "basicInfo" : "Informations",
+    "basicInfo" : "Information",
+    "basic": "Basic",
+    "stage1": "Stage 1",
+    "stage2": "Stage 2",
+    "hp": "HP",
+    "hpValue": "{{value}} HP",
     "common" : "Common",
-    "uncommon" : "Uncommun",
+    "uncommon" : "Uncommon",
     "rare" : "Rare",
     "name" : "Name",
     "nameEvolve" : "Evolution name",
@@ -44,7 +49,7 @@
     "attack1" : "Attack n°1",
     "attack2" : "Attack n°2",
     "additionalInformation" : "Card footer",
-    "confirmReset" : "Do you really want to reset your card ? All changes will be lost",
+    "confirmReset" : "Do you really want to reset your card? All changes will be lost",
     "resetTitle": "Reset card",
     "downloadCard" : "Download",
     "printCard" : "Print",
@@ -52,7 +57,7 @@
     "hideZone" : "Hide areas",
     "saveCard" : "Save",
     "resetCard" : "Reset",
-    "shareCard" : "Share to your friends",
+    "shareCard" : "Share with your friends",
     "openForm": "Open form",
     "importPicture" : "Import a picture",
     "fileTooBig": "Image file is too big ({{max}}Mo maximum)",
@@ -76,17 +81,17 @@
         "button": "Publish my card",
         "requirements": {
             "title": "Publishing requirements",
-            "desc": "In order to publish your card, it must comply with few requirements:",
+            "desc": "In order to publish your card, it must comply with a few requirements:",
             "name": "Write a name",
             "hp": "Select a HP value",
-            "photo": "Add a main photo",
-            "attack": "To have one attack at least"
+            "photo": "Add a main picture",
+            "attack": "To have at least one attack"
         },
         "confirm": {
             "title": "Confirm publication",
-            "desc": "Publish your card to add it into the galery and to share it with the community, it will be <b>public and visible</b> to every users",
+            "desc": "Publish your card to add it into the gallery and share it with the community. It will be <b>public and visible</b> to all users",
             "warning": "The card must not contain information that is illegal, disrespectful or likely to infringe the rights of a third party.",
-            "checkbox": "By checking this box, I acknowledge having read and accepted the <a>General Conditions of Use</a>.",
+            "checkbox": "By checking this box, I state that I have read and understood the <a>General Conditions of Use</a>.",
             "author": {
                 "label": "Author's name",
                 "placeholder": "Ex: Sacha"
@@ -94,15 +99,15 @@
         },
         "success": {
             "title": "Yeaaaah !",
-            "desc": "Congratulation your card has been published successfully.",
-            "thanks": "Thank you for contributing and being part of the community.",
-            "review": "To prevent offensive card from being uploaded, every cards are subject to a review.",
-            "email": "Once your card is approved it will be available from the gallery",
+            "desc": "Congratulations your card has been published successfully.",
+            "thanks": "Thank you for contributing and being part of our community.",
+            "review": "To prevent offensive cards from being uploaded, every card is subject to be reviewed.",
+            "email": "Once your card is approved it will be available in the gallery",
             "createNew": "Create new card",
             "seeGallery": "Visit gallery"
         }
     },
-    "googleads": {
+    "mainText": {
         "title": "Make and print your own Pokemon cards",
         "description": "Are you a Pokemon fan looking to bring your unique ideas to life? Look no further than Pokemon Card Generator, the ultimate tool for creating custom Pokemon cards! Whether you’re a collector, a player, or just someone who loves the Pokemon universe, our website offers a seamless and fun way to design personalized Pokemon cards.",
         "features": "Features:",

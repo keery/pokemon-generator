@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "Create your own pokemon card | Pokemon Card Generator",
-    "description": "Make your own custom pokemon card, print it, then share your card to all your friends, import photos directly from your favorite platforms like Instagram, Facebook, Google Drive or even take a selfie your camera"
+    "description": "Make your own custom pokemon card, print it, then share your card with all your friends, import photos directly from your favorite application like Instagram, Facebook, Google Drive or even take a selfie with your camera"
   },
   "yes": "Yes",
   "no": "No",
@@ -11,6 +11,7 @@
   "confirm": "Confirm",
   "warning": "Warning",
   "menu": {
+    "span": "Menu",
     "open": "Open menu",
     "close": "Close menu",
     "generator": "Create card",
@@ -20,7 +21,7 @@
   },
   "footer": {
     "navigation": "Menu",
-    "description": "Make custom Pokemon cards with our easy-to-use generator! Choose design options and select any information from a Pokemon card. Share your creations and view others in our community including all levels of trainers. Create unique cards and take your Pokemon training to the next level!",
+    "description": "Make custom Pokemon cards with our easy-to-use generator! Choose design options and select any information from a Pokemon card. Share your creations and view other cards made by our community. Create unique cards and take your Pokemon training to the next level!",
     "madeBy": "Development by",
     "cardCreated": "cards made"
   },
