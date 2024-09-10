@@ -111,7 +111,7 @@ const SortSelect = ({
   isClearable = false,
   onChange = null,
 }: Props) => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
   const theme = useTheme();
   const { field } = useController({
     name,

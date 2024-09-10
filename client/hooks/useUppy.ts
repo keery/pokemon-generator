@@ -8,7 +8,7 @@ import XHRUpload from "@uppy/xhr-upload";
 import Uppy from "@uppy/core";
 import Url from "@uppy/url";
 import French from "@uppy/locales/lib/fr_FR";
-import Spanish from "@uppy/locales/lib/es_ES";
+import German from "@uppy/locales/lib/de_DE";
 import { useTranslations, useLocale } from "next-intl";
 import useToast from "~hooks/useToast";
 import { useFormContext } from "react-hook-form";
@@ -18,15 +18,15 @@ const getUppyTranslations = (locale) => {
   switch (locale) {
     case "fr":
       return French;
-    case "es":
-      return Spanish;
+    case "de":
+      return German;
     default:
       return false;
   }
 };
 
 const COMPANION_URL = `${process.env.NEXT_PUBLIC_API_URL}/image/companion`;
-const MAX_FILE_SIZE = 2000000;
+const MAX_FILE_SIZE = 12000000;
 interface Params {
   id: string;
   onSuccess?: () => void;

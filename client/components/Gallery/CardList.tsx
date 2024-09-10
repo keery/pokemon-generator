@@ -17,7 +17,7 @@ import { useTranslations } from "next-intl";
 const AUTO_LOADING_LIMIT = 3;
 
 const CardList = (props: SimpleGridProps) => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
   const ref = useRef(null);
   const [sort, setSort] = useState("created_at,DESC");
   const [loading, setLoading] = useState<number>(0);

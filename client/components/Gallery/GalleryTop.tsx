@@ -19,7 +19,7 @@ const Countdown = dynamic(() => import("~components/Gallery/Countdown"), {
 });
 
 const CTA = () => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
   return (
     <Flex
       mt={{
@@ -45,7 +45,7 @@ const CTA = () => {
 };
 
 const GalleryTop = () => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
@@ -60,8 +60,9 @@ const GalleryTop = () => {
               fontSize={{
                 base: "2.5rem",
                 sm: "3.6rem",
-                md: "5rem",
-                lg: "6.7rem",
+                md: "4.5rem",
+                lg: "6.2rem",
+                xl: "6.7rem",
               }}
               lineHeight={{ base: "1.2", md: "1" }}
               fontWeight="900"

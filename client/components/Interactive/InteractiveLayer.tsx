@@ -89,6 +89,7 @@ const InteractiveLayer = () => {
         choices={STAGE_OPTIONS}
         control={control}
         hasEmptyOption={false}
+        isTranslated
         icon={
           <InteractiveIcon
             placement="left"
@@ -182,11 +183,12 @@ const InteractiveLayer = () => {
         choices={HP_OPTIONS}
         className="hp"
         control={control}
+        isTranslated
         icon={
           <InteractiveIcon
             placement="top"
             left="77%"
-            label="HP"
+            label={t("hp")}
             icon={<HP />}
             lineLength={8.8}
             linePos={80}

@@ -166,7 +166,7 @@ const Menu = ({ setOpen, isOpen }) => {
           borderColor="new.3"
           borderBottom="1px solid"
         >
-          MENU
+          {t("menu.span")}
         </Text>
         <VStack
           width={{

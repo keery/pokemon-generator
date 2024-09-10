@@ -10,7 +10,7 @@ interface Props {
 }
 
 const CardThumbnailGlass = ({ card, cachedQuery }: Props) => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
 
   return (
     <Flex

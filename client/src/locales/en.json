@@ -43,7 +43,7 @@
     },
     "seo": {
         "title": "Create your own pokemon card | Pokemon Card Generator",
-        "description": "Make your own custom pokemon card, print it, then share your card to all your friends, import photos directly from your favorite platforms like Instagram, Facebook, Google Drive or even take a selfie your camera"
+        "description": "Make your own custom pokemon card, print it, then share your card with all your friends, import photos directly from your favorite application like Instagram, Facebook, Google Drive or even take a selfie with your camera"
       },
       "yes": "Yes",
       "no": "No",
@@ -53,6 +53,7 @@
       "confirm": "Confirm",
       "warning": "Warning",
       "menu": {
+        "span": "Menu",
         "open": "Open menu",
         "close": "Close menu",
         "generator": "Create card",
@@ -62,18 +63,19 @@
       },
       "footer": {
         "navigation": "Menu",
-        "description": "Make custom Pokemon cards with our easy-to-use generator! Choose design options and select any information from a Pokemon card. Share your creations and view others in our community including all levels of trainers. Create unique cards and take your Pokemon training to the next level!",
+        "description": "Make custom Pokemon cards with our easy-to-use generator! Choose design options and select any information from a Pokemon card. Share your creations and view other cards made by our community. Create unique cards and take your Pokemon training to the next level!",
         "madeBy": "Development by",
         "cardCreated": "cards made"
       },
       "seo": {
         "title": "Gallery",
-        "description": "Consult all pokemon cards from the community all around the world. Vote for your favorite cards or even share cards you made and who knows you might be the next weekly winner.",
+        "description": "Explore pokemon cards from our community all around the world. Vote for your favorite cards or share cards you made. Who knows, you might be the next weekly winner.",
         "modal": {
           "isType": "is a pokemon of type",
           "madeBy": "Card made by {author}"
         }
       },
+      "h1": "Cards made by our community",
       "nextWinner": "next winner",
       "electedIn": "elected in",
       "topCta": "Make a card",
@@ -101,17 +103,18 @@
         "how": {
           "title": "How does it work ?",
           "1": "The card that receives the",
-          "2": "highest like number",
+          "2": "most likes",
           "3": "during the",
           "4": "current week",
           "5": "before the end of the countdown will be elected",
-          "6": "weekly winner"
+          "6": "weekly winner",
+          "7": ""
         },
         "congratule": "Congratulate winner",
         "createdBy": "Created by",
         "no": {
           "title": "No winner yet",
-          "description": "No one got elected this week. Next winner will get elected by the end of the week when the countdown will be over",
+          "description": "No one got elected this week. Next winner will get elected by the end of the week when the countdown is over",
           "button": "Create my card"
         }
       },
@@ -123,11 +126,11 @@
         "likes": "Likes",
         "like": "Like",
         "liked": "Liked",
-        "shareSocial": "Check this out! I created {name} my new pokemon card {href}",
+        "shareSocial": "Check this out! I created {name}, my new pokemon card {href}",
         "report": {
           "button": "Report",
           "title": "Report card {name}",
-          "description": "If you determine that this card contains inappropriate content you can report it. After reporting, the moderation will determine as soon as possible if the quality of its content is abusive, if so the card will be permanently removed from the site.",
+          "description": "If you determine that this card contains inappropriate content you can report it. After reporting, the moderation will determine as soon as possible if the content is abusive. If so, the card will be permanently removed from the site.",
           "label": "Select a reason",
           "choice1": "Nudity / Sexual nature",
           "choice2": "Inciting hatred",
@@ -145,9 +148,14 @@
         "minutes": "minutes",
         "seconds": "seconds"
       },
-    "basicInfo" : "Informations",
+    "basicInfo" : "Information",
+    "basic": "Basic",
+    "stage1": "Stage 1",
+    "stage2": "Stage 2",
+    "hp": "HP",
+    "hpValue": "{value} HP",
     "common" : "Common",
-    "uncommon" : "Uncommun",
+    "uncommon" : "Uncommon",
     "rare" : "Rare",
     "name" : "Name",
     "nameEvolve" : "Evolution name",
@@ -158,7 +166,6 @@
     "length" : "Length",
     "weight" : "Weight",
     "stage" : "Stage",
-    "basic" : "Basic",
     "evolution" : "Evolution",
     "damage" : "Damage",
     "info" : "Info",
@@ -182,7 +189,7 @@
     "attack1" : "Attack n°1",
     "attack2" : "Attack n°2",
     "additionalInformation" : "Card footer",
-    "confirmReset" : "Do you really want to reset your card ? All changes will be lost",
+    "confirmReset" : "Do you really want to reset your card? All changes will be lost",
     "resetTitle": "Reset card",
     "downloadCard" : "Download",
     "printCard" : "Print",
@@ -190,7 +197,7 @@
     "hideZone" : "Hide areas",
     "saveCard" : "Save",
     "resetCard" : "Reset",
-    "shareCard" : "Share to your friends",
+    "shareCard" : "Share with your friends",
     "openForm": "Open form",
     "importPicture" : "Import a picture",
     "fileTooBig": "Image file is too big ({max}Mo maximum)",
@@ -214,17 +221,17 @@
         "button": "Publish my card",
         "requirements": {
             "title": "Publishing requirements",
-            "desc": "In order to publish your card, it must comply with few requirements:",
+            "desc": "In order to publish your card, it must comply with a few requirements:",
             "name": "Write a name",
             "hp": "Select a HP value",
-            "photo": "Add a main photo",
-            "attack": "To have one attack at least"
+            "photo": "Add a main picture",
+            "attack": "To have at least one attack"
         },
         "confirm": {
             "title": "Confirm publication",
-            "desc": "Publish your card to add it into the galery and to share it with the community, it will be <b>public and visible</b> to every users",
+            "desc": "Publish your card to add it into the gallery and share it with the community. It will be <b>public and visible</b> to all users",
             "warning": "The card must not contain information that is illegal, disrespectful or likely to infringe the rights of a third party.",
-            "checkbox": "By checking this box, I acknowledge having read and accepted the <a>General Conditions of Use</a>.",
+            "checkbox": "By checking this box, I state that I have read and understood the <a>General Conditions of Use</a>.",
             "author": {
                 "label": "Author's name",
                 "placeholder": "Ex: Sacha"
@@ -232,15 +239,15 @@
         },
         "success": {
             "title": "Yeaaaah !",
-            "desc": "Congratulation your card has been published successfully.",
-            "thanks": "Thank you for contributing and being part of the community.",
-            "review": "To prevent offensive card from being uploaded, every cards are subject to a review.",
-            "email": "Once your card is approved it will be available from the gallery",
+            "desc": "Congratulations your card has been published successfully.",
+            "thanks": "Thank you for contributing and being part of our community.",
+            "review": "To prevent offensive cards from being uploaded, every card is subject to be reviewed.",
+            "email": "Once your card is approved it will be available in the gallery",
             "createNew": "Create new card",
             "seeGallery": "Visit gallery"
         }
     },
-    "googleads": {
+    "mainText": {
         "title": "Create Your Own Custom Pokémon Cards",
         "description": "Are you a Pokémon fan looking to bring your unique ideas to life? Look no further than Pokemon Card Generator, the ultimate tool for creating custom Pokémon cards! Whether you’re a collector, a player, or just someone who loves the Pokémon universe, our website offers a seamless and fun way to design personalized Pokémon cards.",
         "features": "Features:",

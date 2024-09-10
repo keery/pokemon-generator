@@ -95,19 +95,19 @@ const Home: NextPage = () => {
       </form>
       <Container as="section" pos="relative">
         <Heading as="h1" mb="4" pt="12">
-          {t("googleads.title")}
+          {t("mainText.title")}
         </Heading>
-        <p>{t("googleads.description")}</p>
+        <p>{t("mainText.description")}</p>
         <Heading as="h2" mb="4" mt="6">
-          {t("googleads.features")}
+          {t("mainText.features")}
         </Heading>
         <Stack>
-          <li>{t("googleads.item1")}</li>
-          <li>{t("googleads.item2")}</li>
-          <li>{t("googleads.item3")}</li>
-          <li>{t("googleads.item4")}</li>
+          <li>{t("mainText.item1")}</li>
+          <li>{t("mainText.item2")}</li>
+          <li>{t("mainText.item3")}</li>
+          <li>{t("mainText.item4")}</li>
         </Stack>
-        <p>{t("googleads.lasttext")}</p>
+        <p>{t("mainText.lasttext")}</p>
       </Container>
     </FormProvider>
   );

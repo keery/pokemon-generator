@@ -581,6 +581,9 @@ a {
 .is-evolve-picture .uppy-Root {
   height: 100%;
 }
+.uppy-Root {
+  height: 100%;
+}
 .is-evolve-picture .uppy-DragDrop-inner {
   padding: 0 !important;
 }

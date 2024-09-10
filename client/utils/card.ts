@@ -3,8 +3,34 @@ import { Card } from "~@types/Card";
 import { ROUTE_GALLERY } from "~constants";
 import { useTranslations } from "next-intl";
 
+export const ImagetoPrint = (source) => {
+  return (
+    "<html><head><scri" +
+    "pt>function step1(){\n" +
+    "setTimeout('step2()', 10);}\n" +
+    "function step2(){window.print();window.close()}\n" +
+    "</scri" +
+    "pt></head><body onload='step1()'>\n" +
+    '<img style="width:6.3cm;" src=\'' +
+    source +
+    '\' /><img style="width:6.3cm; margin-left:20px;" src="/assets/img/pokemon-card-back.webp" /></body></html>'
+  );
+};
+
+export const onPrintCard = (cardData: string) => {
+  const Pagelink = "about:blank";
+  const pwa = window.open(Pagelink, "_new");
+
+  if (pwa) {
+    pwa.document.open();
+    pwa.document.write(ImagetoPrint(cardData));
+    pwa.document.close();
+  }
+};
+
 export const printCard = () => {
-  window.print();
+  const cardData = getGeneratorCardData();
+  onPrintCard(cardData);
 };
 
 export const exportCard = () => {
@@ -21,7 +47,7 @@ export const exportCard = () => {
 
   const link = document.createElement("a");
   link.download = name;
-  link.href = getCardData();
+  link.href = getGeneratorCardData();
   link.click();
 };
 
@@ -63,14 +89,14 @@ export const formatValues = (values): FormatValue => {
   };
 };
 
-export const getCardData = () => {
+export const getGeneratorCardData = () => {
   const canva = document.getElementById("card");
   // @ts-ignore
   return canva.toDataURL();
 };
 
 export const getImgFromCard = () => {
-  const dataUrl = getCardData();
+  const dataUrl = getGeneratorCardData();
 
   return fetch(dataUrl)
     .then((res) => res.blob())
@@ -99,7 +125,7 @@ export const formatAttackSeo = (label: string, values: string[]) => {
 };
 
 export const getSeoCardDescription = (card: Card) => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
 
   const attack1 = formatAttackSeo(t("attack1"), [
     card.attack1Name,

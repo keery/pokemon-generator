@@ -7,6 +7,7 @@ import Twitter from "public/assets/img/twitter.svg";
 import Email from "public/assets/img/email.svg";
 import { Card } from "~@types/Card";
 import { useTranslations } from "next-intl";
+import { onPrintCard } from "~utils/card";
 
 enum Actions {
   PRINT = "print",
@@ -20,7 +21,7 @@ interface Props {
 }
 
 const CardModalActions = ({ card }: Props) => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
   const [active, setActive] = useState(null);
 
   const onFacebook = () => {
@@ -54,28 +55,6 @@ const CardModalActions = ({ card }: Props) => {
     window.open(`mailto:?body=${currentUrl}`);
   };
 
-  function ImagetoPrint(source) {
-    return (
-      "<html><head><scri" +
-      "pt>function step1(){\n" +
-      "setTimeout('step2()', 10);}\n" +
-      "function step2(){window.print();window.close()}\n" +
-      "</scri" +
-      "pt></head><body onload='step1()'>\n" +
-      '<img style="width:6.3cm;" src=\'' +
-      source +
-      '\' /><img style="width:6.3cm; margin-left:20px;" src="/assets/img/pokemon-card-back.webp" /></body></html>'
-    );
-  }
-
-  const onPrint = () => {
-    const Pagelink = "about:blank";
-    const pwa = window.open(Pagelink, "_new");
-    pwa.document.open();
-    pwa.document.write(ImagetoPrint(card.img));
-    pwa.document.close();
-  };
-
   return (
     <HStack
       spacing={{
@@ -89,7 +68,7 @@ const CardModalActions = ({ card }: Props) => {
     >
       <CardModalAction
         name={Actions.PRINT}
-        onClick={onPrint}
+        onClick={() => onPrintCard(card.img)}
         onHover={setActive}
         isHidden={active !== null && active !== Actions.PRINT}
       >

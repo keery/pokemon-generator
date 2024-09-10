@@ -28,7 +28,7 @@ interface Props extends ButtonProps {
 const OTHER = "other";
 
 const ReportButton = ({ card }: Props) => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
   const { onClose, onOpen, isOpen } = useDisclosure();
   const form = useForm();
   const reason = form.watch("reason");

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import {
   Box,
   HStack,
@@ -11,6 +11,7 @@ import {
   PopoverContent,
   useDisclosure,
   useBreakpointValue,
+  useOutsideClick,
 } from "@chakra-ui/react";
 import { motion, MotionStyle } from "framer-motion";
 import { useWatch, Control, useFormContext } from "react-hook-form";
@@ -68,11 +69,21 @@ const ButtonList = ({
   const { isVisible: areaIsVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const popoverRef = useRef(null);
+  useOutsideClick({
+    ref: popoverRef,
+    handler: onClose,
+  });
 
   return (
-    <Box role="group" className="ButtonList" zIndex={9}>
+    <Box role="group" className="ButtonList" zIndex={9} ref={popoverRef}>
       <Box onClick={onOpen}>{icon}</Box>
-      <Popover placement="top" isOpen={isOpen} onClose={onClose}>
+      <Popover
+        placement="top"
+        isOpen={isOpen}
+        onClose={onClose}
+        autoFocus={false}
+      >
         <PopoverTrigger>
           <Box
             left={`${x}%`}

@@ -17,7 +17,7 @@ interface Props {
 }
 
 const WinnerGlass = ({ winner }: Props) => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
   const { scrollY } = useViewportScroll();
   const ref = useRef();
 

@@ -53,9 +53,7 @@ const PanelOptions = () => {
         />
         <OptionButton
           icon={<Print />}
-          onClick={() => {
-            printCard();
-          }}
+          onClick={printCard}
           label={t("printCard")}
           keyboard_shortcut={["ctrl", "p"]}
         />

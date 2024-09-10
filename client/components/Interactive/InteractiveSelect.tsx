@@ -5,6 +5,7 @@ import { Control, useWatch, useFormContext } from "react-hook-form";
 import { useRecoilValue } from "recoil";
 import { areaAtom } from "~atoms/area";
 import useColorArea from "~hooks/useColorArea";
+import { useTranslations } from "next-intl";
 
 interface Props {
   name: string;
@@ -17,6 +18,7 @@ interface Props {
   icon: JSX.Element;
   choices: SelectOption<any>[];
   hasEmptyOption?: boolean;
+  isTranslated?: boolean;
 }
 
 const InteractiveSelect = ({
@@ -29,12 +31,14 @@ const InteractiveSelect = ({
   control,
   icon,
   hasEmptyOption = true,
+  isTranslated = false,
 }: Props) => {
   const { setValue } = useFormContext();
   const value = useWatch({ control, name });
   const inputRef = useRef(null);
   const { isVisible } = useRecoilValue(areaAtom);
   const areaColor = useColorArea();
+  const t = useTranslations();
 
   return (
     <Box role="group">
@@ -83,7 +87,7 @@ const InteractiveSelect = ({
           {hasEmptyOption && <option value=""></option>}
           {choices.map(({ label, value }) => (
             <option key={`is-${value}`} value={value}>
-              {label}
+              {isTranslated ? t(label as string, { value }) : label}
             </option>
           ))}
         </Select>

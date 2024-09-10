@@ -10,7 +10,7 @@ import HoloCard from "~components/Gallery/HoloCard";
 
 const WinnerSection = () => {
   const { data: winner, isLoading } = useWinner();
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
   const isMobile = useBreakpointValue({ base: true, lg: false });
 
   return (
@@ -45,7 +45,7 @@ const WinnerSection = () => {
               whiteSpace="pre"
               color="new.2"
               fontSize="0.9rem"
-              pt={1}
+              pt={1.5}
               pb={{ base: 5, md: 0 }}
               fontWeight="600"
               textTransform="uppercase"
@@ -69,7 +69,7 @@ const WinnerSection = () => {
               <Box as="span" color="new.1">
                 {t("winner.how.6")}
               </Box>
-              .
+              {t("winner.how.7")}.
             </Text>
           </Container>
         </ParallaxY>

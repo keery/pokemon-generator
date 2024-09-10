@@ -65,7 +65,7 @@ export const HP_CHOICES = [
 
 export const HP_OPTIONS: Select<string>[] = HP_CHOICES.map((el) => ({
   value: el,
-  label: `${el} HP`,
+  label: `hpValue`,
 }));
 
 export const WEAKNESS_CHOICES = ["+10", "+20", "+30", "+40", "x2"];
@@ -134,7 +134,7 @@ export const KEY_CACHE_LNG = "lngPG";
 /**
  * Languages
  */
-export const LANGUAGES = ["en", "fr", "es"];
+export const LANGUAGES = ["en", "fr", "de"];
 
 export const DEFAULT_LANGUAGES = "en";
 
@@ -143,9 +143,9 @@ export const STAGE_ONE = "stage1";
 export const STAGE_TWO = "stage2";
 
 export const STAGE_OPTIONS: Select<string>[] = [
-  { value: BASIC, label: "Basic" },
-  { value: STAGE_ONE, label: "Stage 1" },
-  { value: STAGE_TWO, label: "Stage 2" },
+  { value: BASIC, label: BASIC },
+  { value: STAGE_ONE, label: STAGE_ONE },
+  { value: STAGE_TWO, label: STAGE_TWO },
 ];
 
 export const GRADIENTS: Record<Element, any> = {

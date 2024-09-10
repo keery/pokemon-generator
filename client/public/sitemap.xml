@@ -5,6 +5,10 @@
       rel="alternate"
       hreflang="fr"
       href="https://card-pokemon.com/fr"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="de"
+      href="https://card-pokemon.com/de" />
     <lastmod>2024-07-18T11:21:04.456Z</lastmod>
   </url>
   <url>
@@ -13,6 +17,10 @@
       rel="alternate"
       hreflang="fr"
       href="https://card-pokemon.com/fr/gallery"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="de"
+      href="https://card-pokemon.com/de/gallery" />
     <lastmod>2024-07-18T11:21:04.456Z</lastmod>
   </url>
   <url>
@@ -21,6 +29,10 @@
       rel="alternate"
       hreflang="fr"
       href="https://card-pokemon.com/fr/terms-of-use"/>
+    <xhtml:link
+      rel="alternate"
+      hreflang="de"
+      href="https://card-pokemon.com/de/terms-of-use" />
     <lastmod>2024-07-18T11:21:04.456Z</lastmod>
   </url>
 </urlset>

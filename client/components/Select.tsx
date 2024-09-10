@@ -136,11 +136,11 @@ const Select = ({
   name,
   options,
   placeholder = "",
-  iconPath = null,
+  iconPath = undefined,
   isClearable = false,
-  onChange = null,
+  onChange = undefined,
   hasColorInverted = false,
-  isTranslated = true,
+  isTranslated = false,
 }: Props) => {
   const t = useTranslations();
   const { watch, setValue } = useFormContext();
@@ -168,7 +168,9 @@ const Select = ({
       isClearable={isClearable}
       menuPortalTarget={document.body}
       menuPlacement="auto"
-      formatOptionLabel={({ label }) => (isTranslated ? t(label) : label)}
+      formatOptionLabel={({ label, value }) =>
+        isTranslated ? t(label, { value }) : label
+      }
       value={value}
       // menuIsOpen
     />

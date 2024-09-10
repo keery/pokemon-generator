@@ -22,6 +22,7 @@ const FieldsSubInfo = () => {
           options={ELEMENTS_OPTIONS}
           isClearable
           iconPath="1-gen/{{value}}.png"
+          isTranslated
         />
       </Field>
       <Field label={t("weaknessAmount")}>
@@ -38,6 +39,7 @@ const FieldsSubInfo = () => {
           options={ELEMENTS_OPTIONS}
           iconPath="1-gen/{{value}}.png"
           isClearable
+          isTranslated
         />
       </Field>
       <Field label={t("resistanceAmount")}>

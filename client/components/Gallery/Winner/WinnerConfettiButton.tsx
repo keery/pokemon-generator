@@ -13,7 +13,7 @@ interface Props {
 }
 
 const WinnerConfettiButton = ({ winner }: Props) => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
   const [isLoading, setLoading] = useState(false);
   const queryClient = useQueryClient();
   const { refetch } = useClapWinner();

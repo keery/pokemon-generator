@@ -55,7 +55,7 @@ const FileInput = ({ name }: Props) => {
         </Text>
         <Box
           position="absolute"
-          left={Boolean(value) ? 0 : "calc(100% - 38px)"}
+          left={Boolean(value) ? 0 : "calc(100% - 37px)"}
           top="50%"
           transform="translateY(-50%)"
           bgColor="new.1"
@@ -68,10 +68,21 @@ const FileInput = ({ name }: Props) => {
           p=".7rem"
           overflow="hidden"
         >
+          {/* 
+          //TODO: if one day I wanna use the rainbow background
           <Box
-            boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new[4]} 5px 5px 0px 0px inset, ${theme.colors.new[1]} 10px 10px 0px 0px inset, ${theme.colors.new[2]} 15px 15px 0px 0px inset, ${theme.colors.new[3]} 20px 20px 0px 0px inset`}
-          />
-          {Boolean(value) ? <Check /> : <Upload />}
+            pos={"absolute"}
+            borderRadius={"100%"}
+            width={"130%"}
+            height={"130%"}
+            left="50%"
+            top="50%"
+            transform={"translateX(-50%) translateY(-50%)"}
+            boxShadow={`rgb(255 255 255 / 60%) 0px 0px 0px 0.5px inset, ${theme.colors.new[4]} 9px 9px 0px 0px inset, ${theme.colors.new[1]} 18px 18px 0px 0px inset, ${theme.colors.new[2]} 27px 27px 0px 0px inset, ${theme.colors.new[3]} 36px 36px 0px 0px inset`}
+          /> */}
+          <Box as="span" pos="relative">
+            {Boolean(value) ? <Check /> : <Upload />}
+          </Box>
         </Box>
         <Box
           position="absolute"

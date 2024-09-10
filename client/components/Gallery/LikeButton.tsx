@@ -17,7 +17,7 @@ interface Props extends ButtonProps {
 }
 
 const LikeButton = ({ card, isPage, ...rest }: Props) => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
   const queryClient = useQueryClient();
   const [{ cachedQuery, onMutate }, setCard] = useRecoilState(cardModalAtom);
   const [isLiked, setLiked] = useState(false);

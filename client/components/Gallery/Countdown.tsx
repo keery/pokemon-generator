@@ -32,7 +32,7 @@ const Item = ({ value, label }) => {
 };
 
 const Countdown = () => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
   const sunday = utcToZonedTime(nextSunday(new Date()), "Europe/Paris");
   const formattedSunday = set(sunday, { hours: 20, minutes: 0, seconds: 0 });
   const { days, hours, minutes, seconds } = useCountdown(formattedSunday);

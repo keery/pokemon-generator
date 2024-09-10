@@ -53,6 +53,7 @@
       "confirm": "Confirmer",
       "warning": "Avertissement",
       "menu": {
+        "span": "Menu",
         "open": "Ouvrir menu",
         "close": "Fermer menu",
         "generator": "Crée ta carte",
@@ -96,7 +97,8 @@
           "3": "pendant",
           "4": "la semaine en cours",
           "5": "avant la fin du décompte sera élu",
-          "6": "gagnant de la semaine"
+          "6": "gagnant de la semaine",
+          "7": ""
         },
         "congratule": "Féliciter le gagnant",
         "createdBy": "Créée par",
@@ -146,6 +148,11 @@
     "steel" : "Acier",
     "dark" : "Ténebre",
     "basicInfo" : "Informations",
+    "basic": "Base",
+    "stage1": "Niveau 1",
+    "stage2": "Niveau 2",
+    "hp": "PV",
+    "hpValue": "{value} PV",
     "common" : "Commun",
     "uncommon" : "Peu commun",
     "rare" : "Rare",
@@ -157,7 +164,6 @@
     "species" : "Spécialité",
     "length" : "Taille",
     "weight" : "Poids",
-    "basic" : "Basic",
     "stage" : "Stage",
     "evolution" : "Évolution",
     "damage" : "Dommage",
@@ -241,7 +247,7 @@
             "seeGallery": "Voir la gallerie"
         }
     },
-    "googleads": {
+    "mainText": {
         "title": "Créez vos propres cartes Pokémon personnalisées",
         "description": "Êtes-vous un fan de Pokémon cherchant à donner vie à vos idées uniques ? Ne cherchez plus, Pokemon Card Generator est l'outil ultime pour créer des cartes Pokémon personnalisées ! Que vous soyez collectionneur, joueur ou simplement passionné par l'univers Pokémon, notre application offre une manière ludique et fluide de concevoir des cartes Pokémon personnalisées.",
         "features": "Fonctionnalités:",

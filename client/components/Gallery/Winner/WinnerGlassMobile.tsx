@@ -12,7 +12,7 @@ interface Props {
 }
 
 const WinnerGlassMobile = ({ winner }: Props) => {
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
 
   return (
     <>

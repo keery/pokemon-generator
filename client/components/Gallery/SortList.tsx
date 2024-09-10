@@ -12,7 +12,7 @@ interface Props {
 
 const SortList = ({ onChange }: Props) => {
   const ref = useRef();
-  const { t } = useTranslation("gallery");
+  const t = useTranslations();
 
   const options = [
     {
