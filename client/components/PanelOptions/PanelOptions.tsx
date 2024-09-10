@@ -11,7 +11,6 @@ import {
 import { useTranslation } from "next-i18next";
 import Print from "public/assets/img/print.svg";
 import Download from "public/assets/img/download.svg";
-import Reduce from "public/assets/img/reduce.svg";
 import ColorPicker from "~components/ColorPicker";
 import OptionButton from "~components/PanelOptions/OptionButton";
 import ResetButton from "~components/PanelOptions/ResetButton";
@@ -71,9 +70,7 @@ const PanelOptions = () => {
               <Print />
             )
           }
-          onClick={() => {
-            printCard();
-          }}
+          onClick={printCard}
           label={t("printCard")}
           keyboard_shortcut={["ctrl", "p"]}
         />

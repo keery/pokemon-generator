@@ -5,9 +5,10 @@ import { Card } from "~@types/Card";
 
 interface Props {
   card: Card;
+  id?: string | null;
 }
 
-const CardImage = ({ card }: Props) => {
+const CardImage = ({ card, id = null }: Props) => {
   const urlParams = new URLSearchParams(card.img);
   const cardId = urlParams.get("id");
 
@@ -18,6 +19,7 @@ const CardImage = ({ card }: Props) => {
       src={`https://drive.google.com/thumbnail?id=${cardId}&sz=w1000`}
       maxH="100%"
       referrerPolicy="no-referrer"
+      {...(id ? { id } : {})}
     />
   );
 };
