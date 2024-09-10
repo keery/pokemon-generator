@@ -28,25 +28,25 @@ export const onPrintCard = (cardData: string) => {
   }
 };
 
-export const testPrint = () => {
-  const canvas = document.getElementById("viewport");
-
-  if (!canvas) return null;
+function make_base(canvas: HTMLCanvasElement) {
   const context = canvas.getContext("2d");
-  const imgTag = document.getElementById("card");
+  const imgTag = document.getElementById("card") as HTMLImageElement;
+  const base_image = new Image();
+  base_image.src = imgTag.src;
+  base_image.crossOrigin = "Anonymous";
 
-  make_base();
+  base_image.onload = () => {
+    context.drawImage(base_image, 0, 0, imgTag.width, imgTag.height);
+    const imageData = context.getImageData(0, 0, imgTag.width, imgTag.height);
+    console.log(imageData);
+  };
+}
 
-  function make_base() {
-    const base_image = new Image();
-    base_image.src = imgTag.src;
-    base_image.crossOrigin = "Anonymous";
+export const testPrint = () => {
+  const canvas = document.getElementById("viewport") as HTMLCanvasElement;
 
-    base_image.onload = () => {
-      context.drawImage(base_image, 0, 0, imgTag.width, imgTag.height);
-      const imageData = context.getImageData(0, 0, imgTag.width, imgTag.height);
-      console.log(imageData);
-    };
+  if (canvas) {
+    make_base(canvas);
   }
 };
 
