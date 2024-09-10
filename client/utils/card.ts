@@ -30,6 +30,8 @@ export const onPrintCard = (cardData: string) => {
 
 export const testPrint = () => {
   const canvas = document.getElementById("viewport");
+
+  if (!canvas) return null;
   const context = canvas.getContext("2d");
   const imgTag = document.getElementById("card");
 
