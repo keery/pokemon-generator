@@ -3,6 +3,12 @@ import { Card } from "~@types/Card";
 import { ROUTE_GALLERY } from "~constants";
 import { useTranslation } from "next-i18next";
 
+export const getUrlToDisplayCard = (card: Card) => {
+  const urlParams = new URLSearchParams(card.img);
+  const cardId = urlParams.get("id");
+  return `https://lh3.google.com/u/0/d/${cardId}`;
+};
+
 export const ImagetoPrint = (source) => {
   return (
     "<html><head><scri" +
@@ -25,28 +31,6 @@ export const onPrintCard = (cardData: string) => {
     pwa.document.open();
     pwa.document.write(ImagetoPrint(cardData));
     pwa.document.close();
-  }
-};
-
-function make_base(canvas: HTMLCanvasElement) {
-  const context = canvas.getContext("2d");
-  const imgTag = document.getElementById("card") as HTMLImageElement;
-  const base_image = new Image();
-  base_image.src = imgTag.src;
-  base_image.crossOrigin = "Anonymous";
-
-  base_image.onload = () => {
-    context.drawImage(base_image, 0, 0, imgTag.width, imgTag.height);
-    const imageData = context.getImageData(0, 0, imgTag.width, imgTag.height);
-    console.log(imageData);
-  };
-}
-
-export const testPrint = () => {
-  const canvas = document.getElementById("viewport") as HTMLCanvasElement;
-
-  if (canvas) {
-    make_base(canvas);
   }
 };
 

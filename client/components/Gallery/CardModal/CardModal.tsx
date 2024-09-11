@@ -229,7 +229,7 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
                       w="100%"
                       alignSelf="flex-start"
                     >
-                      <CardImage card={card} id="card" />
+                      <CardImage card={card} />
                     </AspectRatio>
                   </Flex>
                 )}
@@ -345,13 +345,12 @@ export const CardModalContent = ({ card, animation, isPage = false }) => {
                 alignSelf="flex-end"
                 maxW="400px"
               >
-                <CardImage card={card} id="card" />
+                <CardImage card={card} />
               </AspectRatio>
             </Flex>
           )}
         </Flex>
       </Container>
-      <canvas id="viewport" />
     </Flex>
   );
 };
