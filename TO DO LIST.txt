@@ -32,7 +32,6 @@ Faire en sorte qu'on peut faire un lien vers la page gallerie avec un paramètre
 Référencement traduit en francais
 Précharger des cartes avant le scroll pour avoir du contenu en référencement sur la page
 Transition page même effet que le bouton, layer même couleur horizontal
-faire le footer
 
 Check effet carte envoyé par Julien
 Faire un menu rapide sur la page gallerie pour switcher rapidement entre les differentes section
@@ -48,7 +47,6 @@ Fix design mobile
 Ajouter une bannière sur le consentement des datas
 Sur mobile quand je suis par exemple sur le champ description, lorsque jecris ca zoom, mais ca n'unzoom pas au blur
 Bug report si l'app s'arrête
-Fix lien img sur CardImage and FrontHoloCard
 Page contact
 
 --------------------------
@@ -68,9 +66,9 @@ Migration Todolist:
 url instagram
 little lighthouse check up
 couleur background modal reset
-impression est cassé, depuis le generateur et depuis la page modal
 Update Logo twitter to X
 create cartes en tendance filtre pour les cartes qui ont recu pas mal de like cette semaine
 Traduire les informations sur une carte afin que la carte soit en toutes les langues
 Save in cache position image moved
 check seo
+Afficher le menu en sticky

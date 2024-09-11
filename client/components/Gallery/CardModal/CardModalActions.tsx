@@ -7,7 +7,7 @@ import Twitter from "public/assets/img/twitter.svg";
 import Email from "public/assets/img/email.svg";
 import { Card } from "~@types/Card";
 import { useTranslations } from "next-intl";
-import { onPrintCard } from "~utils/card";
+import { onPrintCard, getUrlToDisplayCard } from "~utils/card";
 
 enum Actions {
   PRINT = "print",
@@ -68,7 +68,7 @@ const CardModalActions = ({ card }: Props) => {
     >
       <CardModalAction
         name={Actions.PRINT}
-        onClick={() => onPrintCard(card.img)}
+        onClick={() => onPrintCard(getUrlToDisplayCard(card))}
         onHover={setActive}
         isHidden={active !== null && active !== Actions.PRINT}
       >

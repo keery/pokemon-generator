@@ -41,7 +41,7 @@ export class ImageController {
     }),
   )
   uploadFile(@UploadedFile() file: any) {
-    return file.filename
+    return JSON.stringify({ url: file.filename })
   }
 
   @Get('tmp/get/:id')

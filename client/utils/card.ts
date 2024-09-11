@@ -3,6 +3,13 @@ import { Card } from "~@types/Card";
 import { ROUTE_GALLERY } from "~constants";
 import { useTranslations } from "next-intl";
 
+export const getUrlToDisplayCard = (card: Card): string | null => {
+  const urlParams = new URLSearchParams(card.img);
+  const cardId = urlParams.get("id");
+  if (!cardId) return null;
+  return `https://lh3.google.com/u/0/d/${cardId}`;
+};
+
 export const ImagetoPrint = (source) => {
   return (
     "<html><head><scri" +

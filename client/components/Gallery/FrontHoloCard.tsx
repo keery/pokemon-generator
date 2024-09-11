@@ -4,10 +4,11 @@ import { getHrefCardModal } from "~utils/card";
 import { setWinnerData } from "~utils/setWinnerData";
 import Router from "next/router";
 import { Winner } from "~@types/Winner";
-import { m, MotionValue } from "framer-motion";
+import { m } from "framer-motion";
 import { getKey } from "~hooks/useWinner";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
+import { getUrlToDisplayCard } from "~utils/card";
 
 const styleReflects: BoxProps = {
   position: "absolute",
@@ -35,9 +36,7 @@ const FrontHoloCard = ({
   animationSparkle,
 }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
-
-  const urlParams = new URLSearchParams(winner?.card?.img);
-  const cardId = urlParams.get("id");
+  const urlCard = getUrlToDisplayCard(winner?.card?.img);
 
   return (
     <>
@@ -47,13 +46,8 @@ const FrontHoloCard = ({
         borderRadius="1.3rem"
         className="holo-card"
         position="relative"
-        // TODO: To fix when a normal url is found
         // bgImage={winner?.card?.img || "none"}
-        bgImage={
-          cardId
-            ? `https://drive.google.com/thumbnail?id=${cardId}&sz=w1000`
-            : "none"
-        }
+        bgImage={urlCard || "none"}
         zIndex="10"
         transition="box-shadow 0.2s ease"
         willChange="transform, filter"

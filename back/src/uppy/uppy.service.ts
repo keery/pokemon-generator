@@ -5,7 +5,6 @@ import fs from 'fs'
 @Injectable()
 export class UppyService implements OnModuleInit {
   private logger = new Logger('UppyService')
-
   private companionServer
 
   onModuleInit() {
@@ -13,7 +12,7 @@ export class UppyService implements OnModuleInit {
   }
 
   async handleCompanion(req, res) {
-    return this.companionServer.handle(req, res)
+    return this.companionServer.app.handle(req, res)
   }
 
   private initializeCompanionServer() {
@@ -44,14 +43,19 @@ export class UppyService implements OnModuleInit {
         },
       },
       server: {
-        // host: `localhost:${process.env.PORT || 3002}`,
         host: process.env.HOST,
         protocol: process.env.PROTOCOL,
-        path: '/api/image/companion',
+        // path: '/api/image/companion',
       },
-      filePath: 'tmp/',
+      uploadUrls: ['/api/image/upload'],
+      filePath:
+        '/Users/guillaumeesnault/Documents/Projects/pokemon-generator/back/tmp',
       secret: process.env.SESSION_SECRET,
       debug: true,
+      corsOrigins: true,
+      allowLocalUrls: true,
+      // Required to use URL file upload
+      enableUrlEndpoint: true,
     }
 
     this.companionServer = companion.app(options)

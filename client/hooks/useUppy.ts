@@ -13,6 +13,7 @@ import { useTranslations, useLocale } from "next-intl";
 import useToast from "~hooks/useToast";
 import { useFormContext } from "react-hook-form";
 import { CARD_DEFAULT_STATE } from "~data/card";
+import { client } from "~api/client";
 
 const getUppyTranslations = (locale) => {
   switch (locale) {
@@ -55,9 +56,6 @@ const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
     })
       .use(XHRUpload, {
         endpoint: `${process.env.NEXT_PUBLIC_API_URL}/image/upload`,
-        getResponseData: (responseText, response) => ({
-          url: responseText,
-        }),
       })
       .use(Webcam)
       .use(Url, {
@@ -81,30 +79,35 @@ const useUppy = ({ fieldName, id, onError, onSuccess }: Params) => {
         }
       })
       .on("upload-success", (file, response) => {
-        try {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            if (onSuccess) onSuccess();
+        client
+          .get(`/image/tmp/get/${response.body.url}`, {
+            responseType: "blob",
+          })
+          .then((res) => {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              if (onSuccess) onSuccess();
 
-            setValue(fieldName, e.target.result);
+              setValue(fieldName, e.target.result);
+              uppy.cancelAll();
+
+              // Reset transformation values
+              setValue(
+                `${fieldName}ScaleX`,
+                CARD_DEFAULT_STATE[`${fieldName}ScaleX`]
+              );
+              setValue(
+                `${fieldName}ScaleY`,
+                CARD_DEFAULT_STATE[`${fieldName}ScaleY`]
+              );
+            };
+            reader.readAsDataURL(res.data);
+          })
+          .catch(() => {
+            if (onError) onError();
             uppy.cancelAll();
-
-            // Reset transformation values
-            setValue(
-              `${fieldName}ScaleX`,
-              CARD_DEFAULT_STATE[`${fieldName}ScaleX`]
-            );
-            setValue(
-              `${fieldName}ScaleY`,
-              CARD_DEFAULT_STATE[`${fieldName}ScaleY`]
-            );
-          };
-          reader.readAsDataURL(file.data);
-        } catch (e) {
-          if (onError) onError();
-          uppy.cancelAll();
-          errorToast(t("uploadFailed"));
-        }
+            errorToast(t("uploadFailed"));
+          });
       })
   );
 
