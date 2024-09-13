@@ -13,6 +13,7 @@ import {
 
 interface Props extends ContainerProps {
   noColorChange?: boolean;
+  isGallery?: boolean;
 }
 
 const variants: Variants = {
@@ -24,7 +25,7 @@ const variants: Variants = {
   },
 };
 
-const Header = ({ noColorChange = false, ...rest }: Props) => {
+const Header = ({ noColorChange = false, isGallery, ...rest }: Props) => {
   const pathname = usePathname();
   const { scrollY } = useScroll();
   const [isAttached, setIsAttached] = useState<"visible" | "hidden">("hidden");
@@ -44,10 +45,10 @@ const Header = ({ noColorChange = false, ...rest }: Props) => {
 
   return (
     <>
-      <Box h={HEADER_HEIGHT} />
+      {!isGallery && <Box h={HEADER_HEIGHT} />}
       <Box
         as={motion.header}
-        zIndex={10}
+        zIndex={100}
         left={0}
         top={0}
         right={0}

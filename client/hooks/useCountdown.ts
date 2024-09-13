@@ -10,10 +10,7 @@ export interface CountdownTime {
 
 export const useCountdown = (targetDate: Date) => {
   const countDownDate = targetDate.getTime();
-  const defaultNow = utcToZonedTime(new Date(), "Europe/Paris");
-  const [countDown, setCountDown] = useState(
-    countDownDate - defaultNow.getTime()
-  );
+  const [countDown, setCountDown] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {

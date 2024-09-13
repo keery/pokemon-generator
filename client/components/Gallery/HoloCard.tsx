@@ -1,7 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Box } from "@chakra-ui/react";
-import { m, useTransform, useViewportScroll } from "framer-motion";
-import useElementSize from "~hooks/useElementSize";
+import { motion, useTransform, useScroll } from "framer-motion";
 import useWinner from "~hooks/useWinner";
 import FrontHoloCard from "~components/Gallery/FrontHoloCard";
 import { screenPercent } from "~utils/helper";
@@ -10,9 +9,7 @@ export const START_ROTATION = 150;
 export const END_ROTATION = 170;
 
 const HoloCard = () => {
-  const { scrollY } = useViewportScroll();
-  const ref = useRef();
-  // const { width, parentWidth } = useElementSize(ref);
+  const { scrollY } = useScroll();
   const { data: winner } = useWinner();
 
   const y = useTransform(
@@ -71,7 +68,7 @@ const HoloCard = () => {
   );
 
   return (
-    <m.div
+    <motion.div
       // ref={ref}
       className="holo-card-container"
       style={{
@@ -85,7 +82,7 @@ const HoloCard = () => {
       }}
     >
       <Box
-        as={m.div}
+        as={motion.div}
         style={{
           touchAction: "none",
           width: "400px",
@@ -109,7 +106,7 @@ const HoloCard = () => {
         transformOrigin="center"
       />
       <Box
-        as={m.div}
+        as={motion.div}
         style={{
           touchAction: "none",
           y,
@@ -136,7 +133,7 @@ const HoloCard = () => {
           />
         )}
       </Box>
-    </m.div>
+    </motion.div>
   );
 };
 

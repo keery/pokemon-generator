@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Flex, Container, Text, Box } from "@chakra-ui/react";
-import { m, useTransform, useViewportScroll } from "framer-motion";
+import { motion, useTransform, useScroll } from "framer-motion";
 import { Winner } from "~@types/Winner";
 import { screenPercent } from "~utils/helper";
 import { GRADIENTS } from "~constants";
@@ -18,7 +18,7 @@ interface Props {
 
 const WinnerGlass = ({ winner }: Props) => {
   const t = useTranslations();
-  const { scrollY } = useViewportScroll();
+  const { scrollY } = useScroll();
   const ref = useRef();
 
   // Text
@@ -75,7 +75,7 @@ const WinnerGlass = ({ winner }: Props) => {
   return (
     <Container ref={ref}>
       <Box
-        as={m.div}
+        as={motion.div}
         pos="fixed"
         top="0"
         left="0"
@@ -108,7 +108,7 @@ const WinnerGlass = ({ winner }: Props) => {
           bg: "white",
         }}
       />
-      <m.div
+      <motion.div
         style={{
           backgroundImage: "url(/assets/img/waves.svg)",
           backgroundRepeat: "no-repeat",
@@ -125,7 +125,7 @@ const WinnerGlass = ({ winner }: Props) => {
       />
       <WinnerBlobs winner={winner.card} />
       <Flex
-        as={m.div}
+        as={motion.div}
         layerStyle="glassLg"
         w="fit-content"
         flexDir="column"

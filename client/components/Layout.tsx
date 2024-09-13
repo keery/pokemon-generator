@@ -4,7 +4,7 @@ import { Flex } from "@chakra-ui/react";
 import usePathname from "~hooks/usePathname";
 import Header from "~components/Header";
 import Footer from "~components/Footer";
-import { ROUTE_GENERATOR, ROUTE_GALLERY, HEADER_HEIGHT } from "~constants";
+import { ROUTE_GENERATOR, ROUTE_GALLERY } from "~constants";
 
 interface Props {
   children: React.ReactNode;
@@ -25,10 +25,10 @@ const Layout = ({ children }: Props) => {
         {pathname !== ROUTE_GENERATOR && (
           <Header
             noColorChange
-            pos={pathname === ROUTE_GALLERY ? "absolute" : "static"}
             left="0"
             top="0"
             right="0"
+            isGallery={pathname === ROUTE_GALLERY}
           />
         )}
         {children}

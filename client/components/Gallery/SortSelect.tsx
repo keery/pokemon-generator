@@ -1,9 +1,11 @@
+"use client";
 import React from "react";
 import { useTheme, useBreakpointValue } from "@chakra-ui/react";
-import ReactSelect from "react-select";
-import { useController, Control, useWatch } from "react-hook-form";
+
 import dynamic from "next/dynamic";
+import { useController, Control, useWatch } from "react-hook-form";
 import { useTranslations } from "next-intl";
+const ReactSelect = dynamic(() => import("react-select"), { ssr: false });
 
 const getStyle = (theme, fontSize, dropdown, lineHeight) => {
   return {
@@ -137,6 +139,8 @@ const SortSelect = ({
   return (
     <ReactSelect
       className="sortSelect"
+      inputId="sort-select-input"
+      instanceId="sort-select"
       name={name}
       placeholder={placeholder}
       options={options}
@@ -144,7 +148,7 @@ const SortSelect = ({
       onChange={onChangeSelect}
       isSearchable={false}
       isClearable={isClearable}
-      menuPortalTarget={document.body}
+      menuPortalTarget={typeof document !== "undefined" ? document.body : null}
       menuPlacement="auto"
       formatOptionLabel={({ label }) => t(label)}
       value={value}
@@ -153,6 +157,4 @@ const SortSelect = ({
   );
 };
 
-export default dynamic(() => Promise.resolve(SortSelect), {
-  ssr: false,
-});
+export default SortSelect;

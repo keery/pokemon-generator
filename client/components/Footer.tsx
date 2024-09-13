@@ -8,7 +8,7 @@ import {
   VStack,
   Image,
 } from "@chakra-ui/react";
-import Logo from "~components/Logo";
+import FooterLogo from "~components/FooterLogo";
 import Link from "~components/Link";
 import Button from "~components/Button";
 import Instagram from "public/assets/img/instagram.svg";
@@ -66,11 +66,17 @@ const Footer = ({ isGeneratorPage = false }) => {
             md: "row",
           }}
         >
-          <Flex direction="column">
-            <Logo noLink color={isGeneratorPage ? "text" : "white"} />
+          <Flex
+            direction="column"
+            alignItems={{
+              base: "center",
+              md: "start",
+            }}
+          >
+            <FooterLogo color={isGeneratorPage ? "text" : "white"} />
             <Flex pt={6} justifyContent="center">
-              <Link href={process.env.NEXT_PUBLIC_INSTAGRAM_URL}>
-                <Button>
+              <Link href={process.env.NEXT_PUBLIC_INSTAGRAM_URL as string}>
+                <Button px={{ base: 4, md: 6 }}>
                   <Instagram />
                   <Box pl={2} fontWeight="bold">
                     {t("follow")}

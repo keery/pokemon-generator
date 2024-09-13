@@ -1,14 +1,15 @@
 import React from "react";
 import {
-  m,
+  motion,
   useTransform,
-  useViewportScroll,
+  useScroll,
   isValidMotionProp,
   MotionStyle,
+  useMotionValueEvent,
 } from "framer-motion";
 import { chakra, shouldForwardProp, BoxProps } from "@chakra-ui/react";
 
-const ChakraBox = chakra(m.div, {
+const ChakraBox = chakra(motion.div, {
   /**
    * Allow motion props and non-Chakra props to be forwarded.
    */
@@ -23,10 +24,10 @@ export interface ParallaxYProps extends Omit<BoxProps, "style"> {
 }
 
 const ParallaxY = ({ input, output, style = {}, ...rest }: ParallaxYProps) => {
-  const { scrollY } = useViewportScroll();
+  const { scrollY } = useScroll();
   const y = useTransform(scrollY, input, output);
 
-  // @ts-ignore
+  // console.log(y);
   return <ChakraBox style={{ y, ...style }} {...rest} />;
 };
 

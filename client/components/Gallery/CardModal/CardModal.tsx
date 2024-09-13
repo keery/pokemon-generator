@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import {
   AspectRatio,
   Box,
@@ -384,7 +384,8 @@ const CardModal = ({ card, cachedQuery }: Props) => {
 
   return (
     <>
-      <NextSeo title={card.name} description={getSeoCardDescription(card)} />
+      {/* TODO: seo */}
+      {/* <NextSeo title={card.name} description={getSeoCardDescription(card)} /> */}
       <CardModalOverlay onClose={onClose} />
       <motion.div
         key="modal"

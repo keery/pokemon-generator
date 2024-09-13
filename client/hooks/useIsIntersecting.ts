@@ -1,26 +1,14 @@
-import { useEffect, RefObject, useState } from "react";
+import { useEffect, RefObject } from "react";
+import { useInView } from "framer-motion";
 
-const useIsIntersecting = (
-  ref: RefObject<any>,
-  options: IntersectionObserverInit = {}
-) => {
-  const [isIntersecting, setIntersecting] = useState(false);
+const useIsIntersecting = (ref: RefObject<any>, callback) => {
+  const isInView = useInView(ref, {
+    margin: `0px 0px -${window.innerHeight * 0.99}px 0px`,
+  });
 
   useEffect(() => {
-    if (ref && ref.current) {
-      const observer = new IntersectionObserver(([e]) => {
-        const res = e.intersectionRatio < 1;
-
-        if (isIntersecting !== res) {
-          setIntersecting(res);
-        }
-      }, options);
-
-      observer.observe(ref.current);
-    }
-  }, [ref, ref.current, options]);
-
-  return isIntersecting;
+    callback(isInView);
+  }, [isInView]);
 };
 
 export default useIsIntersecting;

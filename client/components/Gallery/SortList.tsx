@@ -2,9 +2,9 @@ import React, { useRef } from "react";
 import SortSelect from "~components/Gallery/SortSelect";
 import { Flex, Box, Container } from "@chakra-ui/react";
 import { useForm, FormProvider } from "react-hook-form";
-import { useTranslations } from "next-intl";
-import Title from "~components/Title";
 import useIsIntersecting from "~hooks/useIsIntersecting";
+import { hideLogoAtom } from "~atoms/hide-logo";
+import { useSetRecoilState } from "recoil";
 
 interface Props {
   onChange: (e: any) => void;
@@ -12,44 +12,43 @@ interface Props {
 
 const SortList = ({ onChange }: Props) => {
   const ref = useRef();
-  const t = useTranslations();
+  const setHideLogo = useSetRecoilState(hideLogoAtom);
 
   const options = [
     {
       value: "sort-newest",
       param: "created_at,DESC",
-      label: t("filters.mostRecent"),
+      label: "filters.mostRecent",
     },
     {
       value: "sort-recent-winner",
       param: "winner,DESC",
-      label: t("filters.recentWinner"),
+      label: "filters.recentWinner",
     },
     {
       value: "sort-old-winner",
       param: "winner,ASC",
-      label: t("filters.oldWinner"),
+      label: "filters.oldWinner",
     },
     {
       value: "sort-most-liked",
       param: "likes,DESC",
-      label: t("filters.mostVoted"),
+      label: "filters.mostVoted",
     },
     {
       value: "sort-most-liked-week",
       param: "sort-most-liked-week,DESC",
-      label: t("filters.mostVotedWeek"),
+      label: "filters.mostVotedWeek",
     },
     {
       value: "random",
       param: "random,ASC",
-      label: t("filters.random"),
+      label: "filters.random",
     },
   ];
 
-  const isSticky = useIsIntersecting(ref, {
-    threshold: 1,
-    rootMargin: "0px 0px 500px 0px",
+  useIsIntersecting(ref, (value: boolean) => {
+    setHideLogo({ isHidden: value });
   });
 
   const form = useForm({
@@ -63,19 +62,26 @@ const SortList = ({ onChange }: Props) => {
       <Box mt={{ base: 0, md: 20 }} id="top-list" />
       <Flex
         ref={ref}
-        zIndex={50}
+        zIndex={100}
         display="flex"
         alignItems="center"
         justifyContent="space-between"
         top="-1px"
         position="sticky"
-        layerStyle={isSticky ? "darkBlur" : ""}
         border="none"
+        pt="8px"
       >
         <Container>
           <FormProvider {...form}>
             <form>
-              <Title>
+              <Flex
+                pl="3.6rem"
+                fontWeight="800"
+                fontSize="5.8rem"
+                fontFamily="title"
+                overflow="hidden"
+                transition="font-size linear 200ms"
+              >
                 <SortSelect
                   name="sort"
                   control={form.control}
@@ -84,7 +90,7 @@ const SortList = ({ onChange }: Props) => {
                   }}
                   options={options}
                 />
-              </Title>
+              </Flex>
             </form>
           </FormProvider>
         </Container>

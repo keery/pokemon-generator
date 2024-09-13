@@ -1,10 +1,11 @@
+"use client";
 import React from "react";
 import { Box, BoxProps } from "@chakra-ui/react";
 import { getHrefCardModal } from "~utils/card";
 import { setWinnerData } from "~utils/setWinnerData";
 import Router from "next/router";
 import { Winner } from "~@types/Winner";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { getKey } from "~hooks/useWinner";
 import { cardModalAtom } from "~atoms/card-modal";
 import { useSetRecoilState } from "recoil";
@@ -36,12 +37,12 @@ const FrontHoloCard = ({
   animationSparkle,
 }: Props) => {
   const setCard = useSetRecoilState(cardModalAtom);
-  const urlCard = getUrlToDisplayCard(winner?.card?.img);
+  const urlCard = getUrlToDisplayCard(winner?.card);
 
   return (
     <>
       <Box
-        as={m.div}
+        as={motion.div}
         h="555px"
         borderRadius="1.3rem"
         className="holo-card"
@@ -86,7 +87,7 @@ const FrontHoloCard = ({
           </Box>
         )}
         <Box
-          as={m.div}
+          as={motion.div}
           {...styleReflects}
           backgroundPosition="50% 50%"
           backgroundSize="300% 300%"
@@ -108,7 +109,7 @@ const FrontHoloCard = ({
           }}
         />
         <Box
-          as={m.div}
+          as={motion.div}
           {...styleReflects}
           backgroundImage="
               linear-gradient(

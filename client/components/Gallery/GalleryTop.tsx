@@ -5,6 +5,7 @@ import {
   HStack,
   Text,
   Flex,
+  Heading,
   useBreakpointValue,
 } from "@chakra-ui/react";
 
@@ -24,19 +25,19 @@ const CTA = () => {
         md: "0",
       }}
     >
-      <Button
-        as={Link}
-        href={ROUTE_GENERATOR}
-        transform={{
-          base: "translateX(0rem)",
-          md: "translateX(2rem)",
-        }}
-        height="4rem"
-        fontSize="1.3rem"
-        textDecoration="none!important"
-      >
-        {t("topCta")}
-      </Button>
+      <Link href={ROUTE_GENERATOR}>
+        <Button
+          transform={{
+            base: "translateX(0rem)",
+            md: "translateX(2rem)",
+          }}
+          height="4rem"
+          fontSize="1.3rem"
+          textDecoration="none!important"
+        >
+          {t("topCta")}
+        </Button>
+      </Link>
     </Flex>
   );
 };
@@ -73,6 +74,20 @@ const GalleryTop = () => {
                 zIndex={2}
                 alignItems={{ base: "center", md: "flex-start" }}
               >
+                <Heading
+                  as="h1"
+                  fontSize={{
+                    base: "xl",
+                    sm: "2xl",
+                    md: "3xl",
+                  }}
+                  alignSelf="center"
+                  textShadow="0 0 7px rgb(73 73 73 / 41%)"
+                  textAlign="center"
+                  color="new.3"
+                >
+                  {t("h1")}
+                </Heading>
                 <Text
                   alignSelf="center"
                   textShadow="0 0 7px rgb(73 73 73 / 41%)"

@@ -2,7 +2,7 @@ import React from "react";
 import { WATER } from "~constants";
 import { Card } from "~@types/Card";
 import { Element } from "~@types/CardGenerator";
-import { m, useTransform, useViewportScroll } from "framer-motion";
+import { motion, useTransform, useScroll } from "framer-motion";
 import { screenPercent } from "~utils/helper";
 import { END_ROTATION, START_ROTATION } from "~components/Gallery/HoloCard";
 
@@ -43,7 +43,7 @@ const BLOB_GRADIENTS: Record<Element, string[]> = {
 
 const WinnerBlobs = ({ winner }: Props) => {
   const element = winner ? winner.element : WATER;
-  const { scrollY } = useViewportScroll();
+  const { scrollY } = useScroll();
   const start = screenPercent(START_ROTATION);
 
   const x1 = useTransform(
@@ -75,7 +75,7 @@ const WinnerBlobs = ({ winner }: Props) => {
 
   return (
     <>
-      <m.div
+      <motion.div
         style={{
           x: x1,
           y: y1,
@@ -91,7 +91,7 @@ const WinnerBlobs = ({ winner }: Props) => {
             "36.0512% 63.9488% 65.7321% 34.2679% / 51.0107% 53.7726% 46.2274% 48.9893%",
         }}
       />
-      <m.div
+      <motion.div
         style={{
           x: x2,
           y: y2,

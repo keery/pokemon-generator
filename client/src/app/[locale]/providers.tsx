@@ -42,13 +42,11 @@ export function Providers({ children }: IProviders) {
       <ChakraProvider theme={theme}>
         {/* @ts-ignore */}
         <RecoilRoot>
-          {/* <LazyMotion features={domAnimation}> */}
           {pathname === ROUTE_GENERATOR || pathname.startsWith("/modal") ? (
             <GeneratorFromProvider>{children}</GeneratorFromProvider>
           ) : (
             children
           )}
-          {/* </LazyMotion> */}
         </RecoilRoot>
       </ChakraProvider>
     </QueryClientProvider>

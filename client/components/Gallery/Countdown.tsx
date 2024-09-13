@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Flex, HStack, Text, StackDivider } from "@chakra-ui/react";
 import nextSunday from "date-fns/nextSunday";
@@ -36,6 +37,8 @@ const Countdown = () => {
   const sunday = utcToZonedTime(nextSunday(new Date()), "Europe/Paris");
   const formattedSunday = set(sunday, { hours: 20, minutes: 0, seconds: 0 });
   const { days, hours, minutes, seconds } = useCountdown(formattedSunday);
+
+  if (!days && !hours && !minutes) return null;
 
   return (
     <Flex

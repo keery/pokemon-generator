@@ -7,7 +7,7 @@ export const getUrlToDisplayCard = (card: Card): string | null => {
   const urlParams = new URLSearchParams(card.img);
   const cardId = urlParams.get("id");
   if (!cardId) return null;
-  return `https://lh3.google.com/u/0/d/${cardId}`;
+  return `https://drive.google.com/thumbnail?id=${cardId}&sz=w1000`;
 };
 
 export const ImagetoPrint = (source) => {

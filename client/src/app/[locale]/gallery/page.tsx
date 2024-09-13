@@ -3,7 +3,7 @@ import React from "react";
 import { NextPage } from "next";
 import { Box } from "@chakra-ui/react";
 import CardList from "~components/Gallery/CardList";
-import CardSwiper from "~components/Gallery/CardSwiper";
+// import CardSwiper from "~components/Gallery/CardSwiper";
 import CardModal from "~components/Gallery/CardModal/CardModal";
 import WinnerSection from "~components/Gallery/Winner/WinnerSection";
 import GalleryTop from "~components/Gallery/GalleryTop";
@@ -15,7 +15,7 @@ const Gallery: NextPage = () => {
 
   return (
     <Box>
-      <NextSeo
+      {/* <NextSeo
         title={t("seo.title")}
         description={t("seo.description")}
         openGraph={{
@@ -27,8 +27,8 @@ const Gallery: NextPage = () => {
           site: process.env.NEXT_PUBLIC_URL + process.env.ROUTE_GALLERY,
           cardType: "summary_large_image",
         }}
-      />
-      <CardModal />
+      /> */}
+      {/* <CardModal /> */}
       <Box position="relative" overflow="hidden">
         <GalleryTop />
         <WinnerSection />

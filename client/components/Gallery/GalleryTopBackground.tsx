@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
 import { Flex, useBreakpointValue } from "@chakra-ui/react";
 import Blob from "public/assets/img/blob.svg";
 import { screenPercent } from "~utils/helper";
 import ParallaxY, { ParallaxYProps } from "~components/ParallaxY";
+import useIsMounted from "~hooks/useIsMounted";
 
 const CardBackground = (props: ParallaxYProps) => {
   return (
@@ -22,6 +24,7 @@ const CardBackground = (props: ParallaxYProps) => {
 const DEFAULT_PROPS = { x: 0, height: 0, width: 0 };
 
 const GalleryTopBackground = () => {
+  const isMounted = useIsMounted();
   const card1 =
     useBreakpointValue({
       base: {
@@ -133,52 +136,56 @@ const GalleryTopBackground = () => {
       >
         <Blob />
       </Flex>
-      <CardBackground
-        input={[0, screenPercent(125)]}
-        output={[screenPercent(-33), screenPercent(10)]}
-        style={{
-          x: `calc(-50% - ${card1.x})`,
-          rotate: "-8.26deg",
-        }}
-        height={card1.height}
-        width={card1.width}
-        bgImage="/assets/img/gallery-top/pokeball-purple.webp"
-      />
-      <CardBackground
-        input={[0, screenPercent(125)]}
-        output={[screenPercent(-33), screenPercent(1)]}
-        style={{
-          x: `calc(-50% + ${card2.x})`,
-          rotate: "7.54deg",
-        }}
-        height={card2.height}
-        width={card2.width}
-        bgImage="/assets/img/gallery-top/mew.webp"
-      />
-      <CardBackground
-        input={[0, screenPercent(125)]}
-        output={[screenPercent(13), screenPercent(-20)]}
-        style={{
-          x: `calc(-50% - ${card3.x})`,
-          rotate: "-5.27deg",
-        }}
-        bgImage="/assets/img/gallery-top/florizare.webp"
-        height={card3.height}
-        width={card3.width}
-      />
-      <CardBackground
-        input={[0, screenPercent(125)]}
-        output={[screenPercent(13), screenPercent(-3)]}
-        style={{
-          x: `calc(-50% + ${card4.x})`,
-          rotate: "7.79deg",
-          scale: "0.35",
-        }}
-        height={card4.height}
-        width={card4.width}
-        borderRadius="3rem"
-        bgImage="https://cdn.dribbble.com/users/1147613/screenshots/15390615/media/0197f9d885df23a6ab039eedebc40f5b.png?compress=1&resize=1600x1200&vertical=top"
-      />
+      {isMounted && (
+        <>
+          <CardBackground
+            input={[0, screenPercent(125)]}
+            output={[screenPercent(-33), screenPercent(10)]}
+            style={{
+              x: `calc(-50% - ${card1.x})`,
+              rotate: "-8.26deg",
+            }}
+            height={card1.height}
+            width={card1.width}
+            bgImage="/assets/img/gallery-top/pokeball-purple.webp"
+          />
+          <CardBackground
+            input={[0, screenPercent(125)]}
+            output={[screenPercent(-33), screenPercent(1)]}
+            style={{
+              x: `calc(-50% + ${card2.x})`,
+              rotate: "7.54deg",
+            }}
+            height={card2.height}
+            width={card2.width}
+            bgImage="/assets/img/gallery-top/mew.webp"
+          />
+          <CardBackground
+            input={[0, screenPercent(125)]}
+            output={[screenPercent(13), screenPercent(-20)]}
+            style={{
+              x: `calc(-50% - ${card3.x})`,
+              rotate: "-5.27deg",
+            }}
+            bgImage="/assets/img/gallery-top/florizare.webp"
+            height={card3.height}
+            width={card3.width}
+          />
+          <CardBackground
+            input={[0, screenPercent(125)]}
+            output={[screenPercent(13), screenPercent(-3)]}
+            style={{
+              x: `calc(-50% + ${card4.x})`,
+              rotate: "7.79deg",
+              scale: "0.35",
+            }}
+            height={card4.height}
+            width={card4.width}
+            borderRadius="3rem"
+            bgImage="https://cdn.dribbble.com/users/1147613/screenshots/15390615/media/0197f9d885df23a6ab039eedebc40f5b.png?compress=1&resize=1600x1200&vertical=top"
+          />
+        </>
+      )}
     </Flex>
   );
 };
