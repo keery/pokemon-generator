@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Box, Text, Container, useBreakpointValue } from "@chakra-ui/react";
 import WinnerGlass from "~components/Gallery/Winner/WinnerGlass";

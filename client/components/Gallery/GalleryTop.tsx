@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Container,
@@ -12,11 +13,7 @@ import Link from "~components/Link";
 import Button from "~components/Button";
 import { ROUTE_GENERATOR } from "~constants";
 import { useTranslations } from "next-intl";
-import dynamic from "next/dynamic";
-
-const Countdown = dynamic(() => import("~components/Gallery/Countdown"), {
-  ssr: false,
-});
+import Countdown from "~components/Gallery/Countdown";
 
 const CTA = () => {
   const t = useTranslations();

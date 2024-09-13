@@ -223,7 +223,7 @@
         "text": "Gemäß dem Gesetz \"Informatik und Freiheiten\" vom 6. Januar 1978, geändert im Jahr 2004, haben Sie das Recht auf Zugang und Berichtigung der Informationen, die Sie betreffen. Dieses Recht können Sie ausüben, indem Sie sich an {app_name} wenden, dessen Kontaktdaten unten angegeben sind.\nSie können sich auch aus berechtigten Gründen der Verarbeitung Ihrer Daten widersetzen.",
         "line1": "{app_name} ist Eigentum von {name}",
         "email": "E-Mail",
-        "host": "{app_name} wird von {host} gehostet, dessen eingetragener Firmensitz sich in 2 rue Kellermann – 59100 Roubaix – Frankreich befindet."
+        "host": "{app_name} wird von {host} gehostet, dessen eingetragener Firmensitz sich in {address} befindet."
     },
     "art1": {
         "title": "Artikel 1 : Präsentation",

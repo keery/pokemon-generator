@@ -1,5 +1,6 @@
+"use server";
 import React from "react";
-import { GetServerSideProps, NextPage } from "next";
+import { NextPage } from "next";
 import { Box } from "@chakra-ui/react";
 import CardList from "~components/Gallery/CardList";
 import CardSwiper from "~components/Gallery/CardSwiper";

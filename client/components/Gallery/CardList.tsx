@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useRef } from "react";
 import useInfiniteCards, { QUERY_KEY } from "~hooks/useInfiniteCards";
 import useScrollBottom from "~hooks/useScrollBottom";

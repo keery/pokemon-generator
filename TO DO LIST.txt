@@ -13,21 +13,18 @@ Page contact
 Faire un check que j'utilise bien les balises HTML5
 Voir si je trouve des bonnes idées de filtre supplémentaire pour les cartes (mot clé ?)
 Double tap pour liker carte en mobile
-Update modal reset card
 Bouton publier dans le formulaire des champs en mobile
 Page 404
 Gérer la publication des cartes
 
-Etre plus explicite, un gagnant par semaine, le plus de like gagne
 Essayer d'appuyer le fait d'avoir envie de gagner, en precisant ce qu'on gagne, ce qu'on gagne c'est seulement
 le titre de gagnant de la semaine
 Afficher sur la modale d'une carte une mention spécifique pour dire si cette carte a déjà gagné
 Faire un menu mobile pour avoir toutes les actions en bas de l'écran, qu'on puisse le faire coulisser
 Petite animation bien calé pour annoncer en mode titre avant le gagnant
-Créer un email pour l'app pokemon
 Envoyer email quand un report est créé
 Changer design aide pour voir les zones lors de la premiere fois qu'on lance l'app
-Traduire le site en italien, allemand et espagnol
+Traduire le site en italien et espagnol
 Faire en sorte qu'on peut faire un lien vers la page gallerie avec un paramètre pour changer le filtre sur les cartes
 Référencement traduit en francais
 Précharger des cartes avant le scroll pour avoir du contenu en référencement sur la page
@@ -38,7 +35,6 @@ Faire un menu rapide sur la page gallerie pour switcher rapidement entre les dif
 
 Animation GalleryTop lorsqu'on arrive sur la page gallery
 Gérer le tout en mobile
-Effet de shade derriere la souris ou des ombres 
 Flèche page gallerie pour dire qu'on peut descendre
 Voir si j'affiche le menu en sticky
 Faire un robots.txt
@@ -65,10 +61,13 @@ https://medium.muz.li/ui-interactions-of-the-week-314-72eb77f42517
 Migration Todolist:
 url instagram
 little lighthouse check up
-couleur background modal reset
 Update Logo twitter to X
 create cartes en tendance filtre pour les cartes qui ont recu pas mal de like cette semaine
 Traduire les informations sur une carte afin que la carte soit en toutes les langues
 Save in cache position image moved
 check seo
 Afficher le menu en sticky
+Ajouter serveur smtp
+Checker Dropbox
+Checker quel composant utilise "use client" et "use server" pour optimiser
+Checker cette migration d'api de facebook

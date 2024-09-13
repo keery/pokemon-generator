@@ -4,7 +4,7 @@ import { Flex } from "@chakra-ui/react";
 import usePathname from "~hooks/usePathname";
 import Header from "~components/Header";
 import Footer from "~components/Footer";
-import { ROUTE_GENERATOR, ROUTE_GALLERY } from "~constants";
+import { ROUTE_GENERATOR, ROUTE_GALLERY, HEADER_HEIGHT } from "~constants";
 
 interface Props {
   children: React.ReactNode;
@@ -13,12 +13,14 @@ interface Props {
 const Layout = ({ children }: Props) => {
   const pathname = usePathname();
 
+  const isGeneratorPage = pathname === ROUTE_GENERATOR;
+
   return (
     <>
       <Flex
         direction="column"
-        h={pathname === ROUTE_GENERATOR ? "100%" : "auto"}
-        overflow={pathname === ROUTE_GENERATOR ? "hidden" : "none"}
+        h={isGeneratorPage ? "100%" : "auto"}
+        overflow={isGeneratorPage ? "hidden" : "none"}
       >
         {pathname !== ROUTE_GENERATOR && (
           <Header
@@ -31,8 +33,7 @@ const Layout = ({ children }: Props) => {
         )}
         {children}
       </Flex>
-      <Footer isGeneratorPage={pathname === ROUTE_GENERATOR} />
-      {/* {pathname !== ROUTE_GENERATOR ? <Footer /> : ""} */}
+      <Footer isGeneratorPage={isGeneratorPage} />
     </>
   );
 };

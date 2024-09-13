@@ -280,8 +280,8 @@ const theme = extendTheme({
       textOverflow: "ellipsis",
     },
     darkBlur: {
-      backdropFilter: "blur(25px) saturate(180%)",
-      WebkitBackdropFilter: "blur(25px) saturate(180%)",
+      backdropFilter: "blur(7px) saturate(180%)",
+      WebkitBackdropFilter: "blur(7px) saturate(180%)",
       backgroundColor: "rgb(20 27 40 / 60%)",
     },
   },

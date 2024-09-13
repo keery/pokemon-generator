@@ -32,7 +32,7 @@ const CGU: NextPage = () => {
             {t("title")}
           </Heading>
           <Text fontSize="xs" mb="1rem">
-            {t("update", { date: "27/10/2022" })}
+            {t("update", { date: "12/09/2024" })}
           </Text>
           <Text>{t("line1")}</Text>
         </Box>
@@ -67,7 +67,8 @@ const CGU: NextPage = () => {
           <Text mt={2}>
             {t("mention.host", {
               app_name: process.env.NEXT_PUBLIC_APP_NAME,
-              host: "OVH SAS",
+              host: "Render Services, Inc",
+              address: "525 Brannan Street Ste 300 San Francisco CA 94107",
             })}
           </Text>
         </Box>

@@ -7,7 +7,7 @@
         "text": "In accordance with the law \"IT et liberties\" of January 6, 1978 modified in 2004, you benefit from a right of access and of correction to the information which concerns you, which you can exert by addressing to {app_name} whose co-ordinates are below.\nYou can also, for legitimate reasons, oppose the treatment of the data concerning you.",
         "line1": "{app_name} is the property of {name}",
         "email": "Email",
-        "host": "{app_name} is hosted by {host} whose registered office is located at 2 rue Kellermann - 59100 Roubaix - France."
+        "host": "{app_name} is hosted by {host} whose registered office is located at {address}."
     },
     "art1": {
         "title": "Article 1 : Presentation",

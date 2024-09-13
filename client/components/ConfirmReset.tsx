@@ -6,9 +6,10 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
-  Button,
+  Button as ChakraButton,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import Button from "~components/Button";
 import { useTranslations } from "next-intl";
 
 const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
@@ -27,17 +28,22 @@ const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
         <AlertDialogContent
           borderRadius="sm"
           w="95%"
-          color="text"
-          bgColor="white"
+          color="white"
+          backdropFilter="blur(25px) saturate(180%)"
+          backgroundColor="rgb(20 27 40 / 60%)"
         >
-          <AlertDialogHeader fontSize="lg" fontWeight="bold" px={px}>
+          <AlertDialogHeader
+            fontSize={{ base: "md", sm: "lg", md: "1.6rem" }}
+            fontWeight="800"
+            px={px}
+          >
             {t("resetTitle")}
           </AlertDialogHeader>
           <AlertDialogBody fontSize={"md"} px={px}>
             {t("confirmReset")}
           </AlertDialogBody>
           <AlertDialogFooter px={px}>
-            <Button
+            <ChakraButton
               fontSize={"md"}
               variant="line"
               cursor="pointer"
@@ -45,8 +51,15 @@ const ConfirmReset = ({ isOpen, setOpen, confirm }) => {
               onClick={() => setOpen(false)}
             >
               {t("cancel")}
-            </Button>
-            <Button onClick={confirm} ml={3} cursor="pointer" variant={"solid"}>
+            </ChakraButton>
+            <Button
+              onClick={confirm}
+              ml={3}
+              cursor="pointer"
+              variant={"solid"}
+              color={"white"}
+              layerColors={["new.2", "new.4", "new.3"]}
+            >
               {t("confirm")}
             </Button>
           </AlertDialogFooter>

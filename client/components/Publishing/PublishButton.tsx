@@ -2,7 +2,6 @@ import React, { useMemo } from "react";
 import { Flex, useDisclosure } from "@chakra-ui/react";
 import { useTranslations } from "next-intl";
 import { useFormContext } from "react-hook-form";
-import { GRADIENTS } from "~constants";
 import ElementButton from "~components/ElementButton";
 import useAttacks from "~hooks/useAttacks";
 import PublishRequirements from "~components/Publishing/PublishRequirements";
