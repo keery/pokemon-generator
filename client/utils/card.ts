@@ -6,7 +6,8 @@ import { useTranslation } from "next-i18next";
 export const getUrlToDisplayCard = (card: Card) => {
   const urlParams = new URLSearchParams(card.img);
   const cardId = urlParams.get("id");
-  return `https://lh3.google.com/u/0/d/${cardId}`;
+
+  return `https://drive.google.com/thumbnail?id=${cardId}&sz=w1000`;
 };
 
 export const ImagetoPrint = (source) => {
