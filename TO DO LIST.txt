@@ -66,8 +66,10 @@ create cartes en tendance filtre pour les cartes qui ont recu pas mal de like ce
 Traduire les informations sur une carte afin que la carte soit en toutes les langues
 Save in cache position image moved
 check seo
-Afficher le menu en sticky
+Afficher le menu en sticky sur mobile
 Ajouter serveur smtp
 Checker Dropbox
 Checker quel composant utilise "use client" et "use server" pour optimiser
 Checker cette migration d'api de facebook
+fix footer on mobile
+Afficher directement le nom des pages en desktop
