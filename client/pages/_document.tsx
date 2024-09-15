@@ -5,7 +5,6 @@ import Document, {
   NextScript,
   Head,
 } from "next/document";
-import { ColorModeScript } from "@chakra-ui/react";
 import theme from "../theme";
 
 export default class CustomDocument extends Document {
@@ -40,7 +39,6 @@ export default class CustomDocument extends Document {
           />
         </Head>
         <body>
-          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />
         </body>
