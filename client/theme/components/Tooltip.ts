@@ -1,9 +1,9 @@
 const Tooltip = {
-  baseStyle: ({ colorMode }) => ({
-    borderRadius: colorMode === "dark" ? "none" : "sm",
+  baseStyle: () => ({
+    borderRadius: "sm",
     bgColor: "gray.700",
     color: "white",
-    fontSize: colorMode === "dark" ? "xs" : "md",
+    fontSize: "md",
     boxShadow: "none",
   }),
   defaultProps: {},

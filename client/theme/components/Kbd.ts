@@ -1,7 +1,7 @@
 const Kbd = {
-  baseStyle: ({ colorMode }) => ({
+  baseStyle: () => ({
     borderColor: "#94b1c3",
-    borderRadius: colorMode === "dark" ? "none" : "xs",
+    borderRadius: "xs",
     textTransform: "uppercase",
     bg: "#2d3748",
     fontSize: "xs",

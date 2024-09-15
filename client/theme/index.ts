@@ -14,15 +14,11 @@ import {
 } from "./components";
 
 const theme = extendTheme({
-  config: {
-    initialColorMode: "light",
-    useSystemColorMode: false,
-  },
   styles: {
-    global: ({ colorMode }) => ({
+    global: () => ({
       body: {
-        fontFamily: colorMode === "dark" ? "nes" : "body",
-        fontSize: colorMode === "dark" ? "0.8rem" : "1rem",
+        fontFamily: "body",
+        fontSize: "1rem",
       },
       h1: {
         fontSize: "5xl",
